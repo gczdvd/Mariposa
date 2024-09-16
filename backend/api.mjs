@@ -17,6 +17,13 @@ app.use(session({
 }));
 
 app.post('/login', bodyParser.json(), (req, res) => {
+    if(req.body.username && req.body.password){
+        text.indexOf("@") != -1
+    }
+    else{
+        res.status(400);
+        res.send("Missing username or password.");
+    }
     const password = req.query["password"];
     
     const user = password == "alma";
