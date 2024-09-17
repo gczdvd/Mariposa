@@ -2,27 +2,27 @@
 
 import mysql from "mysql";
 
-try{
-    var con = mysql.createConnection({
-        host: "172.16.193.50",
-        user: "root",
-        password: "root",
-        database: "teszt"
-    });
+export class sql{
+    constructor(ip, username, password, database){
+        this.con = mysql.createConnection({
+            host: ip,
+            user: username,
+            password: password,
+            database: database
+        });
+        this.con.connect((err)=>{
+            console.log(`Database "${database}" on "${ip}" is connected!`);
+        });
+    }
 
-    con.connect((err)=>{
-        console.log("Connected!");
-    });
-
-    con.query('INSERT INTO teszt VALUES ("János", 27)', (err, rows, fields)=>{
-        console.log(rows);
-    });
-
-    con.query('SELECT * FROM teszt ORDER BY age DESC', (err, rows, fields)=>{
-        console.log(rows);
-        con.end();
-    });
-}
-catch(e){
-    console.log(e);
+    auth(username, password, callback){
+        this.con.query(`SELECT id FROM User WHERE username = '${username}' AND password = md5('${password}');`, (err, rows, fields) => {
+            if(rows.length == 1){
+                callback(rows[0]);
+            }
+            else{
+                callback(null);
+            }
+        });
+    }
 }

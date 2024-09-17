@@ -1,79 +1,85 @@
 "use strict";
-/*
-import { WebSocketServer } from "ws";
-import { User } from "./User.mjs";
-
-
-var u = new User(3);
-console.log(u.ageszor());
-
-const WebSoc = new WebSocketServer({port:8081});
-
-WebSoc.addListener("connection", (e)=>{
-    console.log("Csatlakoztak");
-});*/
-
-
-
-
 
 import express from 'express';
 import session from 'express-session';
 import websocket from 'express-ws';
 import bodyParser from 'body-parser';
 
+import {sql} from './database.mjs';
+
+const database = new sql("172.16.193.50", "root", "root", "mariposa");
+
 const app = express();
 
 app.use(session({
-  secret: 'your_secret_key',
-  resave: false, //Ennek még utána kell járni
-  saveUninitialized: false, //Ennek még utána kell járni
-  cookie: {
+    secret: 'your_secret_key',
+    resave: false, //Ennek még utána kell járni
+    saveUninitialized: false, //Ennek még utána kell járni
+    cookie: {
     httpOnly: true, //Ennek még utána kell járni
     maxAge: 600000
-  }
+    }
 }));
 
-const socket = websocket(app);
+websocket(app);
 
 app.get('/login', bodyParser.json(), (req, res) => {
-    /*if(req.body.username && req.body.password){
-        text.indexOf("@") != -1
+    req.body.username = req.query["u"];
+    req.body.password = req.query["p"];
+    if(!req.session.userId){
+        if(req.body.username && req.body.password){
+            database.auth(req.body.username, req.body.password, (id)=>{
+                if(id != null){
+                    req.session.userId = (new Date().getTime()); // Store user ID in session
+                    console.log(req.session.userId);
+                    res.status(200);
+                    res.send("Welcome!");
+                }
+                else{
+                    res.status(401)
+                    res.send('Invalid credentials.');
+                }
+            });
+        }
+        else{
+            res.status(400);
+            res.send("Missing username or password.");
+        }
     }
     else{
-        res.status(400);
-        res.send("Missing username or password.");
-    }*/
-    const password = req.query["password"];
-    
-    const user = password == "alma";
-  
-    if (user) {
-      req.session.userId = Math.round(Math.random()*10000); // Store user ID in session
-      console.log(req.session.userId);
-      res.redirect("/home");
-    } else {
-      res.status(401).send('Invalid credentials');
+        res.status(200);
+        res.send(`You are logged in!`);
     }
-  });
+});
 
-  app.get('/home', (req, res) => {
-    console.log(req.session.userId)
+app.get('/logout', (req, res) => {
+    if(req.session.userId){
+        req.session.destroy();
+        res.status(200);
+        res.send(`Goodbye!`);
+    }
+    else{
+        res.status(200);
+        res.send(`You aren't logged in!`);
+    }
+});
+
+app.get('/home', (req, res) => {
+    console.log(req.session.userId);
     if (req.session.userId) {
-      // User is authenticated
-      res.send(`Welcome to the Home page, User ${req.session.userId}!`);
+        res.send(`Welcome to the Home page, User ${req.session.userId}!`);
     } else {
-      // User is not authenticated
-      res.status(401).send('Unauthorized');
+        res.status(401).send('Unauthorized');
     }
-  });
+});
 
 
-  app.ws('/', (ws, req) => {
+app.ws('/live', (ws, req) => {
     console.log(req.session.userId);
     if (req.session.userId) {
         ws.on('message', function(msg) {
             console.log(msg);
+            req.session.touch();
         });
     }
     else{
@@ -83,11 +89,5 @@ app.get('/login', bodyParser.json(), (req, res) => {
 
 
 app.listen(3000, () => {
-    console.log("Server running on port 3000");
+    console.log("Api/Websocket server running on port 3000");
 });
-
-/*app.get('/users-list', (req, res) => {
-    res.status(404);
-    console.log(req.session);
-    res.send("ok: " + req.query["valami"]);
-});*/
