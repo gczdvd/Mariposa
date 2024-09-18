@@ -2,10 +2,18 @@
 
 export class User{
     constructor(id, username, birthdate, email, topic){
-        /*this.id text [primary key]
-        this.username text
-        this.birthdate date
-        this.email text [unique]
-        this.topic text*/
+        this.id = id;
+        this.username = username;
+        this.birthdate = birthdate;
+        this.email = email;
+        this.topic = topic;
+    }
+
+    setSession(session){
+        this.session = session;
+    }
+
+    getUsername(){
+        return this.username;
     }
 }

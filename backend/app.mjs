@@ -5,9 +5,10 @@ import session from 'express-session';
 import websocket from 'express-ws';
 import bodyParser from 'body-parser';
 
-import {sql} from './database.mjs';
+import {Sql} from './database.mjs';
+import {User} from './User.mjs';
 
-const database = new sql("172.16.193.50", "root", "root", "mariposa");
+const database = new Sql("172.16.193.50", "root", "root", "mariposa");
 
 const app = express();
 
@@ -16,10 +17,11 @@ app.use(session({
     resave: false, //Ennek még utána kell járni
     saveUninitialized: false, //Ennek még utána kell járni
     cookie: {
-    httpOnly: true, //Ennek még utána kell járni
-    maxAge: 600000
+        httpOnly: true, //Ennek még utána kell járni
+        maxAge: 600000
     }
 }));
+//app.use(express.cookieParser());
 
 websocket(app);
 
@@ -31,7 +33,10 @@ app.get('/login', bodyParser.json(), (req, res) => {
             database.auth(req.body.username, req.body.password, (id)=>{
                 if(id != null){
                     req.session.userId = (new Date().getTime()); // Store user ID in session
-                    console.log(req.session.userId);
+                    database.getUserById(id, (u)=>{
+                        u.setSession(req.session.userId);
+                        req.session.user = u;
+                    });
                     res.status(200);
                     res.send("Welcome!");
                 }
@@ -67,24 +72,25 @@ app.get('/logout', (req, res) => {
 app.get('/home', (req, res) => {
     console.log(req.session.userId);
     if (req.session.userId) {
-        res.send(`Welcome to the Home page, User ${req.session.userId}!`);
-    } else {
-        res.status(401).send('Unauthorized');
+        res.send(`Welcome to the Home page, User ${JSON.stringify(req.session)}!`);
+    }
+    else {
+        res.status(401)
+        res.send('Unauthorized');
     }
 });
 
-
 app.ws('/live', (ws, req) => {
-    console.log(req.session.userId);
-    if (req.session.userId) {
-        ws.on('message', function(msg) {
+    ws.on('message', function(msg) {
+        console.log(req.session.userId);
+        if (req.session.userId) {
             console.log(msg);
             req.session.touch();
-        });
-    }
-    else{
-        ws.close();
-    }
+        }
+        else{
+            ws.close();
+        }
+    });
 });
 
 
