@@ -7,8 +7,17 @@ export class Sessions{
     constructor(){
         this.sessions = [];
     }
+    removeSession(session){
+        for(var i = 0; i < this.sessions.length; i++){
+            if(this.sessions[i] == session){
+                this.sessions.splice(i);
+                return true;
+            }
+        }
+        return false;
+    }
     newSession(){
-        var sess = new Session(uuid(), 10000);
+        var sess = new Session(uuid(), 300000);
         this.sessions.push(sess);
         return sess;
     }
@@ -69,5 +78,8 @@ export class Session{
     }
     setAttribute(name, value){
         this.attributes[name] = value;
+    }
+    getAttribute(name){
+        return this.attributes[name];
     }
 }

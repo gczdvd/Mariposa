@@ -20,58 +20,63 @@ websocket(app);
 app.get('/login', bodyParser.json(), (req, res) => {
     //req.body.username = req.query["u"];
     //req.body.password = req.query["p"];
+    var username = req.query["u"];
+    var password = req.query["p"];
     if(!sessions.getSessionByToken(req.cookies.token)?.valid()){
-        const sess = sessions.newSession();
-        res.status(200);
-        res.cookie("token", sess.getToken(), { expires: sess.getExpire(), httpOnly: true, secure: true });
-        res.send("Welcome!");
-
-        /*if(req.body.username && req.body.password){
-            database.auth(req.body.username, req.body.password, (id)=>{
-                /if(id != null){
-                    req.session.userId = (new Date().getTime()); // Store user ID in session
-                    database.getUserById(id, (u)=>{
-                        u.setSession(req.session.userId);
-                        req.session.user = u;
-                    });
+        if(username && password){
+            database.auth(username, password, (id)=>{
+                if(id != null){
+                
+                    const sess = sessions.newSession();
                     res.status(200);
+                    res.cookie("token", sess.getToken(), { expires: sess.getExpire(), httpOnly: true, secure: true });
                     res.send("Welcome!");
+                    
+                    database.getUserById(id, (u)=>{
+                        sess.setAttribute("user", u);
+                    });
                 }
                 else{
                     res.status(401)
                     res.send('Invalid credentials.');
-                }/
+                }
             });
         }
         else{
             res.status(400);
             res.send("Missing username or password.");
-        }*/
+        }
     }
     else{
-        /*res.clearCookie();
-        res.end();*/
         var sess = sessions.getSessionByToken(req.cookies.token);
         console.log(sess.getId());
         sess.touch();
         res.cookie("token", sess.getToken(), { expires: sess.getExpire(), httpOnly: true, secure: true });
         res.status(200);
-        res.send(`You are logged in! Token: ${req.cookies.token}`);
+        res.send(`You are logged in! Username: ${sess.getAttribute("user").getUsername()}`);
     }
 });
 
-/*app.get('/logout', (req, res) => {
-    if(req.session.userId){
-        req.session.destroy();
-        res.status(200);
-        res.send(`Goodbye!`);
+app.get('/logout', (req, res) => {
+    var sess = sessions.getSessionByToken(req.cookies.token);
+    if(sess?.valid()){
+        if(sessions.removeSession(sess)){
+            res.cookie("token", "-", { maxAge: 0, httpOnly: true, secure: true });
+            res.status(200);
+            res.send(`Goodbye!`);
+        }
+        else{
+            res.status(500);
+            res.send(`Unknown error.`);
+            console.error("Valid user can't do logout.");
+        }
     }
     else{
         res.status(200);
         res.send(`You aren't logged in!`);
     }
 });
-
+/*
 app.get('/home', (req, res) => {
     console.log(req.session.userId);
     if (req.session.userId) {
@@ -82,19 +87,19 @@ app.get('/home', (req, res) => {
         res.send('Unauthorized');
     }
 });
+*/
 
 app.ws('/live', (ws, req) => {
     ws.on('message', function(msg) {
-        console.log(req.session.userId);
-        if (req.session.userId) {
+        var sess = sessions.getSessionByToken(req.cookies.token);
+        if(sess?.valid()) {
             console.log(msg);
-            req.session.touch();
         }
         else{
             ws.close();
         }
     });
-});*/
+});
 
 
 app.listen(3000, () => {
