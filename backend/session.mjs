@@ -17,7 +17,7 @@ export class Sessions{
         return false;
     }
     newSession(){
-        var sess = new Session(uuid(), 300000);
+        var sess = new Session(uuid(), 120000);
         this.sessions.push(sess);
         return sess;
     }

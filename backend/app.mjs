@@ -14,15 +14,37 @@ const database = new Sql("172.16.193.50", "root", "root", "mariposa");
 var sessions = new Sessions();
 
 const app = express();
-app.use(cookieParser());
+
+const sessionValidator = function(req, res, next){
+    var session = {
+        token: req.cookies.token,
+        valid: Boolean(sessions.getSessionByToken(req.cookies.token)?.valid()),
+        session: sessions.getSessionByToken(req.cookies.token)
+    }
+    req.session = session;
+    next();
+}
+
+app.use(
+    cookieParser(),
+    bodyParser.json(),
+    sessionValidator
+);
+
 websocket(app);
 
-app.get('/login', bodyParser.json(), (req, res) => {
+
+app.get('/login', (req, res) => {
+    console.log(req.get('user-agent'));
+
+    //MIDDLEWARE KELL HITELESÍTENI, WEBSOCKET ALATT HITELESÍTENI, TITKOSÍTÓ KULCS IS KÉNE
+    //ADATBÁZIS NINCS MEG KEZELÉS
+
     //req.body.username = req.query["u"];
     //req.body.password = req.query["p"];
     var username = req.query["u"];
     var password = req.query["p"];
-    if(!sessions.getSessionByToken(req.cookies.token)?.valid()){
+    if(!req.session.valid){
         if(username && password){
             database.auth(username, password, (id)=>{
                 if(id != null){
@@ -48,7 +70,7 @@ app.get('/login', bodyParser.json(), (req, res) => {
         }
     }
     else{
-        var sess = sessions.getSessionByToken(req.cookies.token);
+        var sess = req.session.session;
         console.log(sess.getId());
         sess.touch();
         res.cookie("token", sess.getToken(), { expires: sess.getExpire(), httpOnly: true, secure: true });
@@ -58,9 +80,8 @@ app.get('/login', bodyParser.json(), (req, res) => {
 });
 
 app.get('/logout', (req, res) => {
-    var sess = sessions.getSessionByToken(req.cookies.token);
-    if(sess?.valid()){
-        if(sessions.removeSession(sess)){
+    if(req.session.valid){
+        if(sessions.removeSession(req.session.session)){
             res.cookie("token", "-", { maxAge: 0, httpOnly: true, secure: true });
             res.status(200);
             res.send(`Goodbye!`);
@@ -89,10 +110,15 @@ app.get('/home', (req, res) => {
 });
 */
 
+app.get('/teszt', (req, res) => {
+    res.status(200);
+    res.send(Object.keys(req));
+});
+
 app.ws('/live', (ws, req) => {
+    var sessid = req.session.session.getId();
     ws.on('message', function(msg) {
-        var sess = sessions.getSessionByToken(req.cookies.token);
-        if(sess?.valid()) {
+        if(sessions.getSessionById(sessid)?.valid()) {
             console.log(msg);
         }
         else{
@@ -100,7 +126,6 @@ app.ws('/live', (ws, req) => {
         }
     });
 });
-
 
 app.listen(3000, () => {
     console.log("Api/Websocket server running on port 3000");
