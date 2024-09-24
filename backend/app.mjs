@@ -17,9 +17,9 @@ const app = express();
 
 const sessionValidator = function(req, res, next){
     var session = {
-        token: req.cookies.token,
-        valid: Boolean(sessions.getSessionByToken(req.cookies.token)?.valid()),
-        session: sessions.getSessionByToken(req.cookies.token)
+        id: req.cookies.sessId,
+        valid: Boolean(sessions.getSessionById(req.cookies.sessId)?.valid()),
+        session: sessions.getSessionById(req.cookies.sessId)
     }
     req.session = session;
     next();
@@ -51,7 +51,7 @@ app.get('/login', (req, res) => {
                 
                     const sess = sessions.newSession();
                     res.status(200);
-                    res.cookie("token", sess.getToken(), { expires: sess.getExpire(), httpOnly: true, secure: true });
+                    res.cookie("sessId", sess.getId(), { expires: sess.getExpire(), httpOnly: true, secure: true });
                     res.send("Welcome!");
                     
                     database.getUserById(id, (u)=>{
@@ -73,7 +73,7 @@ app.get('/login', (req, res) => {
         var sess = req.session.session;
         console.log(sess.getId());
         sess.touch();
-        res.cookie("token", sess.getToken(), { expires: sess.getExpire(), httpOnly: true, secure: true });
+        res.cookie("sessId", sess.getId(), { expires: sess.getExpire(), httpOnly: true, secure: true });
         res.status(200);
         res.send(`You are logged in! Username: ${sess.getAttribute("user").getUsername()}`);
     }
@@ -82,7 +82,7 @@ app.get('/login', (req, res) => {
 app.get('/logout', (req, res) => {
     if(req.session.valid){
         if(sessions.removeSession(req.session.session)){
-            res.cookie("token", "-", { maxAge: 0, httpOnly: true, secure: true });
+            res.cookie("sessId", "-", { maxAge: 0, httpOnly: true, secure: true });
             res.status(200);
             res.send(`Goodbye!`);
         }
