@@ -1,5 +1,7 @@
 "use strict";
 
+//VENDÉG SESSIONT ÍRNI, igen, az adatbázisban is. :)
+
 import express from 'express';
 import websocket from 'express-ws';
 import cookieParser from 'cookie-parser';
@@ -21,8 +23,23 @@ const sessionValidator = function(req, res, next){
         valid: Boolean(sessions.getSessionById(req.cookies.sessId)?.valid()),
         session: sessions.getSessionById(req.cookies.sessId)
     }
+    if(session.valid){
+        session.session.touch();
+    }
     req.session = session;
     next();
+}
+
+const sessionGuard = function(req, res, next){
+    if(req.session.valid){
+        next();
+    }
+    else{
+        res.cookie("sessId", "-", { maxAge: 0, httpOnly: true, secure: true });
+        res.status(400);
+        res.send('Invalid session.');
+        //ÁTIRÁNYÍTHAT A BEJELENTKEZŐ FELÜLETRE
+    }
 }
 
 app.use(
@@ -33,12 +50,9 @@ app.use(
 
 websocket(app);
 
+//---------------PUBLIC---------------//
 
 app.get('/login', (req, res) => {
-    console.log(req.get('user-agent'));
-
-    //MIDDLEWARE KELL HITELESÍTENI, WEBSOCKET ALATT HITELESÍTENI, TITKOSÍTÓ KULCS IS KÉNE
-    //ADATBÁZIS NINCS MEG KEZELÉS
 
     //req.body.username = req.query["u"];
     //req.body.password = req.query["p"];
@@ -51,31 +65,31 @@ app.get('/login', (req, res) => {
                 
                     const sess = sessions.newSession();
                     res.status(200);
-                    res.cookie("sessId", sess.getId(), { expires: sess.getExpire(), httpOnly: true, secure: true });
+                    res.cookie("sessId", sess.getId(), { expires: Session.neverExpire(), httpOnly: true, secure: true });
                     res.send("Welcome!");
+                    //ÁTIRÁNYÍTHAT A KEZDŐLAPRA
                     
                     database.getUserById(id, (u)=>{
                         sess.setAttribute("user", u);
                     });
                 }
                 else{
-                    res.status(401)
+                    res.status(401);
                     res.send('Invalid credentials.');
+                    //ÁTIRÁNYÍTHAT A BEJELENTKEZŐ FELÜLETRE
                 }
             });
         }
         else{
             res.status(400);
             res.send("Missing username or password.");
+            //ÁTIRÁNYÍTHAT A BEJELENTKEZŐ FELÜLETRE
         }
     }
     else{
-        var sess = req.session.session;
-        console.log(sess.getId());
-        sess.touch();
-        res.cookie("sessId", sess.getId(), { expires: sess.getExpire(), httpOnly: true, secure: true });
+        res.send("/home");
         res.status(200);
-        res.send(`You are logged in! Username: ${sess.getAttribute("user").getUsername()}`);
+        //ÁTIRÁNYÍTHAT A KEZDŐLAPRA
     }
 });
 
@@ -97,28 +111,28 @@ app.get('/logout', (req, res) => {
         res.send(`You aren't logged in!`);
     }
 });
-/*
+
 app.get('/home', (req, res) => {
-    console.log(req.session.userId);
-    if (req.session.userId) {
-        res.send(`Welcome to the Home page, User ${JSON.stringify(req.session)}!`);
+    if (req.session.valid) {
+        res.status(200);
+        res.send(`Welcome User ${req.session.id}!`);
     }
     else {
-        res.status(401)
-        res.send('Unauthorized');
+        res.status(200);
+        res.send(`Welcome Guest!`);
     }
 });
-*/
 
-app.get('/teszt', (req, res) => {
+//---------------PRIVATE---------------//
+
+app.get('/teszt', sessionGuard, (req, res) => {
     res.status(200);
     res.send(Object.keys(req));
 });
 
 app.ws('/live', (ws, req) => {
-    var sessid = req.session.session.getId();
     ws.on('message', function(msg) {
-        if(sessions.getSessionById(sessid)?.valid()) {
+        if(sessions.getSessionById(req.session.id)?.valid()) {
             console.log(msg);
         }
         else{
