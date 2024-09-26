@@ -33,6 +33,12 @@ export class Sql{
         });
     }
 
+    signup(username, email, password, birthdate, gender, comment){
+        this.con.query(`CALL signupUser("${username}", "${email}", "${password}", "${birthdate}", ${gender}, "${comment}");`, (err, rows, fields) => {
+            console.log(err);
+        });
+    }
+
     getUserById(id, callback){
         this.con.query(`CALL getUserById(${id});`, (err, rows, fields) => {
             var data = rows[0][0];

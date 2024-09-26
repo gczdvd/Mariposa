@@ -55,6 +55,57 @@ websocket(app);
 
 //---------------PUBLIC---------------//
 
+app.post('/signup', (req, res) => {
+    /*
+        fetch("http://127.0.0.1:3000/signup", {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                email:"teszt@asd.zt",
+                birthdate:"2015-05-07",
+                username:"Béla",
+                password:"titkos",
+                gender:3,
+                comment:"Béla vagyok"
+            }) 
+        }).then(async (e)=>{
+            console.log(await e.json());
+        });
+    */
+
+    var username = req.body.username;
+    var email = req.body.email;
+    var password = req.body.password;
+    var birthdate = req.body.birthdate;
+    var gender = req.body.gender;
+    var comment = req.body.comment;
+    if(!req.session.valid){
+        if(username && email && password && birthdate && gender){
+            database.signup(username, email, password, birthdate, gender, comment);
+        }
+        else{
+            res.status(400);
+            res.send(JSON.stringify({
+                "action":"redirect",
+                "value":"/signup",
+                "message":"Missing data."
+            }));
+        }
+    }
+    else{
+        res.status(200);
+        res.send(JSON.stringify({
+            "action":"redirect",
+            "value":"/",
+            "message":"You are already logged in."
+        }));
+    }
+});
+
 app.post('/login', (req, res) => {
 
     //#######################---BELÉPÉS
@@ -71,6 +122,9 @@ app.post('/login', (req, res) => {
                 password: "alma" 
             }) 
         })
+        .then(async (e)=>{
+            console.log(await e.json());
+        });
     */
 
 
