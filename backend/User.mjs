@@ -9,10 +9,6 @@ export class User{
         this.topic = topic;
     }
 
-    setSession(session){
-        this.session = session;
-    }
-
     getUsername(){
         return this.username;
     }

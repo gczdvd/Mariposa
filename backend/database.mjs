@@ -12,7 +12,12 @@ export class Sql{
             database: database
         });
         this.con.connect((err)=>{
-            console.log(`Database "${database}" on "${ip}" is connected!`);
+            if(err){
+                console.log(`Database error: ${err}`);
+            }
+            else{
+                console.log(`Database "${database}" on "${ip}" is connected!`);
+            }
         });
     }
 
