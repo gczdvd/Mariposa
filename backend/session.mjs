@@ -44,7 +44,7 @@ export class Sessions{
 
 export class Session{
     static neverExpire(){
-        return 34560000000;
+        return new Date(Date.now() + 34560000000);
     }
     constructor(id, maxAge){
         this.maxAge = maxAge;

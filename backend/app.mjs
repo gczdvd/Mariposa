@@ -52,12 +52,29 @@ websocket(app);
 
 //---------------PUBLIC---------------//
 
-app.get('/login', (req, res) => {
+app.post('/login', (req, res) => {
+
+    //#######################---BELÉPÉS
+    /*
+        fetch("http://127.0.0.1:3000/login", {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                username: "teszt", 
+                password: "alma" 
+            }) 
+        })
+    */
+
 
     //req.body.username = req.query["u"];
     //req.body.password = req.query["p"];
-    var username = req.query["u"];
-    var password = req.query["p"];
+    var username = req.body.username;//req.query["u"];
+    var password = req.body.password;//req.query["p"];
     if(!req.session.valid){
         if(username && password){
             database.auth(username, password, (id)=>{
@@ -66,8 +83,10 @@ app.get('/login', (req, res) => {
                     const sess = sessions.newSession();
                     res.status(200);
                     res.cookie("sessId", sess.getId(), { expires: Session.neverExpire(), httpOnly: true, secure: true });
-                    res.send("Welcome!");
-                    //ÁTIRÁNYÍTHAT A KEZDŐLAPRA
+                    res.send(JSON.stringify({
+                        "action":"redirect",
+                        "value":"/home"
+                    }));
                     
                     database.getUserById(id, (u)=>{
                         sess.setAttribute("user", u);
