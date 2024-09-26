@@ -37,8 +37,11 @@ const sessionGuard = function(req, res, next){
     else{
         res.cookie("sessId", "-", { maxAge: 0, httpOnly: true, secure: true });
         res.status(400);
-        res.send('Invalid session.');
-        //ÁTIRÁNYÍTHAT A BEJELENTKEZŐ FELÜLETRE
+        res.send(JSON.stringify({
+            "action":"redirect",
+            "value":"/login",
+            "message":"Invalid session."
+        }));
     }
 }
 
@@ -85,7 +88,8 @@ app.post('/login', (req, res) => {
                     res.cookie("sessId", sess.getId(), { expires: Session.neverExpire(), httpOnly: true, secure: true });
                     res.send(JSON.stringify({
                         "action":"redirect",
-                        "value":"/home"
+                        "value":"/",
+                        "message":"Successful login."
                     }));
                     
                     database.getUserById(id, (u)=>{
@@ -94,21 +98,30 @@ app.post('/login', (req, res) => {
                 }
                 else{
                     res.status(401);
-                    res.send('Invalid credentials.');
-                    //ÁTIRÁNYÍTHAT A BEJELENTKEZŐ FELÜLETRE
+                    res.send(JSON.stringify({
+                        "action":"redirect",
+                        "value":"/",
+                        "message":"Invalid credentials."
+                    }));
                 }
             });
         }
         else{
             res.status(400);
-            res.send("Missing username or password.");
-            //ÁTIRÁNYÍTHAT A BEJELENTKEZŐ FELÜLETRE
+            res.send(JSON.stringify({
+                "action":"redirect",
+                "value":"/login",
+                "message":"Missing username or password."
+            }));
         }
     }
     else{
-        res.send("/home");
         res.status(200);
-        //ÁTIRÁNYÍTHAT A KEZDŐLAPRA
+        res.send(JSON.stringify({
+            "action":"redirect",
+            "value":"/",
+            "message":"You are already logged in."
+        }));
     }
 });
 
@@ -146,7 +159,7 @@ app.get('/home', (req, res) => {
 
 app.get('/teszt', sessionGuard, (req, res) => {
     res.status(200);
-    res.send(Object.keys(req));
+    res.send(req.ip);
 });
 
 app.ws('/live', (ws, req) => {
