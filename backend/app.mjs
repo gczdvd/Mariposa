@@ -10,8 +10,9 @@ import bodyParser from 'body-parser';
 import { Sql } from './database.mjs';
 import { User } from './User.mjs';
 import { Session, Sessions } from './session.mjs';
+import { Email } from './mail.mjs';
 
-const database = new Sql("172.16.193.50", "root", "root", "mariposa");
+const database = new Sql("172.30.0.100", "root", "MariposaProject2024%", "mariposa");
 
 var sessions = new Sessions();
 
