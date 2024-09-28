@@ -48,7 +48,7 @@ export class Sql{
 
     verifyUser(token, callback){
         this.con.query(`CALL verifyUser("${token}");`, (err, rows, fields) => {
-            callback(rows[0][0].status);
+            callback(rows[0][0].status, rows[0][0].client_id);
         });
     }
 }

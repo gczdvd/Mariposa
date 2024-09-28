@@ -38,4 +38,17 @@ export class Email{
         });
         return code;
     }
+
+    verifySuccess(email, name){
+        this.transport.sendMail({
+            from: '"Mariposa - The Social Butterfly" <noreply@gogotech.hu>',
+            to: email,
+            subject: "Successful verified your account!",
+            html: `
+                <div style="width:100%;text-align:center;">
+                    <h2>Dear ${name}!</h2>
+                    <h2>Success</h2>
+                </div>`
+        });
+    }
 }

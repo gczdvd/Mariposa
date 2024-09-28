@@ -126,15 +126,17 @@ app.post('/signup', (req, res) => {
 });
 
 app.get('/signup/verify', (req, res) => {
-    database.verifyUser(req.query["token"], (s)=>{
+    database.verifyUser(req.query["token"], (s, id)=>{
         if(s == "Success"){
-            res.status(200);
-            res.send(JSON.stringify({
-                "action":"redirect",
-                "value":"/login",
-                "message":"Verified."
-            }));
-            
+            database.getUserById(id, (e)=>{
+                smtp.verifySuccess(e.getEmail(), e.getNickname());
+                res.status(200);
+                res.send(JSON.stringify({
+                    "action":"redirect",
+                    "value":"/login",
+                    "message":"Verified."
+                }));
+            });
         }
         else{
             res.status(409);

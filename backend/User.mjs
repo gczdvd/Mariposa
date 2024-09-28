@@ -1,15 +1,19 @@
 "use strict";
 
 export class User{
-    constructor(id, username, birthdate, email, topic){
+    constructor(id, nickname, birthdate, email, topic){
         this.id = id;
-        this.username = username;
+        this.nickname = nickname;
         this.birthdate = birthdate;
         this.email = email;
         this.topic = topic;
     }
 
-    getUsername(){
-        return this.username;
+    getNickname(){
+        return this.nickname;
+    }
+
+    getEmail(){
+        return this.email;
     }
 }
