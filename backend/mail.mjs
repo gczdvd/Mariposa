@@ -29,11 +29,11 @@ export class Email{
         this.transport.sendMail({
             from: '"Mariposa - The Social Butterfly" <noreply@gogotech.hu>',
             to: email,
-            subject: code + " is your verify code",
+            subject: "Verify your account!",
             html: `
                 <div style="width:100%;text-align:center;">
-                    <h2>Your verify code:</h2>
-                    <h1>${code}</h1>
+                    <h2>Click to verify:</h2>
+                    <a href="http://127.0.0.1:3000/signup/verify?token=${code}">Verify</a>
                 </div>`
         });
         return code;
