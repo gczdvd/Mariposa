@@ -10,8 +10,9 @@ import bodyParser from 'body-parser';
 import { Sql } from './database.mjs';
 import { User } from './User.mjs';
 import { Session, Sessions } from './session.mjs';
+import { Email } from './mail.mjs';
 
-const database = new Sql("172.16.193.50", "root", "root", "mariposa");
+const database = new Sql("172.30.0.100", "root", "MariposaProject2024%", "mariposa");
 
 var sessions = new Sessions();
 
@@ -37,8 +38,11 @@ const sessionGuard = function(req, res, next){
     else{
         res.cookie("sessId", "-", { maxAge: 0, httpOnly: true, secure: true });
         res.status(400);
-        res.send('Invalid session.');
-        //ÁTIRÁNYÍTHAT A BEJELENTKEZŐ FELÜLETRE
+        res.send(JSON.stringify({
+            "action":"redirect",
+            "value":"/login",
+            "message":"Invalid session."
+        }));
     }
 }
 
@@ -51,6 +55,57 @@ app.use(
 websocket(app);
 
 //---------------PUBLIC---------------//
+
+app.post('/signup', (req, res) => {
+    /*
+        fetch("http://127.0.0.1:3000/signup", {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                email:"teszt@asd.zt",
+                birthdate:"2015-05-07",
+                username:"Béla",
+                password:"titkos",
+                gender:3,
+                comment:"Béla vagyok"
+            }) 
+        }).then(async (e)=>{
+            console.log(await e.json());
+        });
+    */
+
+    var username = req.body.username;
+    var email = req.body.email;
+    var password = req.body.password;
+    var birthdate = req.body.birthdate;
+    var gender = req.body.gender;
+    var comment = req.body.comment;
+    if(!req.session.valid){
+        if(username && email && password && birthdate && gender){
+            database.signup(username, email, password, birthdate, gender, comment);
+        }
+        else{
+            res.status(400);
+            res.send(JSON.stringify({
+                "action":"redirect",
+                "value":"/signup",
+                "message":"Missing data."
+            }));
+        }
+    }
+    else{
+        res.status(200);
+        res.send(JSON.stringify({
+            "action":"redirect",
+            "value":"/",
+            "message":"You are already logged in."
+        }));
+    }
+});
 
 app.post('/login', (req, res) => {
 
@@ -68,6 +123,9 @@ app.post('/login', (req, res) => {
                 password: "alma" 
             }) 
         })
+        .then(async (e)=>{
+            console.log(await e.json());
+        });
     */
 
 
@@ -85,7 +143,8 @@ app.post('/login', (req, res) => {
                     res.cookie("sessId", sess.getId(), { expires: Session.neverExpire(), httpOnly: true, secure: true });
                     res.send(JSON.stringify({
                         "action":"redirect",
-                        "value":"/home"
+                        "value":"/",
+                        "message":"Successful login."
                     }));
                     
                     database.getUserById(id, (u)=>{
@@ -94,21 +153,30 @@ app.post('/login', (req, res) => {
                 }
                 else{
                     res.status(401);
-                    res.send('Invalid credentials.');
-                    //ÁTIRÁNYÍTHAT A BEJELENTKEZŐ FELÜLETRE
+                    res.send(JSON.stringify({
+                        "action":"redirect",
+                        "value":"/",
+                        "message":"Invalid credentials."
+                    }));
                 }
             });
         }
         else{
             res.status(400);
-            res.send("Missing username or password.");
-            //ÁTIRÁNYÍTHAT A BEJELENTKEZŐ FELÜLETRE
+            res.send(JSON.stringify({
+                "action":"redirect",
+                "value":"/login",
+                "message":"Missing username or password."
+            }));
         }
     }
     else{
-        res.send("/home");
         res.status(200);
-        //ÁTIRÁNYÍTHAT A KEZDŐLAPRA
+        res.send(JSON.stringify({
+            "action":"redirect",
+            "value":"/",
+            "message":"You are already logged in."
+        }));
     }
 });
 
@@ -146,7 +214,7 @@ app.get('/home', (req, res) => {
 
 app.get('/teszt', sessionGuard, (req, res) => {
     res.status(200);
-    res.send(Object.keys(req));
+    res.send(req.ip);
 });
 
 app.ws('/live', (ws, req) => {

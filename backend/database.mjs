@@ -39,4 +39,20 @@ export class Sql{
             callback(new User(data.id, data.username, data.birthdate, data.email, data.topic));
         });
     }
+
+    checkExistKeys(username, email, callback){
+        this.con.query(`CALL checkExistKeys("${username}", "${email}");`, (err, rows, fields) => {
+            var data = rows[0];
+            callback(data);
+        });
+    }
+
+    signup(username, email, password, birthdate, gender, comment){
+        this.con.query(`CALL signupUser("${username}", "${email}", "${password}", "${birthdate}", ${gender}, "${comment}");`, (err, rows, fields) => {
+            if(err.errno == 1062){
+                var duplrow = err.sqlMessage.split(" ");
+                console.log(duplrow.pop());
+            }
+        });
+    }
 }
