@@ -21,9 +21,9 @@ export class Sql{
         });
     }
 
-    auth(username, password, callback){
-        this.con.query(`CALL authUser("${username}", "${password}");`, (err, rows, fields) => {
-            var id = rows[0][0]?.id;
+    auth(email, password, callback){
+        this.con.query(`CALL authUser("${email}", "${password}");`, (err, rows, fields) => {
+            var id = rows[0][0]?.client_id;
             if(id){
                 callback(id);
             }
@@ -34,25 +34,21 @@ export class Sql{
     }
 
     getUserById(id, callback){
-        this.con.query(`CALL getUserById(${id});`, (err, rows, fields) => {
+        this.con.query(`CALL getClient(${id});`, (err, rows, fields) => {
             var data = rows[0][0];
-            callback(new User(data.id, data.username, data.birthdate, data.email, data.topic));
+            callback(new User(data.client_id, data.nickname, data.birthdate, data.email, data.topic));
         });
     }
 
-    checkExistKeys(username, email, callback){
-        this.con.query(`CALL checkExistKeys("${username}", "${email}");`, (err, rows, fields) => {
-            var data = rows[0];
-            callback(data);
+    signup(nickname, email, password, birthdate, gender, comment, verify, callback){
+        this.con.query(`CALL signupUser("${nickname}", "${email}", "${password}", "${birthdate}", ${gender}, "${comment}", "${verify}");`, (err, rows, fields) => {
+            callback(rows[0][0].status);
         });
     }
 
-    signup(username, email, password, birthdate, gender, comment){
-        this.con.query(`CALL signupUser("${username}", "${email}", "${password}", "${birthdate}", ${gender}, "${comment}");`, (err, rows, fields) => {
-            if(err.errno == 1062){
-                var duplrow = err.sqlMessage.split(" ");
-                console.log(duplrow.pop());
-            }
+    verifyUser(token, callback){
+        this.con.query(`CALL verifyUser("${token}");`, (err, rows, fields) => {
+            callback(rows[0][0].status, rows[0][0].client_id);
         });
     }
 }

@@ -6,6 +6,7 @@ import express from 'express';
 import websocket from 'express-ws';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
+import md5 from 'md5';
 
 import { Sql } from './database.mjs';
 import { User } from './User.mjs';
@@ -13,6 +14,7 @@ import { Session, Sessions } from './session.mjs';
 import { Email } from './mail.mjs';
 
 const database = new Sql("172.30.0.100", "root", "MariposaProject2024%", "mariposa");
+const smtp = new Email("172.30.0.100", 25);
 
 var sessions = new Sessions();
 
@@ -78,15 +80,31 @@ app.post('/signup', (req, res) => {
         });
     */
 
-    var username = req.body.username;
-    var email = req.body.email;
-    var password = req.body.password;
-    var birthdate = req.body.birthdate;
-    var gender = req.body.gender;
-    var comment = req.body.comment;
+    var nickname = req.body?.nickname;
+    var email = req.body?.email;
+    var password = req.body?.password;
+    var birthdate = req.body?.birthdate;
+    var gender = req.body?.gender;
+    var comment = req.body?.comment;
     if(!req.session.valid){
-        if(username && email && password && birthdate && gender){
-            database.signup(username, email, password, birthdate, gender, comment);
+        if(nickname && email && password && birthdate && !isNaN(gender)){
+            database.signup(nickname, email, password, birthdate, gender, comment, md5(email), (s)=>{
+                if(s == "Success"){
+                    smtp.verify(email, md5(email));
+                    res.status(200);
+                    res.send(JSON.stringify({
+                        "message":"You can login, if verified your email."
+                    }));
+                    
+                }
+                else{
+                    res.status(409);
+                    res.send(JSON.stringify({
+                        "action":"error",
+                        "message":"Exist account with this email address."
+                    }));
+                }
+            });
         }
         else{
             res.status(400);
@@ -105,6 +123,29 @@ app.post('/signup', (req, res) => {
             "message":"You are already logged in."
         }));
     }
+});
+
+app.get('/signup/verify', (req, res) => {
+    database.verifyUser(req.query["token"], (s, id)=>{
+        if(s == "Success"){
+            database.getUserById(id, (e)=>{
+                smtp.verifySuccess(e.getEmail(), e.getNickname());
+                res.status(200);
+                res.send(JSON.stringify({
+                    "action":"redirect",
+                    "value":"/login",
+                    "message":"Verified."
+                }));
+            });
+        }
+        else{
+            res.status(409);
+            res.send(JSON.stringify({
+                "action":"error",
+                "message":"Unexpected error."
+            }));
+        }
+    });
 });
 
 app.post('/login', (req, res) => {
@@ -131,11 +172,11 @@ app.post('/login', (req, res) => {
 
     //req.body.username = req.query["u"];
     //req.body.password = req.query["p"];
-    var username = req.body.username;//req.query["u"];
+    var email = req.body.email;//req.query["u"];
     var password = req.body.password;//req.query["p"];
     if(!req.session.valid){
-        if(username && password){
-            database.auth(username, password, (id)=>{
+        if(email && password){
+            database.auth(email, password, (id)=>{
                 if(id != null){
                 
                     const sess = sessions.newSession();
@@ -166,7 +207,7 @@ app.post('/login', (req, res) => {
             res.send(JSON.stringify({
                 "action":"redirect",
                 "value":"/login",
-                "message":"Missing username or password."
+                "message":"Missing email or password."
             }));
         }
     }
