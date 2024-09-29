@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            /* align-items: center;  */
+            background-color: lightgray;
+            height: 100vh
+            
+        }
+
+        
+
+        #header{
+            height: auto;
+            width: 40vw;
+
+            background-color: white;
+            position: absolute;
+            /* top: 80%; */
+            left: 50%;
+            transform: translate(-50%, -100%);
+            border-radius: 10px 10px 0 0;
+            
+            /* Content alignment */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            
+        }
+
+        #container{
+            background-color: blue;
+            /* position: relative; */
+            
+        }
+
+        img{
+            
+            display: block;
+            width: 40em;
+        }
+
+        #content{
+            
+            height: auto;
+            text-align: center;
+            background-color: green;
+            padding-top: 10px;
+        }
+
+        #title{
+            /* Text settings */
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        p{
+            margin: 0px;
+            font-family: ;
+        }
+
+        button{
+            margin-top: 20px;
+            text-transform: uppercase;
+            padding: 20px;
+            border: solid black 2px;
+        }
+
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+
+        <img src="./images/monarch-butterflies.jpg" alt="">
+
+        <div id="header">
+            <p id="title">Üdvözlünk a Mariposán!</p>
+        </div>
+
+        <div id="content">
+            <p class="text">Örülünk, hogy itt vagy!</p>
+            
+            <p>Erősítsd meg e-mail címed, hogy befejezd a regisztrációt!</p>
+            
+            <button onclick="">E-mail megerősítése</button>
+            
+            <p>Kellemes chatelést!</p>
+            <p>A Mariposa csapata</p>
+            
+
+        </div>
+        
+    </div>
+</body>
+</html>
