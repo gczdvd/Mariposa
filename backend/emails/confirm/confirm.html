@@ -9,19 +9,27 @@
             padding: 0;
             display: flex;
             justify-content: center;
-            /* align-items: center;  */
             background-color: lightgray;
-            height: 100vh
-            
+            height: 100vh;
+            text-align: center;
         }
 
+        #container{
+            background-color: rgb(251, 202, 55);
+            height: max-content;
+        }
         
-
+        #cover{
+            display: block;
+            width: 40em;
+            height: 20vh
+        }
+        
         #header{
-            height: auto;
-            width: 40vw;
+            height: 10vh;
+            width: 30vw;
 
-            background-color: white;
+            background-color: rgb(240, 240, 240);
             position: absolute;
             /* top: 80%; */
             left: 50%;
@@ -33,38 +41,32 @@
             justify-content: center;
             align-items: center;
 
-            
-        }
-
-        #container{
-            background-color: blue;
-            /* position: relative; */
-            
-        }
-
-        img{
-            
-            display: block;
-            width: 40em;
-        }
-
-        #content{
-            
-            height: auto;
-            text-align: center;
-            background-color: green;
-            padding-top: 10px;
+            color: rgb(251, 202, 55);
+            /* text-shadow: 1px 1px 1px black; */
         }
 
         #title{
-            /* Text settings */
-            text-align: center;
             font-size: 30px;
             font-weight: bold;
         }
 
+        #content{
+            text-align: center;
+            background-color: white;
+            padding: 25px 0 25px 0;
+            width: 30vw;
+            margin: auto;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
         p{
             margin: 0px;
+        }
+
+        ul{
+            display: inline-block;
+            text-align: left;
+            margin: 10px 0 10px 0;
         }
 
         button{
@@ -72,31 +74,70 @@
             text-transform: uppercase;
             padding: 20px;
             border: solid black 2px;
+            cursor: pointer;
         }
 
+        #footer{
+            width: 25vw;
+            margin: auto;
+            padding-top: 15px;
+        }
+
+        #info{
+            background-color: rgb(62, 44, 10);
+            color: white;
+            margin-top: 3%;
+        }
+
+        #logo{
+            width: 10vw;
+        }
     </style>
-    <title>Document</title>
+
+    <title>Mariposa</title>
 </head>
 <body>
     <div id="container">
 
-        <img src="./images/monarch-butterflies.jpg" alt="">
+        <img id="cover" src="./images/monarch-butterflies.jpg" alt="">
 
         <div id="header">
             <p id="title">Üdvözlünk a Mariposán!</p>
         </div>
 
         <div id="content">
-            <p class="text">Örülünk, hogy itt vagy!</p>
-            
+            <!-- <p>Örülünk, hogy itt vagy!</p> -->
             <p>Erősítsd meg e-mail címed, hogy befejezd a regisztrációt!</p>
+            <br>
+
+            <p>Regisztrált fiókkal lehetőséged nyílik</p>
+
+            <ul>
+                <li>chatpartnered elmentésére,</li>
+                <li>érdeklődési köreid beállítására,</li>
+                <li>médiatartalmak küldésére,</li>
+            </ul>
             
-            <button onclick="">E-mail megerősítése</button>
-            
+            <p>és mindezt úgy, hogy továbbra is név nélkül chatelhetsz!</p>
+
+
+            <button onclick="">E-mail cím megerősítése</button>
+            <br>
+            <br>
             <p>Kellemes chatelést!</p>
             <p>A Mariposa csapata</p>
             
+        </div>
+        <div id="footer">
 
+            <p id="help">Segítségre van szükséged?</p>
+            <p>Látogasd meg a <a href="">Rólunk</a> oldalunkat, ahol böngészhetsz a gyakran ismételt kérdések között! Ha nem találsz választ a kérdésedre, vedd fel velünk a kapcsolatot!</p>
+            
+        </div>
+
+        <div id="info">
+            <img id="logo" src="./images/PNG_transparency_demonstration_1.png">
+            <p>Mariposa - The Social Butterfly © 2025</p>
         </div>
         
     </div>
