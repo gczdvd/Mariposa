@@ -20,7 +20,7 @@ var sessions = new Sessions();
 
 const app = express();
 
-const sessionValidator = function(req, res, next){
+const sessionParser = function(req, res, next){
     var session = {
         id: req.cookies.sessId,
         valid: Boolean(sessions.getSessionById(req.cookies.sessId)?.valid()),
@@ -29,16 +29,19 @@ const sessionValidator = function(req, res, next){
     if(session.valid){
         session.session.touch();
     }
+    else{
+        res.cookie("sessId", "-", { maxAge: 0, httpOnly: true, secure: true });
+    }
     req.session = session;
+    console.log(session);
     next();
 }
 
-const sessionGuard = function(req, res, next){
+const sessionValidator = function(req, res, next){
     if(req.session.valid){
         next();
     }
     else{
-        res.cookie("sessId", "-", { maxAge: 0, httpOnly: true, secure: true });
         res.status(400);
         res.send(JSON.stringify({
             "action":"redirect",
@@ -48,10 +51,24 @@ const sessionGuard = function(req, res, next){
     }
 }
 
+const sessionOnlyUser = function(req, res, next){
+    if(req.session.session.getAttribute("client") instanceof User){
+        next();
+    }
+    else{
+        res.status(400);
+        res.send(JSON.stringify({
+            "action":"redirect",
+            "value":"/",
+            "message":"You don't have permission."
+        }));
+    }
+}
+
 app.use(
     cookieParser(),
     bodyParser.json(),
-    sessionValidator
+    sessionParser
 );
 
 websocket(app);
@@ -189,7 +206,7 @@ app.post('/login', (req, res) => {
                     }));
                     
                     database.getUserById(id, (u)=>{
-                        sess.setAttribute("user", u);
+                        sess.setAttribute("client", u);
                     });
                 }
                 else{
@@ -252,7 +269,7 @@ app.get('/guest', (req, res) => {
                 "message":"Successful guested."
             }));
             
-            sess.setAttribute("guest", new Guest(id));
+            sess.setAttribute("client", new Guest(id));
         });
     }
     else{
@@ -268,24 +285,31 @@ app.get('/guest', (req, res) => {
 app.get('/home', (req, res) => {
     if (req.session.valid) {
         res.status(200);
-        res.send(`Welcome User ${req.session.id}!`);
+        res.send(`Welcome ${req.session.id}!`);
     }
     else {
         res.status(200);
-        res.send(`Welcome Guest!`);
+        res.send(`Who are you?`);
     }
 });
 
 //---------------PRIVATE---------------//
 
-app.get('/teszt', sessionGuard, (req, res) => {
+app.get('/teszt', sessionValidator, (req, res) => {
     res.status(200);
     res.send(req.ip);
 });
 
+app.get('/user', sessionValidator, sessionOnlyUser, (req, res) => {
+    res.status(200);
+    res.send("You're User!");
+});
+
 app.ws('/live', (ws, req) => {
     ws.on('message', function(msg) {
-        if(sessions.getSessionById(req.session.id)?.valid()) {
+        var sess = sessions.getSessionById(req.session.id);
+        if(sess?.valid()) {
+            sess.touch();
             console.log(msg);
         }
         else{
@@ -296,7 +320,8 @@ app.ws('/live', (ws, req) => {
 
 setInterval(()=>{
     console.log(sessions.sessions);
-}, 1000)
+    sessions.cleanUp();
+}, 10000)
 
 app.listen(3000, () => {
     console.log("Api/Websocket server running on port 3000");

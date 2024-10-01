@@ -40,6 +40,13 @@ export class Sessions{
         }
         return null;
     }
+    cleanUp(){
+        for(var i = 0; i < this.sessions.length; i++){
+            if(!this.sessions[i].valid()){
+                this.removeSession(this.sessions[i]);
+            }
+        }
+    }
 }
 
 export class Session{
