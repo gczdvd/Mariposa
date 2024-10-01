@@ -1,7 +1,7 @@
 "use strict";
 
 import mysql from 'mysql';
-import {User} from './User.mjs';
+import {User} from './client.mjs';
 
 export class Sql{
     constructor(ip, username, password, database){
@@ -49,6 +49,12 @@ export class Sql{
     verifyUser(token, callback){
         this.con.query(`CALL verifyUser("${token}");`, (err, rows, fields) => {
             callback(rows[0][0].status, rows[0][0].client_id);
+        });
+    }
+
+    newGuest(ip, callback){
+        this.con.query(`CALL newGuest("${ip}");`, (err, rows, fields) => {
+            callback(rows[0][0].client_id);
         });
     }
 }

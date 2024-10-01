@@ -9,7 +9,7 @@ import bodyParser from 'body-parser';
 import md5 from 'md5';
 
 import { Sql } from './database.mjs';
-import { User } from './User.mjs';
+import { User, Guest } from './client.mjs';
 import { Session, Sessions } from './session.mjs';
 import { Email } from './mail.mjs';
 
@@ -240,6 +240,31 @@ app.get('/logout', (req, res) => {
     }
 });
 
+app.get('/guest', (req, res) => {
+    if(!req.session.valid){
+        database.newGuest(req.ip, (id)=>{
+            const sess = sessions.newSession();
+            res.status(200);
+            res.cookie("sessId", sess.getId(), { expires: Session.neverExpire(), httpOnly: true, secure: true });
+            res.send(JSON.stringify({
+                "action":"redirect",
+                "value":"/",
+                "message":"Successful guested."
+            }));
+            
+            sess.setAttribute("guest", new Guest(id));
+        });
+    }
+    else{
+        res.status(200);
+        res.send(JSON.stringify({
+            "action":"redirect",
+            "value":"/",
+            "message":"You are already has a session."
+        }));
+    }
+});
+
 app.get('/home', (req, res) => {
     if (req.session.valid) {
         res.status(200);
@@ -268,6 +293,10 @@ app.ws('/live', (ws, req) => {
         }
     });
 });
+
+setInterval(()=>{
+    console.log(sessions.sessions);
+}, 1000)
 
 app.listen(3000, () => {
     console.log("Api/Websocket server running on port 3000");

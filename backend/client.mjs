@@ -17,3 +17,9 @@ export class User{
         return this.email;
     }
 }
+
+export class Guest{
+    constructor(id){
+        this.id = id;
+    }
+}
