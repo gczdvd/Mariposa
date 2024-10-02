@@ -10,11 +10,13 @@ import md5 from 'md5';
 
 import { Sql } from './database.mjs';
 import { User, Guest } from './client.mjs';
+import { Chats } from './chat.mjs';
 import { Session, Sessions } from './session.mjs';
 import { Email } from './mail.mjs';
 
 const database = new Sql("172.30.0.100", "root", "MariposaProject2024%", "mariposa");
 const smtp = new Email("172.30.0.100", 25);
+const chats = new Chats(database);
 
 var sessions = new Sessions();
 
@@ -142,29 +144,6 @@ app.post('/signup', (req, res) => {
     }
 });
 
-app.get('/signup/verify', (req, res) => {
-    database.verifyUser(req.query["token"], (s, id)=>{
-        if(s == "Success"){
-            database.getUserById(id, (e)=>{
-                smtp.verifySuccess(e.getEmail(), e.getNickname());
-                res.status(200);
-                res.send(JSON.stringify({
-                    "action":"redirect",
-                    "value":"/login",
-                    "message":"Verified."
-                }));
-            });
-        }
-        else{
-            res.status(409);
-            res.send(JSON.stringify({
-                "action":"error",
-                "message":"Unexpected error."
-            }));
-        }
-    });
-});
-
 app.post('/login', (req, res) => {
 
     //#######################---BELÉPÉS
@@ -186,11 +165,8 @@ app.post('/login', (req, res) => {
         });
     */
 
-
-    //req.body.username = req.query["u"];
-    //req.body.password = req.query["p"];
-    var email = req.body.email;//req.query["u"];
-    var password = req.body.password;//req.query["p"];
+    var email = req.body.email;
+    var password = req.body.password;
     if(!req.session.valid){
         if(email && password){
             database.auth(email, password, (id)=>{
@@ -238,23 +214,27 @@ app.post('/login', (req, res) => {
     }
 });
 
-app.get('/logout', (req, res) => {
-    if(req.session.valid){
-        if(sessions.removeSession(req.session.session)){
-            res.cookie("sessId", "-", { maxAge: 0, httpOnly: true, secure: true });
-            res.status(200);
-            res.send(`Goodbye!`);
+app.get('/signup/verify', (req, res) => {
+    database.verifyUser(req.query["token"], (s, id)=>{
+        if(s == "Success"){
+            database.getUserById(id, (e)=>{
+                smtp.verifySuccess(e.getEmail(), e.getNickname());
+                res.status(200);
+                res.send(JSON.stringify({
+                    "action":"redirect",
+                    "value":"/login",
+                    "message":"Verified."
+                }));
+            });
         }
         else{
-            res.status(500);
-            res.send(`Unknown error.`);
-            console.error("Valid user can't do logout.");
+            res.status(409);
+            res.send(JSON.stringify({
+                "action":"error",
+                "message":"Unexpected error."
+            }));
         }
-    }
-    else{
-        res.status(200);
-        res.send(`You aren't logged in!`);
-    }
+    });
 });
 
 app.get('/guest', (req, res) => {
@@ -282,7 +262,26 @@ app.get('/guest', (req, res) => {
     }
 });
 
-app.get('/home', (req, res) => {
+app.get('/logout', (req, res) => {
+    if(req.session.valid){
+        if(sessions.removeSession(req.session.session)){
+            res.cookie("sessId", "-", { maxAge: 0, httpOnly: true, secure: true });
+            res.status(200);
+            res.send(`Goodbye!`);
+        }
+        else{
+            res.status(500);
+            res.send(`Unknown error.`);
+            console.error("Valid user can't do logout.");
+        }
+    }
+    else{
+        res.status(200);
+        res.send(`You aren't logged in!`);
+    }
+});
+
+app.get('/', (req, res) => {
     if (req.session.valid) {
         res.status(200);
         res.send(`Welcome ${req.session.id}!`);
@@ -295,14 +294,16 @@ app.get('/home', (req, res) => {
 
 //---------------PRIVATE---------------//
 
-app.get('/teszt', sessionValidator, (req, res) => {
-    res.status(200);
-    res.send(req.ip);
-});
-
-app.get('/user', sessionValidator, sessionOnlyUser, (req, res) => {
+/*app.get('/user', sessionValidator, sessionOnlyUser, (req, res) => {
     res.status(200);
     res.send("You're User!");
+});*/
+
+app.get('/chat', sessionValidator, (req, res) => {
+    //FELVENNI A USER-T A PARTNERKERESŐK LISTÁJÁRA.
+    //WEBSOCKET CSAK PARTNER TALÁLÁS UTÁN JÖJJÖN LÉTRE, ÉS A SSESSION USERHEZ LEGYEN FŰZVE A CHAT ID. 
+    /*res.status(200);
+    res.send(req.ip);*/
 });
 
 app.ws('/live', (ws, req) => {

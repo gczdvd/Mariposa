@@ -57,4 +57,14 @@ export class Sql{
             callback(rows[0][0].client_id);
         });
     }
+
+    createChat(cid1, cid2, callback){
+        this.con.query(`CALL createChat(${cid1}, ${cid2});`, (e) => {
+            callback(rows[0][0].id);
+        });
+    }
+
+    newMessage(cid, message, type, chatid){
+        this.con.query(`CALL newMessage(${chatid}, ${cid}, "${message}", "${type}");`);
+    }
 }
