@@ -6,7 +6,9 @@ export class Chats{
         this.db = db;
     }
     newChat(cid1, cid2){
-        this.#chats.push(new Chat(this.db, cid1, cid2));
+        const ch = new Chat(this.db, cid1, cid2);
+        this.#chats.push(ch);
+        return ch;
     }
     getChatById(id){
         for(var i = 0; i < this.#chats.length; i++){

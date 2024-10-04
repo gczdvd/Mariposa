@@ -4,8 +4,12 @@ import md5 from 'md5';
 import { v4 as uuid } from 'uuid';
 
 export class Sessions{
-    constructor(){
+    constructor(maxAge){
+        this.maxAge = maxAge;
         this.sessions = [];
+    }
+    getSessions(){
+        return this.sessions;
     }
     genId(){
         do{
@@ -25,7 +29,7 @@ export class Sessions{
         return false;
     }
     newSession(){
-        var sess = new Session(this.genId(), 120000);
+        var sess = new Session(this.genId(), this.maxAge);
         this.sessions.push(sess);
         return sess;
     }

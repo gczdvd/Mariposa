@@ -59,7 +59,7 @@ export class Sql{
     }
 
     createChat(cid1, cid2, callback){
-        this.con.query(`CALL createChat(${cid1}, ${cid2});`, (e) => {
+        this.con.query(`CALL createChat(${cid1}, ${cid2});`, (err, rows, fields) => {
             callback(rows[0][0].id);
         });
     }

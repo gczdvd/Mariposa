@@ -16,10 +16,18 @@ export class User{
     getEmail(){
         return this.email;
     }
+
+    getId(){
+        return this.id;
+    }
 }
 
 export class Guest{
     constructor(id){
         this.id = id;
+    }
+
+    getId(){
+        return this.id;
     }
 }

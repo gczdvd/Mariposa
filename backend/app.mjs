@@ -10,15 +10,17 @@ import md5 from 'md5';
 
 import { Sql } from './database.mjs';
 import { User, Guest } from './client.mjs';
-import { Chats } from './chat.mjs';
+import { Chat, Chats } from './chat.mjs';
 import { Session, Sessions } from './session.mjs';
 import { Email } from './mail.mjs';
+import { Finder } from './finder.mjs';
 
 const database = new Sql("172.30.0.100", "root", "MariposaProject2024%", "mariposa");
 const smtp = new Email("172.30.0.100", 25);
 const chats = new Chats(database);
 
-var sessions = new Sessions();
+const sessions = new Sessions(34560000000);
+const finder = new Finder(sessions, chats);
 
 const app = express();
 
@@ -300,8 +302,18 @@ app.get('/', (req, res) => {
 });*/
 
 app.get('/chat', sessionValidator, (req, res) => {
+    if(!(req.session.session.getAttribute("chat") instanceof Chat)){
+        req.session.session.setAttribute("chat", "waiting");
+        res.status(200);
+        res.send("Waiting for partner...");
+    }
+    else{
+        res.status(200);
+        res.send("You have partner!");
+    }
     //FELVENNI A USER-T A PARTNERKERESŐK LISTÁJÁRA.
     //WEBSOCKET CSAK PARTNER TALÁLÁS UTÁN JÖJJÖN LÉTRE, ÉS A SSESSION USERHEZ LEGYEN FŰZVE A CHAT ID. 
+    //Session a középpont, nem a User
     /*res.status(200);
     res.send(req.ip);*/
 });
@@ -309,9 +321,11 @@ app.get('/chat', sessionValidator, (req, res) => {
 app.ws('/live', (ws, req) => {
     ws.on('message', function(msg) {
         var sess = sessions.getSessionById(req.session.id);
-        if(sess?.valid()) {
+        if(sess?.valid() && (sess?.getAttribute("chat") instanceof Chat)) {
             sess.touch();
-            console.log(msg);
+            const cid = sess.getAttribute("client").getId();
+            sess.getAttribute("chat").newMessage(cid, msg, "text/plain");
+            console.log(cid + ": " + msg);
         }
         else{
             ws.close();
