@@ -79,73 +79,6 @@ websocket(app);
 
 //---------------PUBLIC---------------//
 
-app.post('/signup', (req, res) => {
-    /*
-        fetch("http://127.0.0.1:3000/signup", {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify({
-                email:"teszt@asd.zt",
-                birthdate:"2015-05-07",
-                username:"Béla",
-                password:"titkos",
-                gender:3,
-                comment:"Béla vagyok"
-            }) 
-        }).then(async (e)=>{
-            console.log(await e.json());
-        });
-    */
-
-    var nickname = req.body?.nickname;
-    var email = req.body?.email;
-    var password = req.body?.password;
-    var birthdate = req.body?.birthdate;
-    var gender = req.body?.gender;
-    var comment = req.body?.comment;
-    if(!req.session.valid){
-        if(nickname && email && password && birthdate && !isNaN(gender)){
-            database.signup(nickname, email, password, birthdate, gender, comment, md5(email), (s)=>{
-                if(s == "Success"){
-                    smtp.verify(email, md5(email));
-                    res.status(200);
-                    res.send(JSON.stringify({
-                        "message":"You can login, if verified your email."
-                    }));
-                    
-                }
-                else{
-                    res.status(409);
-                    res.send(JSON.stringify({
-                        "action":"error",
-                        "message":"Exist account with this email address."
-                    }));
-                }
-            });
-        }
-        else{
-            res.status(400);
-            res.send(JSON.stringify({
-                "action":"redirect",
-                "value":"/signup",
-                "message":"Missing data."
-            }));
-        }
-    }
-    else{
-        res.status(200);
-        res.send(JSON.stringify({
-            "action":"redirect",
-            "value":"/",
-            "message":"You are already logged in."
-        }));
-    }
-});
-
 app.post('/login', (req, res) => {
 
     //#######################---BELÉPÉS
@@ -203,6 +136,73 @@ app.post('/login', (req, res) => {
                 "action":"redirect",
                 "value":"/login",
                 "message":"Missing email or password."
+            }));
+        }
+    }
+    else{
+        res.status(200);
+        res.send(JSON.stringify({
+            "action":"redirect",
+            "value":"/",
+            "message":"You are already logged in."
+        }));
+    }
+});
+
+app.post('/signup', (req, res) => {
+    /*
+        fetch("http://127.0.0.1:3000/signup", {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                email:"teszt@asd.zt",
+                birthdate:"2015-05-07",
+                username:"Béla",
+                password:"titkos",
+                gender:3,
+                comment:"Béla vagyok"
+            }) 
+        }).then(async (e)=>{
+            console.log(await e.json());
+        });
+    */
+
+    var nickname = req.body?.nickname;
+    var email = req.body?.email;
+    var password = req.body?.password;
+    var birthdate = req.body?.birthdate;
+    var gender = req.body?.gender;
+    var comment = req.body?.comment;
+    if(!req.session.valid){
+        if(nickname && email && password && birthdate && !isNaN(gender)){
+            database.signup(nickname, email, password, birthdate, gender, comment, md5(email), (s)=>{
+                if(s == "Success"){
+                    smtp.verify(email, md5(email));
+                    res.status(200);
+                    res.send(JSON.stringify({
+                        "message":"You can login, if verified your email."
+                    }));
+                    
+                }
+                else{
+                    res.status(409);
+                    res.send(JSON.stringify({
+                        "action":"error",
+                        "message":"Exist account with this email address."
+                    }));
+                }
+            });
+        }
+        else{
+            res.status(400);
+            res.send(JSON.stringify({
+                "action":"redirect",
+                "value":"/signup",
+                "message":"Missing data."
             }));
         }
     }
