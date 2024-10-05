@@ -17,52 +17,47 @@
         #container{
             background-color: #FCC200;
             height: max-content;
-            
-        }
-        
-        #cover{
-            display: block;
-            width: 40em;
-            height: 20vh
+            width: 40%;
         }
         
         #header{
-            height: 10vh;
-            width: 30vw;
-
-            background-color: rgb(240, 240, 240);
-            position: absolute;
-            left: 50%;
-            transform: translate(-50%, -100%);
-            border-radius: 10px 10px 0 0;
-            
-            /* Content alignment */
+            background-image: url("./images/monarch-butterflies.jpg");
+            height: 15vh;
+            width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-        
+            
+        }
+
+        #header p{
             color: #FCC200;
-            /* text-shadow: 1px 1px 1px black; */
+            justify-content: center;
+            background-color: rgb(254, 254, 254);
+            border-radius: 10px 10px 0 0;
+            padding: 15px 0 15px 0;
+            margin-top: 50px;
+            width: 90%;
         }
 
         #title{
-            margin-top: 2%;
             font-size: 30px;
             font-weight: bold;
         }
 
         #content{
             text-align: center;
-            background-color: white;
-            padding: 15px 0 15px 0;
-            width: 30vw;
+            background-color: rgb(254, 254, 254);
+            padding: 20px 0 20px 0;
+            width: 90%;
             margin: auto;
             font-family: 'Times New Roman', Times, serif;
-            font-size: 17px;
+            font-size: 18px;
+            border-radius: 0 0 10px 10px;
         }
 
-        p{
-            margin: 0px;
+        #content p{
+            margin: 4px;
         }
 
         ul{
@@ -75,7 +70,7 @@
         #home a{
             margin: auto;
             margin-top: 20px;
-            padding: 12px 10px 10px 10px;
+            padding: 11px 10px 10px 10px;
             border: solid 1px rgba(252, 194, 0, 0.5);
             border-radius: 10px;
             width: 50%;
@@ -91,9 +86,8 @@
         #home a:hover{
             text-transform: uppercase;
             color: #FCC200;
-            background-color: #fff;
+            background-color: rgb(254, 254, 254);
             text-decoration: none;
-            
         }
 
         #footer{
@@ -106,11 +100,15 @@
             background-color: rgb(62, 44, 10);
             color: white;
             padding-bottom: 5px;
-            /* margin-top: 3%; */
         }
 
         #logo{
             width: 10vw;
+            padding-top: 5px;
+        }
+
+        p{
+            margin: 0px;
         }
     </style>
 
@@ -118,10 +116,9 @@
 </head>
 <body>
     <div id="container">
-
-        <img id="cover" src="./images/monarch-butterflies.jpg" alt="">
-
+        
         <div id="header">
+            <img id="cover" src="./images/monarch-butterflies.jpg" alt="">
             <p id="title">Sikeres regisztráció!</p>
         </div>
 
