@@ -39,11 +39,9 @@ export class Email{
             from: '"Mariposa - The Social Butterfly" <noreply@gogotech.hu>',
             to: email,
             subject: "Verify your account!",
-            html: `
-                <div style="width:100%;text-align:center;">
-                    <h2>Click to verify:</h2>
-                    <a href="http://127.0.0.1:3000/signup/verify?token=${code}">Verify</a>
-                </div>`
+            html: HTMLFileFormat('emails/confirm/confirm.html', (e)=>{
+                e.getElementById("confUrl").setAttribute("href", `http://127.0.0.1:3000/signup/verify?token=${code}`);
+            })
         });
         return code;
     }
@@ -61,7 +59,3 @@ export class Email{
         });
     }
 }
-
-/*console.log(HTMLFileFormat('emails/confirm/confirm.html', (e)=>{
-    e.getElementById("t").innerHTML = "Hi";
-}));*/
