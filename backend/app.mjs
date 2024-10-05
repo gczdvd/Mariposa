@@ -9,18 +9,22 @@ import bodyParser from 'body-parser';
 import md5 from 'md5';
 
 import { Sql } from './database.mjs';
-import { User } from './User.mjs';
+import { User, Guest } from './client.mjs';
+import { Chat, Chats } from './chat.mjs';
 import { Session, Sessions } from './session.mjs';
 import { Email } from './mail.mjs';
+import { Finder } from './finder.mjs';
 
 const database = new Sql("172.30.0.100", "root", "MariposaProject2024%", "mariposa");
 const smtp = new Email("172.30.0.100", 25);
+const chats = new Chats(database);
 
-var sessions = new Sessions();
+const sessions = new Sessions(34560000000);
+const finder = new Finder(sessions, chats);
 
 const app = express();
 
-const sessionValidator = function(req, res, next){
+const sessionParser = function(req, res, next){
     var session = {
         id: req.cookies.sessId,
         valid: Boolean(sessions.getSessionById(req.cookies.sessId)?.valid()),
@@ -29,16 +33,19 @@ const sessionValidator = function(req, res, next){
     if(session.valid){
         session.session.touch();
     }
+    else{
+        res.cookie("sessId", "-", { maxAge: 0, httpOnly: true, secure: true });
+    }
     req.session = session;
+    console.log(session);
     next();
 }
 
-const sessionGuard = function(req, res, next){
+const sessionValidator = function(req, res, next){
     if(req.session.valid){
         next();
     }
     else{
-        res.cookie("sessId", "-", { maxAge: 0, httpOnly: true, secure: true });
         res.status(400);
         res.send(JSON.stringify({
             "action":"redirect",
@@ -48,10 +55,24 @@ const sessionGuard = function(req, res, next){
     }
 }
 
+const sessionOnlyUser = function(req, res, next){
+    if(req.session.session.getAttribute("client") instanceof User){
+        next();
+    }
+    else{
+        res.status(400);
+        res.send(JSON.stringify({
+            "action":"redirect",
+            "value":"/",
+            "message":"You don't have permission."
+        }));
+    }
+}
+
 app.use(
     cookieParser(),
     bodyParser.json(),
-    sessionValidator
+    sessionParser
 );
 
 websocket(app);
@@ -125,29 +146,6 @@ app.post('/signup', (req, res) => {
     }
 });
 
-app.get('/signup/verify', (req, res) => {
-    database.verifyUser(req.query["token"], (s, id)=>{
-        if(s == "Success"){
-            database.getUserById(id, (e)=>{
-                smtp.verifySuccess(e.getEmail(), e.getNickname());
-                res.status(200);
-                res.send(JSON.stringify({
-                    "action":"redirect",
-                    "value":"/login",
-                    "message":"Verified."
-                }));
-            });
-        }
-        else{
-            res.status(409);
-            res.send(JSON.stringify({
-                "action":"error",
-                "message":"Unexpected error."
-            }));
-        }
-    });
-});
-
 app.post('/login', (req, res) => {
 
     //#######################---BELÉPÉS
@@ -169,11 +167,8 @@ app.post('/login', (req, res) => {
         });
     */
 
-
-    //req.body.username = req.query["u"];
-    //req.body.password = req.query["p"];
-    var email = req.body.email;//req.query["u"];
-    var password = req.body.password;//req.query["p"];
+    var email = req.body.email;
+    var password = req.body.password;
     if(!req.session.valid){
         if(email && password){
             database.auth(email, password, (id)=>{
@@ -189,7 +184,7 @@ app.post('/login', (req, res) => {
                     }));
                     
                     database.getUserById(id, (u)=>{
-                        sess.setAttribute("user", u);
+                        sess.setAttribute("client", u);
                     });
                 }
                 else{
@@ -221,6 +216,54 @@ app.post('/login', (req, res) => {
     }
 });
 
+app.get('/signup/verify', (req, res) => {
+    database.verifyUser(req.query["token"], (s, id)=>{
+        if(s == "Success"){
+            database.getUserById(id, (e)=>{
+                smtp.verifySuccess(e.getEmail(), e.getNickname());
+                res.status(200);
+                res.send(JSON.stringify({
+                    "action":"redirect",
+                    "value":"/login",
+                    "message":"Verified."
+                }));
+            });
+        }
+        else{
+            res.status(409);
+            res.send(JSON.stringify({
+                "action":"error",
+                "message":"Unexpected error."
+            }));
+        }
+    });
+});
+
+app.get('/guest', (req, res) => {
+    if(!req.session.valid){
+        database.newGuest(req.ip, (id)=>{
+            const sess = sessions.newSession();
+            res.status(200);
+            res.cookie("sessId", sess.getId(), { expires: Session.neverExpire(), httpOnly: true, secure: true });
+            res.send(JSON.stringify({
+                "action":"redirect",
+                "value":"/",
+                "message":"Successful guested."
+            }));
+            
+            sess.setAttribute("client", new Guest(id));
+        });
+    }
+    else{
+        res.status(200);
+        res.send(JSON.stringify({
+            "action":"redirect",
+            "value":"/",
+            "message":"You are already has a session."
+        }));
+    }
+});
+
 app.get('/logout', (req, res) => {
     if(req.session.valid){
         if(sessions.removeSession(req.session.session)){
@@ -240,34 +283,60 @@ app.get('/logout', (req, res) => {
     }
 });
 
-app.get('/home', (req, res) => {
+app.get('/', (req, res) => {
     if (req.session.valid) {
         res.status(200);
-        res.send(`Welcome User ${req.session.id}!`);
+        res.send(`Welcome ${req.session.id}!`);
     }
     else {
         res.status(200);
-        res.send(`Welcome Guest!`);
+        res.send(`Who are you?`);
     }
 });
 
 //---------------PRIVATE---------------//
 
-app.get('/teszt', sessionGuard, (req, res) => {
+/*app.get('/user', sessionValidator, sessionOnlyUser, (req, res) => {
     res.status(200);
-    res.send(req.ip);
+    res.send("You're User!");
+});*/
+
+app.get('/chat', sessionValidator, (req, res) => {
+    if(!(req.session.session.getAttribute("chat") instanceof Chat)){
+        req.session.session.setAttribute("chat", "waiting");
+        res.status(200);
+        res.send("Waiting for partner...");
+    }
+    else{
+        res.status(200);
+        res.send("You have partner!");
+    }
+    //FELVENNI A USER-T A PARTNERKERESŐK LISTÁJÁRA.
+    //WEBSOCKET CSAK PARTNER TALÁLÁS UTÁN JÖJJÖN LÉTRE, ÉS A SSESSION USERHEZ LEGYEN FŰZVE A CHAT ID. 
+    //Session a középpont, nem a User
+    /*res.status(200);
+    res.send(req.ip);*/
 });
 
 app.ws('/live', (ws, req) => {
     ws.on('message', function(msg) {
-        if(sessions.getSessionById(req.session.id)?.valid()) {
-            console.log(msg);
+        var sess = sessions.getSessionById(req.session.id);
+        if(sess?.valid() && (sess?.getAttribute("chat") instanceof Chat)) {
+            sess.touch();
+            const cid = sess.getAttribute("client").getId();
+            sess.getAttribute("chat").newMessage(cid, msg, "text/plain");
+            console.log(cid + ": " + msg);
         }
         else{
             ws.close();
         }
     });
 });
+
+setInterval(()=>{
+    console.log(sessions.sessions);
+    sessions.cleanUp();
+}, 10000)
 
 app.listen(3000, () => {
     console.log("Api/Websocket server running on port 3000");

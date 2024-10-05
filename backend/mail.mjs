@@ -1,6 +1,15 @@
 "use strict";
 
+import fs from 'fs';
 import nodemailer from 'nodemailer';
+import parse_html from 'node-html-parser';
+
+function HTMLFileFormat(html, change){
+    const root = parse_html.parse(fs.readFileSync(html, {encoding: 'utf8', flag: 'r'}));
+    console.log(root);
+    change(root);
+    return root.toString();
+}
 
 export class Email{
     constructor(host, port){//('172.30.0.100', 25)
@@ -52,3 +61,7 @@ export class Email{
         });
     }
 }
+
+/*console.log(HTMLFileFormat('emails/confirm/confirm.html', (e)=>{
+    e.getElementById("t").innerHTML = "Hi";
+}));*/
