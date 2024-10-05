@@ -25,7 +25,7 @@ export class Chat{
         this.db = db;
         this.cid1 = cid1;
         this.cid2 = cid2;
-        this.db.createChat(cid1, cid2, (id)=>{
+        this.db.getChat(cid1, cid2, (id)=>{//GETCHAT, HA LÉTEZIK olyan ahol ugyanazok a userek vannak, AKKOR AZT ADJA VISSZA, ne csináljon újat
             this.id = id;
         });
     }
@@ -34,5 +34,11 @@ export class Chat{
     }
     newMessage(cid, message, type){
         this.db.newMessage(cid, message, type, this.id);
+    }
+}
+
+export class Want{
+    constructor(){
+
     }
 }
