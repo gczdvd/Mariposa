@@ -59,3 +59,6 @@ export class Email{
         });
     }
 }
+
+var e = new Email('172.30.0.100', 25);
+e.verify("gogodavid19@gmail.com", "TESZT");

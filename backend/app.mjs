@@ -9,6 +9,7 @@ import bodyParser from 'body-parser';
 import md5 from 'md5';
 
 import { Sql } from './database.mjs';
+import { Generator } from './generator.mjs';
 import { User, Guest } from './client.mjs';
 import { Chat, Chats } from './chat.mjs';
 import { Session, Sessions } from './session.mjs';
@@ -214,6 +215,11 @@ app.post('/signup', (req, res) => {
             "message":"You are already logged in."
         }));
     }
+});
+
+app.post('/forgotpassword', (req, res)=>{
+    Generator.words("hu", 3);
+    email.
 });
 
 app.get('/signup/verify', (req, res) => {
