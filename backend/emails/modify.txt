@@ -1,1 +1,2 @@
 confirm: email megerősítés id=confUrl
+welcome: Kedves {név}! id=name
