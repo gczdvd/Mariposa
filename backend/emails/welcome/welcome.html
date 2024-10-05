@@ -17,6 +17,7 @@
         #container{
             background-color: #FCC200;
             height: max-content;
+            
         }
         
         #cover{
@@ -71,8 +72,7 @@
             list-style-type: circle;
         }
 
-        #confirm a{
-            
+        #home a{
             margin: auto;
             margin-top: 20px;
             padding: 12px 10px 10px 10px;
@@ -80,16 +80,20 @@
             border-radius: 10px;
             width: 50%;
             display: block;
-
-            text-transform: uppercase;
-            color: #FCC200;
-            text-decoration: none;
-        }
-
-        #confirm a:hover{
             text-decoration: none;
             color: white;
             background-color: #FCC200;
+            text-transform: uppercase;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        #home a:hover{
+            text-transform: uppercase;
+            color: #FCC200;
+            background-color: #fff;
+            text-decoration: none;
+            
         }
 
         #footer{
@@ -118,12 +122,12 @@
         <img id="cover" src="./images/monarch-butterflies.jpg" alt="">
 
         <div id="header">
-            <p id="title">Üdvözlünk a Mariposán!</p>
+            <p id="title">Sikeres regisztráció!</p>
         </div>
 
         <div id="content">
-            <!-- <p>Örülünk, hogy itt vagy!</p> -->
-            <p>Erősítsd meg e-mail címed, hogy befejezd a regisztrációt!</p>
+            <p>Kedves <span id="name">Név</span>!</p>
+            <p>Örülünk, hogy itt vagy!</p>
             <br>
 
             <p>Regisztrált fiókkal lehetőséged nyílik</p>
@@ -136,7 +140,9 @@
             
             <p>és mindezt úgy, hogy továbbra is név nélkül chatelhetsz!</p>
 
-            <div id="confirm"><a href="">E-mail cím megerősítése</a></div>
+            <div id="home"><a href="">Irány a Mariposa</a></div>
+            
+            
             <br>
             <p>Kellemes chatelést!</p>
             <p>A Mariposa csapata</p>
