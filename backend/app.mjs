@@ -217,10 +217,10 @@ app.post('/signup', (req, res) => {
     }
 });
 
-app.post('/forgotpassword', (req, res)=>{
+/*app.post('/forgotpassword', (req, res)=>{
     Generator.words("hu", 3);
     email.
-});
+});*/
 
 app.get('/signup/verify', (req, res) => {
     database.verifyUser(req.query["token"], (s, id)=>{
