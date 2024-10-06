@@ -1,3 +1,5 @@
 confirm: <div id="confirm"><a id="confUrl" href="">E-mail cím megerősítése</a></div>
 welcome: <p>Kedves <span id="name">Név</span>!</p>
 reportuser: <p>Kedves <span id="name">Név</span>!</p>
+reportbug: <p>Kedves <span id="name">Név</span>!</p>
+reportbug: <p>Bejelentésed sorszáma: <span id="ticketnumber">5</span></p>
