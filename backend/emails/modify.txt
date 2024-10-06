@@ -1,2 +1,3 @@
-confirm: email megerősítés id=confUrl
-welcome: Kedves {név}! id=name
+confirm: <div id="confirm"><a id="confUrl" href="">E-mail cím megerősítése</a></div>
+welcome: <p>Kedves <span id="name">Név</span>!</p>
+reportuser: <p>Kedves <span id="name">Név</span>!</p>
