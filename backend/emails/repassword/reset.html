@@ -7,8 +7,6 @@
         body{
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
             background-color: lightgray;
             height: 100vh;
             text-align: center;
@@ -18,25 +16,24 @@
             background-color: #FCC200;
             height: max-content;
             width: 40%;
+            margin: auto;
         }
         
         #header{
-            background-image: url("./images/monarch-butterflies.jpg");
-            height: 15vh;
+            background-image: url("./images/logo.jpg");
+            height: auto;
             width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            padding-top: 40px;
         }
 
         #header p{
             color: #FCC200;
-            justify-content: center;
             background-color: rgb(254, 254, 254);
             border-radius: 10px 10px 0 0;
-            padding: 15px 0 15px 0;
-            margin-top: 50px;
+            padding: 20px 0 15px 0;
             width: 90%;
+            text-align: center;
+            margin: auto;
         }
 
         #title{
@@ -66,27 +63,12 @@
             list-style-type: circle;
         }
 
-        #home a{
-            margin: auto;
-            margin-top: 20px;
-            padding: 11px 10px 10px 10px;
-            border: solid 1px rgba(252, 194, 0, 0.5);
-            border-radius: 10px;
-            width: 50%;
-            display: block;
-            text-decoration: none;
-            color: white;
-            background-color: #FCC200;
-            text-transform: uppercase;
-            color: #fff;
-            text-decoration: none;
+        #replink{
+            padding-bottom: 10%;
         }
 
-        #home a:hover{
-            text-transform: uppercase;
-            color: #FCC200;
-            background-color: rgb(254, 254, 254);
-            text-decoration: none;
+        #warning{
+            font-size: 16px;
         }
 
         #footer{
@@ -121,28 +103,27 @@
         </div>
 
         <div id="content">
-            <p>Örülünk, hogy itt vagy!</p>
-            <br>
-
+            <p>Kedves <span id="name">Név</span>!</p>
+           <br>
             
-
-            <div id="home"><a href="">Irány a Mariposa</a></div>
+            <p>Kattints az alábbi linkre, hogy megváltoztathasd jelszavad!</p>
             
             <br>
+
+            <p id="replink"><a href="">Jelszó megváltoztató link</a></p> 
+            
             <p>Kellemes chatelést!</p>
             <p>A Mariposa csapata</p>
-            
-            <p>Amennyiben nem te kérvényezted az új jelszót</p>
+            <br>
+
         </div>
         <div id="footer">
-
-            <p id="help">Segítségre van szükséged?</p>
-            <p>Látogasd meg a <a href="">Rólunk</a> oldalunkat, ahol böngészhetsz a gyakran ismételt kérdések között! Ha nem találsz választ a kérdésedre, vedd fel velünk a kapcsolatot!</p>
+            <p id="warning">Ezt az emailt azért kaptad, mert bejelentkezéskor igényelted az "Elfelejtettem a jelszavam" opciót. Amennyiben nem Te voltál, lehetőséged van e-mail címed és/vagy jelszavad megváltoztatására vagy profilod deaktiválására a <a href="">Profil beállításain</a> keresztül, illetve felveheted velünk a kapcsolatot a <a href="">Kapcsolat</a> oldalon.</p>
             
         </div>
 
         <div id="info">
-            <img id="logo" src="./images/PNG_transparency_demonstration_1.png">
+            <img id="logo" src="./images/logo.png">
             <p>Mariposa - The Social Butterfly © 2025</p>
         </div>
         
