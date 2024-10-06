@@ -1,7 +1,5 @@
 "use strict";
 
-//VENDÉG SESSIONT ÍRNI, igen, az adatbázisban is. :)
-
 import express from 'express';
 import websocket from 'express-ws';
 import cookieParser from 'cookie-parser';
@@ -9,6 +7,8 @@ import bodyParser from 'body-parser';
 import md5 from 'md5';
 
 import { Sql } from './database.mjs';
+import { Generator } from './generator.mjs';
+import { Tasks } from './task.mjs';
 import { User, Guest } from './client.mjs';
 import { Chat, Chats } from './chat.mjs';
 import { Session, Sessions } from './session.mjs';
@@ -18,6 +18,8 @@ import { Finder } from './finder.mjs';
 const database = new Sql("172.30.0.100", "root", "MariposaProject2024%", "mariposa");
 const smtp = new Email("172.30.0.100", 25);
 const chats = new Chats(database);
+
+const tasks = new Tasks();
 
 const sessions = new Sessions(34560000000);
 const finder = new Finder(sessions, chats);
@@ -216,6 +218,36 @@ app.post('/signup', (req, res) => {
     }
 });
 
+app.post('/forgotpassword', (req, res)=>{
+    //Megnézni, hogy létezik-e a User, és elgondolkozni, hogy a linkes megoldás jobb-e. (Az.)
+    const words = Generator.words("hu", 3);
+    const swords = words.join('');
+    tasks.newTask(60, {
+        "email":req.body.email,
+        "words":swords
+    });
+    smtp.forgotPassword(req.body.email, words);
+});
+
+app.post('/forgotpassword/change', (req, res)=>{
+    const task = tasks.getTask((e)=>{
+        return (e.getAttribute("words") == req.body.swords);
+    });
+    if(task){
+        tasks.newTask(60, {
+            "email":req.body.email,
+            "words":swords
+        });
+    }
+    const words = Generator.words("hu", 3);
+    const swords = words.join('');
+    tasks.newTask(60, {
+        "email":req.body.email,
+        "words":swords
+    });
+    smtp.forgotPassword(req.body.email, words);
+});
+
 app.get('/signup/verify', (req, res) => {
     database.verifyUser(req.query["token"], (s, id)=>{
         if(s == "Success"){
@@ -335,6 +367,7 @@ app.ws('/live', (ws, req) => {
 
 setInterval(()=>{
     console.log(sessions.sessions);
+    console.log(tasks.getTasks());
     sessions.cleanUp();
 }, 10000)
 

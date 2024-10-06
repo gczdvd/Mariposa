@@ -6,7 +6,6 @@ import parse_html from 'node-html-parser';
 
 function HTMLFileFormat(html, change){
     const root = parse_html.parse(fs.readFileSync(html, {encoding: 'utf8', flag: 'r'}));
-    console.log(root);
     change(root);
     return root.toString();
 }
@@ -58,4 +57,20 @@ export class Email{
                 </div>`
         });
     }
+
+    forgotPassword(email, words){
+        this.transport.sendMail({
+            from: '"Mariposa - The Social Butterfly" <noreply@gogotech.hu>',
+            to: email,
+            subject: "Forgot password",
+            html: `
+                <div style="width:100%;text-align:center;">
+                    <h2>Words:</h2>
+                    <h2>${words[0]}, ${words[1]}, ${words[2]}</h2>
+                </div>`
+        });
+    }
 }
+
+/*var e = new Email('172.30.0.100', 25);
+e.verify("gogodavid19@gmail.com", "TESZT");*/
