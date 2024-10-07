@@ -16,7 +16,7 @@ import { Email } from './mail.mjs';
 import { Finder } from './finder.mjs';
 
 const database = new Sql("172.30.0.100", "root", "MariposaProject2024%", "mariposa");
-const smtp = new Email("172.30.0.100", 25);
+const smtp = new Email("172.30.0.100", 25, "noreply@mariposachat.hu");
 const chats = new Chats(database);
 
 const tasks = new Tasks();

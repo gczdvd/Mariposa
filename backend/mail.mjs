@@ -11,7 +11,8 @@ function HTMLFileFormat(html, change){
 }
 
 export class Email{
-    constructor(host, port){//('172.30.0.100', 25)
+    constructor(host, port, sender){//('172.30.0.100', 25)
+        this.sender = sender;
         this.transport = nodemailer.createTransport({
             /*
                 sendmail: true,
@@ -35,7 +36,7 @@ export class Email{
 
     verify(email, code){
         this.transport.sendMail({
-            from: '"Mariposa - The Social Butterfly" <noreply@gogotech.hu>',
+            from: `"Mariposa - The Social Butterfly" <${this.sender}>`,
             to: email,
             subject: "Verify your account!",
             html: HTMLFileFormat('emails/confirm/confirm.html', (e)=>{
@@ -47,7 +48,7 @@ export class Email{
 
     verifySuccess(email, name){
         this.transport.sendMail({
-            from: '"Mariposa - The Social Butterfly" <noreply@gogotech.hu>',
+            from: `"Mariposa - The Social Butterfly" <${this.sender}>`,
             to: email,
             subject: "Successful verified your account!",
             html: `
@@ -60,7 +61,7 @@ export class Email{
 
     forgotPassword(email, words){
         this.transport.sendMail({
-            from: '"Mariposa - The Social Butterfly" <noreply@gogotech.hu>',
+            from: `"Mariposa - The Social Butterfly" <${this.sender}>`,
             to: email,
             subject: "Forgot password",
             html: `
