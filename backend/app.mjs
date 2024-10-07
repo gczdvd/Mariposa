@@ -374,3 +374,5 @@ setInterval(()=>{
 app.listen(3000, () => {
     console.log("Api/Websocket server running on port 3000");
 });
+
+//Teszt sor
