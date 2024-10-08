@@ -219,18 +219,16 @@ app.post('/signup', (req, res) => {
 });
 
 app.post('/forgotpassword', (req, res)=>{
-    //Megnézni, hogy létezik-e a User, és elgondolkozni, hogy a linkes megoldás jobb-e. (Az.)
-    const words = Generator.words("hu", 3);
-    const swords = words.join('');
+    const token = md5(req.body.email) + md5((new Date()).getTime());
     tasks.newTask(60, {
         "email":req.body.email,
-        "words":swords
+        "token":token
     });
-    smtp.forgotPassword(req.body.email, words);
+    smtp.forgotPassword(req.body.email, token);
 });
 
-app.post('/forgotpassword/change', (req, res)=>{
-    const task = tasks.getTask((e)=>{
+app.get('/forgotpassword/change', (req, res)=>{ //IDE KELL MAGA A VÁLTOZTATÁS, TASK TOKENRE ELLENŐRIZNI MEGNYITÁSKOR
+    /*const task = tasks.getTask((e)=>{
         return (e.getAttribute("words") == req.body.swords);
     });
     if(task){
@@ -245,7 +243,7 @@ app.post('/forgotpassword/change', (req, res)=>{
         "email":req.body.email,
         "words":swords
     });
-    smtp.forgotPassword(req.body.email, words);
+    smtp.forgotPassword(req.body.email, words);*/
 });
 
 app.get('/signup/verify', (req, res) => {
