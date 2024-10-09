@@ -225,9 +225,33 @@ app.post('/forgotpassword', (req, res)=>{
         "token":token
     });
     smtp.forgotPassword(req.body.email, token);
+    res.status(200);
+    res.send("");
 });
 
-app.get('/forgotpassword/change', (req, res)=>{ //IDE KELL MAGA A VÁLTOZTATÁS, TASK TOKENRE ELLENŐRIZNI MEGNYITÁSKOR
+app.post('/forgotpassword/change', (req, res)=>{
+    var token = req.query["token"];
+    if(token){
+        var task = tasks.getTask((e)=>{
+            e.getAttribute("token") == token;
+        });
+
+        //Itt kell megváltoztatni a jelszót
+
+        res.status(200);
+        res.send(JSON.stringify({
+            "action":"redirect",
+            "value":"/",
+            "message":"Success"
+        }));
+    }
+    else{
+        res.status(400);
+        res.send(JSON.stringify({
+            "action":"error",
+            "message":"Bad token."
+        }));
+    }
     /*const task = tasks.getTask((e)=>{
         return (e.getAttribute("words") == req.body.swords);
     });
