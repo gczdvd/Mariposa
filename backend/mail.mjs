@@ -59,7 +59,7 @@ export class Email{
         });
     }
 
-    forgotPassword(email, token){
+    forgotPassword(email, key){
         this.transport.sendMail({
             from: `"Mariposa - The Social Butterfly" <${this.sender}>`,
             to: email,
@@ -67,7 +67,7 @@ export class Email{
             html: `
                 <div style="width:100%;text-align:center;">
                     <h2>Click:</h2>
-                    <h2><a href="http://127.0.0.1:3000/forgotpassword/change?token=${token}">Klikk</a></h2>
+                    <h2><a href="http://127.0.0.1:3000/forgotpassword/change?key=${key}">Klikk</a></h2>
                 </div>`
         });
     }

@@ -5,6 +5,7 @@ import websocket from 'express-ws';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import md5 from 'md5';
+import crypto from 'crypto';
 
 import { Sql } from './database.mjs';
 import { Generator } from './generator.mjs';
@@ -14,6 +15,8 @@ import { Chat, Chats } from './chat.mjs';
 import { Session, Sessions } from './session.mjs';
 import { Email } from './mail.mjs';
 import { Finder } from './finder.mjs';
+
+const cryptKey = crypto.randomBytes(32);
 
 const database = new Sql("172.30.0.100", "root", "MariposaProject2024%", "mariposa");
 const smtp = new Email("172.30.0.100", 25, "noreply@mariposachat.hu");
@@ -219,25 +222,15 @@ app.post('/signup', (req, res) => {
 });
 
 app.post('/forgotpassword', (req, res)=>{
-    const token = md5(req.body.email) + md5((new Date()).getTime());
-    tasks.newTask(60, {
-        "email":req.body.email,
-        "token":token
-    });
-    smtp.forgotPassword(req.body.email, token);
-    res.status(200);
-    res.send("");
-});
-
-app.post('/forgotpassword/change', (req, res)=>{
-    var token = req.query["token"];
-    if(token){
-        var task = tasks.getTask((e)=>{
-            e.getAttribute("token") == token;
+    if(req.body.email){
+        var task = tasks.newTask(240, {
+            "email":req.body.email
         });
 
-        //Itt kell megváltoztatni a jelszót
+        var id = task.getId();
+        var key = Generator.encrypt(cryptKey, id);
 
+        smtp.forgotPassword(req.body.email, key);
         res.status(200);
         res.send(JSON.stringify({
             "action":"redirect",
@@ -249,25 +242,54 @@ app.post('/forgotpassword/change', (req, res)=>{
         res.status(400);
         res.send(JSON.stringify({
             "action":"error",
-            "message":"Bad token."
+            "message":"Missing email."
         }));
     }
-    /*const task = tasks.getTask((e)=>{
-        return (e.getAttribute("words") == req.body.swords);
-    });
-    if(task){
-        tasks.newTask(60, {
-            "email":req.body.email,
-            "words":swords
-        });
+});
+
+app.post('/forgotpassword/change', (req, res)=>{
+    var key = req.query["key"];
+    if(key){
+        var id = Generator.decrypt(cryptKey, key)
+        var task = tasks.getTaskById(id);
+
+        if(task){
+            var password = req.body.password;
+            if(password){
+                //Itt kell megváltoztatni a jelszót, gratuláló email
+                tasks.removeTask(task);
+                res.status(200);
+                res.send(JSON.stringify({
+                    "action":"redirect",
+                    "value":"/",
+                    "message":"Success"
+                }));
+            }
+            else{
+                res.status(200);
+                res.send(JSON.stringify({
+                    "action":"redirect",
+                    "value":"/changepassword!!!",
+                    "message":"Valid"
+                }));
+            }
+        }
+        else{
+            res.status(400);
+            res.send(JSON.stringify({
+                "action":"error",
+                "message":"Bad key."
+            }));
+        }
+
     }
-    const words = Generator.words("hu", 3);
-    const swords = words.join('');
-    tasks.newTask(60, {
-        "email":req.body.email,
-        "words":swords
-    });
-    smtp.forgotPassword(req.body.email, words);*/
+    else{
+        res.status(400);
+        res.send(JSON.stringify({
+            "action":"error",
+            "message":"Missing key."
+        }));
+    }
 });
 
 app.get('/signup/verify', (req, res) => {
