@@ -39,7 +39,7 @@ export class Chat{
         if(sess == this.sess1){
             var partner = this.sess2;
         }
-        else{
+        else{       //Szebbre
             var partner = this.sess1;
         }
         partner.getAttribute("websocket").send(JSON.stringify({ //Ez nem küld
