@@ -403,7 +403,7 @@ app.get('/chat', sessionValidator, (req, res) => {                  //Ezen kér�
 });
 
 app.ws('/live', (ws, req) => {
-    req.session.session.setAttribute("websocket", ws);
+    req.session.session.setAttribute("websocket", ws); //Itt valami nem oké
     ws.on('message', function(msg) {
         var sess = sessions.getSessionById(req.session.id);
         if(sess?.valid()) {
