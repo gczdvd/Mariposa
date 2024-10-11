@@ -42,7 +42,7 @@ export class Chat{
         else{
             var partner = this.sess1;
         }
-        partner.getAttribute("websocket").send(JSON.stringify({
+        partner.getAttribute("websocket").send(JSON.stringify({ //Ez nem küld
             "type":type,
             "message":message
         }));
