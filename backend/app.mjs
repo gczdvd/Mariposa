@@ -11,10 +11,9 @@ import { Sql } from './database.mjs';
 import { Generator } from './generator.mjs';
 import { Tasks } from './task.mjs';
 import { User, Guest } from './client.mjs';
-import { Chat, Chats } from './chat.mjs';
+import { Chat, Chats, Finder, Want } from './chat.mjs';
 import { Session, Sessions } from './session.mjs';
 import { Email } from './mail.mjs';
-import { Finder } from './finder.mjs';
 
 const cryptKey = crypto.randomBytes(32);
 
@@ -387,36 +386,37 @@ app.get('/', (req, res) => {
     res.send("You're User!");
 });*/
 
-app.get('/chat', sessionValidator, (req, res) => {
-    if(!(req.session.session.getAttribute("chat") instanceof Chat)){
-        req.session.session.setAttribute("chat", "waiting");
+app.get('/chat', sessionValidator, (req, res) => {                  //Ezen kérés előtt, de a bejelentkezés után KÖTELEZŐ websocketet nyitni
+    if(req.session.session.getAttribute("chat") instanceof Chat){
+        res.status(200);
+        res.send(JSON.stringify({
+            "action":"redirect",
+            "value":"/",
+            "message":"You have partner."
+        }));
+    }
+    else{
+        req.session.session.setAttribute("chat", new Want());
         res.status(200);
         res.send("Waiting for partner...");
     }
-    else{
-        res.status(200);
-        res.send("You have partner!");
-    }
-    //FELVENNI A USER-T A PARTNERKERESŐK LISTÁJÁRA.
-    //WEBSOCKET CSAK PARTNER TALÁLÁS UTÁN JÖJJÖN LÉTRE, ÉS A SSESSION USERHEZ LEGYEN FŰZVE A CHAT ID. 
-    //Session a középpont, nem a User
-    /*res.status(200);
-    res.send(req.ip);*/
 });
 
 app.ws('/live', (ws, req) => {
+    req.session.session.setAttribute("websocket", ws);
     ws.on('message', function(msg) {
         var sess = sessions.getSessionById(req.session.id);
-        if(sess?.valid() && (sess?.getAttribute("chat") instanceof Chat)) {
+        if(sess?.valid()) {
             sess.touch();
-            const cid = sess.getAttribute("client").getId();
-            sess.getAttribute("chat").newMessage(cid, msg, "text/plain");
-            console.log(cid + ": " + msg);
+            if(sess.getAttribute("chat") instanceof Chat){
+                sess.getAttribute("chat").newMessage(sess, msg, "text/plain");
+            }
         }
         else{
             ws.close();
         }
     });
+    //Onclose delete from session attribute!
 });
 
 setInterval(()=>{
