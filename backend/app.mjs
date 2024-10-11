@@ -256,14 +256,24 @@ app.post('/forgotpassword/change', (req, res)=>{
         if(task){
             var password = req.body.password;
             if(password){
-                //Itt kell megváltoztatni a jelszót, gratuláló email
+                database.forgotPassword(task.getAttribute("email"), password, (status)=>{
+                    if(status == "Success"){
+                        res.status(200);
+                        res.send(JSON.stringify({
+                            "action":"redirect",
+                            "value":"/",
+                            "message":"Success"
+                        }));
+                    }
+                    else{
+                        res.status(400);
+                        res.send(JSON.stringify({
+                            "action":"error",
+                            "message":"No user with this email."
+                        }));
+                    }
+                });
                 tasks.removeTask(task);
-                res.status(200);
-                res.send(JSON.stringify({
-                    "action":"redirect",
-                    "value":"/",
-                    "message":"Success"
-                }));
             }
             else{
                 res.status(200);
