@@ -5,18 +5,20 @@ import websocket from 'express-ws';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import md5 from 'md5';
+import crypto from 'crypto';
 
 import { Sql } from './database.mjs';
 import { Generator } from './generator.mjs';
 import { Tasks } from './task.mjs';
 import { User, Guest } from './client.mjs';
-import { Chat, Chats } from './chat.mjs';
+import { Chat, Chats, Finder, Want } from './chat.mjs';
 import { Session, Sessions } from './session.mjs';
 import { Email } from './mail.mjs';
-import { Finder } from './finder.mjs';
+
+const cryptKey = crypto.randomBytes(32);
 
 const database = new Sql("172.30.0.100", "root", "MariposaProject2024%", "mariposa");
-const smtp = new Email("172.30.0.100", 25);
+const smtp = new Email("172.30.0.100", 25, "noreply@mariposachat.hu");
 const chats = new Chats(database);
 
 const tasks = new Tasks();
@@ -219,33 +221,84 @@ app.post('/signup', (req, res) => {
 });
 
 app.post('/forgotpassword', (req, res)=>{
-    //Megnézni, hogy létezik-e a User, és elgondolkozni, hogy a linkes megoldás jobb-e. (Az.)
-    const words = Generator.words("hu", 3);
-    const swords = words.join('');
-    tasks.newTask(60, {
-        "email":req.body.email,
-        "words":swords
-    });
-    smtp.forgotPassword(req.body.email, words);
+    if(req.body.email){
+        var task = tasks.newTask(240, {
+            "email":req.body.email
+        });
+
+        var id = task.getId();
+        var key = Generator.encrypt(cryptKey, id);
+
+        smtp.forgotPassword(req.body.email, key);
+        res.status(200);
+        res.send(JSON.stringify({
+            "action":"redirect",
+            "value":"/",
+            "message":"Success"
+        }));
+    }
+    else{
+        res.status(400);
+        res.send(JSON.stringify({
+            "action":"error",
+            "message":"Missing email."
+        }));
+    }
 });
 
 app.post('/forgotpassword/change', (req, res)=>{
-    const task = tasks.getTask((e)=>{
-        return (e.getAttribute("words") == req.body.swords);
-    });
-    if(task){
-        tasks.newTask(60, {
-            "email":req.body.email,
-            "words":swords
-        });
+    var key = req.query["key"];
+    if(key){
+        var id = Generator.decrypt(cryptKey, key)
+        var task = tasks.getTaskById(id);
+
+        if(task){
+            var password = req.body.password;
+            if(password){
+                database.forgotPassword(task.getAttribute("email"), password, (status)=>{
+                    if(status == "Success"){
+                        res.status(200);
+                        res.send(JSON.stringify({
+                            "action":"redirect",
+                            "value":"/",
+                            "message":"Success"
+                        }));
+                    }
+                    else{
+                        res.status(400);
+                        res.send(JSON.stringify({
+                            "action":"error",
+                            "message":"No user with this email."
+                        }));
+                    }
+                });
+                tasks.removeTask(task);
+            }
+            else{
+                res.status(200);
+                res.send(JSON.stringify({
+                    "action":"redirect",
+                    "value":"/changepassword!!!",
+                    "message":"Valid"
+                }));
+            }
+        }
+        else{
+            res.status(400);
+            res.send(JSON.stringify({
+                "action":"error",
+                "message":"Bad key."
+            }));
+        }
+
     }
-    const words = Generator.words("hu", 3);
-    const swords = words.join('');
-    tasks.newTask(60, {
-        "email":req.body.email,
-        "words":swords
-    });
-    smtp.forgotPassword(req.body.email, words);
+    else{
+        res.status(400);
+        res.send(JSON.stringify({
+            "action":"error",
+            "message":"Missing key."
+        }));
+    }
 });
 
 app.get('/signup/verify', (req, res) => {
@@ -333,36 +386,37 @@ app.get('/', (req, res) => {
     res.send("You're User!");
 });*/
 
-app.get('/chat', sessionValidator, (req, res) => {
-    if(!(req.session.session.getAttribute("chat") instanceof Chat)){
-        req.session.session.setAttribute("chat", "waiting");
+app.get('/chat', sessionValidator, (req, res) => {                  //Ezen kérés előtt, de a bejelentkezés után KÖTELEZŐ websocketet nyitni
+    if(req.session.session.getAttribute("chat") instanceof Chat){
+        res.status(200);
+        res.send(JSON.stringify({
+            "action":"redirect",
+            "value":"/",
+            "message":"You have partner."
+        }));
+    }
+    else{
+        req.session.session.setAttribute("chat", new Want());
         res.status(200);
         res.send("Waiting for partner...");
     }
-    else{
-        res.status(200);
-        res.send("You have partner!");
-    }
-    //FELVENNI A USER-T A PARTNERKERESŐK LISTÁJÁRA.
-    //WEBSOCKET CSAK PARTNER TALÁLÁS UTÁN JÖJJÖN LÉTRE, ÉS A SSESSION USERHEZ LEGYEN FŰZVE A CHAT ID. 
-    //Session a középpont, nem a User
-    /*res.status(200);
-    res.send(req.ip);*/
 });
 
 app.ws('/live', (ws, req) => {
+    req.session.session.setAttribute("websocket", ws); //Itt valami nem oké
     ws.on('message', function(msg) {
         var sess = sessions.getSessionById(req.session.id);
-        if(sess?.valid() && (sess?.getAttribute("chat") instanceof Chat)) {
+        if(sess?.valid()) {
             sess.touch();
-            const cid = sess.getAttribute("client").getId();
-            sess.getAttribute("chat").newMessage(cid, msg, "text/plain");
-            console.log(cid + ": " + msg);
+            if(sess.getAttribute("chat") instanceof Chat){
+                sess.getAttribute("chat").newMessage(sess, msg, "text/plain");
+            }
         }
         else{
             ws.close();
         }
     });
+    //Onclose delete from session attribute!
 });
 
 setInterval(()=>{
@@ -374,3 +428,5 @@ setInterval(()=>{
 app.listen(3000, () => {
     console.log("Api/Websocket server running on port 3000");
 });
+
+//Teszt sor

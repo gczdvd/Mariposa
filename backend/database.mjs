@@ -67,4 +67,10 @@ export class Sql{
     newMessage(cid, message, type, chatid){
         this.con.query(`CALL newMessage(${chatid}, ${cid}, "${message}", "${type}");`);
     }
+
+    forgotPassword(email, password, callback){
+        this.con.query(`CALL forgotPassword("${email}", "${password}");`, (err, rows, fields) => {
+            callback(rows[0][0].status);
+        });
+    }
 }

@@ -1,9 +1,15 @@
 'use strict';
 
+import { Generator } from "./generator.mjs";
+
 export class Task{
-    constructor(timeout, attributes={}){
+    constructor(id, timeout, attributes={}){
         this.expire = new Date((new Date()).getTime() + timeout * 1000);
         this.attributes = attributes;
+        this.id = id;
+    }
+    getId(){
+        return this.id;
     }
     getExpire(){
         return this.expire;
@@ -25,8 +31,24 @@ export class Tasks{
             }, 5000);
         }
     }
+    genId(){
+        do{
+            var testId = Generator.number();
+            var trySess = this.getTaskById(testId);
+        }
+        while(trySess != null);
+        return testId;
+    }
+    getTaskById(id){
+        for(var i = 0; i < this.tasks.length; i++){
+            if(this.tasks[i].getId() == id){
+                return this.tasks[i];
+            }
+        }
+        return null;
+    }
     newTask(timeout, attributes={}){
-        const nTask = new Task(timeout, attributes);
+        const nTask = new Task(this.genId(), timeout, attributes);
         this.tasks.push(nTask);
         return nTask;
     }

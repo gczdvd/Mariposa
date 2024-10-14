@@ -11,7 +11,8 @@ function HTMLFileFormat(html, change){
 }
 
 export class Email{
-    constructor(host, port){//('172.30.0.100', 25)
+    constructor(host, port, sender){//('172.30.0.100', 25)
+        this.sender = sender;
         this.transport = nodemailer.createTransport({
             /*
                 sendmail: true,
@@ -33,21 +34,21 @@ export class Email{
         });
     }
 
-    verify(email, code){
+    verify(email, token){
         this.transport.sendMail({
-            from: '"Mariposa - The Social Butterfly" <noreply@gogotech.hu>',
+            from: `"Mariposa - The Social Butterfly" <${this.sender}>`,
             to: email,
             subject: "Verify your account!",
             html: HTMLFileFormat('emails/confirm/confirm.html', (e)=>{
-                e.getElementById("confUrl").setAttribute("href", `http://127.0.0.1:3000/signup/verify?token=${code}`);
+                e.getElementById("confUrl").setAttribute("href", `http://127.0.0.1:3000/signup/verify?token=${token}`);
             })
         });
-        return code;
+        return token;
     }
 
     verifySuccess(email, name){
         this.transport.sendMail({
-            from: '"Mariposa - The Social Butterfly" <noreply@gogotech.hu>',
+            from: `"Mariposa - The Social Butterfly" <${this.sender}>`,
             to: email,
             subject: "Successful verified your account!",
             html: `
@@ -58,19 +59,19 @@ export class Email{
         });
     }
 
-    forgotPassword(email, words){
+    forgotPassword(email, key){
         this.transport.sendMail({
-            from: '"Mariposa - The Social Butterfly" <noreply@gogotech.hu>',
+            from: `"Mariposa - The Social Butterfly" <${this.sender}>`,
             to: email,
             subject: "Forgot password",
             html: `
                 <div style="width:100%;text-align:center;">
-                    <h2>Words:</h2>
-                    <h2>${words[0]}, ${words[1]}, ${words[2]}</h2>
+                    <h2>Click:</h2>
+                    <h2><a href="http://127.0.0.1:3000/forgotpassword/change?key=${key}">Klikk</a></h2>
                 </div>`
         });
     }
 }
 
-/*var e = new Email('172.30.0.100', 25);
+/*var e = new Email('172.30.0.100', 25, "support@mariposachat.hu");
 e.verify("gogodavid19@gmail.com", "TESZT");*/
