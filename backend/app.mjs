@@ -402,10 +402,11 @@ app.get('/chat', sessionValidator, (req, res) => {                  //Ezen kér�
     }
 });
 
-app.ws('/live', (ws, req) => {
-    req.session.session.setAttribute("websocket", ws); //Itt valami nem oké
+app.ws('/live', function(ws, req) {
     ws.on('message', function(msg) {
         var sess = sessions.getSessionById(req.session.id);
+        ws.send(msg);
+        console.log(msg);
         if(sess?.valid()) {
             sess.touch();
             if(sess.getAttribute("chat") instanceof Chat){
@@ -416,6 +417,7 @@ app.ws('/live', (ws, req) => {
             ws.close();
         }
     });
+    req.session.session.setAttribute("websocket", ws);
     //Onclose delete from session attribute!
 });
 

@@ -36,13 +36,8 @@ export class Chat{
     }
     newMessage(sess, message, type){
         this.db.newMessage(sess.getAttribute("client").getId(), message, type, this.id);
-        if(sess == this.sess1){
-            var partner = this.sess2;
-        }
-        else{       //Szebb megoldást
-            var partner = this.sess1;
-        }
-        partner.getAttribute("websocket").send(JSON.stringify({ //Ez nem küld
+        var partner = (sess == this.sess1) ? this.sess2 : this.sess1;
+        partner.getAttribute("websocket").send(JSON.stringify({
             "type":type,
             "message":message
         }));
