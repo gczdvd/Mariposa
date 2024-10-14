@@ -1,0 +1,94 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-self: center;
+    height: 100vh;
+    grid-column: 2 / span 1;
+}
+
+.left a{
+    float: left;
+    padding: 10px;
+    text-decoration: none;
+    color: orange;
+}
+
+.deco{
+    display: grid;
+}
+
+.left img{
+    margin-top: 50%;
+    width: 100%;
+}
+
+
+.login-area{
+    display: grid;
+    /* grid-template-rows: 1fr; */
+    /* grid-template-columns: 3fr; */
+    text-align: center;
+}
+
+.chatBTN{
+    width: fit-content;
+    height: fit-content;
+    padding: 10px 0 10px 0;
+    /* border: solid 3px orange; */
+    border-radius: 10px;
+    background-color: orange;
+    text-align: center;
+    justify-self: center;
+    /* align-self: center; */
+}
+
+.chatBTN a{
+    text-decoration: none;
+    text-transform: uppercase;
+    color: white;
+    padding: 10px;
+}
+
+.inputs{
+    /* display: grid; */
+    /* grid-template-columns: 100px; */
+    /* height: 80%; */
+    /* width: 50%; */
+    justify-self: center;
+    /* align-self: end; */
+}
+
+.inputs .email{
+    text-align: left;
+    justify-self: center;
+}
+
+.inputs .password{
+    text-align: left;
+    justify-self: center;
+}
+
+.forgotPSW{
+    width: fit-content;
+    height: fit-content;
+    margin: 10px 0 10px 0;
+    text-decoration: none;
+    color: orange;
+    justify-self: right;
+}
+
+.footer{
+    /* padding-bottom: 10px; */
+    font-size: 20px;
+}
+
+.footer a{
+    text-decoration: none;
+    color: orange;
+}
