@@ -1,4 +1,4 @@
-let slideIndex = ;
+let slideIndex = 0;
 showSlides();
 
 function showSlides() {
@@ -10,5 +10,5 @@ function showSlides() {
   slideIndex++;
   if (slideIndex > slides.length) {slideIndex = 1}
   slides[slideIndex-1].style.display = "grid";
-  setTimeout(showSlides, 2000); // Change image every 2 seconds
+  setTimeout(showSlides, 10000); // Change image every 2 seconds
 }

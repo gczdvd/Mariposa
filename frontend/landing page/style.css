@@ -12,40 +12,54 @@
 .header{
     display: grid;
     grid-template-columns: 85px 1fr;
-    background-color: rgb(255, 165, 0);
-    
+    background-color: transparent;
+    position: absolute;
+    width: 100%;
 }
 
-.header img{
-    width: 90px;
+.logo{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.logo img{
+    width: 5vw;
+    
 }
 
 .navigation li{
+    font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 20px;
+    font-weight: bold;
     list-style: none;
     float: left;
-    padding: 20px 30px 20px;
-    color: black;
+    padding: 10px 30px 10px 30px;
+    color: white;
+    border-radius: 100px;
+    height: fit-content;
     
-    /* border-radius: 20px; */
 }
 
 .navigation li:hover{
-    height: 100%;
-    background-color: gray;
-    /* border-radius: 20px; */
+    height: fit-content;
+    background-color: rgba(243, 150, 30, 1);
+    background-color: white;
+    border-radius: 100px;
+    transition: 300ms;
+    color: orange;
 }
 
 .title{
-    align-self: center;
+    /* align-self: center; */
     font-size: 20px;
+    align-self: center;
 }
 
 .navigation{
     grid-column: 4;
     align-self: center;
     padding-right: 2em;
-    height: 100%;
+    height: auto;
 }
 
 .cover{
@@ -57,7 +71,8 @@
 .cover img{
     width: 100%;
     height: 100%;
-
+    margin-top: -2px;
+    /* position: relative; */
 }
 
 .texts{
@@ -80,7 +95,7 @@
 
 
 .chatBTN{
-    width: fit-content;
+    /* width: fit-content; */
     height: fit-content;
     padding: 10px 0 10px 0;
     border: solid 3px orange;
@@ -106,53 +121,69 @@
 
 .description{
     display: grid;
-    grid-template-rows: 1fr 1fr 2fr;
+    grid-template-rows: auto;
     text-align: center;
-    width: 50%;
+    gap: 20px;
     justify-self: center;
+    align-self: center;
 }
 
 .headline{
     font-size: 50px;
     align-self: end;
+    gap: 30px;
 }
 
 .subhead{
     font-size: 30px;
+    align-self: center;
 }
 
 .pers{
     font-size: 20px;
+    width: 50%;
+    justify-self: center;
 }
 
-
-.carousel{
-    display: grid;
-    /* grid-template-columns: 1fr 1fr; */
-}
-
-/* KÉPEK UGYANAKKORÁK LEGYENEK!!! */
 
 .slides{
     display: grid;
-    /* display: none; */
     grid-template-columns: 1fr 1fr;
 }
 
-.slide-image img{
-    display: grid;
-    width: 50%;
-    margin: auto;
-}
-
-.slides-text{
+.us-text{
     justify-self: center;
     align-self: center;
     text-align: center;
 }
 
-.slides .chatBTN{
+.us-image{
+    width: fit-content;
+}
+
+.aboutusBTN{
+    /* width: fit-content; */
     height: fit-content;
+    padding: 10px 0 10px 0;
+    border: solid 3px orange;
+    border-radius: 10px;
+    background-color: orange;
+    text-align: center;
+    justify-self: center;
+    /* align-self: center; */
+    box-shadow: 0 2px 5px black;
+}
+
+.aboutusBTN a{
+    text-decoration: none;
+    text-transform: uppercase;
+    color: black;
+    padding: 10px;
+}
+
+.aboutusBTN:hover{
+    border: solid 3px orange;
+    background-color: transparent;
 }
 
 
