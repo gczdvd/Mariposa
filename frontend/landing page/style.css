@@ -9,7 +9,7 @@
 .wrapper{
     display: grid;
     gap: 50px;
-    background-color: gray;
+    /* background-color: gray; */
     width: fit-content;
 }
 
@@ -159,7 +159,7 @@
     /* animation-timeline: scroll(); */
 }
 
-/*
+
 
 @keyframes scale-a-lil {
     from {
@@ -177,7 +177,6 @@
     }
 }
 
-*/
 
 .services img{
     width: 40%;

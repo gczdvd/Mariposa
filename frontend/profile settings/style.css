@@ -55,18 +55,19 @@
 .cover-image img{
     width: 100%;
     height: 150px;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
 }
 
 .profile-pic{
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr 1fr;
 }
 
 .profile-pic img{
     width: 200px;
-    margin: 0 0 20px 40px;
+    /* margin: 0 0 20px 40px; */
     border-radius: 50%;
+    justify-self: end;
 }
 
 .names{
@@ -87,7 +88,6 @@
 
 .edit{
     justify-self: end;
-    
 }
 
 .edit a{
@@ -97,15 +97,19 @@
 
 .details{
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    /* justify-content: start; */
-    width: 100%;
+    /* justify-content: center; */
+    /* align-self: center; */
+    /* width: 100%; */
 }
 
 .details > div{
-    width: 100%;
-    /* text-align: center; */
+
+}
+
+.details input{
+    
 }
 
 .last-name input, .first-name input, .email input, .password input, .gender select, .birthday input:nth-child(2){
@@ -115,6 +119,15 @@
     outline: orange solid 1px;
 }
 
+.details input:hover, .details input:focus, .details select:hover, .details select:focus{
+    outline: orange solid 2px;
+    
+}
+
+#show1, #show2{
+    outline: none;
+    font-size: 20px;
+}
 
 .details p{
     color: orange;
@@ -135,6 +148,7 @@ textarea{
     resize: none;
     outline: none;
     padding: 5px 0 0 7px;
+    
 }
 
 select{
