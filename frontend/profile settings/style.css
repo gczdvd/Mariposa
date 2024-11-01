@@ -54,64 +54,51 @@
 
 .cover-image img{
     width: 100%;
-    height: 150px;
+    height: 300px;
     /* margin-bottom: 30px; */
 }
 
-.profile-pic{
+.profile-settings{
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
 
-.profile-pic img{
-    width: 200px;
-    /* margin: 0 0 20px 40px; */
-    border-radius: 50%;
-    justify-self: end;
-}
-
-.names{
-    align-self: center;
-    font-size: 40px;
-    margin: 0 0 0 20px;
-}
-
-.data{
+.profile{
     display: grid;
-    box-shadow: 5px 5px 20px gray;
-    width: 70%;
-    height: auto;
-    justify-self: center;
-    background-color: white;
-    padding: 10px;
-}
-
-.edit{
-    justify-self: end;
-}
-
-.edit a{
-    text-decoration: none;
-    color: black;
-}
-
-.details{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    /* justify-content: center; */
-    /* align-self: center; */
-    /* width: 100%; */
-}
-
-.details > div{
-
-}
-
-.details input{
+    grid-template-rows: 1fr auto auto;
     
 }
 
+.profile img{
+    width: 40%;
+    justify-self: center;
+    border-radius: 50%;
+}
+
+.statistics{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* justify-items: center; */
+    text-align: center;
+}
+
+input{
+    border: black 1px solid;
+    height: fit-content;
+    width: fit-content;
+}
+
+.settings{
+    /* justify-items: center; */
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+
+
+}
+
+
+/*
 .last-name input, .first-name input, .email input, .password input, .gender select, .birthday input:nth-child(2){
     width: 50%;
     height: 30px;
@@ -129,16 +116,7 @@
     font-size: 20px;
 }
 
-.details p{
-    color: orange;
-    font-size: 120%;
-}
 
-.description{
-    border: 2px solid black;
-    margin-top: 2%;
-    width: 100%;
-}
 
 textarea{
     width: 100%;
@@ -151,14 +129,7 @@ textarea{
     
 }
 
-select{
-    /* width: 169px; */
-    height: 30px
-}
 
-.interests{
-    display: grid;
-}
 
 label{
     -webkit-touch-callout: none;
@@ -172,8 +143,11 @@ label{
     font-size: 20px;
 }
 
+
 input[type="checkbox"]{
     accent-color: orange;
     color: black;
     margin-top: 10px;
 }
+
+*/

@@ -1,0 +1,202 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    border: 0;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.header{
+    display: grid;
+    grid-template-columns: 85px 1fr;
+    background-color: transparent;
+    width: 100%;
+    margin-top: 10px;
+    position: fixed;
+}
+
+.logo{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.logo img{
+    width: 5vw;
+    
+}
+
+.navigation li{
+    font-size: 20px;
+    font-weight: bold;
+    list-style: none;
+    float: left;
+    padding: 10px 30px 10px 30px;
+    border-radius: 100px;
+    height: fit-content;
+    
+}
+
+.navigation li:hover{
+    height: fit-content;
+    background-color: rgba(243, 150, 30, 1);
+    background-color: white;
+    border-radius: 100px;
+    transition: 300ms;
+    color: orange;
+}
+
+.title{
+    font-size: 20px;
+    align-self: center;
+}
+
+.navigation{
+    grid-column: 4;
+    align-self: center;
+    padding-right: 2em;
+    height: auto;
+}
+
+.cover{
+    height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    background-image: url("./images/web.jpg");
+    font-size: 50px;
+    text-align: center;
+}
+
+.faq{
+    width: 50%;
+    justify-self: center;
+    /* display: grid; */
+    /* grid-template-columns: 1fr 1fr; */
+    /* gap: 100px; */
+}
+
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+    background-color: #eee;
+    color: black;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    /* text-align: center; */
+    /* margin-left: 50%; */
+    
+}
+
+.accordion:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: #777;
+    float: right;
+    /* margin-left: 5px; */
+  }
+  
+  .active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+  }
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .accordion:hover {
+    background-color: #ccc;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+    padding: 0 30px 0 30px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    width: 100%;
+    /* margin: auto; */
+}
+
+.qTitle{
+    margin-top: 20px;
+}
+
+
+.contact{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 60vh;
+    background-color: #777;
+    /* justify-content: center; */
+}
+
+.inputs{
+    display: grid;
+    justify-self: center;
+    text-align: center;
+    width: 80%;
+    /* gap: 10px; */
+}
+
+input{
+    
+}
+
+textarea{
+    resize: none;
+    /* width: 60%; */
+}
+
+.chatBTN{
+    /* width: fit-content; */
+    height: fit-content;
+    padding: 15px 10px 15px 10px;
+    /* border: solid 3px orange; */
+    border-radius: 20px;
+    background-color: orange;
+    text-align: center;
+    justify-self: center;
+    align-self: start;
+    box-shadow: 0 2px 5px black;
+}
+
+.chatBTN a{
+    text-decoration: none;
+    text-transform: uppercase;
+    color: black;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.chatBTN:hover{
+    /* border: solid 3px orange; */
+    /* background-color: transparent; */
+    background-color: darkgoldenrod;
+}
+
+.footer{
+    text-align: center;
+    background-color: orange;
+    padding: 40px 0 5px 0;
+}
+
+.pages a{
+    padding: 10px 15px 10px 15px;
+    margin: 0 10px 0 10px;
+    text-decoration: none;
+    color: black;
+    border-radius: 20px;
+    font-size: 20px;
+}
+
+.pages a:hover{
+    background-color: darkgoldenrod;
+
+}
+
+.trademark{
+    margin-top: 3%;
+    justify-self: center;
+}
