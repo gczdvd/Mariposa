@@ -13,15 +13,101 @@ body{
     display: grid;
     grid-template-columns: auto 1fr 1fr;
     height: 100%;
+    
 }
 
+/* GOMBOK */
+.primaryBTN{
+    display: grid;
+    width: fit-content;
+    /* justify-content: center; */
+    align-self: center;
+    background-color: #ffbc2f;
+    /* border-radius: 10px; */
+    /* border: 1px solid transparent; */
+    font-family: "Albert Sans";
+    text-transform: uppercase;
+    /* justify-self: center; */
+}
+
+.primaryBTN a{
+    padding: 11px 20px 10px 20px;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    /* border-radius: 10px; */
+    border: 3px solid transparent;
+}
+
+.primaryBTN a:hover{
+    background-color: white;
+    color: #ffbc2f;
+    border: 3px solid #ffbc2f;
+}
+
+
+.secondaryBTN{
+    display: grid;
+    /* width: fit-content; */
+    justify-content: center;
+    align-self: center;
+    background-color: white;
+    /* border-radius: 10px; */
+    /* border: 1px solid transparent; */
+    font-family: "Albert Sans";
+    text-transform: uppercase;
+    justify-self: center;
+}
+
+.secondaryBTN a{
+    padding: 17px 40px 15px 40px;
+    text-decoration: none;
+    color: #ffbc2f;
+    font-size: 20px;
+    /* border-radius: 10px; */
+    border: 3px solid #ffbc2f;
+}
+
+.secondaryBTN a:hover{
+    background-color: #ffbc2f;
+    color: white;
+    border: 3px solid #ffbc2f;
+}
+
+.backBTN a{
+    text-decoration: none;
+    color: #ffbc2f;
+    display: inline-block;
+    font-family: "Albert Sans";
+}
+
+.backBTN{
+    height: fit-content;
+    padding: 5px 10px 0 10px;
+}
+
+/*
+.backBTN a:hover::after{
+    transform: scaleX(1);
+}
+
+.backBTN a::after{
+    display: block;
+    margin-top: 2px;
+    content: '';
+    border-bottom: solid 3px #ffbc2f;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+    
+}
+*/
 .signup{
     display: grid;
     grid-template-rows: repeat(8, 1fr);
-    width: 50%;
+    width: 100%;
     justify-self: center;
     align-self: center;
-    gap: 10px;
+    /* gap: 10px; */
 }
 
 .image{
@@ -34,33 +120,81 @@ body{
     width: 100%;
 }
 
+.title{
+    font-family: "Red Hat Text";
+    font-weight: 600;
+    font-size: 25px;
+}
+
+.subtitle{
+    font-family: "Red Hat Text";
+    font-size: 20px;
+    opacity: 0.7;
+}
+
+
 .nickname, .email, .password{
-    /* border-bottom: 1px solid black; */
-    /* box-shadow: 0 1px #555; */
+    font-family: "Red Hat Text";
 }
 
 input[type=text], input[type=email], input[type=password]{
     border-bottom: rgba(228, 228, 228, 1) 2px solid;
-    width: 100%;
-    padding-left: 5px;
-    height: 25px;
+    width: 70%;
+    padding: 0 0 2px 3px;
+    color: #ffbc2f;
+    /* height: 25px; */
+    font-family: "Red Hat Text";
 }
 
 input:focus{
     outline: none;
-    
-    /* border-top: rgba(240, 192, 35, 1) 2px solid; */
-    /* border-right: rgba(240, 192, 35, 1) 2px solid; */
-    /* border-left: rgba(240, 192, 35, 1) 2px solid; */
     border-bottom: rgba(240, 192, 35, 1) 2px solid;
-    
 }
 
-input[type=checkbox]{
-    /* height: 10px; */
+.TANDC{
+    margin-top: 2%;
+}
+
+.TANDC a{
+    color: #ffbc2f;
+    text-decoration: none;
+}
+
+.TANDC input[type=checkbox]{
+    height: 12px;
+    accent-color: #ffbc2f;
 }
 
 label{
     /* font-size: 20px; */
+    font-family: "Red Hat Text";
 }
 
+.account{
+    font-family: "Red Hat Text";
+    align-content: end;
+}
+
+.account a{
+    /* padding: 10px 15px 10px 15px; */
+    /* margin: 0 10px 0 10px; */
+    text-decoration: none;
+    color: #ffbc2f;
+    /* font-size: 20px; */
+    display: inline-block;
+    font-family: "Albert Sans";
+}
+
+.account a:hover::after{
+    transform: scaleX(1);
+}
+
+.account a::after{
+    display: block;
+    /* margin-top: 2px; */
+    content: '';
+    border-bottom: solid 2px #ffbc2f;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+    
+}

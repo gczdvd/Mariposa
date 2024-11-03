@@ -1,3 +1,17 @@
+/* 
+Márka: Palanquin
+Bekezdések, kisebb szövegek: Red Hat Text
+Gombok: Albert Sans
+
+Feladat holnapra:
+    betűtípusok kicserélése
+    színek kicserélése
+    gombok kicserélése
+    regisztrációs felület javítása
+    bejelentkezés felület javítása
+    
+*/
+
 /* MINDEN */
 *{
     padding: 0;
@@ -26,13 +40,13 @@
     color: white;
     font-size: 20px;
     /* border-radius: 10px; */
-    border: 1px solid transparent;
+    border: 3px solid transparent;
 }
 
 .primaryBTN a:hover{
     background-color: white;
     color: #ffbc2f;
-    border: 1px solid #ffbc2f;
+    border: 3px solid #ffbc2f;
 }
 
 
@@ -92,8 +106,7 @@
     content: '';
     border-bottom: solid 3px #ffbc2f;
     transform: scaleX(0);
-    transition: transform 200ms ease-in-out;
-    
+    transition: transform 200ms ease-in-out; 
 }
 
 /* ALAP DOBOZ */
