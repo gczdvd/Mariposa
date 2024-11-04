@@ -6,6 +6,7 @@ import cookieParser from 'file://C:/Users/David/AppData/Roaming/npm/node_modules
 import bodyParser from 'file://C:/Users/David/AppData/Roaming/npm/node_modules/body-parser/index.js';
 import md5 from 'file://C:/Users/David/AppData/Roaming/npm/node_modules/md5/md5.js';
 import crypto from 'crypto';
+import cors from 'file://C:/Users/David/AppData/Roaming/npm/node_modules/cors/lib/index.js'
 
 import { Sql } from './database.mjs';
 import { Generator } from './generator.mjs';
@@ -26,7 +27,7 @@ const tasks = new Tasks();
 const sessions = new Sessions(34560000000);
 const finder = new Finder(sessions, chats);
 
-const app = express();
+var app = express();
 
 const sessionParser = function(req, res, next){
     var session = {
@@ -76,6 +77,10 @@ const sessionOnlyUser = function(req, res, next){
 app.use(
     cookieParser(),
     bodyParser.json(),
+    cors({
+        origin: 'http://127.0.0.1:5501',
+        credentials: true
+      }),
     sessionParser
 );
 
@@ -154,27 +159,6 @@ app.post('/login', (req, res) => {
 });
 
 app.post('/signup', (req, res) => {
-    /*
-        fetch("http://127.0.0.1:3000/signup", {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify({
-                email:"teszt@asd.zt",
-                birthdate:"2015-05-07",
-                username:"Béla",
-                password:"titkos",
-                gender:3,
-                comment:"Béla vagyok"
-            }) 
-        }).then(async (e)=>{
-            console.log(await e.json());
-        });
-    */
-
     var nickname = req.body?.nickname;
     var email = req.body?.email;
     var password = req.body?.password;
