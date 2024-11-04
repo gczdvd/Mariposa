@@ -1,6 +1,6 @@
 "use strict";
 
-import mysql from 'mysql';
+import mysql from 'file://C:/Users/David/AppData/Roaming/npm/node_modules/mysql/index.js';
 import {User} from './client.mjs';
 
 export class Sql{

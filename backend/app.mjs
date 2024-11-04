@@ -1,10 +1,10 @@
 "use strict";
 
-import express from 'express';
-import websocket from 'express-ws';
-import cookieParser from 'cookie-parser';
-import bodyParser from 'body-parser';
-import md5 from 'md5';
+import express from 'file://C:/Users/David/AppData/Roaming/npm/node_modules/express/index.js';
+import websocket from 'file://C:/Users/David/AppData/Roaming/npm/node_modules/express-ws/index.js';
+import cookieParser from 'file://C:/Users/David/AppData/Roaming/npm/node_modules/cookie-parser/index.js';
+import bodyParser from 'file://C:/Users/David/AppData/Roaming/npm/node_modules/body-parser/index.js';
+import md5 from 'file://C:/Users/David/AppData/Roaming/npm/node_modules/md5/md5.js';
 import crypto from 'crypto';
 
 import { Sql } from './database.mjs';

@@ -1,8 +1,8 @@
 "use strict";
 
 import fs from 'fs';
-import nodemailer from 'nodemailer';
-import parse_html from 'node-html-parser';
+import nodemailer from 'file://C:/Users/David/AppData/Roaming/npm/node_modules/nodemailer/lib/nodemailer.js';
+import parse_html from 'file://C:/Users/David/AppData/Roaming/npm/node_modules/node-html-parser/dist/index.js';
 
 function HTMLFileFormat(html, change){
     const root = parse_html.parse(fs.readFileSync(html, {encoding: 'utf8', flag: 'r'}));
