@@ -1,7 +1,7 @@
 'use strict';
 
-import md5 from 'md5';
-import { v4 as uuid } from 'uuid';
+import md5 from 'file://C:/Users/David/AppData/Roaming/npm/node_modules/md5/md5.js';
+import { v4 as uuid } from 'file://C:/Users/David/AppData/Roaming/npm/node_modules/uuid/dist/esm/index.js';
 
 export class Sessions{
     constructor(maxAge){
