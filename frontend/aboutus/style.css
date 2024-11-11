@@ -4,48 +4,112 @@
     box-sizing: border-box;
 }
 
-.wrapper{
+/* GOMBOK */
+.primaryBTN{
+    display: grid;
+    width: fit-content;
+    justify-content: center;
+    align-self: center;
+    background-color: #ffbc2f;
+    /* border-radius: 10px; */
+    /* border: 1px solid transparent; */
+    font-family: "Albert Sans";
+    text-transform: uppercase;
+    justify-self: center;
+    
+    
+}
 
+.primaryBTN a{
+    padding: 17px 40px 15px 40px;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    /* border-radius: 10px; */
+    border: 3px solid transparent;
+    /* transition: 300ms; */
+}
+
+.primaryBTN a:hover{
+    background-color: white;
+    color: #ffbc2f;
+    border: 3px solid #ffbc2f;
+    
 }
 
 .header{
     display: grid;
-    grid-template-columns: 1fr 4fr;
-    /* background-color: orange; */
+    grid-template-columns: auto 1fr 1fr;
+    background-color: transparent;
+    position: absolute;
     width: 100%;
+    margin-top: 10px;
 }
 
 .header img{
     width: 90px;
+    align-self: center;
 }
 
-.navigation li{
+.logo{
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
+
+.borderb li{
+    /* padding: 10px 15px 10px 15px; */
+    /* margin: 0 10px 0 10px; */
+    text-decoration: none;
+    /* color: black; */
     font-size: 20px;
-    list-style: none;
-    float: left;
-    padding: 20px 30px 20px 30px;
-    color: black;
-    /* border-radius: 20px; */
-    
+    display: inline-block;
+    font-family: "Albert Sans";
 }
 
-.navigation li:hover{
-    height: 100%;
-    background-color: gray;
-    /* border-radius: 20px; */
+.borderb li:hover::after{
+    transform: scaleX(1);
+}
+
+.borderb li:hover{
+    color: #ffbc2f;
+    transition: 200ms;
+}
+
+.borderb li::after{
+    display: block;
+    margin-top: 2px;
+    content: '';
+    border-bottom: solid 3px #ffbc2f;
+    transform: scaleX(0);
+    transition: transform 200ms ease-in-out; 
 }
 
 .title{
-    align-self: center;
+    /* align-self: center; */
     font-size: 20px;
-    font-family: "Palanquin";
+    align-self: center;
     text-transform: uppercase;
+    font-family: "Palanquin";
+    
 }
 
 .navigation{
     grid-column: 4;
     align-self: center;
-    height: 100%;
+    padding-right: 2em;
+    height: auto;
+    /* justify-items: end; */
+}
+
+.navigation li{
+    font-size: 20px;
+    font-weight: bold;
+    list-style: none;
+    /* float: left; */
+    padding: 10px 30px 10px 30px;
+    color: white;
+    /* border-radius: 100px; */
+    height: fit-content;
     
 }
 
@@ -97,16 +161,18 @@
 
 .contact{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    width: 60%;
+    justify-self: center;
 }
 
 .image{
     display: grid;
-    grid-column-start: 2;
+    /* grid-column-start: 2; */
 }
 
 .contact img{
-    width: 80%;
+    width: 50%;
     justify-self: center;
     align-self: center;
     
@@ -116,7 +182,8 @@
     display: grid;
     align-self: center;
     justify-self: center;
-    width: 70%;
+    width: 80%;
+    
 }
 
 #remaining-chars {
@@ -136,13 +203,14 @@
 }
 
 .inputs input{
-    margin: 2px 0 10px 0;
-    padding-left: 10px;
+    margin: 2px 0 5px 0;
+    padding-left: 5px;
     height: 100%;
     /* border-radius: 20px; */
     outline: none;
     border: none;
     border-bottom: 2px solid lightgray;
+    color: #ffbc2f
 }
 
 input[type="text"]:focus {
@@ -161,50 +229,41 @@ textarea:focus{
     border: 2px solid #ffbc2f;
 }
 
-.chatBTN{
-    width: fit-content;
-    height: fit-content;
-    padding: 10px 0 10px 0;
-    margin-top: 20px;
-    border: solid 3px #ffbc2f;
-    border-radius: 10px;
-    background-color: #ffbc2f;
-    text-align: center;
-    justify-self: center;
-}
-
-.chatBTN a{
-    text-decoration: none;
-    text-transform: uppercase;
-    color: black;
-    padding: 15px;
-}
-
-.chatBTN:hover{
-    background-color: darkgoldenrod;
-    border: solid 3px darkgoldenrod;
-}
-
 .footer{
     text-align: center;
     background-color: #ffbc2f;
-    padding: 20px 0 10px 0;
-    margin-top: 2%;
+    padding: 40px 0 5px 0;
+    
 }
 
 .pages a{
-    padding: 10px 10px 10px 10px;
-    margin: 0 5px 0 5px; 
+    padding: 10px 15px 10px 15px;
+    margin: 0 10px 0 10px;
     text-decoration: none;
-    color: black;
-    border-radius: 20px;
+    color: white;
+    font-size: 20px;
+    display: inline-block;
+    font-family: "Albert Sans";
 }
 
-.pages a:hover{
-    background-color: darkgoldenrod;
-
+.pages a:hover::after{
+    transform: scaleX(1);
 }
+
+.pages a::after{
+    display: block;
+    margin-top: 2px;
+    content: '';
+    border-bottom: solid 3px white;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+    
+}
+
 
 .trademark{
-    margin-top: 20px;
+    margin-top: 2%;
+    justify-self: center;
+    color: white;
+    font-family: "Red Hat Text";
 }
