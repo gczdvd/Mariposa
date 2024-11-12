@@ -86,7 +86,7 @@ body{
         grid-template-columns: 1fr;
         grid-template-rows: auto 1fr;
         /* gap: 0px; */
-        height: 100vh;
+        height: 90vh;
     }
 
     .signin{
