@@ -6,9 +6,9 @@ function togglePSW() {
       
     } else {
       x.type = "password";
-      document.getElementById("toggleIcon").innerHTML = "---";
+      document.getElementById("toggleIcon").innerHTML = "🕳️";
     }
-  }
+}
 
 function registration(){
     var email = document.getElementById("email").value;

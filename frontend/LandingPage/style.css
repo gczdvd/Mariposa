@@ -1,17 +1,3 @@
-/* 
-Márka: Palanquin
-Bekezdések, kisebb szövegek: Red Hat Text
-Gombok: Albert Sans
-
-Feladat holnapra:
-    betűtípusok kicserélése
-    színek kicserélése
-    gombok kicserélése
-    regisztrációs felület javítása
-    bejelentkezés felület javítása
-    
-*/
-
 /* MINDEN */
 *{
     padding: 0;
@@ -21,7 +7,7 @@ Feladat holnapra:
 }
 
 .wrapper{
-    background-color: beige;
+    /* background-color: beige; */
 }
 
 /* GOMBOK */
@@ -33,7 +19,7 @@ Feladat holnapra:
     background-color: #ffbc2f;
     font-family: "Albert Sans";
     text-transform: uppercase;
-    text-decoration:none;
+    text-decoration: none;
     padding: 1rem 2rem 1rem 2rem;
     color: white;
     font-size: 1.5rem;
@@ -91,28 +77,23 @@ Feladat holnapra:
 }
 
 /* ALSÓ HATÁR ANIMÁCIÓ */
-.borderb, .borderb a{
-    /* padding: 10px 15px 10px 15px; */
-    /* margin: 0 10px 0 10px; */
+.tertiaryBTN, .tertiaryBTN a{
     text-decoration: none;
-    /* color: black; */
-    /* font-size: 10rem; */
-    /* font-size: 20px; */
     display: inline-block;
     font-family: "Albert Sans";
 }
 
-.borderb:hover::after, .borderb a:hover::after{
+.tertiaryBTN:hover::after, .tertiaryBTN a:hover::after{
     transform: scaleX(1);
     
 }
 
-.borderb:hover, .borderb a:hover{
+.tertiaryBTN:hover, .tertiaryBTN a:hover{
     color: #ffbc2f;
     transition: 200ms;
 }
 
-.borderb::after, .borderb a::after{
+.tertiaryBTN::after, .tertiaryBTN a::after{
     display: block;
     content: '';
     border-bottom: solid 3px #ffbc2f;
