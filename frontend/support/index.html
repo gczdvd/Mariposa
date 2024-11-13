@@ -7,6 +7,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@600&family=Palanquin:wght@700&family=Red+Hat+Text&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
   <link rel="stylesheet" href="style.css">
   <title>Document</title>
 </head>
@@ -16,7 +18,7 @@
 
   <div class="header">
     <a href="" class="activeLink">
-      <img src="../landingpage/images/logo.png" alt="">
+      <img src="../landingpage/images/logo.png" alt="" id="logo">
       <span class="title">Mariposa</span>
     </a>
     
@@ -30,7 +32,8 @@
     
     <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-      <i class="fa fa-bars"></i>
+      <i class="fa fa-bars" aria-hidden="true"></i>
+      <!-- <span class="fa-solid fa-x"></span> -->
     </a>
     
   </div>
@@ -123,18 +126,18 @@
       </div>
 
       
-      
       <div class="inputs">
         <p>Kérdésed van? Írj nekünk!</p>
 
         <p class="inputTitle">Felhasználónév</p>
-        <input type="text" spellcheck="false">
+        <input type="text" spellcheck="false" onchange="szinValtoztat(this)">
 
         <p class="inputTitle">Teljes név (opcionális)</p>
-        <input type="text" spellcheck="false">
+        <input type="text" spellcheck="false" onchange="szinValtoztat(this)">
   
         <p class="inputTitle">Üzenet</p>
-        <textarea name="" id="" rows="5" maxlength="255" spellcheck="false"></textarea>
+        <textarea name="" id="textarea" rows="5" maxlength="255" onchange="szinValtoztat(this)"></textarea>
+        <p id="remaining-chars"></p>
 
         <button class="primaryBTN">küldés</button>
       </div>
