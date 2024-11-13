@@ -9,3 +9,4 @@ function togglePSW() {
       document.getElementById("toggleIcon").innerHTML = "🕳️";
     }
 }
+

@@ -19,51 +19,51 @@ body{
 
 .header{
     display: grid;
-    grid-template-columns: 85px 1fr;
+    grid-template-columns: auto 1fr;
     background-color: transparent;
     width: 100%;
-    margin-top: 10px;
     position: absolute;
+
 }
 
-.logo{
+.activeLink{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: auto 1fr;
+    text-decoration: none;
+    /* color: black; */
+    font-family: "Palanquin";
+    text-transform: uppercase;
 }
 
-.logo img{
+.header img{
     width: 5vw;
-    
 }
 
 .navigation{
+    /* display: grid; */
     grid-column: 4;
     align-self: center;
-    padding-right: 2em;
-    height: auto;
+    /* padding-right: 2em; */
+    /* height: fit-content; */
+    /* margin-top: 0.5rem; */
 }
 
 .navigation a{
     font-size: 1.3rem;
     font-weight: bold;
-    list-style: none;
-    float: left;
-    margin: 1rem 2rem;
+    /* float: left; */
+    margin-right: 4rem;
     color: white;
+    height: fit-content;
+    align-self: center;
+
     /* border-radius: 100px; */
-    height: fit-content; 
 }
 
-.navigation li{
-    font-size: 20px;
-    font-weight: bold;
-    list-style: none;
-    float: left;
-    padding: 10px 30px 10px 30px;
-    color: white;
-    /* border-radius: 100px; */
-    height: fit-content;
+.header a.icon {
+    display: none;
 }
+
 
 .tertiaryBTN, .tertiaryBTN a{
     text-decoration: none;
@@ -92,22 +92,74 @@ body{
 
 
 .title{
-    font-size: 20px;
+    /* height: fit-content; */
+    font-size: 1.5rem;
     align-self: center;
+    text-decoration: none;
 }
 
+
+
+@media (max-aspect-ratio:1/1) {
+    .navigation{
+        display: none;
+        background-color: red;
+    }
+    
+    .navigation a{
+        font-size: 1.3rem;
+        font-weight: bold;
+        
+        color: white;
+        display: block;
+        /* padding-top: 1rem; */
+        padding: 1rem 0 1rem 1rem;
+        /* background-color: red; */
+        
+    }
+
+    .activeLink {
+        background-color: transparent;
+        color: white;
+        
+    }
+
+    .header a.icon {
+        color: white;
+        /* width: 10vw; */
+        font-size: 10vw;
+        display: block;
+        position: absolute;
+        right: 1rem;
+        top: 0.5rem;
+        
+    }
+
+    .header img{
+        width: 20vw;
+    }
+
+    .title{
+        display: none;
+    }
+}
 
 .cover{
     height: 100vh;
     display: grid;
     justify-content: center;
     align-content: center;
-    background-image: url("./images/web.jpg");
-    /* background-attachment: fixed; */
-    font-size: 50px;
+    /* background-image: url("./images/web.jpg"); */
+    background-color: lightcoral;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    font-size: 4rem;
     text-align: center;
     /* position: fixed; */
 }
+
+
 
 .support{
     display: grid;
@@ -116,21 +168,42 @@ body{
 
 
 .faq{
-    /* width: 50%; */
-    /* justify-self: center; */
+    width: 50vw;
+    justify-self: center;
     display: grid;
     background-color: white;
     /* grid-template-rows: auto auto; */
 
 }
 
+
+@media (max-aspect-ratio:1/1){
+    .cover{
+        height: 50vh;
+        font-size: 2rem;
+    }
+
+    .faq{
+        width: 90vw;
+    }
+
+
+}
+
 /* Style the buttons that are used to open and close the accordion panel */
 .accordion {
+    display: grid;
+    grid-template-columns: 1fr auto;
     background-color: #eee;
     color: black;
     cursor: pointer;
-    padding: 18px;
+    padding: 1rem 1rem 1rem 1rem;
+    /* align-self: center; */
+    font-family: "Red Hat Text";
+    font-size: 1rem;
     width: 100%;
+    /* width: 80%; */
+    
     text-align: left;
     border: none;
     outline: none;
@@ -140,16 +213,30 @@ body{
     
 }
 
+button{
+    align-self: center;
+}
+
+
+.faq button{
+    height: fit-content;
+}
+
 .accordion:after {
     content: '\02795'; /* Unicode character for "plus" sign (+) */
-    font-size: 13px;
+    font-size: 1rem;
+    
     color: #777;
-    float: right;
+    justify-self: end;
+    align-self: center;
+    /* float: right; */
     /* margin-left: 5px; */
+    height: 20px;
+    /* width: 40%; */
   }
   
   .active:after {
-    content: "\2796"; /* Unicode character for "minus" sign (-) */
+    content: '\2796'; /* Unicode character for "minus" sign (-) */
   }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
@@ -165,20 +252,22 @@ body{
     overflow: hidden;
     transition: max-height 0.2s ease-out;
     width: 100%;
+    font-family: "Red Hat Text";
     /* margin: auto; */
 }
 
+
 .qTitle{
     margin-top: 20px;
+    font-family: "Albert Sans";
 }
 
 
 .contact{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /* height: fit-content; */
     background-color: transparent;
-    /* justify-content: center; */
+
     /* background-image: url("../landingpage/images/img_avatarA.png"); */
     /* background-attachment: fixed; */
 }
@@ -186,82 +275,150 @@ body{
 .inputs{
     display: grid;
     justify-self: center;
-    text-align: center;
-    width: 50vw;
-    background-color: gray;
-    /* gap: 10px; */
+    align-self: center;
+    width: 70%;
+    height: 70%;
 }
 
-input{
-    
+.inputTitle{
+    margin-top: 1rem;
+    margin-bottom: 0;
 }
+
+.inputs p{
+    font-family: "Red Hat Text";
+    align-self: end;
+    font-size: 1.2rem;
+}
+
+.inputs input{
+    border-bottom: lightgray 2px solid;
+    align-self: end;
+    padding: 0 0 0.2rem 0.2rem;
+    color: #ffbc2f;
+    font-size: 1rem;
+}
+
+.inputs input:focus{
+    outline: none;
+    border-bottom: rgba(240, 192, 35, 1) 2px solid;
+    /* padding-left: 0.1rem; */
+}
+
 
 textarea{
     resize: none;
+    border: 2px lightgray solid;
+    padding: 0.2rem 0 0.2rem 0.2rem;
     /* width: 60%; */
+    font-family: "Red Hat Text";
+    font-size: 1rem;
+    color: #ffbc2f;
 }
 
-.chatBTN{
-    /* width: fit-content; */
-    height: fit-content;
-    padding: 15px 10px 15px 10px;
-    /* border: solid 3px orange; */
-    border-radius: 20px;
-    background-color: orange;
-    text-align: center;
+textarea:focus{
+    outline: none;
+    border: rgba(240, 192, 35, 1) 2px solid;
+    padding: 0.2rem 0 0.2rem 0.2rem;
+}
+
+.primaryBTN{
+    display: grid;
+    width: fit-content;
+    align-self: center;
     justify-self: center;
-    align-self: start;
-    box-shadow: 0 2px 5px black;
-}
-
-.chatBTN a{
-    text-decoration: none;
+    background-color: #ffbc2f;
+    font-family: "Albert Sans";
     text-transform: uppercase;
-    color: black;
-    padding: 20px;
-    border-radius: 20px;
+    text-decoration: none;
+    padding: 1rem 2rem 1rem 2rem;
+    color: white;
+    font-size: 1.5rem;
+    border: 3px solid transparent;
+    cursor: pointer;
 }
 
-.chatBTN:hover{
-    /* border: solid 3px orange; */
-    /* background-color: transparent; */
-    background-color: darkgoldenrod;
+.primaryBTN:hover{
+    background-color: white;
+    color: #ffbc2f;
+    border: 3px solid #ffbc2f;
+}
+
+.button{
+    grid-column: 1 / span 2;
+}
+
+@media (max-aspect-ratio: 1/1){
+    .image{
+        display: none;
+    }
+
+    .contact{
+        display: grid;
+        grid-template-columns: 1fr;
+        /* justify-content: center; */
+        width: 100vw;
+    }
+
+    .primaryBTN{
+        padding: 0.5rem 1rem 0.5rem 1rem;
+        justify-self: center;
+        /* text-align: center; */
+        font-size: 15px;
+    }
 }
 
 
 .footer{
     text-align: center;
     background-color: #ffbc2f;
-    padding: 20px 0 5px 0;
-    
+    height: fit-content;
 }
 
 .pages a{
-    padding: 10px 15px 10px 15px;
-    margin: 0 10px 0 10px;
+    padding: 1rem 1.5rem;
     text-decoration: none;
     color: white;
-    font-size: 20px;
+    font-size: 1.3rem;
     display: inline-block;
     font-family: "Albert Sans";
+    width: fit-content;
 }
 
 .pages a:hover::after{
     transform: scaleX(1);
+    
 }
 
 .pages a::after{
     display: block;
-    margin-top: 2px;
     content: '';
     border-bottom: solid 3px white;
     transform: scaleX(0);
     transition: transform 250ms ease-in-out;
+    
 }
 
 .trademark{
-    margin-top: 2%;
+    margin-top: 0.5rem;
+    padding-bottom: 0.5rem;
     justify-self: center;
     color: white;
     font-family: "Red Hat Text";
+}
+
+@media (max-aspect-ratio:1/1) {
+    .pages{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .pages a{
+        font-size: 1rem;
+        padding: 0.25rem 0.5rem;
+    }
+
+    .trademark{
+        font-size: 0.7rem;
+    }
 }
