@@ -2,6 +2,7 @@
 
 import md5 from 'file://C:/Users/David/AppData/Roaming/npm/node_modules/md5/md5.js';
 import { v4 as uuid } from 'file://C:/Users/David/AppData/Roaming/npm/node_modules/uuid/dist/esm/index.js';
+import websocket from 'file://C:/Users/David/AppData/Roaming/npm/node_modules/express-ws/index.js';
 
 export class Sessions{
     constructor(maxAge){
@@ -22,6 +23,7 @@ export class Sessions{
     removeSession(session){
         for(var i = 0; i < this.sessions.length; i++){
             if(this.sessions[i] == session){
+                this.sessions[i].killWebsocket();
                 this.sessions.splice(i);
                 return true;
             }
@@ -61,7 +63,14 @@ export class Session{
         this.maxAge = maxAge;
         this.id = id;
         this.attributes = {};
+        this.websocket = null; 
         this.touch();
+
+        setInterval((self=this)=>{
+            if(self.websocket?.readyState == 3){
+                self.killWebsocket();
+            }
+        }, 1000);
 
         return id;
     }
@@ -78,6 +87,16 @@ export class Session{
     }
     getId(){
         return this.id;
+    }
+    setWebsocket(ws){
+        this.websocket = ws;
+    }
+    getWebsocket(){
+        return this.websocket;
+    }
+    killWebsocket(){
+        this.websocket?.close();
+        this.websocket = null;
     }
     setAttribute(name, value){
         this.attributes[name] = value;

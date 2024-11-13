@@ -89,26 +89,6 @@ websocket(app);
 //---------------PUBLIC---------------//
 
 app.post('/login', (req, res) => {
-
-    //#######################---BELÉPÉS
-    /*
-        fetch("http://127.0.0.1:3000/login", {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify({
-                username: "teszt", 
-                password: "alma" 
-            }) 
-        })
-        .then(async (e)=>{
-            console.log(await e.json());
-        });
-    */
-
     var email = req.body.email;
     var password = req.body.password;
     if(!req.session.valid){
@@ -204,6 +184,19 @@ app.post('/signup', (req, res) => {
     }
 });
 
+/*fetch("http://127.0.0.1:3000/forgotpassword", {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        email:"gogodavid19@gmail.com"
+      }) 
+    }).then(async (e)=>{
+        console.log(await e.json());
+    });*/
 app.post('/forgotpassword', (req, res)=>{
     if(req.body.email){
         var task = tasks.newTask(240, {
@@ -230,9 +223,22 @@ app.post('/forgotpassword', (req, res)=>{
     }
 });
 
+/*fetch("http://127.0.0.1:3000/forgotpassword/change", {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        key:"xxxxxxxxxxxxx",
+        password:"erre"
+      }) 
+    }).then(async (e)=>{
+        console.log(await e.json());
+    });*/
 app.post('/forgotpassword/change', (req, res)=>{
-    var key = req.query["key"];
-    if(key){
+    if(req.body.key){
         var id = Generator.decrypt(cryptKey, key)
         var task = tasks.getTaskById(id);
 
@@ -387,32 +393,34 @@ app.get('/chat', sessionValidator, (req, res) => {                  //Ezen kér�
 });
 
 app.ws('/live', function(ws, req) {
-    ws.on('message', function(msg) {
-        var sess = sessions.getSessionById(req.session.id);
-        ws.send(msg);
-        console.log(msg);
-        if(sess?.valid()) {
-            sess.touch();
-            if(sess.getAttribute("chat") instanceof Chat){
-                sess.getAttribute("chat").newMessage(sess, msg, "text/plain");
+    if(sessions.getSessionById(req.session.id)?.valid()){
+        ws.on('message', function(msg) {
+            var sess = sessions.getSessionById(req.session.id);
+            if(sess?.valid()) {
+                ws.send(msg);
+                sess.touch();
+                if(sess.getAttribute("chat") instanceof Chat){
+                    sess.getAttribute("chat").newMessage(sess, msg, "text/plain");
+                }
             }
-        }
-        else{
-            ws.close();
-        }
-    });
-    req.session.session.setAttribute("websocket", ws);
-    //Onclose delete from session attribute!
+            else{
+                ws.close();
+            }
+        });
+        req.session.session.setWebsocket(ws);
+    }
+    else{
+        ws.close();
+    }
 });
-
-setInterval(()=>{
-    console.log(sessions.sessions);
-    console.log(tasks.getTasks());
-    sessions.cleanUp();
-}, 10000)
 
 app.listen(3000, () => {
     console.log("Api/Websocket server running on port 3000");
 });
 
-//Teszt sor
+setInterval(()=>{
+    console.clear();
+    console.log(sessions.sessions);
+    console.log(tasks.getTasks());
+    sessions.cleanUp();
+}, 10000)
