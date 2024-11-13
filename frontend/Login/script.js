@@ -9,9 +9,7 @@ function togglePSW() {
       document.getElementById("toggleIcon").innerHTML = "🕳️";
     }
 }
-<<<<<<< HEAD
 
-=======
 function login(){
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
@@ -32,4 +30,3 @@ function login(){
         var resp = await e.json();
     });
 }
->>>>>>> a5da1a0ab6da4cd35aaa42a6f0f8858be116c90c
