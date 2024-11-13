@@ -3,26 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
+
     <title>Document</title>
 </head>
 <body>
     <div class="wrapper">
 
         <div class="header">
-            <div class="logo">
-                <img src="" alt="">
-            </div>
 
-            <div class="title">Mariposa</div>
+            <!-- <div class="logo">
+                <img src="./images/logo.png" alt="">
+                <div class="title">Mariposa</div>
+            </div> -->
 
-            <div class="navigation">
-                <ul>
-                    <a href=""><li>Kezdőlap</li></a>
-                    <a href=""><li>Chatelj!</li></a>
-                    <a href=""><li>Bejelentkezés</li></a>
-                    <a href=""><li>Rólunk</li></a>
-                </ul>
+            <div class="topnav">
+
+                <div href="#home" class="active">
+                    <img src="" alt="">
+                </div>
+
+                <!-- Navigation links (hidden by default) -->
+                <div id="myLinks">
+                  <a href="#news">Kezdőlap</a>
+                  <a href="#chat">Chatelj</a>
+                  <a href="#login">Bejelentkezés</a>
+                  <a href="#aboutus">Rólunk</a>
+                </div>
+                <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                  <i class="fa fa-bars"></i>
+                </a>
             </div>
 
         </div>
@@ -68,5 +80,6 @@
         </div>
 
     </div>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -3,22 +3,92 @@
     margin: 0;
     box-sizing: border-box;
     border: 0;
+    --accent: #ffbc2f;
 }
 
 .wrapper{
     display: grid;
 }
 
+/*
 .header{
     display: grid;
     grid-template-columns: 85px 1fr;
     background-color: orange;
     
 }
+    */
 
 .header img{
-    width: 90px;
+    /* width: 90px; */
 }
+
+.topnav {
+    overflow: hidden;
+    /* background-color: #ffbc2f; */
+    position: fixed;
+    width: 100%;
+    /* float: right; */
+    background-color: transparent;
+    
+}
+
+.active{
+    height: 48px;
+}
+
+/* Hide the links inside the navigation menu (except for logo/home) */
+.topnav #myLinks {
+    display: none;
+    width: 20%;
+    float: right;
+    background-color: var(--accent);
+    border-radius: 20px 0 0 20px;
+}
+
+/* Style navigation menu links */
+.topnav a {
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    display: block;
+    /* float: right; */
+    
+}
+
+/* Style the hamburger menu */
+.topnav a.icon {
+    background: gray;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50px;
+    text-align: center;
+    
+}
+
+/* Add a grey background color on mouse-over */
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+    
+}
+
+#myLinks a:hover{
+    border-radius: 20px 0 0 20px;
+}
+  
+/* Style the active link (or home/logo) */
+/*
+.active {
+    background-color: #ffbc2f;
+    color: black;
+    width: fit-content;
+}
+*/
+
 
 .navigation li{
     font-size: 20px;

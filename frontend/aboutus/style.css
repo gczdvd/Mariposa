@@ -1,0 +1,269 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* GOMBOK */
+.primaryBTN{
+    display: grid;
+    width: fit-content;
+    justify-content: center;
+    align-self: center;
+    background-color: #ffbc2f;
+    /* border-radius: 10px; */
+    /* border: 1px solid transparent; */
+    font-family: "Albert Sans";
+    text-transform: uppercase;
+    justify-self: center;
+    
+    
+}
+
+.primaryBTN a{
+    padding: 17px 40px 15px 40px;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    /* border-radius: 10px; */
+    border: 3px solid transparent;
+    /* transition: 300ms; */
+}
+
+.primaryBTN a:hover{
+    background-color: white;
+    color: #ffbc2f;
+    border: 3px solid #ffbc2f;
+    
+}
+
+.header{
+    display: grid;
+    grid-template-columns: auto 1fr 1fr;
+    background-color: transparent;
+    position: absolute;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.header img{
+    width: 90px;
+    align-self: center;
+}
+
+.logo{
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
+
+.borderb li{
+    /* padding: 10px 15px 10px 15px; */
+    /* margin: 0 10px 0 10px; */
+    text-decoration: none;
+    /* color: black; */
+    font-size: 20px;
+    display: inline-block;
+    font-family: "Albert Sans";
+}
+
+.borderb li:hover::after{
+    transform: scaleX(1);
+}
+
+.borderb li:hover{
+    color: #ffbc2f;
+    transition: 200ms;
+}
+
+.borderb li::after{
+    display: block;
+    margin-top: 2px;
+    content: '';
+    border-bottom: solid 3px #ffbc2f;
+    transform: scaleX(0);
+    transition: transform 200ms ease-in-out; 
+}
+
+.title{
+    /* align-self: center; */
+    font-size: 20px;
+    align-self: center;
+    text-transform: uppercase;
+    font-family: "Palanquin";
+    
+}
+
+.navigation{
+    grid-column: 4;
+    align-self: center;
+    padding-right: 2em;
+    height: auto;
+    /* justify-items: end; */
+}
+
+.navigation li{
+    font-size: 20px;
+    font-weight: bold;
+    list-style: none;
+    /* float: left; */
+    padding: 10px 30px 10px 30px;
+    color: white;
+    /* border-radius: 100px; */
+    height: fit-content;
+    
+}
+
+.cover{
+    height: 92vh;
+    background-image: url("./images/pexels-negativespace-33999.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    text-align: center;
+    align-content: center;
+    color: white;
+    font-size: 60px;
+    font-family: "Palanquin";
+    text-transform: uppercase;
+}
+
+.us{
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    width: 60%;
+    justify-self: center;
+    /* gap: 4em; */
+
+    font-family: "Red Hat Text";
+    font-weight: 400;
+}
+
+.us img{
+    border-radius: 5%;
+    justify-self: center;
+    width: 40%;
+}
+
+.gd, .csx, .hk{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    text-align: center;
+}
+
+
+.faq{
+    display: grid;
+    justify-self: center;
+    align-self: center;
+}
+
+.contact{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 60%;
+    justify-self: center;
+}
+
+.image{
+    display: grid;
+    /* grid-column-start: 2; */
+}
+
+.contact img{
+    width: 50%;
+    justify-self: center;
+    align-self: center;
+    
+}
+
+.inputs{
+    display: grid;
+    align-self: center;
+    justify-self: center;
+    width: 80%;
+    
+}
+
+#remaining-chars {
+    font-size: 11px;
+    color: #ffbc2f;
+    margin-top: 3px;
+    float: right;
+    height: 20px;
+}
+
+.inputs p:nth-child(1){
+    text-align: center;
+}
+
+.inputs p{
+    margin-top: 20px;
+}
+
+.inputs input{
+    margin: 2px 0 5px 0;
+    padding-left: 5px;
+    height: 100%;
+    /* border-radius: 20px; */
+    outline: none;
+    border: none;
+    border-bottom: 2px solid lightgray;
+    color: #ffbc2f
+}
+
+input[type="text"]:focus {
+    border-bottom: 2px solid #ffbc2f;
+}
+
+textarea{
+    resize: none;
+    padding: 3px 0 0 5px;
+    border-radius: 5px;
+    outline: none;
+    border: 2px solid lightgray;
+}
+
+textarea:focus{
+    border: 2px solid #ffbc2f;
+}
+
+.footer{
+    text-align: center;
+    background-color: #ffbc2f;
+    padding: 40px 0 5px 0;
+    
+}
+
+.pages a{
+    padding: 10px 15px 10px 15px;
+    margin: 0 10px 0 10px;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    display: inline-block;
+    font-family: "Albert Sans";
+}
+
+.pages a:hover::after{
+    transform: scaleX(1);
+}
+
+.pages a::after{
+    display: block;
+    margin-top: 2px;
+    content: '';
+    border-bottom: solid 3px white;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+    
+}
+
+
+.trademark{
+    margin-top: 2%;
+    justify-self: center;
+    color: white;
+    font-family: "Red Hat Text";
+}

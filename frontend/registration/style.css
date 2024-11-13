@@ -11,149 +11,142 @@ body{
 
 .wrapper{
     display: grid;
-    grid-template-columns: auto 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr;
     height: 100%;
-    
 }
 
 /* GOMBOK */
-.primaryBTN{
+.button{
     display: grid;
     width: fit-content;
-    /* justify-content: center; */
     align-self: center;
     background-color: #ffbc2f;
-    /* border-radius: 10px; */
-    /* border: 1px solid transparent; */
     font-family: "Albert Sans";
     text-transform: uppercase;
-    /* justify-self: center; */
 }
 
-.primaryBTN a{
-    padding: 11px 20px 10px 20px;
-    text-decoration: none;
+.primaryBTN{
+    background-color: #ffbc2f;
+    font-family: "Albert Sans";
+    text-transform: uppercase;
+    padding: 1rem 2rem 1rem 2rem;
     color: white;
-    font-size: 20px;
-    /* border-radius: 10px; */
+    font-size: 1.5rem;
     border: 3px solid transparent;
+    cursor: pointer;
 }
 
-.primaryBTN a:hover{
+.primaryBTN:hover{
     background-color: white;
     color: #ffbc2f;
     border: 3px solid #ffbc2f;
-}
-
-
-.secondaryBTN{
-    display: grid;
-    /* width: fit-content; */
-    justify-content: center;
-    align-self: center;
-    background-color: white;
-    /* border-radius: 10px; */
-    /* border: 1px solid transparent; */
-    font-family: "Albert Sans";
-    text-transform: uppercase;
-    justify-self: center;
-}
-
-.secondaryBTN a{
-    padding: 17px 40px 15px 40px;
-    text-decoration: none;
-    color: #ffbc2f;
-    font-size: 20px;
-    /* border-radius: 10px; */
-    border: 3px solid #ffbc2f;
-}
-
-.secondaryBTN a:hover{
-    background-color: #ffbc2f;
-    color: white;
-    border: 3px solid #ffbc2f;
-}
-
-.backBTN a{
-    text-decoration: none;
-    color: #ffbc2f;
-    display: inline-block;
-    font-family: "Albert Sans";
 }
 
 .backBTN{
     height: fit-content;
-    padding: 5px 10px 0 10px;
+    margin: 0.5rem 0 0 0.7rem;
+    width: fit-content;
 }
 
-/*
 .backBTN a:hover::after{
     transform: scaleX(1);
 }
 
 .backBTN a::after{
     display: block;
-    margin-top: 2px;
     content: '';
-    border-bottom: solid 3px #ffbc2f;
+    border-bottom: solid 2px #ffbc2f;
     transform: scaleX(0);
     transition: transform 250ms ease-in-out;
-    
 }
-*/
+
+
 .signup{
     display: grid;
+    width: 30vw;
+    height: 80vh;
     grid-template-rows: repeat(8, 1fr);
-    width: 100%;
     justify-self: center;
     align-self: center;
-    /* gap: 10px; */
 }
 
 .image{
     background-color: gray;
-    /* justify-content: center; */
     align-content: center;
+    grid-row: 1 / span 2;
+    grid-column-start: 2;
 }
 
 .image img{
     width: 100%;
 }
 
+@media (max-aspect-ratio:1/1) {
+    .wrapper{
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        /* gap: 0px; */
+        height: 100vh;
+    }
+
+    .signup{
+        display: grid;
+        justify-self: center;
+        width: 70vw;
+    }
+
+    .primaryBTN{
+        padding: 0.5rem 1rem 0.5rem 1rem;
+        justify-self: center;
+        /* text-align: center; */
+        font-size: 1rem;
+    }
+
+    .image{
+        display: none;
+    }
+}
+
 .title{
     font-family: "Red Hat Text";
     font-weight: 600;
-    font-size: 25px;
+    font-size: 1.5rem;
 }
 
 .subtitle{
     font-family: "Red Hat Text";
-    font-size: 20px;
+    font-size: 1rem;
     opacity: 0.7;
 }
 
 
 .nickname, .email, .password{
     font-family: "Red Hat Text";
+    font-size: 1.2rem;
 }
 
 input[type=text], input[type=email], input[type=password]{
     border-bottom: rgba(228, 228, 228, 1) 2px solid;
-    width: 70%;
-    padding: 0 0 2px 3px;
+    width: 100%;
+    padding: 0 0 0.1rem 0.2rem;
     color: #ffbc2f;
-    /* height: 25px; */
     font-family: "Red Hat Text";
+    font-size: 1.1rem;
 }
+
+
+#toggleIcon{
+    font-size: 1.5rem;
+    
+}
+
 
 input:focus{
     outline: none;
     border-bottom: rgba(240, 192, 35, 1) 2px solid;
 }
 
-.TANDC{
-    margin-top: 2%;
-}
 
 .TANDC a{
     color: #ffbc2f;
@@ -161,13 +154,13 @@ input:focus{
 }
 
 .TANDC input[type=checkbox]{
-    height: 12px;
+    height: 0.7rem;
     accent-color: #ffbc2f;
 }
 
 label{
-    /* font-size: 20px; */
     font-family: "Red Hat Text";
+    font-size: 1rem;
 }
 
 .account{
@@ -176,11 +169,8 @@ label{
 }
 
 .account a{
-    /* padding: 10px 15px 10px 15px; */
-    /* margin: 0 10px 0 10px; */
     text-decoration: none;
     color: #ffbc2f;
-    /* font-size: 20px; */
     display: inline-block;
     font-family: "Albert Sans";
 }
@@ -191,10 +181,8 @@ label{
 
 .account a::after{
     display: block;
-    /* margin-top: 2px; */
     content: '';
     border-bottom: solid 2px #ffbc2f;
     transform: scaleX(0);
     transition: transform 250ms ease-in-out;
-    
 }

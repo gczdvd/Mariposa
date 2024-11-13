@@ -13,19 +13,28 @@
     <div class="wrapper">
 
         <div class="header">
+            <!-- topnav -->
             <div class="logo">
-                <img src="./images/logo.png" alt="">
+                <a href="">
+                    <img src="./images/logo.png" alt="">
+                </a>
                 <div class="title">Mariposa</div>
             </div>            
 
+            <!-- mylinks -->
             <div class="navigation">
-                <ul>
-                    <a href="" class="borderb"><li>Kezdőlap</li></a>
-                    <a href="" class="borderb"><li>Chatelj!</li></a>
-                    <a href="" class="borderb"><li>Bejelentkezés</li></a>
-                    <a href="" class="borderb"><li>Rólunk</li></a>
-                </ul>
+                
+                    <a href="" class="tertiaryBTN">Kezdőlap</a>
+                    <a href="" class="tertiaryBTN">Chatelj!</a>
+                    <a href="" class="tertiaryBTN">Bejelentkezés</a>
+                    <a href="" class="tertiaryBTN">Rólunk</a>
+                
             </div>
+
+            <!-- icon -->
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
 
         </div>
 
@@ -37,11 +46,8 @@
 
                 <div class="midtext">Hosszabb, de kisebb szöveg.</div>
     
+                <button class="primaryBTN">Chatelj!</button>
                 
-                <div class="primaryBTN">
-                    <a href="">Chatelj!
-                    </a>
-                </div>
             </div>
 
             <div class="image">
@@ -52,18 +58,20 @@
 
         <div class="description">
 
-            <div class="headline">
-                Mariposa
+            <div class="text">
+                <div class="headline">
+                    Mariposa
+                </div>
+    
+                <div class="subhead">
+                    The Social Butterfly
+                </div>
+    
+                <div class="pers">
+                    <p>A Mariposa csevegőoldal célja, hogy összehozza az ugyanolyan vagy épp különböző érdeklődésű embereket.</p>
+                    <p>Az ember gyakorta vonul el a világtól, és bebábozódik, akár egy pillangó. Ha úgy érzed, túl sokáig voltál ebben a bábban, próbáld ki a Mariposát!</p>
+                </div>
             </div>
-
-            <div class="subhead">
-                The Social Butterfly
-            </div>
-
-            <div class="pers">
-                A Mariposa csevegőoldal és -alkalmazás célja, hogy összehozza az ugyanolyan vagy épp különböző érdeklődésű embereket. Az ember gyakorta vonul el a világtól. Bebábozódik, akár egy pillangó. Ha úgy érzed, túl sokáig voltál egy bábban, próbáld ki a Mariposát! Nyissátok ki a szárnyaitokat, ismerkedjetek......... VALAMI ILYESMI SZÖVEG
-            </div>
-
 
         </div>
 
@@ -91,12 +99,14 @@
                 <img src="./images/img_avatarA.png" alt="">                
 
                 <div class="us-text">
-                    <p>Mi vagyunk a Mariposa</p>
-                    <p>Ismerj meg minket!</p>
-                    <div class="secondaryBTN">
-                        <a href="">Rólunk
-                        </a>
-                    </div>
+                    <p>Mi vagyunk a Mariposa!
+                    <br>
+                    Ismerj meg minket!
+                    </p>
+                </div>
+
+                <div class="button">
+                    <button class="secondaryBTN">Rólunk</button>
                 </div>
             </div>
     
@@ -106,10 +116,10 @@
                 <div class="us-text">
                     <p>Mi vagyunk a Mariposa</p>
                     <p>Ismerj meg minket!</p>
-                    <div class="secondaryBTN">
-                        <a href="">Rólunk
-                        </a>
-                    </div>
+                </div>
+
+                <div class="button">
+                    <button class="secondaryBTN">Rólunk</button>
                 </div>
             </div>
     
@@ -119,16 +129,17 @@
                 <div class="us-text">
                     <p>Mi vagyunk a Mariposa</p>
                     <p>Ismerj meg minket!</p>
-                    <div class="secondaryBTN">
-                        <a href="">Rólunk
-                        </a>
-                    </div>
+                </div>
+
+                <div class="button">
+                    <button class="secondaryBTN">Rólunk</button>
                 </div>
             </div>
 
         </div>
 
         <div class="signup">
+            
             <div class="convince">
                 
                 <p>Regisztrált fiókkal lehetőséged nyílik</p>
@@ -137,19 +148,15 @@
                     <li>chatpartnered elmentésére,</li>
                     <li>érdeklődési köreid beállítására,</li>
                     <li>médiatartalmak küldésére,</li>
-                    <li>még több érdeklődési kör kiválasztására,</li>
+                    <li>új érdeklődési körök kiválasztására,</li>
                 </ul>
                 
                 <p>és mindezt úgy, hogy továbbra is név nélkül chatelhetsz!</p>
                 
+                <button class="primaryBTN">regisztráció</button>
             </div>
-            <div class="primaryBTN">
-                <a href="">Regisztrálj
-                </a>
-            </div>
-            <div class="picture">
-                <img src="./images/picture.jpg" alt="">
-            </div>
+
+            <img src="./images/picture.jpg" alt="">
 
         </div>
 
@@ -159,11 +166,12 @@
                 <p>A Mariposát jelenleg anyagi támogatás nélkül fejlesztjük.</p>
                 <p>Ha úgy érzed, hogy szívesen támogatnád a projektet, hívj meg Minket egy kávéra!</p>
 
-                <div class="secondaryBTN">
-                    <a href="">TÁMOGATÁS
-                    </a>
-                </div>
+                
             </div>
+            <div class="button">
+                <button class="secondaryBTN">támogatás</button>
+            </div>
+            
 
         </div>
 
@@ -176,10 +184,7 @@
                 <input type="text" placeholder="pelda@gmail.com" spellcheck="false" id="emailIN" onclick="">
             </div>
             
-            <div class="secondaryBTN">
-                <a href="">Iratkozz fel!
-                </a>
-            </div>
+            <button class="secondaryBTN">Feliratkozás</button>
 
 
         </div>
@@ -195,6 +200,7 @@
                 <a href="" class="">Házirend</a>
                 
             </div>
+            
             <div class="trademark">
                 © 2025 Mariposa The Social Butterfly
             </div>

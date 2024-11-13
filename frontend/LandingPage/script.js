@@ -13,3 +13,11 @@ function showSlides() {
   setTimeout(showSlides, 10000); // Change image every 2 seconds
 }
 
+function myFunction() {
+  var x = document.getElementById("navigation");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
