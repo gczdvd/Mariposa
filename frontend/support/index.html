@@ -56,7 +56,9 @@
   </div> -->
 
   <div class="cover">
-    <p>Vannak kérdéseid? Itt választ kapsz rájuk!</p>
+    <p>Vannak kérdéseid?
+    <br>
+      Itt választ kapsz rájuk!</p>
   </div>
 
   <div class="support">
@@ -130,13 +132,13 @@
         <p>Kérdésed van? Írj nekünk!</p>
 
         <p class="inputTitle">Felhasználónév</p>
-        <input type="text" spellcheck="false" onchange="szinValtoztat(this)">
+        <input type="text" spellcheck="false" onchange="szinValtoztat(this)" onfocusout="szinValtoztat(this)">
 
         <p class="inputTitle">Teljes név (opcionális)</p>
-        <input type="text" spellcheck="false" onchange="szinValtoztat(this)">
+        <input type="text" spellcheck="false" onchange="szinValtoztat(this)" onfocusout="szinValtoztat(this)">
   
         <p class="inputTitle">Üzenet</p>
-        <textarea name="" id="textarea" rows="5" maxlength="255" onchange="szinValtoztat(this)"></textarea>
+        <textarea name="" id="textarea" rows="5" maxlength="255" onchange="szinValtoztat(this)" onfocusout="szinValtoztat(this)"></textarea>
         <p id="remaining-chars"></p>
 
         <button class="primaryBTN">küldés</button>

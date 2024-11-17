@@ -15,6 +15,7 @@ body{
     /* background-image: url("./images/web.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed; */
+    
 }
 
 .header{
@@ -156,16 +157,19 @@ body{
 }
 
 .cover{
-    height: 100vh;
+    height: 70vh;
     display: grid;
     justify-content: center;
     align-content: center;
+    font-family: "Albert Sans";
+    font-size: 3em;
+    text-transform: uppercase;
     /* background-image: url("./images/web.jpg"); */
     background-color: lightcoral;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-    font-size: 4em;
+    
     text-align: center;
     /* position: fixed; */
 }
@@ -317,7 +321,7 @@ button{
 
 .inputs input:focus{
     outline: none;
-    border-bottom: rgba(240, 192, 35, 1) 2px solid;
+    border-bottom: rgba(240, 192, 35, 1) 2px solid !important;
     /* padding-left: 0.1em; */
 }
 

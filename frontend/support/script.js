@@ -40,14 +40,14 @@ function charCounter(inputField) {
   remChars.style.visibility = "visible";
   const maxLength = inputField.getAttribute("maxlength");
   const currentLength = inputField.value.length;
-  remChars.innerHTML = `${maxLength - currentLength} karakter maradt`;
+  remChars.innerHTML = `${currentLength} / ${maxLength}`;
   
 }
 textarea.oninput = () => charCounter(textarea);
-// textarea.onfocus = () => charCounter(textarea);
+textarea.onfocus = () => charCounter(textarea);
 
-textarea.onfocus = () => szinValtoztat(textarea);
-textarea.onfocusout = () => szinValtoztat;
+
+
 
 function szinValtoztat(textarea){
   const remChars = document.getElementById("remaining-chars");
@@ -62,3 +62,4 @@ function szinValtoztat(textarea){
     remChars.style.visibility = "visible";
   }
 }
+textarea.onfocusout = () => szinValtoztat(textarea);
