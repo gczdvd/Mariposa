@@ -4,5 +4,98 @@
 }
 
 .wrapper{
-    grid-template-columns: 1fr 1fr 1fr
+    display: grid;
+    grid-template-columns: 20vw 1fr 20vw;
+    height: 100vh;
+}
+
+.saved{
+    display: grid;
+    height: fit-content;
+    /* width: 20vw; */
+    /* gap: 1em; */
+}
+
+.savedChat{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1em;
+}
+
+.savedChat:hover{
+    background-color: lightgray;
+    transition: 400ms;
+    cursor: pointer;
+}
+
+/* Aktív chatnek accent color háttér. */
+
+.savedChat p{
+    align-self: center;
+    font-family: "Palanquin";
+    font-size: 1em;
+}
+
+.savedChat img{
+    width: 5vw;
+    border-radius: 3em;
+    margin: 1em 0 1em 1em;
+}
+
+.chat{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-content: end;
+}
+
+.message-bar{
+    background-color: rgb(239, 239, 239);
+    /* min-height: 2vh; */
+    max-height: 15vh;
+    border-radius: 1em;
+    font-family: "Red Hat Text";
+    height: fit-content;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    direction: ltr;
+    width: 100%;
+
+    /* justify-self: center; */
+    /* align-self: end; */
+
+    user-select: text;
+    white-space: pre-wrap;
+    word-break: break-word;
+    
+    overflow-y: auto;
+}
+
+.message-bar:focus{
+    outline: #ffbc2f;
+}
+
+.message-bar{
+    align-self: center;
+}
+
+.chat p{
+    align-self: center;
+}
+
+/* .message-bar[contenteditable]:empty::before {
+    content: "Üzenet...";
+    color: gray;
+} */
+
+.details{
+    display: grid;
+    grid-template-rows: auto auto auto auto auto;
+    /* justify-content: center; */
+    text-align: center;
+}
+
+.details img{
+    width: 10vw;
+    border-radius: 50%;
+    justify-self: center;
 }
