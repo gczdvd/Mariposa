@@ -97,6 +97,7 @@
 .saved{
     display: grid;
     height: fit-content;
+    /* grid-template-rows: min-content; */
     /* width: 20vw; */
     /* gap: 1em; */
 }
@@ -104,7 +105,9 @@
 .savedChat{
     display: grid;
     grid-template-columns: auto 1fr;
+    height: fit-content;
     gap: 1em;
+    height: fit-content;
 }
 
 .savedChat:hover{
@@ -124,24 +127,42 @@
 .savedChat img{
     width: 5vw;
     border-radius: 3em;
-    margin: 1em 0 1em 1em;
+    margin: 0.5em 0 0.5em 1em;
+}
+
+#startChat{
+    color: #ffbc2f;
+    text-transform: uppercase;
+}
+
+#startChat img{
+    filter: grayscale(1);
+}
+
+#startChat:hover{
+    /* color: black; */
+    background-color: #ffbd2f49;
 }
 
 .chat{
     display: grid;
     grid-template-columns: 1fr auto;
     align-content: end;
+    border-left: 1px solid rgba(255, 189, 47, 0.3);
+    border-right: 1px solid rgba(255, 189, 47, 0.3);
+    padding: 10px;
 }
 
+
 .message-bar{
-    background-color: rgb(239, 239, 239);
+    background-color: rgb(234, 234, 234);
     /* min-height: 2vh; */
     max-height: 15vh;
     border-radius: 1em;
     font-family: "Red Hat Text";
     height: fit-content;
     padding: 0.5em;
-    margin-bottom: 1em;
+    /* margin-bottom: 1em; */
     direction: ltr;
     width: 100%;
 
@@ -167,22 +188,43 @@
     align-self: center;
 }
 
-.message-bar[contenteditable]:empty::before {
+/* .message-bar[contenteditable]:empty::before {
     content: "Üzenet...";
     color: gray;
-}
+    cursor: text;
+} */
 
 .details{
     display: grid;
-    grid-template-rows: auto repeat(6, 1fr);
+    grid-template-rows: auto;
     /* justify-content: center; */
     text-align: center;
-    height: 70%;
+    /* height: 70%; */
+    /* gap: 2em; */
 }
 
 .details img{
     width: 10vw;
     border-radius: 50%;
     justify-self: center;
+    align-self: end;
 }
 
+.data{
+    display: grid;
+    gap: 10px;
+}
+
+#quoteP{
+    /* padding: 1.5em 1.5em 0 1.5em; */
+}
+
+#save{
+    align-self: end;
+}
+
+#report{
+    justify-self: end;
+    align-self: center;
+    margin-right: 1em;
+}

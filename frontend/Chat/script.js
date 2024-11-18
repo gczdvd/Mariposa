@@ -8,4 +8,8 @@ function myFunction() {
     }
   }
 
-
+function placeholderAdd(textarea){
+  if(textarea.value.length == 0){
+    textarea.innerHTML = "Üzenet...";
+  }
+}
