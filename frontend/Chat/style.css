@@ -5,8 +5,93 @@
 
 .wrapper{
     display: grid;
-    grid-template-columns: 20vw 1fr 20vw;
+    /* grid-template-columns: 20vw 1fr 20vw; */
+    grid-template-rows: auto 1fr;
     height: 100vh;
+}
+
+.tertiaryBTN, .tertiaryBTN a{
+    text-decoration: none;
+    display: inline-block;
+    font-family: "Albert Sans";
+    width: fit-content;
+    align-self: center;
+}
+
+.tertiaryBTN:hover::after, .tertiaryBTN a:hover::after{
+    transform: scaleX(1);
+}
+
+.tertiaryBTN:hover, .tertiaryBTN a:hover{
+    color: white;
+    transition: 200ms;
+}
+
+.tertiaryBTN::after, .tertiaryBTN a::after{
+    display: block;
+    content: '';
+    border-bottom: solid 3px white;
+    transform: scaleX(0);
+    transition: transform 200ms ease-in-out; 
+}
+
+
+.header{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: transparent;
+    width: 100%;
+    height: fit-content;
+    /* position: absolute; */
+    background-color: #ffbc2f;
+}
+
+.header img{
+    width: 5vw;
+}
+
+.title{
+    /* height: fit-content; */
+    font-size: 1.5em;
+    align-self: center;
+    text-decoration: none;
+    color: white;
+}
+
+.navigation{
+    display: grid;
+    /* grid-column: 4; */
+    grid-template-columns: repeat(4, auto);
+    
+    /* align-self: center; */
+    /* justify-self: end; */
+    
+}
+
+.navigation a{
+    font-size: 1.3em;
+    font-weight: bold;
+    /* float: left; */
+    /* margin-right: 4em; */
+    color: white;
+    height: fit-content;
+    align-self: center;
+    justify-self: center;
+    /* border-radius: 100px; */
+}
+
+.activeLink{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    text-decoration: none;
+    /* color: black; */
+    font-family: "Palanquin";
+    text-transform: uppercase;
+}
+
+.chatArea{
+    display: grid;
+    grid-template-columns: 20vw auto 25vw;
 }
 
 .saved{
@@ -82,16 +167,17 @@
     align-self: center;
 }
 
-/* .message-bar[contenteditable]:empty::before {
+.message-bar[contenteditable]:empty::before {
     content: "Üzenet...";
     color: gray;
-} */
+}
 
 .details{
     display: grid;
-    grid-template-rows: auto auto auto auto auto;
+    grid-template-rows: auto repeat(6, 1fr);
     /* justify-content: center; */
     text-align: center;
+    height: 70%;
 }
 
 .details img{
@@ -99,3 +185,4 @@
     border-radius: 50%;
     justify-self: center;
 }
+

@@ -1,0 +1,184 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+}
+
+.wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* grid-template-rows: auto 1fr; */
+    height: 100%;
+}
+
+/* GOMBOK */
+.button{
+    display: grid;
+    width: fit-content;
+    align-self: center;
+    background-color: #ffbc2f;
+    font-family: "Albert Sans";
+    text-transform: uppercase;
+}
+
+.primaryBTN{
+    background-color: #ffbc2f;
+    font-family: "Albert Sans";
+    text-transform: uppercase;
+    padding: 1rem 2rem 1rem 2rem;
+    color: white;
+    font-size: 1.5rem;
+    border: 3px solid transparent;
+    cursor: pointer;
+}
+
+.primaryBTN:hover{
+    background-color: white;
+    color: #ffbc2f;
+    border: 3px solid #ffbc2f;
+}
+
+.backBTN {
+    height: fit-content;
+    margin: 0.5rem 0 0 0.7rem;
+    width: fit-content;
+}
+
+.backBTN a:hover::after{
+    transform: scaleX(1);
+}
+
+.backBTN a::after{
+    display: block;
+    content: '';
+    border-bottom: solid 2px #ffbc2f;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+}
+
+
+.signin{
+    display: grid;
+    width: 30vw;
+    height: 50vh;
+    justify-self: center;
+    align-self: center;
+    /* margin: auto; */
+}
+
+.image{
+    background-color: gray;
+    align-content: center;
+    /* grid-row: 1 / span 2; */
+    /* grid-column-start: 2; */
+}
+
+.image img{
+    width: 100%;
+}
+
+@media (max-aspect-ratio:1/1) {
+    .wrapper{
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        /* gap: 0px; */
+        height: 90vh;
+    }
+
+    .signin{
+        display: grid;
+        justify-self: center;
+        width: 70vw;
+    }
+
+    .primaryBTN{
+        padding: 0.5rem 1rem 0.5rem 1rem;
+        justify-self: center;
+        /* text-align: center; */
+        font-size: 1rem;
+    }
+
+    .image{
+        display: none;
+    }
+}
+
+.title{
+    font-family: "Red Hat Text";
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.subtitle{
+    font-family: "Red Hat Text";
+    font-size: 1rem;
+    opacity: 0.7;
+}
+
+
+.nickname, .email, .password{
+    font-family: "Red Hat Text";
+}
+
+input[type=text], input[type=email], input[type=password]{
+    border-bottom: rgba(228, 228, 228, 1) 2px solid;
+    width: 90%;
+    padding: 0 0 0.1rem 0.2rem;
+    color: #ffbc2f;
+    font-family: "Red Hat Text";
+    font-size: 1.1rem;
+}
+
+input:focus{
+    outline: none;
+    border-bottom: rgba(240, 192, 35, 1) 2px solid !important;
+}
+
+.TANDC a{
+    color: #ffbc2f;
+    text-decoration: none;
+}
+
+.TANDC input[type=checkbox]{
+    height: 0.7rem;
+    accent-color: #ffbc2f;
+}
+
+label{
+    font-family: "Red Hat Text";
+    font-size: 1rem;
+}
+
+.account{
+    font-family: "Red Hat Text";
+    align-content: end;
+}
+
+.account a{
+    /* padding: 10px 15px 10px 15px; */
+    /* margin: 0 10px 0 10px; */
+    text-decoration: none;
+    color: #ffbc2f;
+    /* font-size: 20px; */
+    display: inline-block;
+    font-family: "Albert Sans";
+}
+
+.account a:hover::after{
+    transform: scaleX(1);
+}
+
+.account a::after{
+    display: block;
+    /* margin-top: 2px; */
+    content: '';
+    border-bottom: solid 2px #ffbc2f;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+    
+}

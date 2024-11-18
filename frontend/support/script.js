@@ -49,7 +49,7 @@ textarea.onfocus = () => charCounter(textarea);
 
 
 
-function szinValtoztat(textarea){
+function colorChange(textarea){
   const remChars = document.getElementById("remaining-chars");
   // const maxLength = textarea.getAttribute("maxlength");
 
@@ -62,4 +62,4 @@ function szinValtoztat(textarea){
     remChars.style.visibility = "visible";
   }
 }
-textarea.onfocusout = () => szinValtoztat(textarea);
+textarea.onfocusout = () => colorChange(textarea);
