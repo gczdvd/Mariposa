@@ -47,8 +47,6 @@ textarea.oninput = () => charCounter(textarea);
 textarea.onfocus = () => charCounter(textarea);
 
 
-
-
 function colorChange(textarea){
   const remChars = document.getElementById("remaining-chars");
   // const maxLength = textarea.getAttribute("maxlength");

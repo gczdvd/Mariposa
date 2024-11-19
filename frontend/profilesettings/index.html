@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@600&family=Palanquin:wght@700&family=Red+Hat+Text&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
@@ -11,108 +14,82 @@
     <div class="wrapper">
 
         <div class="header">
+            <!-- topnav -->
             <div class="logo">
-                <img src="./images/logo.png" alt="">
-                <div class="title">Mariposa</div>
-            </div>         
+                <a href="">
+                    <img src="../landingpage/images/logo.png" alt="">
+                </a>
+                <!-- <div class="title">Mariposa</div> -->
+            </div> 
 
+            <!-- mylinks -->
             <div class="navigation">
-                <ul>
-                    <a href="" class="borderb"><li>Kezdőlap</li></a>
-                    <a href="" class="borderb"><li>Chatelj!</li></a>
-                    <a href="" class="borderb"><li>Bejelentkezés</li></a>
-                    <a href="" class="borderb"><li>Rólunk</li></a>
-                </ul>
+                    <a href="" class="tertiaryBTN">Kezdőlap</a>
+                    <a href="" class="tertiaryBTN">Chatelj!</a>
+                    <a href="" class="tertiaryBTN">Bejelentkezés</a>
+                    <a href="" class="tertiaryBTN">Rólunk</a>
             </div>
+
+            <!-- icon -->
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
 
         </div>
 
-        <!-- 
-        <div class="cover">
-            <div class="cover-image">
-                <img src="./images/web.jpg" alt="">
-            </div></div>
-        -->
-
-        <div class="profile-settings">
+        <div class="settings">
+            <p id="sectiontitle">Profil</p>
             <div class="profile">
-                <p>Profilod</p>
                 <img src="./images/img_avatar.png" alt="">
 
-                <p>Becenév</p>
+                <textarea name="" id="textarea" rows="5" maxlength="255" onchange="colorChange(this)" onfocusout="colorChange(this)" spellcheck="false"></textarea>
+                <p id="remaining-chars">0 / 255</p>
 
-                <div class="statistics">
-                    <p>Indított beszélgetések
-                        <br>
-                        3
-                    </p>
+                <img src="../chat/images/image.png" alt="">
 
-                    <p>Elmentett felhasználók
-                        <br>
-                        5
-                    </p>
-                        
-                    <p>Mariposa-tag
-                        <br>
-                        10 napja
-                    </p>
-                </div>
-
-                <div class="description">
-                    Mutatkozz be röviden! Ez a bemutatkozás fog megjelenni az indított chatjeidben!
-                    
-                </div>
-                
             </div>
 
-            <div class="settings">
-                
 
-                <div class="name1">
-                    <p>Vezetéknév</p>
+            <div class="data">
+                <div class="nickname">
+                    <!-- nem változtatható -->
+                    <p>Felhasználó</p>
                     <input type="text">
                 </div>
 
-                <div class="name2">
-                    <p>Keresztnév</p>
-                    <input type="text">
-                </div>
-                
                 <div class="email">
+                    <!-- nem változtatható -->
                     <p>Email-cím</p>
-                    <input type="email">
+                    <input type="email" name="" id="">
                 </div>
-                
+
                 <div class="password">
+                    <!-- változtatható -->
                     <p>Jelszó</p>
-                    <a href="">Jelszó megváltoztatása</a>
+                    <p><span></span></p>
                 </div>
-                
+
                 <div class="gender">
+                    <!-- változtatható -->
                     <p>Nem</p>
-                    <select name="" id="">
-                        <option selected>Nem adom meg</option>
-                        <option>Nő</option>
-                        <option>Férfi</option>
-                        <option>Nembináris</option>
-                    </select>
-                    <p>
-                        <input type="checkbox" name="" id="checkboxG">
-                        <label for="checkboxG">Jelenjen meg a chatben</label>
-                    </p>
+                    <p></p>
                 </div>
+
+                <div class="birthdate">
+                    <!-- nem változtatható -->
+                    <p>Születési dátum</p>
+                    <p><span></span></p>
+                </div>
+
                 
-                <div class="birthday">
-                    <p>Születésnap</p>
-                    <input type="date" max="2015-12-31">
-                    <p>
-                        <input type="checkbox" name="" id="checkboxB">
-                        <label for="checkboxB">Jelenjen meg a chatben</label>
-                    </p>
-                </div>
+
             </div>
+
 
         </div>
+
+
+
     </div>
     
     <script src="script.js"></script>
