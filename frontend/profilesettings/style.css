@@ -5,6 +5,30 @@
 
 .wrapper{
     height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    /* grid-template-columns: repeat(3, 1fr); */
+}
+
+.secondaryBTN{
+    background-color: white;
+    font-family: "Albert Sans";
+    text-transform: uppercase;
+    padding: 1em 2em 1em 2em;
+    color: #ffbc2f;
+    font-size: 1em;
+    border: 3px solid transparent;
+    cursor: pointer;
+    width: fit-content;
+    height: fit-content;
+    justify-self: center;
+    border: 3px solid #ffbc2f;
+}
+
+.secondaryBTN:hover{
+    background-color: #ffbc2f;
+    color: white;
+    border: 3px solid #ffbc2f;
 }
 
 /* ALSÓ HATÁR ANIMÁCIÓ */
@@ -34,9 +58,11 @@
 
 .header{
     display: grid;
-    width: 100vw;
-    grid-template-columns: auto 1fr;
     background-color: transparent;
+    width: 100vw;
+    max-width: 100%;
+    grid-template-columns: auto 1fr;
+    height: fit-content;
     /* position: absolute; */
     
     /* margin-top: 1em; */
@@ -51,8 +77,13 @@
     width: 5vw;
 }
 
+.logo p{
+    font-family: "Palanquin";
+    text-transform: uppercase;
+    align-self: center;
+}
+
 .title{
-    /* align-self: center; */
     font-size: 1em;
     align-self: center;
     text-transform: uppercase;
@@ -60,11 +91,8 @@
 }
 
 .navigation{
-    grid-column: 4;
-    align-self: center;
-    /* padding-right: 2em; */
     height: auto;
-    
+    float: right;
 }
 
 .navigation a{
@@ -81,51 +109,95 @@
 
 .settings{
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto 1fr;
+    grid-template-columns: auto 1fr 1fr;
+    /* grid-template-rows: auto 1fr; */
 }
 
-#sectiontitle{
-    grid-column: 1 / span 2;
-}
+
 
 .profile{
     display: grid;
-    grid-template-rows: 1fr auto auto 1fr;
+    /* sorok: 1, 2kep, 3textarea, 4remchars 5idezojel */
+    /* grid-template-rows: ; */
+    width: 40vw;
 }
 
-.profile img:nth-of-type(1){
-    width: 20vw;
+.sectionTitle{
+    justify-self: center;
+    align-self: center;
+    font-size: 1.5em;
+    opacity: 0.5;
+    font-family: "Red Hat Text";
+    text-transform: uppercase;
+}
+
+.profilePicture{
+    width: 10vw;
+    justify-self: center;
+    border-radius: 50%;
 }
 
 .profile img:nth-of-type(2){
     width: 5vw;
+    justify-self: center;
 }
+
+#nickname{
+    justify-self: center;
+}
+
+
 
 textarea{
     resize: none;
+    
+    /* outline: 0 !important;*/
+    /* border: none; */
     border: 2px #d3d3d3 solid;
+    /* border: 2px #d3d3d3; */
+    
+    margin: 0 2em 0 2em;
     padding: 0.2em 0 0.2em 0.2em;
-    width: 70%;
+    width: 80%;
+    justify-self: center;
     height: fit-content;
     font-family: "Red Hat Text";
     font-size: 1em;
     color: #ffbc2f;
+    /* display: block; */
+    /* background-color: #f6f4f4; */
 }
 
 textarea:focus{
-    outline: none;
+    outline: 0;
     border: rgba(240, 192, 35, 1) 2px solid !important;
+    /* border-bottom: 3px #ffbc2f solid; */
     padding: 0.2em 0 0.2em 0.2em;
 }
 
 #remaining-chars{
     color: #ffbc2f;
     visibility: hidden;
+    /* margin-left: 4vw; */
+    /* text-align: center; */
     /* display: block; */
 }
 
 .data{
     display: grid;
-    grid-template-rows: auto;
+    /* grid-template-rows: auto repeat(4, 1fr); */
+}
+
+input[type=text], input[type=email], input[type=password]{
+    border-bottom: rgba(228, 228, 228, 1) 2px solid;
+    width: 50%;
+    padding: 0 0 0.1rem 0.2rem;
+    color: #ffbc2f;
+    font-family: "Red Hat Text";
+    font-size: 1.1rem;
+}
+
+input:focus{
+    outline: none;
+    border-bottom: rgba(240, 192, 35, 1) 2px solid !important;
 }

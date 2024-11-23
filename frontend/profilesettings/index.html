@@ -19,11 +19,12 @@
                 <a href="">
                     <img src="../landingpage/images/logo.png" alt="">
                 </a>
+                <p>Mariposa</p>
                 <!-- <div class="title">Mariposa</div> -->
             </div> 
 
-            <!-- mylinks -->
-            <div class="navigation">
+            <div class="navbar">
+                <div class="navigation">
                     <a href="" class="tertiaryBTN">Kezdőlap</a>
                     <a href="" class="tertiaryBTN">Chatelj!</a>
                     <a href="" class="tertiaryBTN">Bejelentkezés</a>
@@ -34,15 +35,25 @@
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                 <i class="fa fa-bars"></i>
             </a>
+            </div>
+            
 
         </div>
 
         <div class="settings">
-            <p id="sectiontitle">Profil</p>
+            
             <div class="profile">
-                <img src="./images/img_avatar.png" alt="">
 
-                <textarea name="" id="textarea" rows="5" maxlength="255" onchange="colorChange(this)" onfocusout="colorChange(this)" spellcheck="false"></textarea>
+                <p class="sectionTitle">Profil</p>
+                
+                <img src="./images/img_avatar.png" alt="" class="profilePicture">
+
+                <p id="nickname">Példa Név</p>
+
+                <button class="secondaryBTN">Profilkép cseréje</button>
+
+                <textarea name="" id="textarea" rows="6" maxlength="255" onchange="colorChange(this)" spellcheck="false"></textarea>
+
                 <p id="remaining-chars">0 / 255</p>
 
                 <img src="../chat/images/image.png" alt="">
@@ -51,37 +62,57 @@
 
 
             <div class="data">
-                <div class="nickname">
-                    <!-- nem változtatható -->
-                    <p>Felhasználó</p>
-                    <input type="text">
+                <p class="sectionTitle">
+                    személyes adatok
+                </p>
+
+                <div class="nameEmailPsw">
+                    <div class="nickname">
+                        <!-- nem változtatható -->
+                        Teljes név
+                        <input type="text">
+                    </div>
+    
+                    <div class="email">
+                        <!-- nem változtatható -->
+                        Email-cím
+                        <input type="email" name="" id="">
+                    </div>
+    
+                    <div class="password">
+                        <!-- változtatható -->
+                        Jelszó
+                        <p><a href="">Jelszó megváltoztatása</a></p>
+                    </div>
                 </div>
 
-                <div class="email">
-                    <!-- nem változtatható -->
-                    <p>Email-cím</p>
-                    <input type="email" name="" id="">
-                </div>
-
-                <div class="password">
-                    <!-- változtatható -->
-                    <p>Jelszó</p>
-                    <p><span></span></p>
-                </div>
+                
 
                 <div class="gender">
                     <!-- változtatható -->
                     <p>Nem</p>
-                    <p></p>
+                    <select name="" id="">
+                        <option value="" default>Nem adom meg</option>
+                        <option value="">Nő</option>
+                        <option value="">Férfi</option>
+                        <option value="">Nembináris</option>
+                    </select>
+                    
                 </div>
 
                 <div class="birthdate">
                     <!-- nem változtatható -->
                     <p>Születési dátum</p>
-                    <p><span></span></p>
+                    <input type="date">
                 </div>
 
-                
+                <button class="secondaryBTN">
+                    mentés
+                </button>
+
+            </div>
+
+            <div class="interests">
 
             </div>
 
