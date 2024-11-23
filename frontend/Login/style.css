@@ -135,7 +135,7 @@ input[type=text], input[type=email], input[type=password]{
 
 input:focus{
     outline: none;
-    border-bottom: rgba(240, 192, 35, 1) 2px solid;
+    border-bottom: rgba(240, 192, 35, 1) 2px solid !important ;
 }
 
 .TANDC a{

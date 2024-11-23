@@ -20,28 +20,28 @@
         <div class="signup">
 
             <div class="title">
-                Regisztrálj a még jobb chatélményért!
+                Regisztrálj, hogy chatelhess!
             </div>
 
             <div class="subtitle">
-                Regisztrált fiókkal
+                Egyszerű regisztráció, hogy minél előbb a chatfelületen lehess!
             </div>
 
             <div class="nickname">
                 <p>Becenév</p>
-                <input type="text" id="nickname" spellcheck="false">
+                <input type="text" id="nickname" spellcheck="false" onchange="colorChange(this)">
             </div>
 
             <div class="email">
                 <p>Email-cím</p>
                 
-                <input type="email" id="email" placeholder="" spellcheck="false">
+                <input type="email" id="email" placeholder="" spellcheck="false" onchange="colorChange(this)">
             </div>
 
             <div class="password">
                 <p>Jelszó</p>
                 
-                <input type="password" id="password" value="" spellcheck="false">
+                <input type="password" id="password" value="" spellcheck="false" onchange="colorChange(this)">
 
                 <span onclick="togglePSW()" id="toggleIcon"></span>
             </div>
