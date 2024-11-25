@@ -27,3 +27,16 @@ function colorChange(textarea){
   }
 }
 textarea.onfocusout = () => colorChange(textarea);
+
+// var alreadyClicked = false;
+// function chosenInterest(interest){
+//   if(alreadyClicked == false){
+//     interest.style.backgroundColor = "blue";
+//     alreadyClicked = true;
+//   }
+//   else{
+//     interest.style.backgroundColor = "orange";
+//     alreadyClicked = false;
+//   }
+  
+// }

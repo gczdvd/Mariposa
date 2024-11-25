@@ -107,10 +107,17 @@
     
 }
 
+.background{
+    /* background-color: lightgray; */
+}
+
 .settings{
     display: grid;
     grid-template-columns: auto 1fr 1fr;
     /* grid-template-rows: auto 1fr; */
+    background-color: white;
+    /* height: 100vh; */
+    max-height: 100%;
 }
 
 
@@ -120,6 +127,8 @@
     /* sorok: 1, 2kep, 3textarea, 4remchars 5idezojel */
     /* grid-template-rows: ; */
     width: 40vw;
+    /* border-right: 1px solid black; */
+    /* font-family: "Red Hat Text"; */
 }
 
 .sectionTitle{
@@ -144,6 +153,8 @@
 
 #nickname{
     justify-self: center;
+    font-family: "Palanquin";
+    font-size: 2em;
 }
 
 
@@ -185,19 +196,100 @@ textarea:focus{
 
 .data{
     display: grid;
+    font-family: "Red Hat Text";
+    /* gap: 3vh; */
     /* grid-template-rows: auto repeat(4, 1fr); */
 }
 
-input[type=text], input[type=email], input[type=password]{
-    border-bottom: rgba(228, 228, 228, 1) 2px solid;
-    width: 50%;
-    padding: 0 0 0.1rem 0.2rem;
+.nameEmailPsw{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.nameEmailPsw p{
+    align-self: center;
+}
+
+.nameEmailPsw a{
+    align-self: center;
+}
+
+input{
+    /* border-bottom: rgba(228, 228, 228, 1) 2px solid; */
+    /* width: 50%; */
+    height: 70%;
+    padding: 0 0 0.1em 0.2em;
     color: #ffbc2f;
     font-family: "Red Hat Text";
-    font-size: 1.1rem;
+    font-size: 1.1em;
+    outline: none;
+    border: 1px solid lightgray;
+    align-self: center;
 }
 
 input:focus{
     outline: none;
-    border-bottom: rgba(240, 192, 35, 1) 2px solid !important;
+    border: rgba(240, 192, 35, 1) 1px solid !important;
 }
+
+.nameEmailPsw a{
+    color: #ffbc2f;
+}
+
+
+.gender{
+    display: grid;
+    justify-items: center;
+    /* grid-template-rows: auto auto; */
+}
+
+.gender p{
+    /* height: fit-content; */
+}
+
+select{
+    color: #ffbc2f;
+    border: 1px solid #ffbc2f;
+    font-family: "Red Hat Text";
+    font-size: 1em;
+    text-transform: uppercase;
+    width: 20vw;
+    justify-self: center;
+    border-radius: 0;
+}
+
+select:active{
+
+}
+
+select:focus{
+    /* border: none; */
+    outline: none;
+}
+
+.birthdate input:active{
+    border: 1px solid #ffbc2f;
+}
+
+/* select:active{
+    outline: none;
+    border: none;
+} */
+
+.birthdate{
+    display: grid;
+    justify-items: center;
+    /* grid-template-rows: auto auto; */
+}
+
+.interests{
+    max-height: 50vh;
+    overflow:scroll;
+    mask-image: linear-gradient(0deg, #0000 0%, #000F 50%);
+}
+
+.interests button{
+    color: black;
+    padding: 10px;
+}
+

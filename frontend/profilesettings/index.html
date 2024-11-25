@@ -40,84 +40,235 @@
 
         </div>
 
-        <div class="settings">
+        <div class="background">
+            <div class="settings">
             
-            <div class="profile">
-
-                <p class="sectionTitle">Profil</p>
-                
-                <img src="./images/img_avatar.png" alt="" class="profilePicture">
-
-                <p id="nickname">Példa Név</p>
-
-                <button class="secondaryBTN">Profilkép cseréje</button>
-
-                <textarea name="" id="textarea" rows="6" maxlength="255" onchange="colorChange(this)" spellcheck="false"></textarea>
-
-                <p id="remaining-chars">0 / 255</p>
-
-                <img src="../chat/images/image.png" alt="">
-
-            </div>
-
-
-            <div class="data">
-                <p class="sectionTitle">
-                    személyes adatok
-                </p>
-
-                <div class="nameEmailPsw">
-                    <div class="nickname">
-                        <!-- nem változtatható -->
-                        Teljes név
-                        <input type="text">
-                    </div>
+                <div class="profile">
     
-                    <div class="email">
-                        <!-- nem változtatható -->
-                        Email-cím
-                        <input type="email" name="" id="">
-                    </div>
-    
-                    <div class="password">
-                        <!-- változtatható -->
-                        Jelszó
-                        <p><a href="">Jelszó megváltoztatása</a></p>
-                    </div>
-                </div>
-
-                
-
-                <div class="gender">
-                    <!-- változtatható -->
-                    <p>Nem</p>
-                    <select name="" id="">
-                        <option value="" default>Nem adom meg</option>
-                        <option value="">Nő</option>
-                        <option value="">Férfi</option>
-                        <option value="">Nembináris</option>
-                    </select>
+                    <p class="sectionTitle">Profil</p>
                     
+                    <img src="./images/img_avatar.png" alt="" class="profilePicture">
+    
+                    <p id="nickname">Példa Név</p>
+    
+                    <button class="secondaryBTN">Profilkép cseréje</button>
+    
+                    <textarea name="" id="textarea" rows="6" maxlength="255" onchange="colorChange(this)" spellcheck="false"></textarea>
+    
+                    <p id="remaining-chars">0 / 255</p>
+    
+                    <img src="../chat/images/image.png" alt="">
+    
                 </div>
+    
+    
+                <div class="data">
+                    <p class="sectionTitle">
+                        személyes adatok
+                    </p>
+    
+                    <div class="nameEmailPsw">
+                        <!-- <div class="nickname">
+                            nem változtatható
+                            
+                            
+                        </div> -->
 
-                <div class="birthdate">
-                    <!-- nem változtatható -->
-                    <p>Születési dátum</p>
-                    <input type="date">
+                        <p>Teljes név</p>
+                        <input type="text" spellcheck="false">
+        
+                        <!-- <div class="email">
+                            nem változtatható
+                            
+                        </div> -->
+                        
+                        <p>Email-cím</p>
+                        <input type="email" name="" id="" spellcheck="false">
+        
+                        <!-- <div class="password">
+                            változtatható
+                            
+                        </div> -->
+                        
+                        <p>Jelszó</p>
+                        <a href="" class="password">Jelszó megváltoztatása</a>
+                    </div>
+    
+                    
+    
+                    <div class="gender">
+                        <!-- változtatható -->
+                        <p>Nem</p>
+                        <select name="" id="">
+                            <option value="" disabled selected>Add meg a nemed...</option>
+                            <option value="">Nem adom meg</option>
+                            <option value="">Nő</option>
+                            <option value="">Férfi</option>
+                            <option value="">Nembináris</option>
+                        </select>
+                        
+                    </div>
+    
+                    <div class="birthdate">
+                        <!-- nem változtatható -->
+                        <p>Születési dátum</p>
+                        <input type="date">
+                    </div>
+    
+                    <button class="secondaryBTN">
+                        mentés
+                    </button>
+    
                 </div>
+    
+                <div class="interests">
+                    <p class="sectionTitle">
+                        érdeklődési körök
+                    </p>
 
-                <button class="secondaryBTN">
-                    mentés
-                </button>
+                    <div class="sport">
+                        <p>Sport</p>
+                        <button onclick="">Labdasport</button>
+                        <button onclick="">Atlétika</button>
+                        <button>Golf, krikett</button>
+                        <button>Úszás, szörfözés</button>
+                        <button>Tenisz, tollas</button>
+                        <button>Lovaglás</button>
+                        <button>Harcművészet</button>
+                    </div>
 
+                    <div class="filmsTV">
+                        <p>Filmek és TV-műsorok</p>
+                        <button onclick="">Anime</button>
+                        <button onclick="">Bűnügyi</button>
+                        <button>Krimi, thriller, horror</button>
+                        <button>Romantikus</button>
+                        <button>Sci-fi</button>
+                        <button>Filmdráma</button>
+                        <button>Valóságshow</button>
+                        <button>Talk show</button>
+                        <button>Vetélkedő</button>
+                        <button>Akciófilm</button>
+                    </div>
+
+                    <div class="nature">
+                        <p>Természet</p>
+                        <button onclick="">Túrázás</button>
+                        <button onclick="">Kerékpározás</button>
+                        <button>Madarászás</button>
+                        <button>Gombászás</button>
+                        <button>Kertészkedés</button>
+                        <button>Piknik</button>
+                        <button>Hajózás</button>
+                    </div>
+
+                    <div class="social">
+                        <p>Szociális</p>
+                        <button onclick="">Közösségi média</button>
+                        <button onclick="">Videós tartalomgyártó</button>
+                        <button>Aktivizmus</button>
+                        <button>Önkéntesség</button>
+                        <button>Műgyűjtés</button>
+                        <button>Könyvklub</button>
+                        <button>Zenekar</button>
+                        <button>Ünnepek</button>
+                    </div>
+
+                    <div class="games">
+                        <p>Játékok</p>
+                        <button onclick="">Telefonos játékok</button>
+                        <button onclick="">Társasjátékok</button>
+                        <button>Akciófigurák</button>
+                        <button>Akció, verekedős</button>
+                        <button>Kaland, horror-túlélő</button>
+                        <button>Stratégiai, platformer</button>
+                        <button>Sandbox</button>
+                        <button>Multiplayer játékok</button>
+                    </div>
+
+                    <div class="kitchen">
+                        <p>Konyha</p>
+                        <button onclick="">Mixer</button>
+                        <button onclick="">Barista</button>
+                        <button>Sütés-főzés</button>
+                        <button>Molekuláris konyha</button>
+                        <button>Ázsiai konyha</button>
+                        <button>Amerikai konyha</button>
+                    </div>
+
+                    <div class="fashion">
+                        <p>Divat</p>
+                        <button onclick="">Sminkelés</button>
+                        <button onclick="">Fodrászat</button>
+                        <button>Műkörömépítés</button>
+                        <button>Modellkedés</button>
+                        <button>Magazinok</button>
+                    </div>
+
+                    <div class="arts">
+                        <p>Művészet</p>
+                        <button onclick="">Fotóművészet</button>
+                        <button onclick="">Festészet</button>
+                        <button>Szobrászat</button>
+                        <button>Grafika</button>
+                        <button>Építészet</button>
+                        <button>Kézművesség</button>
+                        <button>Színművészet</button>
+                    </div>
+
+                    <div class="literature">
+                        <p>Irodalom</p>
+                        <button onclick="">Olvasás</button>
+                        <button onclick="">Írás</button>
+                        <button>Képregény, manga</button>
+                        <button>Krimi, thriller, horror</button>
+                        <button>Sci-fi, fantasy</button>
+                        <button>Romantikus</button>
+                        <button>Életrajzi, történelmi</button>
+                        <button>Versek</button>
+                        <button>Színművek</button>
+                    </div>
+
+                    <div class="science">
+                        <p>Tudomány</p>
+                        <button onclick="">Reál</button>
+                        <button onclick="">Humán</button>
+                        <button>Pszichológia, szociológia</button>
+                        <button>Politika</button>
+                        <button>Vallás</button>
+                        <button>Művészettörténet</button>
+                        <button>Régészet</button>
+                    </div>
+
+                    <div class="vehicles">
+                        <p>Járművek</p>
+                        <button onclick="">Szerelés</button>
+                        <button onclick="">Gyűjtés</button>
+                        <button>Amerikai járművek</button>
+                        <button>Japán, dél-koreai járművek</button>
+                        <button>Német járművek</button>
+                        <button>Olasz járművek</button>
+                        <button>Angol járművek</button>
+                        <button>Francia járművek</button>
+                    </div>
+
+                    <div class="music">
+                        <p>Zene</p>
+                        <button onclick="">Népzene</button>
+                        <button onclick="">Alternatív</button>
+                        <button>Country</button>
+                        <button>Blues, R&B</button>
+                        <button>Dzsessz, szving</button>
+                        <button>Hiphop</button>
+                        <button>Rock, metál</button>
+                        <button>Pop</button>
+                    </div>
+
+
+                </div>
             </div>
-
-            <div class="interests">
-
-            </div>
-
-
         </div>
+        
 
 
 
