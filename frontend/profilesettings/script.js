@@ -28,15 +28,20 @@ function colorChange(textarea){
 }
 textarea.onfocusout = () => colorChange(textarea);
 
-// var alreadyClicked = false;
-// function chosenInterest(interest){
-//   if(alreadyClicked == false){
-//     interest.style.backgroundColor = "blue";
-//     alreadyClicked = true;
-//   }
-//   else{
-//     interest.style.backgroundColor = "orange";
-//     alreadyClicked = false;
-//   }
-  
-// }
+function chosenInterest(interest){
+  if(interest.classList.contains("notSelected")){
+    interest.classList.remove("notSelected");
+    interest.classList.add("selected");
+  }
+  else{
+    interest.classList.remove("selected");
+    interest.classList.add("notSelected");
+  }
+}
+
+// ha van kiválasztva érdeklődési kör, a felette lévő cím színe narancssárga legyen
+// ciklussal végigmegyünk az összes details-en - külső ciklus
+// belső ciklus: éppen aktuális details-eken belül lévő összes button-ön végigmegyünk
+// valamelyiknek a classa selected-e
+// ha igen: éppen kiválasztott details style color narancs
+// ha nem: éppen kiválasztott details style color fekete

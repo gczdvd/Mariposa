@@ -68,6 +68,8 @@
     /* margin-top: 1em; */
 }
 
+
+
 .logo{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -107,29 +109,35 @@
     
 }
 
-.background{
-    /* background-color: lightgray; */
-}
+/* .background{
+    display: grid;
+    background-color: lightgray;
+} */
 
 .settings{
-    display: grid;
-    grid-template-columns: auto 1fr 1fr;
-    /* grid-template-rows: auto 1fr; */
-    background-color: white;
+    display: grid; 
+    height: 90vh;
+    /* width: 90%; */
+    /* max-height: 100%; */
+    align-self: center;
+    justify-self: center;
+
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto 1fr;
+    /* background-color: gray; */
     /* height: 100vh; */
     max-height: 100%;
 }
 
 
-
 .profile{
     display: grid;
+    width: 30vw;
+    justify-self: center;
     /* sorok: 1, 2kep, 3textarea, 4remchars 5idezojel */
-    /* grid-template-rows: ; */
-    width: 40vw;
-    /* border-right: 1px solid black; */
-    /* font-family: "Red Hat Text"; */
 }
+
+
 
 .sectionTitle{
     justify-self: center;
@@ -196,7 +204,9 @@ textarea:focus{
 
 .data{
     display: grid;
+    width: 30vw;
     font-family: "Red Hat Text";
+    justify-self: center;
     /* gap: 3vh; */
     /* grid-template-rows: auto repeat(4, 1fr); */
 }
@@ -204,6 +214,9 @@ textarea:focus{
 .nameEmailPsw{
     display: grid;
     grid-template-columns: auto auto;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
 }
 
 .nameEmailPsw p{
@@ -217,7 +230,7 @@ textarea:focus{
 input{
     /* border-bottom: rgba(228, 228, 228, 1) 2px solid; */
     /* width: 50%; */
-    height: 70%;
+    /* height: 70%; */
     padding: 0 0 0.1em 0.2em;
     color: #ffbc2f;
     font-family: "Red Hat Text";
@@ -239,12 +252,13 @@ input:focus{
 
 .gender{
     display: grid;
-    justify-items: center;
+    grid-template-rows: auto auto;
+    justify-content: center;
     /* grid-template-rows: auto auto; */
 }
 
 .gender p{
-    /* height: fit-content; */
+    height: fit-content;
 }
 
 select{
@@ -258,18 +272,25 @@ select{
     border-radius: 0;
 }
 
-select:active{
-
-}
-
 select:focus{
     /* border: none; */
     outline: none;
 }
 
+.show input{
+    accent-color: #ffbc2f;
+    vertical-align: middle;
+}
+
+.show label{
+    vertical-align: middle;
+}
+
 .birthdate input:active{
     border: 1px solid #ffbc2f;
 }
+
+
 
 /* select:active{
     outline: none;
@@ -282,14 +303,110 @@ select:focus{
     /* grid-template-rows: auto auto; */
 }
 
+summary{
+    font-family: "Red Hat Text";
+    font-size: 1em;
+    width: fit-content;
+}
+
 .interests{
-    max-height: 50vh;
-    overflow:scroll;
-    mask-image: linear-gradient(0deg, #0000 0%, #000F 50%);
+    overflow-y: scroll;
+    width: 30vw;
+    /* max-width: 100%; */
+    overflow-x: hidden;
+    
+    /* mask-image: linear-gradient(0deg, #0000 5%, #000F 5%); */
+
+}
+
+.interests p{
+    font-family: "Red Hat Text";
 }
 
 .interests button{
-    color: black;
-    padding: 10px;
+    /* color: black; */
+    padding: 0.5em 1em 0.5em 1em;
+    border-radius: 1.8em;
+    /* border-radius: 2em; */
+    font-family: "Albert Sans";
+    font-size: 1.1em;
+    border: 5px solid #ffbc2f;
+    cursor: pointer;
+    margin: 5px;
+    
+    /* background-color: white; */
+    /* text-transform: uppercase; */
 }
 
+.interests button:hover{
+    /* filter: brightness(0.9); */
+    /* background-color:; */
+    /* opacity: 0.5; */
+}
+
+@media (max-aspect-ratio:1/1) {
+    .secondaryBTN{
+        padding: 0.5rem 1rem 0.5rem 1rem;
+        justify-self: center;
+        /* text-align: center; */
+        font-size: 15px;
+    }
+
+    .header{
+        display: none;
+    }
+
+    .settings{
+        grid-template-columns: none;
+        grid-template-rows: auto auto auto;
+    }
+    
+    .profile{
+        width: 100vw;
+    }
+
+    .profile img{
+        width: 30vw;
+    }
+
+    #nickname{
+        font-size: 1em;
+    }
+
+    .nameEmailPsw{
+        grid-template-columns: none;
+        grid-template-rows: auto;
+        justify-content: center;
+        
+    }
+
+    textarea{
+        height: 15vh;
+    }
+
+    .nameEmailPsw input{
+        width: 50vw;
+        
+    }
+
+    select{
+        width: fit-content;
+    }
+
+    
+    
+}
+
+.notSelected{
+    background-color: white;
+    color: #ffbc2f;
+}
+
+.selected{
+    background-color: #ffbc2f;
+    color: white;
+}
+
+.emoji{
+    font-family: "Noto Color Emoji";
+}
