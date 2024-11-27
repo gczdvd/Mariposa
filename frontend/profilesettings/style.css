@@ -3,6 +3,10 @@
     margin: 0;
 }
 
+html{
+    height: 100vh;
+}
+
 .wrapper{
     height: 100vh;
     display: grid;
@@ -109,43 +113,35 @@
     
 }
 
-/* .background{
-    display: grid;
-    background-color: lightgray;
-} */
-
 .settings{
-    display: grid; 
-    height: 90vh;
-    /* width: 90%; */
-    /* max-height: 100%; */
-    align-self: center;
-    justify-self: center;
-
+    display: grid;
+    max-height: 90vh !important;
     grid-template-columns: auto auto auto;
     grid-template-rows: auto 1fr;
-    /* background-color: gray; */
-    /* height: 100vh; */
     max-height: 100%;
 }
 
 
 .profile{
     display: grid;
-    width: 30vw;
+    height: fit-content;
+    width: 25vw;
+    grid-template-rows: fit-content;
+    /* width: 30vw; */
     justify-self: center;
+    /* text-align: center; */
     /* sorok: 1, 2kep, 3textarea, 4remchars 5idezojel */
 }
 
 
 
 .sectionTitle{
-    justify-self: center;
     align-self: center;
     font-size: 1.5em;
     opacity: 0.5;
     font-family: "Red Hat Text";
     text-transform: uppercase;
+    text-align: center;
 }
 
 .profilePicture{
@@ -169,17 +165,13 @@
 
 textarea{
     resize: none;
-    
     /* outline: 0 !important;*/
-    /* border: none; */
     border: 2px #d3d3d3 solid;
-    /* border: 2px #d3d3d3; */
-    
     margin: 0 2em 0 2em;
     padding: 0.2em 0 0.2em 0.2em;
     width: 80%;
     justify-self: center;
-    height: fit-content;
+    /* height: 15vh; */
     font-family: "Red Hat Text";
     font-size: 1em;
     color: #ffbc2f;
@@ -204,23 +196,26 @@ textarea:focus{
 
 .data{
     display: grid;
-    width: 30vw;
+    width: 40vw;
+    /* gap: 5em; */
     font-family: "Red Hat Text";
-    justify-self: center;
+    /* justify-self: end; */
+    height: fit-content;
     /* gap: 3vh; */
     /* grid-template-rows: auto repeat(4, 1fr); */
 }
 
 .nameEmailPsw{
     display: grid;
-    grid-template-columns: auto auto;
-    border-top: 1px solid black;
+    grid-template-columns: 1fr 1fr;
+    /* border-top: 1px solid black;
     border-left: 1px solid black;
-    border-right: 1px solid black;
+    border-right: 1px solid black; */
 }
 
 .nameEmailPsw p{
     align-self: center;
+    width: fit-content;
 }
 
 .nameEmailPsw a{
@@ -231,13 +226,15 @@ input{
     /* border-bottom: rgba(228, 228, 228, 1) 2px solid; */
     /* width: 50%; */
     /* height: 70%; */
-    padding: 0 0 0.1em 0.2em;
+    padding: 0.1em 0 0.1em 0.2em;
     color: #ffbc2f;
     font-family: "Red Hat Text";
     font-size: 1.1em;
     outline: none;
     border: 1px solid lightgray;
     align-self: center;
+    /* justify-self: end; */
+    /* width: 10vw; */
 }
 
 input:focus{
@@ -252,13 +249,15 @@ input:focus{
 
 .gender{
     display: grid;
-    grid-template-rows: auto auto;
-    justify-content: center;
+    grid-template-columns: 1fr 1fr;
+    /* width: 1fr; */
+    /* justify-content: center; */
     /* grid-template-rows: auto auto; */
 }
 
 .gender p{
-    height: fit-content;
+    align-self: center;
+    /* height: fit-content; */
 }
 
 select{
@@ -266,15 +265,20 @@ select{
     border: 1px solid #ffbc2f;
     font-family: "Red Hat Text";
     font-size: 1em;
-    text-transform: uppercase;
-    width: 20vw;
-    justify-self: center;
-    border-radius: 0;
+    /* text-transform: uppercase; */
+    width: 100%;
+    /* justify-self: start; */
+    /* border-radius: 0; */
 }
 
 select:focus{
     /* border: none; */
     outline: none;
+}
+
+.show{
+    /* display: grid; */
+    grid-column: 1 / span 2;
 }
 
 .show input{
@@ -299,8 +303,19 @@ select:focus{
 
 .birthdate{
     display: grid;
-    justify-items: center;
+    grid-template-columns: 1fr 1fr;
+    /* align-content: center; */
+    /* vertical-align: middle; */
+    /* justify-items: center; */
     /* grid-template-rows: auto auto; */
+}
+
+.birthdate p{
+    align-self: center;
+}
+
+.birthday input{
+    vertical-align: middle;
 }
 
 summary{
@@ -310,11 +325,10 @@ summary{
 }
 
 .interests{
+    overflow-x: hidden;
     overflow-y: scroll;
     width: 30vw;
-    /* max-width: 100%; */
-    overflow-x: hidden;
-    
+    justify-self: end;
     /* mask-image: linear-gradient(0deg, #0000 5%, #000F 5%); */
 
 }
