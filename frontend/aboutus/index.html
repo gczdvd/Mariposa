@@ -68,39 +68,39 @@
 
         <div class="our-values">
             <!-- 1. sor -->
-            <p class="valuesT">Értékeink</p>
+            <p class="valuesPT">Értékeink</p>
 
             <!-- 2. sor -->
             <div class="values">
                 <div class="ambition">
                     <p class="emoji">🏆</p>
-                    <p>Ambíció</p>
-                    <p>Rengeteg jövőbeni tervünk van, és mindegyiket garantált precizitással fogjuk megvalósítani!</p>
+                    <p class="valuesT">Ambíció</p>
+                    <p class="valuesText">Rengeteg jövőbeni tervünk van, és mindegyiket garantált precizitással fogjuk megvalósítani!</p>
                 </div>
 
                 <div class="security">
                     <p class="emoji">🛡️</p>
-                    <p>Biztonság</p>
+                    <p class="valuesT">Biztonság</p>
                     <p>Felhasználóinkra magas fokon vigyázunk, és komolyan vesszük az anonim online világ veszélyeit!</p>
                 </div>
                 
                 <div class="growth">
                     <p class="emoji">📈</p>
-                    <p>Fejlődés</p>
-                    <p>Nem állunk meg egy sikeres verziónál. A Mariposát folyamatosan fejlesztjük, jobbá tesszük és újítjuk!</p>
+                    <p class="valuesT">Fejlődés</p>
+                    <p class="valuesText">Nem állunk meg egy sikeres verziónál. A Mariposát folyamatosan fejlesztjük, jobbá tesszük és újítjuk!</p>
                 </div>
 
                 <div class="open-mindedness">
                     <p class="emoji">🧠</p>
-                    <p>Nyitottság</p>
-                    <p>A Mariposa mindenki pillangója. Az oldalt úgy alakítottuk ki, hogy mindenki otthon érezze magát! 
+                    <p class="valuesT">Nyitottság</p>
+                    <p class="valuesText">A Mariposa mindenki pillangója. Az oldalt úgy alakítottuk ki, hogy mindenki otthon érezze magát! 
                     </p>
                 </div>
 
                 <div class="helpfulness">
                     <p class="emoji">🤝</p>
-                    <p>Segítőkészség</p>
-                    <p>Az ötleteket átgondoljuk, a problémákat megoldjuk. Odafigyelünk a felhasználókra!</p>
+                    <p class="valuesT">Segítőkészség</p>
+                    <p class="valuesText">Az ötleteket átgondoljuk, a problémákat megoldjuk. Odafigyelünk a felhasználókra!</p>
                 </div>
             </div>
         </div>
@@ -119,20 +119,17 @@
 
             <div class="gd">
                 <img src="./images/img_avatar.png" alt="">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae maxime inventore magni fugiat doloribus temporibus saepe libero quasi unde odit, ipsam vitae eveniet tenetur officiis tempore ipsa.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae ea esse voluptatibus veritatis enim id nisi odit dolores? Porro, debitis? Voluptatum praesentium assumenda dicta reiciendis aperiam id, repudiandae nam dolorem quis necessitatibus accusamus illo pariatur saepe recusandae, nulla nobis rerum earum ullam ducimus amet dolore. Vel culpa sint non ullam.</p>
             </div>
 
             <div class="csx">
-                <p>A csapat backend fejlesztője vagyok.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus sint officiis magnam quaerat ut hic, beatae quas dignissimos minima placeat, laudantium unde quam qui facere aspernatur a! Quod aliquam reprehenderit a neque at, error ratione illo repellendus ut enim eos fuga excepturi quisquam facilis veritatis dolores asperiores. Deleniti, numquam maiores?</p>
                 <img src="./images/img_avatar.png" alt="">
                 
             </div>
 
             <div class="hk">
-                
-                <img src="./images/img_avatar.png" alt="">
-                <p>A csapat backend fejlesztője vagyok.</p>
-                
+                <img src="./images/img_avatar.png" alt=""><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, perspiciatis, ut voluptatem nam quae ipsa eveniet pariatur, est aliquam eaque quibusdam. Architecto natus illo voluptatem eos distinctio quis commodi magnam provident debitis modi ducimus praesentium ipsa officiis iusto earum, repudiandae aspernatur rem, asperiores quas error. Nulla optio sunt aperiam error?</p>
             </div>
 
 
@@ -141,30 +138,29 @@
 
         <div class="contact">
             <div class="image">
-                <img src="./images/butterfly_phone.png" alt="">
+              <img src="./images/butterfly_phone.png" alt="">
             </div>
-
+      
+            
             <div class="inputs">
-                
-                    <p>Kérdésed van? Írj nekünk!</p>
+                <p class="">Kérdésed van? Írj nekünk!</p>
+      
+                <p class="inputTitle">Felhasználónév</p>
+                <input type="text" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)">
+      
+                <p class="inputTitle">Teljes név (opcionális)</p>
+                <input type="text" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)">
+        
+                <p class="inputTitle">Üzenet</p>
+                <textarea name="" id="textarea" rows="5" maxlength="255" onchange="colorChange(this)" spellcheck="false"></textarea>
 
-                    <p>Becenév</p>
-                    <input type="text">
-
-                    <p>Teljes név (opcionális)</p>
-                    <input type="text">
-
-                    <p>Üzenet</p>
-                    <textarea name="" id="textarea" rows="5" maxlength="255"></textarea>
-                    <p id="remaining-chars"></p>
-
-                    <div class="primaryBTN">
-                        <a href="">Küldés
-                        </a>
-                    </div>
-                
+                <p id="remaining-chars">0 / 255</p>
+      
+              <button class="primaryBTN">küldés</button>
             </div>
+          </div>
         </div>
+
         <div class="footer">
 
             <div class="pages">

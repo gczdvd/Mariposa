@@ -1,21 +1,29 @@
-// Textarea karakterlimit jelző
-const textarea = document.getElementById("textarea");
+// const textarea = document.getElementById("textarea");
 
-function charCounter(inputField) {
-  
+function charCounter(textarea) {
   const remChars = document.getElementById("remaining-chars");
-  const maxLength = inputField.getAttribute("maxlength");
-  const currentLength = inputField.value.length;
+  remChars.style.visibility = "visible";
+  const maxLength = textarea.getAttribute("maxlength");
+  const currentLength = textarea.value.length;
+  remChars.innerHTML = `${currentLength} / ${maxLength}`;
+  
+}
 
-  const progressWidth = (currentLength / maxLength) * 100;
-  // remChars.style.display = "none";
+function colorChange(inputField){
+  const remChars = document.getElementById("remaining-chars");
+  // const maxLength = textarea.getAttribute("maxlength");
 
-  if (progressWidth <= 90) {
-    remChars.innerHTML = `${maxLength - currentLength} karakter maradt`;
-    // remChars.style.display = "block";
+  if(inputField.value.length == 0){
+    inputField.style.borderColor = "#d3d3d3";
+    remChars.style.visibility = "hidden";
+  }
+  else{
+    inputField.style.borderColor = "#ffbc2f";
+    remChars.style.visibility = "visible";
   }
 }
 
+// textarea.oninput = () => charCounter(textarea);
+// textarea.onfocus = () => charCounter(textarea);
 textarea.onfocus = () => charCounter(textarea);
-
-
+textarea.onfocusout = () => colorChange(textarea);
