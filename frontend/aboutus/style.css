@@ -235,6 +235,7 @@
     font-family: "Red Hat Text";
     font-weight: 400;
     font-size: 1em;
+    
 }
 
 .us img{
@@ -248,12 +249,15 @@
     grid-template-columns: 1fr 1fr;
     align-items: center;
     text-align: center;
-    border: 1px solid black;
-    
+    padding: 1em;
+    border-radius: 2em;
+    -moz-box-shadow: 0 0 3px #ccc;
+    -webkit-box-shadow: 0 0 3px #ccc;
+    box-shadow: 0 0 3px black;
+    font-family: "Red Hat Text";
 }
 
 .us p{
-    
     justify-self: center;
     width: 25vw;
     
