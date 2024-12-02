@@ -1,162 +1,230 @@
 *{
-    padding: 0;
     margin: 0;
-    box-sizing: border-box;
-    border: 0;
-    --accent: #ffbc2f;
+    padding: 0;
 }
 
 .wrapper{
     display: grid;
+    /* grid-template-columns: 20vw 1fr 20vw; */
+    grid-template-rows: auto 1fr;
+    height: 100vh;
 }
 
-/*
+.tertiaryBTN, .tertiaryBTN a{
+    text-decoration: none;
+    display: inline-block;
+    font-family: "Albert Sans";
+    width: fit-content;
+    align-self: center;
+}
+
+.tertiaryBTN:hover::after, .tertiaryBTN a:hover::after{
+    transform: scaleX(1);
+}
+
+.tertiaryBTN:hover, .tertiaryBTN a:hover{
+    color: white;
+    transition: 200ms;
+}
+
+.tertiaryBTN::after, .tertiaryBTN a::after{
+    display: block;
+    content: '';
+    border-bottom: solid 3px white;
+    transform: scaleX(0);
+    transition: transform 200ms ease-in-out; 
+}
+
+
 .header{
     display: grid;
-    grid-template-columns: 85px 1fr;
-    background-color: orange;
-    
+    grid-template-columns: 1fr 1fr;
+    background-color: transparent;
+    width: 100%;
+    height: fit-content;
+    /* position: absolute; */
+    background-color: #ffbc2f;
 }
-    */
 
 .header img{
-    /* width: 90px; */
-}
-
-.topnav {
-    overflow: hidden;
-    /* background-color: #ffbc2f; */
-    position: fixed;
-    width: 100%;
-    /* float: right; */
-    background-color: transparent;
-    
-}
-
-.active{
-    height: 48px;
-}
-
-/* Hide the links inside the navigation menu (except for logo/home) */
-.topnav #myLinks {
-    display: none;
-    width: 20%;
-    float: right;
-    background-color: var(--accent);
-    border-radius: 20px 0 0 20px;
-}
-
-/* Style navigation menu links */
-.topnav a {
-    color: white;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-    display: block;
-    /* float: right; */
-    
-}
-
-/* Style the hamburger menu */
-.topnav a.icon {
-    background: gray;
-    display: block;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 50px;
-    text-align: center;
-    
-}
-
-/* Add a grey background color on mouse-over */
-.topnav a:hover {
-    background-color: #ddd;
-    color: black;
-    
-}
-
-#myLinks a:hover{
-    border-radius: 20px 0 0 20px;
-}
-  
-/* Style the active link (or home/logo) */
-/*
-.active {
-    background-color: #ffbc2f;
-    color: black;
-    width: fit-content;
-}
-*/
-
-
-.navigation li{
-    font-size: 20px;
-    list-style: none;
-    float: left;
-    padding: 20px 30px 20px;
-    color: black;
-    
-    /* border-radius: 20px; */
-}
-
-.navigation li:hover{
-    height: 100%;
-    background-color: darkgoldenrod;
-    /* border-radius: 20px; */
+    width: 5vw;
 }
 
 .title{
+    /* height: fit-content; */
+    font-size: 1.5em;
     align-self: center;
-    font-size: 20px;
+    text-decoration: none;
+    color: white;
 }
 
 .navigation{
-    grid-column: 4;
+    display: grid;
+    /* grid-column: 4; */
+    grid-template-columns: repeat(4, auto);
+    
+    /* align-self: center; */
+    /* justify-self: end; */
+    
+}
+
+.navigation a{
+    font-size: 1.3em;
+    font-weight: bold;
+    /* float: left; */
+    /* margin-right: 4em; */
+    color: white;
+    height: fit-content;
     align-self: center;
-    padding-right: 2em;
-    height: 100%;
+    justify-self: center;
+    /* border-radius: 100px; */
+}
+
+.activeLink{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    text-decoration: none;
+    /* color: black; */
+    font-family: "Palanquin";
+    text-transform: uppercase;
+}
+
+.chatArea{
+    display: grid;
+    grid-template-columns: 20vw auto 25vw;
+}
+
+.saved{
+    display: grid;
+    height: fit-content;
+    /* grid-template-rows: min-content; */
+    /* width: 20vw; */
+    /* gap: 1em; */
+}
+
+.savedChat{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    height: fit-content;
+    gap: 1em;
+    height: fit-content;
+}
+
+.savedChat:hover{
+    background-color: lightgray;
+    transition: 400ms;
+    cursor: pointer;
+}
+
+/* Aktív chatnek accent color háttér. */
+
+.savedChat p{
+    align-self: center;
+    font-family: "Palanquin";
+    font-size: 1em;
+}
+
+.savedChat img{
+    width: 5vw;
+    border-radius: 3em;
+    margin: 0.5em 0 0.5em 1em;
+}
+
+#startChat{
+    color: #ffbc2f;
+    text-transform: uppercase;
+}
+
+#startChat img{
+    filter: grayscale(1);
+}
+
+#startChat:hover{
+    /* color: black; */
+    background-color: #ffbd2f49;
 }
 
 .chat{
     display: grid;
-    grid-template-columns: 1fr 5fr 1fr;
-    height: auto;
-    background-color: lightblue;
-    height: 90vh;
+    grid-template-columns: 1fr auto;
+    align-content: end;
+    border-left: 1px solid rgba(255, 189, 47, 0.3);
+    border-right: 1px solid rgba(255, 189, 47, 0.3);
+    padding: 10px;
 }
 
-.saved{
-    height: 40px;
+
+.message-bar{
+    background-color: rgb(234, 234, 234);
+    /* min-height: 2vh; */
+    max-height: 15vh;
+    border-radius: 1em;
+    font-family: "Red Hat Text";
+    height: fit-content;
+    padding: 0.5em;
+    /* margin-bottom: 1em; */
+    direction: ltr;
+    width: 100%;
+
+    /* justify-self: center; */
+    /* align-self: end; */
+
+    user-select: text;
+    white-space: pre-wrap;
+    word-break: break-word;
+    
+    overflow-y: auto;
 }
 
-.messages{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 30fr 1fr 1fr;
-
+.message-bar:focus{
+    outline: #ffbc2f;
 }
 
 .message-bar{
-    border: 1px solid black;
-    width: 100%;
-    height: 40px;
-    border-radius: 30px;
-    align-self: end;
-}
-
-.message-bar p{
-    /* float: right; */
-    /* margin-right: 10px; */
     align-self: center;
+}
+
+.chat p{
+    align-self: center;
+}
+
+/* .message-bar[contenteditable]:empty::before {
+    content: "Üzenet...";
+    color: gray;
+    cursor: text;
+} */
+
+.details{
+    display: grid;
+    grid-template-rows: auto;
+    /* justify-content: center; */
+    text-align: center;
+    /* height: 70%; */
+    /* gap: 2em; */
+}
+
+.details img{
+    width: 10vw;
+    border-radius: 50%;
     justify-self: center;
-}
-
-.emoji, .images, .gif{
-    justify-content: start;
     align-self: end;
 }
 
-.save, .report{
-    justify-content: end;
+.data{
+    display: grid;
+    gap: 10px;
+}
+
+#quoteP{
+    /* padding: 1.5em 1.5em 0 1.5em; */
+}
+
+#save{
     align-self: end;
+}
+
+#report{
+    justify-self: end;
+    align-self: center;
+    margin-right: 1em;
 }

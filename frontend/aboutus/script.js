@@ -1,55 +1,29 @@
-// var acc = document.getElementsByClassName("accordion");
-// var i;
+// const textarea = document.getElementById("textarea");
 
-// for (i = 0; i < acc.length; i++) {
-//   acc[i].addEventListener("click", function() {
-//     /* Toggle between adding and removing the "active" class,
-//     to highlight the button that controls the panel */
-//     this.classList.toggle("active");
-
-//     /* Toggle between hiding and showing the active panel */
-//     var panel = this.nextElementSibling;
-//     if (panel.style.display === "block") {
-//       panel.style.display = "none";
-//     } else {
-//       panel.style.display = "block";
-//     }
-//   });
-// }
-
-// Animált
-var acc = document.getElementsByClassName("accordion");
-var i;
-
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var panel = this.nextElementSibling;
-    if (panel.style.maxHeight) {
-      panel.style.maxHeight = null;
-    } else {
-      panel.style.maxHeight = panel.scrollHeight + "px";
-    }
-  });
+function charCounter(textarea) {
+  const remChars = document.getElementById("remaining-chars");
+  remChars.style.visibility = "visible";
+  const maxLength = textarea.getAttribute("maxlength");
+  const currentLength = textarea.value.length;
+  remChars.innerHTML = `${currentLength} / ${maxLength}`;
+  
 }
 
-
-// Textarea karakterlimit jelző
-const textarea = document.getElementById("textarea");
-
-function charCounter(inputField) {
-  
+function colorChange(inputField){
   const remChars = document.getElementById("remaining-chars");
-  const maxLength = inputField.getAttribute("maxlength");
-  const currentLength = inputField.value.length;
+  // const maxLength = textarea.getAttribute("maxlength");
 
-  const progressWidth = (currentLength / maxLength) * 100;
-  // remChars.style.display = "none";
-
-  if (progressWidth <= 90) {
-    remChars.innerHTML = `${maxLength - currentLength} karakter maradt`;
-    // remChars.style.display = "block";
+  if(inputField.value.length == 0){
+    inputField.style.borderColor = "#d3d3d3";
+    remChars.style.visibility = "hidden";
+  }
+  else{
+    inputField.style.borderColor = "#ffbc2f";
+    remChars.style.visibility = "visible";
   }
 }
 
+// textarea.oninput = () => charCounter(textarea);
+// textarea.onfocus = () => charCounter(textarea);
 textarea.onfocus = () => charCounter(textarea);
+textarea.onfocusout = () => colorChange(textarea);

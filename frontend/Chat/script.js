@@ -23,3 +23,8 @@ fetch("http://127.0.0.1:3000/chat", {
         console.log(resp);
     }
 });
+function placeholderAdd(textarea){
+  if(textarea.value.length == 0){
+    textarea.innerHTML = "Üzenet...";
+  }
+}

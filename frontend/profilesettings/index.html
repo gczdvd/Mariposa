@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@600&family=Noto+Color+Emoji&family=Palanquin:wght@700&family=Red+Hat+Text&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
@@ -11,108 +14,354 @@
     <div class="wrapper">
 
         <div class="header">
+            <!-- topnav -->
             <div class="logo">
-                <img src="./images/logo.png" alt="">
-                <div class="title">Mariposa</div>
-            </div>         
+                <a href="">
+                    <img src="../landingpage/images/logo.png" alt="">
+                </a>
+                <p>Mariposa</p>
+                <!-- <div class="title">Mariposa</div> -->
+            </div> 
 
-            <div class="navigation">
-                <ul>
-                    <a href="" class="borderb"><li>Kezdőlap</li></a>
-                    <a href="" class="borderb"><li>Chatelj!</li></a>
-                    <a href="" class="borderb"><li>Bejelentkezés</li></a>
-                    <a href="" class="borderb"><li>Rólunk</li></a>
-                </ul>
+            <div class="navbar">
+                <div class="navigation">
+                    <a href="" class="tertiaryBTN">Kezdőlap</a>
+                    <a href="" class="tertiaryBTN">Chatelj!</a>
+                    <a href="" class="tertiaryBTN">Bejelentkezés</a>
+                    <a href="" class="tertiaryBTN">Rólunk</a>
             </div>
+
+            <!-- icon -->
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+            </div>
+            
 
         </div>
 
-        <!-- 
-        <div class="cover">
-            <div class="cover-image">
-                <img src="./images/web.jpg" alt="">
-            </div></div>
-        -->
-
-        <div class="profile-settings">
+        <div class="settings">
+            <p class="sectionTitle">Profil</p>
+            <p class="sectionTitle">személyes adatok</p>
+            <p class="sectionTitle">érdeklődési körök</p>
+        
             <div class="profile">
-                <p>Profilod</p>
-                <img src="./images/img_avatar.png" alt="">
+                <img src="./images/img_avatar.png" alt="" class="profilePicture">
 
-                <p>Becenév</p>
+                <p id="nickname">Példa Név</p>
 
-                <div class="statistics">
-                    <p>Indított beszélgetések
-                        <br>
-                        3
-                    </p>
+                <button class="secondaryBTN">Profilkép cseréje</button>
 
-                    <p>Elmentett felhasználók
-                        <br>
-                        5
-                    </p>
+                <textarea name="" id="textarea" rows="5" maxlength="255" onchange="colorChange(this)" spellcheck="false"></textarea>
+
+                <p id="remaining-chars">0 / 255</p>
+
+                <img src="../chat/images/image.png" alt="">
+
+            </div>
+
+
+            <div class="data">
+                
+
+                <div class="nameEmailPsw">
+                    <!-- <div class="nickname">
+                        nem változtatható
                         
-                    <p>Mariposa-tag
-                        <br>
-                        10 napja
-                    </p>
+                        
+                    </div> -->
+
+                    <p>Teljes név</p>
+                    <input type="text" spellcheck="false" maxlength="50">
+    
+                    <!-- <div class="email">
+                        nem változtatható
+                        
+                    </div> -->
+                    
+                    <p>Email-cím</p>
+                    <input type="email" name="" id="" spellcheck="false">
+    
+                    <!-- <div class="password">
+                        változtatható
+                        
+                    </div> -->
+                    
+                    <p>Jelszó</p>
+                    <a href="" class="password">Jelszó megváltoztatása</a>
                 </div>
 
-                <div class="description">
-                    Mutatkozz be röviden! Ez a bemutatkozás fog megjelenni az indított chatjeidben!
+                <div class="gender">
+                    <!-- változtatható -->
+                    <p>Nem</p>
+                    
+                    <select name="" id="">
+                        <option value="" disabled selected>Nem megadása</option>
+                        <option value="">Nem adom meg</option>
+                        <option value="">Nő</option>
+                        <option value="">Férfi</option>
+                        <option value="">Nembináris</option>
+                    </select>
+
+                    <div class="show">
+                        <input type="checkbox" id="showGender">
+                        <label for="showGender">Jelenjen meg a chatben</label>
+                    </div>
                     
                 </div>
-                
+
+                <div class="birthdate">
+                    <!-- nem változtatható -->
+                    <p>Születési dátum</p>
+                    <input type="date" min="1900-01-01" max="2010-12-31">
+
+                    <div class="show">
+                        <input type="checkbox" id="showBirth">
+                        <label for="showBirth">Jelenjen meg a chatben</label>
+                    </div>
+                </div>
+
+                <button class="secondaryBTN">
+                    mentés
+                </button>
+
             </div>
 
-            <div class="settings">
+            <div class="interests">
                 
 
-                <div class="name1">
-                    <p>Vezetéknév</p>
-                    <input type="text">
+                <div class="sport" id="sport">
+                    <!-- <p>Sport</p> -->
+                    <details>
+                        <summary>Sport</summary>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">⚽</span> Labdasport</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">👟</span> Atlétika</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🏌️</span> Golf, krikett</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🥽</span> Úszás, szörfözés</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🎾</span> Tenisz, tollas</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🏇</span> Lovaglás</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🥋</span> Harcművészet</button>
+                    </details>
+                    
                 </div>
 
-                <div class="name2">
-                    <p>Keresztnév</p>
-                    <input type="text">
+                <div class="filmsTV">
+                    <!-- <p>Filmek és TV-műsorok</p> -->
+                    <details>
+                        <summary>Filmek és TV-műsorok</summary>
+                        <summary>
+                            <button onclick="chosenInterest(this)" class="notSelected">Anime</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Bűnügyi</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Krimi, thriller, horror</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Romantikus</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Sci-fi</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Filmdráma</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Valóságshow</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Talk show</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Vetélkedő</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Akciófilm</button>
+                        </summary>
+                    </details>
+                    
                 </div>
-                
-                <div class="email">
-                    <p>Email-cím</p>
-                    <input type="email">
+
+                <div class="nature">
+                    <!-- <p>Természet</p> -->
+                    <details>
+                        <summary>Természet</summary>
+                        <summary>
+                            <button onclick="chosenInterest(this)" class="notSelected">Túrázás</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Kerékpározás</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Madarászás</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Gombászás</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Kertészkedés</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Piknik</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Hajózás</button>
+                        </summary>
+                    </details>
+                    
                 </div>
-                
-                <div class="password">
-                    <p>Jelszó</p>
-                    <a href="">Jelszó megváltoztatása</a>
+
+                <div class="social">
+                    <!-- <p>Szociális</p> -->
+                    
+                    <details>
+                        <summary>Szociális</summary>
+                        <summary>
+                            <button onclick="chosenInterest(this)" class="notSelected">Közösségi média</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Videós tartalomgyártó</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Aktivizmus</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Önkéntesség</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Műgyűjtés</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Könyvklub</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Zenekar</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Ünnepek</button>
+                        </summary>
+                    </details>
+
+                    
                 </div>
-                
-                <div class="gender">
-                    <p>Nem</p>
-                    <select name="" id="">
-                        <option selected>Nem adom meg</option>
-                        <option>Nő</option>
-                        <option>Férfi</option>
-                        <option>Nembináris</option>
-                    </select>
-                    <p>
-                        <input type="checkbox" name="" id="checkboxG">
-                        <label for="checkboxG">Jelenjen meg a chatben</label>
-                    </p>
+
+                <div class="games">
+                    <!-- <p>Játékok</p> -->
+
+                    <details>
+                        <summary>Játékok</summary>
+                        <summary>
+                            <button onclick="chosenInterest(this)" class="notSelected">Telefonos játékok</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Társasjátékok</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Akciófigurák</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Akció, verekedős</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Kaland, horror-túlélő</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Stratégiai, platformer</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Sandbox</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Multiplayer játékok</button>
+                        </summary>
+                    </details>
+
+                    
                 </div>
-                
-                <div class="birthday">
-                    <p>Születésnap</p>
-                    <input type="date" max="2015-12-31">
-                    <p>
-                        <input type="checkbox" name="" id="checkboxB">
-                        <label for="checkboxB">Jelenjen meg a chatben</label>
-                    </p>
+
+                <div class="kitchen">
+                    <!-- <p>Konyha</p> -->
+
+                    <details>
+                        <summary>Konyha</summary>
+                        <summary>
+                            <button onclick="chosenInterest(this)" class="notSelected">Mixer</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Barista</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Sütés-főzés</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Molekuláris konyha</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Ázsiai konyha</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Amerikai konyha</button>
+                        </summary>
+                    </details>
+
+                    
+                </div>
+
+                <div class="fashion">
+                    <!-- <p>Divat</p> -->
+
+                    <details>
+                        <summary>Divat</summary>
+                        <summary>
+                            <button onclick="chosenInterest(this)" class="notSelected">Sminkelés</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Fodrászat</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Műkörömépítés</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Modellkedés</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Magazinok</button>
+                        </summary>
+                    </details>
+
+                    
+                </div>
+
+                <div class="arts">
+                    <!-- <p>Művészet</p> -->
+
+                    <details>
+                        <summary>Művészet</summary>
+                        <summary>
+                            <button onclick="chosenInterest(this)" class="notSelected">Fotóművészet</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Festészet</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Szobrászat</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Grafika</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Építészet</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Kézművesség</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Színművészet</button>
+                        </summary>
+                    </details>
+
+                    
+                </div>
+
+                <div class="literature">
+                    <!-- <p>Irodalom</p> -->
+
+                    <details>
+                        <summary>Irodalom</summary>
+                        <summary>
+                            <button onclick="chosenInterest(this)" class="notSelected">Olvasás</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Írás</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Képregény, manga</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Krimi, thriller, horror</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Sci-fi, fantasy</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Romantikus</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Életrajzi, történelmi</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Versek</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Színművek</button>
+                        </summary>
+                    </details>
+
+                    
+                </div>
+
+                <div class="science">
+                    <!-- <p>Tudomány</p> -->
+
+                    <details>
+                        <summary>Tudomány</summary>
+                        <summary>
+                            <button onclick="chosenInterest(this)" class="notSelected">Reál</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Humán</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Pszichológia, szociológia</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Politika</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Vallás</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Művészettörténet</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Régészet</button>
+                        </summary>
+                    </details>
+
+                    
+                </div>
+
+                <div class="vehicles">
+                    <!-- <p>Járművek</p> -->
+
+                    <details>
+                        <summary>Járművek</summary>
+                        <summary>
+                            <button onclick="chosenInterest(this)" class="notSelected">Szerelés</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Gyűjtés</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Amerikai járművek</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Japán, dél-koreai járművek</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Német járművek</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Olasz járművek</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Angol járművek</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Francia járművek</button>
+                        </summary>
+                    </details>
+
+                    
+                </div>
+
+                <div class="music">
+                    <!-- <p>Zene</p> -->
+
+                    <details>
+                        <summary>Zene</summary>
+                        <summary>
+                            <button onclick="chosenInterest(this)" class="notSelected">Népzene</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Alternatív</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Country</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Blues, R&B</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Dzsessz, szving</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Hiphop</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Rock, metál</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">Pop</button>
+                        </summary>
+                    </details>
+
+                    
                 </div>
             </div>
-
         </div>
+        
+        
+
+
+
     </div>
     
     <script src="script.js"></script>

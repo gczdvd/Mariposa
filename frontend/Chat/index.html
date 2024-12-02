@@ -3,82 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@600&family=Palanquin:wght@700&family=Red+Hat+Text&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-
     <title>Document</title>
 </head>
 <body>
+
     <div class="wrapper">
 
         <div class="header">
-
-            <!-- <div class="logo">
-                <img src="./images/logo.png" alt="">
-                <div class="title">Mariposa</div>
-            </div> -->
-
-            <div class="topnav">
-
-                <div href="#home" class="active">
-                    <img src="" alt="">
-                </div>
-
-                <!-- Navigation links (hidden by default) -->
-                <div id="myLinks">
-                  <a href="#news">Kezdőlap</a>
-                  <a href="#chat">Chatelj</a>
-                  <a href="#login">Bejelentkezés</a>
-                  <a href="#aboutus">Rólunk</a>
-                </div>
-                <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
-                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                  <i class="fa fa-bars"></i>
-                </a>
+            <a href="" class="activeLink">
+                <img src="../landingpage/images/logo.png" alt="" id="logo">
+                <span class="title">Mariposa</span>
+            </a>
+            
+            
+            <div class="navigation" id="navigation">
+                <a href="" class="tertiaryBTN">Kezdőlap</a>
+                <a href="" class="tertiaryBTN">Chatelj!</a>
+                <a href="" class="tertiaryBTN">Bejelentkezés</a>
+                <a href="" class="tertiaryBTN">Rólunk</a>
             </div>
-
         </div>
 
-        <div class="chat">
-
+        <div class="chatArea">
             <div class="saved">
-
+                <div class="savedChat" id="startChat">
+                    <img src="../landingpage/images/img_avatarA.png" alt="">
+                    <p>Új chat indítása</p>
+                </div>
+                <div class="savedChat">
+                    <img src="../landingpage/images/img_avatarA.png" alt="">
+                    <p>Példa Név</p>
+                </div>
+                <div class="savedChat">
+                    <img src="../landingpage/images/img_avatarA.png" alt="">
+                    <p>Példa Név</p>
+                </div>
+                <div class="savedChat">
+                    <img src="../landingpage/images/img_avatarA.png" alt="">
+                    <p>Példa Név</p>
+                </div>
             </div>
+    
+            <div class="chat">
 
-            <div class="messages">
-                <div class="emoji">
-                    <p>🙂</p>
-                </div>
-
-                <div class="images">
-                    <p>🖼️</p>
-                </div>
-
-                <div class="gif">
-                    <p>🎞️</p>
-                </div>
-
-                <div class="message-bar">
-                    <p>▶️</p>
-                    <!-- <input type="text" name="" id=""> -->
-                </div>
-
-                <div class="save">
-                    <p>🔖</p>
-                </div>
-
-                <div class="report">
-                    <p>⚠️</p>
-                </div>
-
+                <div class="message-bar" role="textbox" contenteditable="true" spellcheck="false" onemptied="placeholderAdd(this)" onfocusout="placeholderAdd(this)"></div>
+                
+                <p>▶️</p>
             </div>
+    
+            <div class="details">
+                <img src="../landingpage/images/img_avatarA.png" alt="">
+                <span id="name">Példa Név</span>
+                
+                <div class="data">
+                    <p id="birthdayP">🍰 
+                        <span id="birthday">
+                            2005. 05. 30
+                        </span>
+                    </p>
 
-            <div class="description">
+                    <p id="genderP">👥 
+                        <span id="gender">
+                            Nembináris
+                        </span>
+                    </p>
 
+                    <p id="quoteP">
+                        <span id="quote">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi blanditiis deleniti nobis veniam quibusdam, placeat qui libero cupiditate recusandae officiis! Itaque sunt iste excepturi neque qui illo earum quae odit.
+                        </span>
+                        <br>
+                        <img src="./images/image.png" alt="" style="width: 4vw; filter: opacity(0.5);">
+                    </p>
+
+                    
+                </div>
+
+                <p id="save" title="Felhasználó mentése">🔖
+                    
+                </p>
+                <p id="report" title="Felhasználó jelentése">
+                    ⚠️
+                </p>
             </div>
-
         </div>
-
     </div>
     <script src="script.js"></script>
 </body>

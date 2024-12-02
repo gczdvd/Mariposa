@@ -15,6 +15,7 @@ body{
     /* background-image: url("./images/web.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed; */
+    
 }
 
 .header{
@@ -23,7 +24,6 @@ body{
     background-color: transparent;
     width: 100%;
     position: absolute;
-
 }
 
 .activeLink{
@@ -45,14 +45,14 @@ body{
     align-self: center;
     /* padding-right: 2em; */
     /* height: fit-content; */
-    /* margin-top: 0.5rem; */
+    /* margin-top: 0.5em; */
 }
 
 .navigation a{
-    font-size: 1.3rem;
+    font-size: 1.3em;
     font-weight: bold;
     /* float: left; */
-    margin-right: 4rem;
+    /* margin-right: 4em; */
     color: white;
     height: fit-content;
     align-self: center;
@@ -73,7 +73,6 @@ body{
 
 .tertiaryBTN:hover::after, .tertiaryBTN a:hover::after{
     transform: scaleX(1);
-    
 }
 
 .tertiaryBTN:hover, .tertiaryBTN a:hover{
@@ -93,35 +92,31 @@ body{
 
 .title{
     /* height: fit-content; */
-    font-size: 1.5rem;
+    font-size: 1.5em;
     align-self: center;
     text-decoration: none;
+    color: black;
 }
 
 
 
 @media (max-aspect-ratio:1/1) {
-    .navigation{
-        display: none;
-        background-color: red;
-    }
-    
-    .navigation a{
-        font-size: 1.3rem;
-        font-weight: bold;
-        
-        color: white;
-        display: block;
-        /* padding-top: 1rem; */
-        padding: 1rem 0 1rem 1rem;
-        /* background-color: red; */
-        
+    .navbar{
+        display: grid;
+        /* grid-template-rows: repeat(4, 1fr); */
+        /* grid-template-columns: 1fr; */
     }
 
-    .activeLink {
+    .header{
+        position: absolute;
+        max-width: 100%;
+        /* overflow: hidden; */
+    }
+
+    .header .activeLink{
+        position: relative;
         background-color: transparent;
         color: white;
-        
     }
 
     .header a.icon {
@@ -130,13 +125,53 @@ body{
         font-size: 10vw;
         display: block;
         position: absolute;
-        right: 1rem;
-        top: 0.5rem;
-        
+        right: 0.5em;
+        /* top: 0.2em; */
+        /* margin-bottom: 500px; */
     }
 
     .header img{
-        width: 20vw;
+        width: 15vw;
+        /* position: fixed; */
+    }
+    
+    .navigation{
+        display: grid;
+        grid-template-rows: repeat(5, 1fr);
+        background-color: #ffbc2f;
+        /* width: 40vw; */
+        max-width: 100%;
+        
+        /* position: fixed; */
+        /* padding-top: 14vh; */
+    }
+    
+    .navigation a{
+        font-size: 1.3em;
+        font-weight: bold;
+        /* width: 50vw; */
+        color: white;
+        display: block;
+        /* padding-top: 1em; */
+        padding: 1em 0 1em 1em;
+        
+        /* background-color: red; */
+        
+    }
+
+    .navigation a:hover{
+        background-color: #df9903;
+        transition: 500ms;
+    }
+
+    .tertiaryBTN:hover, .tertiaryBTN a:hover{
+        color: white;
+    }
+
+    .tertiaryBTN::after, .tertiaryBTN a::after{
+        border-bottom: solid 0px #ffbc2f;
+        transform: scaleX(0);
+        transition: none; 
     }
 
     .title{
@@ -145,16 +180,22 @@ body{
 }
 
 .cover{
-    height: 100vh;
+    height: 70vh;
     display: grid;
+    width: 100vw;
+    max-width: 100%;
+
     justify-content: center;
     align-content: center;
+    font-family: "Albert Sans";
+    font-size: 3em;
+    text-transform: uppercase;
     /* background-image: url("./images/web.jpg"); */
     background-color: lightcoral;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-    font-size: 4rem;
+    
     text-align: center;
     /* position: fixed; */
 }
@@ -163,7 +204,8 @@ body{
 
 .support{
     display: grid;
-    grid-template-rows:  1fr 1fr;
+    grid-template-rows: auto auto;
+    /* gap: 3vh; */
 }
 
 
@@ -180,7 +222,9 @@ body{
 @media (max-aspect-ratio:1/1){
     .cover{
         height: 50vh;
-        font-size: 2rem;
+        font-size: 2em;
+        width: 100vw;
+        max-width: 100%;
     }
 
     .faq{
@@ -190,75 +234,78 @@ body{
 
 }
 
+.qTitle{
+    color: #ffbc2f;
+    font-size: 1.3em;
+}
+
 /* Style the buttons that are used to open and close the accordion panel */
 .accordion {
     display: grid;
     grid-template-columns: 1fr auto;
     background-color: #eee;
     color: black;
+    /* color: #ffbc2f; */
     cursor: pointer;
-    padding: 1rem 1rem 1rem 1rem;
-    /* align-self: center; */
+    padding: 1em 1em 1em 1em;
     font-family: "Red Hat Text";
-    font-size: 1rem;
+    font-size: 1em;
     width: 100%;
-    /* width: 80%; */
-    
     text-align: left;
     border: none;
     outline: none;
     transition: 0.4s;
-    /* text-align: center; */
-    /* margin-left: 50%; */
+    background-color: #f0f0f0;
     
-}
-
-button{
-    align-self: center;
-}
-
-
-.faq button{
-    height: fit-content;
 }
 
 .accordion:after {
-    content: '\02795'; /* Unicode character for "plus" sign (+) */
-    font-size: 1rem;
-    
-    color: #777;
+    /* content: '\02795'; Unicode character for "plus" sign (+) */
+    color: #ffbc2f;
+    content: '\2BC6';
+    /* font-size: 1.5em; */
     justify-self: end;
     align-self: center;
     /* float: right; */
     /* margin-left: 5px; */
-    height: 20px;
+    /* width: 2em; */
     /* width: 40%; */
   }
   
   .active:after {
-    content: '\2796'; /* Unicode character for "minus" sign (-) */
+    /* content: '\2796'; Unicode character for "minus" sign (-) */
+    content: '\2BC5';
+    color: #ffbc2f;
   }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active, .accordion:hover {
     background-color: #ccc;
+    /* background-color: #ffde97; */
+
 }
 
 /* Style the accordion panel. Note: hidden by default */
-.panel {
-    padding: 0 30px 0 30px;
+.panel{
+    padding: 0 1vw;
     background-color: white;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
     width: 100%;
     font-family: "Red Hat Text";
-    /* margin: auto; */
+    /* border-left: 1px solid #ffbc2f;
+    border-right: 1px solid #ffbc2f;
+    border-bottom: 1px solid #ffbc2f; */
+
 }
 
+.panel p{
+    margin: 1vw;
+}
 
 .qTitle{
-    margin-top: 20px;
+    margin-top: 1em;
     font-family: "Albert Sans";
 }
 
@@ -267,7 +314,8 @@ button{
     display: grid;
     grid-template-columns: 1fr 1fr;
     background-color: transparent;
-
+    height: fit-content;
+    margin: 10vh 0 10vh 0;
     /* background-image: url("../landingpage/images/img_avatarA.png"); */
     /* background-attachment: fixed; */
 }
@@ -277,50 +325,69 @@ button{
     justify-self: center;
     align-self: center;
     width: 70%;
-    height: 70%;
+    /* height: 70%; */
+}
+
+.inputs p:nth-of-type(1){
+    font-family: "Albert Sans";
+    font-size: 1.5em; 
 }
 
 .inputTitle{
-    margin-top: 1rem;
-    margin-bottom: 0;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
 }
 
 .inputs p{
     font-family: "Red Hat Text";
     align-self: end;
-    font-size: 1.2rem;
+    font-size: 1.2em;
 }
 
 .inputs input{
     border-bottom: lightgray 2px solid;
     align-self: end;
-    padding: 0 0 0.2rem 0.2rem;
+    padding: 0 0 0.2em 0.2em;
     color: #ffbc2f;
-    font-size: 1rem;
+    font-size: 1em;
 }
 
 .inputs input:focus{
     outline: none;
-    border-bottom: rgba(240, 192, 35, 1) 2px solid;
-    /* padding-left: 0.1rem; */
+    border-bottom: rgba(240, 192, 35, 1) 2px solid !important;
+    /* padding-left: 0.1em; */
 }
 
 
 textarea{
     resize: none;
-    border: 2px lightgray solid;
-    padding: 0.2rem 0 0.2rem 0.2rem;
+    border: 2px #d3d3d3 solid;
+    padding: 0.2em 0 0.2em 0.2em;
     /* width: 60%; */
     font-family: "Red Hat Text";
-    font-size: 1rem;
+    font-size: 1em;
     color: #ffbc2f;
 }
 
+
+
 textarea:focus{
     outline: none;
-    border: rgba(240, 192, 35, 1) 2px solid;
-    padding: 0.2rem 0 0.2rem 0.2rem;
+    border: rgba(240, 192, 35, 1) 2px solid !important;
+    padding: 0.2em 0 0.2em 0.2em;
 }
+
+
+#remaining-chars{
+    font-size: 11px;
+    color: #ffbc2f;
+    margin-top: 3px;
+    /* float: right; */
+    height: 20px;
+    /* display: none; */
+}
+
+
 
 .primaryBTN{
     display: grid;
@@ -331,11 +398,12 @@ textarea:focus{
     font-family: "Albert Sans";
     text-transform: uppercase;
     text-decoration: none;
-    padding: 1rem 2rem 1rem 2rem;
+    padding: 1em 2em 1em 2em;
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.5em;
     border: 3px solid transparent;
     cursor: pointer;
+    margin-top: 1em;
 }
 
 .primaryBTN:hover{
@@ -361,7 +429,7 @@ textarea:focus{
     }
 
     .primaryBTN{
-        padding: 0.5rem 1rem 0.5rem 1rem;
+        padding: 0.5em 1em 0.5em 1em;
         justify-self: center;
         /* text-align: center; */
         font-size: 15px;
@@ -376,10 +444,10 @@ textarea:focus{
 }
 
 .pages a{
-    padding: 1rem 1.5rem;
+    padding: 1em 1.5em;
     text-decoration: none;
     color: white;
-    font-size: 1.3rem;
+    font-size: 1.3em;
     display: inline-block;
     font-family: "Albert Sans";
     width: fit-content;
@@ -400,8 +468,8 @@ textarea:focus{
 }
 
 .trademark{
-    margin-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    margin-top: 0.5em;
+    padding-bottom: 0.5em;
     justify-self: center;
     color: white;
     font-family: "Red Hat Text";
@@ -414,11 +482,11 @@ textarea:focus{
     }
     
     .pages a{
-        font-size: 1rem;
-        padding: 0.25rem 0.5rem;
+        font-size: 1em;
+        padding: 0.25em 0.5em;
     }
 
     .trademark{
-        font-size: 0.7rem;
+        font-size: 0.7em;
     }
 }

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@600&family=Palanquin:wght@700&family=Red+Hat+Text&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="wrapper">
+
+        <div class="backBTN account">
+            <!-- <a href="">Vissza a Kezdőoldalra</a> -->
+        </div>
+
+        <div class="signin">
+
+            <div class="title">
+                Változtasd meg a jelszavad!
+            </div>
+
+            <div class="subtitle">
+                <!-- Üdv ismét! -->
+            </div>
+
+            <div class="passwordRN">
+                <p>Jelenlegi jelszó</p>
+                
+                <input type="email" id="email" placeholder="" spellcheck="false" onchange="colorChange(this)">
+            </div>
+
+            <div class="passwordNew1">
+                <p>Új jelszó</p>
+                
+                <input type="password" id="password1" value="" spellcheck="false" onchange="colorChange(this)"><span onclick="togglePSW()" id="toggleIcon">🕳️</span>
+                
+            </div>
+
+            <div class="passwordNew2">
+                <p>Új jelszó</p>
+                
+                <input type="password" id="password2" value="" spellcheck="false" onchange="colorChange(this)"><span onclick="togglePSW()" id="toggleIcon">🕳️</span>
+                
+            </div>
+
+            <div class="button">
+                <button class="primaryBTN" onclick="registration()">mentés</button>
+            </div>
+
+            <div class="forgotPSW">
+                <a href="">Elfelejtettem a jelszavam</a>
+            </div>
+
+        </div>
+    
+        <div class="image">
+            <img src="./images/tablet_phone.png" alt="">
+        </div>
+
+
+    </div>
+
+    
+    <script src="script.js"></script>
+    
+</body>
+</html>
