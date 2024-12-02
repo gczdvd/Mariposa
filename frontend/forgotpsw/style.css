@@ -42,19 +42,11 @@ body{
     color: #ffbc2f;
     border: 3px solid #ffbc2f;
 }
-/* 
+
 .backBTN {
     height: fit-content;
     margin: 0.5rem 0 0 0.7rem;
     width: fit-content;
-} */
-
-.backBTN, .backBTN a{
-    text-decoration: none;
-    display: inline-block;
-    margin: 0.2rem 0 0 0.3rem;
-    font-family: "Albert Sans";
-    color: #ffbc2f;
 }
 
 .backBTN a:hover::after{
@@ -76,6 +68,10 @@ body{
     height: 60vh;
     justify-self: center;
     align-self: center;
+}
+
+.signin p{
+    font-family: "Red Hat Text";
 }
 
 .image{
@@ -127,11 +123,10 @@ body{
     opacity: 0.7;
 }
 
-
-.nickname, .email, .password{
+/* 
+.nickname, .email, .password, .passwordRN, .passwordNew1, .passwordNew2{
     font-family: "Red Hat Text";
-    /* height: fit-content; */
-}
+} */
 
 input[type=text], input[type=email], input[type=password]{
     border-bottom: rgba(228, 228, 228, 1) 2px solid;
@@ -147,44 +142,46 @@ input:focus{
     border-bottom: rgba(240, 192, 35, 1) 2px solid !important ;
 }
 
+.TANDC a{
+    color: #ffbc2f;
+    text-decoration: none;
+}
+
+.TANDC input[type=checkbox]{
+    height: 0.7rem;
+    accent-color: #ffbc2f;
+}
+
 label{
     font-family: "Red Hat Text";
     font-size: 1rem;
 }
 
 .forgotPSW{
-    justify-self: end;
-}
-
-/* .account{
     font-family: "Red Hat Text";
     align-content: end;
-} */
-
-.tertiaryBTN, .tertiaryBTN a{
-    text-decoration: none;
-    display: inline-block;
-    font-family: "Albert Sans";
-    color: #ffbc2f;
 }
 
-.tertiaryBTN:hover::after, .tertiaryBTN a:hover::after{
+.forgotPSW a{
+    /* padding: 10px 15px 10px 15px; */
+    /* margin: 0 10px 0 10px; */
+    text-decoration: none;
+    color: #ffbc2f;
+    /* font-size: 20px; */
+    display: inline-block;
+    font-family: "Albert Sans";
+}
+
+.forgotPSW a:hover::after{
     transform: scaleX(1);
 }
 
-.tertiaryBTN:hover, .tertiaryBTN a:hover{
-    color: #ffbc2f;
-    transition: 200ms;
-}
-
-.tertiaryBTN::after, .tertiaryBTN a::after{
+.forgotPSW a::after{
     display: block;
+    /* margin-top: 2px; */
     content: '';
     border-bottom: solid 2px #ffbc2f;
     transform: scaleX(0);
-    transition: transform 200ms ease-in-out; 
-}
-
-.account{
-    font-family: "Red Hat Text";
+    transition: transform 250ms ease-in-out;
+    
 }
