@@ -28,6 +28,12 @@ function login(){
     })
     .then(async (e)=>{
         var resp = await e.json();
+        if(resp.action == "redirect"){
+            window.location.href = resp.value;
+        }
+        else{
+            console.log(resp);
+        }
     });
 }
 

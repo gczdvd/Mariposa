@@ -101,7 +101,7 @@ app.post('/login', (req, res) => {
                     res.cookie("sessId", sess.getId(), { expires: Session.neverExpire(), httpOnly: true, secure: true });
                     res.send(JSON.stringify({
                         "action":"redirect",
-                        "value":"/",
+                        "value":"/chat",
                         "message":"Successful login."
                     }));
                     
@@ -419,8 +419,8 @@ app.listen(3000, () => {
 });
 
 setInterval(()=>{
-    console.clear();
-    console.log(sessions.sessions);
-    console.log(tasks.getTasks());
+    process.stdout.write('\x1Bc');
+    console.dir(sessions.sessions, {"depth":2});
+    console.dir(tasks.getTasks(), {"depth":2});
     sessions.cleanUp();
 }, 10000)

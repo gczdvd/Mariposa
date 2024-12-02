@@ -9,6 +9,9 @@ function myFunction() {
   }
 
 var ws = new WebSocket("ws://127.0.0.1:3000/live");
+ws.onmessage = (e)=>{
+    console.log(e.data);
+}
 
 fetch("http://127.0.0.1:3000/chat", {
     method: "GET",
@@ -23,6 +26,7 @@ fetch("http://127.0.0.1:3000/chat", {
         console.log(resp);
     }
 });
+
 function placeholderAdd(textarea){
   if(textarea.value.length == 0){
     textarea.innerHTML = "Üzenet...";

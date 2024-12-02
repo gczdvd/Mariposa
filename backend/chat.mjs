@@ -37,10 +37,19 @@ export class Chat{
     newMessage(sess, message, type){
         this.db.newMessage(sess.getAttribute("client").getId(), message, type, this.id);
         var partner = (sess == this.sess1) ? this.sess2 : this.sess1;
-        partner.getAttribute("websocket").send(JSON.stringify({
-            "type":type,
-            "message":message
-        }));
+        var me = (sess == this.sess1) ? this.sess1 : this.sess2;
+        if(partner.getWebsocket() != null){
+            partner.getWebsocket().send(JSON.stringify({
+                "type":type,
+                "message":message
+            }));
+        }
+        else{
+            me.getWebsocket().send(JSON.stringify({
+                "status":"end"
+            }))
+            me.getWebsocket().close();
+        }
     }
 }
 
@@ -68,10 +77,10 @@ export class Finder{
                     const nChat = this.chats.newChat(pair[0], pair[1]);
                     pair[0].setAttribute("chat", nChat);
                     pair[1].setAttribute("chat", nChat);
-                    pair[0].getAttribute("websocket").send(JSON.stringify({
+                    pair[0].getWebsocket().send(JSON.stringify({
                         "status":"havepartner"
                     }));
-                    pair[1].getAttribute("websocket").send(JSON.stringify({
+                    pair[1].getWebsocket().send(JSON.stringify({
                         "status":"havepartner"
                     }));
                     break;
