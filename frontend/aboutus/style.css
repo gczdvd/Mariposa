@@ -163,6 +163,23 @@
     font-size: 1.5em;
 }
 
+.history{
+    /* width: 50vw; */
+    text-align: center;
+    justify-self: center;
+    background-image: url("../support/images/web.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.historyP{
+    width: 50vw;
+    font-family: "Red Hat Text";
+    line-height: 1.5em;
+    font-size: 1.1em;
+}
+
+
 
 .history img{
     display: block;
@@ -186,6 +203,7 @@
     font-size: 2em;
     opacity: 0.7;
     color: #ffbc2f;
+    font-family: "Red Hat Text";
 }
 
 .valuesT{
@@ -288,19 +306,11 @@
     /* background-attachment: fixed; */
 }
 
-.contact img{
-    width: 50%;
-    display: block;
-    justify-self: center;
-}
-
 .inputs{
     display: grid;
     justify-self: center;
     align-self: center;
     width: 70%;
-    border: none;
-    outline: none;
     /* height: 70%; */
 }
 
@@ -321,7 +331,6 @@
 }
 
 .inputs input{
-    outline: none;
     border: none;
     border-bottom: lightgray 2px solid;
     align-self: end;
@@ -347,18 +356,22 @@ textarea{
     color: #ffbc2f;
 }
 
+
+
 textarea:focus{
     outline: none;
     border: rgba(240, 192, 35, 1) 2px solid !important;
     padding: 0.2em 0 0.2em 0.2em;
 }
 
+
 #remaining-chars{
     font-size: 11px;
     color: #ffbc2f;
     margin-top: 3px;
-    visibility: hidden;
+    /* float: right; */
     height: 20px;
+    /* display: none; */
 }
 
 

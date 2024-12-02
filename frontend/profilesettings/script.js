@@ -2,10 +2,9 @@ const textarea = document.getElementById("textarea");
 function charCounter(inputField) {
 
   const remChars = document.getElementById("remaining-chars");
-
+  remChars.style.visibility = "visible";
   const maxLength = inputField.getAttribute("maxlength");
   const currentLength = inputField.value.length;
-  remChars.style.visibility = "visible";
   remChars.innerHTML = `${currentLength} / ${maxLength}`;
   
 }
@@ -27,6 +26,8 @@ function colorChange(textarea){
   }
 }
 textarea.onfocusout = () => colorChange(textarea);
+
+
 
 function chosenInterest(interest){
   if(interest.classList.contains("notSelected")){

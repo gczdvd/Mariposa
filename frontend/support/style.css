@@ -18,53 +18,7 @@ body{
     
 }
 
-.header{
-    display: grid;
-    grid-template-columns: auto 1fr;
-    background-color: transparent;
-    width: 100%;
-    position: absolute;
-}
-
-.activeLink{
-    display: grid;
-    grid-template-columns: auto 1fr;
-    text-decoration: none;
-    /* color: black; */
-    font-family: "Palanquin";
-    text-transform: uppercase;
-}
-
-.header img{
-    width: 5vw;
-}
-
-.navigation{
-    /* display: grid; */
-    grid-column: 4;
-    align-self: center;
-    /* padding-right: 2em; */
-    /* height: fit-content; */
-    /* margin-top: 0.5em; */
-}
-
-.navigation a{
-    font-size: 1.3em;
-    font-weight: bold;
-    /* float: left; */
-    /* margin-right: 4em; */
-    color: white;
-    height: fit-content;
-    align-self: center;
-
-    /* border-radius: 100px; */
-}
-
-.header a.icon {
-    display: none;
-}
-
-
+/* ALSÓ HATÁR ANIMÁCIÓ */
 .tertiaryBTN, .tertiaryBTN a{
     text-decoration: none;
     display: inline-block;
@@ -73,6 +27,7 @@ body{
 
 .tertiaryBTN:hover::after, .tertiaryBTN a:hover::after{
     transform: scaleX(1);
+    
 }
 
 .tertiaryBTN:hover, .tertiaryBTN a:hover{
@@ -88,14 +43,72 @@ body{
     transition: transform 200ms ease-in-out; 
 }
 
+/* ALAP DOBOZ
+.wrapper{
+    display: grid;
+    gap:100px; 
+    width: 100%;
+} */
 
+
+/* HEADER */
+.header{
+    display: grid;
+    width: 100vw;
+    max-width: 100%;
+    /* box-sizing: border-box; */
+    grid-template-columns: auto 1fr;
+    background-color: transparent;
+    position: absolute;
+    /* margin-top: 1em; */
+}
+
+.logo{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.logo img{
+    width: 5vw;
+}
+
+
+/*
+.navigation li:hover{
+    height: fit-content;
+    background-color: white;
+    border-radius: 100px;
+    transition: 300ms;
+    color: #ffbc2f;
+}
+*/
 
 .title{
-    /* height: fit-content; */
-    font-size: 1.5em;
+    /* align-self: center; */
+    font-size: 1em;
     align-self: center;
-    text-decoration: none;
-    color: black;
+    text-transform: uppercase;
+    font-family: "Palanquin";
+}
+
+.navigation{
+    grid-column: 4;
+    align-self: center;
+    /* padding-right: 2em; */
+    height: auto;
+    
+}
+
+.navigation a{
+    font-size: 1.3rem;
+    font-weight: bold;
+    list-style: none;
+    /* float: left; */
+    margin: 1rem 2rem;
+    color: white;
+    /* border-radius: 100px; */
+    height: fit-content;
+    
 }
 
 
@@ -182,8 +195,8 @@ body{
 .cover{
     height: 70vh;
     display: grid;
-    width: 100vw;
-    max-width: 100%;
+    /* width: 100vw; */
+    /* max-width: 100%; */
 
     justify-content: center;
     align-content: center;
@@ -398,7 +411,7 @@ textarea:focus{
     font-family: "Albert Sans";
     text-transform: uppercase;
     text-decoration: none;
-    padding: 1em 2em 1em 2em;
+    padding: 0.5em 1em;
     color: white;
     font-size: 1.5em;
     border: 3px solid transparent;
