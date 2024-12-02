@@ -344,28 +344,28 @@ app.get('/logout', (req, res) => {
         if(sessions.removeSession(req.session.session)){
             res.cookie("sessId", "-", { maxAge: 0, httpOnly: true, secure: true });
             res.status(200);
-            res.send(`Goodbye!`);
+            res.send(JSON.stringify({"message":"Goodbye!"}));
         }
         else{
             res.status(500);
-            res.send(`Unknown error.`);
+            res.send(JSON.stringify({"message":"Unknown error."}));
             console.error("Valid user can't do logout.");
         }
     }
     else{
         res.status(200);
-        res.send(`You aren't logged in!`);
+        res.send(JSON.stringify({"message":"You aren't logged in!"}));
     }
 });
 
 app.get('/', (req, res) => {
     if (req.session.valid) {
         res.status(200);
-        res.send(`Welcome ${req.session.id}!`);
+        res.send(JSON.stringify({"message":"Welcome ${req.session.id}!"}));
     }
     else {
         res.status(200);
-        res.send(`Who are you?`);
+        res.send(JSON.stringify({"message":"Who are you?"}));
     }
 });
 
@@ -379,16 +379,16 @@ app.get('/', (req, res) => {
 app.get('/chat', sessionValidator, (req, res) => {                  //Ezen kérés előtt, de a bejelentkezés után KÖTELEZŐ websocketet nyitni
     if(req.session.session.getAttribute("chat") instanceof Chat){
         res.status(200);
-        res.send(JSON.stringify({
-            "action":"redirect",
-            "value":"/",
-            "message":"You have partner."
-        }));
+        res.send(JSON.stringify({"message":"You have partner."}/*{
+        //     "action":"redirect",
+        //     "value":"/",
+        //     "message":"You have partner."
+        }*/));
     }
     else{
         req.session.session.setAttribute("chat", new Want());
         res.status(200);
-        res.send("Waiting for partner...");
+        res.send(JSON.stringify({"message":"Waiting for partner..."}));
     }
 });
 
