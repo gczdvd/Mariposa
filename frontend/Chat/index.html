@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@600&family=Palanquin:wght@700&family=Red+Hat+Text&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@600&family=Noto+Color+Emoji&family=Palanquin:wght@700&family=Red+Hat+Text&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
@@ -13,20 +13,37 @@
 
     <div class="wrapper">
 
-        <!-- <div class="header">
-            <a href="" class="">
-                <img src="../images/logo.png" alt="" id="logo">
-                <span class="title">Mariposa</span>
-            </a>
-            
-            
-            <div class="navigation" id="navigation">
-                <a href="" class="tertiaryBTN">Kezdőlap</a>
-                <a href="" class="tertiaryBTN">Chatelj!</a>
-                <a href="" class="tertiaryBTN">Bejelentkezés</a>
-                <a href="" class="tertiaryBTN">Rólunk</a>
+        <div class="header">
+            <div id="main">
+                <button class="openbtn" onclick="openNav()">
+                &#9776</button>
             </div>
-        </div> -->
+
+            <div id="sidebar" class="sidebar">
+                <!-- <input type="checkbox" id="check">
+                <img src=".//images/8182885.png" alt="" id="logo">
+                <a href="" class="">
+                    
+                    <span class="title">Mariposa</span>
+                </a> -->
+                
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" class="tertiaryBTN">Kezdőlap</a>
+                <a href="#" class="tertiaryBTN">Profil</a>
+                <a href="#" class="tertiaryBTN">Rólunk</a>
+                <a href="#" class="tertiaryBTN">Segítség</a>
+            </div>
+    
+            
+        </div>
+        
+
+            <!-- <div class="navigation" id="navigation">
+                <a href="" class="tertiaryBTN">Kezdőlap</a>
+                <a href="" class="tertiaryBTN">Profil</a>
+                <a href="" class="tertiaryBTN">Rólunk</a>
+                <a href="" class="tertiaryBTN">Segítség</a>
+            </div> -->
 
         <div class="chatArea">
             <div class="saved">
@@ -84,13 +101,15 @@
                 <span id="name">Példa Név</span>
                 
                 <div class="data">
-                    <p id="birthdayP">🍰 
-                        <span id="birthday">
+                    <p id="birthdayP" title="Születésnap">
+                        <span class="emoji">🎂</span> 
+                        <span id="birthday" >
                             2005. 05. 30
                         </span>
                     </p>
 
-                    <p id="genderP">👥 
+                    <p id="genderP">
+                        <span class="emoji">👥</span> 
                         <span id="gender">
                             Nembináris
                         </span>
@@ -101,16 +120,16 @@
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi blanditiis deleniti nobis veniam quibusdam, placeat qui libero cupiditate recusandae officiis! Itaque sunt iste excepturi neque qui illo earum quae odit.
                         </span>
                         <br>
-                        <img src="./images/image.png" alt="" style="width: 4vw; filter: opacity(0.5);">
+                        <img src="./images/image.png" alt="" draggable="false">
                     </p>
 
                     
                 </div>
 
-                <p id="save" title="Felhasználó mentése">🔖
-                    
+                <p id="save" title="Felhasználó mentése" class="emoji" onclick="">
+                    🔖
                 </p>
-                <p id="report" title="Felhasználó jelentése">
+                <p id="report" title="Felhasználó jelentése" class="emoji" onclick="">
                     ⚠️
                 </p>
             </div>

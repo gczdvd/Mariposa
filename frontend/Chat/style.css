@@ -29,7 +29,7 @@ body{
 }
 
 .tertiaryBTN:hover, .tertiaryBTN a:hover{
-    color: white;
+    color: #ffbc2f;
     transition: 200ms;
 }
 
@@ -43,17 +43,18 @@ body{
 
 
 .header{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    /* display: grid; */
+    /* display: none; */
+    /* grid-template-columns: 1fr 1fr; */
     background-color: transparent;
     width: 100%;
-    height: fit-content;
-    /* position: absolute; */
-    background-color: #ffbc2f;
+    /* height: fit-content; */
+    position: absolute;
+    /* background-color: #ffbc2f; */
 }
 
-.header img{
-    width: 5vw;
+#logo{
+    width: 3vw;
 }
 
 .title{
@@ -65,11 +66,70 @@ body{
     font-family: "Palanquin";
 }
 
+/* The sidebar menu */
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: relative;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+  }
+  
+  /* The sidebar links */
+  .sidebar a {
+    /* padding: 8px 8px 8px 32px; */
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .sidebar a:hover {
+    color: #f1f1f1;
+  }
+  
+  /* Position and style the close button (top right corner) */
+  .sidebar .closebtn {
+    position: fixed;
+    /* display: none; */
+    top: 0;
+    /* right: 25px; */
+    font-size: 36px;
+    /* margin-left: 50px; */
+  }
+  
+  /* The button used to open the sidebar */
+  .openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+  }
+  
+  .openbtn:hover {
+    background-color: #444;
+  }
+
+
+
 .navigation{
-    display: grid;
-    /* grid-column: 4; */
-    grid-template-columns: repeat(4, auto);
     
+    display: grid;
+    
+    /* grid-column: 4; */
+    /* grid-template-columns: repeat(4, auto); */
+    grid-template-rows: repeat(4, auto);
+    width: fit-content;
+    display: none;
     /* align-self: center; */
     /* justify-self: end; */
     
@@ -80,7 +140,7 @@ body{
     font-weight: bold;
     /* float: left; */
     /* margin-right: 4em; */
-    color: white;
+    color: black;
     height: fit-content;
     align-self: center;
     justify-self: center;
@@ -178,6 +238,7 @@ body{
     /* margin-bottom: 1em; */
     direction: ltr;
     width: 100%;
+    font-family: "Noto Color Emoji";
 
     /* justify-self: center; */
     /* align-self: end; */
@@ -228,16 +289,60 @@ body{
     gap: 10px;
 }
 
+#name{
+    font-family: "Red Hat Text";
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+#birthday, #gender{
+    font-family: "Red Hat Text";
+    font-size: 1.2em;
+}
+
+#quote{
+    font-family: "Red Hat Text";
+    font-size: 1em;
+}
+
 #quoteP{
-    /* padding: 1.5em 1.5em 0 1.5em; */
+    padding: 1.5em 1.5em 0 1.5em;
+}
+
+#quoteP img{
+    width: 4vw;
+    opacity: 0.5;
 }
 
 #save{
+    justify-self: center;
     align-self: end;
+    font-size: 2em;
+    cursor: pointer;
+    width: fit-content;
 }
 
 #report{
     justify-self: end;
-    align-self: center;
-    margin-right: 1em;
+    align-self: end;
+    font-size: 1.5em;
+    cursor: pointer;
+    width: fit-content;
+
+    margin: 0 0.5em 0.5em 0;
+}
+
+.emoji{
+    font-family: "Noto Color Emoji";
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+img{
+    -webkit-user-drag: none;
+    user-select: none;
+}
+
+#check{
+    display: none;
 }
