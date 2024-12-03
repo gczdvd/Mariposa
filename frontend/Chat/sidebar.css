@@ -36,11 +36,12 @@ button{
 }
 
 #navigation li a:hover{
-    color: white;
+    color: lightgray;
 }
 
 #navigation li a{
     text-decoration: none;
+    color: white;
     /* padding: 2dvh; */
 }
 

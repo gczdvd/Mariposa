@@ -11,27 +11,33 @@
 </head>
 <body>
 
-    <div class="wrapper">
+    <div class="wrapper" id="wrapper">
 
         <div class="header">
-            <div id="main">
-                <button class="openbtn" onclick="openNav()">
-                &#9776</button>
-            </div>
-
-            <div id="sidebar" class="sidebar">
-                <!-- <input type="checkbox" id="check">
-                <img src=".//images/8182885.png" alt="" id="logo">
-                <a href="" class="">
-                    
-                    <span class="title">Mariposa</span>
-                </a> -->
+            <div class="header" id="header">
+                <div id="main">
+                    <button>
+                        <img src="./images/open.png" alt="" onclick="openNav()" id="open" class="openbtn">
+        
+                        <img src="./images/close.png" alt="" onclick="closeNav()" id="close">
+                    </button>
+                </div>
+    
                 
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <a href="#" class="tertiaryBTN">Kezdőlap</a>
-                <a href="#" class="tertiaryBTN">Profil</a>
-                <a href="#" class="tertiaryBTN">Rólunk</a>
-                <a href="#" class="tertiaryBTN">Segítség</a>
+    
+                <div id="navigation">
+                    <ul>
+    
+                        <li><a href="">Kezdőlap</a></li>
+                        <li><a href="">Profil</a></li>
+                        <li><a href="">Rólunk</a></li>
+                        <li><a href="">Segítség</a></li>
+                    </ul>
+                    <!-- <a href="">Kezdőlap</a>
+                    <a href="">Profil</a>
+                    <a href="">Rólunk</a>
+                    <a href="">Segítség</a> -->
+                </div>
             </div>
     
             
@@ -46,14 +52,15 @@
             </div> -->
 
         <div class="chatArea">
-            <div class="saved">
+            <div class="saved" id="saved">
                 <div class="searchbar">
                     <!-- <input type="search"> -->
                 </div>
-                <div class="savedChat" id="startChat">
-                    <img src="../images/img_avatarA.png" alt="">
-                    <p>Új chat indítása</p>
+
+                <div class="" id="startChat" title="Új chat indítása">
+                    <a href=""><img src="./images/1828926.png"></a>
                 </div>
+
                 <div class="savedChat">
                     <img src="../images/img_avatarA.png" alt="">
                     <p>Példa Név</p>
@@ -74,6 +81,10 @@
                     <img src="../images/img_avatarA.png" alt="">
                     <p>Példa Név</p>
                 </div>                
+                <div class="savedChat">
+                    <img src="../images/img_avatarA.png" alt="">
+                    <p>Példa Név</p>
+                </div>
                 <div class="savedChat">
                     <img src="../images/img_avatarA.png" alt="">
                     <p>Példa Név</p>

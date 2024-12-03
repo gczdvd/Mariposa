@@ -42,16 +42,7 @@ body{
 }
 
 
-.header{
-    /* display: grid; */
-    /* display: none; */
-    /* grid-template-columns: 1fr 1fr; */
-    background-color: transparent;
-    width: 100%;
-    /* height: fit-content; */
-    position: absolute;
-    /* background-color: #ffbc2f; */
-}
+
 
 #logo{
     width: 3vw;
@@ -66,74 +57,75 @@ body{
     font-family: "Palanquin";
 }
 
-/* The sidebar menu */
-.sidebar {
-    height: 100%;
-    width: 0;
-    position: relative;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111; /* Black*/
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px; /* Place content 60px from the top */
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
-  }
-  
-  /* The sidebar links */
-  .sidebar a {
-    /* padding: 8px 8px 8px 32px; */
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-  }
-  
-  /* When you mouse over the navigation links, change their color */
-  .sidebar a:hover {
-    color: #f1f1f1;
-  }
-  
-  /* Position and style the close button (top right corner) */
-  .sidebar .closebtn {
-    position: fixed;
-    /* display: none; */
-    top: 0;
-    /* right: 25px; */
-    font-size: 36px;
-    /* margin-left: 50px; */
-  }
-  
-  /* The button used to open the sidebar */
-  .openbtn {
-    font-size: 20px;
-    cursor: pointer;
-    background-color: #111;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-  }
-  
-  .openbtn:hover {
-    background-color: #444;
-  }
-
-
-
-.navigation{
-    
-    display: grid;
-    
-    /* grid-column: 4; */
-    /* grid-template-columns: repeat(4, auto); */
-    grid-template-rows: repeat(4, auto);
-    width: fit-content;
-    display: none;
-    /* align-self: center; */
-    /* justify-self: end; */
+.header button img{
+    width: 2vw;
     
 }
+
+.header button{
+    height: fit-content;
+    background-color: transparent;
+    border: none;
+    margin: 1em 1em 0 0;
+    display: block;
+    justify-self: end;
+    position: absolute;
+    right: 0;
+    z-index: 2;
+    cursor: pointer;
+}
+
+#navigation li{
+    list-style: none;
+    width: 100%;
+    display: block;
+    padding: 1em;
+    /* transition: 0.3s; */
+}
+
+#navigation li a{
+    text-decoration: none;
+    color: white;
+    /* padding: 2dvh; */
+}
+
+#navigation li a:hover{
+    color: lightgray;
+}
+
+#navigation ul{
+    grid-row-start: 2;
+}
+
+#navigation{
+    display: grid;
+    grid-template-rows: 2em 1fr;
+    position: absolute;
+    height: 100vh;
+    max-height: 100%;
+    justify-self: end;
+    font-size: 1.5em;
+    background-color: orange;
+    z-index: 1;
+    /* position: relative; */
+    overflow-x: hidden;
+    transition: 0.5s;
+    width: 0;
+    /* top: 0; */
+    right: 0;
+    /* text-align: center; */
+}
+
+#main{
+    transition: margin-right .5s;
+    
+}
+
+#close{
+    display: none;
+}
+
+
 
 .navigation a{
     font-size: 1.3em;
@@ -177,12 +169,12 @@ body{
     grid-template-columns: auto 1fr;
     height: fit-content;
     /* gap: 1em; */
-    height: fit-content;
-    box-shadow: 0 0 1px #ffbc2f
+    /* box-shadow: 0 0 1px #ffbc2f; */
+    border-top: 1px solid #ffbc2f;
 }
 
 .savedChat:hover{
-    background-color: lightgray;
+    background-color: rgb(255, 221, 158);
     transition: 400ms;
     cursor: pointer;
 }
@@ -203,18 +195,31 @@ body{
 }
 
 #startChat{
-    /* position: relative; */
-    color: #ffbc2f;
+    
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    
+    color: gray;
     text-transform: uppercase;
+    background-color: white;
+    transition: 0.35s;
+    /* z-index: 1; */
+    cursor: pointer;
 }
 
 #startChat img{
-    filter: grayscale(1);
+    width: 3vw;
+    display: block;
+    justify-self: center;
+    margin: 1em 0;
 }
 
 #startChat:hover{
     /* color: black; */
-    background-color: #ffbd2f49;
+    color: white;
+    background-color: #ffbc2f;
+    filter: grayscale(0);    
 }
 
 .chat{
@@ -287,6 +292,7 @@ body{
 .data{
     display: grid;
     gap: 10px;
+    
 }
 
 #name{
