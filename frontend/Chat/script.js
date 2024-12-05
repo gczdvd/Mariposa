@@ -32,3 +32,31 @@ function placeholderAdd(textarea){
     textarea.innerHTML = "Üzenet...";
   }
 }
+
+
+function openNav() {
+  document.getElementById("navigation").style.width = "26vw";
+  // document.getElementById("main").style.marginRight = "250px";
+
+  document.getElementById("close").style.display = "block";
+  document.getElementById("open").style.display = "none";
+
+  document.getElementById("wrapper").style.filter = "blur(1)";
+
+  // document.getElementById("header").style.backgroundColor = "orange";
+  // header.style.backgroundColor = "orange";
+
+}
+
+/* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+function closeNav() {
+
+  document.getElementById("navigation").style.width = "0px";
+  // document.getElementById("main").style.marginRight = "0";
+  // document.getElementById("header").style.backgroundColor = "transparent";
+  document.getElementById("header").style.height = "fit-content";
+
+  document.getElementById("open").style.display = "block";
+
+  document.getElementById("close").style.display = "none";
+}
