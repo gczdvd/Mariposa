@@ -393,14 +393,24 @@ app.get('/chat', sessionValidator, (req, res) => {                  //Ezen kÃ©rÃ
 });
 
 app.ws('/live', function(ws, req) {
-    if(sessions.getSessionById(req.session.id)?.valid()){
+    if(sessions.getSessionById(req.session.id)?.valid() && !(sessions.getSessionById(req.session.id)?.getWebsocket())){
         ws.on('message', function(msg) {
             var sess = sessions.getSessionById(req.session.id);
             if(sess?.valid()) {
-                ws.send(msg);
                 sess.touch();
                 if(sess.getAttribute("chat") instanceof Chat){
-                    sess.getAttribute("chat").newMessage(sess, msg, "text/plain");
+                    try{
+                        var jmsg = JSON.parse(msg);
+                        if(jmsg.type == "message"){
+                            sess.getAttribute("chat").newMessage(sess, jmsg.value, "text/plain");
+                        }
+                        else if(jmsg.type == "action"){
+                            if(jmsg.value == "end"){
+                                sess.getAttribute("chat").close();
+                            }
+                        }
+                    }
+                    catch{}
                 }
             }
             else{
@@ -423,4 +433,4 @@ setInterval(()=>{
     console.dir(sessions.sessions, {"depth":2});
     console.dir(tasks.getTasks(), {"depth":2});
     sessions.cleanUp();
-}, 10000)
+}, 1000)

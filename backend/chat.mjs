@@ -34,11 +34,21 @@ export class Chat{
     getId(){
         return this.id;
     }
+    close(){
+        this.sess1.getWebsocket()?.close();
+        this.sess2.getWebsocket()?.close();
+        this.sess1.setAttribute("chat", null);
+        this.sess2.setAttribute("chat", null);
+    }
     newMessage(sess, message, type){
         this.db.newMessage(sess.getAttribute("client").getId(), message, type, this.id);
+
         var partner = (sess == this.sess1) ? this.sess2 : this.sess1;
         var me = (sess == this.sess1) ? this.sess1 : this.sess2;
-        if(partner.getWebsocket() != null){
+
+        var pawe = partner.getWebsocket();
+        console.log(pawe);
+        if(pawe != null){
             partner.getWebsocket().send(JSON.stringify({
                 "type":type,
                 "message":message
@@ -49,6 +59,8 @@ export class Chat{
                 "status":"end"
             }))
             me.getWebsocket().close();
+            me.setAttribute("chat", null);
+            partner.setAttribute("chat", null);
         }
     }
 }
