@@ -77,7 +77,8 @@ function savePartner(){
     focusConfirm: "false",
     confirmButtonText: "Mentés", 
     cancelButtonText: "Mégse",
-    confirmButtonColor: "#ffbc2f"
+    confirmButtonColor: "#ffbc2f",
+    iconColor: "#ffbc2f"
   })
 }
 
@@ -105,12 +106,24 @@ function reportPartner(){
     width: "64em",
     showCancelButton: "true",
     reverseButtons: "true",
-    focusConfirm: "false",
+    // focusConfirm: "false",
     confirmButtonText: "Jelentés", 
     cancelButtonText: "Mégse",
     confirmButtonColor: "#ffbc2f",
-  })
+    iconColor: "#ffbc2f"
+  }).then((result) => {
+    if(result.isConfirmed){
+      Swal.fire({
+        title: "Köszönjük bejelentésed!",
+        text: "Csapatunk ellenőrizni fogja a beszélgetést.",
+        icon: "success",
+        confirmButtonText: "Vissza a Chathez",
+        width: "64em",
+        confirmButtonColor: "#ffbc2f",
+        iconColor: "#ffbc2f"
+      });
+    }
+  });
 }
-
 // Kulcs: html, érték: egész html oldal
 // Repülőékezettel lehet sort törni
