@@ -44,12 +44,18 @@ export class Chat{
         this.db.newMessage(sess.getAttribute("client").getId(), message, type, this.id);
 
         var partner = (sess == this.sess1) ? this.sess2 : this.sess1;
-        var me = (sess == this.sess1) ? this.sess1 : this.sess2;
+        var me = sess;
 
         var pawe = partner.getWebsocket();
         console.log(pawe);
         if(pawe != null){
             partner.getWebsocket().send(JSON.stringify({
+                "from":1,
+                "type":type,
+                "message":message
+            }));
+            me.getWebsocket().send(JSON.stringify({
+                "from":0,
                 "type":type,
                 "message":message
             }));

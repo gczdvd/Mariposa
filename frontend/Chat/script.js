@@ -11,9 +11,6 @@ function myFunction() {
   }
 
 var ws = new WebSocket("ws://127.0.0.1:3000/live");
-ws.onmessage = (e)=>{
-    console.log(e.data);
-}
 
 fetch("http://127.0.0.1:3000/chat", {
     method: "GET",
@@ -127,3 +124,29 @@ function reportPartner(){
 }
 // Kulcs: html, érték: egész html oldal
 // Repülőékezettel lehet sort törni
+
+function send(){
+    var text = document.getElementById("message").value;
+    //Itt kezelni kell üres üzenetet stb...
+    ws.send(JSON.stringify({
+        "type":"message",
+        "value":text
+    }));
+}
+
+function receive(e){
+    var data = JSON.parse(e.data);
+    if(data.type == "text/plain"){
+        var e = document.createElement("div");
+        if(data.from == 0){
+            e.className = "message1";
+        }
+        else{
+            e.className = "message2";
+        }
+        e.innerText = data.message;
+        document.getElementsByClassName("messages")[0].insertBefore(e, document.getElementsByClassName("messages")[0].firstChild);
+    }
+}
+
+ws.onmessage = receive;
