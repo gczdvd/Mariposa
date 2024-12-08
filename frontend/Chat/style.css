@@ -13,7 +13,7 @@ body.blur > *:not(#navigation) {
 
 .wrapper{
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto;
     grid-template-rows: auto auto;
     height: 100vh;
     max-height: 100vh;
@@ -152,7 +152,7 @@ body.blur > *:not(#navigation) {
 
 .chatArea{
     display: grid;
-    grid-template-columns: 20vw auto 25vw;
+    grid-template-columns: 19vw 50vw auto auto;
 }
 
 .saved{
@@ -227,18 +227,12 @@ body.blur > *:not(#navigation) {
 
 .chat{
     display: grid;
-    /* grid-template-columns: 1fr 1fr; */
-
-    /* align-content: end; */
-    border-left: 2px solid rgba(255, 189, 47, 0.3);
-    border-right: 2px solid rgba(255, 189, 47, 0.3);
-    /* padding: 10px; */
-    /* height: 100%; */
-
-    /* overflow: auto;
-
+    border-right: 2px solid rgba(200, 200, 200, 0.3);
+    border-left: 2px solid rgba(200, 200, 200, 0.3);
+    /*
     display: flex;
-    flex-direction: column-reverse; */
+    flex-direction: column-reverse;
+    */
 }
 
 .messages{
@@ -246,15 +240,7 @@ body.blur > *:not(#navigation) {
     display: flex;
     flex-direction: column-reverse;
     height: 90vh;
-}
-
-
-
-#sendBTN{
-    font-family: "Noto Color Emoji";
-    font-size: xx-large;
-    justify-self: center;
-    align-self: center;
+    width: 100%;
 }
 
 .message1{
@@ -279,34 +265,47 @@ body.blur > *:not(#navigation) {
 
 .message{
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 95% auto;
     align-self: end;
+    height: 8vh;
+    margin-left: 0.5em;
+    /* width: 100%; */
 }
 
+.message button{
+    
+    height: fit-content;
+    align-self: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    width: fit-content;
+    margin-left: 10%;
+    /* justify-self: start; */
+}
+
+.message button img{
+    width: 2em;
+    display: block;
+}
 
 .message-bar{
-    /* grid-column: 1 / span 2; */
     background-color: rgb(234, 234, 234);
     max-height: 15vh;
     border-radius: 1em;
     font-family: "Red Hat Text";
     height: fit-content;
     padding: 0.5em;
-    /* position: fixed; */
-    /* bottom: 0; */
+    /* width: 100%; */
+    /* width: 45vw; */
     direction: ltr;
-    /* width: 0%; */
-
-
-    /* justify-self: center; */
-    align-self: end;
+    align-self: center;
+    /* margin-left: 1em; */
 
     resize: none;
-
     user-select: text;
     white-space: pre-wrap;
     word-break: break-word;
-    
     overflow-y: auto;
 }
 
@@ -314,8 +313,9 @@ body.blur > *:not(#navigation) {
     outline: #ffbc2f;
 }
 
-.message-bar{
-    align-self: center;
+#sendBTN{
+    font-family: "Noto Color Emoji";
+    font-size: xx-large;
 }
 
 .chat p{
@@ -367,6 +367,8 @@ body.blur > *:not(#navigation) {
 }
 
 #quoteP{
+    width: 50%;
+    justify-self: center;
     padding: 1.5em 1.5em 0 1.5em;
 }
 
