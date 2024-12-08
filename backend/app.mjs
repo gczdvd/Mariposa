@@ -24,7 +24,7 @@ const chats = new Chats(database);
 
 const tasks = new Tasks();
 
-const sessions = new Sessions(34560000000);
+const sessions = new Sessions(/*34560000000*/280000);
 const finder = new Finder(sessions, chats);
 
 var app = express();
