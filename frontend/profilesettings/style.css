@@ -159,11 +159,14 @@ html{
 
 .sectionTitle{
     align-self: center;
+    /* justify-self: center; */
     font-size: 1.5em;
     opacity: 0.5;
     font-family: "Red Hat Text";
     text-transform: uppercase;
     text-align: center;
+    border-bottom: 1px solid black;
+    /* width: 50%; */
 }
 
 .sectionTitle:nth-of-type(3){
@@ -232,7 +235,7 @@ textarea:focus{
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1em;
-    border: 1px solid #ffbc2f;
+    /* border: 1px solid #ffbc2f; */
     padding: 1em;
     /* border-top: 1px solid black;
     border-left: 1px solid black;
