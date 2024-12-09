@@ -14,7 +14,6 @@ textarea.onfocus = () => charCounter(textarea);
 
 function colorChange(textarea){
   const remChars = document.getElementById("remaining-chars");
-  // const maxLength = textarea.getAttribute("maxlength");
 
   if(textarea.value.length == 0){
     textarea.style.borderColor = "#d3d3d3";

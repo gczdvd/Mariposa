@@ -43,7 +43,7 @@
         <div class="settings">
             <p class="sectionTitle">Profil</p>
             <p class="sectionTitle">személyes adatok</p>
-            <p class="sectionTitle">érdeklődési körök</p>
+            
         
             <div class="profile">
                 <img src="./images/img_avatar.png" alt="" class="profilePicture">
@@ -52,7 +52,7 @@
 
                 <button class="secondaryBTN">Profilkép cseréje</button>
 
-                <textarea name="" id="textarea" rows="5" maxlength="255" onchange="colorChange(this)" spellcheck="false"></textarea>
+                <textarea name="" id="textarea" rows="5" maxlength="255" onchange="colorChange(this)" onfocusout="colorChange(this)" spellcheck="false"></textarea>
 
                 <p id="remaining-chars">0 / 255</p>
 
@@ -123,8 +123,10 @@
 
             </div>
 
+            <p class="sectionTitle">érdeklődési körök</p>
             <div class="interests">
                 
+                <!-- MIVEL AZ ÉRDEKLŐDÉSI KÖRÖK ÁTKERÜLTEK AZ OLDAL ALJÁRA, SUMMARY HELYETT LEHETNE SIMÁN EGY KUPACBAN AZ ÖSSZES, KATEGÓRIÁK SZERINT, HOGY NE KELLJEN A USERNEK ÖSSZE-VISSZA UGRÁLNIA -->
 
                 <div class="sport" id="sport">
                     <!-- <p>Sport</p> -->
@@ -146,16 +148,16 @@
                     <details>
                         <summary>Filmek és TV-műsorok</summary>
                         <summary>
-                            <button onclick="chosenInterest(this)" class="notSelected">Anime</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Bűnügyi</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Krimi, thriller, horror</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Romantikus</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Sci-fi</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Filmdráma</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Valóságshow</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Talk show</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Vetélkedő</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Akciófilm</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🌸</span> Anime</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🔍</span> Bűnügyi</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🧟</span> Thriller, horror</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">❤️</span> Romantikus</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">👽</span> Sci-fi</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">😭</span> Filmdráma</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🎥</span> Valóságshow</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🗣️</span> Talk show</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🎯</span> Vetélkedő</button>
+                            <button onclick="chosenInterest(this)" class="notSelected">🧨Akciófilm</button>
                         </summary>
                     </details>
                     
@@ -354,9 +356,9 @@
             </div>
         </div>
         
-        <button class="primaryBTN">
+        <!-- <button class="primaryBTN">
             mentés
-        </button>
+        </button> -->
 
 
 

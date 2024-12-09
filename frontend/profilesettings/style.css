@@ -10,7 +10,7 @@ html{
 .wrapper{
     height: 100vh;
     display: grid;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: auto 1fr auto auto;
     /* max-height: 100%; */
     /* grid-template-columns: repeat(3, 1fr); */
 }
@@ -86,7 +86,6 @@ html{
 .header{
     display: grid;
     background-color: transparent;
-    width: 100vw;
     max-width: 100%;
     grid-template-columns: auto 1fr;
     height: fit-content;
@@ -128,7 +127,7 @@ html{
     font-size: 1.3em;
     font-weight: bold;
     list-style: none;
-    float: left;
+    /* float: left; */
     margin: 1rem 2rem;
     color: #ffbc2f;
     /* border-radius: 100px; */
@@ -138,9 +137,9 @@ html{
 
 .settings{
     display: grid;
-    max-height: 90vh !important;
-    grid-template-columns: auto auto auto;
-    grid-template-rows: auto 1fr;
+    /* max-height: 90vh !important; */
+    grid-template-columns: auto auto;
+    grid-template-rows: repeat(3, auto);
     /* max-height: 100%; */
 }
 
@@ -165,6 +164,10 @@ html{
     font-family: "Red Hat Text";
     text-transform: uppercase;
     text-align: center;
+}
+
+.sectionTitle:nth-of-type(3){
+    grid-column: 1 / span 2;
 }
 
 .profilePicture{
@@ -202,9 +205,11 @@ textarea:focus{
 }
 
 #remaining-chars{
-    font-size: 11px;
+    font-family: "Red Hat Text";
+    font-size: 0.8em;
     color: #ffbc2f;
     margin-top: 3px;
+    visibility: hidden;
     /* float: right; */
     height: 20px;
     /* display: none; */
@@ -213,11 +218,12 @@ textarea:focus{
 
 .data{
     display: grid;
-    width: 40vw;
+    /* width: 40vw; */
     /* gap: 5em; */
     font-family: "Red Hat Text";
     /* justify-self: end; */
     height: fit-content;
+    gap: 2em;
     /* gap: 3vh; */
     /* grid-template-rows: auto repeat(4, 1fr); */
 }
@@ -225,6 +231,9 @@ textarea:focus{
 .nameEmailPsw{
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 1em;
+    border: 1px solid #ffbc2f;
+    padding: 1em;
     /* border-top: 1px solid black;
     border-left: 1px solid black;
     border-right: 1px solid black; */
@@ -267,6 +276,7 @@ input:focus{
 .gender{
     display: grid;
     grid-template-columns: 1fr 1fr;
+    /* grid-row: 1 / span 2; */
     /* width: 1fr; */
     /* justify-content: center; */
     /* grid-template-rows: auto auto; */
@@ -278,10 +288,18 @@ input:focus{
 }
 
 select{
+    /* grid-column: 2; */
+    /* grid-row: 2; */
+    grid-row: span 2;
+    align-self: center;
+
     color: #ffbc2f;
     border: 1px solid #ffbc2f;
     font-family: "Red Hat Text";
     font-size: 1em;
+    align-self: center;
+    
+    /* grid-column: 1 / span 2; */
     /* text-transform: uppercase; */
     width: 100%;
     /* justify-self: start; */
@@ -291,11 +309,6 @@ select{
 select:focus{
     /* border: none; */
     outline: none;
-}
-
-.show{
-    /* display: grid; */
-    grid-column: 1 / span 2;
 }
 
 .show input{
@@ -311,43 +324,33 @@ select:focus{
     border: 1px solid #ffbc2f;
 }
 
-
-
-/* select:active{
-    outline: none;
-    border: none;
-} */
-
 .birthdate{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /* align-content: center; */
+}
+
+.birthdate input{
     /* vertical-align: middle; */
-    /* justify-items: center; */
-    /* grid-template-rows: auto auto; */
-}
-
-.birthdate p{
+    grid-row: span 2;
     align-self: center;
-}
-
-.birthday input{
-    vertical-align: middle;
+    
 }
 
 summary{
     font-family: "Red Hat Text";
     font-size: 1em;
     width: fit-content;
+    user-select: none;
+    cursor: pointer;
 }
 
 .interests{
-    overflow-x: hidden;
-    overflow-y: scroll;
-    width: 30vw;
-    justify-self: end;
-    /* mask-image: linear-gradient(0deg, #0000 5%, #000F 5%); */
-
+    display: grid;
+    grid-column: 1 / span 2;
+    border: 1px solid black;
+    width: 50vw;
+    justify-self: center;
+    gap: 1em;
 }
 
 .interests p{
@@ -355,18 +358,13 @@ summary{
 }
 
 .interests button{
-    /* color: black; */
     padding: 0.5em 1em 0.5em 1em;
     border-radius: 1.8em;
-    /* border-radius: 2em; */
     font-family: "Albert Sans";
     font-size: 1.1em;
     border: 5px solid #ffbc2f;
     cursor: pointer;
     margin: 5px;
-    
-    /* background-color: white; */
-    /* text-transform: uppercase; */
 }
 
 .interests button:hover{
@@ -393,7 +391,7 @@ summary{
     }
     
     .profile{
-        width: 100vw;
+        /* width: 100vw; */
     }
 
     .profile img{
