@@ -36,7 +36,8 @@ export class Sql{
     getUserById(id, callback){
         this.con.query(`CALL getClient(${id});`, (err, rows, fields) => {
             var data = rows[0][0];
-            callback(new User(data.client_id, data.nickname, data.birthdate, data.email, data.topic));
+            callback(new User(data.client_id, data.nickname, data.birthdate, data.email, data.topics, data.gender, data.description, data.profile_pic));
+            
         });
     }
 

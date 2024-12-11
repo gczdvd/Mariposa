@@ -1,3 +1,5 @@
+Backend.setUrl("127.0.0.1:3000");
+
 function togglePSW() {
     var x = document.getElementById("password");
     if (x.type === "password") {
@@ -14,26 +16,13 @@ function login(){
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
 
-    fetch("http://127.0.0.1:3000/login", {
-        method: "POST",
-        credentials: "include",
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-        },
-        body: JSON.stringify({
+    Backend.post({
+        path:"/login", 
+        body:{
             email: email, 
             password: password
-        }) 
-    })
-    .then(async (e)=>{
-        var resp = await e.json();
-        if(resp.action == "redirect"){
-            window.location.href = resp.value;
-        }
-        else{
-            console.log(resp);
-        }
+        },
+        callback:console.log
     });
 }
 

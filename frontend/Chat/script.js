@@ -1,4 +1,4 @@
-
+Backend.setUrl("127.0.0.1:3000");
 
 /* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
 function myFunction() {
@@ -10,19 +10,12 @@ function myFunction() {
     }
   }
 
-var ws = new WebSocket("ws://127.0.0.1:3000/live");
+var ws = new WebSocket("ws://" + Backend.url() + "/live");
 
-fetch("http://127.0.0.1:3000/chat", {
-    method: "GET",
-    credentials: "include"
-})
-.then(async (e)=>{
-    var resp = await e.json();
-    if(resp.action == "redirect"){
-        window.location.href = resp.value;
-    }
-    else{
-        console.log(resp);
+Backend.get({
+    path:"/chat",
+    callback:(e)=>{
+        console.log(e);
     }
 });
 
@@ -135,6 +128,7 @@ function send(){
 
 function receive(e){
     var data = JSON.parse(e.data);
+    console.warn(data);
     if(data.type == "text/plain"){
         var e = document.createElement("div");
         if(data.from == 0){
@@ -149,3 +143,9 @@ function receive(e){
 }
 
 ws.onmessage = receive;
+
+/*document.getElementById("name").innerHTML = Backend.info().nickname;
+document.getElementById("quote").innerHTML = Backend.info().description;
+document.getElementById("birthday").innerHTML = function(e=new Date(Backend.info().birthdate)){
+    return `${e.getUTCFullYear()}. ${(e.getMonth() < 10 ? '0' : '') + e.getMonth()}. ${(e.getDate() < 10 ? '0' : '') + e.getDate()}.`;
+}();*/
