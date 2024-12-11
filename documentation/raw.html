@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            display: grid;
+            width: 100vw;
+            height: 100vh;
+            grid-template-areas: 
+                'header header header header header'
+                'menu content content content content'
+                'menu content content content content'
+                'menu content content content content'
+                'menu content content content content'
+                'menu content content content content'
+                'menu content content content content';
+        }
+    </style>
+</head>
+<body>
+    <div style="grid-area: header;background-color: #F77;"><h1 id="header"></h1></div>
+    <div id="menu" style="grid-area: menu;background-color: #7F7;"></div>
+    <div id="content" style="grid-area: content;background-color: #77F;"></div>
+</body>
+</html>
