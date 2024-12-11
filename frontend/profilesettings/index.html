@@ -72,7 +72,7 @@
                     </div> -->
 
                     <p>Teljes név</p>
-                    <input type="text" spellcheck="false" maxlength="50">
+                    <input type="text" spellcheck="false" maxlength="50" onchange="colorChange(this)" onfocusout="colorChange(this)">
     
                     <!-- <div class="email">
                         nem változtatható
@@ -80,7 +80,7 @@
                     </div> -->
                     
                     <p>Email-cím</p>
-                    <input type="email" name="" id="" spellcheck="false">
+                    <input type="email" name="" id="" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)">
     
                     <!-- <div class="password">
                         változtatható
@@ -124,11 +124,17 @@
             </div>
 
             <p class="sectionTitle">érdeklődési körök</p>
+
+            <!-- <div class="search">
+                <p>Böngéssz az érdeklődési körök között!</p>
+
+                <input id="search" type="text" placeholder="Keresés...">
+                
+                <button type="submit" class="emoji">🔍</button>
+            </div> -->
+
             <div class="interests">
 
-                <div class="search-bar">
-                    
-                </div>
                 
                 <!-- MIVEL AZ ÉRDEKLŐDÉSI KÖRÖK ÁTKERÜLTEK AZ OLDAL ALJÁRA, SUMMARY HELYETT LEHETNE SIMÁN EGY KUPACBAN AZ ÖSSZES, KATEGÓRIÁK SZERINT, HOGY NE KELLJEN A USERNEK ÖSSZE-VISSZA UGRÁLNIA -->
 
@@ -249,11 +255,11 @@
                     <details>
                         <summary>Divat</summary>
                         <summary>
-                            <button onclick="chosenInterest(this)" class="notSelected">Sminkelés</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Fodrászat</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Műkörömépítés</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Modellkedés</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Magazinok</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">💄</span> Sminkelés</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">💇‍♀️</span> Fodrászat</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">💅</span> Műkörömépítés</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">👠</span> Modellkedés</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🗞️</span> Magazinok</button>
                         </summary>
                     </details>
 
@@ -266,13 +272,13 @@
                     <details>
                         <summary>Művészet</summary>
                         <summary>
-                            <button onclick="chosenInterest(this)" class="notSelected">Fotóművészet</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Festészet</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Szobrászat</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Grafika</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Építészet</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Kézművesség</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Színművészet</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">📸</span> Fotóművészet</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🎨</span> Festészet</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🗿</span> Szobrászat</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">✏️</span> Grafika</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🧱</span> Építészet</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🧶</span> Kézművesség</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🎭</span> Színművészet</button>
                         </summary>
                     </details>
 
@@ -285,15 +291,15 @@
                     <details>
                         <summary>Irodalom</summary>
                         <summary>
-                            <button onclick="chosenInterest(this)" class="notSelected">Olvasás</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Írás</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Képregény, manga</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Krimi, thriller, horror</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Sci-fi, fantasy</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Romantikus</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Életrajzi, történelmi</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Versek</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Színművek</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">📖</span> Olvasás</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">📝</span> Írás</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🍭</span> Képregény, manga</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">☠️</span> Krimi, thriller, horror</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🔮</span> Sci-fi, fantasy</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🩷</span> Romantikus</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">⏳</span> Életrajzi, történelmi</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">📃</span> Versek</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🎭</span> Színművek</button>
                         </summary>
                     </details>
 
@@ -306,13 +312,13 @@
                     <details>
                         <summary>Tudomány</summary>
                         <summary>
-                            <button onclick="chosenInterest(this)" class="notSelected">Reál</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Humán</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Pszichológia, szociológia</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Politika</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Vallás</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Művészettörténet</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Régészet</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🧠</span> Reál</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🫀</span> Humán</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🌍</span> Pszichológia, szociológia</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🗳️</span> Politika</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">⛪</span> Vallás</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🖼️</span> Művészettörténet</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🦴</span> Régészet</button>
                         </summary>
                     </details>
 
@@ -325,14 +331,14 @@
                     <details>
                         <summary>Járművek</summary>
                         <summary>
-                            <button onclick="chosenInterest(this)" class="notSelected">Szerelés</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Gyűjtés</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Amerikai járművek</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Japán, dél-koreai járművek</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Német járművek</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Olasz járművek</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Angol járművek</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Francia járművek</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🦴</span> Szerelés</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🦴</span> Gyűjtés</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🦴</span> Amerikai járművek</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🦴</span> Japán, dél-koreai járművek</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🦴</span> Német járművek</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🦴</span> Olasz járművek</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🦴</span> Angol járművek</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🦴</span> Francia járművek</button>
                         </summary>
                     </details>
 
@@ -345,14 +351,16 @@
                     <details>
                         <summary>Zene</summary>
                         <summary>
-                            <button onclick="chosenInterest(this)" class="notSelected">Népzene</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Alternatív</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Country</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Blues, R&B</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Dzsessz, szving</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Hiphop</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Rock, metál</button>
-                            <button onclick="chosenInterest(this)" class="notSelected">Pop</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">💃</span> Népzene</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🎧</span> Alternatív</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🪕</span> Country</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🥁</span> Blues, R&B</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🎷</span> Dzsessz, szving</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🎤</span> Hiphop</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🎸</span> Rock, metál</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🎵</span> Pop</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🪩</span> Techno, house, EDM</button>
+                            <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">🎹</span> Klasszikus</button>
                         </summary>
                     </details>
 
@@ -365,6 +373,22 @@
             mentés
         </button> -->
 
+        <div class="footer">
+
+            <div class="pages">
+                <a href="" class="">Kezdőlap</a>
+                <a href="" class="">Rólunk</a>
+                <a href="" class="">ÁSZF</a>
+                <a href="" class="">GYIK</a>
+                <a href="" class="">Házirend</a>
+                
+            </div>
+            
+            <div class="trademark">
+                © 2025 Mariposa The Social Butterfly
+            </div>
+            
+        </div>
 
 
     </div>
