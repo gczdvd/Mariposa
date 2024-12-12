@@ -12,202 +12,212 @@
 <body>
     <div class="wrapper">
 
-        <div class="header">
-            <!-- topnav -->
-            <div class="logo">
-                <a href="">
-                    <img src="./images/logo.png" alt="">
-                </a>
-                <div class="title">Mariposa</div>
-            </div> 
+        <div class="header-wrap">
+            <div class="header" id="header">
 
-            <!-- mylinks -->
-            <div class="navigation">
-                
-                    <a href="/" class="tertiaryBTN">Kezdőlap</a>
-                    <a href="/chat" class="tertiaryBTN">Chatelj!</a>
-                    <a href="/login" class="tertiaryBTN">Bejelentkezés</a>
-                    <a href="/aboutus" class="tertiaryBTN">Rólunk</a>
-                
-            </div>
+                <div id="logo">
+                    <img src="../frontend/images/logo.png" alt="">
+                    <p id="title">Mariposa</p>
+                </div>
 
-            <!-- icon -->
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                <i class="fa fa-bars"></i>
-            </a>
-
-        </div>
-
-        <div class="cover">
-
-            <div class="texts">
-
-                <div class="bigtext">Beszélgess hozzád hasonló emberekkel!</div>
-
-                <div class="midtext">Regisztrációt követően érdeklődési köreid alapján névtelenül chatelhetsz a Mariposán!</div>
-    
-                <button class="primaryBTN">Chatelj!</button>
-                
-            </div>
-
-            <div class="image">
-                <img src="./images/lpcoverCUT.png" alt="">
-            </div>
-
-        </div>
-
-        <div class="description">
-
-            <div class="text">
-                <div class="headline">
-                    Mariposa
+                <div id="main">
+                    <button>
+                        <img src="../frontend/chat/images/open.png" alt="" onclick="openNav()" id="open" class="openbtn">
+        
+                        <img src="../frontend/chat/images/close.png" alt="" onclick="closeNav()" id="close">
+                    </button>
                 </div>
     
-                <div class="subhead">
-                    The Social Butterfly
+                <div id="navigation">
+                    <ul>
+                        <li><a href="" class="tertiaryBTN">Kezdőlap</a></li>
+
+                        <li><a href="/profilesettings" class="tertiaryBTN">Profil</a></li>
+
+                        <li><a href="/aboutus" class="tertiaryBTN">Rólunk</a></li>
+
+                        <li><a href="/support" class="tertiaryBTN">Segítség</a></li>
+                    </ul>
+                    <!-- <a href="">Kezdőlap</a>
+                    <a href="">Profil</a>
+                    <a href="">Rólunk</a>
+                    <a href="">Segítség</a> -->
+                </div>
+            </div>    
+        </div>
+
+        <div id="blurred" onclick="closeNav()">
+            <div class="cover">
+                <div class="texts">
+    
+                    <div class="bigtext">Beszélgess hozzád hasonló emberekkel!</div>
+    
+                    <div class="midtext">Regisztrációt követően érdeklődési köreid alapján névtelenül chatelhetsz a Mariposán!</div>
+        
+                    <button class="primaryBTN">Chatelj!</button>
+                    
                 </div>
     
-                <div class="pers">
-                    <p>A Mariposa csevegőoldal célja, hogy összehozza az ugyanolyan érdeklődésű embereket.
-                    <!-- <br>     -->
-                    Az ember gyakorta vonul el a világtól, és bebábozódik, akár egy pillangó.
-                    <!-- <br> -->
-                    Ha úgy érzed, túl sokáig voltál ebben a bábban, próbáld ki a Mariposát!</p>
+                <div class="image">
+                    <img src="./images/lpcoverCUT.png" alt="">
                 </div>
             </div>
-
-        </div>
-
-        <div class="services">
-
-            <div class="first">
-                <img src="./images/talk-icon-png-8.jpg.png" alt="">
-                <p>Beszélgess hozzád hasonló emberekkel!</p>
-            </div>
-            
-            <div class="second">
-                <img src="./images/friend icon.png" alt="">
-                <p>Barátkozz biztonságosan moderált szerverünkön!</p>
-            </div>
-
-            <div class="third">
-                <img src="./images/login-user.png" alt="">
-                <p>Regisztrálj, és chatelj bárhol, bármikor</p>
-            </div>
-
-        </div>
-
-        <div class="aboutus">
-            <div class="slides">
-                <img src="./images/img_avatarA.png" alt="">                
-
-                <div class="us-text">
-                    <p>Mi vagyunk a Mariposa!
-                    <br>
-                    Ismerj meg minket!
-                    </p>
+    
+            <div class="description">
+    
+                <div class="text">
+                    <div class="headline">
+                        Mariposa
+                    </div>
+        
+                    <div class="subhead">
+                        The Social Butterfly
+                    </div>
+        
+                    <div class="pers">
+                        <p>A Mariposa csevegőoldal célja, hogy összehozza az ugyanolyan érdeklődésű embereket.
+                        <!-- <br>     -->
+                        Az ember gyakorta vonul el a világtól, és bebábozódik, akár egy pillangó.
+                        <!-- <br> -->
+                        Ha úgy érzed, túl sokáig voltál ebben a bábban, próbáld ki a Mariposát!</p>
+                    </div>
                 </div>
-
+    
+            </div>
+    
+            <div class="services">
+    
+                <div class="first">
+                    <img src="./images/talk-icon-png-8.jpg.png" alt="">
+                    <p>Beszélgess hozzád hasonló emberekkel!</p>
+                </div>
+                
+                <div class="second">
+                    <img src="./images/friend icon.png" alt="">
+                    <p>Barátkozz biztonságosan moderált szerverünkön!</p>
+                </div>
+    
+                <div class="third">
+                    <img src="./images/login-user.png" alt="">
+                    <p>Regisztrálj, és chatelj bárhol, bármikor!</p>
+                </div>
+    
+            </div>
+    
+            <div class="aboutus">
+                <div class="slides">
+                    <img src="./images/img_avatarA.png" alt="">                
+    
+                    <div class="us-text">
+                        <p>Mi vagyunk a Mariposa!
+                        <br>
+                        Ismerj meg minket!
+                        </p>
+                    </div>
+    
+                    <div class="button">
+                        <button class="secondaryBTN">Rólunk</button>
+                    </div>
+                </div>
+        
+                <div class="slides">
+                    <img src="./images/img_avatarB.png" alt="">
+    
+                    <div class="us-text">
+                        <p>Mi vagyunk a Mariposa</p>
+                        <p>Ismerj meg minket!</p>
+                    </div>
+    
+                    <div class="button">
+                        <button class="secondaryBTN">Rólunk</button>
+                    </div>
+                </div>
+        
+                <div class="slides">
+                    <img src="./images/img_avatarC.png" alt="">
+    
+                    <div class="us-text">
+                        <p>Mi vagyunk a Mariposa</p>
+                        <p>Ismerj meg minket!</p>
+                    </div>
+    
+                    <div class="button">
+                        <button class="secondaryBTN">Rólunk</button>
+                    </div>
+                </div>
+    
+            </div>
+    
+            <div class="signup">
+                
+                <div class="convince">
+                    
+                    <p>A regisztráció egyet jelent</p>
+    
+                    <ul>
+                        <li>az érdeklődés alapú ismerkedéssel,</li>
+                        <li>a névtelen és korlátlan chateléssel,</li>
+                        <li>új emberek megismerésével,</li>
+                    </ul>
+                    
+                    <p>és mindezt úgy, hogy titokban tarthatod, ki is vagy!</p>
+                    
+                    <button class="primaryBTN">regisztráció</button>
+                </div>
+    
+                <img src="./images/picture.jpg" alt="">
+    
+            </div>
+    
+            <div class="donation">
+                <div><img src="./images/coffee.png" alt=""></div>
+                <div class="donation-text">
+                    <p>A Mariposát jelenleg anyagi támogatás nélkül fejlesztjük.</p>
+                    <p>Ha úgy érzed, hogy szívesen támogatnád a projektet, hívj meg Minket egy kávéra!</p>
+    
+                    
+                </div>
                 <div class="button">
-                    <button class="secondaryBTN">Rólunk</button>
+                    <button class="secondaryBTN">támogatás</button>
                 </div>
+                
+    
             </div>
     
-            <div class="slides">
-                <img src="./images/img_avatarB.png" alt="">
-
-                <div class="us-text">
-                    <p>Mi vagyunk a Mariposa</p>
-                    <p>Ismerj meg minket!</p>
+            <div class="newsletter">
+                <div class="newsText">
+                    Iratkozz fel hírlevelünkre, hogy ne maradj le az újdonságokról!
                 </div>
-
-                <div class="button">
-                    <button class="secondaryBTN">Rólunk</button>
+                
+                <div class="emailInput">
+                    <input type="text" placeholder="pelda@gmail.com" spellcheck="false" id="emailIN" onclick="">
                 </div>
+                
+                <button class="secondaryBTN">Feliratkozás</button>
+    
+    
             </div>
     
-            <div class="slides">
-                <img src="./images/img_avatarC.png" alt="">
-
-                <div class="us-text">
-                    <p>Mi vagyunk a Mariposa</p>
-                    <p>Ismerj meg minket!</p>
+            <div class="footer">
+    
+                <div class="pages">
+                    <a href="/" class="">Kezdőlap</a>
+                    <a href="/login" class="">Bejelentkezés</a>
+                    <a href="/aboutus" class="">Rólunk</a>
+                    <a href="" class="">ÁSZF</a>
+                    <a href="/support" class="">GYIK</a>
+                    <a href="" class="">Házirend</a>
+                    
                 </div>
-
-                <div class="button">
-                    <button class="secondaryBTN">Rólunk</button>
+                
+                <div class="trademark">
+                    © 2025 Mariposa The Social Butterfly
                 </div>
-            </div>
-
-        </div>
-
-        <div class="signup">
-            
-            <div class="convince">
-                
-                <p>A regisztráció egyet jelent</p>
-
-                <ul>
-                    <li>az érdeklődés alapú ismerkedéssel,</li>
-                    <li>a névtelen és korlátlan chateléssel,</li>
-                    <li>új emberek megismerésével,</li>
-                </ul>
-                
-                <p>és mindezt úgy, hogy titokban tarthatod, ki is vagy!</p>
-                
-                <button class="primaryBTN">regisztráció</button>
-            </div>
-
-            <img src="./images/picture.jpg" alt="">
-
-        </div>
-
-        <div class="donation">
-            <div><img src="./images/coffee.png" alt=""></div>
-            <div class="donation-text">
-                <p>A Mariposát jelenleg anyagi támogatás nélkül fejlesztjük.</p>
-                <p>Ha úgy érzed, hogy szívesen támogatnád a projektet, hívj meg Minket egy kávéra!</p>
-
                 
             </div>
-            <div class="button">
-                <button class="secondaryBTN">támogatás</button>
-            </div>
-            
-
         </div>
 
-        <div class="newsletter">
-            <div class="newsText">
-                Iratkozz fel hírlevelünkre, hogy ne maradj le az újdonságokról!
-            </div>
-            
-            <div class="emailInput">
-                <input type="text" placeholder="pelda@gmail.com" spellcheck="false" id="emailIN" onclick="">
-            </div>
-            
-            <button class="secondaryBTN">Feliratkozás</button>
-
-
-        </div>
-
-        <div class="footer">
-
-            <div class="pages">
-                <a href="/" class="">Kezdőlap</a>
-                <a href="/login" class="">Bejelentkezés</a>
-                <a href="/aboutus" class="">Rólunk</a>
-                <a href="" class="">ÁSZF</a>
-                <a href="/support" class="">GYIK</a>
-                <a href="" class="">Házirend</a>
-                
-            </div>
-            
-            <div class="trademark">
-                © 2025 Mariposa The Social Butterfly
-            </div>
-            
-        </div>
+        
 
     </div>
     <script src="script.js"></script>

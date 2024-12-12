@@ -21,3 +21,24 @@ function myFunction() {
     x.style.display = "block";
   }
 }
+
+function openNav() {
+  document.getElementById("navigation").style.width = "50vw";
+  document.getElementById("close").style.display = "block";
+  document.getElementById("open").style.display = "none";
+
+  document.getElementById("blurred").style.filter = "blur(2px)";
+}
+
+
+function closeNav() {
+
+  document.getElementById("navigation").style.width = "0px";
+  document.getElementById("header").style.height = "fit-content";
+
+  document.getElementById("open").style.display = "block";
+
+  document.getElementById("close").style.display = "none";
+
+  document.getElementById("blurred").style.filter = "blur(0px)";
+}
