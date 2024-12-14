@@ -10,7 +10,7 @@ html{
 .wrapper{
     height: 100vh;
     display: grid;
-    grid-template-rows: auto 1fr auto auto;
+    grid-template-rows: auto 1fr auto auto auto;
     /* max-height: 100%; */
     /* grid-template-columns: repeat(3, 1fr); */
 }
@@ -26,9 +26,11 @@ html{
     cursor: pointer;
     width: fit-content;
     justify-self: center;
+    grid-column: 1 / span 2;
+    /* justify-self: center; */
     margin: 0 1em 1em 0;
-    position: fixed;
-    bottom: 0;
+    /* position: static; */
+    /* bottom: 0; */
 }
 
 .primaryBTN:hover{
@@ -139,7 +141,7 @@ html{
     display: grid;
     /* max-height: 90vh !important; */
     grid-template-columns: auto auto;
-    grid-template-rows: repeat(3, auto);
+    grid-template-rows: repeat(4, auto);
     /* max-height: 100%; */
 }
 
@@ -179,10 +181,14 @@ html{
     border-radius: 50%;
 }
 
-.profile img:nth-of-type(2){
+.profile p{
+    font-family: "Red Hat Text";
+}
+
+/* .profile img:nth-of-type(2){
     width: 5vw;
     justify-self: center;
-}
+} */
 
 #nickname{
     justify-self: center;
@@ -213,48 +219,23 @@ textarea:focus{
     color: #ffbc2f;
     margin-top: 3px;
     visibility: hidden;
-    /* float: right; */
     height: 20px;
-    /* display: none; */
 }
 
 
 .data{
     display: grid;
-    /* width: 40vw; */
-    /* gap: 5em; */
     font-family: "Red Hat Text";
-    /* justify-self: end; */
-    height: fit-content;
     gap: 2em;
-    /* gap: 3vh; */
-    /* grid-template-rows: auto repeat(4, 1fr); */
+    height: fit-content;
 }
 
-.nameEmailPsw{
+.data > div{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1em;
-    /* border: 1px solid #ffbc2f; */
-    /* padding: 1em; */
-    /* border-top: 1px solid black;
-    border-left: 1px solid black;
-    border-right: 1px solid black; */
-}
-
-.nameEmailPsw p{
-    align-self: center;
-    width: fit-content;
-}
-
-.nameEmailPsw a{
-    align-self: center;
 }
 
 input{
-    /* border-bottom: rgba(228, 228, 228, 1) 2px solid; */
-    /* width: 50%; */
-    /* height: 70%; */
     padding: 0.1em 0 0.1em 0.2em;
     color: #ffbc2f;
     font-family: "Red Hat Text";
@@ -262,8 +243,6 @@ input{
     outline: none;
     border: 1px solid lightgray;
     align-self: center;
-    /* justify-self: end; */
-    /* width: 10vw; */
 }
 
 input:focus{
@@ -271,47 +250,32 @@ input:focus{
     border: rgba(240, 192, 35, 1) 1px solid !important;
 }
 
-.nameEmailPsw a{
+#password a, #password a:visited{
     color: #ffbc2f;
 }
 
-
-.gender{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    /* grid-row: 1 / span 2; */
-    /* width: 1fr; */
-    /* justify-content: center; */
-    /* grid-template-rows: auto auto; */
-}
-
-.gender p{
-    align-self: center;
-    /* height: fit-content; */
+#gender p, #birthdate p{
+    /* align-self: end; */
 }
 
 select{
-    /* grid-column: 2; */
-    /* grid-row: 2; */
-    grid-row: span 2;
-    align-self: center;
-
+    /* grid-row: span 2;
+    align-self: center; */
     color: #ffbc2f;
     border: 1px solid #ffbc2f;
     font-family: "Red Hat Text";
     font-size: 1em;
     align-self: center;
-    
-    /* grid-column: 1 / span 2; */
-    /* text-transform: uppercase; */
     width: 100%;
-    /* justify-self: start; */
-    /* border-radius: 0; */
 }
 
 select:focus{
-    /* border: none; */
     outline: none;
+}
+
+#birthdate input[type="date"]{
+    /* grid-row: span 2;
+    align-self: center; */
 }
 
 .show input{
@@ -323,24 +287,9 @@ select:focus{
     vertical-align: middle;
 }
 
-.birthdate input:active{
-    border: 1px solid #ffbc2f;
-}
 
-.birthdate{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-
-.birthdate input{
-    /* vertical-align: middle; */
-    grid-row: span 2;
-    align-self: center;
-    
-}
 
 .search input{
-    /* border: none; */
     outline: none;
     padding: 0;
     margin: 0;
@@ -450,6 +399,28 @@ summary{
 .selected{
     background-color: #ffbc2f;
     color: white;
+}
+
+
+.deleteBTN{
+    background-color: white;
+    font-family: "Albert Sans";
+    text-transform: uppercase;
+    padding: 1em 2em 1em 2em;
+    color: #ff552f;
+    font-size: 1em;
+    border: 3px solid transparent;
+    cursor: pointer;
+    width: fit-content;
+    height: fit-content;
+    justify-self: center;
+    border: 3px solid #ff552f;
+}
+
+.deleteBTN:hover{
+    background-color: #ff552f;
+    color: white;
+    border: 3px solid #ff552f;
 }
 
 .footer{
