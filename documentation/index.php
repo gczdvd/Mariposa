@@ -36,7 +36,17 @@
         $con = new DOMDocument();
         $con->loadHTML(mb_convert_encoding(file_get_contents($backPath . '/' . $path . "/index.html"), 'HTML-ENTITIES', "UTF-8"));
         $doc->getElementById("content")->appendChild($doc->importNode($con->getElementById("content"), true));
+
+        $jump = $con->getElementsByTagName("s");
+        for($i = 0; $i < count($jump); $i++){
+            $ju = new DOMElement("a");
+            $ju->textContent = $jump[$i]->textContent;
+            $nju = $doc->getElementById("jump")->appendChild($ju);
+            $nju->setAttribute("href", "#" . $jump[$i]->getAttribute("id"));
+        }
     }
+    
+
 
     echo $doc->saveHTML();
 ?>
