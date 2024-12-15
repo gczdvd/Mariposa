@@ -45,3 +45,36 @@ function chosenInterest(interest){
 // valamelyiknek a classa selected-e
 // ha igen: éppen kiválasztott details style color narancs
 // ha nem: éppen kiválasztott details style color fekete
+
+// mentés gomb elküldi az adatokat, visszajön a válasz, ha sikeres, akkor sikeresen mentésre kerültek, ha nem, akkor szerverhiba
+function saveData(){
+  var success = false;
+  // var success = true;
+  if(success){
+    Swal.fire({
+      icon: "success",
+      title: "Az adatok sikeresen mentésre kerültek!",
+      // text: "A mentési szándékról partnered értesítést kap, és elutasíthatja azt!",
+      width: "64em",
+      showCancelButton: "true",
+      showConfirmButton: "false",
+      reverseButtons: "true",
+      focusConfirm: "false",
+      confirmButtonText: "Tovább a chatre",
+      cancelButtonText: "Bezárás",
+      confirmButtonColor: "#ffbc2f",
+      iconColor: "#ffbc2f"
+    })
+  }
+  else{
+    Swal.fire({
+      icon: "error",
+      title: "Az adatok mentése során hibába ütköztünk!",
+      width: "64em",
+      // focusConfirm: "false",
+      confirmButtonText: "Bezárás",
+      confirmButtonColor: "#545454",
+      iconColor: "#ffbc2f"
+    })
+  }
+}

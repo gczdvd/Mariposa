@@ -23,18 +23,19 @@ body{
     align-self: center;
     background-color: #ffbc2f;
     font-family: "Albert Sans";
-    text-transform: uppercase;
+    grid-row-start: 7;
 }
 
 .primaryBTN{
     background-color: #ffbc2f;
     font-family: "Albert Sans";
     text-transform: uppercase;
-    padding: 1rem 2rem 1rem 2rem;
+    padding: 0.8em 1em 0.8em 1em;
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.5em;
     border: 3px solid transparent;
     cursor: pointer;
+    
 }
 
 .primaryBTN:hover{
@@ -42,17 +43,12 @@ body{
     color: #ffbc2f;
     border: 3px solid #ffbc2f;
 }
-/* 
-.backBTN {
-    height: fit-content;
-    margin: 0.5rem 0 0 0.7rem;
-    width: fit-content;
-} */
+
 
 .backBTN, .backBTN a{
     text-decoration: none;
     display: inline-block;
-    margin: 0.2rem 0 0 0.3rem;
+    margin: 0.2em 0 0 0.3em;
     font-family: "Albert Sans";
     color: #ffbc2f;
 }
@@ -72,10 +68,12 @@ body{
 
 .signin{
     display: grid;
+    grid-template-rows: repeat(8, 1fr);
     width: 30vw;
-    height: 60vh;
+    height: 80vh;
     justify-self: center;
     align-self: center;
+    
 }
 
 .image{
@@ -89,57 +87,37 @@ body{
     width: 100%;
 }
 
-@media (max-aspect-ratio:1/1) {
-    .wrapper{
-        grid-template-columns: 1fr;
-        grid-template-rows: auto 1fr;
-        /* gap: 0px; */
-        height: 90vh;
-    }
-
-    .signin{
-        display: grid;
-        justify-self: center;
-        width: 70vw;
-    }
-
-    .primaryBTN{
-        padding: 0.5rem 1rem 0.5rem 1rem;
-        justify-self: center;
-        /* text-align: center; */
-        font-size: 1rem;
-    }
-
-    .image{
-        display: none;
-    }
-}
-
 .title{
     font-family: "Red Hat Text";
     font-weight: 600;
-    font-size: 1.5rem;
+    font-size: 1.5em;
 }
 
 .subtitle{
     font-family: "Red Hat Text";
-    font-size: 1rem;
+    font-size: 1em;
     opacity: 0.7;
 }
 
 
 .nickname, .email, .password{
     font-family: "Red Hat Text";
+    font-size: 1.2em;
     /* height: fit-content; */
+}
+
+
+#toggleIcon{
+    position: absolute;
 }
 
 input[type=text], input[type=email], input[type=password]{
     border-bottom: rgba(228, 228, 228, 1) 2px solid;
     width: 90%;
-    padding: 0 0 0.1rem 0.2rem;
+    padding: 0 0 0.1em 0.2em;
     color: #ffbc2f;
     font-family: "Red Hat Text";
-    font-size: 1.1rem;
+    font-size: 1.1em;
 }
 
 input:focus{
@@ -149,7 +127,7 @@ input:focus{
 
 label{
     font-family: "Red Hat Text";
-    font-size: 1rem;
+    font-size: 1em;
 }
 
 .forgotPSW{
@@ -187,4 +165,33 @@ label{
 
 .account{
     font-family: "Red Hat Text";
+    grid-row-start: 8;
+    align-self: end;
+}
+
+
+@media (max-aspect-ratio:1/1) {
+    .wrapper{
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        /* gap: 0px; */
+        height: 90vh;
+    }
+
+    .signin{
+        display: grid;
+        justify-self: center;
+        width: 80vw;
+    }
+
+    .primaryBTN{
+        padding: 0.5em 1em 0.5em 1em;
+        justify-self: center;
+        /* text-align: center; */
+        font-size: 1em;
+    }
+
+    .image{
+        display: none;
+    }
 }

@@ -30,9 +30,9 @@ body{
     background-color: #ffbc2f;
     font-family: "Albert Sans";
     text-transform: uppercase;
-    padding: 1rem 2rem 1rem 2rem;
+    padding: 0.8em 1em 0.8em 1em;
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.5em;
     border: 3px solid transparent;
     cursor: pointer;
 }
@@ -43,10 +43,12 @@ body{
     border: 3px solid #ffbc2f;
 }
 
-.backBTN{
-    height: fit-content;
-    margin: 0.5rem 0 0 0.7rem;
-    width: fit-content;
+.backBTN, .backBTN a{
+    text-decoration: none;
+    display: inline-block;
+    margin: 0.2em 0 0 0.3em;
+    font-family: "Albert Sans";
+    color: #ffbc2f;
 }
 
 .backBTN a:hover::after{
@@ -93,14 +95,14 @@ body{
     .signup{
         display: grid;
         justify-self: center;
-        width: 70vw;
+        width: 80vw;
     }
 
     .primaryBTN{
-        padding: 0.5rem 1rem 0.5rem 1rem;
+        padding: 0.5em 1em 0.5em 1em;
         justify-self: center;
         /* text-align: center; */
-        font-size: 1rem;
+        font-size: 1em;
     }
 
     .image{
@@ -111,33 +113,33 @@ body{
 .title{
     font-family: "Red Hat Text";
     font-weight: 600;
-    font-size: 1.5rem;
+    font-size: 1.5em;
 }
 
 .subtitle{
     font-family: "Red Hat Text";
-    font-size: 1rem;
+    font-size: 1em;
     opacity: 0.7;
 }
 
 
 .nickname, .email, .password{
     font-family: "Red Hat Text";
-    font-size: 1.2rem;
+    font-size: 1.2em;
 }
 
 input[type=text], input[type=email], input[type=password]{
     border-bottom: rgba(228, 228, 228, 1) 2px solid;
     width: 100%;
-    padding: 0 0 0.1rem 0.2rem;
+    padding: 0 0 0.1em 0.2em;
     color: #ffbc2f;
     font-family: "Red Hat Text";
-    font-size: 1.1rem;
+    font-size: 1.1em;
 }
 
 
 #toggleIcon{
-    font-size: 1.5rem;
+    font-size: 1.5em;
     
 }
 
@@ -154,13 +156,13 @@ input:focus{
 }
 
 .TANDC input[type=checkbox]{
-    height: 0.7rem;
+    height: 0.7em;
     accent-color: #ffbc2f;
 }
 
 label{
     font-family: "Red Hat Text";
-    font-size: 1rem;
+    font-size: 1em;
 }
 
 .account{

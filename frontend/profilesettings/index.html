@@ -6,6 +6,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@600&family=Noto+Color+Emoji&family=Palanquin:wght@700&family=Red+Hat+Text&display=swap" rel="stylesheet">
+    <script src="/frontend/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="/frontend/sweetalert2.min.css">
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
@@ -41,10 +43,8 @@
         </div>
 
         <div class="settings">
-            <p class="sectionTitle">Profil</p>
-            <p class="sectionTitle">személyes adatok</p>
-            
-        
+            <p class="sectionTitle">PROFIL</p>
+            <p class="sectionTitle">SZEMÉLYES ADATOK</p>
             <div class="profile">
                 <img src="./images/img_avatar.png" alt="" class="profilePicture">
 
@@ -52,49 +52,35 @@
 
                 <button class="secondaryBTN">Profilkép cseréje</button>
 
+                <p>Bemutatkozás</p>
                 <textarea name="" id="textarea" rows="5" maxlength="255" onchange="colorChange(this)" onfocusout="colorChange(this)" spellcheck="false"></textarea>
 
                 <p id="remaining-chars">0 / 255</p>
 
-                <img src="../chat/images/image.png" alt="">
+                <!-- <img src="../chat/images/image.png" alt=""> -->
 
             </div>
 
 
             <div class="data">
-                
 
-                <div class="nameEmailPsw">
-                    <!-- <div class="nickname">
-                        nem változtatható
-                        
-                        
-                    </div> -->
-
+                <div id="full_name">
                     <p>Teljes név</p>
                     <input type="text" spellcheck="false" maxlength="50" onchange="colorChange(this)" onfocusout="colorChange(this)">
-    
-                    <!-- <div class="email">
-                        nem változtatható
-                        
-                    </div> -->
-                    
+                </div>
+
+                <div id="email">
                     <p>Email-cím</p>
                     <input type="email" name="" id="" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)">
-    
-                    <!-- <div class="password">
-                        változtatható
-                        
-                    </div> -->
-                    
+                </div>
+
+                <div id="password">
                     <p>Jelszó</p>
                     <a href="" class="password">Jelszó megváltoztatása</a>
                 </div>
 
-                <div class="gender">
-                    <!-- változtatható -->
+                <div id="gender">
                     <p>Nem</p>
-                    
                     <select name="" id="">
                         <option value="" disabled selected>Nem megadása</option>
                         <option value="">Nem adom meg</option>
@@ -107,11 +93,9 @@
                         <input type="checkbox" id="showGender">
                         <label for="showGender">Jelenjen meg a chatben</label>
                     </div>
-                    
                 </div>
 
-                <div class="birthdate">
-                    <!-- nem változtatható -->
+                <div id="birthdate">
                     <p>Születési dátum</p>
                     <input type="date" min="1900-01-01" max="2010-12-31">
 
@@ -367,11 +351,16 @@
                     
                 </div>
             </div>
+
+            <button class="primaryBTN" onclick="saveData()">
+                mentés
+            </button>
+
+            <button href="" class="deleteBTN">Fiók törlése</button>
+            <!-- SweetAlert dobjon fel egy bemeneti szöveges dobozt, vissza kell írnia egy szót -->
         </div>
         
-        <!-- <button class="primaryBTN">
-            mentés
-        </button> -->
+        
 
         <div class="footer">
 

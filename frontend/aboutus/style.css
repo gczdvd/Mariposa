@@ -16,7 +16,7 @@
     text-decoration: none;
     padding: 1rem 2rem 1rem 2rem;
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.5em;
     border: 3px solid transparent;
     cursor: pointer;
 }
@@ -84,7 +84,7 @@
     font-weight: bold;
     list-style: none;
     /* float: left; */
-    margin: 1rem 2rem;
+    margin: 1em 2em;
     color: #ffbc2f;
     /* border-radius: 100px; */
     height: fit-content;
@@ -135,7 +135,7 @@
     display: grid;
     height: fit-content;
     align-self: center;
-    gap: 2vh;
+    /* gap: 2vh; */
 }
 
 .bigtext{
@@ -215,7 +215,7 @@
     grid-template-columns: repeat(5, 1fr);
     font-size: 1em;
     text-align: center;
-    gap: 1em;
+    /* gap: 1em; */
 }
 
 .values > div{
@@ -248,7 +248,7 @@
     grid-template-rows: repeat(3, 1fr);
     width: 60%;
     justify-self: center;
-    gap: 1em;
+    /* gap: 1em; */
     /* height: fit-content; */
     font-family: "Red Hat Text";
     font-weight: 400;
@@ -269,9 +269,11 @@
     text-align: center;
     padding: 1em;
     border-radius: 2em;
-    -moz-box-shadow: 0 0 3px #ccc;
+
+    /* -moz-box-shadow: 0 0 3px #ccc;
     -webkit-box-shadow: 0 0 3px #ccc;
-    box-shadow: 0 0 3px black;
+    box-shadow: 0 0 3px black; */
+
     font-family: "Red Hat Text";
 }
 
@@ -408,7 +410,7 @@ textarea:focus{
 
 
 .trademark{
-    margin-top: 2%;
+    /* margin-top: 2%; */
     justify-self: center;
     color: white;
     font-family: "Red Hat Text";
@@ -420,4 +422,153 @@ textarea:focus{
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+@media (max-aspect-ratio:1/1){
+    .navigation{
+        display: none;
+    }
+
+    .cover{
+        width: 100vw;
+        max-width: 100%;
+        grid-template-columns: none;
+        grid-template-rows: 1fr 1fr;
+    }
+
+    .cover img{
+        width: 100vw;
+        height: auto;
+        grid-row-start: 1;
+    }
+
+    .texts{
+        grid-row-start: 2;
+    }
+
+    .history{
+        width: 100vw;
+    }
+
+    .history img{
+
+        width: 100vw;
+    }
+
+    .historyP{
+        width: 90vw;
+        justify-self: center;
+    }
+
+    .values{
+        grid-template-columns: none;
+        grid-template-rows: repeat(5, 1fr);
+        /* gap: 10px; */
+    }
+
+    .us{
+        grid-template-columns: none;
+        grid-template-rows: repeat(3, auto);
+        width: 100vw;
+    }
+
+    .gd{
+        display: grid;
+        grid-template-columns: none;
+        grid-template-rows: auto auto;
+        /* width: 100vw; */
+        /* width: 100%; */
+        /* justify-content: center; */
+    }
+
+    .csx{
+        display: grid;
+        grid-template-columns: none;
+        grid-template-rows: auto auto;
+    }
+
+    .csx img{
+        grid-row-start: 1;
+    }
+
+    .hk{
+        display: grid;
+        grid-template-columns: none;
+        grid-template-rows: auto auto;
+    }
+
+    .us p{
+        width: 90vw;
+        /* max-height: 50%; */
+        /* overflow-y: scroll; */
+        /* justify-self: center; */
+        /* width: 100vw; */
+        /* max-width: 100%; */
+    }
+
+    .contact{
+        grid-template-columns: none;
+        width: 100vw;
+        justify-self: center;
+    }
+
+    .contact image{
+        display: none;   
+    }
+
+    .footer{
+        text-align: center;
+        width: 100vw;
+        max-width: 100%;
+        background-color: #ffbc2f;
+        height: fit-content;
+        /* padding: 1rem 0 1rem 0; */
+        
+    }
+    
+    .pages a{
+        padding: 1rem 1.5rem;
+        /* margin: 0 5px 0 5px; */
+        text-decoration: none;
+        color: white;
+        font-size: 1.3rem;
+        display: inline-block;
+        font-family: "Albert Sans";
+        width: fit-content;
+    }
+    
+    .pages a:hover::after{
+        transform: scaleX(1);
+    }
+    
+    .pages a::after{
+        display: block;
+        content: '';
+        border-bottom: solid 3px white;
+        transform: scaleX(0);
+        transition: transform 250ms ease-in-out;
+    }
+    
+    .trademark{
+        /* margin-top: 0.5rem; */
+        padding-bottom: 0.5rem;
+        justify-self: center;
+        color: white;
+        font-family: "Red Hat Text";
+    }
+    
+    .pages{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .pages a{
+        font-size: 1rem;
+        padding: 0.25rem 0.5rem;
+    }
+
+    .trademark{
+        font-size: 0.7rem;
+        width: 100vw;
+    }
 }

@@ -114,69 +114,6 @@ body{
 
 
 @media (max-aspect-ratio:1/1) {
-    .navbar{
-        display: grid;
-        /* grid-template-rows: repeat(4, 1fr); */
-        /* grid-template-columns: 1fr; */
-    }
-
-    .header{
-        position: absolute;
-        max-width: 100%;
-        /* overflow: hidden; */
-    }
-
-    .header .activeLink{
-        position: relative;
-        background-color: transparent;
-        color: white;
-    }
-
-    .header a.icon {
-        color: white;
-        /* width: 10vw; */
-        font-size: 10vw;
-        display: block;
-        position: absolute;
-        right: 0.5em;
-        /* top: 0.2em; */
-        /* margin-bottom: 500px; */
-    }
-
-    .header img{
-        width: 15vw;
-        /* position: fixed; */
-    }
-    
-    .navigation{
-        display: grid;
-        grid-template-rows: repeat(5, 1fr);
-        background-color: #ffbc2f;
-        /* width: 40vw; */
-        max-width: 100%;
-        
-        /* position: fixed; */
-        /* padding-top: 14vh; */
-    }
-    
-    .navigation a{
-        font-size: 1.3em;
-        font-weight: bold;
-        /* width: 50vw; */
-        color: white;
-        display: block;
-        /* padding-top: 1em; */
-        padding: 1em 0 1em 1em;
-        
-        /* background-color: red; */
-        
-    }
-
-    .navigation a:hover{
-        background-color: #df9903;
-        transition: 500ms;
-    }
-
     .tertiaryBTN:hover, .tertiaryBTN a:hover{
         color: white;
     }
@@ -255,7 +192,8 @@ body{
 /* Style the buttons that are used to open and close the accordion panel */
 .accordion {
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: auto 1fr;
+
     background-color: #eee;
     color: black;
     /* color: #ffbc2f; */
@@ -275,20 +213,32 @@ body{
 .accordion:after {
     /* content: '\02795'; Unicode character for "plus" sign (+) */
     color: #ffbc2f;
-    content: '\2BC6';
-    /* font-size: 1.5em; */
+    /* content: "⬇️"; */
+    content: "▼";
     justify-self: end;
     align-self: center;
+    font-family: "Noto Color Emoji";
+    
     /* float: right; */
     /* margin-left: 5px; */
     /* width: 2em; */
-    /* width: 40%; */
+    /* width: 20px; */
   }
+
+  @media (max-aspect-ratio:1/1){
+    .accordion:after{
+        width: 7vw;
+    }
+  }
+  
   
   .active:after {
     /* content: '\2796'; Unicode character for "minus" sign (-) */
-    content: '\2BC5';
+    /* content: '\2BC5'; */
     color: #ffbc2f;
+    /* content: "⬆️"; */
+    content: "▲";
+    font-family: "Noto Color Emoji";
   }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
