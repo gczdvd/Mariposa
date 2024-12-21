@@ -315,6 +315,16 @@ app.get('/signup/verify', (req, res) => {
     });
 });
 
+app.post('/message', (req, res) => {
+    smtp.support(req.body.text);
+    res.status(200);
+    res.send(JSON.stringify({
+        "action":"none",
+        "value":"",
+        "message":"Success"
+    }));
+});
+
 /*app.get('/guest', (req, res) => {
     if(!req.session.valid){
         database.newGuest(req.ip, (id)=>{
