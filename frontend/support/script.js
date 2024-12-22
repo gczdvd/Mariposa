@@ -1,3 +1,4 @@
+Backend.setUrl("127.0.0.1:3000");
 // Animált accordion
 var acc = document.getElementsByClassName("accordion");
 var i;
@@ -61,3 +62,20 @@ function colorChange(textarea){
   }
 }
 textarea.onfocusout = () => colorChange(textarea);
+
+function support(){
+    //VIZSGÁLNI, HOGY MINDENJÓ
+    var email = document.getElementById("support_email").value;
+    var name = document.getElementById("support_name").value;
+    var message = document.getElementById("textarea").value;
+
+    Backend.post({
+        "path":"/message",
+        "body":{
+            "email":email,
+            "name":name,
+            "text":message
+        },
+        "callback":console.log
+    });
+}
