@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@600&family=Noto+Color+Emoji&family=Noto+Sans+Symbols+2&family=Palanquin:wght@700&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
+  <script src="/backend.js"></script>
   <link rel="stylesheet" href="style.css">
   <title>Document</title>
 </head>
@@ -136,17 +136,17 @@
       <div class="inputs">
         <p>Kérdésed van? Írj nekünk!</p>
 
-        <p class="inputTitle">Felhasználónév</p>
-        <input type="text" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)">
+        <p class="inputTitle">Email-cím</p>
+        <input id="support_email" type="email" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)">
 
-        <p class="inputTitle">Teljes név (opcionális)</p>
-        <input type="text" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)">
+        <p class="inputTitle">Teljes név</p>
+        <input id="support_name" type="text" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)">
   
         <p class="inputTitle">Üzenet</p>
         <textarea name="" id="textarea" rows="5" maxlength="255" onchange="colorChange(this)" onfocusout="colorChange(this)"></textarea>
         <p id="remaining-chars"></p>
 
-        <button class="primaryBTN">küldés</button>
+        <button class="primaryBTN" onclick="support()">küldés</button>
       </div>
     </div> 
 
