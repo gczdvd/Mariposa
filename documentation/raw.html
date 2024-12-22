@@ -9,16 +9,25 @@
             padding: 0;
             margin: 0;
             display: grid;
-            width: 100vw;
-            height: 100vh;
+            min-height: 100vh;
             grid-template-areas: 
                 'header header header header header'
-                'menu content content content content'
-                'menu content content content content'
-                'menu content content content content'
-                'menu content content content content'
-                'menu content content content content'
-                'menu content content content content';
+                'menu content content content jump'
+                'menu content content content jump'
+                'menu content content content jump'
+                'menu content content content jump'
+                'menu content content content jump'
+                'menu content content content jump';
+        }
+        s{
+            text-decoration: none;
+        }
+        #jump{
+            position: sticky;
+            top: 0;
+        }
+        #jump a{
+            display: block;
         }
     </style>
 </head>
@@ -26,5 +35,6 @@
     <div style="grid-area: header;background-color: #F77;"><h1 id="header"></h1></div>
     <div id="menu" style="grid-area: menu;background-color: #7F7;"></div>
     <div id="content" style="grid-area: content;background-color: #77F;"></div>
+    <div style="grid-area: jump;background-color: #FF7;"><div id="jump"></div></div>
 </body>
 </html>

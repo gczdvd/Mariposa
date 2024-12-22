@@ -34,6 +34,15 @@ export class Email{
         });
     }
 
+    support(message){
+        this.transport.sendMail({
+            from: `"Mariposa - The Social Butterfly" <guest@mariposachat.hu>`,
+            to: "support@mariposachat.hu",
+            subject: "Támogatás kérése",
+            text: message
+        });
+    }
+
     verify(email, token){
         this.transport.sendMail({
             from: `"Mariposa - The Social Butterfly" <${this.sender}>`,
