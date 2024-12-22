@@ -3,109 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@600&family=Noto+Color+Emoji&family=Palanquin:wght@700&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
     <style>
         body{
             margin: 0;
             padding: 0;
-            background-color: lightgray;
+            /* background-color: white; */
             height: 100vh;
-            text-align: center;
+            /* text-align: center; */
+        }
+
+        #wrapper{
+            font-family: 'Red Hat Text';
         }
 
         #container{
-            background-color: #FCC200;
-            height: max-content;
-            width: 40%;
+            /* background-color: #FCC200; */
+            width: 50vw;
             margin: auto;
         }
         
         #header{
-            background-image: url("./images/cover.jpg");
-            height: auto;
-            width: 100%;
-            padding-top: 70px;
+            /* height: auto; */
+            /* width: 100%; */
+            font-family: 'Palanquin';
+        }
+
+        #header img{
+            height: 5vh;
+            vertical-align: middle;
+            /* float: center; */
         }
 
         #header p{
-            color: #FCC200;
-            background-color: rgb(254, 254, 254);
-            border-radius: 10px 10px 0 0;
-            padding: 20px 0 15px 0;
-            width: 90%;
+            /* float: right; */
             text-align: center;
+            display: inline;
+            vertical-align: middle;
+            text-transform: uppercase;
+            /* margin-bottom: 1em; */
+        }
+
+        #details{
+            display: grid;
+            font-family: 'Red Hat Text';
+            background-color: #ffbc2f;
+            padding: 2vw;
+            gap: 2em;
+            height: 50vh;
+        }
+
+        #details > div{
             margin: auto;
-        }
-
-        #title{
-            font-size: 30px;
-            font-weight: bold;
-        }
-
-        #content{
             text-align: center;
-            background-color: rgb(254, 254, 254);
-            padding: 20px 0 20px 0;
-            width: 90%;
+            background-color: white;
+            padding: 2em;
+            width: 40vw;
+        }
+
+        #title, #text2{
+            border-top-left-radius: 1em;
+            border-top-right-radius: 1em;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 1em;
+        }
+
+        #text1{
+            border-top-left-radius: 1em;
+            border-top-right-radius: 1em;
+            border-bottom-right-radius: 1em;
+            border-bottom-left-radius: 0;
+        }
+
+        
+
+        #confirm{
+            display: grid;
             margin: auto;
-            font-family: 'Times New Roman', Times, serif;
-            font-size: 18px;
-            border-radius: 0 0 10px 10px;
         }
 
-        #content p{
-            margin: 4px;
+        #confirm p{
+            text-align: center;
+            font-weight: 600;
+            margin-top: 3em;
         }
 
-        ul{
-            display: inline-block;
-            text-align: left;
-            margin: 10px 0 10px 0;
-            list-style-type: circle;
-        }
-
-        #home a{
-            margin: auto;
-            margin-top: 20px;
-            padding: 11px 10px 10px 10px;
-            border: solid 1px rgba(252, 194, 0, 0.5);
-            border-radius: 10px;
-            width: 50%;
+        #confirmButton{
+            margin-left: 15vw;
+            margin-bottom: 3em;
+            width: 20vw;
+            padding: 20px 10px;
+            border: solid 2px #ffbc2f;
+            background-color: #ffbc2f;
+            text-align: center;
             display: block;
             text-decoration: none;
             color: white;
-            background-color: #FCC200;
             text-transform: uppercase;
-            color: #fff;
-            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: 600;
         }
 
-        #home a:hover{
+        #confirmButton:hover{
             text-transform: uppercase;
             color: #FCC200;
-            background-color: rgb(254, 254, 254);
+            background-color: white;
+            border: solid 2px #ffbc2f;
             text-decoration: none;
         }
 
         #footer{
+            text-align: center;
+            background-color: #ffbc2f;
+            color: white;
+            margin-top: 2em;
+        }
+
+        #help{
             width: 25vw;
             margin: auto;
-            padding: 15px 0 15px 0;
+            padding-top: 1em;
         }
 
-        #info{
-            background-color: rgb(62, 44, 10);
+        #fromteam{
+            background-color: #ffbc2f;
+            padding: 1.5em;
             color: white;
-            padding-bottom: 5px;
+            margin: auto;
+            text-align: center;
+            width: 40vw;
+            font-weight: 600;
+            font-size: 1.2em;
+            border-top-left-radius: 3em;
+            border-top-right-radius: 3em;
+            border-bottom-right-radius: 3em;
+            border-bottom-left-radius: 0;
         }
 
-        #logo{
-            width: 10vw;
-            padding-top: 5px;
+        #trademark{
+            margin-top: 3em;
+            padding-bottom: 0.5em;
         }
 
-        p{
-            margin: 0px;
-        }
     </style>
 
     <title>Mariposa</title>
@@ -114,44 +155,42 @@
     <div id="container">
         
         <div id="header">
-            <p id="title">Sikeres regisztráció!</p>
+            <img src="./images/logo.png" alt="">
+            <p>MARIPOSA</p>
         </div>
 
-        <div id="content">
-            <p>Kedves <span id="name">Név</span>!</p>
-            <p>Örülünk, hogy itt vagy!</p>
-            <br>
+        <div id="wrapper">
+            <div id="details">
+                <div id="title">
+                    Üdvözlünk a Mariposán!
+                </div>
 
-            <p>Regisztrált fiókkal lehetőséged nyílik</p>
+                <div id="text1">
+                    Már csak egy lépésre vagy attól, hogy Mariposa tag legyél! Erősítsd meg e-mail címed, hogy befejezd a regisztrációt!
+                </div>
 
-            <ul>
-                <li>chatpartnered elmentésére,</li>
-                <li>érdeklődési köreid beállítására,</li>
-                <li>médiatartalmak küldésére,</li>
-            </ul>
-            
-            <p>és mindezt úgy, hogy továbbra is név nélkül chatelhetsz!</p>
+                <div id="text2">
+                    A regisztrációt követően lehetőséged nyílik arra, hogy új embereket ismerj meg, miközben névtelenül chatelsz!
+                </div>
+            </div>
 
-            <div id="home"><a href="">Irány a Mariposa</a></div>
-            
-            
-            <br>
-            <p>Kellemes chatelést!</p>
-            <p>A Mariposa csapata</p>
-            
-        </div>
-        <div id="footer">
+            <div id="confirm">
+                <p>Kattints az alábbi gombra email címed megerősítéséhez:</p>
+                
+                <a href="" id="confirmButton">MEGERŐSÍTÉS</a>
+                
+                <div id="fromteam">
+                    Kellemes chatelést!
+                </div>
+            </div>
 
-            <p id="help">Segítségre van szükséged?</p>
-            <p>Látogasd meg a <a href="">Rólunk</a> oldalunkat, ahol böngészhetsz a gyakran ismételt kérdések között! Ha nem találsz választ a kérdésedre, vedd fel velünk a kapcsolatot!</p>
-            
-        </div>
+            <div id="footer">
+                <p id="help">Segítségre van szükséged? Látogasd meg a <a href="">GYIK</a> oldalunkat, ahol böngészhetsz a gyakran ismételt kérdések között! Ha nem találsz választ a kérdésedre, vedd fel velünk a kapcsolatot!</p>
 
-        <div id="info">
-            <img id="logo" src="./images/logo.png">
-            <p>Mariposa - The Social Butterfly © 2025</p>
-        </div>
-        
+                <p id="trademark">Mariposa - The Social Butterfly © 2025</p>
+            </div>
+
+        </div>      
     </div>
 </body>
 </html>
