@@ -305,21 +305,31 @@
     align-self: center;
 }
 
+
 .contact{
     display: grid;
     grid-template-columns: 1fr 1fr;
     background-color: transparent;
     height: fit-content;
     margin: 10vh 0 10vh 0;
+    width: 80vw;
+    justify-self: center;
     /* background-image: url("../landingpage/images/img_avatarA.png"); */
     /* background-attachment: fixed; */
+}
+
+.contact img{
+    width: 25vw;
+    justify-self: center;
+    /* margin: auto; */
+    display: block;
 }
 
 .inputs{
     display: grid;
     justify-self: center;
     align-self: center;
-    width: 70%;
+    width: 25vw;
     /* height: 70%; */
 }
 
