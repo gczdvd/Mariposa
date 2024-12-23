@@ -1,4 +1,3 @@
-/* MINDEN */
 *{
     padding: 0;
     margin: 0;
@@ -6,13 +5,7 @@
     border: 0;
 }
 
-.wrapper{
-    /* width: 100vw; */
-    max-width: 100%;
-    
-}
 
-/* GOMBOK */
 .primaryBTN{
     display: grid;
     width: fit-content;
@@ -39,10 +32,9 @@
     grid-column: 1 / span 2;
 }
 
+
 .secondaryBTN{
     display: grid;
-    /* justify-content: center; */
-    /* align-self: center; */
     justify-self: center;
     background-color: white;
     font-family: "Albert Sans";
@@ -65,14 +57,12 @@
     .primaryBTN{
         padding: 0.5rem 1rem 0.5rem 1rem;
         justify-self: center;
-        /* text-align: center; */
         font-size: 15px;
     }
 
     .secondaryBTN{
         padding: 0.5rem 1rem 0.5rem 1rem;
         justify-self: center;
-        /* text-align: center; */
         font-size: 15px;
     }
     
@@ -103,24 +93,14 @@
     transition: transform 200ms ease-in-out; 
 }
 
-/* ALAP DOBOZ
-.wrapper{
-    display: grid;
-    gap:100px; 
-    width: 100%;
-} */
 
-
-/* HEADER */
 #header{
     display: grid;
     width: 100vw;
     max-width: 100%;
-    /* box-sizing: border-box; */
     grid-template-columns: auto auto;
     background-color: transparent;
     position: absolute;
-    /* margin-top: 1em; */
 }
 
 #logo{
@@ -137,44 +117,26 @@
     display: none;
 }
 
-/*
-.navigation li:hover{
-    height: fit-content;
-    background-color: white;
-    border-radius: 100px;
-    transition: 300ms;
-    color: #ffbc2f;
-}
-*/
 
 #title{
-    /* align-self: center; */
     font-size: 1em;
     align-self: center;
     text-transform: uppercase;
     font-family: "Palanquin";
 }
 
-#navigation{
-    
-}
 
 #navigation ul{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     justify-self: end;
-    /* float: right; */
-    /* justify-content: end; */
-    
 }
 
 #navigation a{
     font-size: 1.3rem;
     font-weight: bold;
-    /* float: left; */
     margin: 1rem 2rem;
     color: black;
-    /* border-radius: 100px; */
     height: fit-content;
 }
 
@@ -187,7 +149,6 @@
 @media (max-aspect-ratio:1/1) {
     #logo{
         display: grid;
-        /* grid-template-columns: auto; */
     }
 
     #logo img{
@@ -196,7 +157,6 @@
     }
     
     #title{
-        /* height: fit-content; */
         font-size: 1em;
         align-self: center;
         text-decoration: none;
@@ -234,7 +194,6 @@
         text-decoration: none;
         color: white;
         list-style: none;
-        /* padding: 2dvh; */
     }
     
     #navigation ul{
@@ -253,13 +212,10 @@
         font-size: 1.5em;
         background-color: orange;
         z-index: 1;
-        /* position: relative; */
         overflow-x: hidden;
         transition: 0.5s;
         width: 0;
-        /* top: 0; */
         right: 0;
-        /* text-align: center; */
         font-family: "Albert Sans"
     }
     
@@ -274,17 +230,9 @@
     .navigation a{
         font-size: 1.3em;
         font-weight: bold;
-        /* float: left; */
-        /* margin-right: 4em; */
         color: black;
         height: fit-content;
-        /* align-self: center; */
-        /* justify-self: center; */
-        /* border-radius: 100px; */
     }
-
-    
-
 }
 
 
@@ -294,53 +242,37 @@
     width: 100vw;
     max-width: 100%;
     grid-template-columns: 1fr 1fr;
-    /* background-color: white; */
+    margin-bottom: 5vh;
 }
 
-.cover .image{
-    /* grid-column-start: 2; */
-}
 
 .cover img{
     height: 100vh;
-    
-    /* width: 90vw; */
-    /* float: right; */
 }
 
 .texts{
     display: grid;
     height: fit-content;
     align-self: center;
-    /* gap: 5vh; */
-    /* grid-column-start: 1; */
+    gap: 5vh;
 }
 
 .bigtext{
-    /* padding-bottom: 10%; */
     justify-self: center;
     align-self: end;
     text-align: center;
     font-family: "Red Hat Text";
     font-weight: 300;
-    /* line-height: 100%; */
     font-size: 2em;
-    /* height: fit-content; */
 }
 
 .midtext{
-    /* padding-bottom: 10%; */
-    /* justify-self: center; */
     align-self: center;
     text-align: center;
-    /* height: fit-content; */
-
     font-family: "Red Hat Text";
     font-weight: 300;
-    /* line-height: 100%; */
     font-size: 1.5em;
 }
-
 
 
 .description{
@@ -349,18 +281,13 @@
     display: grid;
     text-align: center;
     font-family: "Red Hat Text";
-}
-
-.text{
-    display: grid;
-    /* gap: 1rem; */
+    gap: 3vh;
+    margin-bottom: 5vh;
 }
 
 .headline{
     font-size: 4rem;
     font-weight: 600;
-    /* align-self: end; */
-    /* gap: 30px; */
 }
 
 .subhead{
@@ -409,8 +336,6 @@
         width: 80vw;
         font-size: 1em;
     }
-
-    
 }
 
 
@@ -419,9 +344,10 @@
     grid-template-columns: 1fr 1fr 1fr;
     text-align: center;
     font-family: "Red Hat Text";
-    width: 100vw;
+    width: 80vw;
     max-width: 100%;
     justify-self: center;
+    margin-bottom: 5vh;
 }
 
 .services img{
@@ -450,35 +376,16 @@
     }
 }
 
-/* @keyframes scaling {
-    from {
-        background-color: red;
-        scale: 0.5;
-        opacity: 0.5;
-        ;
-    }
-  }
-    
-  @media (prefers-reduced-motion: no-preference) {
-    .services img, .services p {
-        animation: scaling linear both;
-        animation-timeline: view();
-        animation-range: cover 10% cover 30%;
-        opacity: 1;
-        color: #ffbc2f;
-        
-    }
-    .services img{
-        filter: hue-rotate(180deg);
-    }
-} */
 
-
+.aboutus{
+    width: 80vw;
+    justify-self: center;
+    margin-bottom: 5vh;
+}
 
 .slides{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    width: 100vw;
     max-width: 100%;
 }
 
@@ -487,7 +394,7 @@
     align-self: center;
     text-align: center;
     font-family: "Red Hat Text";
-    /* gap: 10px; */
+    font-size: 2em;
 }
 
 .slides img{
@@ -511,6 +418,7 @@
     max-width: 100%;
     grid-template-columns: 1fr 1fr;
     font-family: "Red Hat Text";
+    margin-bottom: 5vh;
 }
 
 .signup img{
@@ -518,8 +426,10 @@
 }
 
 .convince{
+    display: grid;
     justify-self: center;
     align-self: center;
+    gap: 3vh;
 }
 
 .convince li{
@@ -533,22 +443,12 @@
     list-style-type: disc;
 }
 
-.convince li:nth-child(1){
-    /* margin-top: 10px; */
-}
-
-.convince li:nth-child(4){
-    /* margin-bottom: 10px; */
-}
-
 .convince p{
     font-weight: 600;
 }
 
 .convince p, li{
     font-size: 1.5rem;
-    /* margin: auto; */
-
 }
 
 @media (max-aspect-ratio:1/1) {
@@ -576,15 +476,8 @@
     .convince p, li{
         font-size: 1rem;
         justify-self: center;
-        /* text-align: center; */
         width: 100vw;
 
-    }
-
-    .convince li{
-        /* text-indent: 2em; */
-        /* list-style-position: inside; */
-        
     }
 }
 
@@ -592,15 +485,13 @@
 
 
 /* TÁMOGATÁS */
-
 .donation{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /* grid-template-rows: 1fr; */
-    /* grid-row: 2; */
     width: 100vw;
     max-width: 100%;
     text-align: center;
+    margin-bottom: 5vh;
 }
 
 .donation img{
@@ -613,11 +504,9 @@
     justify-self: center;
     align-self: center;
     font-family: "Red Hat Text";
+    font-size: 1.5em;
 }
 
-.donation-text p{
-    /* padding-bottom: 30px; */
-}
 
 @media (max-aspect-ratio:1/1) {
     .donation{
@@ -636,13 +525,11 @@
     display: grid;
     width: 100vw;
     max-width: 100%;
-    /* padding: 1rem 0 1rem 0; */
     align-items: center;
     justify-items: center;
-    /* gap: 30px; */
-    /* text-align: center; */
     height: 50vh;
     font-family: "Red Hat Text";
+    margin-bottom: 5vh;
 }
 
 .newsText{
@@ -656,11 +543,12 @@
     border-bottom: 3px solid lightgray;
     width: 30vw;
     background-color: transparent;
+    font-family: 'Red Hat Text';
 }
 
 .emailInput input:focus{
     outline: none;
-    border-bottom: 3px solid #ffbc2f;
+    border-bottom: 3px solid #ffbc2f !important;
 }
 
 .emailInput input::-webkit-input-placeholder{
@@ -684,20 +572,16 @@
 }
 
 
-
 .footer{
     text-align: center;
     width: 100vw;
     max-width: 100%;
     background-color: #ffbc2f;
-    height: fit-content;
-    /* padding: 1rem 0 1rem 0; */
-    
+    height: fit-content;    
 }
 
 .pages a{
     padding: 1rem 1.5rem;
-    /* margin: 0 5px 0 5px; */
     text-decoration: none;
     color: white;
     font-size: 1.3rem;
@@ -708,7 +592,6 @@
 
 .pages a:hover::after{
     transform: scaleX(1);
-    
 }
 
 .pages a::after{
@@ -717,7 +600,6 @@
     border-bottom: solid 3px white;
     transform: scaleX(0);
     transition: transform 250ms ease-in-out;
-    
 }
 
 .trademark{
@@ -741,23 +623,5 @@
 
     .trademark{
         font-size: 0.7rem;
-    }
-    
+    }   
 }
-
-
-/* 
-.slides-text{
-    align-self: center;
-    justify-self: center;
-} */
-
-/* 
-.prev, .next {
-    cursor: pointer;
-    color: black;
-    font-weight: bold;
-    font-size: 18px;
-    transition: 0.6s ease;
-    user-select: none;
-} */
