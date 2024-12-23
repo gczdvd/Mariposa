@@ -24,13 +24,8 @@ html{
     font-size: 1.5rem;
     border: 3px solid transparent;
     cursor: pointer;
-    width: fit-content;
     justify-self: center;
     grid-column: 1 / span 2;
-    /* justify-self: center; */
-    margin: 0 1em 1em 0;
-    /* position: static; */
-    /* bottom: 0; */
 }
 
 .primaryBTN:hover{
@@ -413,8 +408,9 @@ summary{
     cursor: pointer;
     width: fit-content;
     height: fit-content;
-    justify-self: center;
+    justify-self: end;
     border: 3px solid #ff552f;
+    grid-column: 1 / span 2;
 }
 
 .deleteBTN:hover{
