@@ -33,36 +33,22 @@
         
     </div>
 
-    <!-- icon -->
-    <!-- <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-        <i class="fa fa-bars"></i>
-    </a> -->
-
-  </div>
-
-
-  <!-- <div class="header">
-      <div class="logo">
-          <img src="./images/logo.png" alt="">
-          <div class="title">Mariposa</div>
-      </div>
-
-      <div class="navigation">
-                  
-        <a href="" class="tertiaryBTN">Kezdőlap</a>
-        <a href="" class="tertiaryBTN">Chatelj!</a>
-        <a href="" class="tertiaryBTN">Bejelentkezés</a>
-        <a href="" class="tertiaryBTN">Rólunk</a>
-    
-      </div>
-  </div> -->
-  
+  </div> 
   
 
   <div class="cover">
-    <p>Vannak kérdéseid?
-    <br>
-      Itt választ kapsz rájuk!</p>
+      <div class="texts">
+        
+        <div class="bigtext">
+          <p>Kérdéseid vannak? Itt választ kapsz rájuk!</p>
+        </div>
+
+        <div class="midtext">
+          <p>Böngéssz a leggyakrabban feltett kérdések között vagy írj nekünk!</p>
+        </div>
+      </div>
+      
+      <img src="../images/pillango_es_elsosegelydoboz.svg" alt="">
   </div>
 
   <div class="support">
@@ -89,7 +75,7 @@
   
       <p class="qTitle">Regisztráció és bejelentkezés</p>
       <div class="questionsP">
-        <button class="accordion">Nem kaptam visszaigazoló emailt!</button>
+        <button class="accordion" onclick="">Nem kaptam visszaigazoló emailt!</button>
         <div class="panel">
           <p>Ha biztosan helyesen adtad meg regisztrációkor az email-címedet, kérjük, vedd fel velünk a kapcsolatot a lentebb található Kapcsolat fülön.</p>
         </div>
@@ -129,7 +115,7 @@
   
     <div class="contact">
       <div class="image">
-        <!-- <img src="" alt=""> -->
+        <img src="../images/pillango_es_level.svg" alt="">
       </div>
 
       
@@ -143,12 +129,13 @@
         <input id="support_name" type="text" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)">
   
         <p class="inputTitle">Üzenet</p>
-        <textarea name="" id="textarea" rows="5" maxlength="255" onchange="colorChange(this)" onfocusout="colorChange(this)"></textarea>
+        <textarea name="" id="textarea" rows="5" maxlength="255" onchange="colorChange(this)" onfocusout="colorChange(this)" oninput="charCounter(this)" onfocus="charCounter(this)" spellcheck="false"></textarea>
         <p id="remaining-chars"></p>
 
         <button class="primaryBTN" onclick="support()">küldés</button>
       </div>
     </div> 
+
 
   <div class="footer">
     <div class="pages">

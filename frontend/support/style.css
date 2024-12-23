@@ -54,13 +54,8 @@ body{
 /* HEADER */
 .header{
     display: grid;
-    width: 100vw;
-    max-width: 100%;
-    /* box-sizing: border-box; */
     grid-template-columns: auto 1fr;
     background-color: transparent;
-    position: absolute;
-    /* margin-top: 1em; */
 }
 
 .logo{
@@ -72,16 +67,6 @@ body{
     width: 5vw;
 }
 
-
-/*
-.navigation li:hover{
-    height: fit-content;
-    background-color: white;
-    border-radius: 100px;
-    transition: 300ms;
-    color: #ffbc2f;
-}
-*/
 
 .title{
     /* align-self: center; */
@@ -105,7 +90,7 @@ body{
     list-style: none;
     /* float: left; */
     margin: 1rem 2rem;
-    color: white;
+    color: #ffbc2f;
     /* border-radius: 100px; */
     height: fit-content;
     
@@ -130,26 +115,32 @@ body{
 }
 
 .cover{
-    height: 70vh;
     display: grid;
-    /* width: 100vw; */
-    /* max-width: 100%; */
-
-    justify-content: center;
+    grid-template-columns: 1fr 1fr;
+    /* margin-bottom: 5vh; */
+    /* height: 70vh; */
     align-content: center;
-    font-family: "Albert Sans";
-    font-size: 3em;
-    text-transform: uppercase;
-    /* background-image: url("./images/web.jpg"); */
-    background-color: lightcoral;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-    
-    text-align: center;
-    /* position: fixed; */
+    margin-top: 3vh;
 }
 
+.texts{
+    display: grid;
+    height: fit-content;
+    align-self: center;
+    gap: 3vh;
+    text-align: center;
+    font-family: "Red Hat Text";
+}
+
+.bigtext{
+    font-weight: 600;
+    font-size: 2em;
+}
+
+.midtext{
+    font-weight: 300;
+    font-size: 1.5em;
+}
 
 
 .support{
@@ -193,16 +184,14 @@ body{
 .accordion {
     display: grid;
     grid-template-columns: auto 1fr;
-
     background-color: #eee;
     color: black;
-    /* color: #ffbc2f; */
     cursor: pointer;
-    padding: 1em 1em 1em 1em;
+    padding: 1em;
     font-family: "Red Hat Text";
     font-size: 1em;
     width: 100%;
-    text-align: left;
+    /* text-align: left; */
     border: none;
     outline: none;
     transition: 0.4s;
@@ -211,18 +200,11 @@ body{
 }
 
 .accordion:after {
-    /* content: '\02795'; Unicode character for "plus" sign (+) */
     color: #ffbc2f;
-    /* content: "⬇️"; */
     content: "▼";
     justify-self: end;
     align-self: center;
     font-family: "Noto Color Emoji";
-    
-    /* float: right; */
-    /* margin-left: 5px; */
-    /* width: 2em; */
-    /* width: 20px; */
   }
 
   @media (max-aspect-ratio:1/1){
@@ -233,10 +215,7 @@ body{
   
   
   .active:after {
-    /* content: '\2796'; Unicode character for "minus" sign (-) */
-    /* content: '\2BC5'; */
     color: #ffbc2f;
-    /* content: "⬆️"; */
     content: "▲";
     font-family: "Noto Color Emoji";
   }
@@ -257,10 +236,7 @@ body{
     transition: max-height 0.2s ease-out;
     width: 100%;
     font-family: "Red Hat Text";
-    /* border-left: 1px solid #ffbc2f;
-    border-right: 1px solid #ffbc2f;
-    border-bottom: 1px solid #ffbc2f; */
-
+    display: none;
 }
 
 .panel p{
@@ -279,15 +255,24 @@ body{
     background-color: transparent;
     height: fit-content;
     margin: 10vh 0 10vh 0;
-    /* background-image: url("../landingpage/images/img_avatarA.png"); */
-    /* background-attachment: fixed; */
+    width: 80vw;
+    justify-self: center;
+}
+
+.contact img{
+    width: 25vw;
+    justify-self: center;
+    /* margin: auto; */
+    display: block;
+    -webkit-user-drag: none;
 }
 
 .inputs{
     display: grid;
     justify-self: center;
     align-self: center;
-    width: 70%;
+    width: 25vw;
+    font-family: 'Red Hat Text';
     /* height: 70%; */
 }
 
@@ -308,6 +293,7 @@ body{
 }
 
 .inputs input{
+    border: none;
     border-bottom: lightgray 2px solid;
     align-self: end;
     padding: 0 0 0.2em 0.2em;
@@ -321,7 +307,6 @@ body{
     /* padding-left: 0.1em; */
 }
 
-
 textarea{
     resize: none;
     border: 2px #d3d3d3 solid;
@@ -332,22 +317,18 @@ textarea{
     color: #ffbc2f;
 }
 
-
-
 textarea:focus{
     outline: none;
     border: rgba(240, 192, 35, 1) 2px solid !important;
     padding: 0.2em 0 0.2em 0.2em;
 }
 
-
 #remaining-chars{
     font-size: 11px;
     color: #ffbc2f;
     margin-top: 3px;
-    /* float: right; */
+    visibility: hidden;
     height: 20px;
-    /* display: none; */
 }
 
 

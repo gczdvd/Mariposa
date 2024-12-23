@@ -1,51 +1,45 @@
 Backend.setUrl("127.0.0.1:3000");
-// Animált accordion
+
+// function accordionSwap(){
+  
+// }
+
 var acc = document.getElementsByClassName("accordion");
-var i;
+  var i;
+  
+  for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var panel = this.nextElementSibling;
+      if (panel.style.maxHeight) {
+        panel.style.maxHeight = null;
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+      }
+    });
+  }
 
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var panel = this.nextElementSibling;
-
-    if (panel.style.maxHeight) {
-      panel.style.maxHeight = null;
-    } else {
-      panel.style.maxHeight = panel.scrollHeight + "px";
-    }
-
-  });
-}
 
 function myFunction() {
   var x = document.getElementById("navigation");
-  var logo = document.getElementById("logo");
+  // var logo = document.getElementById("logo");
   
-
   if (x.style.display === "block") {
-    
     x.style.display = "none";
-    
   } else {
-
     x.style.display = "block";
-    
   }
 }
 
 
-const textarea = document.getElementById("textarea");
 function charCounter(inputField) {
 
   const remChars = document.getElementById("remaining-chars");
   remChars.style.visibility = "visible";
   const maxLength = inputField.getAttribute("maxlength");
   const currentLength = inputField.value.length;
-  remChars.innerHTML = `${currentLength} / ${maxLength}`;
-  
+  remChars.innerHTML = `${currentLength} / ${maxLength}`; 
 }
-textarea.oninput = () => charCounter(textarea);
-textarea.onfocus = () => charCounter(textarea);
 
 
 function colorChange(textarea){
@@ -61,7 +55,7 @@ function colorChange(textarea){
     remChars.style.visibility = "visible";
   }
 }
-textarea.onfocusout = () => colorChange(textarea);
+
 
 function support(){
     //VIZSGÁLNI, HOGY MINDENJÓ
