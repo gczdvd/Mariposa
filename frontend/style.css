@@ -286,7 +286,7 @@
 }
 
 .headline{
-    font-size: 4rem;
+    font-size: 4em;
     font-weight: 600;
 }
 
@@ -577,7 +577,7 @@
     width: 100vw;
     max-width: 100%;
     background-color: #ffbc2f;
-    height: fit-content;    
+    height: fit-content;
 }
 
 .pages a{
