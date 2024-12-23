@@ -315,6 +315,13 @@ app.get('/signup/verify', (req, res) => {
     });
 });
 
+
+
+app.get('/TESZT', (req, res) => {
+    smtp.verify("csizmadiaxenia@gmail.com", "null");
+});
+
+
 app.post('/message', (req, res) => {
     smtp.support(req.body.email, req.body.name, req.body.text);
     res.status(200);
