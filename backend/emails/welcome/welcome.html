@@ -7,6 +7,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@600&family=Noto+Color+Emoji&family=Palanquin:wght@700&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@600&family=Noto+Color+Emoji&family=Noto+Sans+Symbols+2&family=Palanquin:wght@700&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap');
+
         body{
             margin: 0;
             padding: 0;
@@ -16,7 +18,7 @@
         }
 
         #wrapper{
-            font-family: 'Red Hat Text';
+            font-family: 'Red Hat Text', Arial, Helvetica, sans-serif;
         }
 
         #container{
@@ -48,51 +50,59 @@
 
         #details{
             display: grid;
-            font-family: 'Red Hat Text';
+            font-family: 'Red Hat Text', Arial, Helvetica, sans-serif;
             background-color: #ffbc2f;
             padding: 2vw;
             gap: 2em;
-            height: 50vh;
         }
 
         #details > div{
             margin: auto;
             text-align: center;
             background-color: white;
-            padding: 2em;
+            padding: 2vw;
             width: 40vw;
         }
 
-        #title, #text2{
-            border-top-left-radius: 1em;
-            border-top-right-radius: 1em;
+        #title{
+            font-size: 2em;
+            font-weight: 600;
+            border-top-left-radius: 2vw;
+            border-top-right-radius: 2vw;
             border-bottom-right-radius: 0;
-            border-bottom-left-radius: 1em;
+            border-bottom-left-radius: 2vw;
         }
 
         #text1{
-            border-top-left-radius: 1em;
-            border-top-right-radius: 1em;
-            border-bottom-right-radius: 1em;
+            font-size: 1.1em;
+            border-top-left-radius: 2vw;
+            border-top-right-radius: 2vw;
+            border-bottom-right-radius: 2vw;
             border-bottom-left-radius: 0;
         }
 
-        
+        #text2{
+            font-size: 1.1em;
+            border-top-left-radius: 2vw;
+            border-top-right-radius: 2vw;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 2vw;
+        }
 
         #confirm{
             display: grid;
             margin: auto;
+            gap: 3em;
+            padding: 2vw;
         }
 
         #confirm p{
             text-align: center;
             font-weight: 600;
-            margin-top: 3em;
         }
 
         #confirmButton{
-            margin-left: 15vw;
-            margin-bottom: 3em;
+            margin: auto;
             width: 20vw;
             padding: 20px 10px;
             border: solid 2px #ffbc2f;
@@ -114,19 +124,6 @@
             text-decoration: none;
         }
 
-        #footer{
-            text-align: center;
-            background-color: #ffbc2f;
-            color: white;
-            margin-top: 2em;
-        }
-
-        #help{
-            width: 25vw;
-            margin: auto;
-            padding-top: 1em;
-        }
-
         #fromteam{
             background-color: #ffbc2f;
             padding: 1.5em;
@@ -140,6 +137,26 @@
             border-top-right-radius: 3em;
             border-bottom-right-radius: 3em;
             border-bottom-left-radius: 0;
+        }
+
+        #footer{
+            text-align: center;
+            background-color: #ffbc2f;
+            color: white;
+        }
+
+        #help{
+            width: 25vw;
+            margin: auto;
+            padding-top: 0.5em;
+        }
+
+        #footer a{
+            color: white;
+        }
+
+        #footer a:hover{
+            color: orange;
         }
 
         #trademark{
@@ -175,7 +192,7 @@
             </div>
 
             <div id="confirm">
-                <p>Kattints az alábbi gombra email címed megerősítéséhez:</p>
+                <p>Kattints az alábbi gombra email-címed megerősítéséhez:</p>
                 
                 <a href="" id="confirmButton">MEGERŐSÍTÉS</a>
                 
