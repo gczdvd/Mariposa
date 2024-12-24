@@ -180,10 +180,9 @@ body{
     font-size: 1.3em;
 }
 
-/* Style the buttons that are used to open and close the accordion panel */
 .accordion {
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 45vw 1fr;
     background-color: #eee;
     color: black;
     cursor: pointer;
@@ -191,12 +190,16 @@ body{
     font-family: "Red Hat Text";
     font-size: 1em;
     width: 100%;
-    /* text-align: left; */
+    text-align: left;
     border: none;
     outline: none;
     transition: 0.4s;
     background-color: #f0f0f0;
     
+}
+
+.accordion button{
+    /* width: 80%; */
 }
 
 .accordion:after {
@@ -220,14 +223,11 @@ body{
     font-family: "Noto Color Emoji";
   }
 
-/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+
 .active, .accordion:hover {
     background-color: #ccc;
-    /* background-color: #ffde97; */
-
 }
 
-/* Style the accordion panel. Note: hidden by default */
 .panel{
     padding: 0 1vw;
     background-color: white;
@@ -236,11 +236,13 @@ body{
     transition: max-height 0.2s ease-out;
     width: 100%;
     font-family: "Red Hat Text";
-    display: none;
+    text-align: left;
+    /* display: none; */
 }
 
 .panel p{
     margin: 1vw;
+    width: 100%;
 }
 
 .qTitle{

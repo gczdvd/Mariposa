@@ -34,6 +34,7 @@ function openNav() {
   document.getElementById("open").style.display = "none";
 
   document.getElementById("blurred").style.filter = "blur(2px)";
+  
   // document.getElementById("navigation").style.filter = "blur(0px)";
 
   // document.getElementById("header").style.backgroundColor = "orange";
@@ -150,4 +151,14 @@ function receive(e){
     }
 }
 
+<<<<<<< HEAD
 ws.onmessage = receive;
+=======
+ws.onmessage = receive;
+
+/*document.getElementById("name").innerHTML = Backend.info().nickname;
+document.getElementById("quote").innerHTML = Backend.info().description;
+document.getElementById("birthday").innerHTML = function(e=new Date(Backend.info().birthdate)){
+    return `${e.getUTCFullYear()}. ${(e.getMonth() < 10 ? '0' : '') + e.getMonth()}. ${(e.getDate() < 10 ? '0' : '') + e.getDate()}.`;
+}();*/
+>>>>>>> 0af352980b8881495a0b310766f733945ce0121d

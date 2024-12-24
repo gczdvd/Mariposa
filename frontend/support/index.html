@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@600&family=Noto+Color+Emoji&family=Noto+Sans+Symbols+2&family=Palanquin:wght@700&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <script src="/backend.js"></script>
+  <!-- <script src="/backend.js"></script> -->
   <link rel="stylesheet" href="style.css">
   <title>Document</title>
 </head>
@@ -19,14 +19,14 @@
   <div class="header">
     <!-- topnav -->
     <div class="logo">
-        <img src="./images/logo.png" alt="">
+        <img src="" alt="">
         <div class="title">Mariposa</div>
     </div> 
 
     <!-- mylinks -->
     <div class="navigation">
         
-            <a href="" class="tertiaryBTN">Kezdőlap</a>
+            <a href="/" class="tertiaryBTN">Kezdőlap</a>
             <a href="/chat" class="tertiaryBTN">Chatelj!</a>
             <a href="/login" class="tertiaryBTN">Bejelentkezés</a>
             <a href="/aboutus" class="tertiaryBTN">Rólunk</a>
@@ -54,12 +54,35 @@
   <div class="support">
     <div class="faq">
       <p class="qTitle">Mariposa</p>
-      <div class="questionsM">
+      <div class="">
         <button class="accordion">Mi az a Mariposa?</button>
         <div class="panel">
           <p>A Mariposa egy üzenetküldő webalkalmazás, amin keresztül olyan embereket ismerhetsz meg, akiknek az érdeklődési körei hasonlítanak a Te érdeklődési köreidhez.</p>
         </div>
-  
+
+        <button class="accordion">Kik fejlesztik a Mariposát?</button>
+        <div class="panel">
+          <p>A Mariposát egy három fiatalból álló csapat fejleszti, akik odaadással dolgoznak, hogy a Mariposa egy maradandó élmény legyen a felhasználók számára. Bővebb információkért látogasd meg a <a href="/aboutus">Rólunk</a> felületet.</p>
+        </div>
+
+        <button class="accordion">Hogyan működik a Mariposa?</button>
+        <div class="panel">
+          <p>Az összesorsolás menete hosszú fejlesztés eredménye, és folyamatos finomhangolást igényel. Ha nem találtad meg azonnal a tökéletes chatpartnert, próbálkozz újra! Lehet, hogy még nincs a chaten hozzád hasonló.</p>
+        </div>
+
+        <button class="accordion">Tetszik az ötlet és a kivitelezés. Hogyan tudom támogatni a fejlesztést?</button>
+        <div class="panel">
+          <p>Ha anyagilag támogatnád, hívd meg a fejlesztői csapatot egy kávéra! Ha erre nincs lehetőséged, semmi baj! Továbbra is szívesen látunk az oldalon! ((Ha megosztanád velünk az élményeid, ezzel segítve az oldal megítélését, töltsd ki a kérdőívünket! (LINK))) SAJÁT KÉRDŐÍVES OLDAL</p>
+        </div>
+      </div>
+
+      <p class="qTitle">Chat</p>
+      <div class="">
+        <button class="accordion">Sok érdeklődési kört megadtam, de az eddigi chatpartnereim egyike sem rendelkezett ezekkel. Hogyan lehetséges ez?</button>
+        <div class="panel">
+          <p>A Mariposa sorsolása úgy működik, hogy az se maradjon ki, aki nem ad meg érdeklődéseket. Ez kevés elérhető felhasználó esetén azt eredményezi, hogy legalább 1 érdeklődési körrel rendelkező személlyel párosíthat egy érdeklődés nélkülit. Így senkinek sem kell akár órákat várnia egy partnerre! </p>
+        </div>
+
         <button class="accordion">Nem adok meg semmilyen érdeklődési kört. Ez problémát okozhat?</button>
         <div class="panel">
           <p>Nem! A Mariposa nem várja el Tőled, hogy megadj akárcsak 1 érdeklődési kört is. Azt viszont tudnod kell, hogy ez esetben bármilyen érdeklődési körökkel rendelkező emberrel összesorsolhat.</p>
@@ -69,12 +92,15 @@
         <div class="panel">
           <p>Ha úgy érzed, hogy chatpartnered megszegte a Házirendet vagy a testi és/vagy lelki épségedet fenyegeti, lehetőséged van a jelentésére és a supporttal való kapcsolat felvételére.</p>
         </div>
-  
+        
+        <button class="accordion">Miért nem lehet képeket és egyéb fájlokat küldeni?</button>
+        <div class="panel">
+          <p>A Mariposa sorsolása úgy működik, hogy az se maradjon ki, aki nem ad meg érdeklődéseket. Ez kevés elérhető felhasználó esetén azt eredményezi, hogy legalább 1 érdeklődési körrel rendelkező személlyel párosíthat egy érdeklődés nélkülit. Így senkinek sem kell akár órákat várnia egy partnerre! </p>
+        </div>
       </div>
-
   
       <p class="qTitle">Regisztráció és bejelentkezés</p>
-      <div class="questionsP">
+      <div class="">
         <button class="accordion" onclick="">Nem kaptam visszaigazoló emailt!</button>
         <div class="panel">
           <p>Ha biztosan helyesen adtad meg regisztrációkor az email-címedet, kérjük, vedd fel velünk a kapcsolatot a lentebb található Kapcsolat fülön.</p>
@@ -89,11 +115,15 @@
         <div class="panel">
           <p>A regisztráció során elegendő egy becenév, egy létező email-cím és egy megfelelő jelszó megadása, azonban az első bejelentkezés után a profilod beállításaiban kötelező megadnod a teljes neved, születési dátumodat és a nemed.</p>
         </div>
-  
+
+        <button class="accordion">Más oldalakon több adatot kérnek a regisztráció során. A Mariposán hogyhogy elegendő három dolog?</button>
+        <div class="panel">
+          <p>A regisztrációt úgy alakítottuk ki, hogy minél gördülékenyebb és gyorsabb legyen a hibátlan felhasználói élmény érdekében. Azonban a regisztrációt követően a Profilbeállításokban van lehetőséged további adatok megadására.</p>
+        </div>  
       </div>
   
       <p class="qTitle">Profilbeállítások</p>
-      <div class="questionsP">
+      <div class="">
         <button class="accordion">Milyen adatok látszódnak a chatben?</button>
         <div class="panel">
           <p>Két adatot tehetsz nyilvánossá anonim chatpartnereid felé: a nemedet és a születésnapodat. Ezeket szabadon ki- és bekapcsolhatod a profilbeállításaid felületén. Ami minden esetben látszódni fog - feltéve, hogy nem hagyod üresen, - az a Bemutatkozásod.</p>
@@ -104,11 +134,38 @@
           <p>A legtöbb adatot igen, viszont az email-címed, a beceneved és a születésnapod megváltoztathatatlan! Kérjük, olyan becenevet válassz a regisztrációkor, amit a későbbiekben is szívesen használsz.</p>
         </div>
   
-        <button class="accordion">kérdés</button>
+        <button class="accordion">Féltem a személyes adataimat. Kiadjátok ezeket harmadik félnek, például reklámcégeknek?</button>
         <div class="panel">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore accusamus doloremque quisquam neque impedit eum assumenda nostrum facere eligendi, dolorem recusandae, expedita veritatis quos perferendis? Impedit ratione est possimus, cum nam minima voluptates vel veniam. Hic rerum doloremque ratione, officiis a, quo odit esse suscipit nihil, placeat neque nisi commodi?</p>
+          <p>Az adataidat nekünk adod meg, és nálunk is maradnak! Az email-címen kívül semmit sem kell megerősítened felénk. Ha olyan emailt kapsz, ami a Mariposa nevében kéri adataid megerősítését, azt nem mi küldtük. Kérjük, hogy érzékeny adatokat (pl. telefonszám) sehol se ossz meg magadról!</p>
+        </div>
+
+        <button class="accordion">Mit tehetek annak érdekében, hogy az adataim biztonságban legyenek?</button>
+        <div class="panel">
+          <p>Csak olyan adatot tegyél láthatóvá magadról, amit nem bánsz, hogy más is láthat. Email-címed, jelszavad és más érzékeny adatod senkinek se add ki! Ha a chatpartnered egy gyanús linket küld, ne kattints rá, vagy ha mégis rákattintottál, ott se adj meg semmilyen adatot! A Mariposa csak addig garantálja az adatvédelmet, amíg a felületén tartózkodsz.</p>
+        </div>
+      </div>
+
+      <p class="qTitle">Felhasználói fiók</p>
+      <div class="">
+        <button class="accordion">Sokáig nem fogok tudni fellépni a Mariposára. Törölhetik a fiókomat?</button>
+        <div class="panel">
+          <p>Nem! Mivel nem olyan rég indult az oldal, az alacsony látogatói szám miatt hosszútávon képesek vagyunk tárolni minden fiókot inaktivitás esetén is. Ugyanakkor fenntartjuk a jogot, hogy a jövőben időkorlátot szabjunk az inaktív fiókoknak!</p>
         </div>
   
+        <button class="accordion">Több fiók esetén összevonhatóak az elmentett partnerek?</button>
+        <div class="panel">
+          <p>Nem. Ugyanígy nem összevonhatóak a különböző fiókadatok. A fő irányzatunk az anonim chatelés, így ha valakivel minden Mariposa-fiókodról szeretnél beszélgetni, meg kell várnod, hogy összesorsoljon az alkalmazás.</p>
+        </div>
+  
+        <button class="accordion">Feltörték a fiókomat!</button>
+        <div class="panel">
+          <p>Ha úgy gondolod, valaki hozzájuthatott a belépési adataidhoz, és belépett a fiókodba, van lehetőséged jelszavad megváltoztatására vagy a Kapcsolat fülön az üzenetküldésre.</p>
+        </div>
+
+        <button class="accordion">Hogyan tudom törölni a fiókomat?</button>
+        <div class="panel">
+          <p>A fiókodat a Profilbeállításokon keresztül a "FIÓK TÖRLÉSE" gombra kattintva törölheted. Sajnáljuk, hogy a Mariposa nem nyerte el a tetszésed, de ha meggondolnád magad, később is van lehetőséged új fiókot csinálni, akár ugyanazzal az email-címmel!</p>
+        </div>
       </div>
       
     </div>
