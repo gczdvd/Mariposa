@@ -22,7 +22,7 @@ export class Sql{
     }
 
     auth(email, password, callback){
-        this.con.query(`CALL authUser("${this.con.escape(email)}", "${this.con.escape(password)}");`, (err, rows, fields) => {
+        this.con.query(`CALL authUser(${this.con.escape(email)}, ${this.con.escape(password)});`, (err, rows, fields) => {
             var id = rows[0][0]?.client_id;
             if(id){
                 callback(id);
@@ -41,27 +41,30 @@ export class Sql{
         });
     }
 
-    modifyUser(id, callback, password="", gender=0, description="", profile_pic="", topics=""){
-        this.con.query(`CALL modifyUser(${this.con.escape(id)}, "${this.con.escape(password)}", ${this.con.escape(gender)}, "${this.con.escape(description)}", "${this.con.escape(profile_pic)}", "${this.con.escape(topics)}");`, (err, rows, fields) => {
-            var data = rows[0][0];
-            callback(data);
-        });
+    modifyUser(id, p){
+        this.con.query(`CALL modifyUser(${this.con.escape(id)}, ${this.con.escape(p?.password ?? "")}, ${this.con.escape(p?.gender ?? 0)}, ${this.con.escape(p?.description ?? "")}, ${this.con.escape(p?.profile_pic ?? "")}, ${this.con.escape(p?.topics ?? "[]")});`, (err, rows, fields) => {});
     }
 
     signup(nickname, email, password, birthdate, gender, comment, verify, callback){
-        this.con.query(`CALL signupUser("${this.con.escape(nickname)}", "${this.con.escape(email)}", "${this.con.escape(password)}", "${this.con.escape(birthdate)}", ${this.con.escape(gender)}, "${this.con.escape(comment)}", "${this.con.escape(verify)}");`, (err, rows, fields) => {
+        this.con.query(`CALL signupUser(${this.con.escape(nickname)}, ${this.con.escape(email)}, ${this.con.escape(password)}, ${this.con.escape(birthdate)}, ${this.con.escape(gender)}, ${this.con.escape(comment)}, ${this.con.escape(verify)});`, (err, rows, fields) => {
             callback(rows[0][0].status);
         });
     }
 
+    existEmail(email, callback){
+        this.con.query(`CALL isExistEmail(${this.con.escape(email)});`, (err, rows, fields) => {
+            callback(rows[0][0].exist);
+        });
+    }
+
     verifyUser(token, callback){
-        this.con.query(`CALL verifyUser("${this.con.escape(token)}");`, (err, rows, fields) => {
+        this.con.query(`CALL verifyUser(${this.con.escape(token)});`, (err, rows, fields) => {
             callback(rows[0][0].status, rows[0][0].client_id);
         });
     }
 
     newGuest(ip, callback){
-        this.con.query(`CALL newGuest("${this.con.escape(ip)}");`, (err, rows, fields) => {
+        this.con.query(`CALL newGuest(${this.con.escape(ip)});`, (err, rows, fields) => {
             callback(rows[0][0].client_id);
         });
     }
@@ -73,11 +76,11 @@ export class Sql{
     }
 
     newMessage(cid, message, type, chatid){
-        this.con.query(`CALL newMessage(${this.con.escape(chatid)}, ${this.con.escape(cid)}, "${this.con.escape(message)}", "${this.con.escape(type)}");`);
+        this.con.query(`CALL newMessage(${this.con.escape(chatid)}, ${this.con.escape(cid)}, ${this.con.escape(message)}, ${this.con.escape(type)});`);
     }
 
     forgotPassword(email, password, callback){
-        this.con.query(`CALL forgotPassword("${this.con.escape(email)}", "${this.con.escape(password)}");`, (err, rows, fields) => {
+        this.con.query(`CALL forgotPassword(${this.con.escape(email)}, ${this.con.escape(password)});`, (err, rows, fields) => {
             callback(rows[0][0].status);
         });
     }

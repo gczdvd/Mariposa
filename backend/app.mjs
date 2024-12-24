@@ -200,20 +200,31 @@ app.post('/signup', (req, res) => {
     });*/
 app.post('/forgotpassword', (req, res)=>{
     if(req.body.email){
-        var task = tasks.newTask(240, {
-            "email":req.body.email
+        database.existEmail(req.body.email, (exist)=>{
+            if(exist){
+                var task = tasks.newTask(240, {
+                    "email":req.body.email
+                });
+
+                var id = task.getId();
+                var key = Generator.encrypt(cryptKey, id);
+
+                smtp.forgotPassword(req.body.email, key);
+                res.status(200);
+                res.send(JSON.stringify({
+                    "action":"redirect",
+                    "value":"/",
+                    "message":"Success"
+                }));
+            }
+            else{
+                res.status(400);
+                res.send(JSON.stringify({
+                    "action":"error",
+                    "message":"Email doesn't exists."
+                }));
+            }
         });
-
-        var id = task.getId();
-        var key = Generator.encrypt(cryptKey, id);
-
-        smtp.forgotPassword(req.body.email, key);
-        res.status(200);
-        res.send(JSON.stringify({
-            "action":"redirect",
-            "value":"/",
-            "message":"Success"
-        }));
     }
     else{
         res.status(400);
@@ -315,13 +326,6 @@ app.get('/signup/verify', (req, res) => {
     });
 });
 
-
-
-app.get('/TESZT', (req, res) => {
-    smtp.verify("csizmadiaxenia@gmail.com", "null");
-});
-
-
 app.post('/message', (req, res) => {
     smtp.support(req.body.email, req.body.name, req.body.text);
     res.status(200);
@@ -393,6 +397,36 @@ app.get('/', (req, res) => {
     res.status(200);
     res.send("You're User!");
 });*/
+
+app.post('/modifypassword', sessionValidator, (req, res) => {
+    if(req.body.newpassword && req.body.oldpassword){
+        database.auth(req.session.session.getAttribute("client").getEmail(), req.body.oldpassword, (id)=>{
+            if(id != null){
+                database.modifyUser(id, {password:req.body.newpassword});
+                res.status(200);
+                res.send(JSON.stringify({
+                    "action":"redirect",
+                    "value":"/",
+                    "message":"Successful modified."
+                }));
+            }
+            else{
+                res.status(400);
+                res.send(JSON.stringify({
+                    "action":"error",
+                    "message":"Bad old password."
+                }));
+            }
+        });
+    }
+    else{
+        res.status(400);
+        res.send(JSON.stringify({
+            "action":"error",
+            "message":"Missing parameters."
+        }));
+    }
+});
 
 app.get('/userinfo', sessionValidator, (req, res) => {
     res.status(200);

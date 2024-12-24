@@ -140,12 +140,14 @@ function receive(e){
         e.innerText = data.message;
         document.getElementsByClassName("messages")[0].insertBefore(e, document.getElementsByClassName("messages")[0].firstChild);
     }
+    if(data?.identify){
+        var partneridentify = JSON.parse(data.identify);
+        document.getElementById("name").innerHTML = partneridentify.nickname;
+        document.getElementById("quote").innerHTML = partneridentify.description;
+        document.getElementById("birthday").innerHTML = function(e=new Date(partneridentify.birthdate)){
+            return `${e.getUTCFullYear()}. ${(e.getMonth() < 10 ? '0' : '') + e.getMonth()}. ${(e.getDate() < 10 ? '0' : '') + e.getDate()}.`;
+        }();
+    }
 }
 
 ws.onmessage = receive;
-
-/*document.getElementById("name").innerHTML = Backend.info().nickname;
-document.getElementById("quote").innerHTML = Backend.info().description;
-document.getElementById("birthday").innerHTML = function(e=new Date(Backend.info().birthdate)){
-    return `${e.getUTCFullYear()}. ${(e.getMonth() < 10 ? '0' : '') + e.getMonth()}. ${(e.getDate() < 10 ? '0' : '') + e.getDate()}.`;
-}();*/
