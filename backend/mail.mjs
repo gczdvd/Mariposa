@@ -48,8 +48,8 @@ export class Email{
             from: `"Mariposa - The Social Butterfly" <${this.sender}>`,
             to: email,
             subject: "Verify your account!",
-            html: HTMLFileFormat('emails/confirm/confirm.html', (e)=>{
-                e.getElementById("confUrl").setAttribute("href", `http://127.0.0.1:3000/signup/verify?token=${token}`);
+            html: HTMLFileFormat('emails/welcome/welcome.html', (e)=>{
+                e.getElementById("confirmButton").setAttribute("href", `http://127.0.0.1:3000/signup/verify?token=${token}`);
             })
         });
         return token;
