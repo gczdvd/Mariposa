@@ -433,6 +433,19 @@ app.get('/userinfo', sessionValidator, (req, res) => {
     res.send(req.session.session.getAttribute("client").getInfo());
 });
 
+app.get('/partners', sessionValidator, (req, res) => {
+    database.getSavedChatsByUserId(req.session.session.getAttribute("client").getId(), (partners) => {
+        res.status(200);
+        res.send(JSON.stringify({
+            "action":"none",
+            "value":{
+                "partners":partners
+            },
+            "message":"OK"
+        }));
+    })
+});
+
 app.get('/chat', sessionValidator, (req, res) => {                  //Ezen kérés előtt, de a bejelentkezés után KÖTELEZŐ websocketet nyitni
     if(req.session.session.getAttribute("chat") instanceof Chat){
         res.status(200);

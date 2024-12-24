@@ -13,8 +13,8 @@ class Backend{
         })
         .then(async (e)=>{
             var resp = await e.json();
-            alert(JSON.stringify(params));
-            alert(JSON.stringify(resp));
+            // alert(JSON.stringify(params));
+            // alert(JSON.stringify(resp));
             if(resp.action == "redirect"){
                 window.location.href = resp.value;
             }
@@ -35,8 +35,8 @@ class Backend{
         })
         .then(async (e)=>{
             var resp = await e.json();
-            alert(JSON.stringify(params));
-            alert(JSON.stringify(resp));
+            // alert(JSON.stringify(params));
+            // alert(JSON.stringify(resp));
             if(resp.action == "redirect"){
                 window.location.href = resp.value;
             }

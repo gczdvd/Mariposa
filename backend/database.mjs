@@ -84,4 +84,10 @@ export class Sql{
             callback(rows[0][0].status);
         });
     }
+
+    getSavedChatsByUserId(id, callback){
+        this.con.query(`CALL getSavedChatsByUserId(${this.con.escape(id)});`, (err, rows, fields) => {
+            callback(rows[0]);
+        });
+    }
 }

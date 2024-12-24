@@ -19,6 +19,24 @@ Backend.get({
     }
 });
 
+Backend.get({
+    path:"/partners",
+    callback:(e)=>{
+        for(var i = 0; i < e.value.partners.length; i++){
+            var _div = document.createElement("div");
+            _div.className = "savedChat";
+            var _img = document.createElement("img");
+            _img.src = "../images/img_avatarA.png";
+            var _p = document.createElement("p");
+            _p.innerHTML = e.value.partners[i].partner_name;
+            
+            _div.appendChild(_img);
+            _div.appendChild(_p);
+            document.getElementById("saved").appendChild(_div);
+        }
+    }
+})
+
 function placeholderAdd(textarea){
   if(textarea.value.length == 0){
     textarea.innerHTML = "Üzenet...";
@@ -151,14 +169,4 @@ function receive(e){
     }
 }
 
-<<<<<<< HEAD
 ws.onmessage = receive;
-=======
-ws.onmessage = receive;
-
-/*document.getElementById("name").innerHTML = Backend.info().nickname;
-document.getElementById("quote").innerHTML = Backend.info().description;
-document.getElementById("birthday").innerHTML = function(e=new Date(Backend.info().birthdate)){
-    return `${e.getUTCFullYear()}. ${(e.getMonth() < 10 ? '0' : '') + e.getMonth()}. ${(e.getDate() < 10 ? '0' : '') + e.getDate()}.`;
-}();*/
->>>>>>> 0af352980b8881495a0b310766f733945ce0121d
