@@ -236,7 +236,7 @@ body{
     transition: max-height 0.2s ease-out;
     width: 100%;
     font-family: "Red Hat Text";
-    display: none;
+    /* display: none; */
 }
 
 .panel p{
