@@ -34,6 +34,7 @@ function openNav() {
   document.getElementById("open").style.display = "none";
 
   document.getElementById("blurred").style.filter = "blur(2px)";
+  
   // document.getElementById("navigation").style.filter = "blur(0px)";
 
   // document.getElementById("header").style.backgroundColor = "orange";

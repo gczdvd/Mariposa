@@ -35,23 +35,10 @@
                         <li><a href="/aboutus" class="tertiaryBTN">Rólunk</a></li>
                         <li><a href="/support" class="tertiaryBTN">Segítség</a></li>
                     </ul>
-                    <!-- <a href="">Kezdőlap</a>
-                    <a href="">Profil</a>
-                    <a href="">Rólunk</a>
-                    <a href="">Segítség</a> -->
                 </div>
             </div>
-    
-            
         </div>
         
-
-            <!-- <div class="navigation" id="navigation">
-                <a href="" class="tertiaryBTN">Kezdőlap</a>
-                <a href="" class="tertiaryBTN">Profil</a>
-                <a href="" class="tertiaryBTN">Rólunk</a>
-                <a href="" class="tertiaryBTN">Segítség</a>
-            </div> -->
         <div id="blurred" onclick="closeNav()">
             <div class="chatArea">
                 <div class="saved" id="saved">
@@ -61,6 +48,8 @@
     
                     <div class="" id="startChat" title="Új chat indítása">
                         <a href=""><img src="./images/plusorange.png"></a>
+                        <!-- <a href="" class="emoji">➕</a> -->
+                    
                     </div>
     
                     <div class="savedChat">
@@ -116,15 +105,14 @@
     
                     <div class="message">
     
-                        <textarea placeholder="Írd ide az üzenetet..." rows="1" id="message" class="message-bar"></textarea>
+                        <textarea placeholder="Írd ide az üzenetet..." rows="" id="message" class="message-bar" maxlength="1000" oninput='this.style.height = ""; this.style.height = this.scrollHeight + "px"'></textarea>
+                        <!-- <div contenteditable="true" role="textbox" class="message-bar" aria-label="Üzenet..." dir="auto" oninput='this.style.height = ""; this.style.height = this.scrollHeight + "px"'></div> -->
                         
                         <button id="sendBTN" onclick="send()"><img src="./images/sendicon.png" alt=""></button>
                         
                         <!-- <img id="sendbtn" src="send.png" onclick="send()"> -->
     
                     </div>
-                    
-                    
                 </div>
         
                 <div class="details">
@@ -152,6 +140,13 @@
                             </span>
                             <br>
                             <img src="./images/image.png" alt="" draggable="false">
+                        </p>
+
+                        <p id="interestsP">
+                            <span id="interests">
+                                <button>Tánc</button>
+                            </span>
+                            <!-- <br> -->
                         </p>
     
                         
