@@ -498,9 +498,9 @@ app.listen(3000, () => {
     console.log("Api/Websocket server running on port 3000");
 });
 
-setInterval(()=>{
-    process.stdout.write('\x1Bc');
-    console.dir(sessions.sessions, {"depth":2});
-    console.dir(tasks.getTasks(), {"depth":2});
-    sessions.cleanUp();
-}, 1000)
+// setInterval(()=>{
+//     //process.stdout.write('\x1Bc');
+//     console.dir(sessions.sessions, {"depth":2});
+//     console.dir(tasks.getTasks(), {"depth":2});
+//     sessions.cleanUp();
+// }, 10000)

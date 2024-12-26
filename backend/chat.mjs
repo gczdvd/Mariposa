@@ -40,6 +40,12 @@ export class Chat{
         this.sess1.setAttribute("chat", null);
         this.sess2.setAttribute("chat", null);
     }
+    getMessages(callback){
+        console.log(this.id);
+        this.db.getMessages(this.getId(), (e)=>{
+            callback(e);
+        });
+    }
     newMessage(sess, message, type){
         this.db.newMessage(sess.getAttribute("client").getId(), message, type, this.id);
 
@@ -103,6 +109,21 @@ export class Finder{
                         "status":"havepartner",
                         "identify":pair[0].getAttribute("client").getInfo()
                     }));
+                    nChat.getMessages((e)=>{
+                        for(var i = 0; i < e.length; i++){
+                            var pers = (e[i].client_id == pair[0].getAttribute("client").getId());
+                            pair[0].getWebsocket().send(JSON.stringify({
+                                "from":pers ? 0 : 1,
+                                "type":e[i].content_type,
+                                "message":e[i].message_value
+                            }));
+                            pair[1].getWebsocket().send(JSON.stringify({
+                                "from":pers ? 1 : 0,
+                                "type":e[i].content_type,
+                                "message":e[i].message_value
+                            }));
+                        }
+                    });
                     break;
                 }
             }
