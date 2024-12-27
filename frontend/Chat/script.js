@@ -19,6 +19,24 @@ Backend.get({
     }
 });
 
+Backend.get({
+    path:"/partners",
+    callback:(e)=>{
+        for(var i = 0; i < e.value.partners.length; i++){
+            var _div = document.createElement("div");
+            _div.className = "savedChat";
+            var _img = document.createElement("img");
+            _img.src = "../images/img_avatarA.png";
+            var _p = document.createElement("p");
+            _p.innerHTML = e.value.partners[i].partner_name;
+            
+            _div.appendChild(_img);
+            _div.appendChild(_p);
+            document.getElementById("saved").appendChild(_div);
+        }
+    }
+})
+
 function placeholderAdd(textarea){
   if(textarea.value.length == 0){
     textarea.innerHTML = "Üzenet...";
@@ -155,12 +173,14 @@ function receive(e){
         e.innerText = data.message;
         document.getElementsByClassName("messages")[0].insertBefore(e, document.getElementsByClassName("messages")[0].firstChild);
     }
+    if(data?.identify){
+        var partneridentify = JSON.parse(data.identify);
+        document.getElementById("name").innerHTML = partneridentify.nickname;
+        document.getElementById("quote").innerHTML = partneridentify.description;
+        document.getElementById("birthday").innerHTML = function(e=new Date(partneridentify.birthdate)){
+            return `${e.getUTCFullYear()}. ${(e.getMonth() < 10 ? '0' : '') + e.getMonth()}. ${(e.getDate() < 10 ? '0' : '') + e.getDate()}.`;
+        }();
+    }
 }
 
 ws.onmessage = receive;
-
-/*document.getElementById("name").innerHTML = Backend.info().nickname;
-document.getElementById("quote").innerHTML = Backend.info().description;
-document.getElementById("birthday").innerHTML = function(e=new Date(Backend.info().birthdate)){
-    return `${e.getUTCFullYear()}. ${(e.getMonth() < 10 ? '0' : '') + e.getMonth()}. ${(e.getDate() < 10 ? '0' : '') + e.getDate()}.`;
-}();*/

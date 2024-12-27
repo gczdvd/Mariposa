@@ -94,31 +94,29 @@ app.post('/login', (req, res) => {
     var password = req.body.password;
     if(!req.session.valid){
         if(email && password){
-            database.auth(email, password, (id)=>{
-                if(id != null){
+            var id = database.auth(email, password);
+
+            if(id != null){
+                const sess = sessions.newSession();
+                res.status(200);
+                res.cookie("sessId", sess.getId(), { expires: Session.neverExpire(), httpOnly: true, secure: true });
+                res.send(JSON.stringify({
+                    "action":"redirect",
+                    "value":"/chat",
+                    "message":"Successful login."
+                }));
                 
-                    const sess = sessions.newSession();
-                    res.status(200);
-                    res.cookie("sessId", sess.getId(), { expires: Session.neverExpire(), httpOnly: true, secure: true });
-                    res.send(JSON.stringify({
-                        "action":"redirect",
-                        "value":"/chat",
-                        "message":"Successful login."
-                    }));
-                    
-                    database.getUserById(id, (u)=>{
-                        sess.setAttribute("client", u);
-                    });
-                }
-                else{
-                    res.status(401);
-                    res.send(JSON.stringify({
-                        "action":"redirect",
-                        "value":"/",
-                        "message":"Invalid credentials."
-                    }));
-                }
-            });
+                var u = database.getUserById(id);
+                sess.setAttribute("client", u);
+            }
+            else{
+                res.status(401);
+                res.send(JSON.stringify({
+                    "action":"redirect",
+                    "value":"/",
+                    "message":"Invalid credentials."
+                }));
+            }
         }
         else{
             res.status(400);
@@ -148,23 +146,22 @@ app.post('/signup', (req, res) => {
     var comment = req.body?.comment;
     if(!req.session.valid){
         if(nickname && email && password && birthdate && !isNaN(gender)){
-            database.signup(nickname, email, password, birthdate, gender, comment, md5(email), (s)=>{
-                if(s == "Success"){
-                    smtp.verify(email, md5(email));
-                    res.status(200);
-                    res.send(JSON.stringify({
-                        "message":"You can login, if verified your email."
-                    }));
-                    
-                }
-                else{
-                    res.status(409);
-                    res.send(JSON.stringify({
-                        "action":"error",
-                        "message":"Exist account with this email address."
-                    }));
-                }
-            });
+            var s = database.signup(nickname, email, password, birthdate, gender, comment, md5(email));
+            if(s == "Success"){
+                smtp.verify(email, md5(email));
+                res.status(200);
+                res.send(JSON.stringify({
+                    "message":"You can login, if verified your email."
+                }));
+                
+            }
+            else{
+                res.status(409);
+                res.send(JSON.stringify({
+                    "action":"error",
+                    "message":"Exist account with this email address."
+                }));
+            }
         }
         else{
             res.status(400);
@@ -200,20 +197,31 @@ app.post('/signup', (req, res) => {
     });*/
 app.post('/forgotpassword', (req, res)=>{
     if(req.body.email){
-        var task = tasks.newTask(240, {
-            "email":req.body.email
-        });
+        var exist = database.existEmail(req.body.email);
 
-        var id = task.getId();
-        var key = Generator.encrypt(cryptKey, id);
+        if(exist){
+            var task = tasks.newTask(240, {
+                "email":req.body.email
+            });
 
-        smtp.forgotPassword(req.body.email, key);
-        res.status(200);
-        res.send(JSON.stringify({
-            "action":"redirect",
-            "value":"/",
-            "message":"Success"
-        }));
+            var id = task.getId();
+            var key = Generator.encrypt(cryptKey, id);
+
+            smtp.forgotPassword(req.body.email, key);
+            res.status(200);
+            res.send(JSON.stringify({
+                "action":"redirect",
+                "value":"/",
+                "message":"Success"
+            }));
+        }
+        else{
+            res.status(400);
+            res.send(JSON.stringify({
+                "action":"error",
+                "message":"Email doesn't exists."
+            }));
+        }
     }
     else{
         res.status(400);
@@ -246,23 +254,22 @@ app.post('/forgotpassword/change', (req, res)=>{
         if(task){
             var password = req.body.password;
             if(password){
-                database.forgotPassword(task.getAttribute("email"), password, (status)=>{
-                    if(status == "Success"){
-                        res.status(200);
-                        res.send(JSON.stringify({
-                            "action":"redirect",
-                            "value":"/",
-                            "message":"Success"
-                        }));
-                    }
-                    else{
-                        res.status(400);
-                        res.send(JSON.stringify({
-                            "action":"error",
-                            "message":"No user with this email."
-                        }));
-                    }
-                });
+                var status = database.forgotPassword(task.getAttribute("email"), password);
+                if(status == "Success"){
+                    res.status(200);
+                    res.send(JSON.stringify({
+                        "action":"redirect",
+                        "value":"/",
+                        "message":"Success"
+                    }));
+                }
+                else{
+                    res.status(400);
+                    res.send(JSON.stringify({
+                        "action":"error",
+                        "message":"No user with this email."
+                    }));
+                }
                 tasks.removeTask(task);
             }
             else{
@@ -293,34 +300,27 @@ app.post('/forgotpassword/change', (req, res)=>{
 });
 
 app.get('/signup/verify', (req, res) => {
-    database.verifyUser(req.query["token"], (s, id)=>{
-        if(s == "Success"){
-            database.getUserById(id, (e)=>{
-                smtp.verifySuccess(e.getEmail(), e.getNickname());
-                res.status(200);
-                res.send(JSON.stringify({
-                    "action":"redirect",
-                    "value":"/login",
-                    "message":"Verified."
-                }));
-            });
-        }
-        else{
-            res.status(409);
-            res.send(JSON.stringify({
-                "action":"error",
-                "message":"Unexpected error."
-            }));
-        }
-    });
+    var tmp = database.verifyUser(req.query["token"]);
+    
+    if(tmp.status == "Success"){
+        var e = database.getUserById(tmp.client_id);
+        
+        smtp.verifySuccess(e.getEmail(), e.getNickname());
+        res.status(200);
+        res.send(JSON.stringify({
+            "action":"redirect",
+            "value":"/login",
+            "message":"Verified."
+        }));
+    }
+    else{
+        res.status(409);
+        res.send(JSON.stringify({
+            "action":"error",
+            "message":"Unexpected error."
+        }));
+    }
 });
-
-
-
-app.get('/TESZT', (req, res) => {
-    smtp.verify("csizmadiaxenia@gmail.com", "null");
-});
-
 
 app.post('/message', (req, res) => {
     smtp.support(req.body.email, req.body.name, req.body.text);
@@ -394,9 +394,51 @@ app.get('/', (req, res) => {
     res.send("You're User!");
 });*/
 
+app.post('/modifypassword', sessionValidator, (req, res) => {
+    if(req.body.newpassword && req.body.oldpassword){
+        var id = database.auth(req.session.session.getAttribute("client").getEmail(), req.body.oldpassword);
+
+        if(id != null){
+            database.modifyUser(id, {password:req.body.newpassword});
+            res.status(200);
+            res.send(JSON.stringify({
+                "action":"redirect",
+                "value":"/",
+                "message":"Successful modified."
+            }));
+        }
+        else{
+            res.status(400);
+            res.send(JSON.stringify({
+                "action":"error",
+                "message":"Bad old password."
+            }));
+        }
+    }
+    else{
+        res.status(400);
+        res.send(JSON.stringify({
+            "action":"error",
+            "message":"Missing parameters."
+        }));
+    }
+});
+
 app.get('/userinfo', sessionValidator, (req, res) => {
     res.status(200);
     res.send(req.session.session.getAttribute("client").getInfo());
+});
+
+app.get('/partners', sessionValidator, (req, res) => {
+    var partners = database.getSavedChatsByUserId(req.session.session.getAttribute("client").getId());
+    res.status(200);
+    res.send(JSON.stringify({
+        "action":"none",
+        "value":{
+            "partners":partners
+        },
+        "message":"OK"
+    }));
 });
 
 app.get('/chat', sessionValidator, (req, res) => {                  //Ezen kérés előtt, de a bejelentkezés után KÖTELEZŐ websocketet nyitni
@@ -451,9 +493,9 @@ app.listen(3000, () => {
     console.log("Api/Websocket server running on port 3000");
 });
 
-setInterval(()=>{
-    process.stdout.write('\x1Bc');
-    console.dir(sessions.sessions, {"depth":2});
-    console.dir(tasks.getTasks(), {"depth":2});
-    sessions.cleanUp();
-}, 1000)
+// setInterval(()=>{
+//     //process.stdout.write('\x1Bc');
+//     console.dir(sessions.sessions, {"depth":2});
+//     console.dir(tasks.getTasks(), {"depth":2});
+//     sessions.cleanUp();
+// }, 10000)
