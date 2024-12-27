@@ -156,7 +156,7 @@ input:focus{
 }
 
 .TANDC input[type=checkbox]{
-    height: 0.7em;
+    height: 0.9em;
     accent-color: #ffbc2f;
 }
 

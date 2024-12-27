@@ -130,6 +130,11 @@ label{
     font-size: 1em;
 }
 
+.rememberme input[type=checkbox]{
+    height: 0.9em;
+    accent-color: #ffbc2f;
+}
+
 .forgotPSW{
     /* justify-self: end; */
 }

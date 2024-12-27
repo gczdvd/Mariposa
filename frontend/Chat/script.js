@@ -137,6 +137,20 @@ function reportPartner(){
 // Kulcs: html, érték: egész html oldal
 // Repülőékezettel lehet sort törni
 
+function deletePartner(){
+  Swal.fire({
+    icon: "warning",
+    title: "Biztosan törölni szeretnéd partnered?",
+    width: "64em",
+    showCancelButton: "true",
+    reverseButtons: "true",
+    confirmButtonText: "Törlés", 
+    cancelButtonText: "Mégse",
+    confirmButtonColor: "#ffbc2f",
+    iconColor: "#ffbc2f"
+  });
+}
+
 function send(){
     var text = document.getElementById("message").value;
     //Itt kezelni kell üres üzenetet stb...
