@@ -122,6 +122,7 @@ function reportPartner(){
     iconColor: "#ffbc2f"
   }).then((result) => {
     if(result.isConfirmed){
+      Backend.post({path:"/report"});
       Swal.fire({
         title: "Köszönjük bejelentésed!",
         text: "Csapatunk ellenőrizni fogja a beszélgetést.",

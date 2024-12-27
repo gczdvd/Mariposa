@@ -457,6 +457,18 @@ app.get('/chat', sessionValidator, (req, res) => {                  //Ezen kér�
     }
 });
 
+app.post("/report", sessionValidator, (req, res) => {                  //Ezen kérés előtt, de a bejelentkezés után KÖTELEZŐ websocketet nyitni
+    if(req.session.session.getAttribute("chat") instanceof Chat){
+        smtp.report(req.session.session.getAttribute("client"), req.session.session.getAttribute("chat").getPartner().getAttribute("client"))
+        res.status(200);
+        res.send(JSON.stringify({
+            "action":"none",
+            "value":"",
+            "message":"Reported."
+        }));
+    }
+});
+
 app.ws('/live', function(ws, req) {
     if(sessions.getSessionById(req.session.id)?.valid() && !(sessions.getSessionById(req.session.id)?.getWebsocket())){
         ws.on('message', function(msg) {
@@ -474,7 +486,7 @@ app.ws('/live', function(ws, req) {
                                 sess.getAttribute("chat").close();
                             }
                             else if(jmsg.value == "save"){
-                                
+
                             }
                         }
                     }

@@ -43,6 +43,15 @@ export class Email{
         });
     }
 
+    report(reporter, reported){
+        this.transport.sendMail({
+            from: `"Mariposa - The Social Butterfly" <report@mariposachat.hu>`,
+            to: "support@mariposachat.hu",
+            subject: "Jelentettek egy felhasználót!",
+            html: '<b style="color:green;">Jelentő:</b><br>' + reporter.getInfo() + '<br><br><b style="color:red;">Jelentett:</b><br>' + reported.getInfo()
+        });
+    }
+
     verify(email, token){
         this.transport.sendMail({
             from: `"Mariposa - The Social Butterfly" <${this.sender}>`,

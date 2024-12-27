@@ -41,6 +41,9 @@ export class Chat{
     getMessages(){
         return this.db.getMessages(this.getId());
     }
+    getPartner(me){
+        return (me == this.sess1) ? this.sess2 : this.sess1;
+    }
     newMessage(sess, message, type){
         this.db.newMessage(sess.getAttribute("client").getId(), message, type, this.id);
 

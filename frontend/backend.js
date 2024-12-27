@@ -19,7 +19,7 @@ class Backend{
                 window.location.href = resp.value;
             }
             else{
-                params.callback(resp);
+                params?.callback(resp);
             }
         });
     }
@@ -31,7 +31,7 @@ class Backend{
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
-            body: JSON.stringify(params.body) 
+            body: JSON.stringify(params?.body ?? {}) 
         })
         .then(async (e)=>{
             var resp = await e.json();
@@ -41,7 +41,7 @@ class Backend{
                 window.location.href = resp.value;
             }
             else{
-                params.callback(resp);
+                params?.callback(resp);
             }
         });
     }
