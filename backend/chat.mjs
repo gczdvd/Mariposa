@@ -96,11 +96,11 @@ export class Finder{
                     const nChat = this.chats.newChat(pair[0], pair[1]);
                     pair[0].setAttribute("chat", nChat);
                     pair[1].setAttribute("chat", nChat);
-                    pair[0].getWebsocket().send(JSON.stringify({
+                    pair[0].getWebsocket()?.send(JSON.stringify({
                         "status":"havepartner",
                         "identify":pair[1].getAttribute("client").getInfo()
                     }));
-                    pair[1].getWebsocket().send(JSON.stringify({
+                    pair[1].getWebsocket()?.send(JSON.stringify({
                         "status":"havepartner",
                         "identify":pair[0].getAttribute("client").getInfo()
                     }));

@@ -473,6 +473,9 @@ app.ws('/live', function(ws, req) {
                             if(jmsg.value == "end"){
                                 sess.getAttribute("chat").close();
                             }
+                            else if(jmsg.value == "save"){
+                                
+                            }
                         }
                     }
                     catch{}

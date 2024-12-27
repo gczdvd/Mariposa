@@ -13,13 +13,6 @@ function myFunction() {
 var ws = new WebSocket("ws://" + Backend.url() + "/live");
 
 Backend.get({
-    path:"/chat",
-    callback:(e)=>{
-        console.log(e);
-    }
-});
-
-Backend.get({
     path:"/partners",
     callback:(e)=>{
         for(var i = 0; i < e.value.partners.length; i++){
@@ -43,6 +36,14 @@ function placeholderAdd(textarea){
   }
 }
 
+function newChat(){
+    Backend.get({
+        path:"/chat",
+        callback:(e)=>{
+            console.log(e);
+        }
+    });
+}
 
 function openNav() {
   document.getElementById("navigation").style.width = "26vw";
