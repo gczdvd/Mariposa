@@ -7,33 +7,6 @@ html{
     height: 100vh;
 }
 
-.wrapper{
-    height: 100vh;
-    display: grid;
-    grid-template-rows: auto 1fr auto auto auto;
-    /* max-height: 100%; */
-    /* grid-template-columns: repeat(3, 1fr); */
-}
-
-.primaryBTN{
-    background-color: #ffbc2f;
-    font-family: "Albert Sans";
-    text-transform: uppercase;
-    padding: 1rem 2rem 1rem 2rem;
-    color: white;
-    font-size: 1.5rem;
-    border: 3px solid transparent;
-    cursor: pointer;
-    justify-self: center;
-    grid-column: 1 / span 2;
-}
-
-.primaryBTN:hover{
-    background-color: white;
-    color: #ffbc2f;
-    border: 3px solid #ffbc2f;
-}
-
 .secondaryBTN{
     background-color: white;
     font-family: "Albert Sans";
@@ -134,36 +107,27 @@ html{
 
 .settings{
     display: grid;
-    /* max-height: 90vh !important; */
     grid-template-columns: auto auto;
     grid-template-rows: repeat(4, auto);
-    /* max-height: 100%; */
+    max-width: 100%;
 }
-
 
 .profile{
     display: grid;
     height: fit-content;
     width: 25vw;
     grid-template-rows: fit-content;
-    /* width: 30vw; */
     justify-self: center;
-    /* text-align: center; */
-    /* sorok: 1, 2kep, 3textarea, 4remchars 5idezojel */
 }
-
-
 
 .sectionTitle{
     align-self: center;
-    /* justify-self: center; */
     font-size: 1.5em;
     opacity: 0.5;
     font-family: "Red Hat Text";
     text-transform: uppercase;
     text-align: center;
-    /* border-bottom: 1px solid black; */
-    /* width: 50%; */
+    grid-column: 1 / span 2;
 }
 
 .sectionTitle:nth-of-type(3){
@@ -180,17 +144,11 @@ html{
     font-family: "Red Hat Text";
 }
 
-/* .profile img:nth-of-type(2){
-    width: 5vw;
-    justify-self: center;
-} */
-
 #nickname{
     justify-self: center;
     font-family: "Palanquin";
     font-size: 2em;
 }
-
 
 textarea{
     resize: none;
@@ -223,11 +181,17 @@ textarea:focus{
     font-family: "Red Hat Text";
     gap: 2em;
     height: fit-content;
+    margin-right: 1vw;
 }
+
 
 .data > div{
     display: grid;
     grid-template-columns: 1fr 1fr;
+}
+
+.data > div > p{
+    align-self: end;
 }
 
 input{
@@ -249,10 +213,6 @@ input:focus{
     color: #ffbc2f;
 }
 
-#gender p, #birthdate p{
-    /* align-self: end; */
-}
-
 select{
     /* grid-row: span 2;
     align-self: center; */
@@ -268,11 +228,6 @@ select:focus{
     outline: none;
 }
 
-#birthdate input[type="date"]{
-    /* grid-row: span 2;
-    align-self: center; */
-}
-
 .show input{
     accent-color: #ffbc2f;
     vertical-align: middle;
@@ -282,7 +237,12 @@ select:focus{
     vertical-align: middle;
 }
 
-
+#info{
+    /* grid-column: 1; */
+    display: block;
+    justify-self: center;
+    opacity: 0.7;
+}
 
 .search input{
     outline: none;
@@ -299,92 +259,53 @@ select:focus{
     
 }
 
-summary{
+/* summary{
     font-family: "Red Hat Text";
     font-size: 1em;
     width: fit-content;
     user-select: none;
     cursor: pointer;
-}
+} */
 
 .interests{
     display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(5, auto);
     grid-column: 1 / span 2;
-    border: 1px solid black;
-    width: 50vw;
+    row-gap: 3vh;
+    width: 95vw;
     justify-self: center;
-    gap: 1em;
+    /* text-align: center; */
 }
 
 .interests p{
+    margin-top: 10px;
     font-family: "Red Hat Text";
+    font-size: 1.2em;
+    justify-self: center;
 }
 
 .interests button{
-    padding: 0.5em 1em 0.5em 1em;
+    padding: 0.5em 1em;
     border-radius: 1.8em;
     font-family: "Albert Sans";
-    font-size: 1.1em;
+    font-size: 1.2em;
     border: 5px solid #ffbc2f;
     cursor: pointer;
+    width: fit-content;
     margin: 5px;
 }
 
-.interests button:hover{
-    /* filter: brightness(0.9); */
-    /* background-color:; */
-    /* opacity: 0.5; */
+.interests > div{
+    justify-self: center;
+    width: fit-content;
 }
 
-@media (max-aspect-ratio:1/1) {
-    .secondaryBTN{
-        padding: 0.5rem 1rem 0.5rem 1rem;
-        justify-self: center;
-        /* text-align: center; */
-        font-size: 15px;
-    }
-
-    .header{
-        display: none;
-    }
-
-    .settings{
-        grid-template-columns: none;
-        grid-template-rows: auto auto auto;
-    }
-    
-    .profile{
-        /* width: 100vw; */
-    }
-
-    .profile img{
-        width: 30vw;
-    }
-
-    #nickname{
-        font-size: 1em;
-    }
-
-    .nameEmailPsw{
-        grid-template-columns: none;
-        grid-template-rows: auto;
-        justify-content: center;
-        
-    }
-
-    textarea{
-        height: 15vh;
-    }
-
-    .nameEmailPsw input{
-        width: 50vw;
-        
-    }
-
-    select{
-        width: fit-content;
-    }
-}
+/* .interests button:hover{
+    filter: brightness(0.9);
+    background-color:;
+    /* opacity: 0.5;
+} */
 
 .notSelected{
     background-color: white;
@@ -396,6 +317,30 @@ summary{
     color: white;
 }
 
+#actions{
+    display: grid;
+}
+
+.saveBTN{
+    background-color: #ffbc2f;
+    font-family: "Albert Sans";
+    text-transform: uppercase;
+    padding: 1rem 2rem 1rem 2rem;
+    color: white;
+    font-size: 1.5rem;
+    border: 3px solid transparent;
+    cursor: pointer;
+    justify-self: center;
+    width: fit-content;
+    /* grid-column: 1 / span 2; */
+    margin: 1em 0;
+}
+
+.saveBTN:hover{
+    background-color: white;
+    color: #ffbc2f;
+    border: 3px solid #ffbc2f;
+}
 
 .deleteBTN{
     background-color: white;
@@ -404,13 +349,11 @@ summary{
     padding: 1em 2em 1em 2em;
     color: #ff552f;
     font-size: 1em;
-    border: 3px solid transparent;
     cursor: pointer;
     width: fit-content;
-    height: fit-content;
     justify-self: end;
+    margin: 0 1em 1em 0;
     border: 3px solid #ff552f;
-    grid-column: 1 / span 2;
 }
 
 .deleteBTN:hover{
@@ -421,17 +364,13 @@ summary{
 
 .footer{
     text-align: center;
-    /* width: 100vw; */
     max-width: 100%;
     background-color: #ffbc2f;
     height: fit-content;
-    /* padding: 1rem 0 1rem 0; */
-    
 }
 
 .pages a{
     padding: 1rem 1.5rem;
-    /* margin: 0 5px 0 5px; */
     text-decoration: none;
     color: white;
     font-size: 1.3rem;
@@ -464,4 +403,143 @@ summary{
 
 .emoji{
     font-family: "Noto Color Emoji";
+}
+
+@media (max-aspect-ratio:1/1) {
+    .secondaryBTN{
+        padding: 0.5em 1em 0.5em 1em;
+        justify-self: center;
+        font-size: 15px;
+    }
+
+    .header{
+        display: none;
+    }
+
+    .wrapper{
+        /* grid-template-columns: none; */
+    }
+
+    .settings{
+        display: grid;
+        grid-template-columns: 1;
+        width: fit-content;
+        height: fit-content;
+
+    }
+
+    .profile{
+        grid-row-start: 1;
+        width: 100vw;
+    }
+
+    .data{
+        display: grid;
+        grid-row-start: 2;
+        /* width: 100vw; */
+
+    }
+
+    .interests{
+        /* display: grid; */
+        grid-template-columns: repeat(2, auto);
+        grid-template-rows: repeat(6, auto);
+        row-gap: 1vh;
+        /* width: 95vw; */
+        /* justify-self: center; */
+    }
+
+    .interests button{
+        padding: 0.2em 0.5em 0.2em 0.5em;
+        border-radius: 1.8em;
+        font-family: "Albert Sans";
+        font-size: 1em;
+        border: 3px solid #ffbc2f;
+        cursor: pointer;
+        width: fit-content;
+        margin: 3px;
+    }
+
+    .profile img{
+        width: 30vw;
+    }
+
+    #nickname{
+        font-size: 1em;
+    }
+
+    .nameEmailPsw{
+        grid-template-columns: none;
+        grid-template-rows: auto;
+        justify-content: center;
+        
+    }
+
+    textarea{
+        height: 15vh;
+    }
+
+    .nameEmailPsw input{
+        width: 50vw;
+        
+    }
+
+    select{
+        width: fit-content;
+    }
+
+    .saveBTN{
+        background-color: #ffbc2f;
+        font-family: "Albert Sans";
+        text-transform: uppercase;
+        padding: 0.5em 1em;
+        color: white;
+        font-size: 1.2rem;
+        border: 3px solid transparent;
+        cursor: pointer;
+        justify-self: center;
+        width: fit-content;
+        /* grid-column: 1 / span 2; */
+        margin: 2em 0;
+    }
+    
+    .saveBTN:hover{
+        background-color: white;
+        color: #ffbc2f;
+        border: 3px solid #ffbc2f;
+    }
+
+    .deleteBTN{
+        background-color: white;
+        font-family: "Albert Sans";
+        text-transform: uppercase;
+        padding: 0.4em 0.9em 0.3em 0.9em;
+        color: #ff552f;
+        font-size: 0.8em;
+        cursor: pointer;
+        width: fit-content;
+        justify-self: end;
+        margin: 0 0.5em 0.5em 0;
+        border: 3px solid #ff552f;
+    }
+    
+    .deleteBTN:hover{
+        background-color: #ff552f;
+        color: white;
+        border: 3px solid #ff552f;
+    }
+
+    .pages{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .pages a{
+        font-size: 1rem;
+        padding: 0.25rem 0.5rem;
+    }
+
+    .trademark{
+        font-size: 0.7rem;
+    }  
 }
