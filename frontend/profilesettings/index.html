@@ -27,10 +27,10 @@
 
             <div class="navbar">
                 <div class="navigation">
-                    <a href="" class="tertiaryBTN">Kezdőlap</a>
-                    <a href="" class="tertiaryBTN">Chatelj!</a>
-                    <a href="" class="tertiaryBTN">Bejelentkezés</a>
-                    <a href="" class="tertiaryBTN">Rólunk</a>
+                    <a href="/" class="tertiaryBTN">Kezdőlap</a>
+                    <a href="/chat" class="tertiaryBTN">Chatelj!</a>
+                    <a href="/aboutus" class="tertiaryBTN">Rólunk</a>
+                    <a href="/login" class="tertiaryBTN">Kijelentkezés <span class="emoji">➡️</span></a>
             </div>
 
             <!-- icon -->
@@ -38,8 +38,6 @@
                 <i class="fa fa-bars"></i>
             </a>
             </div>
-            
-
         </div>
 
         <div class="settings">
@@ -54,7 +52,7 @@
                 <button class="secondaryBTN">Profilkép cseréje</button>
 
                 <p>Bemutatkozás</p>
-                <textarea name="" id="textarea" rows="5" maxlength="255" onchange="colorChange(this)" onfocusout="colorChange(this)" spellcheck="false"></textarea>
+                <textarea name="" id="textarea" rows="5" maxlength="255" oninput="colorChange(this); charCounter(this)" onchange="colorChange(this); charCounter(this)" spellcheck="false"></textarea>
 
                 <p id="remaining-chars">0 / 255</p>
 
@@ -96,7 +94,7 @@
 
                 <div id="birthdate">
                     <p>Születési dátum</p>
-                    <input type="date" min="1900-01-01" max="2010-12-31">
+                    <input type="date" min="1900-01-01" max="2010-12-31" onchange="colorChange(this)" onfocusout="colorChange(this)">
 
                     <div class="show">
                         <input type="checkbox" id="showBirth">
@@ -234,8 +232,6 @@
                     <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">💻</span> Multiplayer játékok</button>
                 </div>
 
-                
-
                 <div class="arts">
                     <p>Művészet</p>
                     <button onclick="chosenInterest(this)" class="notSelected"><span class="emoji">📸</span> Fotóművészet</button>
@@ -288,7 +284,6 @@
                 <a href="" class="">ÁSZF</a>
                 <a href="" class="">GYIK</a>
                 <a href="" class="">Házirend</a>
-                
             </div>
             
             <div class="trademark">
