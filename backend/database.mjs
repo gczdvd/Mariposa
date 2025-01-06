@@ -40,8 +40,8 @@ export class Sql{
     }
 
     //OK
-    signup(nickname, email, password, birthdate, gender, comment, verify){
-        var rows = this.con.query(`CALL signupUser(?, ?, ?, ?, ?, ?, ?);`, [nickname, email, password, birthdate, gender, comment, verify]);
+    signup(nickname, email, password, verify){
+        var rows = this.con.query(`CALL signupUser(?, ?, ?, ?);`, [nickname, email, password, verify]);
 
         return rows[0][0].status;
     }

@@ -141,16 +141,15 @@ app.post('/signup', (req, res) => {
     var nickname = req.body?.nickname;
     var email = req.body?.email;
     var password = req.body?.password;
-    var birthdate = req.body?.birthdate;
-    var gender = req.body?.gender;
-    var comment = req.body?.comment;
     if(!req.session.valid){
-        if(nickname && email && password && birthdate && !isNaN(gender)){
-            var s = database.signup(nickname, email, password, birthdate, gender, comment, md5(email));
+        if(nickname && email && password){
+            var s = database.signup(nickname, email, password, md5(email));
             if(s == "Success"){
                 smtp.verify(email, md5(email));
                 res.status(200);
                 res.send(JSON.stringify({
+                    "action":"redirect",
+                    "value":"/login",
                     "message":"You can login, if verified your email."
                 }));
                 
@@ -158,7 +157,8 @@ app.post('/signup', (req, res) => {
             else{
                 res.status(409);
                 res.send(JSON.stringify({
-                    "action":"error",
+                    "action":"redirect",
+                    "value":"/login",
                     "message":"Exist account with this email address."
                 }));
             }

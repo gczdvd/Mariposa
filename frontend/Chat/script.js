@@ -28,7 +28,7 @@ Backend.get({
             document.getElementById("saved").appendChild(_div);
         }
     }
-})
+});
 
 function placeholderAdd(textarea){
   if(textarea.value.length == 0){
