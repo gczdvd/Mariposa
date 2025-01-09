@@ -22,3 +22,5 @@ If resp = 6 Then
 End If
 
 WScript.Quit
+
+MsgBox("valmlami ""idezet"" ady")
