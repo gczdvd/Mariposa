@@ -1,10 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@600&family=Noto+Color+Emoji&family=Noto+Sans+Symbols+2&family=Palanquin:wght@700&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap');
+
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     border: 0;
 }
-
 
 .primaryBTN{
     display: grid;
@@ -15,9 +16,10 @@
     font-family: "Albert Sans";
     text-transform: uppercase;
     text-decoration: none;
-    padding: 1rem 2rem 1rem 2rem;
+    /* text-align: center; */
+    padding: 0.7em 1.5em;
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.5em;
     border: 3px solid transparent;
     cursor: pointer;
 }
@@ -39,10 +41,10 @@
     background-color: white;
     font-family: "Albert Sans";
     text-transform: uppercase;
-    padding: 1rem 2rem 1rem 2rem;
+    padding: 0.7em 1.5em;
     text-decoration: none;
     color: #ffbc2f;
-    font-size: 20px;
+    font-size: 1.5em;
     border: 3px solid #ffbc2f;
     cursor: pointer;
 }
@@ -55,21 +57,86 @@
 
 @media (max-aspect-ratio:1/1) {
     .primaryBTN{
-        padding: 0.5rem 1rem 0.5rem 1rem;
+        padding: 0.5rem 1rem 0.5rem 1em;
         justify-self: center;
         font-size: 15px;
     }
 
     .secondaryBTN{
-        padding: 0.5rem 1rem 0.5rem 1rem;
+        padding: 0.5rem 1rem 0.5rem 1em;
         justify-self: center;
         font-size: 15px;
     }
     
 }
 
-/* ALSÓ HATÁR ANIMÁCIÓ */
+
+#header{
+    display: grid;
+    width: 100vw;
+    max-width: 100%;
+    grid-template-columns: auto auto;
+    background-color: transparent;
+    /* position: absolute; */
+}
+
+#logo{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    
+}
+
+#logo a{
+    align-self: center;
+}
+
+#logo img{
+    width: 4em;
+    align-self: center;
+}
+
+#main{
+    display: none;
+}
+
+
+#title{
+    font-size: 1em;
+    align-self: center;
+    text-transform: uppercase;
+    font-family: "Palanquin";
+}
+
+#navigation{
+    justify-self: end;
+    /* width: fit-content; */
+    
+}
+
+#navigation ul{
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    justify-self: end;
+    justify-content: center;
+    /* width: fit-content; */
+}
+
+#navigation a{
+    font-size: 1em;
+    font-weight: bold;
+    margin: 1vw 3vw;
+    
+    /* height: fit-content; */
+}
+
+#navigation li{
+    list-style: none;
+    /* width: fit-content; */
+    justify-self: center;
+}
+
 .tertiaryBTN, .tertiaryBTN a{
+    color: black;
     text-decoration: none;
     display: inline-block;
     font-family: "Albert Sans";
@@ -92,59 +159,6 @@
     transform: scaleX(0);
     transition: transform 200ms ease-in-out; 
 }
-
-
-#header{
-    display: grid;
-    width: 100vw;
-    max-width: 100%;
-    grid-template-columns: auto auto;
-    background-color: transparent;
-    position: absolute;
-}
-
-#logo{
-    display: grid;
-    grid-template-columns: auto 1fr;
-}
-
-#logo img{
-    width: 4em;
-    align-self: center;
-}
-
-#main{
-    display: none;
-}
-
-
-#title{
-    font-size: 1em;
-    align-self: center;
-    text-transform: uppercase;
-    font-family: "Palanquin";
-}
-
-
-#navigation ul{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    justify-self: end;
-}
-
-#navigation a{
-    font-size: 1.3rem;
-    font-weight: bold;
-    margin: 1rem 2rem;
-    color: black;
-    height: fit-content;
-}
-
-#navigation li{
-    list-style: none;
-}
-
-
 
 @media (max-aspect-ratio:1/1) {
     #logo{
@@ -235,7 +249,6 @@
     }
 }
 
-
 /* BORÍTÓ */
 .cover{
     display: grid;
@@ -291,12 +304,12 @@
 }
 
 .subhead{
-    font-size: 2.5rem;
+    font-size: 2.5em;
     align-self: center;
 }
 
 .pers{
-    font-size: 1.5rem;
+    font-size: 1.5em;
     width: 50vw;
     justify-self: center;
 }
@@ -354,15 +367,15 @@
     width: 10vw;
 }
 
-.services p{
+.services p:nth-of-type(even){
     margin: auto;
-    font-size: 1.2rem;
+    font-size: 1.2em;
 }
 
 @media (max-aspect-ratio:1/1) {
     .services{
         grid-template-columns: 1fr;
-        /* gap: 2rem; */
+        /* gap: 2em; */
         width: 100vw;
         justify-self: start;
     }
@@ -372,7 +385,7 @@
     }
 
     .services p{
-        font-size: 1rem;
+        font-size: 1em;
     }
 }
 
@@ -399,7 +412,7 @@
 
 .slides img{
     width: 20vw;
-    border-radius: 5rem;
+    border-radius: 5em;
     justify-self: center;
     align-self: center;
 }
@@ -407,7 +420,7 @@
 @media (max-aspect-ratio:1/1) {
     .slides img{
         width: 50vw;
-        border-radius: 3rem;
+        border-radius: 3em;
     }
 }
 
@@ -448,7 +461,7 @@
 }
 
 .convince p, li{
-    font-size: 1.5rem;
+    font-size: 1.5em;
 }
 
 @media (max-aspect-ratio:1/1) {
@@ -474,7 +487,7 @@
     }
 
     .convince p, li{
-        font-size: 1rem;
+        font-size: 1em;
         justify-self: center;
         width: 100vw;
 
@@ -537,8 +550,8 @@
 }
 
 .emailInput input{
-    padding: 0.3rem;
-    font-size: 1rem;
+    padding: 0.3em;
+    font-size: 1em;
     color: #ffbc2f;
     border-bottom: 3px solid lightgray;
     width: 30vw;
@@ -553,7 +566,7 @@
 
 .emailInput input::-webkit-input-placeholder{
     opacity: 0.4;
-    font-size: 1rem;
+    font-size: 1em;
 }
 
 .emailInput input:focus::placeholder{
@@ -562,7 +575,7 @@
 
 @media (max-aspect-ratio:1/1) {
     .newsText{
-        font-size: 1.5rem;
+        font-size: 1.5em;
         text-align: center;
     }
 
@@ -581,10 +594,10 @@
 }
 
 .pages a{
-    padding: 1rem 1.5rem;
+    margin: 1em 1.5em;
     text-decoration: none;
     color: white;
-    font-size: 1.3rem;
+    font-size: 1.3em;
     display: inline-block;
     font-family: "Albert Sans";
     width: fit-content;
@@ -603,8 +616,8 @@
 }
 
 .trademark{
-    margin-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    margin-top: 0.5em;
+    padding-bottom: 0.5em;
     justify-self: center;
     color: white;
     font-family: "Red Hat Text";
@@ -617,11 +630,17 @@
     }
     
     .pages a{
-        font-size: 1rem;
-        padding: 0.25rem 0.5rem;
+        font-size: 1em;
+        padding: 0.25em 0.5em;
     }
 
     .trademark{
-        font-size: 0.7rem;
+        font-size: 0.7em;
     }   
+}
+
+.emoji{
+    font-family: 'Noto Color Emoji';
+    font-size: 5em;
+    user-select: none;
 }

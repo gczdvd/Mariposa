@@ -15,28 +15,36 @@
     
     <div class="wrapper">
 
-        <div class="header">
-            <!-- topnav -->
-            <div class="logo">
-                <img src="./images/logo.png" alt="">
-                <div class="title">Mariposa</div>
-            </div> 
+        <div class="header-wrap">
+            <div class="header" id="header">
 
-            <!-- mylinks -->
-            <div class="navigation">
-                
-                    <a href="" class="tertiaryBTN">Kezdőlap</a>
-                    <a href="/chat" class="tertiaryBTN">Chatelj!</a>
-                    <a href="/login" class="tertiaryBTN">Bejelentkezés</a>
-                    <a href="/aboutus" class="tertiaryBTN">Rólunk</a>
-                
-            </div>
+                <div id="logo">
+                    <a href="">
+                        <img src="../images/logo.png" alt="logo">
+                    </a>
+                    <p id="title">Mariposa</p>
+                </div>
 
-            <!-- icon -->
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                <i class="fa fa-bars"></i>
-            </a>
+                <div id="main">
+                    <button>
+                        <img src="../images/open.png" alt="menünyit" onclick="openNav()" id="open" class="openbtn">
+        
+                        <img src="../images/close.png" alt="menüzár" onclick="closeNav()" id="close">
+                    </button>
+                </div>
+    
+                <div id="navigation">
+                    <ul>
+                        <li><a href="" class="tertiaryBTN">Kezdőlap</a></li>
+                        
+                        <li><a href="/login" class="tertiaryBTN">Bejelentkezés</a></li>
 
+                        <li><a href="/aboutus" class="tertiaryBTN">Rólunk</a></li>
+
+                        <li><a href="/support" class="tertiaryBTN">Segítség</a></li>
+                    </ul>
+                </div>
+            </div>    
         </div>
 
         <div class="cover">
@@ -147,7 +155,7 @@
             </div>
         </div> 
 
-          <div class="footer">
+        <div class="footer">
     
             <div class="pages">
                 <a href="/" class="">Kezdőlap</a>

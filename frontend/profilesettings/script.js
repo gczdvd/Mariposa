@@ -1,24 +1,26 @@
 // const textarea = document.getElementById("textarea");
 
 function charCounter(inputField) {
+
   const remChars = document.getElementById("remaining-chars");
+  remChars.style.visibility = "visible";
+  const maxLength = inputField.getAttribute("maxlength");
+  const currentLength = inputField.value.length;
+  remChars.innerHTML = `${currentLength} / ${maxLength}`; 
+}
+
+
+function colorChange(textarea){
+  const remChars = document.getElementById("remaining-chars");
+  // const maxLength = textarea.getAttribute("maxlength");
+
   if(textarea.value.length == 0){
+    textarea.style.borderColor = "#d3d3d3";
     remChars.style.visibility = "hidden";
   }
   else{
-    remChars.style.visibility = "visible";
-    const maxLength = inputField.getAttribute("maxlength");
-    const currentLength = inputField.value.length;
-    remChars.innerHTML = `${currentLength} / ${maxLength}`;
-  }
-}
-
-function colorChange(textarea){
-  if(textarea.value.length == 0){
-    textarea.style.borderColor = "#d3d3d3";
-  }
-  else{
     textarea.style.borderColor = "#ffbc2f";
+    remChars.style.visibility = "visible";
   }
 }
 

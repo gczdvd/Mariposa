@@ -3,18 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@600&family=Noto+Color+Emoji&family=Palanquin:wght@700&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@600&family=Noto+Color+Emoji&family=Noto+Sans+Symbols+2&family=Palanquin:wght@700&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap');
 
         body{
             margin: 0;
             padding: 0;
-            /* background-color: white; */
             height: 100vh;
-            /* text-align: center; */
         }
 
         #wrapper{
@@ -22,30 +17,31 @@
         }
 
         #container{
-            /* background-color: #FCC200; */
             width: 50vw;
             margin: auto;
         }
+
+        .header{
+            text-decoration: none;
+            color: black;
+        }
         
         #header{
-            /* height: auto; */
-            /* width: 100%; */
             font-family: 'Palanquin';
+            width: 50vw;
+            
         }
 
         #header img{
             height: 5vh;
             vertical-align: middle;
-            /* float: center; */
         }
 
         #header p{
-            /* float: right; */
             text-align: center;
             display: inline;
             vertical-align: middle;
             text-transform: uppercase;
-            /* margin-bottom: 1em; */
         }
 
         #details{
@@ -104,7 +100,7 @@
         #confirmButton{
             margin: auto;
             width: 20vw;
-            padding: 20px 10px;
+            padding: 22px 10px 20px 10px;
             border: solid 2px #ffbc2f;
             background-color: #ffbc2f;
             text-align: center;
@@ -114,6 +110,7 @@
             text-transform: uppercase;
             font-size: 1.2em;
             font-weight: 600;
+            cursor: pointer;
         }
 
         #confirmButton:hover{
@@ -171,11 +168,14 @@
 <body>
     <div id="container">
         
-        <div id="header">
-            <img src="./images/logo.png" alt="">
-            <p>MARIPOSA</p>
-        </div>
-
+        <a href="/" class="header">
+            <div id="header">
+                <img src="" alt="">
+                <!-- IDE MAJD A LOGO JÖN -->
+                <p>MARIPOSA</p>
+            </div>
+        </a>
+        
         <div id="wrapper">
             <div id="details">
                 <div id="title">
