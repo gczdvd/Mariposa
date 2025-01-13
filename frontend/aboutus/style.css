@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@600&family=Noto+Color+Emoji&family=Noto+Sans+Symbols+2&family=Palanquin:wght@700&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap');
+
 *{
     padding: 0;
     margin: 0;
@@ -32,70 +34,73 @@
 }
 
 
-.header{
+#header{
     display: grid;
     width: 100vw;
     max-width: 100%;
-    /* box-sizing: border-box; */
-    grid-template-columns: auto 1fr;
+    grid-template-columns: auto auto;
     background-color: transparent;
     /* position: absolute; */
-    /* margin-top: 1em; */
 }
 
-.logo{
+#logo{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: auto 1fr;
+    
 }
 
-.logo img{
-    width: 5vw;
+#logo a{
+    align-self: center;
+}
+
+#logo img{
+    width: 4em;
+    align-self: center;
+}
+
+#main{
+    display: none;
 }
 
 
-/*
-.navigation li:hover{
-    height: fit-content;
-    background-color: white;
-    border-radius: 100px;
-    transition: 300ms;
-    color: #ffbc2f;
-}
-*/
-
-.title{
-    /* align-self: center; */
+#title{
     font-size: 1em;
     align-self: center;
     text-transform: uppercase;
     font-family: "Palanquin";
 }
 
-.navigation{
-    grid-column: 4;
-    align-self: center;
-    /* padding-right: 2em; */
-    height: auto;
-    
+#navigation{
+    justify-self: end;
 }
 
-.navigation a{
-    font-size: 1.3rem;
+#navigation ul{
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    justify-self: end;
+    justify-content: center;
+    /* width: fit-content; */
+}
+
+#navigation a{
+    font-size: 1.5em;
     font-weight: bold;
-    list-style: none;
-    /* float: left; */
-    margin: 1em 2em;
-    color: #ffbc2f;
-    /* border-radius: 100px; */
-    height: fit-content;
+    margin: 1vw 3vw;
     
+    /* height: fit-content; */
+}
+
+#navigation li{
+    list-style: none;
+    width: fit-content;
+    justify-self: center;
 }
 
 .tertiaryBTN, .tertiaryBTN a{
+    color: black;
     text-decoration: none;
     display: inline-block;
     font-family: "Albert Sans";
-    
 }
 
 .tertiaryBTN:hover::after, .tertiaryBTN a:hover::after{
@@ -114,6 +119,95 @@
     border-bottom: solid 3px #ffbc2f;
     transform: scaleX(0);
     transition: transform 200ms ease-in-out; 
+}
+
+@media (max-aspect-ratio:1/1) {
+    #logo{
+        display: grid;
+    }
+
+    #logo img{
+        width: 4em;
+        align-self: center;
+    }
+    
+    #title{
+        font-size: 1em;
+        align-self: center;
+        text-decoration: none;
+        color: black;
+        font-family: "Palanquin";
+    }
+
+    #header{
+        position: inherit;
+        
+    }
+
+    #main{
+        display: block;
+    }
+    
+    #main button img{
+        width: 5vw;
+    }
+    
+    #main button{
+        height: fit-content;
+        background-color: transparent;
+        border: none;
+        margin: 1em 1em 0 0;
+        display: block;
+        justify-self: end;
+        position: absolute;
+        right: 0;
+        z-index: 2;
+    }
+    
+    
+    #navigation li a{
+        text-decoration: none;
+        color: white;
+        list-style: none;
+    }
+    
+    #navigation ul{
+        display: block;
+        grid-row-start: 2;
+        margin: 0;
+    }
+    
+    #navigation{
+        display: grid;
+        grid-template-rows: 2em 1fr;
+        position: absolute;
+        height: 100vh;
+        max-height: 100%;
+        justify-self: end;
+        font-size: 1.5em;
+        background-color: orange;
+        z-index: 1;
+        overflow-x: hidden;
+        transition: 0.5s;
+        width: 0;
+        right: 0;
+        font-family: "Albert Sans"
+    }
+    
+    #main{
+        transition: margin-right .5s;
+    }
+    
+    #close{
+        display: none;
+    }
+    
+    .navigation a{
+        font-size: 1.3em;
+        font-weight: bold;
+        color: black;
+        height: fit-content;
+    }
 }
 
 
@@ -253,7 +347,7 @@
 .us{
     display: grid;
     grid-template-rows: repeat(3, 1fr);
-    width: 60%;
+    width: 70%;
     justify-self: center;
     /* gap: 1em; */
     /* height: fit-content; */
@@ -286,8 +380,7 @@
 
 .us p{
     justify-self: center;
-    width: 25vw;
-    
+    width: 30vw;
 }
 
 /* media screen-nél:
@@ -404,10 +497,10 @@ textarea:focus{
 }
 
 .pages a{
-    padding: 1rem 1.5rem;
+    margin: 1em 1.5em;
     text-decoration: none;
     color: white;
-    font-size: 1.3rem;
+    font-size: 1.3em;
     display: inline-block;
     font-family: "Albert Sans";
     width: fit-content;
@@ -426,8 +519,8 @@ textarea:focus{
 }
 
 .trademark{
-    margin-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    margin-top: 0.5em;
+    padding-bottom: 0.5em;
     justify-self: center;
     color: white;
     font-family: "Red Hat Text";
@@ -538,12 +631,15 @@ textarea:focus{
         max-width: 100%;
         background-color: #ffbc2f;
         height: fit-content;
-        /* padding: 1rem 0 1rem 0; */
-        
+    }
+
+    .pages{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
     }
     
     .pages a{
-        padding: 1rem 1.5rem;
+        padding: 1em 1.5em;
         /* margin: 0 5px 0 5px; */
         text-decoration: none;
         color: white;
@@ -551,6 +647,7 @@ textarea:focus{
         display: inline-block;
         font-family: "Albert Sans";
         width: fit-content;
+        font-size: 1em;
     }
     
     .pages a:hover::after{
@@ -564,27 +661,8 @@ textarea:focus{
         transform: scaleX(0);
         transition: transform 250ms ease-in-out;
     }
-    
-    .trademark{
-        /* margin-top: 0.5rem; */
-        padding-bottom: 0.5rem;
-        justify-self: center;
-        color: white;
-        font-family: "Red Hat Text";
-    }
-    
-    .pages{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
-    
-    .pages a{
-        font-size: 1rem;
-        padding: 0.25rem 0.5rem;
-    }
 
     .trademark{
-        font-size: 0.7rem;
-        width: 100vw;
-    }
+        font-size: 0.7em;
+    }  
 }

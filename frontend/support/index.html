@@ -16,24 +16,38 @@
 
 <div class="wrapper">
 
-  <div class="header">
-    <!-- topnav -->
-    <div class="logo">
-        <img src="" alt="">
-        <div class="title">Mariposa</div>
-    </div> 
+  <div class="header-wrap">
+    <div class="header" id="header">
 
-    <!-- mylinks -->
-    <div class="navigation">
-        
-            <a href="/" class="tertiaryBTN">Kezdőlap</a>
-            <a href="/chat" class="tertiaryBTN">Chatelj!</a>
-            <a href="/login" class="tertiaryBTN">Bejelentkezés</a>
-            <a href="/aboutus" class="tertiaryBTN">Rólunk</a>
-        
-    </div>
+        <div id="logo">
+            <a href="">
+                <img src="../images/logo.png" alt="">
+            </a>
+            <p id="title">Mariposa</p>
+        </div>
 
-  </div> 
+        <div id="main">
+            <button>
+                <img src="../frontend/images/open.png" alt="" onclick="openNav()" id="open" class="openbtn">
+
+                <img src="../frontend/images/close.png" alt="" onclick="closeNav()" id="close">
+            </button>
+        </div>
+
+        <div id="navigation">
+            <ul>
+                <li><a href="" class="tertiaryBTN">Kezdőlap</a></li>
+                
+                <li><a href="/login" class="tertiaryBTN">Bejelentkezés</a></li>
+
+                <li><a href="/aboutus" class="tertiaryBTN">Rólunk</a></li>
+
+                <li><a href="/support" class="tertiaryBTN">Segítség</a></li>
+            </ul>
+        </div>
+        
+    </div>    
+  </div>
   
 
   <div class="cover">
@@ -180,13 +194,13 @@
         <p>Kérdésed van? Írj nekünk!</p>
 
         <p class="inputTitle">Email-cím</p>
-        <input id="support_email" type="email" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)">
+        <input id="support_email" type="email" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)" required>
 
         <p class="inputTitle">Teljes név</p>
-        <input id="support_name" type="text" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)">
+        <input id="support_name" type="text" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)" required>
   
         <p class="inputTitle">Üzenet</p>
-        <textarea name="" id="textarea" rows="5" maxlength="255" onchange="colorChange(this)" onfocusout="colorChange(this)" oninput="charCounter(this)" onfocus="charCounter(this)" spellcheck="false"></textarea>
+        <textarea name="" id="textarea" rows="5" maxlength="255" onchange="colorChange(this)" onfocusout="colorChange(this)" oninput="charCounter(this)" onfocus="charCounter(this)" spellcheck="false" required></textarea>
         <p id="remaining-chars"></p>
 
         <button class="primaryBTN" onclick="support()">küldés</button>
@@ -194,19 +208,22 @@
     </div> 
 
 
-  <div class="footer">
-    <div class="pages">
-        <a href="" class="">Kezdőlap</a>
-        <a href="/login" class="">Bejelentkezés</a>
-        <a href="/aboutus" class="">Rólunk</a>
-        <a href="" class="">ÁSZF</a>
-        <a href="/support" class="">GYIK</a>
-        <a href="" class="">Házirend</a>
-    </div>
+    <div class="footer">
     
-    <div class="trademark">
-        © 2025 Mariposa The Social Butterfly
-    </div>
+      <div class="pages">
+          <a href="/" class="">Kezdőlap</a>
+          <a href="/login" class="">Bejelentkezés</a>
+          <a href="/aboutus" class="">Rólunk</a>
+          <a href="" class="">ÁSZF</a>
+          <a href="/support" class="">GYIK</a>
+          <a href="" class="">Házirend</a>
+          
+      </div>
+      
+      <div class="trademark">
+          © 2025 Mariposa The Social Butterfly
+      </div>
+      
   </div>
 
 </div>

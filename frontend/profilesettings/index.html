@@ -15,29 +15,36 @@
 
     <div class="wrapper">
 
-        <div class="header">
-            <!-- topnav -->
-            <div class="logo">
-                <a href="">
-                    <img src="../landingpage/images/logo.png" alt="">
-                </a>
-                <p>Mariposa</p>
-                <!-- <div class="title">Mariposa</div> -->
-            </div> 
+        <div class="header-wrap">
+            <div class="header" id="header">
 
-            <div class="navbar">
-                <div class="navigation">
-                    <a href="/" class="tertiaryBTN">Kezdőlap</a>
-                    <a href="/chat" class="tertiaryBTN">Chatelj!</a>
-                    <a href="/aboutus" class="tertiaryBTN">Rólunk</a>
-                    <a href="/login" class="tertiaryBTN">Kijelentkezés <span class="emoji">➡️</span></a>
-            </div>
+                <div id="logo">
+                    <a href="">
+                        <img src="../images/logo.png" alt="">
+                    </a>
+                    <p id="title">Mariposa</p>
+                </div>
 
-            <!-- icon -->
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                <i class="fa fa-bars"></i>
-            </a>
-            </div>
+                <div id="main">
+                    <button>
+                        <img src="../frontend/images/open.png" alt="" onclick="openNav()" id="open" class="openbtn">
+        
+                        <img src="../frontend/images/close.png" alt="" onclick="closeNav()" id="close">
+                    </button>
+                </div>
+    
+                <div id="navigation">
+                    <ul>
+                        <li><a href="" class="tertiaryBTN">Kezdőlap</a></li>
+                        
+                        <li><a href="/chat" class="tertiaryBTN">Chatelj!</a></li>
+
+                        <li><a href="/aboutus" class="tertiaryBTN">Rólunk</a></li>
+
+                        <li><a href="/support" class="tertiaryBTN">Segítség</a></li>
+                    </ul>
+                </div>
+            </div>    
         </div>
 
         <div class="settings">
@@ -52,7 +59,7 @@
                 <button class="secondaryBTN">Profilkép cseréje</button>
 
                 <p>Bemutatkozás</p>
-                <textarea name="" id="textarea" rows="5" maxlength="255" oninput="colorChange(this); charCounter(this)" onchange="colorChange(this); charCounter(this)" spellcheck="false"></textarea>
+                <textarea name="" id="textarea" rows="5" maxlength="255" onchange="colorChange(this)" onfocusout="colorChange(this)" oninput="charCounter(this)" onfocus="charCounter(this)" spellcheck="false"></textarea>
 
                 <p id="remaining-chars">0 / 255</p>
 

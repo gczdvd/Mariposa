@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@600&family=Noto+Color+Emoji&family=Noto+Sans+Symbols+2&family=Palanquin:wght@700&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap');
+
 *{
     padding: 0;
     margin: 0;
@@ -18,8 +20,72 @@ body{
     
 }
 
-/* ALSÓ HATÁR ANIMÁCIÓ */
+#header{
+    display: grid;
+    /* width: 100vw; */
+    /* max-width: 100%; */
+    grid-template-columns: auto auto;
+    background-color: transparent;
+    /* position: absolute; */
+}
+
+#logo{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    
+}
+
+#logo a{
+    align-self: center;
+}
+
+#logo img{
+    width: 4em;
+    align-self: center;
+}
+
+#main{
+    display: none;
+}
+
+
+#title{
+    font-size: 1em;
+    align-self: center;
+    text-transform: uppercase;
+    font-family: "Palanquin";
+}
+
+#navigation{
+    justify-self: end;
+    /* width: fit-content; */
+    
+}
+
+#navigation ul{
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    justify-self: end;
+    justify-content: center;
+    /* width: fit-content; */
+}
+
+#navigation a{
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 1vw 3vw;
+    
+    /* height: fit-content; */
+}
+
+#navigation li{
+    list-style: none;
+    width: fit-content;
+    justify-self: center;
+}
+
 .tertiaryBTN, .tertiaryBTN a{
+    color: black;
     text-decoration: none;
     display: inline-block;
     font-family: "Albert Sans";
@@ -43,60 +109,94 @@ body{
     transition: transform 200ms ease-in-out; 
 }
 
-/* ALAP DOBOZ
-.wrapper{
-    display: grid;
-    gap:100px; 
-    width: 100%;
-} */
+@media (max-aspect-ratio:1/1) {
+    #logo{
+        display: grid;
+    }
 
-
-/* HEADER */
-.header{
-    display: grid;
-    grid-template-columns: auto 1fr;
-    background-color: transparent;
-}
-
-.logo{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-
-.logo img{
-    width: 5vw;
-}
-
-
-.title{
-    /* align-self: center; */
-    font-size: 1em;
-    align-self: center;
-    text-transform: uppercase;
-    font-family: "Palanquin";
-}
-
-.navigation{
-    grid-column: 4;
-    align-self: center;
-    /* padding-right: 2em; */
-    height: auto;
+    #logo img{
+        width: 4em;
+        align-self: center;
+    }
     
-}
+    #title{
+        font-size: 1em;
+        align-self: center;
+        text-decoration: none;
+        color: black;
+        font-family: "Palanquin";
+    }
 
-.navigation a{
-    font-size: 1.3rem;
-    font-weight: bold;
-    list-style: none;
-    /* float: left; */
-    margin: 1rem 2rem;
-    color: #ffbc2f;
-    /* border-radius: 100px; */
-    height: fit-content;
+    #header{
+        position: inherit;
+        
+    }
+
+    #main{
+        display: block;
+    }
     
+    #main button img{
+        width: 5vw;
+    }
+    
+    #main button{
+        height: fit-content;
+        background-color: transparent;
+        border: none;
+        margin: 1em 1em 0 0;
+        display: block;
+        justify-self: end;
+        position: absolute;
+        right: 0;
+        z-index: 2;
+    }
+    
+    
+    #navigation li a{
+        text-decoration: none;
+        color: white;
+        list-style: none;
+    }
+    
+    #navigation ul{
+        display: block;
+        grid-row-start: 2;
+        margin: 0;
+    }
+    
+    #navigation{
+        display: grid;
+        grid-template-rows: 2em 1fr;
+        position: absolute;
+        height: 100vh;
+        max-height: 100%;
+        justify-self: end;
+        font-size: 1.5em;
+        background-color: orange;
+        z-index: 1;
+        overflow-x: hidden;
+        transition: 0.5s;
+        width: 0;
+        right: 0;
+        font-family: "Albert Sans"
+    }
+    
+    #main{
+        transition: margin-right .5s;
+    }
+    
+    #close{
+        display: none;
+    }
+    
+    .navigation a{
+        font-size: 1.3em;
+        font-weight: bold;
+        color: black;
+        height: fit-content;
+    }
 }
-
-
 
 @media (max-aspect-ratio:1/1) {
     .tertiaryBTN:hover, .tertiaryBTN a:hover{
@@ -116,11 +216,19 @@ body{
 
 .cover{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 55vw 40vw;
     /* margin-bottom: 5vh; */
     /* height: 70vh; */
     align-content: center;
     margin-top: 3vh;
+}
+
+.cover img{
+    /* width: 40vw; */
+    /* justify-self: end; */
+    /* margin-right: 1vw; */
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
 }
 
 .texts{
@@ -237,6 +345,7 @@ body{
     width: 100%;
     font-family: "Red Hat Text";
     text-align: left;
+    box-shadow: 1px 1px 4px darkgray;
     /* display: none; */
 }
 
@@ -390,7 +499,7 @@ textarea:focus{
 }
 
 .pages a{
-    padding: 1em 1.5em;
+    margin: 1em 1.5em;
     text-decoration: none;
     color: white;
     font-size: 1.3em;
@@ -401,7 +510,6 @@ textarea:focus{
 
 .pages a:hover::after{
     transform: scaleX(1);
-    
 }
 
 .pages a::after{
@@ -410,7 +518,6 @@ textarea:focus{
     border-bottom: solid 3px white;
     transform: scaleX(0);
     transition: transform 250ms ease-in-out;
-    
 }
 
 .trademark{
@@ -434,5 +541,5 @@ textarea:focus{
 
     .trademark{
         font-size: 0.7em;
-    }
+    }   
 }
