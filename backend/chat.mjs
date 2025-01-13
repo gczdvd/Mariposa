@@ -5,10 +5,17 @@ export class Chats{
     constructor(db){
         this.db = db;
     }
-    newChat(sess1, sess2){
-        const ch = new Chat(this.db, sess1, sess2);
+    newChat(sess1, sess2, secondchid=false){
+        const ch = new Chat(this.db, sess1, sess2, secondchid);
         this.#chats.push(ch);
         return ch;
+    }
+    findChat(id){
+        for(var i = 0; i < this.#chats.length; i++){
+            if(this.#chats[i].getId() == id){
+                return this.#chats[i];
+            }
+        }
     }
     getChatById(id){
         for(var i = 0; i < this.#chats.length; i++){
@@ -21,6 +28,60 @@ export class Chats{
 }
 
 export class Chat{
+    constructor(db, sess1=null, sess2=null, secondchid=false){
+        this.db = db;
+        this.sess1 = sess1;
+        if(secondchid == false){
+            var cid1 = sess1?.getAttribute("client")?.getId();
+            var cid2 = sess2?.getAttribute("client")?.getId();
+
+            this.sess2 = sess2;
+            this.id = this.db.getChat(cid1, cid2);
+        }
+        else{
+            this.sess2 = null;
+            this.id = sess2;
+        }
+    }
+    getId(){
+        return this.id;
+    }
+    close(){
+        this.sess1?.getWebsocket()?.close();
+        this.sess2?.getWebsocket()?.close();
+        this.sess1?.setAttribute("chat", null);
+        this.sess2?.setAttribute("chat", null);
+
+        /*me.getWebsocket().send(JSON.stringify({
+                "status":"end"
+        }));*/
+    }
+    getMessages(){
+        return this.db.getMessages(this.id);
+    }
+    getPartner(me){
+        return (me === this.sess1) ? this.sess2 : this.sess1;
+    }
+    newMessage(me, message, type){
+        this.db.newMessage(me.getAttribute("client").getId(), message, type, this.id);
+
+        var partner = this.getPartner(me);
+        
+        partner?.getWebsocket()?.send(JSON.stringify({
+            "from":1,
+            "type":type,
+            "message":message
+        }));
+
+        me?.getWebsocket()?.send(JSON.stringify({
+            "from":0,
+            "type":type,
+            "message":message
+        }));
+    }
+}
+
+/*export class Chat{
     constructor(db, sess1, sess2){
         this.db = db;
         this.sess1 = sess1;
@@ -73,7 +134,7 @@ export class Chat{
             partner.setAttribute("chat", null);
         }
     }
-}
+}*/
 
 export class Want{
     constructor(){}

@@ -18,8 +18,8 @@ import { Email } from './mail.mjs';
 
 const cryptKey = crypto.randomBytes(32);
 
-const database = new Sql("172.30.0.100", "root", "MariposaProject2024%", "mariposa");
-const smtp = new Email("172.30.0.100", 25, "noreply@mariposachat.hu");
+const database = new Sql("172.29.0.100", "root", "MariposaProject2024%", "mariposa");
+const smtp = new Email("172.29.0.100", 25, "noreply@mariposachat.hu");
 const chats = new Chats(database);
 
 const tasks = new Tasks();
@@ -424,6 +424,18 @@ app.post('/modifypassword', sessionValidator, (req, res) => {
     }
 });
 
+app.post("/report", sessionValidator, (req, res) => {
+    if(req.session.session.getAttribute("chat") instanceof Chat){
+        smtp.report(req.session.session.getAttribute("client"), req.session.session.getAttribute("chat").getPartner().getAttribute("client"))
+        res.status(200);
+        res.send(JSON.stringify({
+            "action":"none",
+            "value":"",
+            "message":"Reported."
+        }));
+    }
+});
+
 app.get('/userinfo', sessionValidator, (req, res) => {
     res.status(200);
     res.send(req.session.session.getAttribute("client").getInfo());
@@ -441,7 +453,7 @@ app.get('/partners', sessionValidator, (req, res) => {
     }));
 });
 
-app.get('/chat', sessionValidator, (req, res) => {                  //Ezen kérés előtt, de a bejelentkezés után KÖTELEZŐ websocketet nyitni
+app.post('/chat', sessionValidator, (req, res) => {                  //Ezen kérés előtt, de a bejelentkezés után KÖTELEZŐ websocketet nyitni
     if(req.session.session.getAttribute("chat") instanceof Chat){
         res.status(200);
         res.send(JSON.stringify({
@@ -451,21 +463,14 @@ app.get('/chat', sessionValidator, (req, res) => {                  //Ezen kér�
         }));
     }
     else{
-        req.session.session.setAttribute("chat", new Want());
-        res.status(200);
-        res.send(JSON.stringify({"message":"Waiting for partner..."}));
-    }
-});
-
-app.post("/report", sessionValidator, (req, res) => {                  //Ezen kérés előtt, de a bejelentkezés után KÖTELEZŐ websocketet nyitni
-    if(req.session.session.getAttribute("chat") instanceof Chat){
-        smtp.report(req.session.session.getAttribute("client"), req.session.session.getAttribute("chat").getPartner().getAttribute("client"))
-        res.status(200);
-        res.send(JSON.stringify({
-            "action":"none",
-            "value":"",
-            "message":"Reported."
-        }));
+        if(req.body?.chatid){
+            chats.newChat(req.session.session, req.body.chatid, true);
+        }
+        else{
+            req.session.session.setAttribute("chat", new Want());
+            res.status(200);
+            res.send(JSON.stringify({"message":"Waiting for partner..."}));
+        }
     }
 });
 
@@ -486,6 +491,9 @@ app.ws('/live', function(ws, req) {
                                 sess.getAttribute("chat").close();
                             }
                             else if(jmsg.value == "save"){
+
+                            }
+                            else if(jmsg.value == "history"){
 
                             }
                         }
