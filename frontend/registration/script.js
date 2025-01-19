@@ -32,15 +32,60 @@ function registration(){
     var email = document.getElementById("email").value;
     var nickname = document.getElementById("nickname").value;
     var password = document.getElementById("password").value;
+    var checkbox = document.getElementById("checkbox").checked;
+    var allValid = true;
 
-    
-    Backend.post({
+    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var validEmail = pattern.test(email);
+  
+    if(!validEmail){
+      emailFeedback.style.visibility = "visible";
+      document.getElementById("emailFeedback").innerHTML = "Helytelen email-cím.";
+      var allValid = false;
+    }
+    else{
+      emailFeedback.style.visibility = "hidden";
+    }
+
+    if(password.length != 10){
+      pswFeedback.style.visibility = "visible";
+      document.getElementById("pswFeedback").innerHTML = "A jelszónak legalább 10 karakternek kell lennie.";
+      var allValid = false;
+    }
+    else{
+      pswFeedback.style.visibility = "hidden";
+    }
+
+    if(!checkbox){
+      checkboxFeedback.style.visibility = "visible";
+      document.getElementById("checkboxFeedback").innerHTML = "El kell fogadnod az ÁSZF-et!";
+      var allValid = false;
+    }
+    else{
+      checkboxFeedback.style.visibility = "hidden";
+    }
+
+    if(allValid){
+      Backend.post({
         path:"/signup",
         body:{
             email:email,
             nickname:nickname,
             password:password
         },
-        callback:console.log
+        callback:(e)=>{
+          e
+        }
     });
+    }
 }
+
+// function checkValidation(){
+//   var email = document.getElementById("email").value;
+//   var password = document.getElementById("password").value;
+
+ 
+
+  
+    
+// }

@@ -36,7 +36,8 @@
             <div class="email">
                 <p>Email-cím</p>
                 
-                <input type="email" id="email" placeholder="" spellcheck="false" onchange="colorChange(this)">
+                <input type="email" id="email" placeholder="pelda@gmail.com" spellcheck="false" onchange="colorChange(this)">
+                <p id="emailFeedback"></p>
             </div>
 
             <div class="password">
@@ -44,12 +45,16 @@
                 
                 <input type="password" id="password" value="" spellcheck="false" onchange="colorChange(this)">
 
-                <span onclick="togglePSW()" id="toggleIcon"></span>
+                <p id="pswFeedback"></p>
+
+                <!-- <span onclick="togglePSW()" id="toggleIcon"></span> -->
             </div>
 
             <div class="TANDC">
                 <input type="checkbox" id="checkbox">
                 <label for="checkbox">Elfogadom az <a href="" target="_blank">ÁSZF</a>-be foglaltakat.</label>
+
+                <p id="checkboxFeedback"></p>
             </div>
 
             <div class="button">

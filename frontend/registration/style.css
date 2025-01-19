@@ -139,6 +139,11 @@ input[type=text], input[type=email], input[type=password]{
     font-size: 1.1em;
 }
 
+#pswFeedback, #emailFeedback, #checkboxFeedback{
+    color: red;
+    visibility: hidden;
+    font-size: 1em;
+}
 
 #toggleIcon{
     font-size: 1.5em;
@@ -151,6 +156,9 @@ input:focus{
     border-bottom: rgba(240, 192, 35, 1) 2px solid !important;
 }
 
+.TANDC{
+    font-family: "Red Hat Text";
+}
 
 .TANDC a{
     color: #ffbc2f;
@@ -165,6 +173,12 @@ input:focus{
 label{
     font-family: "Red Hat Text";
     font-size: 1em;
+}
+
+#checkboxFeedback{
+    /* color: red;
+    visibility: hidden;
+    font-size: 1em; */
 }
 
 .account{
