@@ -96,8 +96,8 @@ export class Sql{
     }
 
     //OK
-    getMessages(chatid){
-        var rows = this.con.query(`CALL getMessages(?);`, [chatid]);
+    getMessages(chatid, offset){
+        var rows = this.con.query(`CALL getMessages(?, ?);`, [chatid, offset]);
 
         return rows[0];
     }

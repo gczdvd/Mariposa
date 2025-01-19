@@ -1,213 +1,47 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html>
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@600&family=Noto+Color+Emoji&family=Palanquin:wght@700&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+    <title>Document</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@600&family=Noto+Color+Emoji&family=Noto+Sans+Symbols+2&family=Palanquin:wght@700&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap');
-
         body{
-            margin: 0;
-            padding: 0;
-            /* background-color: white; */
-            height: 100vh;
-            /* text-align: center; */
+            background-color: black;
         }
-
-        #wrapper{
-            font-family: 'Red Hat Text', Arial, Helvetica, sans-serif;
+        .d{
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            background-size: cover;
         }
-
-        #container{
-            /* background-color: #FCC200; */
-            width: 50vw;
-            margin: auto;
+        #doboz{
+            background-image: url("sun.png");
+            /*background-color: rgba(255, 0, 0, 0.5);*/
+            transform: perspective(200px) translateZ(1vw) translateY(2vw);
         }
-        
-        #header{
-            /* height: auto; */
-            /* width: 100%; */
-            font-family: 'Palanquin';
+        #doboz1{
+            background-image: url("mountain.png");
+            /*background-color: rgba(0, 255, 0, 0.5);*/
+            transform: perspective(30px) translateZ(1vw) translateY(5vw);
         }
-
-        #header img{
-            height: 5vh;
-            vertical-align: middle;
-            /* float: center; */
+        #doboz2{
+            background-image: url("tree.png");
+            /*background-color: rgba(0, 0, 255, 0.5);*/
+            transform: perspective(20px) translateZ(1vw) translateY(2vw);
         }
-
-        #header p{
-            /* float: right; */
-            text-align: center;
-            display: inline;
-            vertical-align: middle;
-            text-transform: uppercase;
-            /* margin-bottom: 1em; */
+        h1{
+            color: blue;
+            position: absolute;
+            margin-top: 100px;
+            margin-left: 60px;
         }
-
-        #details{
-            display: grid;
-            font-family: 'Red Hat Text', Arial, Helvetica, sans-serif;
-            background-color: #ffbc2f;
-            padding: 2vw;
-            gap: 2em;
-        }
-
-        #details > div{
-            margin: auto;
-            text-align: center;
-            background-color: white;
-            padding: 2vw;
-            width: 40vw;
-        }
-
-        #title{
-            font-size: 2em;
-            font-weight: 600;
-            border-top-left-radius: 2vw;
-            border-top-right-radius: 2vw;
-            border-bottom-right-radius: 0;
-            border-bottom-left-radius: 2vw;
-        }
-
-        #text1{
-            font-size: 1.1em;
-            border-top-left-radius: 2vw;
-            border-top-right-radius: 2vw;
-            border-bottom-right-radius: 2vw;
-            border-bottom-left-radius: 0;
-        }
-
-        #text2{
-            font-size: 1.1em;
-            border-top-left-radius: 2vw;
-            border-top-right-radius: 2vw;
-            border-bottom-right-radius: 0;
-            border-bottom-left-radius: 2vw;
-        }
-
-        #confirm{
-            display: grid;
-            margin: auto;
-            gap: 3em;
-            padding: 2vw;
-        }
-
-        #confirm p{
-            text-align: center;
-            font-weight: 600;
-        }
-
-        #confirmButton{
-            margin: auto;
-            width: 20vw;
-            padding: 20px 10px;
-            border: solid 2px #ffbc2f;
-            background-color: #ffbc2f;
-            text-align: center;
-            display: block;
-            text-decoration: none;
-            color: white;
-            text-transform: uppercase;
-            font-size: 1.2em;
-            font-weight: 600;
-        }
-
-        #confirmButton:hover{
-            text-transform: uppercase;
-            color: #FCC200;
-            background-color: white;
-            border: solid 2px #ffbc2f;
-            text-decoration: none;
-        }
-
-        #fromteam{
-            background-color: #ffbc2f;
-            padding: 1.5em;
-            color: white;
-            margin: auto;
-            text-align: center;
-            width: 40vw;
-            font-weight: 600;
-            font-size: 1.2em;
-            border-top-left-radius: 3em;
-            border-top-right-radius: 3em;
-            border-bottom-right-radius: 3em;
-            border-bottom-left-radius: 0;
-        }
-
-        #footer{
-            text-align: center;
-            background-color: #ffbc2f;
-            color: white;
-        }
-
-        #help{
-            width: 25vw;
-            margin: auto;
-            padding-top: 0.5em;
-        }
-
-        #footer a{
-            color: white;
-        }
-
-        #footer a:hover{
-            color: orange;
-        }
-
-        #trademark{
-            margin-top: 3em;
-            padding-bottom: 0.5em;
-        }
-
     </style>
-
-    <title>Mariposa</title>
 </head>
 <body>
-    <div id="container">
-        
-        <div id="header">
-            <img src="./images/logo.png" alt="">
-            <p>MARIPOSA</p>
-        </div>
-
-        <div id="wrapper">
-            <div id="details">
-                <div id="title">
-                    Üdvözlünk a Mariposán!
-                </div>
-
-                <div id="text1">
-                    Már csak egy lépésre vagy attól, hogy Mariposa tag legyél! Erősítsd meg e-mail címed, hogy befejezd a regisztrációt!
-                </div>
-
-                <div id="text2">
-                    A regisztrációt követően lehetőséged nyílik arra, hogy új embereket ismerj meg, miközben névtelenül chatelsz!
-                </div>
-            </div>
-
-            <div id="confirm">
-                <p>Kattints az alábbi gombra email-címed megerősítéséhez:</p>
-                
-                <a id="confirmButton">MEGERŐSÍTÉS</a>
-                
-                <div id="fromteam">
-                    Kellemes chatelést!
-                </div>
-            </div>
-
-            <div id="footer">
-                <p id="help">Segítségre van szükséged? Látogasd meg a <a href="">GYIK</a> oldalunkat, ahol böngészhetsz a gyakran ismételt kérdések között! Ha nem találsz választ a kérdésedre, vedd fel velünk a kapcsolatot!</p>
-
-                <p id="trademark">Mariposa - The Social Butterfly © 2025</p>
-            </div>
-
-        </div>      
-    </div>
+    <div class="d" id="doboz"></div>
+    <h1>FÜTYI</h1>
+    <div class="d" id="doboz1"></div>
+    <div class="d" id="doboz2"></div>
 </body>
 </html>

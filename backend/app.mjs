@@ -29,6 +29,14 @@ const finder = new Finder(sessions, chats);
 
 var app = express();
 
+function replacer(key,value)
+{
+    if (key=="websocket"){
+        return "ws";
+    }
+    return value;
+}
+
 const sessionParser = function(req, res, next){
     var session = {
         id: req.cookies.sessId,
@@ -42,7 +50,7 @@ const sessionParser = function(req, res, next){
         res.cookie("sessId", "-", { maxAge: 0, httpOnly: true, secure: true });
     }
     req.session = session;
-    console.log(session);
+    // console.dir(JSON.parse(JSON.stringify(session, replacer, 10)), { depth: null });
     next();
 }
 
@@ -464,7 +472,21 @@ app.post('/chat', sessionValidator, (req, res) => {                  //Ezen kér
     }
     else{
         if(req.body?.chatid){
-            chats.newChat(req.session.session, req.body.chatid, true);
+            var tchat = chats.findChatById(req.body.chatid);
+            if(tchat == null){
+                var nchat = chats.newChat(req.session.session, req.body.chatid, true);
+                req.session.session.setAttribute("chat", nchat);
+            }
+            else{
+                tchat.setUser(req.session.session);
+                req.session.session.setAttribute("chat", tchat);
+            }
+            res.status(200);
+            res.send(JSON.stringify({
+                "action":"none",
+                "value":"",
+                "message":"connected"
+            }));
         }
         else{
             req.session.session.setAttribute("chat", new Want());
@@ -494,7 +516,15 @@ app.ws('/live', function(ws, req) {
 
                             }
                             else if(jmsg.value == "history"){
-
+                                var e = sess.getAttribute("chat").getMessages();
+                                for(var i = 0; i < e.length; i++){
+                                    var pers = (e[i].client_id == sess.getAttribute("client").getId());
+                                    sess.getWebsocket().send(JSON.stringify({
+                                        "from":pers ? 0 : 1,
+                                        "type":e[i].content_type,
+                                        "message":e[i].message_value
+                                    }));
+                                }
                             }
                         }
                     }
@@ -516,9 +546,9 @@ app.listen(3000, () => {
     console.log("Api/Websocket server running on port 3000");
 });
 
-// setInterval(()=>{
-//     //process.stdout.write('\x1Bc');
-//     console.dir(sessions.sessions, {"depth":2});
-//     console.dir(tasks.getTasks(), {"depth":2});
-//     sessions.cleanUp();
-// }, 10000)
+setInterval(()=>{
+    process.stdout.write('\x1Bc');
+    console.dir(JSON.parse(JSON.stringify(sessions.sessions, replacer, 4)), { depth: null });
+    // console.dir(tasks.getTasks(), {"depth":2});
+    sessions.cleanUp();
+}, 1000)

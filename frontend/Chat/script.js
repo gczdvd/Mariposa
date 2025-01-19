@@ -15,9 +15,11 @@ var ws = new WebSocket("ws://" + Backend.url() + "/live");
 Backend.get({
     path:"/partners",
     callback:(e)=>{
+        console.log(e);
         for(var i = 0; i < e.value.partners.length; i++){
             var _div = document.createElement("div");
             _div.className = "savedChat";
+            _div.setAttribute("onclick", `openChat('${e.value.partners[i].chat_id}')`);
             var _img = document.createElement("img");
             _img.src = "../images/img_avatarA.png";
             var _p = document.createElement("p");
@@ -36,11 +38,20 @@ function placeholderAdd(textarea){
   }
 }
 
-function newChat(){
-    Backend.get({
+function openChat(chatid=null){
+    Backend.post({
         path:"/chat",
+        body:{
+            chatid:chatid
+        },
         callback:(e)=>{
             console.log(e);
+            if(e.message == "connected"){
+                ws.send(JSON.stringify({
+                    "type":"action",
+                    "value":"history"
+                }));
+            }
         }
     });
 }
