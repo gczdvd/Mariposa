@@ -5,10 +5,19 @@ export class Chats{
     constructor(db){
         this.db = db;
     }
+    getChats(){
+        return this.#chats;
+    }
     newChat(sess1, sess2, secondchid=false){
         const ch = new Chat(this.db, sess1, sess2, secondchid);
-        this.#chats.push(ch);
-        return ch;
+        var haschat = this.findChatById(ch.getId());
+        if(haschat != null){
+            return haschat;
+        }
+        else{
+            this.#chats.push(ch);
+            return ch;
+        }
     }
     findChatById(id){
         for(var i = 0; i < this.#chats.length; i++){
@@ -18,7 +27,7 @@ export class Chats{
         }
         return null;
     }
-    getChatById(id){
+    getChatById(id){    //EZMINEK
         for(var i = 0; i < this.#chats.length; i++){
             if(this.#chats[i].getId() == id){
                 return this.#chats[i];
@@ -51,6 +60,14 @@ export class Chat{
         }
         else{
             this.#sess2 = sess;
+        }
+    }
+    leftUser(sess){
+        if(this.#sess1?.getAttribute("client").getId() == sess.getAttribute("client").getId()){
+            this.#sess1 = null;
+        }
+        else if(this.#sess2?.getAttribute("client").getId() == sess.getAttribute("client").getId()){
+            this.#sess2 = null;
         }
     }
     getId(){
@@ -167,6 +184,7 @@ export class Finder{
             if(sesss[i].getAttribute("chat") instanceof Want){
                 pair.push(sesss[i]);
                 if(pair.length == 2){
+                    //IÁÁÁ
                     const nChat = this.chats.newChat(pair[0], pair[1]);
                     pair[0].setAttribute("chat", nChat);
                     pair[1].setAttribute("chat", nChat);
@@ -178,7 +196,7 @@ export class Finder{
                         "status":"havepartner",
                         "identify":pair[0].getAttribute("client").getInfo()
                     }));
-                    
+
                     break;
                 }
             }

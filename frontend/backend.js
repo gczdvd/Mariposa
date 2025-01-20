@@ -1,7 +1,7 @@
 var rootAddr = "asdsad";
 class Backend{
     static setUrl(url){
-        rootAddr = url;
+        rootAddr = "172.30.0.5:3000";
     }
     static url(){
         return rootAddr;
@@ -16,6 +16,7 @@ class Backend{
             // alert(JSON.stringify(params));
             // alert(JSON.stringify(resp));
             if(resp.action == "redirect"){
+                alert(JSON.stringify(resp));
                 window.location.href = resp.value;
             }
             else{
@@ -38,6 +39,7 @@ class Backend{
             // alert(JSON.stringify(params));
             // alert(JSON.stringify(resp));
             if(resp.action == "redirect"){
+                alert(JSON.stringify(resp));
                 window.location.href = resp.value;
             }
             else{

@@ -18,8 +18,8 @@ import { Email } from './mail.mjs';
 
 const cryptKey = crypto.randomBytes(32);
 
-const database = new Sql("172.29.0.100", "root", "MariposaProject2024%", "mariposa");
-const smtp = new Email("172.29.0.100", 25, "noreply@mariposachat.hu");
+const database = new Sql("172.30.0.100", "root", "MariposaProject2024%", "mariposa");
+const smtp = new Email("172.30.0.100", 25, "noreply@mariposachat.hu");
 const chats = new Chats(database);
 
 const tasks = new Tasks();
@@ -87,7 +87,7 @@ app.use(
     cookieParser(),
     bodyParser.json(),
     cors({
-        origin: 'http://127.0.0.1:5501',
+        origin: 'http://172.30.0.5:5501',
         credentials: true
       }),
     sessionParser
@@ -120,8 +120,8 @@ app.post('/login', (req, res) => {
             else{
                 res.status(401);
                 res.send(JSON.stringify({
-                    "action":"redirect",
-                    "value":"/",
+                    "action":"alert",
+                    "value":"invalid",
                     "message":"Invalid credentials."
                 }));
             }
@@ -165,8 +165,8 @@ app.post('/signup', (req, res) => {
             else{
                 res.status(409);
                 res.send(JSON.stringify({
-                    "action":"redirect",
-                    "value":"/login",
+                    "action":"alert",
+                    "value":"exist",
                     "message":"Exist account with this email address."
                 }));
             }
@@ -462,7 +462,7 @@ app.get('/partners', sessionValidator, (req, res) => {
 });
 
 app.post('/chat', sessionValidator, (req, res) => {                  //Ezen kérés előtt, de a bejelentkezés után KÖTELEZŐ websocketet nyitni
-    if(req.session.session.getAttribute("chat") instanceof Chat){
+    /*if(req.session.session.getAttribute("chat") instanceof Chat){
         res.status(200);
         res.send(JSON.stringify({
             "action":"none",
@@ -470,7 +470,11 @@ app.post('/chat', sessionValidator, (req, res) => {                  //Ezen kér
             "message":"You have partner."
         }));
     }
-    else{
+    else{*/
+        if(req.session.session.getAttribute("chat") instanceof Chat){
+            req.session.session.getAttribute("chat").leftUser(req.session.session);
+        }
+
         if(req.body?.chatid){
             var tchat = chats.findChatById(req.body.chatid);
             if(tchat == null){
@@ -493,7 +497,7 @@ app.post('/chat', sessionValidator, (req, res) => {                  //Ezen kér
             res.status(200);
             res.send(JSON.stringify({"message":"Waiting for partner..."}));
         }
-    }
+    //}
 });
 
 app.ws('/live', function(ws, req) {
@@ -549,6 +553,7 @@ app.listen(3000, () => {
 setInterval(()=>{
     process.stdout.write('\x1Bc');
     console.dir(JSON.parse(JSON.stringify(sessions.sessions, replacer, 4)), { depth: null });
+    console.dir(JSON.parse(JSON.stringify(chats.getChats(), replacer, 4)), { depth: null });
     // console.dir(tasks.getTasks(), {"depth":2});
     sessions.cleanUp();
 }, 1000)
