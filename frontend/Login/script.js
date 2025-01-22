@@ -1,5 +1,18 @@
 Backend.setUrl("127.0.0.1:3000");
 
+var token = (new URLSearchParams(location.search))?.get("token");
+if(token){
+    Backend.get({
+        path:"/signup/verify?token=" + token,
+        callback:(e)=>{
+            console.log(e);
+            if(e.action == "alert"){
+                alert(e.value);
+            }
+        }
+    });
+}
+
 function togglePSW() {
     var x = document.getElementById("password");
     if (x.type === "password") {

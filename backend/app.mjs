@@ -1,12 +1,20 @@
 "use strict";
 
-import express from 'file://C:/Users/David/AppData/Roaming/npm/node_modules/express/index.js';
-import websocket from 'file://C:/Users/David/AppData/Roaming/npm/node_modules/express-ws/index.js';
-import cookieParser from 'file://C:/Users/David/AppData/Roaming/npm/node_modules/cookie-parser/index.js';
-import bodyParser from 'file://C:/Users/David/AppData/Roaming/npm/node_modules/body-parser/index.js';
-import md5 from 'file://C:/Users/David/AppData/Roaming/npm/node_modules/md5/md5.js';
+// import express from 'file://C:/Users/David/AppData/Roaming/npm/node_modules/express/index.js';
+// import websocket from 'file://C:/Users/David/AppData/Roaming/npm/node_modules/express-ws/index.js';
+// import cookieParser from 'file://C:/Users/David/AppData/Roaming/npm/node_modules/cookie-parser/index.js';
+// import bodyParser from 'file://C:/Users/David/AppData/Roaming/npm/node_modules/body-parser/index.js';
+// import md5 from 'file://C:/Users/David/AppData/Roaming/npm/node_modules/md5/md5.js';
+// import crypto from 'crypto';
+// import cors from 'file://C:/Users/David/AppData/Roaming/npm/node_modules/cors/lib/index.js'
+
+import express from '/root/Mariposa/backend/node_modules/express/index.js';
+import websocket from '/root/Mariposa/backend/node_modules/express-ws/index.js';
+import cookieParser from '/root/Mariposa/backend/node_modules/cookie-parser/index.js';
+import bodyParser from '/root/Mariposa/backend/node_modules/body-parser/index.js';
+import md5 from '/root/Mariposa/backend/node_modules/md5/md5.js';
 import crypto from 'crypto';
-import cors from 'file://C:/Users/David/AppData/Roaming/npm/node_modules/cors/lib/index.js'
+import cors from '/root/Mariposa/backend/node_modules/cors/lib/index.js'
 
 import { Sql } from './database.mjs';
 import { Generator } from './generator.mjs';
@@ -18,13 +26,13 @@ import { Email } from './mail.mjs';
 
 const cryptKey = crypto.randomBytes(32);
 
-const database = new Sql("172.30.0.100", "root", "MariposaProject2024%", "mariposa");
-const smtp = new Email("172.30.0.100", 25, "noreply@mariposachat.hu");
+const database = new Sql("127.0.0.1", "root", "MariposaProject2024%", "mariposa");
+const smtp = new Email("127.0.0.1", 25, "noreply@mariposachat.hu");
 const chats = new Chats(database);
 
 const tasks = new Tasks();
 
-const sessions = new Sessions(/*34560000000*/280000);
+const sessions = new Sessions(34560000000/*280000*/);
 const finder = new Finder(sessions, chats);
 
 var app = express();
@@ -87,7 +95,7 @@ app.use(
     cookieParser(),
     bodyParser.json(),
     cors({
-        origin: 'http://172.30.0.5:5501',
+        origin: 'https://mariposachat.hu/com/api',
         credentials: true
       }),
     sessionParser
@@ -190,19 +198,6 @@ app.post('/signup', (req, res) => {
     }
 });
 
-/*fetch("http://127.0.0.1:3000/forgotpassword", {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify({
-        email:"gogodavid19@gmail.com"
-      }) 
-    }).then(async (e)=>{
-        console.log(await e.json());
-    });*/
 app.post('/forgotpassword', (req, res)=>{
     if(req.body.email){
         var exist = database.existEmail(req.body.email);
@@ -240,20 +235,6 @@ app.post('/forgotpassword', (req, res)=>{
     }
 });
 
-/*fetch("http://127.0.0.1:3000/forgotpassword/change", {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify({
-        key:"xxxxxxxxxxxxx",
-        password:"erre"
-      }) 
-    }).then(async (e)=>{
-        console.log(await e.json());
-    });*/
 app.post('/forgotpassword/change', (req, res)=>{
     if(req.body.key){
         var id = Generator.decrypt(cryptKey, key)
@@ -316,8 +297,8 @@ app.get('/signup/verify', (req, res) => {
         smtp.verifySuccess(e.getEmail(), e.getNickname());
         res.status(200);
         res.send(JSON.stringify({
-            "action":"redirect",
-            "value":"/login",
+            "action":"alert",
+            "value":"success",
             "message":"Verified."
         }));
     }
@@ -432,9 +413,9 @@ app.post('/modifypassword', sessionValidator, (req, res) => {
     }
 });
 
-app.post("/report", sessionValidator, (req, res) => {
+app.post("/report", sessionValidator, (req, res) => {   //EZT INKÁBB WSBE
     if(req.session.session.getAttribute("chat") instanceof Chat){
-        smtp.report(req.session.session.getAttribute("client"), req.session.session.getAttribute("chat").getPartner().getAttribute("client"))
+        smtp.report(req.session.session.getAttribute("client"), req.session.session.getAttribute("chat").getPartner(req.session.session).getAttribute("client"))
         res.status(200);
         res.send(JSON.stringify({
             "action":"none",
@@ -478,7 +459,7 @@ app.post('/chat', sessionValidator, (req, res) => {                  //Ezen kér
         if(req.body?.chatid){
             var tchat = chats.findChatById(req.body.chatid);
             if(tchat == null){
-                var nchat = chats.newChat(req.session.session, req.body.chatid, true);
+                var nchat = chats.newChat(req.session.session, req.body.chatid, true); //NEM HIHETÜN A FRONTENDNEK ID-T TEKINTVE
                 req.session.session.setAttribute("chat", nchat);
             }
             else{
@@ -501,7 +482,10 @@ app.post('/chat', sessionValidator, (req, res) => {                  //Ezen kér
 });
 
 app.ws('/live', function(ws, req) {
-    if(sessions.getSessionById(req.session.id)?.valid() && !(sessions.getSessionById(req.session.id)?.getWebsocket())){
+    if(sessions.getSessionById(req.session.id)?.valid()){
+        if(req.session.session.getWebsocket()){
+            req.session.session.getWebsocket()?.close();
+        }
         ws.on('message', function(msg) {
             var sess = sessions.getSessionById(req.session.id);
             if(sess?.valid()) {
@@ -514,16 +498,28 @@ app.ws('/live', function(ws, req) {
                         }
                         else if(jmsg.type == "action"){
                             if(jmsg.value == "end"){
+                                sess.getWebsocket()?.send(JSON.stringify({
+                                    "status":"end"//Ezeknek még nincs hatásuk froonton
+                                }));
+                                sess.getAttribute("chat").getPartner(sess).getWebsocket()?.send(JSON.stringify({
+                                    "status":"end"
+                                }));
                                 sess.getAttribute("chat").close();
                             }
                             else if(jmsg.value == "save"){
-
+                                if(!sess.getAttribute("chat").wantToPersistent(sess)){
+                                    sess.getAttribute("chat").getPartner(sess).getWebsocket()?.send(JSON.stringify({
+                                        "type":"action",
+                                        "name":"requestSave",
+                                        "value":null
+                                    }));
+                                }
                             }
                             else if(jmsg.value == "history"){
                                 var e = sess.getAttribute("chat").getMessages();
                                 for(var i = 0; i < e.length; i++){
                                     var pers = (e[i].client_id == sess.getAttribute("client").getId());
-                                    sess.getWebsocket().send(JSON.stringify({
+                                    sess.getWebsocket()?.send(JSON.stringify({
                                         "from":pers ? 0 : 1,
                                         "type":e[i].content_type,
                                         "message":e[i].message_value
@@ -540,9 +536,6 @@ app.ws('/live', function(ws, req) {
             }
         });
         req.session.session.setWebsocket(ws);
-    }
-    else{
-        ws.close();
     }
 });
 

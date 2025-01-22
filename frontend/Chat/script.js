@@ -10,7 +10,7 @@ function myFunction() {
     }
   }
 
-var ws = new WebSocket("ws://" + Backend.url() + "/live");
+var ws = new WebSocket("wss://" + Backend.url() + "/ws");
 
 Backend.get({
     path:"/partners",
@@ -105,6 +105,14 @@ function savePartner(){
     confirmButtonColor: "#ffbc2f",
     iconColor: "#ffbc2f"
   })
+  .then((e)=>{
+    if(e.isConfirmed){
+        ws.send(JSON.stringify({
+            "type":"action",
+            "value":"save"
+        }));
+    };
+  });
 }
 
 // Swal.fire({
@@ -164,6 +172,14 @@ function deletePartner(){
     cancelButtonText: "Mégse",
     confirmButtonColor: "#ffbc2f",
     iconColor: "#ffbc2f"
+  })
+  .then((e)=>{
+    if(e.isConfirmed){
+        ws.send(JSON.stringify({
+            "type":"action",
+            "value":"end"
+        }));
+    };
   });
 }
 
@@ -190,13 +206,37 @@ function receive(e){
         e.innerText = data.message;
         document.getElementsByClassName("messages")[0].insertBefore(e, document.getElementsByClassName("messages")[0].firstChild);
     }
-    if(data?.identify){
-        var partneridentify = JSON.parse(data.identify);
-        document.getElementById("name").innerHTML = partneridentify.nickname;
-        document.getElementById("quote").innerHTML = partneridentify.description;
-        document.getElementById("birthday").innerHTML = function(e=new Date(partneridentify.birthdate)){
-            return `${e.getUTCFullYear()}. ${(e.getMonth() < 10 ? '0' : '') + e.getMonth()}. ${(e.getDate() < 10 ? '0' : '') + e.getDate()}.`;
-        }();
+    else if(data.type == "action"){
+        if(data.name == "identify"){
+            var partneridentify = JSON.parse(data.value);
+            document.getElementById("name").innerHTML = partneridentify.nickname;
+            document.getElementById("quote").innerHTML = partneridentify.description;
+            document.getElementById("birthday").innerHTML = function(e=new Date(partneridentify.birthdate)){
+                return `${e.getUTCFullYear()}. ${(e.getMonth() < 10 ? '0' : '') + e.getMonth()}. ${(e.getDate() < 10 ? '0' : '') + e.getDate()}.`;
+            }();
+            document.getElementById("save").setAttribute("hidden", "true");
+        }
+        else if(data.name == "requestSave"){
+            Swal.fire({
+                icon: "question",
+                title: "Partnered menetni szeretne. Elfogadod?",
+                width: "64em",
+                showCancelButton: "true",
+                reverseButtons: "true",
+                confirmButtonText: "Igen", 
+                cancelButtonText: "Nem",
+                confirmButtonColor: "#ffbc2f",
+                iconColor: "#ffbc2f"
+              })
+              .then((e)=>{
+                if(e.isConfirmed){
+                    ws.send(JSON.stringify({
+                        "type":"action",
+                        "value":"save"
+                    }));
+                };
+              });
+        }
     }
 }
 

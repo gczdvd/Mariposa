@@ -40,6 +40,8 @@ export class Chats{
 export class Chat{
     #sess1 = null;
     #sess2 = null;
+    saved = null;
+    #wantsave = [false, false];
     constructor(db, sess1=null, sess2=null, secondchid=false){
         this.db = db;
         this.#sess1 = sess1;
@@ -48,14 +50,61 @@ export class Chat{
             var cid2 = sess2?.getAttribute("client")?.getId();
 
             this.#sess2 = sess2;
-            this.id = this.db.getChat(cid1, cid2);
+            var chattr = this.db.getChat(cid1, cid2);
+            this.id = chattr.id;
+            this.saved = chattr.persistent;
         }
         else{
             this.id = sess2;
         }
     }
+    setSaved(){
+        if(this.db.setChatPersistent(this.id, 1)){
+            this.saved = 1;
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    wantToPersistent(sess){
+        if(this.saved != 1){
+            switch(sess){
+                case(this.#sess1):{
+                    this.#wantsave[0] = true;
+                    break;
+                }
+                
+                case (this.#sess2):{
+                    this.#wantsave[1] = true;
+                    break;
+                }
+            }
+            if(this.#wantsave[1] && this.#wantsave[0]){
+                if(this.setSaved()){
+                    this.#sess1.getWebsocket()?.send(JSON.stringify({
+                        "type":"action",
+                        "name":"identify",
+                        "value":this.#sess2.getAttribute("client").getInfo()
+                    }));
+                    this.#sess2.getWebsocket()?.send(JSON.stringify({
+                        "type":"action",
+                        "name":"identify",
+                        "value":this.#sess1.getAttribute("client").getInfo()
+                    }));
+                    return true;
+                }
+                else{
+                    return false; 
+                }
+            }
+            else{
+                return false;
+            }
+        }
+    }
     setUser(sess){
-        if(this.#sess1?.getAttribute("client").getId() == sess.getAttribute("client").getId()){
+        if(this.#sess1?.getAttribute("client").getId() == sess.getAttribute("client").getId()){ //EZ NAGGYONNEMJÓ
             this.#sess1 = sess;
         }
         else{
@@ -74,8 +123,6 @@ export class Chat{
         return this.id;
     }
     close(){
-        this.#sess1?.getWebsocket()?.close();
-        this.#sess2?.getWebsocket()?.close();
         this.#sess1?.setAttribute("chat", null);
         this.#sess2?.setAttribute("chat", null);
 
@@ -189,12 +236,10 @@ export class Finder{
                     pair[0].setAttribute("chat", nChat);
                     pair[1].setAttribute("chat", nChat);
                     pair[0].getWebsocket()?.send(JSON.stringify({
-                        "status":"havepartner",
-                        "identify":pair[1].getAttribute("client").getInfo()
+                        "status":"havepartner"
                     }));
                     pair[1].getWebsocket()?.send(JSON.stringify({
-                        "status":"havepartner",
-                        "identify":pair[0].getAttribute("client").getInfo()
+                        "status":"havepartner"
                     }));
 
                     break;

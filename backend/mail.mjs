@@ -1,8 +1,8 @@
 "use strict";
 
 import fs from 'fs';
-import nodemailer from 'file://C:/Users/David/AppData/Roaming/npm/node_modules/nodemailer/lib/nodemailer.js';
-import parse_html from 'file://C:/Users/David/AppData/Roaming/npm/node_modules/node-html-parser/dist/index.js';
+import nodemailer from '/root/Mariposa/backend/node_modules/nodemailer/lib/nodemailer.js';
+import parse_html from '/root/Mariposa/backend/node_modules/node-html-parser/dist/index.js';
 
 function HTMLFileFormat(html, change){
     const root = parse_html.parse(fs.readFileSync(html, {encoding: 'utf8', flag: 'r'}));
@@ -58,7 +58,7 @@ export class Email{
             to: email,
             subject: "Verify your account!",
             html: HTMLFileFormat('emails/welcome/welcome.html', (e)=>{
-                e.getElementById("confirmButton").setAttribute("href", `http://127.0.0.1:3000/signup/verify?token=${token}`);
+                e.getElementById("confirmButton").setAttribute("href", `https://mariposachat.hu/login/?token=${token}`);
             })
         });
         return token;
