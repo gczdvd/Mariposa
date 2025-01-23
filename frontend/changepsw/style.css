@@ -45,6 +45,11 @@ body{
     border: 3px solid #ffbc2f;
 }
 
+.back img{
+    /* text-decoration: none; */
+    width: 4vw;
+}
+/* 
 .backBTN {
     height: fit-content;
     margin: 0.5rem 0 0 0.7rem;
@@ -61,7 +66,7 @@ body{
     border-bottom: solid 2px #ffbc2f;
     transform: scaleX(0);
     transition: transform 250ms ease-in-out;
-}
+} */
 
 
 .signin{
