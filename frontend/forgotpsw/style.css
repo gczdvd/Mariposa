@@ -14,7 +14,7 @@ body{
 .wrapper{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto 1fr;
+    /* grid-template-rows: auto 1fr; */
     height: 100%;
 }
 
@@ -63,7 +63,6 @@ body{
     transition: transform 250ms ease-in-out;
 }
 
-
 .signin{
     display: grid;
     width: 30vw;
@@ -79,7 +78,7 @@ body{
 .image{
     background-color: gray;
     align-content: center;
-    grid-row: 1 / span 2;
+    /* grid-row: 1 / span 2; */
     grid-column-start: 2;
 }
 

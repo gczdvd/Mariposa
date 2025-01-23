@@ -45,15 +45,12 @@ body{
     border: 3px solid #ffbc2f;
 }
 
-.backBTN, .backBTN a{
-    text-decoration: none;
-    display: inline-block;
-    margin: 0.2em 0 0 0.3em;
-    font-family: "Albert Sans";
-    color: #ffbc2f;
+.back img{
+    /* text-decoration: none; */
+    width: 4vw;
 }
 
-.backBTN a:hover::after{
+/* .backBTN a:hover::after{
     transform: scaleX(1);
 }
 
@@ -63,7 +60,7 @@ body{
     border-bottom: solid 2px #ffbc2f;
     transform: scaleX(0);
     transition: transform 250ms ease-in-out;
-}
+} */
 
 
 .signup{

@@ -77,19 +77,15 @@ function openChat(chatid=null){
 }
 
 function openNav() {
-  document.getElementById("navigation").style.width = "26vw";
-  // document.getElementById("main").style.marginRight = "250px";
 
-  document.getElementById("close").style.display = "block";
-  document.getElementById("open").style.display = "none";
+  // document.getElementById("sidenav").style.width = "250px";
 
-  document.getElementById("blurred").style.filter = "blur(2px)";
-  
-  // document.getElementById("navigation").style.filter = "blur(0px)";
+  // document.getElementById("navigation").style.width = "26vw";
 
-  // document.getElementById("header").style.backgroundColor = "orange";
-  // header.style.backgroundColor = "orange";
+  // document.getElementById("close").style.display = "block";
+  // document.getElementById("open").style.display = "none";
 
+  // document.getElementById("blurred").style.filter = "blur(2px)";
 }
 
 /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */

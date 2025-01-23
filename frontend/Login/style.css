@@ -47,24 +47,9 @@ body{
 }
 
 
-.backBTN, .backBTN a{
-    text-decoration: none;
-    display: inline-block;
-    margin: 0.2em 0 0 0.3em;
-    font-family: "Albert Sans";
-    color: #ffbc2f;
-}
-
-.backBTN a:hover::after{
-    transform: scaleX(1);
-}
-
-.backBTN a::after{
-    display: block;
-    content: '';
-    border-bottom: solid 2px #ffbc2f;
-    transform: scaleX(0);
-    transition: transform 250ms ease-in-out;
+.back img{
+    /* text-decoration: none; */
+    width: 4vw;
 }
 
 
