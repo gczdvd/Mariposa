@@ -229,7 +229,7 @@ function receive(e){
             var partneridentify = JSON.parse(data.value);
             document.getElementById("name").innerHTML = partneridentify.nickname;
             document.getElementById("quote").innerHTML = partneridentify.description;
-            document.getElementById("partnerpic").src = partneridentify.profile_pic;
+            document.getElementById("profilePic").src = partneridentify.profile_pic;
             document.getElementById("birthday").innerHTML = function(e=new Date(partneridentify.birthdate)){
                 return `${e.getUTCFullYear()}. ${(e.getMonth() < 10 ? '0' : '') + e.getMonth()}. ${(e.getDate() < 10 ? '0' : '') + e.getDate()}.`;
             }();

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@600&family=Noto+Color+Emoji&family=Palanquin:wght@700&family=Red+Hat+Text&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="/sweetalert2.min.css">
+    <title>Document</title>
+    <script src="/backend.js"></script>
+</head>
+<body>
+    <div class="wrapper" id="wrapper">
+        <!-- <div id="blurred" onclick="closeNav()"> -->
+            <!-- EGÉSZ CHATFELÜLET -->
+            <div class="chatArea">
+
+                <!-- MENTETTEK -->
+                <div class="saved" id="saved">
+                    <!-- <div class="searchbar">
+                        <input type="search">
+                    </div> -->
+    
+                    <div class="" id="startChat" title="Új chat indítása">
+                        <!-- <a href="">--><img onclick="openChat()" src="./images/plusorange.png"><!--</a> -->
+                        <!-- <a href="" class="emoji">➕</a> -->
+                    </div>
+    
+                    <div id="placeholder">
+                        Ha ez a felület üres, azt jelenti, hogy még nincs egy elmentett chatpartnered sem! Indítsd új chatet, hogy minél előbb találj egy hozzád hasonló embert!
+                    </div>
+                    <!--<div class="savedChat">
+                        <img src="../images/img_avatarA.png" alt="">
+                        <p>Példa Név</p>
+                    </div>
+                    <div class="savedChat">
+                        <img src="../images/img_avatarA.png" alt="">
+                        <p>Példa Név</p>
+                    </div>
+                    <div class="savedChat">
+                        <img src="../images/img_avatarA.png" alt="">
+                        <p>Példa Név</p>
+                    </div>
+                    <div class="savedChat">
+                        <img src="../images/img_avatarA.png" alt="">
+                        <p>Példa Név</p>
+                    </div>
+                    <div class="savedChat">
+                        <img src="../images/img_avatarA.png" alt="">
+                        <p>Példa Név</p>
+                    </div>                
+                    <div class="savedChat">
+                        <img src="../images/img_avatarA.png" alt="">
+                        <p>Példa Név</p>
+                    </div>
+                    <div class="savedChat">
+                        <img src="../images/img_avatarA.png" alt="">
+                        <p>Példa Név</p>
+                    </div>
+                    <div class="savedChat">
+                        <img src="../images/img_avatarA.png" alt="">
+                        <p>Példa Név</p>
+                    </div>
+                    <div class="savedChat">
+                        <img src="../images/img_avatarA.png" alt="">
+                        <p>Példa Név</p>
+                    </div> -->
+                </div>
+        
+
+                <!-- CHATFELÜLET -->
+                <div class="chat">
+                    <div class="messages">
+
+                    </div>
+    
+                    <div class="message">
+    
+                        <textarea placeholder="Írd ide az üzenetet..." rows="" id="message" class="message-bar" maxlength="1000" oninput='this.style.height = ""; this.style.height = this.scrollHeight + "px"'></textarea>
+                        <!-- <div contenteditable="true" role="textbox" class="message-bar" aria-label="Üzenet..." dir="auto" oninput='this.style.height = ""; this.style.height = this.scrollHeight + "px"'></div> -->
+                        
+                        <button id="sendBTN" onclick="send()"><img src="./images/sendicon.png" alt=""></button>
+                        
+                        <!-- <img id="sendbtn" src="send.png" onclick="send()"> -->
+    
+                    </div>
+                </div>
+        
+
+                <!-- CHATPARTNER INFÓK -->
+                <div class="details">
+                    <img src="../images/img_avatarA.png" alt="" id="profilePic">
+                    
+                    <span id="name">Példa Név</span>
+                    
+                    <div class="data">
+                        <p id="birthdayP" title="Születésnap">
+                            <span class="emoji">🎂</span> 
+                            <span id="birthday" >
+                                2005. 05. 30
+                            </span>
+                        </p>
+    
+                        <p id="genderP">
+                            <span class="emoji">👥</span> 
+                            <span id="gender">
+                                Nembináris
+                            </span>
+                        </p>
+    
+                        <p id="quoteP">
+                            <span id="quote">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi blanditiis deleniti nobis veniam quibusdam, placeat qui libero cupiditate recusandae officiis! Itaque sunt iste excepturi neque qui illo earum quae odit.
+                            </span>
+                            <br>
+                            <!-- <img src="./images/image.png" alt="" draggable="false"> -->
+                        </p>
+
+                        <p id="interestsP">
+                            <span id="interests">
+                                <button>Tánc</button>
+                            </span>
+                            <!-- <br> -->
+                        </p>
+                    </div>
+
+                    <div class="actions">
+                        <p id="save" title="Felhasználó mentése" class="emoji" onclick="savePartner()">
+                            🔖
+                        </p>
+
+                        <p id="report" title="Felhasználó jelentése" class="emoji" onclick="reportPartner()">
+                            ⚠️
+                        </p>
+    
+                        <p id="delete" title="Chat törlése" class="emoji" onclick="deletePartner()">
+                            🗑️
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 1 -->
+            <div class="header">
+                <!-- <div class="header" id="header"> -->
+                    <!-- <div id="main">
+                        <button>
+                            <img src="./images/open.png" alt="" onclick="openNav()" id="open" class="openbtn">
+            
+                            <img src="./images/close.png" alt="" onclick="closeNav()" id="close">
+                        </button>
+                    </div> -->
+        
+                    <div id="sidenav" class="sidenav">
+                        <ul>
+                            <!-- <a href="" class="tertiaryBTN">Kezdőlap</a> -->
+                            <a href="" class="tertiaryBTN">🏠</a>
+
+                            <!-- <a href="/profilesettings" class="tertiaryBTN">Profil</a> -->
+                            <a href="/profilesettings" class="tertiaryBTN">👤</a>
+
+                            <!-- <a href="/aboutus" class="tertiaryBTN">Rólunk</a> -->
+                            <a href="/aboutus" class="tertiaryBTN">ℹ️</a>
+
+                            <a href="/support" class="tertiaryBTN">❓</a>
+                        </ul>
+                    </div>
+
+                    <!-- <span onclick="openNav()">
+                        <img src="./images/open.png" alt="" id="openBTN">
+                    </span> -->
+
+                <!-- </div> -->
+            </div>
+
+        <!-- </div> -->
+        
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
