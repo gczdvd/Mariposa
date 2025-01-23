@@ -1,8 +1,8 @@
 'use strict';
 
-import md5 from 'file://C:/Users/David/AppData/Roaming/npm/node_modules/md5/md5.js';
-import { v4 as uuid } from 'file://C:/Users/David/AppData/Roaming/npm/node_modules/uuid/dist/esm/index.js';
-import websocket from 'file://C:/Users/David/AppData/Roaming/npm/node_modules/express-ws/index.js';
+import md5 from '/root/Mariposa/backend/node_modules/md5/md5.js';
+import { v4 as uuid } from '/root/Mariposa/backend/node_modules/uuid/dist/esm/index.js';
+import websocket from '/root/Mariposa/backend/node_modules/express-ws/index.js';
 
 export class Sessions{
     constructor(maxAge){

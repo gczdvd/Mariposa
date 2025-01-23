@@ -1,13 +1,13 @@
 var rootAddr = "asdsad";
 class Backend{
     static setUrl(url){
-        rootAddr = "172.30.0.5:3000";
+        rootAddr = "mariposachat.hu/api";
     }
     static url(){
         return rootAddr;
     }
     static get(params) {
-        fetch("http://" + rootAddr + params.path, {
+        fetch("https://" + rootAddr + params.path, {
             method: "GET",
             credentials: "include"
         })
@@ -25,7 +25,7 @@ class Backend{
         });
     }
     static post(params) {
-        fetch("http://" + rootAddr + params.path, {
+        fetch("https://" + rootAddr + params.path, {
             method: "POST",
             credentials: "include",
             headers: {

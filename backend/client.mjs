@@ -1,5 +1,25 @@
 "use strict";
 
+export class Users{
+    #users = [];
+    constructor(db){
+        this.db = db;
+    }
+    getUsers(){
+        return this.#users;
+    }
+    getUserById(id){
+        for(var i = 0; i < this.#users.length; i++){
+            if(this.#users[i].getId() == id){
+                return this.#users[i];
+            }
+        }
+        var u = this.db.getUserById(id);
+        this.#users.push(u);
+        return u;
+    }
+}
+
 export class User{
     constructor(id, nickname, birthdate, email, topics, gender, description, profile_pic){
         this.id = id;

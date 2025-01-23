@@ -40,25 +40,91 @@ export class Chats{
 export class Chat{
     #sess1 = null;
     #sess2 = null;
+    saved = null;
+    #wantsave = [false, false];
     constructor(db, sess1=null, sess2=null, secondchid=false){
         this.db = db;
         this.#sess1 = sess1;
         if(secondchid == false){
-            var cid1 = sess1?.getAttribute("client")?.getId();
-            var cid2 = sess2?.getAttribute("client")?.getId();
-
             this.#sess2 = sess2;
-            this.id = this.db.getChat(cid1, cid2);
+
+            this.cid1 = sess1?.getAttribute("client")?.getId();
+            this.cid2 = sess2?.getAttribute("client")?.getId();
+
+            var chattr = this.db.getChat(this.cid1, this.cid2);
+            this.id = chattr.id;
+            this.saved = chattr.persistent;
         }
         else{
-            this.id = sess2;
+            var chattr = this.db.getChatById(sess2);
+            this.id = chattr.id;
+            this.saved = chattr.persistent;
+            if(sess1.getAttribute("client").getId() == chattr.client1_id){
+                this.cid1 = chattr.client1_id;
+                this.cid2 = chattr.client2_id;
+            }
+            else{
+                this.cid1 = chattr.client2_id;
+                this.cid2 = chattr.client1_id;
+            }
+        }
+    }
+    setSaved(){
+        if(this.db.setChatPersistent(this.id, 1)){
+            this.saved = 1;
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    getSaved(){
+        return this.saved;
+    }
+    sendIdentity(users){
+        this.#sess1?.getWebsocket()?.send(JSON.stringify({
+            "type":"action",
+            "name":"identify",
+            "value":users.getUserById(this.cid2).getInfo()
+        }));
+        this.#sess2?.getWebsocket()?.send(JSON.stringify({
+            "type":"action",
+            "name":"identify",
+            "value":users.getUserById(this.cid1).getInfo()
+        }));
+    }
+    wantToPersistent(sess){
+        if(this.saved != 1){
+            switch(sess){
+                case (this.#sess1):{
+                    this.#wantsave[0] = true;
+                    break;
+                }
+                
+                case (this.#sess2):{
+                    this.#wantsave[1] = true;
+                    break;
+                }
+            }
+            if(this.#wantsave[1] && this.#wantsave[0]){
+                if(this.setSaved()){
+                    this.sendIdentity();
+                    return true;
+                }
+                else{
+                    return false; 
+                }
+            }
+            else{
+                return false;
+            }
         }
     }
     setUser(sess){
-        if(this.#sess1?.getAttribute("client").getId() == sess.getAttribute("client").getId()){
+        if(this.cid1 == sess.getAttribute("client").getId()){
             this.#sess1 = sess;
         }
-        else{
+        if(this.cid2 == sess.getAttribute("client").getId()){
             this.#sess2 = sess;
         }
     }
@@ -74,8 +140,6 @@ export class Chat{
         return this.id;
     }
     close(){
-        this.#sess1?.getWebsocket()?.close();
-        this.#sess2?.getWebsocket()?.close();
         this.#sess1?.setAttribute("chat", null);
         this.#sess2?.setAttribute("chat", null);
 
@@ -108,69 +172,15 @@ export class Chat{
     }
 }
 
-/*export class Chat{
-    constructor(db, sess1, sess2){
-        this.db = db;
-        this.sess1 = sess1;
-        this.sess2 = sess2;
-        this.cid1 = sess1.getAttribute("client").getId();
-        this.cid2 = sess2.getAttribute("client").getId();
-        this.id = this.db.getChat(this.cid1, this.cid2);
-    }
-    getId(){
-        return this.id;
-    }
-    close(){
-        this.sess1.getWebsocket()?.close();
-        this.sess2.getWebsocket()?.close();
-        this.sess1.setAttribute("chat", null);
-        this.sess2.setAttribute("chat", null);
-    }
-    getMessages(){
-        return this.db.getMessages(this.getId());
-    }
-    getPartner(me){
-        return (me == this.sess1) ? this.sess2 : this.sess1;
-    }
-    newMessage(sess, message, type){
-        this.db.newMessage(sess.getAttribute("client").getId(), message, type, this.id);
-
-        var partner = (sess == this.sess1) ? this.sess2 : this.sess1;
-        var me = sess;
-
-        var pawe = partner.getWebsocket();
-        console.log(pawe);
-        if(pawe != null){
-            partner.getWebsocket().send(JSON.stringify({
-                "from":1,
-                "type":type,
-                "message":message
-            }));
-            me.getWebsocket().send(JSON.stringify({
-                "from":0,
-                "type":type,
-                "message":message
-            }));
-        }
-        else{
-            me.getWebsocket().send(JSON.stringify({
-                "status":"end"
-            }))
-            me.getWebsocket().close();
-            me.setAttribute("chat", null);
-            partner.setAttribute("chat", null);
-        }
-    }
-}*/
-
 export class Want{
     constructor(){}
 }
 
 export class Finder{
-    constructor(sessions, chats, autocheck=true){
+    constructor(sessions, chats, db, autocheck=true){
         this.sessions = sessions;
         this.chats = chats;
+        this.db = db;
         if(autocheck){
             setInterval(()=>{
                 this.check();
@@ -184,17 +194,27 @@ export class Finder{
             if(sesss[i].getAttribute("chat") instanceof Want){
                 pair.push(sesss[i]);
                 if(pair.length == 2){
-                    //IÁÁÁ
-                    const nChat = this.chats.newChat(pair[0], pair[1]);
+                    var tmpChat = new Chat(this.db, pair[0], pair[1])
+                    var nChat = this.chats.findChatById(tmpChat.getId());
+                    if(nChat == null){
+                        nChat = this.chats.newChat(pair[0], pair[1]);
+                    }
+                    else{
+                        nChat.setUser(pair[0]);
+                        nChat.setUser(pair[1]);
+                    }
+
                     pair[0].setAttribute("chat", nChat);
                     pair[1].setAttribute("chat", nChat);
                     pair[0].getWebsocket()?.send(JSON.stringify({
-                        "status":"havepartner",
-                        "identify":pair[1].getAttribute("client").getInfo()
+                        "type":"action",
+                        "name":"havepartner",
+                        "value":null
                     }));
                     pair[1].getWebsocket()?.send(JSON.stringify({
-                        "status":"havepartner",
-                        "identify":pair[0].getAttribute("client").getInfo()
+                        "type":"action",
+                        "name":"havepartner",
+                        "value":null
                     }));
 
                     break;

@@ -1,6 +1,6 @@
 "use strict";
 
-import Mysql from 'file://C:/Users/David/AppData/Roaming/npm/node_modules/sync-mysql/lib/index.js';
+import Mysql from '/root/Mariposa/backend/node_modules/sync-mysql/lib/index.js';
 import {User} from './client.mjs';
 
 export class Sql{
@@ -71,9 +71,21 @@ export class Sql{
 
     //OK
     getChat(cid1, cid2){
-        var rows = this.con.query(`CALL getChat(?, ?);`, [cid1, cid2]);
+        var rows = this.con.query(`CALL getChatByUsers(?, ?);`, [cid1, cid2]);
 
-        return rows[0][0].id;
+        return rows[0][0];
+    }
+
+    getChatById(id){
+        var rows = this.con.query(`CALL getChatById(?);`, [id]);
+
+        return rows[0][0];
+    }
+
+    setChatPersistent(chatid, value){
+        var rows = this.con.query(`CALL setChatPersistent(?, ?);`, [chatid, value]);
+        
+        return rows[0][0].status;
     }
 
     //OK
