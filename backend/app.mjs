@@ -373,16 +373,16 @@ app.get('/logout', (req, res) => {
     }
 });
 
-app.get('/', (req, res) => {
-    if (req.session.valid) {
-        res.status(200);
-        res.send(JSON.stringify({"message":"Welcome ${req.session.id}!"}));
-    }
-    else {
-        res.status(200);
-        res.send(JSON.stringify({"message":"Who are you?"}));
-    }
-});
+// app.get('/', (req, res) => {
+//     if (req.session.valid) {
+//         res.status(200);
+//         res.send(JSON.stringify({"message":"Welcome ${req.session.id}!"}));
+//     }
+//     else {
+//         res.status(200);
+//         res.send(JSON.stringify({"message":"Who are you?"}));
+//     }
+// });
 
 //---------------PRIVATE---------------//
 
