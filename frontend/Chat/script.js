@@ -10,7 +10,19 @@ function myFunction() {
     }
   }
 
-var ws = new WebSocket("wss://" + Backend.url() + "/ws");
+var ws;
+
+function websocket_loop(){
+    ws = new WebSocket("wss://" + Backend.url() + "/ws");
+    ws.onmessage = receive;
+    ws.onclose = () => {
+        setTimeout(() => {
+            websocket_loop();
+        }, 1000);
+    }
+}
+
+websocket_loop();
 
 Backend.get({
     path:"/partners",
@@ -51,6 +63,10 @@ function openChat(chatid=null){
         callback:(e)=>{
             console.log(e);
             if(e.message == "connected"){
+                ws.send(JSON.stringify({
+                    "type":"action",
+                    "value":"identity"
+                }));
                 ws.send(JSON.stringify({
                     "type":"action",
                     "value":"history"
@@ -207,6 +223,12 @@ function receive(e){
         document.getElementsByClassName("messages")[0].insertBefore(e, document.getElementsByClassName("messages")[0].firstChild);
     }
     else if(data.type == "action"){
+        if(data.name == "havepartner"){
+            ws.send(JSON.stringify({
+                "type":"action",
+                "value":"identity"
+            }));
+        }
         if(data.name == "identify"){
             var partneridentify = JSON.parse(data.value);
             document.getElementById("name").innerHTML = partneridentify.nickname;
@@ -239,5 +261,3 @@ function receive(e){
         }
     }
 }
-
-ws.onmessage = receive;

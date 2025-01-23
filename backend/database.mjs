@@ -71,7 +71,13 @@ export class Sql{
 
     //OK
     getChat(cid1, cid2){
-        var rows = this.con.query(`CALL getChat(?, ?);`, [cid1, cid2]);
+        var rows = this.con.query(`CALL getChatByUsers(?, ?);`, [cid1, cid2]);
+
+        return rows[0][0];
+    }
+
+    getChatById(id){
+        var rows = this.con.query(`CALL getChatById(?);`, [id]);
 
         return rows[0][0];
     }

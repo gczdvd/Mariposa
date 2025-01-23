@@ -19,7 +19,7 @@ import cors from '/root/Mariposa/backend/node_modules/cors/lib/index.js'
 import { Sql } from './database.mjs';
 import { Generator } from './generator.mjs';
 import { Tasks } from './task.mjs';
-import { User, Guest } from './client.mjs';
+import { User, Users, Guest } from './client.mjs';
 import { Chat, Chats, Finder, Want } from './chat.mjs';
 import { Session, Sessions } from './session.mjs';
 import { Email } from './mail.mjs';
@@ -29,11 +29,12 @@ const cryptKey = crypto.randomBytes(32);
 const database = new Sql("127.0.0.1", "root", "MariposaProject2024%", "mariposa");
 const smtp = new Email("127.0.0.1", 25, "noreply@mariposachat.hu");
 const chats = new Chats(database);
+const users = new Users(database);
 
 const tasks = new Tasks();
 
 const sessions = new Sessions(34560000000/*280000*/);
-const finder = new Finder(sessions, chats);
+const finder = new Finder(sessions, chats, database);
 
 var app = express();
 
@@ -122,7 +123,7 @@ app.post('/login', (req, res) => {
                     "message":"Successful login."
                 }));
                 
-                var u = database.getUserById(id);
+                var u = users.getUserById(id);
                 sess.setAttribute("client", u);
             }
             else{
@@ -292,7 +293,7 @@ app.get('/signup/verify', (req, res) => {
     var tmp = database.verifyUser(req.query["token"]);
     
     if(tmp.status == "Success"){
-        var e = database.getUserById(tmp.client_id);
+        var e = users.getUserById(tmp.client_id);
         
         smtp.verifySuccess(e.getEmail(), e.getNickname());
         res.status(200);
@@ -459,13 +460,14 @@ app.post('/chat', sessionValidator, (req, res) => {                  //Ezen kér
         if(req.body?.chatid){
             var tchat = chats.findChatById(req.body.chatid);
             if(tchat == null){
-                var nchat = chats.newChat(req.session.session, req.body.chatid, true); //NEM HIHETÜN A FRONTENDNEK ID-T TEKINTVE
-                req.session.session.setAttribute("chat", nchat);
+                tchat = chats.newChat(req.session.session, req.body.chatid, true); //NEM HIHETÜN A FRONTENDNEK ID-T TEKINTVE
             }
             else{
                 tchat.setUser(req.session.session);
-                req.session.session.setAttribute("chat", tchat);
             }
+
+            req.session.session.setAttribute("chat", tchat);
+
             res.status(200);
             res.send(JSON.stringify({
                 "action":"none",
@@ -523,6 +525,17 @@ app.ws('/live', function(ws, req) {
                                         "from":pers ? 0 : 1,
                                         "type":e[i].content_type,
                                         "message":e[i].message_value
+                                    }));
+                                }
+                            }
+                            else if(jmsg.value == "identity"){
+                                if(sess.getAttribute("chat").getSaved()){
+                                    sess.getAttribute("chat").sendIdentity(users);
+                                }
+                                else{
+                                    sess.getWebsocket()?.send(JSON.stringify({
+                                        "type":"info",
+                                        "value":"No permission"
                                     }));
                                 }
                             }
