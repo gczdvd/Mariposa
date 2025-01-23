@@ -7,8 +7,8 @@
 
 .wrapper{
     display: grid;
-    /* grid-template-columns: auto; */
-    grid-template-rows: auto auto;
+    grid-template-columns: repeat(4, auto);
+    /* grid-template-rows: auto auto auto; */
     /* height: 100vh; */
     /* max-height: 100vh; */
     /* overflow: hidden; */
@@ -53,7 +53,7 @@
     font-family: "Palanquin";
 }
 
-.header button img{
+/* .header button img{
     width: 2vw;
     
 }
@@ -69,51 +69,70 @@
     right: 0;
     z-index: 2;
     cursor: pointer;
-}
+} */
 
 
-#navigation li{
+/* #navigation li{
     list-style: none;
     width: 100%;
     display: block;
     padding: 1em;
-    /* transition: 0.3s; */
+    transition: 0.3s; 
 }
 
 #navigation li a{
     text-decoration: none;
     color: white;
-    /* padding: 2dvh; */
+    /* padding: 2dvh;
 }
 
 #navigation ul{
     grid-row-start: 2;
-}
+} */
 
-#navigation{
-    display: grid;
-    grid-template-rows: 2em 1fr;
-    position: absolute;
-    height: 100vh;
-    max-height: 100%;
-    justify-self: end;
-    font-size: 1.5em;
-    background-color: orange;
-    z-index: 1;
-    /* position: relative; */
-    overflow-x: hidden;
-    transition: 0.5s;
-    width: 0;
+.sidenav{
+    height: 100%;
+    width: 5vw; 
+    position: fixed; 
+    /* z-index: 1; */
     /* top: 0; */
     right: 0;
-    /* text-align: center; */
-    font-family: "Albert Sans"
+    background-color: #ffbc2f;
+    overflow-x: hidden;
+    padding-top: 2vh;
+    /* transition: 0.5s; */
+    /* width: 5vw; */
 }
 
-#main{
-    transition: margin-right .5s;
-    
+.sidenav a{
+    padding: 20%;
+    text-decoration: none;
+    font-size: 2em;
+    color: #818181;
+    display: block;
+    /* transition: 0.3s; */
 }
+
+#openBTN{
+    /* width: 5vw; */
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* .sidenav a:hover {
+    color: #f1f1f1;
+} */
+  
+
+/* #main{
+    transition: margin-right .5s; 
+} */
 
 #close{
     display: none;
@@ -151,6 +170,7 @@
     overflow-y:scroll;
     max-height: 100%;
     height: 100vh;
+    width: 20vw;
     /* grid-template-rows: min-content; */
     /* width: 20vw; */
     /* gap: 1em; */
@@ -230,12 +250,9 @@
 
 .chat{
     display: grid;
-    /* grid-template-rows: repeat(3, auto); */
-    /* padding: 1em; */
     border-right: 2px solid rgba(200, 200, 200, 0.3);
     border-left: 2px solid rgba(200, 200, 200, 0.3);
-    /* display: flex; */
-    /* flex-direction: column-reverse; */
+    width: 50vw;
 }
 
 .chat p{
@@ -285,7 +302,7 @@
     font-family: "Red Hat Text";
     font-size: 1em;
     /* width: 100%; */
-    margin-left: 1em;
+    margin-left: 0.5em;
     /* justify-self: center; */
     height: 4vh;
     max-height: 9vh;
@@ -332,14 +349,14 @@
     display: grid;
     text-align: center;
     height: 100vh;
-
+    width: 25vw;
 }
 
-.details img{
+.details #profilePic{
     width: 10vw;
     border-radius: 50%;
     justify-self: center;
-    align-self: center;
+    align-self: end;
 }
 
 .data{
@@ -366,7 +383,7 @@
 }
 
 #quoteP{
-    width: 80%;
+    width: 85%;
     justify-self: center;
     /* padding: 1.5em 1.5em 0 1.5em; */
 }

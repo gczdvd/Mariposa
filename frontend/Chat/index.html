@@ -13,34 +13,12 @@
     <script src="/backend.js"></script>
 </head>
 <body>
-
     <div class="wrapper" id="wrapper">
-
-        <div class="header">
-            <div class="header" id="header">
-                <div id="main">
-                    <button>
-                        <img src="./images/open.png" alt="" onclick="openNav()" id="open" class="openbtn">
-        
-                        <img src="./images/close.png" alt="" onclick="closeNav()" id="close">
-                    </button>
-                </div>
-    
-    
-                <div id="navigation">
-                    <ul>
-    
-                        <li><a href="" class="tertiaryBTN">Kezdőlap</a></li>
-                        <li><a href="/profilesettings" class="tertiaryBTN">Profil</a></li>
-                        <li><a href="/aboutus" class="tertiaryBTN">Rólunk</a></li>
-                        <li><a href="/support" class="tertiaryBTN">Segítség</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        
-        <div id="blurred" onclick="closeNav()">
+        <!-- <div id="blurred" onclick="closeNav()"> -->
+            <!-- EGÉSZ CHATFELÜLET -->
             <div class="chatArea">
+
+                <!-- MENTETTEK -->
                 <div class="saved" id="saved">
                     <!-- <div class="searchbar">
                         <input type="search">
@@ -49,7 +27,6 @@
                     <div class="" id="startChat" title="Új chat indítása">
                         <!-- <a href="">--><img onclick="openChat()" src="./images/plusorange.png"><!--</a> -->
                         <!-- <a href="" class="emoji">➕</a> -->
-                    
                     </div>
     
                     <div id="placeholder">
@@ -91,12 +68,14 @@
                         <img src="../images/img_avatarA.png" alt="">
                         <p>Példa Név</p>
                     </div> -->
-    
                 </div>
         
+
+                <!-- CHATFELÜLET -->
                 <div class="chat">
-    
-                    <div class="messages"></div>
+                    <div class="messages">
+
+                    </div>
     
                     <div class="message">
     
@@ -110,8 +89,10 @@
                     </div>
                 </div>
         
+
+                <!-- CHATPARTNER INFÓK -->
                 <div class="details">
-                    <img src="../images/img_avatarA.png" alt="">
+                    <img src="../images/img_avatarA.png" alt="" id="profilePic">
                     
                     <span id="name">Példa Név</span>
                     
@@ -159,13 +140,44 @@
                             🗑️
                         </p>
                     </div>
-    
-                    
-
                 </div>
+
             </div>
 
-        </div>
+            <!-- 1 -->
+            <div class="header">
+                <!-- <div class="header" id="header"> -->
+                    <!-- <div id="main">
+                        <button>
+                            <img src="./images/open.png" alt="" onclick="openNav()" id="open" class="openbtn">
+            
+                            <img src="./images/close.png" alt="" onclick="closeNav()" id="close">
+                        </button>
+                    </div> -->
+        
+                    <div id="sidenav" class="sidenav">
+                        <ul>
+                            <!-- <a href="" class="tertiaryBTN">Kezdőlap</a> -->
+                            <a href="" class="tertiaryBTN">🏠</a>
+
+                            <!-- <a href="/profilesettings" class="tertiaryBTN">Profil</a> -->
+                            <a href="/profilesettings" class="tertiaryBTN">👤</a>
+
+                            <!-- <a href="/aboutus" class="tertiaryBTN">Rólunk</a> -->
+                            <a href="/aboutus" class="tertiaryBTN">ℹ️</a>
+
+                            <a href="/support" class="tertiaryBTN">❓</a>
+                        </ul>
+                    </div>
+
+                    <!-- <span onclick="openNav()">
+                        <img src="./images/open.png" alt="" id="openBTN">
+                    </span> -->
+
+                <!-- </div> -->
+            </div>
+
+        <!-- </div> -->
         
     </div>
     
