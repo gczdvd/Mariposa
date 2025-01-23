@@ -15,6 +15,7 @@ import bodyParser from '/root/Mariposa/backend/node_modules/body-parser/index.js
 import md5 from '/root/Mariposa/backend/node_modules/md5/md5.js';
 import crypto from 'crypto';
 import cors from '/root/Mariposa/backend/node_modules/cors/lib/index.js'
+import fs from 'fs';
 
 import { Sql } from './database.mjs';
 import { Generator } from './generator.mjs';
@@ -23,6 +24,7 @@ import { User, Users, Guest } from './client.mjs';
 import { Chat, Chats, Finder, Want } from './chat.mjs';
 import { Session, Sessions } from './session.mjs';
 import { Email } from './mail.mjs';
+import { Access } from './access.mjs';
 
 const cryptKey = crypto.randomBytes(32);
 
@@ -42,6 +44,9 @@ function replacer(key,value)
 {
     if (key=="websocket"){
         return "ws";
+    }
+    if (key=="profile_pic"){
+        return "base64";
     }
     return value;
 }
@@ -125,6 +130,8 @@ app.post('/login', (req, res) => {
                 
                 var u = users.getUserById(id);
                 sess.setAttribute("client", u);
+
+                sess.setAttribute("access", new Access());
             }
             else{
                 res.status(401);
@@ -426,6 +433,18 @@ app.post("/report", sessionValidator, (req, res) => {   //EZT INKÁBB WSBE
     }
 });
 
+app.get('/storage/*', sessionValidator, (req, res) => {
+    var relPath = req.originalUrl.slice(1);
+    if(req.session.session.getAttribute("access").get(relPath)){
+        res.status(200);
+        res.send(fs.readFileSync(relPath));
+    }
+    else{
+        res.status(403);
+        res.send(relPath + "<br>" + JSON.stringify(req.session.session.getAttribute("access").all()));
+    }
+});
+
 app.get('/userinfo', sessionValidator, (req, res) => {
     res.status(200);
     res.send(req.session.session.getAttribute("client").getInfo());
@@ -434,6 +453,13 @@ app.get('/userinfo', sessionValidator, (req, res) => {
 app.get('/partners', sessionValidator, (req, res) => {
     var partners = database.getSavedChatsByUserId(req.session.session.getAttribute("client").getId());
     res.status(200);
+
+    partners.forEach((v, i, a) => {
+        var path = 'storage/profile_pic/' + v.profile_pic;
+        req.session.session.getAttribute("access").add(path);
+        a[i].profile_pic = '/api/' + path;
+    });
+
     res.send(JSON.stringify({
         "action":"none",
         "value":{
@@ -509,7 +535,7 @@ app.ws('/live', function(ws, req) {
                                 sess.getAttribute("chat").close();
                             }
                             else if(jmsg.value == "save"){
-                                if(!sess.getAttribute("chat").wantToPersistent(sess)){
+                                if(!sess.getAttribute("chat").wantToPersistent(sess, users)){
                                     sess.getAttribute("chat").getPartner(sess).getWebsocket()?.send(JSON.stringify({
                                         "type":"action",
                                         "name":"requestSave",
@@ -557,7 +583,7 @@ app.listen(3000, () => {
 });
 
 setInterval(()=>{
-    process.stdout.write('\x1Bc');
+    // process.stdout.write('\x1Bc');
     console.dir(JSON.parse(JSON.stringify(sessions.sessions, replacer, 4)), { depth: null });
     console.dir(JSON.parse(JSON.stringify(chats.getChats(), replacer, 4)), { depth: null });
     // console.dir(tasks.getTasks(), {"depth":2});

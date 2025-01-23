@@ -93,7 +93,7 @@ export class Chat{
             "value":users.getUserById(this.cid1).getInfo()
         }));
     }
-    wantToPersistent(sess){
+    wantToPersistent(sess, users){
         if(this.saved != 1){
             switch(sess){
                 case (this.#sess1):{
@@ -108,7 +108,7 @@ export class Chat{
             }
             if(this.#wantsave[1] && this.#wantsave[0]){
                 if(this.setSaved()){
-                    this.sendIdentity();
+                    this.sendIdentity(users);
                     return true;
                 }
                 else{
@@ -118,6 +118,9 @@ export class Chat{
             else{
                 return false;
             }
+        }
+        else{
+            return true;
         }
     }
     setUser(sess){

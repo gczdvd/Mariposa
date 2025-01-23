@@ -36,7 +36,7 @@ Backend.get({
             _div.className = "savedChat";
             _div.setAttribute("onclick", `openChat('${e.value.partners[i].chat_id}')`);
             var _img = document.createElement("img");
-            _img.src = "../images/img_avatarA.png";
+            _img.src = e.value.partners[i].profile_pic;
             var _p = document.createElement("p");
             _p.innerHTML = e.value.partners[i].partner_name;
             
@@ -233,6 +233,7 @@ function receive(e){
             var partneridentify = JSON.parse(data.value);
             document.getElementById("name").innerHTML = partneridentify.nickname;
             document.getElementById("quote").innerHTML = partneridentify.description;
+            document.getElementById("partnerpic").src = partneridentify.profile_pic;
             document.getElementById("birthday").innerHTML = function(e=new Date(partneridentify.birthdate)){
                 return `${e.getUTCFullYear()}. ${(e.getMonth() < 10 ? '0' : '') + e.getMonth()}. ${(e.getDate() < 10 ? '0' : '') + e.getDate()}.`;
             }();
