@@ -217,52 +217,44 @@
     max-width: 100%;
     grid-template-columns: 1fr 1fr;
     margin-bottom: 5vh;
+    height: fit-content;
     /* background-color: white; */
 }
 
 .cover img{
     height: 80vh;
-    /* width: 90vw; */
-    /* float: right; */
 }
 
 .texts{
     display: grid;
+    grid-template-rows: repeat(3, 1fr);
     height: fit-content;
     align-self: center;
-    gap: 5vh;
+    /* height: fit-content; */
+    height: 50%;
 }
 
 .bigtext{
-    /* padding-bottom: 10%; */
     justify-self: center;
     align-self: end;
     text-align: center;
     font-family: "Red Hat Text";
-    /* font-weight: 300; */
-    /* line-height: 100%; */
     font-size: 2em;
-    /* height: fit-content; */
+    font-weight: 600;
 }
 
 .midtext{
-    /* padding-bottom: 10%; */
-    /* justify-self: center; */
     align-self: center;
     text-align: center;
-    /* height: fit-content; */
-
     font-family: "Red Hat Text";
-    /* font-weight: 300; */
-    /* line-height: 100%; */
     font-size: 1.5em;
 }
+
 
 .history{
     display: grid;
     text-align: center;
     justify-self: center;
-    /* background-image: url("../support/images/web.jpg"); */
     background-position: center;
     background-repeat: no-repeat;
     gap: 3vh;

@@ -217,26 +217,29 @@ body{
 .cover{
     display: grid;
     grid-template-columns: 55vw 40vw;
-    /* margin-bottom: 5vh; */
-    /* height: 70vh; */
-    align-content: center;
-    margin-top: 3vh;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    padding: 10vh 0;
+    /* margin-top: 3vh; */
 }
 
 .cover img{
-    /* width: 40vw; */
-    /* justify-self: end; */
-    /* margin-right: 1vw; */
+    justify-self: end;
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
+    width: 30vw;
+    justify-self: center;
 }
 
 .texts{
     display: grid;
     height: fit-content;
     align-self: center;
-    gap: 3vh;
-    text-align: center;
+    justify-self: center;
+    justify-content: center;
+    height: 50%;
+    /* text-align: center; */
     font-family: "Red Hat Text";
 }
 
@@ -246,8 +249,10 @@ body{
 }
 
 .midtext{
-    font-weight: 300;
+    /* font-weight: 300; */
     font-size: 1.5em;
+    width: 60%;
+    justify-self: center;
 }
 
 
@@ -345,7 +350,8 @@ body{
     width: 100%;
     font-family: "Red Hat Text";
     text-align: left;
-    box-shadow: 1px 1px 4px darkgray;
+    border: 1px lightgray;
+    border-style: groove;
     /* display: none; */
 }
 
