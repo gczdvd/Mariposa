@@ -73,6 +73,10 @@
 
                 <!-- CHATFELÜLET -->
                 <div class="chat">
+                    <div id="success">
+                        
+                    </div>
+
                     <div class="messages">
 
                     </div>
@@ -82,7 +86,7 @@
                         <textarea placeholder="Írd ide az üzenetet..." rows="" id="message" class="message-bar" maxlength="1000" oninput='this.style.height = ""; this.style.height = this.scrollHeight + "px"'></textarea>
                         <!-- <div contenteditable="true" role="textbox" class="message-bar" aria-label="Üzenet..." dir="auto" oninput='this.style.height = ""; this.style.height = this.scrollHeight + "px"'></div> -->
                         
-                        <button id="sendBTN" onclick="send()"><img src="/_images/sendicon.png" alt=""></button>
+                        <button id="sendBTN" onclick="send()"><img src="/_images/send.png" alt=""></button>
                         
                         <!-- <img id="sendbtn" src="send.png" onclick="send()"> -->
     
@@ -158,15 +162,15 @@
                     <div id="sidenav" class="sidenav">
                         <ul>
                             <!-- <a href="" class="tertiaryBTN">Kezdőlap</a> -->
-                            <a href="" class="tertiaryBTN">🏠</a>
+                            <a href="" class="tertiaryBTN emoji">🏠</a>
 
                             <!-- <a href="/profilesettings" class="tertiaryBTN">Profil</a> -->
-                            <a href="/profilesettings" class="tertiaryBTN">👤</a>
+                            <a href="/profilesettings" class="tertiaryBTN emoji">👤</a>
 
                             <!-- <a href="/aboutus" class="tertiaryBTN">Rólunk</a> -->
-                            <a href="/aboutus" class="tertiaryBTN">ℹ️</a>
+                            <a href="/aboutus" class="tertiaryBTN emoji">ℹ️</a>
 
-                            <a href="/support" class="tertiaryBTN">❓</a>
+                            <a href="/support" class="tertiaryBTN emoji">❓</a>
                         </ul>
                     </div>
 
