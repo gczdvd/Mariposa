@@ -1,5 +1,7 @@
 "use strict";
 
+import fs from 'fs';
+
 export class Users{
     #users = [];
     constructor(db){
@@ -53,7 +55,7 @@ export class User{
             "topics":this.topics,
             "gender":this.gender,
             "description":this.description,
-            "profile_pic":this.profile_pic
+            "profile_pic":"/api/storage/profile_pic/" + this.profile_pic
         });
     }
 }

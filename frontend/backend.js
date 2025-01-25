@@ -1,4 +1,5 @@
 var rootAddr = "asdsad";
+const debug = false;
 class Backend{
     static setUrl(url){
         rootAddr = "mariposachat.hu/api";
@@ -16,7 +17,7 @@ class Backend{
             // alert(JSON.stringify(params));
             // alert(JSON.stringify(resp));
             if(resp.action == "redirect"){
-                alert(JSON.stringify(resp));
+                if(debug) alert(JSON.stringify(resp));
                 window.location.href = resp.value;
             }
             else{
@@ -39,7 +40,7 @@ class Backend{
             // alert(JSON.stringify(params));
             // alert(JSON.stringify(resp));
             if(resp.action == "redirect"){
-                alert(JSON.stringify(resp));
+                if(debug) alert(JSON.stringify(resp));
                 window.location.href = resp.value;
             }
             else{
