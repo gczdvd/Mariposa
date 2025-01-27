@@ -12,11 +12,11 @@
     <title>Document</title>
     <script src="/backend.js"></script>
 </head>
-<body>
+<body onkeydown="focusMessageBar()">
     <div class="wrapper" id="wrapper">
         <!-- <div id="blurred" onclick="closeNav()"> -->
             <!-- EGÉSZ CHATFELÜLET -->
-            <div class="chatArea">
+            <div id="chatArea" onclick="focusMessageBar()">
 
                 <!-- MENTETTEK -->
                 <div class="saved" id="saved">
@@ -24,8 +24,8 @@
                         <input type="search">
                     </div> -->
     
-                    <div class="" id="startChat" title="Új chat indítása">
-                        <!-- <a href="">--><img onclick="openChat()" src="/_images/plusorange.png"><!--</a> -->
+                    <div class="" id="startChat" title="Új chat indítása" onclick="openChat()">
+                        <!-- <a href="">--><img src="/_images/newchat.png"><!--</a> -->
                         <!-- <a href="" class="emoji">➕</a> -->
                     </div>
     
@@ -73,8 +73,16 @@
 
                 <!-- CHATFELÜLET -->
                 <div class="chat">
+
+                    <div id="waiting">
+                        <img src="/_images/loading.gif" alt="">
+                        <p id="successMSG">Várakozás beszélgetőpartnerre...</p>
+                    </div>
+
                     <div id="success">
-                        
+                        <img src="/_images/tick.png" alt="">
+                        <p id="successMSG">Várakozás partnerre...</p>
+                        <p id="warningMSG">Kérjük, a beszélgetés során tartsd be a Házirendet!</p>
                     </div>
 
                     <div class="messages">
@@ -83,7 +91,7 @@
     
                     <div class="message">
     
-                        <textarea placeholder="Írd ide az üzenetet..." rows="" id="message" class="message-bar" maxlength="1000" oninput='this.style.height = ""; this.style.height = this.scrollHeight + "px"'></textarea>
+                        <textarea placeholder="Írd ide az üzenetet..." rows="" id="message" class="message-bar" maxlength="1000" oninput='this.style.height = ""; this.style.height = this.scrollHeight + "px"' value=""></textarea>
                         <!-- <div contenteditable="true" role="textbox" class="message-bar" aria-label="Üzenet..." dir="auto" oninput='this.style.height = ""; this.style.height = this.scrollHeight + "px"'></div> -->
                         
                         <button id="sendBTN" onclick="send()"><img src="/_images/send.png" alt=""></button>
