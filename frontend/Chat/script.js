@@ -22,7 +22,7 @@ function websocket_loop(){
     }
 }
 
-websocket_loop();
+// websocket_loop();
 
 Backend.get({
     path:"/partners",
@@ -47,11 +47,11 @@ Backend.get({
     }
 });
 
-function placeholderAdd(textarea){
-  if(textarea.value.length == 0){
-    textarea.innerHTML = "Üzenet...";
-  }
-}
+// function placeholderAdd(textarea){
+//   if(textarea.value.length == 0){
+//     textarea.innerHTML = "Üzenet...";
+//   }
+// }
 
 function openChat(chatid=null){
     document.getElementsByClassName("messages")[0].innerHTML = "";
@@ -118,12 +118,18 @@ function savePartner(){
     iconColor: "#ffbc2f"
   })
   .then((e)=>{
+    console.log(e);
     if(e.isConfirmed){
         ws.send(JSON.stringify({
             "type":"action",
             "value":"save"
         }));
-    };
+    }
+    else if(e.isDenied){
+      document.getElementById("save").style.visibility = "hidden";
+      // TESZT
+    }
+    ;
   });
 }
 
@@ -195,13 +201,31 @@ function deletePartner(){
   });
 }
 
+
+// ???
+// function checkEnter(){
+//   document.getElementById("message")
+//   .addEventListener("keyup", function(event)
+//   {
+//     event.preventDefault();
+//     if(event.key = "Enter"){
+//       send();
+//     }
+//   });
+// }
+
 function send(){
-    var text = document.getElementById("message").value;
-    //Itt kezelni kell üres üzenetet stb...
+    
+  //var text = document.getElementById("message").value;
+  var text = document.getElementById("message");
+
+  if(text.value != ""){
+    text.value = "";
     ws.send(JSON.stringify({
-        "type":"message",
-        "value":text
+      "type":"message",
+      "value":text.value
     }));
+  }
 }
 
 function receive(e){
@@ -238,7 +262,7 @@ function receive(e){
         else if(data.name == "requestSave"){
             Swal.fire({
                 icon: "question",
-                title: "Partnered menetni szeretne. Elfogadod?",
+                title: "Partnered menteni szeretne. Elfogadod?",
                 width: "64em",
                 showCancelButton: "true",
                 reverseButtons: "true",
@@ -248,13 +272,29 @@ function receive(e){
                 iconColor: "#ffbc2f"
               })
               .then((e)=>{
+                
                 if(e.isConfirmed){
+                    
                     ws.send(JSON.stringify({
                         "type":"action",
                         "value":"save"
                     }));
-                };
+                }
+                // else if(e.)
+                
+                // ;
               });
         }
     }
+}
+
+// chatArea.addEventListener("click", function () {
+//   document.getElementById("message").focus();
+// }, false);
+// sendBTN.addEventListener("click", function (event) {
+//   event.stopPropagation();
+// }, false);
+
+function focusMessageBar(){
+  document.getElementById("message").focus();
 }

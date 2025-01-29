@@ -92,22 +92,22 @@
 
 .sidenav{
     height: 100%;
-    width: 5vw; 
+    width: fit-content; 
     position: fixed; 
     /* z-index: 1; */
     /* top: 0; */
     right: 0;
     background-color: #ffbc2f;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     padding-top: 2vh;
     /* transition: 0.5s; */
     /* width: 5vw; */
 }
 
 .sidenav a{
-    padding: 20%;
+    padding: 1.5vw;
     text-decoration: none;
-    font-size: 2em;
+    font-size: 1.5em;
     color: #818181;
     display: block;
     /* transition: 0.3s; */
@@ -159,21 +159,17 @@
     text-transform: uppercase;
 } */
 
-.chatArea{
+#chatArea{
     display: grid;
     grid-template-columns: 20vw 50vw auto auto;
 }
 
 .saved{
     display: grid;
-    height: fit-content;
-    overflow-y:scroll;
+    /* height: fit-content; */
+    overflow-y: scroll;
     max-height: 100%;
-    height: 100vh;
     width: 20vw;
-    /* grid-template-rows: min-content; */
-    /* width: 20vw; */
-    /* gap: 1em; */
 }
 
 .savedChat{
@@ -208,7 +204,6 @@
 }
 
 #startChat{
-    
     position: sticky;
     position: -webkit-sticky;
     top: 0;
@@ -218,10 +213,11 @@
     transition: 0.35s;
     cursor: pointer;
     height: fit-content;
+    filter: grayscale(1);
 }
 
 #startChat img{
-    width: 3vw;
+    width: 4vw;
     display: block;
     justify-self: center;
     margin: 1em 0;
@@ -230,19 +226,20 @@
 #startChat:hover{
     /* color: black; */
     color: white;
-    background-color: #fdd275;
-    /* background-color: #fff8e9; */
-    /* background-color: rgb(236, 236, 236); */
-    /* filter: grayscale(0);     */
+    background-color: #feecc5;
+    filter: grayscale(0);
 }
 
 #placeholder{
+    /* display: grid; */
     font-family: "Red Hat Text";
     font-size: 1em;
     justify-self: center;
+    /* align-self: center; */
     text-align: center;
     opacity: 0.5;
-    /* color: #ffbc2f; */
+    /* height: 100vh; */
+    /* max-height: 100%; */
     user-select: none;
     width: 70%;
     line-height: 1.5em;
@@ -251,12 +248,57 @@
 .chat{
     display: grid;
     border-right: 2px solid rgba(200, 200, 200, 0.3);
-    border-left: 2px solid rgba(200, 200, 200, 0.3);
     width: 50vw;
+    margin-bottom: 10px;
+    max-height: 100%;
 }
 
 .chat p{
     align-self: center;
+}
+
+#success{
+    display: grid;
+    border-bottom: 2px solid rgba(200, 200, 200, 0.2);
+    height: fit-content;
+    justify-items: center;
+    font-family: 'Red Hat Text';
+    gap: 2vh;
+    padding: 2vh;
+    user-select: none;
+
+    DISPLAY: NONE;
+}
+
+#waiting{
+    display: grid;
+    border-bottom: 2px solid rgba(200, 200, 200, 0.2);
+    height: fit-content;
+    justify-items: center;
+    font-family: 'Red Hat Text';
+    gap: 2vh;
+    padding: 2vh;
+    user-select: none;
+
+    DISPLAY: NONE;
+}
+
+#waiting img{
+    width: 8vw;
+    filter: sepia(100%) saturate(10);
+}
+
+#success img{
+    width: 7vw;
+}
+
+#successMSG{
+    font-size: 1.3em;
+}
+
+#warningMSG{
+    font-size: 1em;
+    opacity: 0.5;
 }
 
 .messages{
@@ -264,7 +306,7 @@
     overflow: auto;
     display: flex;
     flex-direction: column-reverse;
-    height: 90vh;
+    /* height: 90vh; */
     width: 97%;
     justify-self: center;
 }
@@ -300,25 +342,23 @@
     color: black;
     border-radius: 1em;
     font-family: "Red Hat Text";
-    font-size: 1em;
-    /* width: 100%; */
+    font-size: 1.1em;
     margin-left: 0.5em;
-    /* justify-self: center; */
     height: 4vh;
+    min-height: 4vh;
     max-height: 9vh;
-
-    padding-left: 0.7em;
-
+    padding-left: 0.5em;
     direction: ltr;
     align-self: center;
     align-content: center;
-    /* align-items: center; */
 
     resize: none;
     user-select: text;
     white-space: pre-wrap;
     word-break: break-word;
     overflow-y: auto;
+
+    /* margin-bottom: 10px; */
 }
 
 .message-bar:focus{
@@ -330,18 +370,14 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
-    padding: 0.5em;
-    /* width: fit-content; */
-    /* display: grid; */
-    /* align-self: end; */
-    /* justify-self: center; */
+    justify-self: center;
+    padding: 0 0.5em;
+    /* margin: auto; */
 }
 
 #sendBTN img{
-    width: 2em;
     align-self: end;
-    /* display: block;     */
-    
+    height: 4vh;
 }
 
 
@@ -405,38 +441,31 @@
 
 .actions{
     display: grid;
-    grid-template-columns: repeat(3, auto);
-    /* align-content: center; */
-    justify-content: space-evenly;
-    
-    /* align-content: center; */
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: 1fr auto;
+    justify-content: space-around;
+    padding-bottom: 3vh;
 }
 
 #save{
-    /* justify-self: center; */
-    /* align-self: center; */
+    justify-self: center;
     font-size: 2em;
     cursor: pointer;
     width: fit-content;
+    height: fit-content;
+    grid-column: 1 / span 2;
 }
 
 #report{
-    /* justify-self: end; */
-    /* align-self: center; */
     font-size: 1.5em;
     cursor: pointer;
     width: fit-content;
-
-    /* margin: 0 0.5em 0.5em 0; */
 }
 
 #delete{
     cursor: pointer;
     font-size: 1.5em;
     width: fit-content;
-    /* justify-self: center; */
-    /* align-self: center; */
-    
 }
 
 .emoji{

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@600&family=Noto+Color+Emoji&family=Noto+Sans+Symbols+2&family=Palanquin:wght@700&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap');
+
+        body{
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+
+        #wrapper{
+            font-family: 'Red Hat Text', Arial, Helvetica, sans-serif;
+        }
+
+        #container{
+            width: 50vw;
+            margin: auto;
+        }
+
+        .header{
+            text-decoration: none;
+            color: black;
+        }
+        
+        #header{
+            font-family: 'Palanquin';
+            width: 50vw;
+            
+        }
+
+        #header img{
+            height: 5vh;
+            vertical-align: middle;
+        }
+
+        #header p{
+            text-align: center;
+            display: inline;
+            vertical-align: middle;
+            text-transform: uppercase;
+        }
+
+        #details{
+            display: grid;
+            font-family: 'Red Hat Text', Arial, Helvetica, sans-serif;
+            background-color: #ffbc2f;
+            padding: 2vw;
+            gap: 2em;
+        }
+
+        #details > div{
+            margin: auto;
+            text-align: center;
+            background-color: white;
+            padding: 2vw;
+            width: 40vw;
+        }
+
+        #title{
+            font-size: 2em;
+            font-weight: 600;
+            border-top-left-radius: 2vw;
+            border-top-right-radius: 2vw;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 2vw;
+        }
+
+        #text1{
+            font-size: 1.1em;
+            border-top-left-radius: 2vw;
+            border-top-right-radius: 2vw;
+            border-bottom-right-radius: 2vw;
+            border-bottom-left-radius: 0;
+        }
+
+        #text2{
+            font-size: 1.1em;
+            border-top-left-radius: 2vw;
+            border-top-right-radius: 2vw;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 2vw;
+        }
+
+        #confirm{
+            display: grid;
+            margin: auto;
+            gap: 3em;
+            padding: 2vw;
+        }
+
+        #confirm p{
+            text-align: center;
+            font-weight: 600;
+        }
+
+        #confirmButton{
+            margin: auto;
+            width: 20vw;
+            padding: 22px 10px 20px 10px;
+            border: solid 2px #ffbc2f;
+            background-color: #ffbc2f;
+            text-align: center;
+            display: block;
+            text-decoration: none;
+            color: white;
+            text-transform: uppercase;
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        #confirmButton:hover{
+            text-transform: uppercase;
+            color: #FCC200;
+            background-color: white;
+            border: solid 2px #ffbc2f;
+            text-decoration: none;
+        }
+
+        #fromteam{
+            background-color: #ffbc2f;
+            padding: 1.5em;
+            color: white;
+            margin: auto;
+            text-align: center;
+            width: 40vw;
+            font-weight: 600;
+            font-size: 1.2em;
+            border-top-left-radius: 3em;
+            border-top-right-radius: 3em;
+            border-bottom-right-radius: 3em;
+            border-bottom-left-radius: 0;
+        }
+
+        #footer{
+            text-align: center;
+            background-color: #ffbc2f;
+            color: white;
+        }
+
+        #help{
+            width: 25vw;
+            margin: auto;
+            padding-top: 0.5em;
+        }
+
+        #help a{
+            color: white;
+        }
+
+        #help a:hover, #warning a:hover{
+            color: orange;
+        }
+
+        #warning{
+            text-align: center;
+            color: #ffbc2f;
+            padding-bottom: 2vh;
+        }
+
+        #warning a{
+            color: #ffbc2f;
+        }
+
+        #trademark{
+            margin-top: 3em;
+            padding-bottom: 0.5em;
+        }
+
+    </style>
+
+    <title>Mariposa</title>
+</head>
+<body>
+    <div id="container">
+        
+        <a href="/" class="header">
+            <div id="header">
+                <img src="" alt="">
+                <!-- IDE MAJD A LOGO JÖN -->
+                <p>MARIPOSA</p>
+            </div>
+        </a>
+        
+        <div id="wrapper">
+            <div id="details">
+                <div id="title">
+                    Jelszó visszaállítása
+                </div>
+
+                <div id="text1">
+                    Kedves <span id="username"></span>,
+                </div>
+
+                <div id="text2">
+                    Az alábbi gombbal állíthatod vissza a jelszavad.
+                </div>
+            </div>
+
+            <div id="confirm">
+                <p>Kattints az alábbi gombra a jelszavad visszaállításához:</p>
+                
+                <a id="confirmButton" href="#">Jelszó visszaállítása</a>
+                
+                <div id="fromteam">
+                    Kellemes chatelést!<br>
+                    A Mariposa csapata
+                </div>
+            </div>
+
+            <div id="footer">
+                <p id="help">Segítségre van szükséged? Látogasd meg a <a href="#">GYIK</a> oldalunkat, ahol böngészhetsz a gyakran ismételt kérdések között! Ha nem találsz választ a kérdésedre, vedd fel velünk a kapcsolatot!</p>
+
+                <p id="trademark">2025© Mariposa The Social Butterfly</p>
+            </div>
+
+            <div id="warning">
+                Ezt az emailt azért kaptad, mert bejelentkezéskor igényelted az "Elfelejtettem a jelszavam" opciót. Amennyiben nem Te voltál, lehetőséged van e-mail címed és/vagy jelszavad megváltoztatására, illetve felveheted velünk a kapcsolatot a <a href="">Segítség</a> oldalon.
+            </div>
+
+        </div>      
+    </div>
+</body>
+</html>
