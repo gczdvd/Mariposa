@@ -1,0 +1,35 @@
+<div id="content">
+    <h1>/modifypassword - Modify Password végpont</h1>
+    <h2>POST</h2>
+    <h3>Kérés tartalma (JSON)</h3>
+    <table>
+        <tr>
+            <td>newpassword</td>
+            <td>String</td>
+            <td>Új, beállítani kívánt jelszó.</td>
+        </tr>
+        <tr>
+            <td>oldpassword</td>
+            <td>String</td>
+            <td>Régi jelszó.</td>
+        </tr>
+    </table>
+    <h3>Válasz</h3>
+    <table>
+        <tr>
+            <td>200</td>
+            <td>Sikeres jelszóváltoztatás</td>
+            <td>Átirányítás / oldalra.</td>
+        </tr>
+        <tr>
+            <td>400</td>
+            <td>Helytelen régi jelszó</td>
+            <td>error XXX</td>
+        </tr>
+        <tr>
+            <td>400</td>
+            <td>Hiányzó adatok</td>
+            <td>error XXX</td>
+        </tr>
+    </table>
+</div>
