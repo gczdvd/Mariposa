@@ -10,6 +10,7 @@
 
 import express from '/root/Mariposa/backend/node_modules/express/index.js';
 import websocket from '/root/Mariposa/backend/node_modules/express-ws/index.js';
+import fileupload from '/root/Mariposa/backend/node_modules/express-fileupload/lib/index.js';
 import cookieParser from '/root/Mariposa/backend/node_modules/cookie-parser/index.js';
 import bodyParser from '/root/Mariposa/backend/node_modules/body-parser/index.js';
 import md5 from '/root/Mariposa/backend/node_modules/md5/md5.js';
@@ -373,16 +374,16 @@ app.get('/logout', (req, res) => {
     }
 });
 
-// app.get('/', (req, res) => {
-//     if (req.session.valid) {
-//         res.status(200);
-//         res.send(JSON.stringify({"message":"Welcome ${req.session.id}!"}));
-//     }
-//     else {
-//         res.status(200);
-//         res.send(JSON.stringify({"message":"Who are you?"}));
-//     }
-// });
+/* app.get('/', (req, res) => {
+     if (req.session.valid) {
+         res.status(200);
+         res.send(JSON.stringify({"message":"Welcome ${req.session.id}!"}));
+     }
+     else {
+         res.status(200);
+         res.send(JSON.stringify({"message":"Who are you?"}));
+     }
+});*/
 
 //---------------PRIVATE---------------//
 
