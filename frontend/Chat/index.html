@@ -94,7 +94,7 @@
                         <textarea placeholder="Írd ide az üzenetet..." rows="" id="message" class="message-bar" maxlength="1000" oninput='this.style.height = ""; this.style.height = this.scrollHeight + "px"' value=""></textarea>
                         <!-- <div contenteditable="true" role="textbox" class="message-bar" aria-label="Üzenet..." dir="auto" oninput='this.style.height = ""; this.style.height = this.scrollHeight + "px"'></div> -->
                         
-                        <button id="sendBTN" onclick="send()"><img src="/_images/send.png" alt=""></button>
+                        <button id="sendBTN" onclick="send()"><img src="/_images/send.png" alt="Üzenet küldése" title="Üzenet küldése"></button>
                         
                         <!-- <img id="sendbtn" src="send.png" onclick="send()"> -->
     
@@ -169,17 +169,27 @@
         
                     <div id="sidenav" class="sidenav">
                         <ul>
-                            <!-- <a href="" class="tertiaryBTN">Kezdőlap</a> -->
-                            <a href="" class="tertiaryBTN emoji">🏠</a>
+                            <a href="" class="tertiaryBTN emoji">
+                                <!-- 🏠 -->
+                                <img src="../_images/home.png" alt="Kezdőlap" title="Kezdőlap">
+                            </a>
 
-                            <!-- <a href="/profilesettings" class="tertiaryBTN">Profil</a> -->
-                            <a href="/profilesettings" class="tertiaryBTN emoji">👤</a>
+                            <a href="/profilesettings" class="tertiaryBTN emoji">
+                                <!-- 👤 -->
+                                <img src="../_images/user (1).png" alt="Profil" title="Profil">
+                            </a>
 
-                            <!-- <a href="/aboutus" class="tertiaryBTN">Rólunk</a> -->
-                            <a href="/aboutus" class="tertiaryBTN emoji">ℹ️</a>
+                            <a href="/aboutus" class="tertiaryBTN emoji">
+                                <!-- ❤️ -->
+                                <img src="../_images/like.png" alt="" title="Rólunk">
+                            </a>
 
-                            <a href="/support" class="tertiaryBTN emoji">❓</a>
+                            <a href="/support" class="tertiaryBTN emoji">
+                                <!-- ❔ -->
+                                <img src="../_images/info.png" alt="Segítség" title="Segítség">
+                            </a>
                         </ul>
+                        <!-- Icons designed by Smashicons, https://smashicons.com/ -->
                     </div>
 
                     <!-- <span onclick="openNav()">
