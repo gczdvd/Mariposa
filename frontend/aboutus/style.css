@@ -36,7 +36,7 @@
 
 #header{
     display: grid;
-    width: 100vw;
+    /* width: 100vw; */
     max-width: 100%;
     grid-template-columns: auto auto;
     background-color: transparent;
@@ -213,7 +213,7 @@
 
 .cover{
     display: grid;
-    width: 100vw;
+    /* width: 100vw; */
     max-width: 100%;
     grid-template-columns: 1fr 1fr;
     margin-bottom: 5vh;
@@ -222,7 +222,9 @@
 }
 
 .cover img{
-    height: 80vh;
+    /* height: 80vh; */
+    width: 50vw;
+    user-select: none;
 }
 
 .texts{
@@ -270,8 +272,6 @@
     /* font-weight: 600; */
 }
 
-
-
 .history img{
     display: block;
     justify-self: center;
@@ -283,20 +283,16 @@
 .our-values{
     display: grid;
     grid-template-rows: auto 1fr;
-    width: 80vw;
+    width: 70vw;
     font-family: "Red Hat Text";
     justify-self: center;
-    /* gap: 1em; */
 }
 
 .valuesPT{
     justify-self: center;
     font-size: 2.5em;
     font-weight: 600;
-    /* opacity: 0.7; */
-    /* color: #ffbc2f; */
     font-family: "Red Hat Text";
-
 }
 
 .valuesT{
@@ -306,7 +302,7 @@
 
 .values{
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     font-size: 1.1em;
     text-align: center;
     gap: 1em;
@@ -315,13 +311,12 @@
 
 .values > div{
     padding: 1em;
-    border: #ffbc2f 2px  dashed ;
-    box-shadow: #ffbc2f 1px;
+    box-shadow: 2px 2px 10px lightgray;
     border-radius: 1em;
 }
 
 .values > div > p{
-    margin-top: 10px;
+    /* margin-top: 10px; */
 }
 
 
@@ -360,7 +355,7 @@
     grid-template-columns: 1fr 1fr;
     align-items: center;
     text-align: center;
-    padding: 1em;
+    padding: 0.5em;
     border-radius: 2em;
 
     /* -moz-box-shadow: 0 0 3px #ccc;
@@ -406,8 +401,9 @@
 .contact img{
     width: 25vw;
     justify-self: center;
-    /* margin: auto; */
     display: block;
+    user-select: none;
+    -moz-user-select: none;
 }
 
 .inputs{
@@ -415,66 +411,83 @@
     justify-self: center;
     align-self: center;
     width: 25vw;
+    gap: 3vh;
     /* height: 70%; */
 }
 
 .inputs p:nth-of-type(1){
     font-family: "Albert Sans";
-    font-size: 1.5em; 
+    font-size: 1.5em;
+    margin-bottom: 0;
 }
 
-.inputTitle{
+
+/* .inputTitle{
     margin-top: 1em;
     margin-bottom: 0.5em;
-}
+} */
 
 .inputs p{
-    font-family: "Red Hat Text";
+    /* font-family: "Red Hat Text" !important;
     align-self: end;
-    font-size: 1.2em;
+    font-size: 1.2em; */
 }
 
 .inputs input{
-    border: none;
+    /* border: none;
     border-bottom: lightgray 2px solid;
+    border: lightgray 2px solid;
     align-self: end;
     padding: 0 0 0.2em 0.2em;
     color: #ffbc2f;
-    font-size: 1em;
+    font-size: 1em; */
+}
+
+.form-floating{
+    font-family: 'Red Hat Text';
+}
+
+.form-control:focus{
+    color: #ffbc2f;
+    border: #ffbc2f 2px solid !important;
+}
+
+.form-control{
+    color: #ffbc2f;
 }
 
 .inputs input:focus{
     outline: none;
-    border-bottom: rgba(240, 192, 35, 1) 2px solid !important;
+    /* border-bottom: rgba(240, 192, 35, 1) 2px solid !important; */
     /* padding-left: 0.1em; */
 }
 
 
-textarea{
+#textarea{
     resize: none;
-    border: 2px #d3d3d3 solid;
+    height: 25vh;
+    /* border: 2px #d3d3d3 solid;
     padding: 0.2em 0 0.2em 0.2em;
-    /* width: 60%; */
+    width: 60%;
     font-family: "Red Hat Text";
     font-size: 1em;
-    color: #ffbc2f;
+    color: #ffbc2f; */
 }
-
-
 
 textarea:focus{
-    outline: none;
+    /* outline: none;
     border: rgba(240, 192, 35, 1) 2px solid !important;
-    padding: 0.2em 0 0.2em 0.2em;
+    padding: 0.2em 0 0.2em 0.2em; */
 }
-
 
 #remaining-chars{
     font-size: 11px;
     color: #ffbc2f;
     margin-top: 3px;
+    font-family: 'Red Hat Text';
     /* float: right; */
     height: 20px;
+    justify-self: end;
     /* display: none; */
 }
 
@@ -482,7 +495,7 @@ textarea:focus{
 
 .footer{
     text-align: center;
-    width: 100vw;
+    /* width: 100vw; */
     max-width: 100%;
     background-color: #ffbc2f;
     height: fit-content;
@@ -535,11 +548,13 @@ textarea:focus{
         width: 100vw;
         max-width: 100%;
         grid-template-columns: none;
-        grid-template-rows: 1fr 1fr;
+        /* grid-template-rows: 1fr 1fr; */
+        /* height: fit-content; */
     }
 
     .cover img{
         width: 100vw;
+        max-width: 100%;
         height: auto;
         grid-row-start: 1;
     }
@@ -550,11 +565,13 @@ textarea:focus{
 
     .history{
         width: 100vw;
+        max-width: 100%;
+        gap: 0;
     }
 
     .history img{
-
         width: 100vw;
+        max-width: 100%;
     }
 
     .historyP{
@@ -562,27 +579,36 @@ textarea:focus{
         justify-self: center;
     }
 
-    .values{
-        grid-template-columns: none;
-        grid-template-rows: repeat(5, 1fr);
+    .our-values{
+        display: grid;
+        width: fit-content;
+        justify-self: center;
+        margin: 0 1vw;
     }
+
+    .values{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5em;
+        
+    }
+
+    .values > div{
+        padding: 0.5em 1em;
+    }
+
+    .values > div > p{
+        margin: 0;
+    }
+
 
     .us{
         grid-template-columns: none;
         grid-template-rows: repeat(3, auto);
         width: 100vw;
+        max-width: 100%;
     }
 
-    .gd{
-        display: grid;
-        grid-template-columns: none;
-        grid-template-rows: auto auto;
-        /* width: 100vw; */
-        /* width: 100%; */
-        /* justify-content: center; */
-    }
-
-    .csx{
+    .gd, .csx, .hk{
         display: grid;
         grid-template-columns: none;
         grid-template-rows: auto auto;
@@ -592,29 +618,37 @@ textarea:focus{
         grid-row-start: 1;
     }
 
-    .hk{
-        display: grid;
-        grid-template-columns: none;
-        grid-template-rows: auto auto;
-    }
-
     .us p{
-        width: 90vw;
-        /* max-height: 50%; */
-        /* overflow-y: scroll; */
-        /* justify-self: center; */
-        /* width: 100vw; */
-        /* max-width: 100%; */
+        width: 80vw;
     }
 
     .contact{
         grid-template-columns: none;
         width: 100vw;
+        max-width: 100%;
         justify-self: center;
+        /* height: 50vh; */
     }
 
-    .contact image{
-        display: none;   
+    .contact img{
+        /* display: none; */
+        width: 40%;
+        justify-self: center;
+        max-width: 100%;
+    }
+
+    .inputTitle{
+        margin: 0;
+        padding: 0;
+    }
+
+    .inputs{
+        width: 80vw;
+        max-width: 100%;
+    }
+
+    #textarea{
+       height: 25vh;
     }
 
     .footer{
@@ -631,15 +665,14 @@ textarea:focus{
     }
     
     .pages a{
-        padding: 1em 1.5em;
-        /* margin: 0 5px 0 5px; */
+        /* padding: 1em 1.5em; */
+        margin: 0.5em 0 0.5em 0.5em;
         text-decoration: none;
         color: white;
-        font-size: 1.3rem;
+        font-size: 1em;
         display: inline-block;
         font-family: "Albert Sans";
         width: fit-content;
-        font-size: 1em;
     }
     
     .pages a:hover::after{
@@ -655,6 +688,6 @@ textarea:focus{
     }
 
     .trademark{
-        font-size: 0.7em;
+        font-size: 0.8em;
     }  
 }
