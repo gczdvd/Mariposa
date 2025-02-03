@@ -190,7 +190,32 @@
       <div class="inputs">
         <p>Kérdésed van? Írj nekünk!</p>
 
-        <p class="inputTitle">Email-cím</p>
+        <div class="form-floating">
+            <input class="form-control shadow-none" id="email" type="email" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="E-mail cím">
+            
+            <label for="email">E-mail cím</label>
+        </div>
+
+        <div class="form-floating">
+            <input class="form-control shadow-none" id="full_name" type="text" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="Teljes név">
+            
+            <label for="name">Teljes név</label>
+        </div>
+
+        <div class="form-floating">
+          <input class="form-control shadow-none" id="username" type="text" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="Felhasználónév">
+          
+          <label for="name">Felhasználónév (opcionális)</label>
+        </div>
+
+        <div class="form-floating">
+            <textarea class="form-control shadow-none" id="textarea" rows="5" maxlength="255" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="Üzenet" spellcheck="none"></textarea>
+            <p id="remaining-chars"></p>
+            
+            <label for="textarea">Üzenet</label>
+        </div>
+
+        <!-- <p class="inputTitle">Email-cím</p>
         <input id="support_email" type="email" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)" required>
 
         <p class="inputTitle">Teljes név</p>
@@ -198,7 +223,7 @@
   
         <p class="inputTitle">Üzenet</p>
         <textarea name="" id="textarea" rows="5" maxlength="255" onchange="colorChange(this)" onfocusout="colorChange(this)" oninput="charCounter(this)" onfocus="charCounter(this)" spellcheck="false" required></textarea>
-        <p id="remaining-chars"></p>
+        <p id="remaining-chars"></p> -->
 
         <button class="primaryBTN" onclick="support()">küldés</button>
       </div>

@@ -73,7 +73,7 @@
 
 #header{
     display: grid;
-    width: 100vw;
+    /* width: 100vw; */
     max-width: 100%;
     grid-template-columns: auto auto;
     background-color: transparent;
@@ -260,7 +260,7 @@
 
 
 .cover img{
-    height: 50vh;
+    width: 50vw;
 }
 
 .texts{
@@ -293,7 +293,7 @@
     display: grid;
     text-align: center;
     font-family: "Red Hat Text";
-    gap: 3vh;
+    gap: 2vh;
     margin-bottom: 10vh;
 }
 
@@ -316,24 +316,27 @@
 @media (max-aspect-ratio:1/1) {
     .cover{
         display: grid;
-        grid-template-rows: auto auto;
+        grid-template-rows: 1fr 1fr;
         grid-template-columns: none;
     }
 
     .cover .image{
-        grid-row-start: 1;
-        content: url("../frontend/images/lpcover.jpg");
+        
+        /* content: url("../frontend/images/lpcover.jpg");
         width: 100vw;
+        max-width: 100%; */
     }
 
     .cover img{
+        grid-row-start: 1;
         width: 100vw;
-        height: auto;
-        
+        max-width: 100%;
     }
 
     .texts{
-        width: 100vw;
+        grid-row-start: 2;
+        /* width: 100vw; */
+        max-width: 100%;
     }
 
     .headline{
@@ -347,6 +350,10 @@
     .pers{
         width: 80vw;
         font-size: 1em;
+    }
+
+    .description{
+        margin-bottom: 5vh;
     }
 }
 
@@ -374,8 +381,9 @@
 @media (max-aspect-ratio:1/1) {
     .services{
         grid-template-columns: 1fr;
-        /* gap: 2em; */
+        gap: 2em;
         width: 100vw;
+        max-width: 100%;
         justify-self: start;
     }
 
@@ -384,7 +392,9 @@
     }
 
     .services p{
-        font-size: 1em;
+        font-size: 3em;
+        height: fit-content;
+        margin: 0;
     }
 }
 
@@ -450,7 +460,7 @@
 }
 
 .convince ul{
-    margin: 1rem 0 1rem 0;
+    margin: 1em 0;
     list-style: none;
     list-style-type: disc;
 }
@@ -474,7 +484,7 @@
 
     .signup img{
         width: 100vw;
-        
+        max-width: 100%;
     }
 
     .convince{
@@ -488,7 +498,7 @@
     .convince p, li{
         font-size: 1em;
         justify-self: center;
-        width: 100vw;
+        max-width: 100%;
 
     }
 }
@@ -527,8 +537,13 @@
     }
 
     .donation img{
-        width: 50vw;
+        display: block;
+        width: 40vw;
         justify-self: center;
+    }
+
+    .donation-text{
+        font-size: 1em;
     }
 }
 
@@ -545,17 +560,31 @@
 }
 
 .newsText{
-    font-size: 30px;
+    font-size: 1.5em;
+}
+
+.form-floating{
+    font-family: 'Red Hat Text';
+}
+
+.form-control:focus{
+    color: #ffbc2f;
+    border: #ffbc2f 2px solid !important;
+}
+
+.form-control{
+    color: #ffbc2f;
+    width: 30vw;
 }
 
 .emailInput input{
-    padding: 0.3em;
+    /* padding: 0.3em;
     font-size: 1em;
     color: #ffbc2f;
     border-bottom: 3px solid lightgray;
     width: 30vw;
     background-color: transparent;
-    font-family: 'Red Hat Text';
+    font-family: 'Red Hat Text'; */
 }
 
 .emailInput input:focus{
@@ -564,12 +593,12 @@
 }
 
 .emailInput input::-webkit-input-placeholder{
-    opacity: 0.4;
-    font-size: 1em;
+    /* opacity: 0.4;
+    font-size: 1em; */
 }
 
 .emailInput input:focus::placeholder{
-    opacity: 0;
+    /* opacity: 0; */
 }
 
 @media (max-aspect-ratio:1/1) {
@@ -579,7 +608,11 @@
     }
 
     .emailInput input{
-        width: 80vw;
+        /* width: 80vw; */
+    }
+
+    .form-control{
+        width: 70vw;
     }
 }
 
@@ -622,6 +655,12 @@
     font-family: "Red Hat Text";
 }
 
+.emoji{
+    font-family: 'Noto Color Emoji';
+    font-size: 5em;
+    user-select: none;
+}
+
 @media (max-aspect-ratio:1/1) {
     .pages{
         display: grid;
@@ -635,11 +674,5 @@
 
     .trademark{
         font-size: 0.7em;
-    }   
-}
-
-.emoji{
-    font-family: 'Noto Color Emoji';
-    font-size: 5em;
-    user-select: none;
+    }
 }

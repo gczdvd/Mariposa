@@ -26,7 +26,30 @@
                 Egyszerű regisztráció, hogy minél előbb a chatfelületen lehess!
             </div>
 
-            <div class="nickname">
+            <div class="form-floating">
+                <!-- <p class="inputTitle">Email-cím</p> -->
+                <input class="form-control shadow-none" id="name" type="text" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="Felhasználónév">
+                
+                <label for="name">Felhasználónév</label>
+            </div>
+
+            <div class="form-floating">
+                <!-- <p class="inputTitle">Email-cím</p> -->
+                <input class="form-control shadow-none" id="email" type="email" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="E-mail cím">
+                
+                <label for="email">E-mail-cím</label>
+            </div>
+
+            <div class="form-floating">
+                <!-- <p class="inputTitle">Email-cím</p> -->
+                <input class="form-control shadow-none" id="password" type="password" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="Jelszó">
+                
+                <label for="password">Jelszó</label>
+            </div>
+
+
+
+            <!-- <div class="nickname">
                 <p>Becenév</p>
                 <input type="text" id="nickname" spellcheck="false" onchange="colorChange(this)">
             </div>
@@ -45,8 +68,8 @@
 
                 <p id="pswFeedback"></p>
 
-                <!-- <span onclick="togglePSW()" id="toggleIcon"></span> -->
-            </div>
+                // <span onclick="togglePSW()" id="toggleIcon"></span>
+            </div> -->
 
             <div class="TANDC">
                 <input type="checkbox" id="checkbox">

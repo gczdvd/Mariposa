@@ -162,6 +162,12 @@
                 </div>
 
                 <div class="form-floating">
+                    <input class="form-control shadow-none" id="username" type="text" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="Felhasználónév">
+                    
+                    <label for="name">Felhasználónév (opcionális)</label>
+                </div>
+
+                <div class="form-floating">
                     <!-- <p class="inputTitle">Email-cím</p> -->
                     <textarea class="form-control shadow-none" id="textarea" rows="5" maxlength="255" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="Üzenet" spellcheck="none"></textarea>
                     <p id="remaining-chars"></p>

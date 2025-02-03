@@ -124,23 +124,62 @@ body{
     opacity: 0.7;
 }
 
+.form-floating{
+    font-family: 'Red Hat Text';
+}
+
+.form-control:focus{
+    color: #ffbc2f;
+    border: #ffbc2f 2px solid !important;
+}
+
+.form-control{
+    color: #ffbc2f;
+}
+
+.inputs{
+    display: grid;
+    justify-self: center;
+    align-self: center;
+    width: 25vw;
+    gap: 3vh;
+    /* height: 70%; */
+}
+
+.inputs input:focus{
+    outline: none;
+    /* border-bottom: rgba(240, 192, 35, 1) 2px solid !important; */
+    /* padding-left: 0.1em; */
+}
+
+#textarea{
+    resize: none;
+    height: 25vh;
+    /* border: 2px #d3d3d3 solid;
+    padding: 0.2em 0 0.2em 0.2em;
+    width: 60%;
+    font-family: "Red Hat Text";
+    font-size: 1em;
+    color: #ffbc2f; */
+}
+
 /* 
 .nickname, .email, .password, .passwordRN, .passwordNew1, .passwordNew2{
     font-family: "Red Hat Text";
 } */
 
 input[type=text], input[type=email], input[type=password]{
-    border-bottom: rgba(228, 228, 228, 1) 2px solid;
+    /* border-bottom: rgba(228, 228, 228, 1) 2px solid;
     width: 90%;
     padding: 0 0 0.1rem 0.2rem;
     color: #ffbc2f;
     font-family: "Red Hat Text";
-    font-size: 1.1rem;
+    font-size: 1.1rem; */
 }
 
 input:focus{
-    outline: none;
-    border-bottom: rgba(240, 192, 35, 1) 2px solid !important ;
+    /* outline: none;
+    border-bottom: rgba(240, 192, 35, 1) 2px solid !important ; */
 }
 
 .TANDC a{
