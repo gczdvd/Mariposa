@@ -10,7 +10,7 @@
 
 import express from '/root/Mariposa/backend/node_modules/express/index.js';
 import websocket from '/root/Mariposa/backend/node_modules/express-ws/index.js';
-import fileupload from '/root/Mariposa/backend/node_modules/express-fileupload/lib/index.js';
+import fileUpload from '/root/Mariposa/backend/node_modules/express-fileupload/lib/index.js';
 import cookieParser from '/root/Mariposa/backend/node_modules/cookie-parser/index.js';
 import bodyParser from '/root/Mariposa/backend/node_modules/body-parser/index.js';
 import md5 from '/root/Mariposa/backend/node_modules/md5/md5.js';
@@ -100,11 +100,17 @@ const sessionOnlyUser = function(req, res, next){
 
 app.use(
     cookieParser(),
+    fileUpload({
+        limits: {
+            fileSize: 50 * 1024 * 1024,
+            abortOnLimit: true
+        },
+    }),
     bodyParser.json(),
     cors({
-        origin: 'https://mariposachat.hu/com/api',
+        origin: 'https://mariposachat.hu/api',
         credentials: true
-      }),
+    }),
     sessionParser
 );
 
@@ -432,6 +438,14 @@ app.post("/report", sessionValidator, (req, res) => {   //EZT INKÁBB WSBE
             "message":"Reported."
         }));
     }
+});
+
+app.post('/profilepic', sessionValidator, (req, res) => {
+    var ext = req.files.file.name.split(".").pop();
+    if(ext == "jpg" || ext == "png" || ext == "jpeg" || ext == "webp"){
+        req.files.file.mv("storage/kutya.txt")
+    }
+    else{}
 });
 
 app.get('/storage/*', sessionValidator, (req, res) => {

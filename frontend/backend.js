@@ -1,8 +1,8 @@
-var rootAddr = "asdsad";
+var rootAddr = "mariposachat.hu/api";
 const debug = false;
 class Backend{
     static setUrl(url){
-        rootAddr = "mariposachat.hu/api";
+        //rootAddr = url;
     }
     static url(){
         return rootAddr;
@@ -26,15 +26,27 @@ class Backend{
         });
     }
     static post(params) {
-        fetch("https://" + rootAddr + params.path, {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify(params?.body ?? {}) 
-        })
+        var req;
+        if(params?.body?.constructor?.name == "FormData"){
+            req = {
+                method: "POST",
+                credentials: "include",
+                body: params?.body
+            }
+        }
+        else{
+            req = {
+                method: "POST",
+                credentials: "include",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify(params?.body ?? {})
+            }
+        }
+
+        fetch("https://" + rootAddr + params.path, req)
         .then(async (e)=>{
             var resp = await e.json();
             // alert(JSON.stringify(params));
