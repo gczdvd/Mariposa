@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/backend.js"></script>
+</head>
+<body>
+    <input name="foo" type="file" id="fi">
+    <button onclick="send()">Küld</button>
+
+    <script>
+        function send(){
+            var f = new FormData();
+            f.append("file", document.getElementById("fi").files[0]);
+        
+            Backend.post({
+                path:"/profilepic",
+                body:f,
+                callback:console.log
+            });
+        }
+    </script>
+</body>
+</html>
