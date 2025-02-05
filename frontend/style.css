@@ -618,41 +618,126 @@
 
 
 .footer{
-    text-align: center;
-    width: 100vw;
-    max-width: 100%;
+    display: grid;
+    grid-template-columns: 1fr auto auto auto;
+    /* grid-template-rows: repeat(2, 1fr); */
     background-color: #ffbc2f;
-    height: fit-content;
+    /* height: fit-content; */
+    align-self: end;
+    /* position: relative;
+    bottom: 0; */
 }
 
-.pages a{
-    margin: 1em 1.5em;
+.footer > div{
+    /* padding: 3vh; */
+    height: fit-content;
+    padding: 2vh 0 0 2vh;
+    margin-bottom: 0;
+    color: rgb(51, 51, 51);
+}
+
+.footer > div > a{
+    text-decoration: none;
+    color: black;
+}
+
+.footer > div > a{
     text-decoration: none;
     color: white;
-    font-size: 1.3em;
     display: inline-block;
     font-family: "Albert Sans";
     width: fit-content;
+    margin-bottom: 1em;
 }
 
-.pages a:hover::after{
+.footerlink > a:hover{
+    color: rgb(51, 51, 51);
+}
+
+.footerlink a:hover::after{
     transform: scaleX(1);
 }
 
-.pages a::after{
+.footerlink a::after{
     display: block;
     content: '';
-    border-bottom: solid 3px white;
+    border-bottom: solid 2px rgb(51, 51, 51);
     transform: scaleX(0);
     transition: transform 250ms ease-in-out;
 }
 
+#name, #team, #customerservice, #more{
+    padding: 4vh;
+}
+
+#socialmedia a{
+    height: fit-content;
+    width: fit-content;
+}
+
+#name #coffee{
+    width: 2vw;
+}
+
+#name #insta{
+    width: 3.2vw;
+    /* margin-left: 2vw; */
+}
+
+#coName{
+    font-size: 1.7em;
+    font-family: 'Palanquin';
+}
+
+#coSlogan{
+    font-family: 'Red Hat Text';
+}
+
+#socialmedia{
+    margin-bottom: 0;
+}
+
+#more{
+    display: grid;
+}
+
+#trademark{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column: 1 / span 4;
+    margin: 0;
+    padding: 0;
+}
+
+#trademark p{
+    align-self: end;
+    width: fit-content;
+    padding: 0 0 1vw 1vw;
+    margin: 0;
+}
+
+#trademark a{
+    grid-column: 2 / span 4;
+    justify-self: end;
+    padding: 0;
+    margin: 0 1em 1em 0;
+}
+
+#backtotop{
+    width: 2vw;
+    filter: invert(1);
+}
+
+#backtotop:hover{
+    filter: invert(0);
+}
+
 .trademark{
-    margin-top: 0.5em;
+    /* margin-top: 0.5em;
     padding-bottom: 0.5em;
     justify-self: center;
     color: white;
-    font-family: "Red Hat Text";
+    font-family: "Red Hat Text"; */
 }
 
 .emoji{
