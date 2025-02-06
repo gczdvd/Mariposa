@@ -73,73 +73,107 @@
 
 #header{
     display: grid;
-    /* width: 100vw; */
+    width: 100vw;
     max-width: 100%;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto 1fr 1fr;
     background-color: transparent;
-    /* position: absolute; */
+    font-size: 0.7em;
+}
+
+#homepage{
+    font-size: 0;
 }
 
 #logo{
-    display: grid;
-    grid-template-columns: auto 1fr;
-    
-}
-
-#logo a{
-    align-self: center;
-}
-
-#logo img{
-    width: 4em;
-    align-self: center;
+    width: 5vw;
 }
 
 #main{
     display: none;
 }
 
-
-#title{
-    font-size: 1em;
-    align-self: center;
-    text-transform: uppercase;
-    font-family: "Palanquin";
+#navbar{
+    display: inline-block;
+    width: fit-content;
+    align-content: center;
 }
 
 #navigation{
-    justify-self: end;
-    /* width: fit-content; */
-    
-}
-
-#navigation ul{
     display: grid;
-    grid-template-columns: repeat(4, auto);
-    justify-self: end;
-    justify-content: center;
-    /* width: fit-content; */
-}
-
-#navigation a{
-    font-size: 1em;
-    font-weight: bold;
-    margin: 1vw 3vw;
-    
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0;
+    margin: 0;
+    width: fit-content;
     /* height: fit-content; */
+    gap: 4vw;
 }
 
 #navigation li{
     list-style: none;
-    /* width: fit-content; */
-    justify-self: center;
+    width: fit-content;
+    /* height: fit-content; */
+    /* padding: 0; */
+    /* margin: 0; */
+    /* align-self: start; */
 }
+
+#loginNav{
+    display: grid;
+    justify-content: end;
+    padding: 0;
+    margin: 0;
+    align-content: center;
+    /* width: fit-content; */
+}
+
+#loginNav li::after{
+    /* content: ''; */
+}
+
+#loginNav li{
+    list-style: none;
+}
+
+#loginNav a{
+    /* height: fit-content; */
+}
+
+/* #navigation{
+    justify-self: end;
+    width: fit-content;
+    
+} */
+
+/* #navigation ul{
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    justify-self: end;
+    justify-content: center;
+    width: fit-content;
+} */
+
+/* #navigation a{
+    font-size: 1em;
+    font-weight: bold;
+    margin: 1vw 3vw;
+    
+    height: fit-content;
+} */
+
+/* #navigation li{
+    list-style: none;
+    width: fit-content;
+    justify-self: center;
+} */
 
 .tertiaryBTN, .tertiaryBTN a{
     color: black;
     text-decoration: none;
+    /* font-size: 0.7em; */
+    height: fit-content;
     display: inline-block;
     font-family: "Albert Sans";
+    
 }
 
 .tertiaryBTN:hover::after, .tertiaryBTN a:hover::after{
@@ -150,6 +184,7 @@
 .tertiaryBTN:hover, .tertiaryBTN a:hover{
     color: #ffbc2f;
     transition: 200ms;
+    
 }
 
 .tertiaryBTN::after, .tertiaryBTN a::after{
@@ -157,7 +192,8 @@
     content: '';
     border-bottom: solid 3px #ffbc2f;
     transform: scaleX(0);
-    transition: transform 200ms ease-in-out; 
+    transition: transform 200ms ease-in-out;
+    margin-top: -2px;
 }
 
 @media (max-aspect-ratio:1/1) {
@@ -208,6 +244,7 @@
         text-decoration: none;
         color: white;
         list-style: none;
+        
     }
     
     #navigation ul{
@@ -617,6 +654,10 @@
 }
 
 
+
+
+
+
 .footer{
     display: grid;
     grid-template-columns: 1fr auto auto auto;
@@ -624,9 +665,12 @@
     background-color: #ffbc2f;
     /* height: fit-content; */
     align-self: end;
+    max-width: 100%;
     /* position: relative;
     bottom: 0; */
 }
+
+
 
 .footer > div{
     /* padding: 3vh; */
@@ -673,6 +717,8 @@
 #socialmedia a{
     height: fit-content;
     width: fit-content;
+    text-decoration: none;
+    font-size: 0;
 }
 
 #name #coffee{
@@ -681,7 +727,7 @@
 
 #name #insta{
     width: 3.2vw;
-    /* margin-left: 2vw; */
+    margin-left: 2vw;
 }
 
 #coName{
@@ -695,6 +741,10 @@
 
 #socialmedia{
     margin-bottom: 0;
+}
+
+#team{
+    width: fit-content;
 }
 
 #more{
@@ -746,18 +796,63 @@
     user-select: none;
 }
 
+
 @media (max-aspect-ratio:1/1) {
-    .pages{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
-    
-    .pages a{
-        font-size: 1em;
-        padding: 0.25em 0.5em;
+    .footer{
+        display: block;
+        /* display: grid; */
+        /* grid-template-rows: repeat(4, 1fr);
+        grid-template-columns: repeat(2, 1fr); */
     }
 
-    .trademark{
-        font-size: 0.7em;
+    .footer *{
+        width: fit-content;
+    }
+
+    .footer > div{
+        /* padding: 3vh; */
+        /* height: fit-content; */
+        /* padding: 2vh 0 0 2vh; */
+        margin-bottom: 0;
+        color: rgb(51, 51, 51);
+        width: fit-content;
+    }
+
+    #name{
+        grid-column: 1 / span 4;
+        grid-row-start: 1;
+        
+    }
+
+    #customerservice{
+        grid-column-start: 1;
+    }
+
+    #name > p{
+        width: fit-content;
+    }
+
+    #name, #team, #customerservice, #more{
+        padding: 0;
+        margin: 0;
+    }
+
+    #more{
+        grid-row-start: 2;
+        grid-column-start: 2;
+    }
+
+    #backtotop{
+        display: none;
+    }
+
+    #trademark{
+        display: block;
+        height: fit-content;
+        padding: 0;
+    }
+
+    #trademark p{
+        padding: 0;
     }
 }
