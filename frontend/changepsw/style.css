@@ -188,24 +188,16 @@ input:focus{
     border-bottom: rgba(240, 192, 35, 1) 2px solid !important ; */
 }
 
-.TANDC a{
-    color: #ffbc2f;
-    text-decoration: none;
-}
-
-.TANDC input[type=checkbox]{
-    height: 0.7rem;
-    accent-color: #ffbc2f;
-}
-
-label{
-    font-family: "Red Hat Text";
-    font-size: 1rem;
-}
-
 .forgotPSW{
     font-family: "Red Hat Text";
     align-content: end;
+}
+
+#curPassFeedback, #newPassFeedback, #reNewPassFeedback{
+    color: red;
+    visibility: hidden;
+    font-size: 1em;
+    margin: 0;
 }
 
 .forgotPSW a{

@@ -1,5 +1,11 @@
 Backend.setUrl("127.0.0.1:3000");
 
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});
+
 function togglePSW() {
     var x = document.getElementById("password");
     if (x.type === "password") {

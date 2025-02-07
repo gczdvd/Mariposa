@@ -57,7 +57,7 @@ body{
     display: grid;
     grid-template-rows: repeat(8, 1fr);
     width: 30vw;
-    height: 80vh;
+    /* height: 80vh; */
     justify-self: center;
     align-self: center;
     
@@ -117,6 +117,13 @@ input:focus{
     border-bottom: rgba(240, 192, 35, 1) 2px solid !important;
 }
 
+#pswFeedback, #emailFeedback{
+    color: red;
+    visibility: hidden;
+    font-size: 1em;
+    margin: 0;
+}
+
 label{
     font-family: "Red Hat Text";
     font-size: 1em;
@@ -150,7 +157,7 @@ label{
 .tertiaryBTN::after, .tertiaryBTN a::after{
     display: block;
     content: '';
-    border-bottom: solid 3px #ffbc2f;
+    border-bottom: solid 2px #ffbc2f;
     transform: scaleX(0);
     transition: transform 200ms ease-in-out;
     margin-top: -2px;

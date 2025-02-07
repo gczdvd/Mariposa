@@ -66,10 +66,10 @@ body{
 .signup{
     display: grid;
     width: 30vw;
-    height: 80vh;
-    grid-template-rows: repeat(8, 1fr);
+    /* height: fit-content; */
+    grid-template-rows: repeat(7, 1fr);
     justify-self: center;
-    align-self: center;
+    /* align-self: center; */
 }
 
 .image{
@@ -153,6 +153,7 @@ input[type=text], input[type=email], input[type=password]{
     color: red;
     visibility: hidden;
     font-size: 1em;
+    margin: 0;
 }
 
 #toggleIcon{
@@ -196,7 +197,7 @@ label{
 
 .account{
     font-family: "Red Hat Text";
-    align-content: end;
+    align-content: center;
 }
 
 .account a{
@@ -204,16 +205,19 @@ label{
     color: #ffbc2f;
     display: inline-block;
     font-family: "Albert Sans";
+    
 }
 
 .account a:hover::after{
     transform: scaleX(1);
+    margin-bottom: -20px;
 }
 
-.account a::after{
+.account::after, .account a::after{
     display: block;
     content: '';
     border-bottom: solid 2px #ffbc2f;
     transform: scaleX(0);
-    transition: transform 250ms ease-in-out;
+    transition: transform 200ms ease-in-out;
+    margin-top: -2px;
 }

@@ -152,6 +152,13 @@ body{
     /* padding-left: 0.1em; */
 }
 
+#newPassFeedback, #reNewPassFeedback{
+    color: red;
+    visibility: hidden;
+    font-size: 1em;
+    margin: 0;
+}
+
 #textarea{
     resize: none;
     height: 25vh;

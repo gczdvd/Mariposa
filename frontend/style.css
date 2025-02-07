@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@600&family=Noto+Color+Emoji&family=Noto+Sans+Symbols+2&family=Palanquin:wght@700&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap');
 
+p{
+    margin: 0;
+}
+
+
 *{
     padding: 0;
     margin: 0;
@@ -78,6 +83,8 @@
     grid-template-columns: auto 1fr 1fr;
     background-color: transparent;
     font-size: 0.7em;
+    align-items: center;
+    text-transform: uppercase;
 }
 
 #homepage{
@@ -94,8 +101,10 @@
 
 #navbar{
     display: inline-block;
-    width: fit-content;
-    align-content: center;
+    /* width: fit-content; */
+    /* align-content: center; */
+    margin: 3vh 0;
+    
 }
 
 #navigation{
@@ -105,12 +114,15 @@
     margin: 0;
     width: fit-content;
     /* height: fit-content; */
-    gap: 4vw;
+    gap: 3vw;
+    
+    
 }
 
 #navigation li{
     list-style: none;
     width: fit-content;
+    margin-left: 1vw;
     /* height: fit-content; */
     /* padding: 0; */
     /* margin: 0; */
@@ -132,10 +144,16 @@
 
 #loginNav li{
     list-style: none;
+    margin-right: 1vw;
 }
 
 #loginNav a{
     /* height: fit-content; */
+}
+
+#loginNav img{
+    width: 3.5vw;
+    border-radius: 50%;
 }
 
 /* #navigation{
@@ -331,7 +349,7 @@
     text-align: center;
     font-family: "Red Hat Text";
     gap: 2vh;
-    margin-bottom: 10vh;
+    margin-bottom: 5vh;
 }
 
 .headline{
@@ -346,7 +364,7 @@
 
 .pers{
     font-size: 1.5em;
-    width: 50vw;
+    width: 60vw;
     justify-self: center;
 }
 
