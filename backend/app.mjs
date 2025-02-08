@@ -16,6 +16,7 @@ import bodyParser from '/root/Mariposa/backend/node_modules/body-parser/index.js
 import md5 from '/root/Mariposa/backend/node_modules/md5/md5.js';
 import crypto from 'crypto';
 import cors from '/root/Mariposa/backend/node_modules/cors/lib/index.js'
+import uuid from '/root/Mariposa/backend/node_modules/uuid/dist/esm/v6.js';
 import fs from 'fs';
 
 import { Sql } from './database.mjs';
@@ -71,7 +72,7 @@ const sessionParser = function(req, res, next){
 
 const sessionValidator = function(req, res, next){
     if(req.session.valid){
-        res.cookie("info", req.session.session?.getAttribute("client")?.getInfo());
+        //res.cookie("info", req.session.session?.getAttribute("client")?.getInfo());
         next();
     }
     else{
@@ -398,6 +399,16 @@ app.get('/logout', (req, res) => {
     res.send("You're User!");
 });*/
 
+app.post("/profilemodify", sessionValidator, (req, res) => {
+    database.modifyUser(req.session.session.getAttribute("client").getId(), req.body);
+    res.status(200);
+    res.send(JSON.stringify({
+        "action":"",
+        "value":"",
+        "message":"Successful modified."
+    }));
+});
+
 app.post('/modifypassword', sessionValidator, (req, res) => {
     if(req.body.newpassword && req.body.oldpassword){
         var id = database.auth(req.session.session.getAttribute("client").getEmail(), req.body.oldpassword);
@@ -443,9 +454,24 @@ app.post("/report", sessionValidator, (req, res) => {   //EZT INKÁBB WSBE
 app.post('/profilepic', sessionValidator, (req, res) => {
     var ext = req.files.file.name.split(".").pop();
     if(ext == "jpg" || ext == "png" || ext == "jpeg" || ext == "webp"){
-        req.files.file.mv("storage/kutya.txt")
+        var npfile = uuid() + "." + ext;
+        req.files.file.mv("storage/profile_pic/" + npfile);
+        database.modifyUser(req.session.session.getAttribute("client").getId(), {profile_pic:npfile});
+        res.status(200);
+        res.send(JSON.stringify({
+            "action":"none",
+            "value":"",
+            "message":"ok"
+        }));
     }
-    else{}
+    else{
+        res.status(400);
+        res.send(JSON.stringify({
+            "action":"none",
+            "value":"",
+            "message":"Wrong extension"
+        }));
+    }
 });
 
 app.get('/storage/*', sessionValidator, (req, res) => {
@@ -462,12 +488,15 @@ app.get('/storage/*', sessionValidator, (req, res) => {
 
 app.get('/userinfo', sessionValidator, (req, res) => {
     res.status(200);
-    res.send(req.session.session.getAttribute("client").getInfo());
+
+    var path = 'storage/profile_pic/' + database.getUserDataById(req.session.session.getAttribute("client").getId()).profile_pic;
+    req.session.session.getAttribute("access").add(path);
+
+    res.send(JSON.stringify(req.session.session.getAttribute("client").getInfo()));
 });
 
 app.get('/partners', sessionValidator, (req, res) => {
     var partners = database.getSavedChatsByUserId(req.session.session.getAttribute("client").getId());
-    res.status(200);
 
     partners.forEach((v, i, a) => {
         var path = 'storage/profile_pic/' + v.profile_pic;
@@ -475,6 +504,7 @@ app.get('/partners', sessionValidator, (req, res) => {
         a[i].profile_pic = '/api/' + path;
     });
 
+    res.status(200);
     res.send(JSON.stringify({
         "action":"none",
         "value":{

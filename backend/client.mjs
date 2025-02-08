@@ -16,47 +16,41 @@ export class Users{
                 return this.#users[i];
             }
         }
-        var u = this.db.getUserById(id);
+        var u = this.db.getUserById(id, this.db);
         this.#users.push(u);
         return u;
     }
 }
 
 export class User{
-    constructor(id, nickname, birthdate, email, topics, gender, description, profile_pic){
+    constructor(id, db){
         this.id = id;
-        this.nickname = nickname;
-        this.birthdate = birthdate;
-        this.email = email;
-        this.topics = JSON.parse(topics);
-        this.gender = gender;
-        this.description = description;
-        this.profile_pic = profile_pic;
+        this.db = db;
+        // this.nickname = nickname;
+        // this.birthdate = birthdate;
+        // this.email = email;
+        // this.topics = JSON.parse(topics);
+        // this.gender = gender;
+        // this.description = description;
+        // this.profile_pic = profile_pic;
     }
 
-    getNickname(){
-        return this.nickname;
-    }
+    // getNickname(){
+    //     return this.nickname;
+    // }
 
-    getEmail(){
-        return this.email;
-    }
+    // getEmail(){
+    //     return this.email;
+    // }
 
     getId(){
         return this.id;
     }
 
     getInfo(){
-        return JSON.stringify({
-            "id":this.id,
-            "nickname":this.nickname,
-            "birthdate":this.birthdate,
-            "email":this.email,
-            "topics":this.topics,
-            "gender":this.gender,
-            "description":this.description,
-            "profile_pic":"/api/storage/profile_pic/" + this.profile_pic
-        });
+        var tmp = this.db.getUserDataById(this.id);
+        tmp.profile_pic = "/api/storage/profile_pic/" + tmp.profile_pic;
+        return tmp;
     }
 }
 

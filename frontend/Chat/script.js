@@ -22,7 +22,7 @@ function websocket_loop(){
     }
 }
 
-// websocket_loop();
+websocket_loop();
 
 Backend.get({
     path:"/partners",
