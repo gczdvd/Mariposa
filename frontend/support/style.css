@@ -22,26 +22,28 @@ body{
 
 #header{
     display: grid;
-    /* width: 100vw; */
-    /* max-width: 100%; */
     grid-template-columns: auto auto;
     background-color: transparent;
-    /* position: absolute; */
 }
 
 #logo{
     display: grid;
     grid-template-columns: auto 1fr;
-    
-}
-
-#logo a{
-    align-self: center;
 }
 
 #logo img{
     width: 4em;
     align-self: center;
+}
+
+#logo a{
+    height: fit-content;
+    align-self: center;
+}
+
+#logo #title{
+    align-self: center;
+    margin: 0;
 }
 
 #main{
@@ -58,8 +60,8 @@ body{
 
 #navigation{
     justify-self: end;
+    height: fit-content;
     /* width: fit-content; */
-    
 }
 
 #navigation ul{
@@ -73,8 +75,7 @@ body{
 #navigation a{
     font-size: 1.5em;
     font-weight: bold;
-    margin: 1vw 3vw;
-    
+    margin: 1vw 3vw 0 3vw;
     /* height: fit-content; */
 }
 
@@ -106,13 +107,14 @@ body{
     content: '';
     border-bottom: solid 3px #ffbc2f;
     transform: scaleX(0);
-    transition: transform 200ms ease-in-out; 
+    transition: transform 200ms ease-in-out;
+    margin-top: -2px;
 }
 
 @media (max-aspect-ratio:1/1) {
-    #logo{
+    /* #logo{
         display: grid;
-    }
+    } */
 
     #logo img{
         width: 4em;
@@ -128,17 +130,17 @@ body{
     }
 
     #header{
-        position: inherit;
+        /* position: inherit; */
         
     }
 
-    #main{
+    /* #main{
         display: block;
     }
     
     #main button img{
         width: 5vw;
-    }
+    } */
     
     #main button{
         height: fit-content;
@@ -209,9 +211,9 @@ body{
         transition: none; 
     }
 
-    .title{
+    /* .title{
         display: none;
-    }
+    } */
 }
 
 .cover{
@@ -275,10 +277,16 @@ body{
 
 @media (max-aspect-ratio:1/1){
     .cover{
-        height: 50vh;
-        font-size: 2em;
+        display: grid;
+        grid-template-rows: auto auto;
+        grid-template-columns: none;
+        padding: 0;
+    }
+
+    .cover img{
         width: 100vw;
         max-width: 100%;
+        grid-row-start: 1;
     }
 
     .faq{
@@ -288,10 +296,7 @@ body{
 
 }
 
-.qTitle{
-    color: #ffbc2f;
-    font-size: 1.3em;
-}
+
 
 .accordion {
     display: grid;
@@ -355,16 +360,25 @@ body{
     /* display: none; */
 }
 
-.panel p{
+.panel p:not(.qTitle){
     margin: 1vw;
-    width: 100%;
+}
+
+.panel p a{
+    text-decoration: none;
+    color: #ffbc2f;
+}
+
+.panel p a:hover{
+    color: orange;
 }
 
 .qTitle{
-    margin-top: 1em;
+    font-size: 1.3em;
+    color: #ffbc2f;
+    margin: 1.5vw 0 0 0;
     font-family: "Albert Sans";
 }
-
 
 .contact{
     display: grid;
@@ -384,12 +398,25 @@ body{
     -webkit-user-drag: none;
 }
 
+.form-floating{
+    font-family: 'Red Hat Text';
+}
+
+.form-control:focus{
+    color: #ffbc2f;
+    border: #ffbc2f 2px solid !important;
+}
+
+.form-control{
+    color: #ffbc2f;
+}
+
 .inputs{
     display: grid;
     justify-self: center;
     align-self: center;
     width: 25vw;
-    font-family: 'Red Hat Text';
+    gap: 3vh;
     /* height: 70%; */
 }
 
@@ -410,42 +437,47 @@ body{
 }
 
 .inputs input{
-    border: none;
+    /* border: none;
     border-bottom: lightgray 2px solid;
     align-self: end;
     padding: 0 0 0.2em 0.2em;
     color: #ffbc2f;
-    font-size: 1em;
+    font-size: 1em; */
 }
 
 .inputs input:focus{
     outline: none;
-    border-bottom: rgba(240, 192, 35, 1) 2px solid !important;
+    /* border-bottom: rgba(240, 192, 35, 1) 2px solid !important; */
     /* padding-left: 0.1em; */
 }
 
-textarea{
+
+#textarea{
     resize: none;
-    border: 2px #d3d3d3 solid;
+    height: 25vh;
+    /* border: 2px #d3d3d3 solid;
     padding: 0.2em 0 0.2em 0.2em;
-    /* width: 60%; */
+    width: 60%;
     font-family: "Red Hat Text";
     font-size: 1em;
-    color: #ffbc2f;
+    color: #ffbc2f; */
 }
 
 textarea:focus{
-    outline: none;
+    /* outline: none;
     border: rgba(240, 192, 35, 1) 2px solid !important;
-    padding: 0.2em 0 0.2em 0.2em;
+    padding: 0.2em 0 0.2em 0.2em; */
 }
 
 #remaining-chars{
     font-size: 11px;
     color: #ffbc2f;
     margin-top: 3px;
-    visibility: hidden;
+    font-family: 'Red Hat Text';
+    /* float: right; */
     height: 20px;
+    justify-self: end;
+    /* display: none; */
 }
 
 
@@ -499,39 +531,135 @@ textarea:focus{
 
 
 .footer{
-    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr auto auto auto;
+    /* grid-template-rows: repeat(2, 1fr); */
     background-color: #ffbc2f;
-    height: fit-content;
+    /* height: fit-content; */
+    align-self: end;
+    max-width: 100%;
+    /* position: relative;
+    bottom: 0; */
 }
 
-.pages a{
-    margin: 1em 1.5em;
+
+
+.footer > div{
+    /* padding: 3vh; */
+    height: fit-content;
+    padding: 2vh 0 0 2vh;
+    margin-bottom: 0;
+    color: rgb(51, 51, 51);
+}
+
+.footer > div > a{
+    text-decoration: none;
+    color: black;
+}
+
+.footer > div > a{
     text-decoration: none;
     color: white;
-    font-size: 1.3em;
     display: inline-block;
     font-family: "Albert Sans";
     width: fit-content;
+    margin-bottom: 1em;
 }
 
-.pages a:hover::after{
+.footerlink > a:hover{
+    color: rgb(51, 51, 51);
+}
+
+.footerlink a:hover::after{
     transform: scaleX(1);
 }
 
-.pages a::after{
+.footerlink a::after{
     display: block;
     content: '';
-    border-bottom: solid 3px white;
+    border-bottom: solid 2px rgb(51, 51, 51);
     transform: scaleX(0);
     transition: transform 250ms ease-in-out;
 }
 
+#name, #team, #customerservice, #more{
+    padding: 4vh;
+}
+
+#socialmedia a{
+    height: fit-content;
+    width: fit-content;
+    text-decoration: none;
+    font-size: 0;
+}
+
+#name #coffee{
+    width: 2vw;
+}
+
+#name #insta{
+    width: 3.2vw;
+    margin-left: 2vw;
+}
+
+#coName{
+    font-size: 1.7em;
+    font-family: 'Palanquin';
+}
+
+#coSlogan{
+    font-family: 'Red Hat Text';
+}
+
+#socialmedia{
+    margin-bottom: 0;
+}
+
+#team{
+    width: fit-content;
+}
+
+#more{
+    display: grid;
+}
+
+#trademark{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column: 1 / span 4;
+    margin: 0;
+    padding: 0;
+}
+
+#trademark p{
+    align-self: end;
+    width: fit-content;
+    padding: 0 0 1vw 1vw;
+    margin: 0;
+}
+
+#trademark a{
+    grid-column: 2 / span 4;
+    justify-self: end;
+    padding: 0;
+    margin: 0 1em 1em 0;
+}
+
+#backtotop{
+    width: 2vw;
+    filter: invert(1);
+}
+
+#backtotop:hover{
+    filter: invert(0);
+}
+
 .trademark{
-    margin-top: 0.5em;
+    /* margin-top: 0.5em;
     padding-bottom: 0.5em;
     justify-self: center;
     color: white;
-    font-family: "Red Hat Text";
+    font-family: "Red Hat Text"; */
 }
 
 @media (max-aspect-ratio:1/1) {

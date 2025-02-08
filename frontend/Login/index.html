@@ -25,7 +25,24 @@
                 Örülünk, hogy újra itt vagy!
             </div>
 
-            <div class="email">
+            <div class="form-floating">
+                <!-- <p class="inputTitle">Email-cím</p> -->
+                <input class="form-control shadow-none" id="email" type="email" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="E-mail cím">
+                <p id="emailFeedback">asd</p>
+                
+                <label for="email">E-mail cím</label>
+            </div>
+
+            <div class="form-floating">
+                <!-- <p class="inputTitle">Email-cím</p> -->
+                <input class="form-control shadow-none" id="password" type="password" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="Jelszó">
+                <p id="pswFeedback">asd</p>
+                
+                <label for="password">Jelszó</label>
+            </div>
+
+
+            <!-- <div class="email">
                 <p>Email-cím</p>
                 
                 <input type="email" id="email" placeholder="" spellcheck="false" onchange="colorChange(this)">
@@ -38,7 +55,7 @@
                 
                 <span onclick="togglePSW()" id="toggleIcon">🕳️</span>
                 
-            </div>
+            </div> -->
 
             <div class="rememberme">
                 <input type="checkbox" id="rememberme">

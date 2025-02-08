@@ -118,7 +118,8 @@ html{
     content: '';
     border-bottom: solid 3px white;
     transform: scaleX(0);
-    transition: transform 200ms ease-in-out; 
+    transition: transform 200ms ease-in-out;
+    margin-top: -2px;
 }
 
 @media (max-aspect-ratio:1/1) {
@@ -221,13 +222,11 @@ html{
 .profile{
     display: grid;
     height: fit-content;
-    width: 40vw;
+    width: 30vw;
     grid-template-rows: fit-content;
     justify-self: center;
-    /* gap: 1vh; */
+    gap: 1vh;
 }
-
-
 
 .sectionTitle{
     align-self: center;
@@ -264,23 +263,25 @@ html{
     justify-self: center;
     font-family: "Palanquin";
     font-size: 2em;
+    margin: 0;
 }
 
-textarea{
+#textarea{
     resize: none;
-    border: 2px #d3d3d3 solid;
+    height: 21vh;
+    /* border: 2px #d3d3d3 solid;
     padding: 0.2em 0 0.2em 0.2em;
     width: 60%;
     justify-self: center;
     font-family: "Red Hat Text";
     font-size: 1em;
-    color: #ffbc2f;
+    color: #ffbc2f; */
 }
 
 textarea:focus{
-    outline: none;
+    /* outline: none;
     border: rgba(240, 192, 35, 1) 2px solid !important;
-    padding: 0.2em 0 0.2em 0.2em;
+    padding: 0.2em 0 0.2em 0.2em; */
 }
 
 #remaining-chars{
@@ -298,7 +299,9 @@ textarea:focus{
 .data{
     display: grid;
     font-family: "Red Hat Text";
-    row-gap: 5vh;
+    width: 40vw;
+    justify-self: center;
+    /* row-gap: 2vh; */
     height: fit-content;
     margin: 2vh 2vw 0 0;
 }
@@ -306,11 +309,12 @@ textarea:focus{
 
 .data > div{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    /* grid-template-columns: 1fr 1fr; */
 }
 
 .data > div > p{
     align-self: end;
+    margin: 0;
 }
 
 input{
@@ -323,29 +327,69 @@ input{
     align-self: center;
 }
 
+.form-floating, .form-select{
+    font-family: 'Red Hat Text';
+}
+
+.form-control:focus, .form-select:focus{
+    color: #ffbc2f;
+    border: #ffbc2f 1px solid !important;
+}
+
+.form-control{
+    color: #ffbc2f;
+}
+
+#ageDiv{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+#ageDiv .form-floating{
+    width: 10vw;
+    justify-self: center;
+}
+
+.form-select{
+    /* grid-row: span 2;
+    align-self: center; */
+    color: #ffbc2f;
+    border: 1px solid #ffbc2f;
+    /* font-family: "Red Hat Text";
+    font-size: 1em;
+    align-self: center;
+    width: 100%; */
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.inputs input:focus{
+    /* outline: none; */
+    /* border-bottom: rgba(240, 192, 35, 1) 2px solid !important; */
+    /* padding-left: 0.1em; */
+}
+
 input:focus{
-    outline: none;
-    border: rgba(240, 192, 35, 1) 1px solid !important;
+    /* outline: none;
+    border: rgba(240, 192, 35, 1) 1px solid !important; */
 }
 
 #password a, #password a:visited{
     color: #ffbc2f;
 }
 
-select{
-    /* grid-row: span 2;
-    align-self: center; */
-    color: #ffbc2f;
-    border: 1px solid #ffbc2f;
-    font-family: "Red Hat Text";
-    font-size: 1em;
-    align-self: center;
-    width: 100%;
-}
 
-select:focus{
-    outline: none;
-}
 
 .show input{
     accent-color: #ffbc2f;
@@ -361,6 +405,7 @@ select:focus{
     display: block;
     justify-self: center;
     opacity: 0.7;
+    /* width: 50vw; */
 }
 
 .search input{
@@ -481,42 +526,135 @@ select:focus{
 }
 
 .footer{
-    text-align: center;
-    max-width: 100%;
+    display: grid;
+    grid-template-columns: 1fr auto auto auto;
+    /* grid-template-rows: repeat(2, 1fr); */
     background-color: #ffbc2f;
-    height: fit-content;
+    /* height: fit-content; */
+    align-self: end;
+    max-width: 100%;
+    /* position: relative;
+    bottom: 0; */
 }
 
-.pages a{
-    padding: 1rem 1.5rem;
+
+
+.footer > div{
+    /* padding: 3vh; */
+    height: fit-content;
+    padding: 2vh 0 0 2vh;
+    margin-bottom: 0;
+    color: rgb(51, 51, 51);
+}
+
+.footer > div > a{
+    text-decoration: none;
+    color: black;
+}
+
+.footer > div > a{
     text-decoration: none;
     color: white;
-    font-size: 1.3rem;
     display: inline-block;
     font-family: "Albert Sans";
     width: fit-content;
+    margin-bottom: 1em;
 }
 
-.pages a:hover::after{
+.footerlink > a:hover{
+    color: rgb(51, 51, 51);
+}
+
+.footerlink a:hover::after{
     transform: scaleX(1);
-    
 }
 
-.pages a::after{
+.footerlink a::after{
     display: block;
     content: '';
-    border-bottom: solid 3px white;
+    border-bottom: solid 2px rgb(51, 51, 51);
     transform: scaleX(0);
     transition: transform 250ms ease-in-out;
-    
+}
+
+#name, #team, #customerservice, #more{
+    padding: 4vh;
+}
+
+#socialmedia a{
+    height: fit-content;
+    width: fit-content;
+    text-decoration: none;
+    font-size: 0;
+}
+
+#name #coffee{
+    width: 2vw;
+}
+
+#name #insta{
+    width: 3.2vw;
+    margin-left: 2vw;
+}
+
+#coName{
+    font-size: 1.7em;
+    font-family: 'Palanquin';
+}
+
+#coSlogan{
+    font-family: 'Red Hat Text';
+}
+
+#socialmedia{
+    margin-bottom: 0;
+}
+
+#team{
+    width: fit-content;
+}
+
+#more{
+    display: grid;
+}
+
+#trademark{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column: 1 / span 4;
+    margin: 0;
+    padding: 0;
+}
+
+#trademark p{
+    align-self: end;
+    width: fit-content;
+    padding: 0 0 1vw 1vw;
+    margin: 0;
+}
+
+#trademark a{
+    grid-column: 2 / span 4;
+    justify-self: end;
+    padding: 0;
+    margin: 0 1em 1em 0;
+}
+
+#backtotop{
+    width: 2vw;
+    filter: invert(1);
+}
+
+#backtotop:hover{
+    filter: invert(0);
 }
 
 .trademark{
-    margin-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    /* margin-top: 0.5em;
+    padding-bottom: 0.5em;
     justify-self: center;
     color: white;
-    font-family: "Red Hat Text";
+    font-family: "Red Hat Text"; */
 }
 
 .emoji{

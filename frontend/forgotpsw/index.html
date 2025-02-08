@@ -17,7 +17,21 @@
                 Változtasd meg a jelszavad!
             </div>
 
-            <div class="passwordNew1">
+            <div class="form-floating passwordNew1">
+                <input class="form-control shadow-none" id="password1" type="password" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="Új jelszó">
+                <p id="newPassFeedback">asd</p>
+                
+                <label for="password1">Új jelszó</label>
+            </div>
+
+            <div class="form-floating passwordNew2">
+                <input class="form-control shadow-none" id="password2" type="password" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="Új jelszó még egyszer">
+                <p id="reNewPassFeedback">asd</p>
+                
+                <label for="password2">Új jelszó még egyszer</label>
+            </div>
+
+            <!-- <div class="passwordNew1">
                 <p>Új jelszó</p>
                 <input type="password" id="password1" value="" spellcheck="false" onchange="colorChange(this)">
                 <span onclick="togglePSW(this)" id="toggleIcon">🕳️</span>
@@ -30,7 +44,7 @@
                 <input type="password" id="password2" value="" spellcheck="false" onchange="colorChange(this)">
                 <span onclick="togglePSW(this)" id="toggleIcon">🕳️</span>
                 
-            </div>
+            </div> -->
 
             <div class="button">
                 <button class="primaryBTN" onclick="registration()">mentés</button>
