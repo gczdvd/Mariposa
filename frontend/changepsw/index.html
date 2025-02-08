@@ -12,7 +12,7 @@
     <div class="wrapper">
 
         <div class="back">
-            <a href=""><img src="/_images/logo.png" alt=""></a>
+            <a href=""><img src="/_images/logo.png" alt="Kezdőlap" title="Kezdőlap"></a>
         </div>
 
         <div class="signin">
@@ -21,56 +21,32 @@
                 Változtasd meg a jelszavad!
             </div>
 
-            <div class="subtitle">
-                <!-- Üdv ismét! -->
-            </div>
-
             <div class="form-floating passwordRN">
-                <!-- <p class="inputTitle">Email-cím</p> -->
                 <input class="form-control shadow-none" id="curPassword" type="password" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="Jelenlegi jelszó">
-                <p id="curPassFeedback">asd</p>
+                <p id="curPassFeedback">Legalább 12 karakter, kis- és nagybetű egyaránt</p>
 
                 <label for="curPassword">Jelenlegi jelszó</label>
             </div>
 
             <div class="form-floating passwordNew1">
-                <!-- <p class="inputTitle">Email-cím</p> -->
                 <input class="form-control shadow-none" id="password1" type="password" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="Új jelszó">
-                <p id="newPassFeedback">asd</p>
+                <p id="newPassFeedback">Legalább 12 karakter, kis- és nagybetű egyaránt</p>
                 
                 <label for="password1">Új jelszó</label>
             </div>
 
             <div class="form-floating passwordNew2">
-                <!-- <p class="inputTitle">Email-cím</p> -->
                 <input class="form-control shadow-none" id="password2" type="password" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="Új jelszó még egyszer">
-                <p id="reNewPassFeedback">asd</p>
+                <p id="reNewPassFeedback">Legalább 12 karakter, kis- és nagybetű egyaránt</p>
                 
                 <label for="password2">Új jelszó még egyszer</label>
             </div>
-
-            <!-- <div class="passwordRN">
-                <p>Jelenlegi jelszó</p>
-                <input type="email" id="email" placeholder="" spellcheck="false" onchange="colorChange(this)">
-            </div> -->
-
-            <!-- <div class="passwordNew1">
-                <p>Új jelszó</p>
-                <input type="password" id="password1" value="" spellcheck="false" onchange="colorChange(this)">
-                <span onclick="togglePSW(this)" id="toggleIcon">🕳️</span>
-            </div> -->
-
-            <!-- <div class="passwordNew2">
-                <p>Új jelszó még egyszer</p>
-                <input type="password" id="password2" value="" spellcheck="false" onchange="colorChange(this)">
-                <span onclick="togglePSW(this)" id="toggleIcon">🕳️</span>
-            </div> -->
 
             <div class="button">
                 <button class="primaryBTN" onclick="registration()">mentés</button>
             </div>
 
-            <div class="forgotPSW">
+            <div class="tertiaryBTN">
                 <a href="">Elfelejtettem a jelszavam</a>
             </div>
 
@@ -79,12 +55,9 @@
         <div class="image">
             <img src="/_images/tablet_phone.png" alt="">
         </div>
-
-
     </div>
 
     
     <script src="script.js"></script>
-    
 </body>
 </html>

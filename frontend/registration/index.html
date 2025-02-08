@@ -10,24 +10,18 @@
 </head>
 <body>
     <div class="wrapper">
-        <!-- 1 -->
-        <div class="back">
-            <a href=""><img src="/_images/logo.png" alt=""></a>
+
+        <div class="logo">
+            <a href=""><img src="/_images/logo.png" alt="" id="logo"></a>
         </div>
 
-        <!-- 2 -->
         <div class="signup">
 
             <div class="title">
                 Regisztrálj, hogy chatelhess!
             </div>
 
-            <!-- <div class="subtitle">
-                Egyszerű regisztráció, hogy minél előbb a chatfelületen lehess!
-            </div> -->
-
             <div class="form-floating">
-                <!-- <p class="inputTitle">Email-cím</p> -->
                 <input class="form-control shadow-none" id="name" type="text" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="Felhasználónév">
                 <!-- <p></p> -->
 
@@ -35,17 +29,16 @@
             </div>
 
             <div class="form-floating">
-                <!-- <p class="inputTitle">Email-cím</p> -->
                 <input class="form-control shadow-none" id="email" type="email" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="E-mail cím">
-                <p id="emailFeedback">Helytelen e-mail-cím</p>
+                <p id="emailFeedback"></p>
                 
                 <label for="email">E-mail-cím</label>
             </div>
 
             <div class="form-floating">
-                <!-- <p class="inputTitle">Email-cím</p> -->
-                <input class="form-control shadow-none" id="password" type="password" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="Jelszó" data-bs-toggle="tooltip" data-bs-title="Legalább 12 karakter, kis- és nagybetű">
-                <p id="pswFeedback">Helytelen jelszó</p>
+                <input class="form-control shadow-none" id="password" type="password" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="Jelszó" 
+                data-bs-toggle="tooltip" data-bs-title="Legalább 12 karakter, kis- és nagybetű">
+                <p id="pswFeedback">Legalább 12 karakter, kis- és nagybetű egyaránt</p>
                 
                 <label for="password">Jelszó</label>
             </div>
@@ -54,21 +47,20 @@
                 <input type="checkbox" id="checkbox">
                 <label for="checkbox">Elfogadom az <a href="" target="_blank">ÁSZF</a>-be foglaltakat.</label>
 
-                <p id="checkboxFeedback">asd</p>
+                <p id="checkboxFeedback"></p>
             </div>
 
             <div class="button">
-                <button class="primaryBTN" onclick="registration()">Regisztráció</button>
+                <button class="primaryBTN" onclick="registration()" data-bs-title="asd">Regisztráció</button>
             </div>
 
-            <div class="account">
+            <div>
                 Már van fiókod?
-                <a href="/login">Jelentkezz be!</a>
+                <a href="/login" class="tertiaryBTN">Jelentkezz be!</a>
             </div>
 
         </div>
     
-        <!-- 3 -->
         <div class="image">
             <img src="/_images/tablet_phone.png" alt="">
         </div>
@@ -76,7 +68,6 @@
 
     </div>
 
-    
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>

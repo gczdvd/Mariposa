@@ -1,16 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@600&family=Noto+Color+Emoji&family=Noto+Sans+Symbols+2&family=Palanquin:wght@700&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap');
 
-p{
-    margin: 0;
-}
-
-
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     border: 0;
 }
+
+p{
+    margin: 0;
+}
+
+.emoji{
+    font-family: 'Noto Color Emoji';
+    font-size: 5em;
+    user-select: none;
+}
+
 
 .primaryBTN{
     display: grid;
@@ -21,7 +27,6 @@ p{
     font-family: "Albert Sans";
     text-transform: uppercase;
     text-decoration: none;
-    /* text-align: center; */
     padding: 0.7em 1.5em;
     color: white;
     font-size: 1.5em;
@@ -38,7 +43,6 @@ p{
 .button{
     grid-column: 1 / span 2;
 }
-
 
 .secondaryBTN{
     display: grid;
@@ -60,19 +64,30 @@ p{
     border: 3px solid #ffbc2f;
 }
 
-@media (max-aspect-ratio:1/1) {
-    .primaryBTN{
-        padding: 0.5rem 1rem 0.5rem 1em;
-        justify-self: center;
-        font-size: 15px;
-    }
+.tertiaryBTN, .tertiaryBTN a{
+    display: inline-block;
+    color: black;
+    text-decoration: none;
+    height: fit-content;
+    font-family: "Albert Sans";
+}
 
-    .secondaryBTN{
-        padding: 0.5rem 1rem 0.5rem 1em;
-        justify-self: center;
-        font-size: 15px;
-    }
-    
+.tertiaryBTN:hover::after, .tertiaryBTN a:hover::after{
+    transform: scaleX(1);
+}
+
+.tertiaryBTN:hover, .tertiaryBTN a:hover{
+    color: #ffbc2f;
+    transition: 200ms;
+}
+
+.tertiaryBTN::after, .tertiaryBTN a::after{
+    display: block;
+    content: '';
+    border-bottom: solid 2px #ffbc2f;
+    transform: scaleX(0);
+    transition: transform 200ms ease-in-out;
+    margin-top: -2px;
 }
 
 
@@ -101,10 +116,7 @@ p{
 
 #navbar{
     display: inline-block;
-    /* width: fit-content; */
-    /* align-content: center; */
     margin: 3vh 0;
-    
 }
 
 #navigation{
@@ -113,20 +125,13 @@ p{
     padding: 0;
     margin: 0;
     width: fit-content;
-    /* height: fit-content; */
     gap: 3vw;
-    
-    
 }
 
 #navigation li{
     list-style: none;
     width: fit-content;
     margin-left: 1vw;
-    /* height: fit-content; */
-    /* padding: 0; */
-    /* margin: 0; */
-    /* align-self: start; */
 }
 
 #loginNav{
@@ -135,11 +140,6 @@ p{
     padding: 0;
     margin: 0;
     align-content: center;
-    /* width: fit-content; */
-}
-
-#loginNav li::after{
-    /* content: ''; */
 }
 
 #loginNav li{
@@ -147,172 +147,18 @@ p{
     margin-right: 1vw;
 }
 
-#loginNav a{
-    /* height: fit-content; */
-}
-
 #loginNav img{
     width: 3.5vw;
     border-radius: 50%;
 }
 
-/* #navigation{
-    justify-self: end;
-    width: fit-content;
-    
-} */
 
-/* #navigation ul{
-    display: grid;
-    grid-template-columns: repeat(4, auto);
-    justify-self: end;
-    justify-content: center;
-    width: fit-content;
-} */
-
-/* #navigation a{
-    font-size: 1em;
-    font-weight: bold;
-    margin: 1vw 3vw;
-    
-    height: fit-content;
-} */
-
-/* #navigation li{
-    list-style: none;
-    width: fit-content;
-    justify-self: center;
-} */
-
-.tertiaryBTN, .tertiaryBTN a{
-    color: black;
-    text-decoration: none;
-    /* font-size: 0.7em; */
-    height: fit-content;
-    display: inline-block;
-    font-family: "Albert Sans";
-    
-}
-
-.tertiaryBTN:hover::after, .tertiaryBTN a:hover::after{
-    transform: scaleX(1);
-    
-}
-
-.tertiaryBTN:hover, .tertiaryBTN a:hover{
-    color: #ffbc2f;
-    transition: 200ms;
-    
-}
-
-.tertiaryBTN::after, .tertiaryBTN a::after{
-    display: block;
-    content: '';
-    border-bottom: solid 3px #ffbc2f;
-    transform: scaleX(0);
-    transition: transform 200ms ease-in-out;
-    margin-top: -2px;
-}
-
-@media (max-aspect-ratio:1/1) {
-    #logo{
-        display: grid;
-    }
-
-    #logo img{
-        width: 4em;
-        align-self: center;
-    }
-    
-    #title{
-        font-size: 1em;
-        align-self: center;
-        text-decoration: none;
-        color: black;
-        font-family: "Palanquin";
-    }
-
-    #header{
-        position: inherit;
-        
-    }
-
-    #main{
-        display: block;
-    }
-    
-    #main button img{
-        width: 5vw;
-    }
-    
-    #main button{
-        height: fit-content;
-        background-color: transparent;
-        border: none;
-        margin: 1em 1em 0 0;
-        display: block;
-        justify-self: end;
-        position: absolute;
-        right: 0;
-        z-index: 2;
-    }
-    
-    
-    #navigation li a{
-        text-decoration: none;
-        color: white;
-        list-style: none;
-        
-    }
-    
-    #navigation ul{
-        display: block;
-        grid-row-start: 2;
-        margin: 0;
-    }
-    
-    #navigation{
-        display: grid;
-        grid-template-rows: 2em 1fr;
-        position: absolute;
-        height: 100vh;
-        max-height: 100%;
-        justify-self: end;
-        font-size: 1.5em;
-        background-color: orange;
-        z-index: 1;
-        overflow-x: hidden;
-        transition: 0.5s;
-        width: 0;
-        right: 0;
-        font-family: "Albert Sans"
-    }
-    
-    #main{
-        transition: margin-right .5s;
-    }
-    
-    #close{
-        display: none;
-    }
-    
-    .navigation a{
-        font-size: 1.3em;
-        font-weight: bold;
-        color: black;
-        height: fit-content;
-    }
-}
-
-/* BORÍTÓ */
 .cover{
     display: grid;
     width: 100vw;
     max-width: 100%;
     grid-template-columns: 1fr 1fr;
-    margin-bottom: 5vh;
 }
-
 
 .cover img{
     width: 50vw;
@@ -322,7 +168,7 @@ p{
     display: grid;
     height: fit-content;
     align-self: center;
-    gap: 5vh;
+    gap: 3vh;
 }
 
 .bigtext{
@@ -331,7 +177,7 @@ p{
     text-align: center;
     font-family: "Red Hat Text";
     font-weight: 600;
-    font-size: 2em;
+    font-size: 1.5em;
 }
 
 .midtext{
@@ -368,50 +214,6 @@ p{
     justify-self: center;
 }
 
-@media (max-aspect-ratio:1/1) {
-    .cover{
-        display: grid;
-        grid-template-rows: 1fr 1fr;
-        grid-template-columns: none;
-    }
-
-    .cover .image{
-        
-        /* content: url("../frontend/images/lpcover.jpg");
-        width: 100vw;
-        max-width: 100%; */
-    }
-
-    .cover img{
-        grid-row-start: 1;
-        width: 100vw;
-        max-width: 100%;
-    }
-
-    .texts{
-        grid-row-start: 2;
-        /* width: 100vw; */
-        max-width: 100%;
-    }
-
-    .headline{
-        font-size: 3em;
-    }
-
-    .subhead{
-        font-size: 1.5em;
-    }
-
-    .pers{
-        width: 80vw;
-        font-size: 1em;
-    }
-
-    .description{
-        margin-bottom: 5vh;
-    }
-}
-
 
 .services{
     display: grid;
@@ -431,26 +233,6 @@ p{
 .services p:nth-of-type(even){
     margin: auto;
     font-size: 1.2em;
-}
-
-@media (max-aspect-ratio:1/1) {
-    .services{
-        grid-template-columns: 1fr;
-        gap: 2em;
-        width: 100vw;
-        max-width: 100%;
-        justify-self: start;
-    }
-
-    .services > div img{
-        width: 30vw;
-    }
-
-    .services p{
-        font-size: 3em;
-        height: fit-content;
-        margin: 0;
-    }
 }
 
 
@@ -481,13 +263,6 @@ p{
     align-self: center;
 }
 
-@media (max-aspect-ratio:1/1) {
-    .slides img{
-        width: 50vw;
-        border-radius: 3em;
-    }
-}
-
 
 .signup{
     display: grid;
@@ -506,7 +281,7 @@ p{
     display: grid;
     justify-self: center;
     align-self: center;
-    gap: 3vh;
+    gap: 1vh;
 }
 
 .convince li{
@@ -528,40 +303,7 @@ p{
     font-size: 1.5em;
 }
 
-@media (max-aspect-ratio:1/1) {
-    .signup{
-        grid-template-columns: 1fr;
-        justify-items: center;
-        /* margin: auto; */
-        
-        justify-content: center;
-    }
 
-    .signup img{
-        width: 100vw;
-        max-width: 100%;
-    }
-
-    .convince{
-        width: fit-content;
-    }
-
-    .convince p{
-        text-align: center;
-    }
-
-    .convince p, li{
-        font-size: 1em;
-        justify-self: center;
-        max-width: 100%;
-
-    }
-}
-
-
-
-
-/* TÁMOGATÁS */
 .donation{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -585,24 +327,6 @@ p{
 }
 
 
-@media (max-aspect-ratio:1/1) {
-    .donation{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .donation img{
-        display: block;
-        width: 40vw;
-        justify-self: center;
-    }
-
-    .donation-text{
-        font-size: 1em;
-    }
-}
-
-/* HÍRLEVÉL */
 .newsletter{
     display: grid;
     width: 100vw;
@@ -632,66 +356,21 @@ p{
     width: 30vw;
 }
 
-.emailInput input{
-    /* padding: 0.3em;
-    font-size: 1em;
-    color: #ffbc2f;
-    border-bottom: 3px solid lightgray;
-    width: 30vw;
-    background-color: transparent;
-    font-family: 'Red Hat Text'; */
-}
-
 .emailInput input:focus{
     outline: none;
     border-bottom: 3px solid #ffbc2f !important;
 }
 
-.emailInput input::-webkit-input-placeholder{
-    /* opacity: 0.4;
-    font-size: 1em; */
-}
-
-.emailInput input:focus::placeholder{
-    /* opacity: 0; */
-}
-
-@media (max-aspect-ratio:1/1) {
-    .newsText{
-        font-size: 1.5em;
-        text-align: center;
-    }
-
-    .emailInput input{
-        /* width: 80vw; */
-    }
-
-    .form-control{
-        width: 70vw;
-    }
-}
-
-
-
-
-
 
 .footer{
     display: grid;
     grid-template-columns: 1fr auto auto auto;
-    /* grid-template-rows: repeat(2, 1fr); */
     background-color: #ffbc2f;
-    /* height: fit-content; */
     align-self: end;
     max-width: 100%;
-    /* position: relative;
-    bottom: 0; */
 }
 
-
-
 .footer > div{
-    /* padding: 3vh; */
     height: fit-content;
     padding: 2vh 0 0 2vh;
     margin-bottom: 0;
@@ -726,6 +405,7 @@ p{
     border-bottom: solid 2px rgb(51, 51, 51);
     transform: scaleX(0);
     transition: transform 250ms ease-in-out;
+    margin-top: -2px;
 }
 
 #name, #team, #customerservice, #more{
@@ -800,27 +480,165 @@ p{
     filter: invert(0);
 }
 
-.trademark{
-    /* margin-top: 0.5em;
-    padding-bottom: 0.5em;
-    justify-self: center;
-    color: white;
-    font-family: "Red Hat Text"; */
-}
-
-.emoji{
-    font-family: 'Noto Color Emoji';
-    font-size: 5em;
-    user-select: none;
-}
-
 
 @media (max-aspect-ratio:1/1) {
+    .primaryBTN, .secondaryBTN{
+        padding: 0.5em 1em;
+        justify-self: center;
+        font-size: 1em;
+    }
+
+    #logo{
+        display: grid;
+        width: 10vw;
+    }
+    
+    #title{
+        font-size: 1em;
+        align-self: center;
+        text-decoration: none;
+        color: black;
+        font-family: "Palanquin";
+    }
+
+    #header{
+        font-size: 0.5em;
+    }
+
+    #navbar{
+        margin: 2vh 0;
+    }
+
+    #navigation{
+        gap: 5vw;
+    }
+    
+    .navigation a{
+        font-size: 1.3em;
+        font-weight: bold;
+        color: black;
+        height: fit-content;
+    }
+
+    .cover{
+        display: grid;
+        grid-template-rows: auto auto;
+        grid-template-columns: none;
+    }
+
+    .cover img{
+        grid-row-start: 1;
+        width: 100vw;
+        max-width: 100%;
+        margin-bottom: 5vh;
+    }
+
+    .texts{
+        grid-row-start: 2;
+        max-width: 100%;
+    }
+
+    .headline{
+        font-size: 3em;
+    }
+
+    .subhead{
+        font-size: 1.5em;
+    }
+
+    .pers{
+        width: 80vw;
+        font-size: 1em;
+    }
+
+    .description{
+        margin-bottom: 5vh;
+    }
+
+    .services{
+        grid-template-columns: 1fr;
+        gap: 2em;
+        width: 100vw;
+        max-width: 100%;
+        justify-self: start;
+    }
+
+    .services > div img{
+        width: 30vw;
+    }
+
+    .services p{
+        font-size: 3em;
+        height: fit-content;
+        margin: 0;
+    }
+
+    .us-text{
+        font-size: 1em;
+    }
+
+    .slides img{
+        width: 30vw;
+        border-radius: 3em;
+    }
+
+    .signup{
+        grid-template-columns: 1fr;
+        justify-content: center;
+    }
+
+    .signup img{
+        width: 100vw;
+        max-width: 100%;
+    }
+
+    .convince{
+        width: fit-content;
+        margin-bottom: 5vh;
+    }
+
+    .convince p{
+        justify-self: center;
+        font-size: 1em;
+    }
+
+    .convince li{
+        font-size: 1em;
+        text-indent: 2em;
+    }
+
+    .donation{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .donation img{
+        display: block;
+        width: 40vw;
+        justify-self: center;
+        margin-bottom: 2vh;
+    }
+
+    .donation-text{
+        font-size: 1em;
+    }
+
+    .newsletter{
+        margin-bottom: 1.5vh;
+    }
+
+    .newsText{
+        font-size: 1.5em;
+        text-align: center;
+    }
+
+    .form-control{
+        width: 70vw;
+    }
+
     .footer{
         display: block;
-        /* display: grid; */
-        /* grid-template-rows: repeat(4, 1fr);
-        grid-template-columns: repeat(2, 1fr); */
+        padding-left: 1em;
     }
 
     .footer *{
@@ -828,18 +646,31 @@ p{
     }
 
     .footer > div{
-        /* padding: 3vh; */
-        /* height: fit-content; */
-        /* padding: 2vh 0 0 2vh; */
         margin-bottom: 0;
         color: rgb(51, 51, 51);
         width: fit-content;
     }
 
-    #name{
+    .footer h5{
+        margin: 0;
+    }
+
+    .footer div a{
+        margin-bottom: 1.5vh;
+    }
+
+    .footer #name{
         grid-column: 1 / span 4;
         grid-row-start: 1;
-        
+        margin-bottom: 2vh;
+    }
+
+    #name #coffee{
+        width: 5vw;
+    }
+
+    #name #insta{
+        width: 8vw;
     }
 
     #customerservice{
@@ -866,11 +697,8 @@ p{
 
     #trademark{
         display: block;
+        width: fit-content;
         height: fit-content;
-        padding: 0;
-    }
-
-    #trademark p{
         padding: 0;
     }
 }

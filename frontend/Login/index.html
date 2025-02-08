@@ -21,41 +21,23 @@
                 Jelentkezz be a fiókodba!
             </div>
 
-            <div class="subtitle">
+            <!-- <div class="subtitle">
                 Örülünk, hogy újra itt vagy!
-            </div>
+            </div> -->
 
             <div class="form-floating">
-                <!-- <p class="inputTitle">Email-cím</p> -->
                 <input class="form-control shadow-none" id="email" type="email" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="E-mail cím">
-                <p id="emailFeedback">asd</p>
+                <p id="emailFeedback"></p>
                 
                 <label for="email">E-mail cím</label>
             </div>
 
             <div class="form-floating">
-                <!-- <p class="inputTitle">Email-cím</p> -->
                 <input class="form-control shadow-none" id="password" type="password" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="Jelszó">
-                <p id="pswFeedback">asd</p>
+                <p id="pswFeedback">Legalább 12 karakter, kis- és nagybetű egyaránt</p>
                 
                 <label for="password">Jelszó</label>
             </div>
-
-
-            <!-- <div class="email">
-                <p>Email-cím</p>
-                
-                <input type="email" id="email" placeholder="" spellcheck="false" onchange="colorChange(this)">
-            </div>
-
-            <div class="password">
-                <p>Jelszó</p>
-                
-                <input type="password" id="password" value="" spellcheck="false" onchange="colorChange(this)">
-                
-                <span onclick="togglePSW()" id="toggleIcon">🕳️</span>
-                
-            </div> -->
 
             <div class="rememberme">
                 <input type="checkbox" id="rememberme">
@@ -67,7 +49,7 @@
             </div>
 
             <div class="button">
-                <button class="primaryBTN" onclick="login()">bejelentkezés</button>
+                <button class="primaryBTN" onclick="login()">BEJELENTKEZÉS</button>
             </div>
 
             <div class="account">
@@ -80,11 +62,8 @@
         <div class="image">
             <img src="/_images/tablet_phone.png" alt="">
         </div>
-
-
     </div>
 
-    
     <script src="script.js"></script>
 </body>
 </html>

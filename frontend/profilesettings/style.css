@@ -5,15 +5,15 @@
     margin: 0;
 }
 
-html{
-    height: 100vh;
+.emoji{
+    font-family: "Noto Color Emoji";
 }
 
 .secondaryBTN{
     background-color: white;
     font-family: "Albert Sans";
     text-transform: uppercase;
-    padding: 1em 2em 1em 2em;
+    padding: 1em 2em;
     color: #ffbc2f;
     font-size: 1em;
     border: 3px solid transparent;
@@ -30,106 +30,98 @@ html{
     border: 3px solid #ffbc2f;
 }
 
-/* ALSÓ HATÁR ANIMÁCIÓ */
-#header{
-    display: grid;
-    width: 100vw;
-    max-width: 100%;
-    grid-template-columns: auto auto;
-    background-color: #ffbc2f;
-    margin-bottom: 3vh;
-    /* position: absolute; */
-}
-
-#logo{
-    display: grid;
-    grid-template-columns: auto 1fr;
-    
-}
-
-#logo a{
-    align-self: center;
-}
-
-#logo img{
-    width: 4em;
-    align-self: center;
-}
-
-#main{
-    display: none;
-}
-
-
-#title{
-    font-size: 1em;
-    align-self: center;
-    text-transform: uppercase;
-    font-family: "Palanquin";
-}
-
-#navigation{
-    justify-self: end;
-    /* width: fit-content; */
-    
-}
-
-#navigation ul{
-    display: grid;
-    grid-template-columns: repeat(4, auto);
-    justify-self: end;
-    justify-content: center;
-    /* width: fit-content; */
-}
-
-#navigation a{
-    font-size: 1.5em;
-    font-weight: bold;
-    margin: 1vw 3vw;
-    
-    /* height: fit-content; */
-}
-
-#navigation li{
-    list-style: none;
-    width: fit-content;
-    justify-self: center;
-}
-
 .tertiaryBTN, .tertiaryBTN a{
+    display: inline-block;
     color: black;
     text-decoration: none;
-    display: inline-block;
+    height: fit-content;
     font-family: "Albert Sans";
 }
 
 .tertiaryBTN:hover::after, .tertiaryBTN a:hover::after{
     transform: scaleX(1);
-    
 }
 
 .tertiaryBTN:hover, .tertiaryBTN a:hover{
-    color: white;
+    color: #ffbc2f;
     transition: 200ms;
 }
 
 .tertiaryBTN::after, .tertiaryBTN a::after{
     display: block;
     content: '';
-    border-bottom: solid 3px white;
+    border-bottom: solid 2px #ffbc2f;
     transform: scaleX(0);
     transition: transform 200ms ease-in-out;
     margin-top: -2px;
 }
 
+/* ALSÓ HATÁR ANIMÁCIÓ */
+#header{
+    display: grid;
+    width: 100vw;
+    max-width: 100%;
+    grid-template-columns: auto 1fr 1fr;
+    background-color: transparent;
+    font-size: 1em;
+    align-items: center;
+    text-transform: uppercase;
+}
+
+#homepage{
+    font-size: 0;
+}
+
+#logo{
+    width: 5vw;
+}
+
+#main{
+    display: none;
+}
+
+#navbar{
+    display: inline-block;
+    margin: 3vh 0;
+}
+
+#navigation{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0;
+    margin: 0;
+    width: fit-content;
+    gap: 3vw;
+}
+
+#navigation li{
+    list-style: none;
+    width: fit-content;
+    margin-left: 1vw;
+}
+
+#loginNav{
+    display: grid;
+    justify-content: end;
+    padding: 0;
+    margin: 0;
+    align-content: center;
+}
+
+#loginNav li{
+    list-style: none;
+    margin-right: 1vw;
+}
+
+#loginNav img{
+    width: 3.5vw;
+    border-radius: 50%;
+}
+
 @media (max-aspect-ratio:1/1) {
     #logo{
         display: grid;
-    }
-
-    #logo img{
-        width: 4em;
-        align-self: center;
+        width: 10vw;
     }
     
     #title{
@@ -141,72 +133,20 @@ html{
     }
 
     #header{
-        position: inherit;
-        
+        font-size: 0.8em;
     }
 
-    #main{
-        display: block;
+    #navbar{
+        margin: 2vh 0;
     }
-    
-    #main button img{
-        width: 5vw;
-    }
-    
-    #main button{
-        height: fit-content;
-        background-color: transparent;
-        border: none;
-        margin: 1em 1em 0 0;
-        display: block;
-        justify-self: end;
-        position: absolute;
-        right: 0;
-        z-index: 2;
-    }
-    
-    
-    #navigation li a{
-        text-decoration: none;
-        color: white;
-        list-style: none;
-    }
-    
-    #navigation ul{
-        display: block;
-        grid-row-start: 2;
-        margin: 0;
-    }
-    
+
     #navigation{
-        display: grid;
-        grid-template-rows: 2em 1fr;
-        position: absolute;
-        height: 100vh;
-        max-height: 100%;
-        justify-self: end;
-        font-size: 1.5em;
-        background-color: orange;
-        z-index: 1;
-        overflow-x: hidden;
-        transition: 0.5s;
-        width: 0;
-        right: 0;
-        font-family: "Albert Sans"
+        gap: 5vw;
     }
     
-    #main{
-        transition: margin-right .5s;
-    }
-    
-    #close{
-        display: none;
-    }
-    
-    .navigation a{
-        font-size: 1.3em;
+    #navigation a{
         font-weight: bold;
-        color: black;
+        color: r;
         height: fit-content;
     }
 }
@@ -255,7 +195,6 @@ html{
 .profile p:nth-of-type(2){
     text-align: center;
     margin-top: 0.5em;
-    /* text-transform: uppercase; */
     opacity: 0.7;
 }
 
@@ -269,19 +208,6 @@ html{
 #textarea{
     resize: none;
     height: 21vh;
-    /* border: 2px #d3d3d3 solid;
-    padding: 0.2em 0 0.2em 0.2em;
-    width: 60%;
-    justify-self: center;
-    font-family: "Red Hat Text";
-    font-size: 1em;
-    color: #ffbc2f; */
-}
-
-textarea:focus{
-    /* outline: none;
-    border: rgba(240, 192, 35, 1) 2px solid !important;
-    padding: 0.2em 0 0.2em 0.2em; */
 }
 
 #remaining-chars{
@@ -290,7 +216,6 @@ textarea:focus{
     color: #ffbc2f;
     margin-top: 3px;
     visibility: hidden;
-    /* height: 1em; */
     justify-self: center;
     width: 60%;
 }
@@ -301,15 +226,12 @@ textarea:focus{
     font-family: "Red Hat Text";
     width: 40vw;
     justify-self: center;
-    /* row-gap: 2vh; */
     height: fit-content;
     margin: 2vh 2vw 0 0;
 }
 
-
 .data > div{
     display: grid;
-    /* grid-template-columns: 1fr 1fr; */
 }
 
 .data > div > p{
@@ -352,14 +274,8 @@ input{
 }
 
 .form-select{
-    /* grid-row: span 2;
-    align-self: center; */
     color: #ffbc2f;
     border: 1px solid #ffbc2f;
-    /* font-family: "Red Hat Text";
-    font-size: 1em;
-    align-self: center;
-    width: 100%; */
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -374,22 +290,9 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-.inputs input:focus{
-    /* outline: none; */
-    /* border-bottom: rgba(240, 192, 35, 1) 2px solid !important; */
-    /* padding-left: 0.1em; */
-}
-
-input:focus{
-    /* outline: none;
-    border: rgba(240, 192, 35, 1) 1px solid !important; */
-}
-
 #password a, #password a:visited{
     color: #ffbc2f;
 }
-
-
 
 .show input{
     accent-color: #ffbc2f;
@@ -401,12 +304,11 @@ input:focus{
 }
 
 #info{
-    /* grid-column: 1; */
     display: block;
     justify-self: center;
     opacity: 0.7;
-    /* width: 50vw; */
 }
+
 
 .search input{
     outline: none;
@@ -423,14 +325,6 @@ input:focus{
     
 }
 
-/* summary{
-    font-family: "Red Hat Text";
-    font-size: 1em;
-    width: fit-content;
-    user-select: none;
-    cursor: pointer;
-} */
-
 .interests{
     display: grid;
     grid-template-columns: repeat(3, auto);
@@ -439,7 +333,6 @@ input:focus{
     row-gap: 3vh;
     width: 90vw;
     justify-self: center;
-    /* text-align: center; */
 }
 
 .interests p{
@@ -464,12 +357,6 @@ input:focus{
     width: fit-content;
 }
 
-/* .interests button:hover{
-    filter: brightness(0.9);
-    background-color:;
-    /* opacity: 0.5;
-} */
-
 .notSelected{
     background-color: white;
     color: #ffbc2f;
@@ -488,14 +375,13 @@ input:focus{
     background-color: #ffbc2f;
     font-family: "Albert Sans";
     text-transform: uppercase;
-    padding: 1rem 2rem 1rem 2rem;
+    padding: 1em 2em;
     color: white;
     font-size: 1.5rem;
     border: 3px solid transparent;
     cursor: pointer;
     justify-self: center;
     width: fit-content;
-    /* grid-column: 1 / span 2; */
     margin: 1em 0;
 }
 
@@ -528,19 +414,13 @@ input:focus{
 .footer{
     display: grid;
     grid-template-columns: 1fr auto auto auto;
-    /* grid-template-rows: repeat(2, 1fr); */
     background-color: #ffbc2f;
-    /* height: fit-content; */
     align-self: end;
     max-width: 100%;
-    /* position: relative;
-    bottom: 0; */
 }
 
 
-
 .footer > div{
-    /* padding: 3vh; */
     height: fit-content;
     padding: 2vh 0 0 2vh;
     margin-bottom: 0;
@@ -575,6 +455,7 @@ input:focus{
     border-bottom: solid 2px rgb(51, 51, 51);
     transform: scaleX(0);
     transition: transform 250ms ease-in-out;
+    margin-top: -2px;
 }
 
 #name, #team, #customerservice, #more{
@@ -649,22 +530,8 @@ input:focus{
     filter: invert(0);
 }
 
-.trademark{
-    /* margin-top: 0.5em;
-    padding-bottom: 0.5em;
-    justify-self: center;
-    color: white;
-    font-family: "Red Hat Text"; */
-}
 
-.emoji{
-    font-family: "Noto Color Emoji";
-}
 
-.navbar .emoji{
-    font-size: 0.7em;
-    vertical-align: middle;
-}
 
 @media (max-aspect-ratio:1/1) {
     .secondaryBTN{
@@ -790,17 +657,75 @@ input:focus{
         border: 3px solid #ff552f;
     }
 
-    .pages{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
-    
-    .pages a{
-        font-size: 1rem;
-        padding: 0.25rem 0.5rem;
+    .footer{
+        display: block;
+        padding-left: 1em;
+        /* display: grid; */
+        /* grid-template-rows: repeat(4, 1fr);
+        grid-template-columns: repeat(2, 1fr); */
     }
 
-    .trademark{
-        font-size: 0.7rem;
-    }  
+    .footer *{
+        width: fit-content;
+    }
+
+    .footer > div{
+        /* padding: 3vh; */
+        /* height: fit-content; */
+        /* padding: 2vh 0 0 2vh; */
+        margin-bottom: 0;
+        color: rgb(51, 51, 51);
+        width: fit-content;
+    }
+
+    .footer h5{
+        margin: 0;
+    }
+
+    .footer div a{
+        margin-bottom: 1.5vh;
+    }
+
+    .footer #name{
+        grid-column: 1 / span 4;
+        grid-row-start: 1;
+        margin-bottom: 2vh;
+    }
+
+    #name #coffee{
+        width: 5vw;
+    }
+
+    #name #insta{
+        width: 8vw;
+    }
+
+    #customerservice{
+        grid-column-start: 1;
+    }
+
+    #name > p{
+        width: fit-content;
+    }
+
+    #name, #team, #customerservice, #more{
+        padding: 0;
+        margin: 0;
+    }
+
+    #more{
+        grid-row-start: 2;
+        grid-column-start: 2;
+    }
+
+    #backtotop{
+        display: none;
+    }
+
+    #trademark{
+        display: block;
+        width: fit-content;
+        height: fit-content;
+        padding: 0;
+    }
 }

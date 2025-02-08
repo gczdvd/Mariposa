@@ -32,9 +32,9 @@ body{
     background-color: #ffbc2f;
     font-family: "Albert Sans";
     text-transform: uppercase;
-    padding: 1rem 2rem 1rem 2rem;
+    padding: 1em 2em;
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.5em;
     border: 3px solid transparent;
     cursor: pointer;
 }
@@ -46,39 +46,22 @@ body{
 }
 
 .back img{
-    /* text-decoration: none; */
-    width: 4vw;
+    width: 5vw;
 }
-/* 
-.backBTN {
-    height: fit-content;
-    margin: 0.5rem 0 0 0.7rem;
-    width: fit-content;
-}
-
-.backBTN a:hover::after{
-    transform: scaleX(1);
-}
-
-.backBTN a::after{
-    display: block;
-    content: '';
-    border-bottom: solid 2px #ffbc2f;
-    transform: scaleX(0);
-    transition: transform 250ms ease-in-out;
-} */
 
 
 .signin{
     display: grid;
+    grid-template-rows: repeat(6, 1fr);
     width: 30vw;
-    height: 70vh;
+    height: 80vh;
     justify-self: center;
     align-self: center;
 }
 
 .signin p{
     font-family: "Red Hat Text";
+    font-size: 1em;
 }
 
 .image{
@@ -93,10 +76,15 @@ body{
 }
 
 @media (max-aspect-ratio:1/1) {
+    .primaryBTN{
+        padding: 0.5em 1em;
+        justify-self: center;
+        font-size: 1em;
+    }
+
     .wrapper{
         grid-template-columns: 1fr;
         grid-template-rows: auto 1fr;
-        /* gap: 0px; */
         height: 90vh;
     }
 
@@ -106,34 +94,23 @@ body{
         width: 70vw;
     }
 
-    .primaryBTN{
-        padding: 0.5rem 1rem 0.5rem 1rem;
-        justify-self: center;
-        /* text-align: center; */
-        font-size: 1rem;
-    }
-
-    .image{
-        display: none;
+    .back img{
+        width: 15vw;
     }
 }
 
 .title{
     font-family: "Red Hat Text";
     font-weight: 600;
-    font-size: 1.5rem;
+    font-size: 1.5em;
 }
 
 .subtitle{
     font-family: "Red Hat Text";
-    font-size: 1rem;
+    font-size: 1em;
     opacity: 0.7;
 }
 
-/* 
-.nickname, .email, .password, .passwordRN, .passwordNew1, .passwordNew2{
-    font-family: "Red Hat Text";
-} */
 
 .form-floating{
     font-family: 'Red Hat Text';
@@ -148,49 +125,8 @@ body{
     color: #ffbc2f;
 }
 
-.inputs{
-    display: grid;
-    justify-self: center;
-    align-self: center;
-    width: 25vw;
-    gap: 3vh;
-    /* height: 70%; */
-}
-
 .inputs input:focus{
     outline: none;
-    /* border-bottom: rgba(240, 192, 35, 1) 2px solid !important; */
-    /* padding-left: 0.1em; */
-}
-
-#textarea{
-    resize: none;
-    height: 25vh;
-    /* border: 2px #d3d3d3 solid;
-    padding: 0.2em 0 0.2em 0.2em;
-    width: 60%;
-    font-family: "Red Hat Text";
-    font-size: 1em;
-    color: #ffbc2f; */
-}
-
-input[type=text], input[type=email], input[type=password]{
-    /* border-bottom: rgba(228, 228, 228, 1) 2px solid;
-    width: 90%;
-    padding: 0 0 0.1rem 0.2rem;
-    color: #ffbc2f;
-    font-family: "Red Hat Text";
-    font-size: 1.1rem; */
-}
-
-input:focus{
-    /* outline: none;
-    border-bottom: rgba(240, 192, 35, 1) 2px solid !important ; */
-}
-
-.forgotPSW{
-    font-family: "Red Hat Text";
-    align-content: end;
 }
 
 #curPassFeedback, #newPassFeedback, #reNewPassFeedback{
@@ -200,26 +136,29 @@ input:focus{
     margin: 0;
 }
 
-.forgotPSW a{
-    /* padding: 10px 15px 10px 15px; */
-    /* margin: 0 10px 0 10px; */
-    text-decoration: none;
-    color: #ffbc2f;
-    /* font-size: 20px; */
+.tertiaryBTN, .tertiaryBTN a{
     display: inline-block;
+    color: black;
+    text-decoration: none;
+    height: fit-content;
     font-family: "Albert Sans";
+    width: fit-content;
 }
 
-.forgotPSW a:hover::after{
+.tertiaryBTN:hover::after, .tertiaryBTN a:hover::after{
     transform: scaleX(1);
 }
 
-.forgotPSW a::after{
+.tertiaryBTN:hover, .tertiaryBTN a:hover{
+    color: #ffbc2f;
+    transition: 200ms;
+}
+
+.tertiaryBTN::after, .tertiaryBTN a::after{
     display: block;
-    /* margin-top: 2px; */
     content: '';
     border-bottom: solid 2px #ffbc2f;
     transform: scaleX(0);
-    transition: transform 250ms ease-in-out;
-    
+    transition: transform 200ms ease-in-out;
+    margin-top: -2px;
 }

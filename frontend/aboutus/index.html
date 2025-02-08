@@ -16,31 +16,32 @@
         <div class="header-wrap">
             <div class="header" id="header">
 
-                <div id="logo">
-                    <a href="">
-                        <img src="/_images/logo.png" alt="logo">
+                <div>
+                    <a href="" id="homepage">
+                        <img src="/_images/logo.png" alt="" id="logo">
                     </a>
-                    <p id="title">Mariposa</p>
                 </div>
-
-                <div id="main">
-                    <button>
-                        <img src="/_images/open.png" alt="menünyit" onclick="openNav()" id="open" class="openbtn">
-        
-                        <img src="/_images/close.png" alt="menüzár" onclick="closeNav()" id="close">
-                    </button>
-                </div>
-    
-                <div id="navigation">
-                    <ul>
-                        <li><a href="" class="tertiaryBTN">Kezdőlap</a></li>
+                
+                <div id="navbar">
+                    <ul id="navigation">
+                        <li><a href="/" class="tertiaryBTN">Kezdőlap</a></li>
                         
-                        <li><a href="/login" class="tertiaryBTN">Bejelentkezés</a></li>
-
                         <li><a href="/aboutus" class="tertiaryBTN">Rólunk</a></li>
 
                         <li><a href="/support" class="tertiaryBTN">Segítség</a></li>
                     </ul>
+                </div>
+
+                <div id="loginNav">
+                    <li>
+                        <a href="/login" class="tertiaryBTN">Bejelentkezés &#8680;</a>
+                    </li>
+
+                    <!-- <li>
+                        <a href="">
+                            <img src="./_images/img_avatar.png" alt="">
+                        </a>
+                    </li> -->
                 </div>
             </div>    
         </div>
@@ -141,21 +142,19 @@
 
         <div class="contact">
             <div class="image">
-              <img src="/_images/pillango_es_level.svg" alt="">
+              <img src="../_images/pillango_es_level.svg" alt="">
             </div>
             
             <div class="inputs">
               <p>Kérdésed van? Írj nekünk!</p>
       
                 <div class="form-floating">
-                    <!-- <p class="inputTitle">Email-cím</p> -->
                     <input class="form-control shadow-none" id="email" type="email" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="E-mail cím">
                     
                     <label for="email">E-mail cím</label>
                 </div>
 
                 <div class="form-floating">
-                    <!-- <p class="inputTitle">Email-cím</p> -->
                     <input class="form-control shadow-none" id="name" type="text" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="Teljes név">
                     
                     <label for="name">Teljes név</label>
@@ -175,13 +174,6 @@
                     <label for="textarea">Üzenet</label>
                 </div>
       
-              <!-- <p class="inputTitle">Teljes név</p> -->
-              <!-- <input type="text" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)"> -->
-        
-              <!-- <p class="inputTitle">Üzenet</p> -->
-              <!-- <textarea name="" id="textarea" rows="5" maxlength="255" onchange="colorChange(this)" onfocusout="colorChange(this)"></textarea> -->
-              <!-- <p id="remaining-chars"></p> -->
-      
               <button class="primaryBTN">küldés</button>
             </div>
         </div> 
@@ -191,6 +183,7 @@
             <div id="name">
                 <p id="coName">Mariposa - The Social Butterfly</p>
                 <p id="coSlogan">Mindenki pillangója.</p>
+
                 <!-- Social media links -->
                 <p id="socialmedia">
                     <a href="#">
@@ -239,30 +232,6 @@
                     <img src="../_images/top.png" alt="" id="backtotop" href="#top" title="Vissza a tetejére">
                 </a>
             </div>
-
-            <!-- <div id="backtotop">
-                
-            </div> -->
-
-            <!-- <div id="tandc">
-                <a href=""></a>
-                <a href=""></a>
-            </div> -->
-
-            <!-- <div class="pages">
-                <a href="/" class="">Kezdőlap</a>
-                <a href="/login" class="">Bejelentkezés</a>
-                <a href="/aboutus" class="">Rólunk</a>
-                <a href="" class="">ÁSZF</a>
-                <a href="/support" class="">GYIK</a>
-                <a href="" class="">Házirend</a>
-                
-            </div>
-            
-            <div class="trademark">
-                © 2025 Mariposa The Social Butterfly
-            </div> -->
-            
         </div>
     </div>
 
