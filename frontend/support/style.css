@@ -189,7 +189,6 @@
     outline: none;
     transition: 0.4s;
     background-color: #f0f0f0;
-    
 }
 
 .accordion:after {
@@ -250,17 +249,21 @@
     grid-template-columns: 1fr 1fr;
     background-color: transparent;
     height: fit-content;
-    margin: 10vh 0;
+    margin: 5vh 0;
     width: 80vw;
     justify-self: center;
 }
 
 .contact img{
-    width: 25vw;
+    width: 20vw;
     justify-self: center;
     display: block;
     user-select: none;
     -moz-user-select: none;
+}
+
+.image{
+    align-self: center;
 }
 
 .inputs{
@@ -491,13 +494,17 @@
     }
 
     .cover img{
-        width: 100vw;
+        width: 70vw;
         max-width: 100%;
         grid-row-start: 1;
     }
 
     .faq{
-        width: 90vw;
+        width: 80vw;
+    }
+
+    .accordion{
+        grid-template-columns: 60vw 1fr;
     }
 
     .accordion:after{
@@ -506,14 +513,17 @@
 
     .contact{
         grid-template-columns: none;
-        width: 100vw;
-        max-width: 100%;
         justify-self: center;
     }
 
     .contact img{
         width: 40%;
         justify-self: center;
+        max-width: 100%;
+    }
+
+    .inputs{
+        width: 80vw;
         max-width: 100%;
     }
 

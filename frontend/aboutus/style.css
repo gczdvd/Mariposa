@@ -266,6 +266,7 @@
 .us p{
     justify-self: center;
     width: 30vw;
+    margin: 0;
 }
 
 
@@ -281,17 +282,21 @@
     grid-template-columns: 1fr 1fr;
     background-color: transparent;
     height: fit-content;
-    margin: 10vh 0;
+    margin: 5vh 0;
     width: 80vw;
     justify-self: center;
 }
 
 .contact img{
-    width: 25vw;
+    width: 20vw;
     justify-self: center;
     display: block;
     user-select: none;
     -moz-user-select: none;
+}
+
+.image{
+    align-self: center;
 }
 
 .inputs{
