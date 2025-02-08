@@ -1,5 +1,21 @@
 // const textarea = document.getElementById("textarea");
 
+Backend.get({
+    path:"/userinfo",
+    callback:(e)=>{
+        console.log(e);
+        if(e.profile_pic){
+            document.getElementById("profilePicture").src = e.profile_pic;
+        }
+        if(e.nickname){
+            document.getElementById("nickname").innerHTML = e.nickname;
+        }
+        if(e.description){
+            document.getElementById("textarea").value = e.description;
+        }
+    }
+});
+
 function charCounter(inputField) {
 
   const remChars = document.getElementById("remaining-chars");
@@ -45,8 +61,48 @@ function chosenInterest(interest){
 
 // mentés gomb elküldi az adatokat, visszajön a válasz, ha sikeres, akkor sikeresen mentésre kerültek, ha nem, akkor szerverhiba
 function saveData(){
-  var success = false;
+  var success = true;
   // var success = true;
+
+    var newdat = {
+        birthdate:null,
+        description:null,
+        email:"hadopilolya@gmail.com",
+        gender:null,
+        id:54,
+        nickname:"Hadopi",
+        profile_pic:"/api/storage/profile_pic/1efe2193-fd8f-6e60-89c7-261a7059cbed.png",
+        topics:[]
+    };
+
+    var sels = document.getElementsByClassName("selected");
+    for(var i = 0; i < sels.length; i++){
+        newdat.topics.push(sels[i].getAttribute("value"));
+    };
+
+
+    Backend.post({
+        path:"/profilemodify",
+        body:{
+            //password
+            gender:undefined,
+            description:document.getElementById("textarea").value,
+            profile_pic:undefined,
+            topics:undefined
+        },
+        callback:console.log
+    })
+  if(document.getElementById("profilepicup").files.length > 0){
+        var f = new FormData();
+        f.append("file", document.getElementById("profilepicup").files[0]);
+
+        Backend.post({
+            path:"/profilepic",
+            body:f,
+            callback:console.log
+        });
+    }
+
   if(success){
     Swal.fire({
       icon: "success",

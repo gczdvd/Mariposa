@@ -27,11 +27,27 @@ export class Sql{
         }
     }
 
-    getUserById(id){
+    getUserById(id, db){
         var rows = this.con.query(`CALL getClient(?);`, [id]);
         var data = rows[0][0];
 
-        return (new User(data.client_id, data.nickname, data.birthdate, data.email, data.topics, data.gender, data.description, data.profile_pic));
+        return (new User(data.client_id, db));
+    }
+
+    getUserDataById(id){
+        var rows = this.con.query(`CALL getClient(?);`, [id]);
+        var data = rows[0][0];
+
+        return {
+            "id":data.client_id,
+            "nickname":data.nickname,
+            "birthdate":data.birthdate,
+            "email":data.email,
+            "topics":JSON.parse(data.topics),
+            "gender":data.gender,
+            "description":data.description,
+            "profile_pic":data.profile_pic
+        };
     }
 
     //OK
