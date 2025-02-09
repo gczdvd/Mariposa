@@ -220,11 +220,11 @@ function send(){
   var text = document.getElementById("message");
 
   if(text.value != ""){
-    text.value = "";
     ws.send(JSON.stringify({
       "type":"message",
       "value":text.value
     }));
+    text.value = "";
   }
 }
 
@@ -298,3 +298,9 @@ function receive(e){
 function focusMessageBar(){
   document.getElementById("message").focus();
 }
+
+document.getElementById("message").addEventListener("keyup", (e)=>{
+    if(e.key == "Enter"){
+        send();
+    }
+})
