@@ -28,7 +28,7 @@
     background-color: #ffbc2f;
     font-family: "Albert Sans";
     text-transform: uppercase;
-    padding: 0.8em 1em 0.8em 1em;
+    padding: 0.5em 1em;
     color: white;
     font-size: 1.5em;
     border: 3px solid transparent;
@@ -70,7 +70,8 @@
 
 
 #logo{
-    width: 5vw;
+    width: 4vw;
+    padding: 0.5vw 0 0 0.5vw;
 }
 
 .signup{
@@ -81,7 +82,7 @@
 }
 
 .image{
-    background-color: gray;
+    background-image: url(../_images/logopattern.svg);
     align-content: center;
     grid-row: 1 / span 2;
     grid-column-start: 2;

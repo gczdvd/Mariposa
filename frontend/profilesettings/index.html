@@ -48,9 +48,6 @@
         </div>
 
         <div class="settings">
-            <!-- <p class="sectionTitle">PROFIL</p> -->
-            <!-- <p class="sectionTitle">SZEMÉLYES ADATOK</p> -->
-
             <div class="profile">
                 <img src="/_images/img_avatar.png" alt="" id="profilePicture" class="profilePicture">
 
@@ -61,34 +58,26 @@
 
 
                 <div class="form-floating">
-                    <!-- <p class="inputTitle">Email-cím</p> -->
                     <textarea class="form-control shadow-none" id="textarea" rows="5" maxlength="255" onchange="colorChange(this)" onfocusout="colorChange(this)" onchange="charCounter(this)" placeholder="Bemutatkozás" spellcheck="none"></textarea>
                     <p id="remaining-chars"></p>
                     
                     <label for="textarea">Bemutatkozás</label>
                 </div>
 
-                <!-- <p>Bemutatkozás</p>
-                <textarea name="" id="textarea" rows="5" maxlength="255" onchange="colorChange(this)" onfocusout="colorChange(this)" oninput="charCounter(this)" onfocus="charCounter(this)" spellcheck="false"></textarea> -->
-
                 <p id="remaining-chars">0 / 255</p>
-
             </div>
-
 
             <div class="data">
 
                 <!-- 1 -->
-                <div class="form-floating" id="full_name">
-                    <!-- <p class="inputTitle">Email-cím</p> -->
-                    <input class="form-control shadow-none" id="name" type="text" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="Teljes név">
+                <div class="form-floating" id="fullname">
+                    <input class="form-control shadow-none" id="fullname" type="text" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="Teljes név">
                     
                     <label for="name">Teljes név</label>
                 </div>
 
                 <!-- 2 -->
                 <div class="form-floating" id="email">
-                    <!-- <p class="inputTitle">Email-cím</p> -->
                     <input class="form-control shadow-none" id="email" type="email" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="E-mail cím">
                     
                     <label for="email">E-mail cím</label>
@@ -103,7 +92,6 @@
                 <!-- 4 -->
                 <div class="form-floating" id="genderDiv">
                     <select class="form-select shadow-none" id="gender">
-                      <!-- <option selected disabled></option> -->
                       <option value="1" selected>Nem adom meg</option>
                       <option value="2">Nő</option>
                       <option value="3">Férfi</option>
@@ -117,20 +105,20 @@
                     </div>
                 </div>
 
+                <!-- 5 -->
                 <div id="ageDiv">
-
                     <div class="form-floating">
-                        <input class="form-control shadow-none" id="year" type="number" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="Születési év" min="1914" max="2014">
+                        <input class="form-control shadow-none" id="year" type="number" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="Születési év" min="1914" max="2014" oninput="moveToNextInput('year', 'month');" minlength="4" maxlength="4">
                         <label for="year">Születési év</label>
                     </div>
 
                     <div class="form-floating">
-                        <input class="form-control shadow-none" id="month" type="number" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="Születési hónap" min="1" max="12">
+                        <input class="form-control shadow-none" id="month" type="number" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="Születési hónap" min="1" max="12" oninput="moveToNextInput('month', 'day');" minlength="1" maxlength="2">
                         <label for="year">Születési hónap</label>
                     </div>
 
                     <div class="form-floating">
-                        <input class="form-control shadow-none" id="month" type="number" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="Születési nap" min="1" max="31">
+                        <input class="form-control shadow-none" id="month" type="number" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="Születési nap" min="1" max="31" minlength="1" maxlength="2">
                         <label for="year">Születési nap</label>
                     </div>
 
@@ -140,67 +128,10 @@
                     </div>
                 </div>
 
-                <!-- 5 -->
-                <!-- <div class="form-floating">
-                    <input class="form-control shadow-none" id="age" type="number" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="Életkor" min="14" max="100">
-                    
-                    <label for="age">Életkor</label>
-
-                    <div class="show">
-                        <input type="checkbox" id="showAge">
-                        <label for="showAge">Jelenjen meg a chatben</label>
-                    </div>
-                </div> -->
-
-                <!--
-                <div id="full_name">
-                    <p>Teljes név</p>
-                    <input type="text" spellcheck="false" maxlength="50" onchange="colorChange(this)" onfocusout="colorChange(this)">
-                </div>
-
-                <div id="email">
-                    <p>Email-cím</p>
-                    <input type="email" name="" id="" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)">
-                </div>
-
-                <div id="password">
-                    <p>Jelszó</p>
-                    <a href="" class="password">Jelszó megváltoztatása</a>
-                </div>
-
-                <div id="gender">
-                    <p>Nem</p>
-                    <select name="" id="">
-                        <option value="" disabled selected>Nem megadása</option>
-                        <option value="">Nem adom meg</option>
-                        <option value="">Nő</option>
-                        <option value="">Férfi</option>
-                        <option value="">Nembináris</option>
-                    </select>
-
-                    <div class="show">
-                        <input type="checkbox" id="showGender">
-                        <label for="showGender">Jelenjen meg a chatben</label>
-                    </div>
-                </div> -->
-
-                <!-- <div id="birthdate">
-                    <p>Születési dátum</p>
-                    <input type="date" min="1900-01-01" max="2010-12-31" onchange="colorChange(this)" onfocusout="colorChange(this)">
-
-                    <div class="show">
-                        <input type="checkbox" id="showBirth">
-                        <label for="showBirth">Jelenjen meg a chatben</label>
-                    </div>
-                </div> -->
-
                 <div id="info">
                     <span class="emoji">⚠️</span> Az adatokat az oldal legalján található "Mentés" gombra kattinva tudod elmenteni.
                 </div>
-
             </div>
-
-            
 
             <!-- <div class="search">
                 <p>Böngéssz az érdeklődési körök között!</p>
@@ -210,7 +141,6 @@
                 <button type="submit" class="emoji">🔍</button>
             </div> -->
 
-            <!-- <p class="sectionTitle">érdeklődési körök</p> -->
             <div class="interests">
                 <div class="sport" id="sport">
                     <p>Sport</p>
