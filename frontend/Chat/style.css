@@ -248,10 +248,10 @@
 
 .messages{
     font-family: 'Red Hat Text';
-    overflow: auto;
+    overflow-y: auto;
     display: flex;
     flex-direction: column-reverse;
-    /* height: 90vh; */
+    height: 90vh;
     width: 97%;
     justify-self: center;
 }
