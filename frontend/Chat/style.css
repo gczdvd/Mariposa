@@ -7,7 +7,7 @@
 
 .wrapper{
     display: grid;
-    height: 100vh;
+    /* height: 100vh; */
     max-height: 100%;
 }
 
@@ -112,7 +112,7 @@
 #chatArea{
     display: grid;
     grid-template-columns: auto auto auto;
-    height: 93vh;
+    /* height: 93vh; */
 }
 
 .saved{
@@ -248,10 +248,10 @@
 
 .messages{
     font-family: 'Red Hat Text';
-    overflow-y: auto;
+    overflow-y: scroll;
     display: flex;
     flex-direction: column-reverse;
-    height: 90vh;
+    height: 85vh;
     width: 97%;
     justify-self: center;
 }
@@ -284,14 +284,14 @@
 .message-bar{
     background-color: rgb(226, 226, 226);
     border: none;
-    color: black;
+    color: blue;
     border-radius: 1em;
     font-family: "Red Hat Text";
-    font-size: 1.1em;
+    font-size: 1em;
     margin-left: 0.5em;
-    height: 4vh;
-    min-height: 4vh;
-    max-height: 9vh;
+    height: 1vh;
+    /* min-height: 4vh; */
+    /* max-height: 9vh; */
     padding-left: 0.5em;
     direction: ltr;
     align-self: center;
