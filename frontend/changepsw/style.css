@@ -32,7 +32,7 @@ body{
     background-color: #ffbc2f;
     font-family: "Albert Sans";
     text-transform: uppercase;
-    padding: 1em 2em;
+    padding: 0.5em 1.5em;
     color: white;
     font-size: 1.5em;
     border: 3px solid transparent;
@@ -46,7 +46,8 @@ body{
 }
 
 .back img{
-    width: 5vw;
+    width: 4vw;
+    padding: 0.5vw 0 0 0.5vw;
 }
 
 
@@ -65,7 +66,7 @@ body{
 }
 
 .image{
-    background-color: gray;
+    background-image: url(../_images/logopattern.svg);
     align-content: center;
     grid-row: 1 / span 2;
     grid-column-start: 2;

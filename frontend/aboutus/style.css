@@ -57,7 +57,8 @@
 }
 
 #logo{
-    width: 5vw;
+    width: 4vw;
+    padding-left: 0.5vw;
 }
 
 #main{

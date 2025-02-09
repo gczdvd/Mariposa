@@ -17,7 +17,6 @@ p{
     user-select: none;
 }
 
-
 .primaryBTN{
     display: grid;
     width: fit-content;
@@ -108,6 +107,7 @@ p{
 
 #logo{
     width: 5vw;
+    padding-left: 0.5vw;
 }
 
 #main{
@@ -148,6 +148,7 @@ p{
 }
 
 #loginNav img{
+    display: block;
     width: 3.5vw;
     border-radius: 50%;
 }
@@ -158,10 +159,16 @@ p{
     width: 100vw;
     max-width: 100%;
     grid-template-columns: 1fr 1fr;
+    height: 60vh;
+    justify-content: center;
+    align-content: center;
 }
 
 .cover img{
-    width: 50vw;
+    display: block;
+    width: 40vw;
+    justify-self: center;
+    margin-right: 2vw;
 }
 
 .texts{
@@ -524,13 +531,14 @@ p{
         display: grid;
         grid-template-rows: auto auto;
         grid-template-columns: none;
+        margin-bottom: 10vh;
     }
 
     .cover img{
         grid-row-start: 1;
         width: 100vw;
         max-width: 100%;
-        margin-bottom: 5vh;
+        margin: 10vh 0 5vh 0;
     }
 
     .texts{
@@ -552,7 +560,8 @@ p{
     }
 
     .description{
-        margin-bottom: 5vh;
+        margin: 5vh 0;
+        gap: 0;
     }
 
     .services{
