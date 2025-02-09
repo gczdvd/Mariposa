@@ -12,6 +12,41 @@
 </head>
 <body onkeydown="focusMessageBar()">
     <div class="wrapper" id="wrapper">
+        
+            <div class="header" id="header">
+
+                <!-- LOGO -->
+                <div>
+                    <a href="" id="homepage">
+                        <img src="/_images/logo.png" alt="" id="logo">
+                    </a>
+                </div>
+                
+                <!-- MY LINKS -->
+                <div id="navbar">
+                    <ul id="navigation">
+                        <li><a href="/" class="tertiaryBTN">Kezdőlap</a></li>
+                        
+                        <li><a href="/aboutus" class="tertiaryBTN">Rólunk</a></li>
+
+                        <li><a href="/support" class="tertiaryBTN">Segítség</a></li>
+                    </ul>
+                </div>
+
+                <div id="loginNav">
+                    <li>
+                        <a href="/login" class="tertiaryBTN">Bejelentkezés &#8680;</a>
+                    </li>
+
+                    <!-- <li>
+                        <a href="">
+                            <img src="./_images/img_avatar.png" alt="">
+                        </a>
+                    </li> -->
+                </div>
+            </div>
+
+
         <!-- <div id="blurred" onclick="closeNav()"> -->
             <!-- EGÉSZ CHATFELÜLET -->
             <div id="chatArea" onclick="focusMessageBar()">
@@ -23,8 +58,7 @@
                     </div> -->
     
                     <div class="" id="startChat" title="Új chat indítása" onclick="openChat()">
-                        <!-- <a href="">--><img src="/_images/newchat.png"><!--</a> -->
-                        <!-- <a href="" class="emoji">➕</a> -->
+                        <img src="/_images/newchat.png">
                     </div>
     
                     <div id="placeholder">
@@ -90,7 +124,6 @@
                     <div class="message">
     
                         <textarea placeholder="Írd ide az üzenetet..." rows="" id="message" class="message-bar" maxlength="1000" oninput='this.style.height = ""; this.style.height = this.scrollHeight + "px"' value=""></textarea>
-                        <!-- <div contenteditable="true" role="textbox" class="message-bar" aria-label="Üzenet..." dir="auto" oninput='this.style.height = ""; this.style.height = this.scrollHeight + "px"'></div> -->
                         
                         <button id="sendBTN" onclick="send()"><img src="/_images/send.png" alt="Üzenet küldése" title="Üzenet küldése"></button>
                         
@@ -102,14 +135,16 @@
 
                 <!-- CHATPARTNER INFÓK -->
                 <div class="details">
-                    <img src="/_images/img_avatarA.png" alt="" id="profilePic">
+                    <div id="picname">
+                        <img src="/_images/img_avatarA.png" alt="" id="profilePic">
                     
-                    <span id="name">Példa Név</span>
+                        <p id="name">Példa Név</p>
+                    </div>
                     
                     <div class="data">
                         <p id="birthdayP" title="Születésnap">
                             <span class="emoji">🎂</span> 
-                            <span id="birthday" >
+                            <span id="birthday">
                                 2005. 05. 30
                             </span>
                         </p>
@@ -126,14 +161,27 @@
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi blanditiis deleniti nobis veniam quibusdam, placeat qui libero cupiditate recusandae officiis! Itaque sunt iste excepturi neque qui illo earum quae odit.
                             </span>
                             <br>
-                            <!-- <img src="./images/image.png" alt="" draggable="false"> -->
                         </p>
 
                         <p id="interestsP">
                             <span id="interests">
                                 <button>Tánc</button>
+                                <button>awdas</button>
+                                <button>awdas</button>
+                                <button>awdas</button>
+                                <button>awdas</button>
+                                <button>awdas</button>
+                                <button>awdas</button>
+                                <button>awdas</button>
+                                <button>awdas</button>
+                                <button>awdas</button>
+                                <button>awdas</button>
+                                <button>awdas</button>
+                                <button>awdas</button>
+                                <button>awdas</button>
+                                <button>awdas</button>
                             </span>
-                            <!-- <br> -->
+                            </span>
                         </p>
                     </div>
 
@@ -165,30 +213,30 @@
                         </button>
                     </div> -->
         
-                    <div id="sidenav" class="sidenav">
+                    <!-- <div id="sidenav" class="sidenav">
                         <ul>
                             <a href="" class="tertiaryBTN emoji">
-                                <!-- 🏠 -->
+                                🏠
                                 <img src="../_images/home.png" alt="Kezdőlap" title="Kezdőlap">
                             </a>
 
                             <a href="/profilesettings" class="tertiaryBTN emoji">
-                                <!-- 👤 -->
+                                👤
                                 <img src="../_images/user (1).png" alt="Profil" title="Profil">
                             </a>
 
                             <a href="/aboutus" class="tertiaryBTN emoji">
-                                <!-- ❤️ -->
+                                ❤️
                                 <img src="../_images/like.png" alt="" title="Rólunk">
                             </a>
 
                             <a href="/support" class="tertiaryBTN emoji">
-                                <!-- ❔ -->
+                                ❔
                                 <img src="../_images/info.png" alt="Segítség" title="Segítség">
                             </a>
                         </ul>
-                        <!-- Icons designed by Smashicons, https://smashicons.com/ -->
-                    </div>
+                        Icons designed by Smashicons, https://smashicons.com/
+                    </div> -->
 
                     <!-- <span onclick="openNav()">
                         <img src="./images/open.png" alt="" id="openBTN">

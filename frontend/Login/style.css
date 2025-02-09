@@ -85,6 +85,7 @@
 
 .form-control{
     color: #ffbc2f;
+    border: #d3d3d3 2px solid;
 }
 
 #toggleIcon{

@@ -16,27 +16,29 @@ Backend.get({
     }
 });
 
-function charCounter(inputField) {
-
+function charCounter(textarea) {
   const remChars = document.getElementById("remaining-chars");
-  remChars.style.visibility = "visible";
-  const maxLength = inputField.getAttribute("maxlength");
-  const currentLength = inputField.value.length;
-  remChars.innerHTML = `${currentLength} / ${maxLength}`; 
-}
 
+  const maxLength = textarea.getAttribute("maxlength");
 
-function colorChange(textarea){
-  const remChars = document.getElementById("remaining-chars");
-  // const maxLength = textarea.getAttribute("maxlength");
+  const currentLength = textarea.value.length;
 
   if(textarea.value.length == 0){
-    textarea.style.borderColor = "#d3d3d3";
     remChars.style.visibility = "hidden";
   }
   else{
-    textarea.style.borderColor = "#ffbc2f";
     remChars.style.visibility = "visible";
+    remChars.innerHTML = `${currentLength} / ${maxLength}`;
+  }
+}
+
+
+function colorChange(inputField){
+  if(inputField.value.length == 0){
+    inputField.style.borderColor = "#d3d3d3";
+  }
+  else{
+    inputField.style.borderColor = "#ffbc2f";
   }
 }
 

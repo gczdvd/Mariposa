@@ -176,13 +176,13 @@
 }
 
 #remaining-chars{
-    font-family: "Red Hat Text";
+    font-family: 'Red Hat Text';
     font-size: 0.8em;
+    font-weight: 400;
     color: #ffbc2f;
-    margin-top: 3px;
-    visibility: hidden;
-    justify-self: center;
-    width: 60%;
+    margin-top: 0.1em;
+    height: 0.8em;
+    justify-self: end;
 }
 
 
@@ -211,11 +211,12 @@
 
 .form-control:focus, .form-select:focus{
     color: #ffbc2f;
-    border: #ffbc2f 1px solid !important;
+    border: #ffbc2f 2px solid !important;
 }
 
 .form-control{
     color: #ffbc2f;
+    border: #d3d3d3 2px solid !important;
 }
 
 #ageDiv{
@@ -237,7 +238,7 @@
 
 .form-select{
     color: #ffbc2f;
-    border: 1px solid #ffbc2f;
+    border: 2px solid #ffbc2f;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -343,7 +344,7 @@ input[type=number] {
     background-color: #ffbc2f;
     font-family: "Albert Sans";
     text-transform: uppercase;
-    padding: 1em 2em;
+    padding: 0.5em 1.5em;
     color: white;
     font-size: 1.5rem;
     border: 3px solid transparent;
@@ -363,7 +364,7 @@ input[type=number] {
     background-color: white;
     font-family: "Albert Sans";
     text-transform: uppercase;
-    padding: 1em 2em 1em 2em;
+    padding: 1em 2em;
     color: #ff552f;
     font-size: 1em;
     cursor: pointer;

@@ -1,17 +1,5 @@
 Backend.setUrl("127.0.0.1:3000");
 
-var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-  return new bootstrap.Tooltip(tooltipTriggerEl)
-})
-
-const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-const tooltipList = [tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-
-$(document).ready(function(){
-  $('[data-toggle="tooltip"]').tooltip();
-});
-
 function togglePSW() {
     var x = document.getElementById("password");
     if (x.type === "password") {
@@ -24,10 +12,7 @@ function togglePSW() {
     }
 }
 
-function colorChange(textarea){
-    const remChars = document.getElementById("remaining-chars");
-    // const maxLength = textarea.getAttribute("maxlength");
-  
+function colorChange(textarea){  
     if(textarea.value.length == 0){
       textarea.style.borderColor = "#d3d3d3";
       remChars.style.visibility = "hidden";
@@ -36,17 +21,15 @@ function colorChange(textarea){
       textarea.style.borderColor = "#ffbc2f";
       remChars.style.visibility = "visible";
     }
-  }
-  textarea.onfocusout = () => colorChange(textarea);
-  
+  }  
 
 function registration(){
     var email = document.getElementById("email").value;
-    var nickname = document.getElementById("nickname").value;
-    var password = document.getElementById("password").value;
+    var username = document.getElementById("username");
     var checkbox = document.getElementById("checkbox").checked;
     var allValid = true;
 
+    console.log(email);
     const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     var validEmail = pattern.test(email);
   
@@ -59,14 +42,7 @@ function registration(){
       emailFeedback.style.visibility = "hidden";
     }
 
-    if(password.length != 10){
-      pswFeedback.style.visibility = "visible";
-      document.getElementById("pswFeedback").innerHTML = "A jelszónak legalább 10 karakternek kell lennie.";
-      var allValid = false;
-    }
-    else{
-      pswFeedback.style.visibility = "hidden";
-    }
+    checkPassword();
 
     if(!checkbox){
       checkboxFeedback.style.visibility = "visible";
@@ -91,6 +67,33 @@ function registration(){
     });
     }
 }
+
+function checkPassword(){
+  var password = document.getElementById("password").value;
+  var lowercase = false;
+  var uppercase = false;
+  
+  for(var i = 0; i < password.length; i++){
+    
+    if(password[i] == password[i].toLowerCase()){
+      lowercase = true;
+    }
+    else if(password[i] == password[i].toUpperCase()){
+      uppercase = true;
+    }
+  }
+
+  if(lowercase && uppercase && password.length >= 12){
+    console.log("jojelszo");
+    document.getElementById("pswFeedback").style.visibility = "hidden";
+  }
+  else{
+    console.log("nemjojelszo");
+    document.getElementById("pswFeedback").style.visibility = "visible";
+  }
+}
+
+document.getElementById("password").addEventListener("keyup", checkPassword);
 
 // function checkValidation(){
 //   var email = document.getElementById("email").value;

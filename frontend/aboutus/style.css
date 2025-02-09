@@ -309,9 +309,10 @@
 }
 
 .inputs p:nth-of-type(1){
-    font-family: "Albert Sans";
+    font-family: "Red Hat Text";
     font-size: 1.5em;
     margin-bottom: 0;
+    font-weight: 600;
 }
 
 
@@ -326,6 +327,7 @@
 
 .form-control{
     color: #ffbc2f;
+    border: #d3d3d3 2px solid;
 }
 
 .inputs input:focus{
@@ -338,11 +340,12 @@
 }
 
 #remaining-chars{
-    font-size: 11px;
-    color: #ffbc2f;
-    margin-top: 3px;
     font-family: 'Red Hat Text';
-    height: 20px;
+    font-size: 1em;
+    font-weight: 400;
+    color: #ffbc2f;
+    margin-top: 0.1em;
+    height: 1em;
     justify-self: end;
 }
 

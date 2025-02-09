@@ -13,47 +13,25 @@ function showSlides() {
   setTimeout(showSlides, 10000); // Change image every 2 seconds
 }
 
-function myFunction() {
-  var x = document.getElementById("navigation");
-  if (x.style.display === "block") {
-    x.style.display = "none";
-  } else {
-    x.style.display = "block";
-  }
-}
-
-function openNav() {
-  document.getElementById("navigation").style.width = "50vw";
-  document.getElementById("close").style.display = "block";
-  document.getElementById("open").style.display = "none";
-
-  document.getElementById("blurred").style.filter = "blur(2px)";
-}
-
-
-function closeNav() {
-
-  document.getElementById("navigation").style.width = "0px";
-  document.getElementById("header").style.height = "fit-content";
-
-  document.getElementById("open").style.display = "block";
-
-  document.getElementById("close").style.display = "none";
-
-  document.getElementById("blurred").style.filter = "blur(0px)";
-}
+// function myFunction() {
+//   var x = document.getElementById("navigation");
+//   if (x.style.display === "block") {
+//     x.style.display = "none";
+//   } else {
+//     x.style.display = "block";
+//   }
+// }
 
 function colorChange(textarea){
-  const remChars = document.getElementById("remaining-chars");
-  // const maxLength = textarea.getAttribute("maxlength");
-
   if(textarea.value.length == 0){
     textarea.style.borderColor = "#d3d3d3";
-    remChars.style.visibility = "hidden";
   }
   else{
     textarea.style.borderColor = "#ffbc2f";
-    remChars.style.visibility = "visible";
   }
 }
-textarea.onfocusout = () => colorChange(textarea);
+
+// belekattintasz, narancssárga
+// beleírsz narancssárga
+// ha van tartalma, és kilépsz, narancssárga
+// ha nincs tartalma, és kilépsz, szürke

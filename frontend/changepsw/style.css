@@ -55,7 +55,7 @@ body{
     display: grid;
     grid-template-rows: repeat(6, 1fr);
     width: 30vw;
-    height: 80vh;
+    height: 90vh;
     justify-self: center;
     align-self: center;
 }
@@ -74,30 +74,6 @@ body{
 
 .image img{
     width: 100%;
-}
-
-@media (max-aspect-ratio:1/1) {
-    .primaryBTN{
-        padding: 0.5em 1em;
-        justify-self: center;
-        font-size: 1em;
-    }
-
-    .wrapper{
-        grid-template-columns: 1fr;
-        grid-template-rows: auto 1fr;
-        height: 90vh;
-    }
-
-    .signin{
-        display: grid;
-        justify-self: center;
-        width: 70vw;
-    }
-
-    .back img{
-        width: 15vw;
-    }
 }
 
 .title{
@@ -124,17 +100,22 @@ body{
 
 .form-control{
     color: #ffbc2f;
+    border: #d3d3d3 2px solid;
 }
 
 .inputs input:focus{
     outline: none;
 }
 
-#curPassFeedback, #newPassFeedback, #reNewPassFeedback{
+#curPassFeedback, #newPassFeedback, #reNewPassFeedback, #bothPassFeedback{
     color: red;
     visibility: hidden;
     font-size: 1em;
     margin: 0;
+}
+
+#bothPassFeedback{
+    margin-top: 1em;
 }
 
 .tertiaryBTN, .tertiaryBTN a{
@@ -162,4 +143,28 @@ body{
     transform: scaleX(0);
     transition: transform 200ms ease-in-out;
     margin-top: -2px;
+}
+
+@media (max-aspect-ratio:1/1) {
+    .primaryBTN{
+        padding: 0.5em 1em;
+        justify-self: center;
+        font-size: 1em;
+    }
+
+    .wrapper{
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        height: 90vh;
+    }
+
+    .signin{
+        display: grid;
+        justify-self: center;
+        width: 70vw;
+    }
+
+    .back img{
+        width: 15vw;
+    }
 }

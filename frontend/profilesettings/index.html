@@ -58,27 +58,25 @@
 
 
                 <div class="form-floating">
-                    <textarea class="form-control shadow-none" id="textarea" rows="5" maxlength="255" onchange="colorChange(this)" onfocusout="colorChange(this)" onchange="charCounter(this)" placeholder="Bemutatkozás" spellcheck="none"></textarea>
+                    <textarea class="form-control shadow-none" id="textarea" rows="5" maxlength="255" onchange="colorChange(this)" oninput="charCounter(this)" placeholder="Bemutatkozás" spellcheck="none"></textarea>
                     <p id="remaining-chars"></p>
                     
                     <label for="textarea">Bemutatkozás</label>
                 </div>
-
-                <p id="remaining-chars">0 / 255</p>
             </div>
 
             <div class="data">
 
                 <!-- 1 -->
                 <div class="form-floating" id="fullname">
-                    <input class="form-control shadow-none" id="fullname" type="text" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="Teljes név">
+                    <input class="form-control shadow-none" id="fullname" type="text" spellcheck="false" onchange="colorChange(this)" placeholder="Teljes név">
                     
                     <label for="name">Teljes név</label>
                 </div>
 
                 <!-- 2 -->
                 <div class="form-floating" id="email">
-                    <input class="form-control shadow-none" id="email" type="email" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="E-mail cím">
+                    <input class="form-control shadow-none" id="email" type="email" spellcheck="false" onchange="colorChange(this)" placeholder="E-mail cím">
                     
                     <label for="email">E-mail cím</label>
                 </div>
@@ -108,17 +106,17 @@
                 <!-- 5 -->
                 <div id="ageDiv">
                     <div class="form-floating">
-                        <input class="form-control shadow-none" id="year" type="number" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="Születési év" min="1914" max="2014" oninput="moveToNextInput('year', 'month');" minlength="4" maxlength="4">
+                        <input class="form-control shadow-none" id="year" type="text" pattern="\d*" onchange="colorChange(this)" placeholder="Születési év" min="1914" max="2014" maxlength="4">
                         <label for="year">Születési év</label>
                     </div>
 
                     <div class="form-floating">
-                        <input class="form-control shadow-none" id="month" type="number" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="Születési hónap" min="1" max="12" oninput="moveToNextInput('month', 'day');" minlength="1" maxlength="2">
+                        <input class="form-control shadow-none" id="month" type="text" pattern="\d*" onchange="colorChange(this)" placeholder="Születési hónap" min="1" max="12" maxlength="2">
                         <label for="year">Születési hónap</label>
                     </div>
 
                     <div class="form-floating">
-                        <input class="form-control shadow-none" id="month" type="number" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="Születési nap" min="1" max="31" minlength="1" maxlength="2">
+                        <input class="form-control shadow-none" id="month" type="text" pattern="\d*" onchange="colorChange(this)" placeholder="Születési nap" min="1" max="31" maxlength="2">
                         <label for="year">Születési nap</label>
                     </div>
 
