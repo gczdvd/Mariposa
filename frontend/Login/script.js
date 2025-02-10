@@ -51,14 +51,16 @@ function login(){
     emailFeedback.style.visibility = "hidden";
   }
 
-  checkPassword();
+  if(!checkPassword()){
+    allValid = false;
+  }
 
   if(allValid){
     Backend.post({
       path:"/login", 
       body:{
           email: email, 
-          password: password
+          password: document.getElementById("password").value
       },
       callback:console.log
   });
@@ -83,10 +85,12 @@ for(var i = 0; i < password.length; i++){
 if(lowercase && uppercase && password.length >= 12){
   console.log("jojelszo");
   document.getElementById("pswFeedback").style.visibility = "hidden";
+  return true;
 }
 else{
   console.log("nemjojelszo");
   document.getElementById("pswFeedback").style.visibility = "visible";
+  return false;
 }
 }
 
