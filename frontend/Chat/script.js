@@ -303,6 +303,7 @@ function focusMessageBar(){
 }
 
 function history_load(){
+    var document.getElementsByClassName("messages")[0].lastChild()
     var scrlbe = document.getElementsByClassName("messages")[0].scrollHeight - document.getElementsByClassName("messages")[0].offsetHeight;
     var scrlsp = document.getElementsByClassName("messages")[0].scrollTop;
     console.log(scrlbe + scrlsp < 10);
