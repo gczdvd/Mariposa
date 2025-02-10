@@ -18,8 +18,8 @@
             <div class="header" id="header">
 
                 <div>
-                    <a href="" id="homepage">
-                        <img src="/_images/logo.png" alt="" id="logo">
+                    <a href="/" id="homepage">
+                        <img src="/_images/logo.png" alt="Logó" id="logo">
                     </a>
                 </div>
                 
@@ -49,7 +49,7 @@
 
         <div class="settings">
             <div class="profile">
-                <img src="/_images/img_avatar.png" alt="" id="profilePicture" class="profilePicture">
+                <img src="/_images/img_avatar.png" alt="Profilkép" id="profilePicture" class="profilePicture">
 
                 <p id="nickname">Példa Név</p>
 
@@ -84,7 +84,7 @@
                 <!-- 3 -->
                 <div id="password">
                     <p>Jelszó</p>
-                    <a href="" class="password">Jelszó megváltoztatása</a>
+                    <a href="/changepsw" class="password">Jelszó megváltoztatása</a>
                 </div>
 
                 <!-- 4 -->
@@ -106,17 +106,17 @@
                 <!-- 5 -->
                 <div id="ageDiv">
                     <div class="form-floating">
-                        <input class="form-control shadow-none" id="year" type="text" pattern="\d*" onchange="colorChange(this)" placeholder="Születési év" min="1914" max="2014" maxlength="4">
+                        <input class="form-control shadow-none" id="year" type="number" pattern="\d{4}" onchange="colorChange(this)" placeholder="Születési év" maxlength="4" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                         <label for="year">Születési év</label>
                     </div>
 
                     <div class="form-floating">
-                        <input class="form-control shadow-none" id="month" type="text" pattern="\d*" onchange="colorChange(this)" placeholder="Születési hónap" min="1" max="12" maxlength="2">
+                        <input class="form-control shadow-none" id="month" type="text" pattern="\d*" onchange="colorChange(this)" placeholder="Születési hónap" maxlength="2">
                         <label for="year">Születési hónap</label>
                     </div>
 
                     <div class="form-floating">
-                        <input class="form-control shadow-none" id="month" type="text" pattern="\d*" onchange="colorChange(this)" placeholder="Születési nap" min="1" max="31" maxlength="2">
+                        <input class="form-control shadow-none" id="month" type="text" pattern="\d*" onchange="colorChange(this)" placeholder="Születési nap" maxlength="2">
                         <label for="year">Születési nap</label>
                     </div>
 
@@ -294,6 +294,7 @@
     
             <button href="" class="deleteBTN">Fiók törlése</button>
             <!-- SweetAlert dobjon fel egy bemeneti szöveges dobozt, vissza kell írnia egy szót -->
+            <!-- próbavizsgára, most hagyjuk -->
         </div>
 
         <div class="footer">
@@ -303,7 +304,7 @@
                 <p id="coSlogan">Mindenki pillangója.</p>
                 <!-- Social media links -->
                 <p id="socialmedia">
-                    <a href="#">
+                    <a href="https://buymeacoffee.com/mariposatsb">
                         <img src="../_images/bmac.png" alt="buymeacoffee.com/mariposatsb" title="buymeacoffee.com/mariposatsb" id="coffee">
                     </a>
                     
@@ -315,12 +316,12 @@
 
             <div id="team" class="footerlink">
                 <h5>Fejlesztői csapat</h5>
-                <a href="">Rólunk</a>
+                <a href="/aboutus">Rólunk</a>
             </div>
 
             <div id="customerservice" class="footerlink">
                 <h5>GYIK és Kapcsolat</h5>
-                <a href="">Segítség</a>
+                <a href="/support">Segítség</a>
             </div>
 
             <div id="more" class="footerlink">
@@ -346,7 +347,7 @@
                 <p>© 2025 Mariposa The Social Butterfly. Minden jog fenntartva.</p>
 
                 <a href="#top"> 
-                    <img src="../_images/top.png" alt="" id="backtotop" href="#top" title="Vissza a tetejére">
+                    <img src="../_images/top.png" alt="Vissza a lap tetejére" id="backtotop" href="#top" title="Vissza a lap tetejére">
                 </a>
             </div>           
         </div>

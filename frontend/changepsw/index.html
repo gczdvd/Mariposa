@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="/sweetalert2.min.css">
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
 
     <div class="wrapper">
-
         <div class="back">
-            <a href="">
+            <a href="/">
                 <img src="/_images/logo.png" alt="Kezdőlap" title="Kezdőlap">
             </a>
         </div>
@@ -43,7 +44,7 @@
                 
                 <label for="password2">Új jelszó még egyszer</label>
 
-                <p id="bothPassFeedback">afsa</p>
+                <p id="bothPassFeedback"></p>
             </div>
 
             <div class="button">
@@ -51,16 +52,16 @@
             </div>
 
             <div class="tertiaryBTN">
-                <a href="">Elfelejtettem a jelszavam</a>
+                <!-- SWEETALERTEN INPUTBA BE KELL ÍRNIA AZ EMAIL CÍMÉT, BACKEND ELLENŐRZI, HOGY LÉTEZIK-E, BLABLABLA -->
+                <p onclick="forgotPassword()">Elfelejtettem a jelszavam</p>
             </div>
 
         </div>
     
         <div class="image">
-            <!-- <img src="/_images/logopattern.svg" alt=""> -->
+            
         </div>
     </div>
-
     
     <script src="script.js"></script>
 </body>

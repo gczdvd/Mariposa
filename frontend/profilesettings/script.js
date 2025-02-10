@@ -18,9 +18,7 @@ Backend.get({
 
 function charCounter(textarea) {
   const remChars = document.getElementById("remaining-chars");
-
   const maxLength = textarea.getAttribute("maxlength");
-
   const currentLength = textarea.value.length;
 
   if(textarea.value.length == 0){
@@ -109,7 +107,6 @@ function saveData(){
     Swal.fire({
       icon: "success",
       title: "Az adatok sikeresen mentésre kerültek!",
-      // text: "A mentési szándékról partnered értesítést kap, és elutasíthatja azt!",
       width: "64em",
       showCancelButton: "true",
       showConfirmButton: "false",

@@ -14,15 +14,12 @@
     <div class="wrapper" id="wrapper">
         
             <div class="header" id="header">
-
-                <!-- LOGO -->
                 <div>
                     <a href="" id="homepage">
-                        <img src="/_images/logo.png" alt="" id="logo">
+                        <img src="/_images/logo.png" alt="Logó" id="logo">
                     </a>
                 </div>
                 
-                <!-- MY LINKS -->
                 <div id="navbar">
                     <ul id="navigation">
                         <li><a href="/" class="tertiaryBTN">Kezdőlap</a></li>
@@ -58,7 +55,7 @@
                     </div> -->
     
                     <div class="" id="startChat" title="Új chat indítása" onclick="openChat()">
-                        <img src="/_images/newchat.png">
+                        <img src="/_images/newchat.png" alt="Új chat">
                     </div>
     
                     <div id="placeholder">
@@ -107,13 +104,13 @@
                 <div class="chat">
 
                     <div id="waiting">
-                        <img src="/_images/loading.gif" alt="">
-                        <p id="successMSG">Várakozás beszélgetőpartnerre...</p>
+                        <img src="/_images/loading.gif">
+                        <p id="waitingMSG">Várakozás beszélgetőpartnerre...</p>
                     </div>
 
                     <div id="success">
                         <img src="/_images/tick.png" alt="">
-                        <p id="successMSG">Várakozás partnerre...</p>
+                        <p id="successMSG">Megtaláltuk a tökéletes beszélgetőpartnert!</p>
                         <p id="warningMSG">Kérjük, a beszélgetés során tartsd be a Házirendet!</p>
                     </div>
 
@@ -125,7 +122,9 @@
     
                         <textarea placeholder="Írd ide az üzenetet..." rows="" id="message" class="message-bar" maxlength="1000" oninput='this.style.height = ""; this.style.height = this.scrollHeight + "px"' value=""></textarea>
                         
-                        <button id="sendBTN" onclick="send()"><img src="/_images/send.png" alt="Üzenet küldése" title="Üzenet küldése"></button>
+                        <button id="sendBTN" onclick="send()">
+                            <img src="/_images/send.png" alt="Üzenet küldése" title="Üzenet küldése">
+                        </button>
                         
                         <!-- <img id="sendbtn" src="send.png" onclick="send()"> -->
     
@@ -136,7 +135,7 @@
                 <!-- CHATPARTNER INFÓK -->
                 <div class="details">
                     <div id="picname">
-                        <img src="/_images/img_avatarA.png" alt="" id="profilePic">
+                        <img src="/_images/img_avatarA.png" alt="Profilkép" title="Profilkép" id="profilePic">
                     
                         <p id="name">Példa Név</p>
                     </div>
@@ -186,6 +185,7 @@
                     </div>
 
                     <div class="actions">
+                        <!-- MENTÉS A PROFILKÉP MELLÉ??? -->
                         <p id="save" title="Felhasználó mentése" class="emoji" onclick="savePartner()">
                             🔖
                         </p>
@@ -200,53 +200,7 @@
                     </div>
                 </div>
 
-            </div>
-
-            <!-- 1 -->
-            <div class="header">
-                <!-- <div class="header" id="header"> -->
-                    <!-- <div id="main">
-                        <button>
-                            <img src="./images/open.png" alt="" onclick="openNav()" id="open" class="openbtn">
-            
-                            <img src="./images/close.png" alt="" onclick="closeNav()" id="close">
-                        </button>
-                    </div> -->
-        
-                    <!-- <div id="sidenav" class="sidenav">
-                        <ul>
-                            <a href="" class="tertiaryBTN emoji">
-                                🏠
-                                <img src="../_images/home.png" alt="Kezdőlap" title="Kezdőlap">
-                            </a>
-
-                            <a href="/profilesettings" class="tertiaryBTN emoji">
-                                👤
-                                <img src="../_images/user (1).png" alt="Profil" title="Profil">
-                            </a>
-
-                            <a href="/aboutus" class="tertiaryBTN emoji">
-                                ❤️
-                                <img src="../_images/like.png" alt="" title="Rólunk">
-                            </a>
-
-                            <a href="/support" class="tertiaryBTN emoji">
-                                ❔
-                                <img src="../_images/info.png" alt="Segítség" title="Segítség">
-                            </a>
-                        </ul>
-                        Icons designed by Smashicons, https://smashicons.com/
-                    </div> -->
-
-                    <!-- <span onclick="openNav()">
-                        <img src="./images/open.png" alt="" id="openBTN">
-                    </span> -->
-
-                <!-- </div> -->
-            </div>
-
-        <!-- </div> -->
-        
+            </div>       
     </div>
     
     <script src="script.js"></script>

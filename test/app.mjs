@@ -2,7 +2,7 @@ import fs from 'fs';
 import nodemailer from 'file://C:\\Users\\xcsiz\\AppData\\Roaming\\npm\\node_modules\\nodemailer\\lib\\nodemailer.js';
 
 var transport = nodemailer.createTransport({
-    host: "172.29.0.100",
+    host: "172.30.0.100",
     port: 25,
     tls: {
         rejectUnauthorized: false

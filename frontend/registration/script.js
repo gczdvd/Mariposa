@@ -15,58 +15,11 @@ function togglePSW() {
 function colorChange(textarea){  
     if(textarea.value.length == 0){
       textarea.style.borderColor = "#d3d3d3";
-      remChars.style.visibility = "hidden";
     }
     else{
       textarea.style.borderColor = "#ffbc2f";
-      remChars.style.visibility = "visible";
     }
-  }  
-
-function registration(){
-    var email = document.getElementById("email").value;
-    var username = document.getElementById("username");
-    var checkbox = document.getElementById("checkbox").checked;
-    var allValid = true;
-
-    console.log(email);
-    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    var validEmail = pattern.test(email);
-  
-    if(!validEmail){
-      emailFeedback.style.visibility = "visible";
-      document.getElementById("emailFeedback").innerHTML = "Helytelen email-cím.";
-      var allValid = false;
-    }
-    else{
-      emailFeedback.style.visibility = "hidden";
-    }
-
-    checkPassword();
-
-    if(!checkbox){
-      checkboxFeedback.style.visibility = "visible";
-      document.getElementById("checkboxFeedback").innerHTML = "El kell fogadnod az ÁSZF-et!";
-      var allValid = false;
-    }
-    else{
-      checkboxFeedback.style.visibility = "hidden";
-    }
-
-    if(allValid){
-      Backend.post({
-        path:"/signup",
-        body:{
-            email:email,
-            nickname:nickname,
-            password:password
-        },
-        callback:(e)=>{
-          e
-        }
-    });
-    }
-}
+}  
 
 function checkPassword(){
   var password = document.getElementById("password").value;
@@ -84,16 +37,80 @@ function checkPassword(){
   }
 
   if(lowercase && uppercase && password.length >= 12){
-    console.log("jojelszo");
     document.getElementById("pswFeedback").style.visibility = "hidden";
+    return true;
   }
   else{
-    console.log("nemjojelszo");
     document.getElementById("pswFeedback").style.visibility = "visible";
+    return false;
   }
 }
 
 document.getElementById("password").addEventListener("keyup", checkPassword);
+
+function registration(){
+    var email = document.getElementById("email").value;
+    var username = document.getElementById("username");
+    var checkbox = document.getElementById("checkbox").checked;
+    var allValid = true;
+
+    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var validEmail = pattern.test(email);
+  
+    if(!validEmail){
+      emailFeedback.style.visibility = "visible";
+      document.getElementById("emailFeedback").innerHTML = "Helytelen email-cím.";
+      allValid = false;
+    }
+    else{
+      emailFeedback.style.visibility = "hidden";
+    }
+
+    if(!checkPassword()){      
+      allValid = false;
+    }
+
+    if(!checkbox){
+      checkboxFeedback.style.visibility = "visible";
+      document.getElementById("checkboxFeedback").innerHTML = "El kell fogadnod az ÁSZF-et!";
+      allValid = false;
+    }
+    else{
+      checkboxFeedback.style.visibility = "hidden";
+    }
+
+    console.log(allValid);
+    if(allValid){
+      
+      Swal.fire({
+        icon: "success",
+        iconColor: "#ffbc2f",
+        title: "Nézd meg az email-fiókod a visszaigazoló emailért!",
+        // text: '<a href="#"></a>',
+        html: `
+        <button onclick="location.href='https://mail.google.com/mail/u/0/#inbox';" class="primaryBTN" style="margin-top: 1em">Gmail megnyitása</button>
+        `,
+
+        width: "64em",
+        showCancelButton: false,
+        showConfirmButton: false
+      });
+
+      Backend.post({
+        path:"/signup",
+        body:{
+            email:email,
+            nickname:nickname,
+            password:password
+        },
+        callback:(e)=>{
+          e
+        }
+      });
+    }
+}
+
+
 
 // function checkValidation(){
 //   var email = document.getElementById("email").value;

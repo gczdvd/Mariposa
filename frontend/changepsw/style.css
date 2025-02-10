@@ -4,18 +4,15 @@
     margin: 0;
     padding: 0;
     border: 0;
-}
-
-body{
-    height: 100vh;
-    width: 100vw;
+    box-sizing: border-box;
 }
 
 .wrapper{
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto 1fr;
-    height: 100%;
+    height: 100vh;
+    max-height: 100%;
 }
 
 /* GOMBOK */
@@ -118,25 +115,27 @@ body{
     margin-top: 1em;
 }
 
-.tertiaryBTN, .tertiaryBTN a{
+.tertiaryBTN, .tertiaryBTN a, .tertiaryBTN p{
     display: inline-block;
     color: black;
     text-decoration: none;
     height: fit-content;
     font-family: "Albert Sans";
     width: fit-content;
+    margin: 0;
+    cursor: pointer;
 }
 
-.tertiaryBTN:hover::after, .tertiaryBTN a:hover::after{
+.tertiaryBTN:hover::after, .tertiaryBTN a:hover::after, .tertiaryBTN p:hover::after{
     transform: scaleX(1);
 }
 
-.tertiaryBTN:hover, .tertiaryBTN a:hover{
+.tertiaryBTN:hover, .tertiaryBTN a:hover, .tertiaryBTN p:hover{
     color: #ffbc2f;
     transition: 200ms;
 }
 
-.tertiaryBTN::after, .tertiaryBTN a::after{
+.tertiaryBTN::after, .tertiaryBTN a::after, .tertiaryBTN p::after{
     display: block;
     content: '';
     border-bottom: solid 2px #ffbc2f;

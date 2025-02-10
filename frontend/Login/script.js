@@ -95,3 +95,22 @@ else{
 }
 
 document.getElementById("password").addEventListener("keyup", checkPassword);
+
+function forgotPassword(){
+  Swal.fire({
+      icon: "warning",
+      title: "Add meg a Mariposa fiókodhoz tartozó e-mail címet!",
+      text: "Az e-mailben szereplő linkkel tudod majd visszaállítani a jelszavad.",
+      input: "email",
+      validationMessage: "Helytelen e-mail cím",
+      width: "64em",
+      showCancelButton: "true",
+      showConfirmButton: "true",
+      reverseButtons: "true",
+      focusConfirm: "false",
+      confirmButtonText: "Küldés",
+      cancelButtonText: "Bezárás",
+      confirmButtonColor: "#ffbc2f",
+      iconColor: "#ffbc2f"
+  })
+}

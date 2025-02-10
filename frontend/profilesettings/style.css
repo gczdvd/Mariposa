@@ -238,7 +238,7 @@
 
 .form-select{
     color: #ffbc2f;
-    border: 2px solid #ffbc2f;
+    border: 2px solid #ffbc2f !important;
 }
 
 /* Chrome, Safari, Edge, Opera */
