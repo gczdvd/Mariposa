@@ -240,6 +240,9 @@ function receive(e){
             e.className = "message2";
         }
         e.innerText = data.message;
+        if(data.time){
+            e.setAttribute("datetime");
+        }
         document.getElementsByClassName("messages")[0].insertBefore(e, document.getElementsByClassName("messages")[0].firstChild);
     }
     else if(data.type == "action"){
@@ -250,7 +253,7 @@ function receive(e){
             }));
         }
         if(data.name == "identify"){
-            var partneridentify = JSON.parse(data.value);
+            var partneridentify = data.value;
             document.getElementById("name").innerHTML = partneridentify.nickname;
             document.getElementById("quote").innerHTML = partneridentify.description;
             document.getElementById("profilePic").src = partneridentify.profile_pic;
@@ -297,6 +300,13 @@ function receive(e){
 
 function focusMessageBar(){
   document.getElementById("message").focus();
+}
+
+function history_load(){
+    var document.getElementsByClassName("messages")[0].lastChild()
+    var scrlbe = document.getElementsByClassName("messages")[0].scrollHeight - document.getElementsByClassName("messages")[0].offsetHeight;
+    var scrlsp = document.getElementsByClassName("messages")[0].scrollTop;
+    console.log(scrlbe + scrlsp < 10);
 }
 
 document.getElementById("message").addEventListener("keyup", (e)=>{

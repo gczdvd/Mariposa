@@ -571,6 +571,7 @@ app.ws('/live', function(ws, req) {
                         }
                         else if(jmsg.type == "action"){
                             if(jmsg.value == "end"){
+                                sess.getAttribute("chat").setSaved(0);
                                 sess.getWebsocket()?.send(JSON.stringify({
                                     "status":"end"//Ezeknek még nincs hatásuk froonton
                                 }));
@@ -589,13 +590,14 @@ app.ws('/live', function(ws, req) {
                                 }
                             }
                             else if(jmsg.value == "history"){
-                                var e = sess.getAttribute("chat").getMessages();
+                                var e = sess.getAttribute("chat").getMessages(jmsg.time ?? null);
                                 for(var i = 0; i < e.length; i++){
                                     var pers = (e[i].client_id == sess.getAttribute("client").getId());
                                     sess.getWebsocket()?.send(JSON.stringify({
                                         "from":pers ? 0 : 1,
                                         "type":e[i].content_type,
-                                        "message":e[i].message_value
+                                        "message":e[i].message_value,
+                                        "time":e[i].send_time
                                     }));
                                 }
                             }
