@@ -69,14 +69,9 @@ export class Chat{
             }
         }
     }
-    setSaved(){
-        if(this.db.setChatPersistent(this.id, 1)){
-            this.saved = 1;
-            return true;
-        }
-        else{
-            return false;
-        }
+    setSaved(val=1){
+        this.saved = val;
+        return this.db.setChatPersistent(this.id, val);
     }
     getSaved(){
         return this.saved;
@@ -150,8 +145,8 @@ export class Chat{
                 "status":"end"
         }));*/
     }
-    getMessages(){
-        return this.db.getMessages(this.id, 0);
+    getMessages(from=null){
+        return this.db.getMessages(this.id, from);
     }
     getPartner(me){
         return (me === this.#sess1) ? this.#sess2 : this.#sess1;

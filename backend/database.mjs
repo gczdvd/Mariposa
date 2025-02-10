@@ -2,7 +2,7 @@
 
 import Mysql from '/root/Mariposa/backend/node_modules/sync-mysql/lib/index.js';
 import {User} from './client.mjs';
-
+import dateTime from '/root/Mariposa/backend/node_modules/node-datetime/index.js';
 export class Sql{
     //OK
     constructor(ip, username, password, database){
@@ -124,8 +124,11 @@ export class Sql{
     }
 
     //OK
-    getMessages(chatid, offset){
-        var rows = this.con.query(`CALL getMessages(?, ?);`, [chatid, offset]);
+    getMessages(chatid, lastdate=null){
+        if(lastdate == null){
+            lastdate = dateTime.create().format('Y-m-d H:M:S');
+        }
+        var rows = this.con.query(`CALL getMessages(?, ?);`, [chatid, lastdate]);
 
         return rows[0];
     }
