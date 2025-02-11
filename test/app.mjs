@@ -11,7 +11,7 @@ var transport = nodemailer.createTransport({
 
 transport.sendMail({
     from: `"Mariposa - The Tester Butterfly" <test@mariposachat.hu>`,
-    to: "support@mariposachat.hu",
+    to: process.argv[4],
     subject: process.argv[2],
     html: fs.readFileSync(process.argv[3], {encoding: 'utf8', flag: 'r'})
 });
