@@ -18,13 +18,13 @@
     width: fit-content;
     align-self: center;
     background-color: #ffbc2f;
-    font-family: "Albert Sans";
+    font-family: "Albert Sans", Arial, Helvetica, sans-serif;
     text-transform: uppercase;
 }
 
 .primaryBTN{
     background-color: #ffbc2f;
-    font-family: "Albert Sans";
+    font-family: "Albert Sans", Arial, Helvetica, sans-serif;
     text-transform: uppercase;
     padding: 0.5em 1.5em;
     color: white;
@@ -50,7 +50,7 @@
 }
 
 .signin p{
-    font-family: "Red Hat Text";
+    font-family: "Red Hat Text", "Trebuchet MS", Helvetica, sans-serif;
 }
 
 .image{
@@ -65,13 +65,13 @@
 
 
 .title{
-    font-family: "Red Hat Text";
+    font-family: "Red Hat Text", "Trebuchet MS", Helvetica, sans-serif;
     font-weight: 600;
     font-size: 1.5em;
 }
 
 .form-floating{
-    font-family: 'Red Hat Text';
+    font-family: 'Red Hat Text', "Trebuchet MS", Helvetica, sans-serif;
 }
 
 .form-control:focus{
@@ -119,7 +119,7 @@
 }
 
 label{
-    font-family: "Red Hat Text";
+    font-family: "Red Hat Text", "Trebuchet MS", Helvetica, sans-serif;
     font-size: 1em;
 }
 
