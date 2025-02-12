@@ -441,7 +441,8 @@ app.post('/modifypassword', sessionValidator, (req, res) => {
 
 app.post("/report", sessionValidator, (req, res) => {   //EZT INKÁBB WSBE
     if(req.session.session.getAttribute("chat") instanceof Chat){
-        smtp.report(req.session.session.getAttribute("client"), req.session.session.getAttribute("chat").getPartner(req.session.session).getAttribute("client"))
+        var me = req.session.session.getAttribute("client").getInfo();
+        smtp.report(JSON.stringify(me), JSON.stringify({"id" : req.session.session.getAttribute("chat").getPartnerByCid(me.id)}), req.session.session.getAttribute("chat").getId(me.id));
         res.status(200);
         res.send(JSON.stringify({
             "action":"none",
@@ -591,13 +592,15 @@ app.ws('/live', function(ws, req) {
                             }
                             else if(jmsg.value == "history"){
                                 var e = sess.getAttribute("chat").getMessages(jmsg.time ?? null);
-                                for(var i = 0; i < e.length; i++){
+                                console.log(jmsg);
+                                for(var i = e.length - 1; i >= 0; i--){
                                     var pers = (e[i].client_id == sess.getAttribute("client").getId());
                                     sess.getWebsocket()?.send(JSON.stringify({
                                         "from":pers ? 0 : 1,
                                         "type":e[i].content_type,
                                         "message":e[i].message_value,
-                                        "time":e[i].send_time
+                                        "time":e[i].send_time,
+                                        "insert":"old"
                                     }));
                                 }
                             }

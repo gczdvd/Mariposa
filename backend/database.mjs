@@ -10,7 +10,8 @@ export class Sql{
             host: ip,
             user: username,
             password: password,
-            database: database
+            database: database,
+            timezone: 'utc'
         });
     }
 

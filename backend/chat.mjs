@@ -151,6 +151,9 @@ export class Chat{
     getPartner(me){
         return (me === this.#sess1) ? this.#sess2 : this.#sess1;
     }
+    getPartnerByCid(me){
+        return (me === this.cid1) ? this.cid2 : this.cid1;
+    }
     newMessage(me, message, type){
         this.db.newMessage(me.getAttribute("client").getId(), message, type, this.id);
 

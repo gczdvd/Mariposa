@@ -43,12 +43,12 @@ export class Email{
         });
     }
 
-    report(reporter, reported){
+    report(reporter, reported, chatid){
         this.transport.sendMail({
             from: `"Mariposa - The Social Butterfly" <report@mariposachat.hu>`,
             to: "support@mariposachat.hu",
             subject: "Jelentettek egy felhasználót!",
-            html: '<b style="color:green;">Jelentő:</b><br>' + reporter.getInfo() + '<br><br><b style="color:red;">Jelentett:</b><br>' + reported.getInfo()
+            html: '<b>Chat ID:</b> ' + chatid + '<br><br><b style="color:green;">Jelentő:</b><br>' + reporter + '<br><br><b style="color:red;">Jelentett:</b><br>' + reported
         });
     }
 

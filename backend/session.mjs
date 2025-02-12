@@ -24,7 +24,7 @@ export class Sessions{
         for(var i = 0; i < this.sessions.length; i++){
             if(this.sessions[i] == session){
                 this.sessions[i].killWebsocket();
-                this.sessions.splice(i);
+                this.sessions.splice(i, 1);
                 return true;
             }
         }

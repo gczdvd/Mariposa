@@ -38,7 +38,7 @@ Backend.get({
             var _img = document.createElement("img");
             _img.src = e.value.partners[i].profile_pic;
             var _p = document.createElement("p");
-            _p.innerHTML = e.value.partners[i].partner_name;
+            _p.innerText = e.value.partners[i].partner_name;
             
             _div.appendChild(_img);
             _div.appendChild(_p);
@@ -197,6 +197,7 @@ function deletePartner(){
             "type":"action",
             "value":"end"
         }));
+        location.reload();
     };
   });
 }
@@ -241,9 +242,17 @@ function receive(e){
         }
         e.innerText = data.message;
         if(data.time){
-            e.setAttribute("datetime");
+            e.setAttribute("datetime", new Date(data.time).toISOString().slice(0, 19).replace('T', ' '));
         }
-        document.getElementsByClassName("messages")[0].insertBefore(e, document.getElementsByClassName("messages")[0].firstChild);
+
+        if(data.insert == "old"){
+            document.getElementsByClassName("messages")[0].appendChild(e);
+            console.log(data.insert);
+        }
+        else{
+            document.getElementsByClassName("messages")[0].insertBefore(e, document.getElementsByClassName("messages")[0].firstChild);
+            console.log("new");
+        }
     }
     else if(data.type == "action"){
         if(data.name == "havepartner"){
@@ -254,10 +263,10 @@ function receive(e){
         }
         if(data.name == "identify"){
             var partneridentify = data.value;
-            document.getElementById("name").innerHTML = partneridentify.nickname;
-            document.getElementById("quote").innerHTML = partneridentify.description;
+            document.getElementById("name").innerText = partneridentify.nickname;
+            document.getElementById("quote").innerText = partneridentify.description;
             document.getElementById("profilePic").src = partneridentify.profile_pic;
-            document.getElementById("birthday").innerHTML = function(e=new Date(partneridentify.birthdate)){
+            document.getElementById("birthday").innerText = function(e=new Date(partneridentify.birthdate)){
                 return `${e.getUTCFullYear()}. ${(e.getMonth() < 10 ? '0' : '') + e.getMonth()}. ${(e.getDate() < 10 ? '0' : '') + e.getDate()}.`;
             }();
             document.getElementById("save").setAttribute("hidden", "true");
@@ -302,11 +311,22 @@ function focusMessageBar(){
   document.getElementById("message").focus();
 }
 
+var last_hist = "";
 function history_load(){
-    var document.getElementsByClassName("messages")[0].lastChild()
-    var scrlbe = document.getElementsByClassName("messages")[0].scrollHeight - document.getElementsByClassName("messages")[0].offsetHeight;
-    var scrlsp = document.getElementsByClassName("messages")[0].scrollTop;
-    console.log(scrlbe + scrlsp < 10);
+    var dt = document.getElementsByClassName("messages")[0].lastChild.getAttribute("datetime");
+    if(dt){
+        var scrlbe = document.getElementsByClassName("messages")[0].scrollHeight - document.getElementsByClassName("messages")[0].offsetHeight;
+        var scrlsp = document.getElementsByClassName("messages")[0].scrollTop;
+        if(scrlbe + scrlsp < 10 && dt != last_hist){
+            last_hist = dt;
+            console.log(dt);
+            ws.send(JSON.stringify({
+                "type":"action",
+                "value":"history",
+                "time":dt
+            }));
+        }
+    }
 }
 
 document.getElementById("message").addEventListener("keyup", (e)=>{
