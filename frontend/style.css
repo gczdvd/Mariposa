@@ -426,6 +426,11 @@ p{
     font-size: 0;
 }
 
+#name{
+    display: grid;
+    gap: 2vh;
+}
+
 #name #coffee{
     width: 2vw;
 }
