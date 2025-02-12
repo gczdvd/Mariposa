@@ -7,8 +7,9 @@
 
 .wrapper{
     display: grid;
-    /* height: 100vh; */
+    height: 100vh;
     max-height: 100%;
+    grid-template-rows: auto 1fr;
 }
 
 .tertiaryBTN, .tertiaryBTN a{
@@ -16,7 +17,7 @@
     color: black;
     text-decoration: none;
     height: fit-content;
-    font-family: "Albert Sans";
+    font-family: "Albert Sans", Arial, Helvetica, sans-serif;
 }
 
 .tertiaryBTN:hover::after, .tertiaryBTN a:hover::after{
@@ -105,7 +106,7 @@
     align-self: center;
     text-decoration: none;
     color: white;
-    font-family: "Palanquin";
+    font-family: "Palanquin", Geneva, Verdana, sans-serif;;
 }
 
 
@@ -116,7 +117,7 @@
 }
 
 .saved{
-    display: grid;
+    /* display: grid; */
     overflow-y: scroll;
     max-height: 100%;
     width: 20vw;
@@ -125,9 +126,23 @@
 .savedChat{
     display: grid;
     grid-template-columns: auto 1fr;
-    height: fit-content;
+    justify-content: center;
+    align-content: center;
+    height: 12vh;
     font-size: 1.2em;
     border-top: 1px solid #dadada;
+    height: fit-content;
+    padding: 1.5vh;
+}
+
+#image{
+    width: 5vw;
+    height: 5vw;
+    border-radius: 50%;
+    background-image: url("/_images/img_avatarA.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .savedChat:hover{
@@ -140,39 +155,37 @@
 
 .savedChat p{
     align-self: center;
-    font-family: "Palanquin";
+    font-family: "Palanquin", Geneva, Verdana, sans-serif;;
     font-size: 1em;
-    margin-left: 1em;
+    margin: 0 0 0 1em;
 }
 
-.savedChat img{
-    width: 5vw;
-    border-radius: 3em;
+/* .savedChat img{
+    width: 4vw;
     margin: 0.5em 0 0.5em 1em;
-}
+} */
 
 #startChat{
+    display: grid;
     position: sticky;
     position: -webkit-sticky;
     top: 0;
+    justify-content: center;
+    align-content: center;
     background-color: #ebebeb;
-    color: gray;
     text-transform: uppercase;
-    transition: 0.35s;
+    transition: 350ms;
     cursor: pointer;
-    height: fit-content;
+    height: 12vh;
     filter: grayscale(1);
+    padding: 1em 0;
 }
 
 #startChat img{
     width: 4vw;
-    display: block;
-    justify-self: center;
-    margin: 1em 0;
 }
 
 #startChat:hover{
-    /* color: black; */
     color: white;
     background-color: #feecc5;
     filter: grayscale(0);
@@ -180,7 +193,7 @@
 
 #placeholder{
     /* display: grid; */
-    font-family: "Red Hat Text";
+    font-family: "Red Hat Text", "Trebuchet MS", Helvetica, sans-serif;
     font-size: 1em;
     justify-self: center;
     text-align: center;
@@ -192,9 +205,10 @@
 
 .chat{
     display: grid;
+    grid-template-rows: 1fr auto;
     border-right: 2px solid rgba(200, 200, 200, 0.3);
     width: 50vw;
-    margin-bottom: 10px;
+    /* padding-bottom: 2vh; */
     max-height: 100%;
 }
 
@@ -207,7 +221,7 @@
     border-bottom: 2px solid rgba(200, 200, 200, 0.2);
     height: fit-content;
     justify-items: center;
-    font-family: 'Red Hat Text';
+    font-family: 'Red Hat Text', "Trebuchet MS", Helvetica, sans-serif;
     gap: 2vh;
     padding: 2vh;
     user-select: none;
@@ -220,7 +234,7 @@
     border-bottom: 2px solid rgba(200, 200, 200, 0.2);
     height: fit-content;
     justify-items: center;
-    font-family: 'Red Hat Text';
+    font-family: 'Red Hat Text', "Trebuchet MS", Helvetica, sans-serif;
     gap: 2vh;
     padding: 2vh;
     user-select: none;
@@ -247,14 +261,25 @@
 }
 
 .messages{
-    font-family: 'Red Hat Text';
+    font-family: 'Red Hat Text', "Trebuchet MS", Helvetica, sans-serif;
     overflow-y: scroll;
     display: flex;
     flex-direction: column-reverse;
-    height: 85vh;
+    /* height: 80vh; */
     width: 97%;
-    justify-self: center;
+    /* justify-self: center; */
+    
 }
+
+/* Internet Explorer 10+ and Firefox */
+/* .messages {
+    -ms-overflow-style: none; 
+    scrollbar-width: none;  
+} */
+/* Safari and Chrome */
+/* .messages::-webkit-scrollbar { 
+    display: none;  
+} */
 
 .message1{
     background-color: #ffbc2f;
@@ -276,25 +301,23 @@
     display: grid;
     grid-template-columns: 1fr auto;
     height: fit-content;
-    width: 100%;
-    justify-self: end;
+    /* width: 90%; */
+    /* justify-self: end; */
     align-self: end;
 }
 
 .message-bar{
     background-color: rgb(226, 226, 226);
     border: none;
-    color: blue;
+    color: black;
     border-radius: 1em;
-    font-family: "Red Hat Text";
+    font-family: "Red Hat Text", "Trebuchet MS", Helvetica, sans-serif;
     font-size: 1em;
     margin-left: 0.5em;
-    height: 1vh;
-    /* min-height: 4vh; */
-    /* max-height: 9vh; */
+    height: 5vh;
+    max-height: 9vh;
     padding-left: 0.5em;
     direction: ltr;
-    align-self: center;
     align-content: center;
 
     resize: none;
@@ -314,6 +337,7 @@
     border: none;
     cursor: pointer;
     justify-self: center;
+    align-self: center;
     padding: 0 0.5em;
 }
 
@@ -347,7 +371,7 @@
 }
 
 #name{
-    font-family: "Red Hat Text";
+    font-family: "Red Hat Text", "Trebuchet MS", Helvetica, sans-serif;
     font-size: 1.5em;
     font-weight: 600;
     justify-self: start;
@@ -360,12 +384,12 @@
 }
 
 #birthday, #gender{
-    font-family: "Red Hat Text";
+    font-family: "Red Hat Text", "Trebuchet MS", Helvetica, sans-serif;
     font-size: 1.2em;
 }
 
 #quote{
-    font-family: "Red Hat Text";
+    font-family: "Red Hat Text", "Trebuchet MS", Helvetica, sans-serif;
     font-size: 1em;
 }
 
@@ -382,12 +406,15 @@
 #interestsP{
     max-height: 20vh;
     overflow-y: auto;
+    padding: 2vh 0;
+    mask-image: linear-gradient(180deg, #0000 0%, #000000B5 20%, #000000B5 80%, #0000 100%);
 }
 
+
 #interests button{
-    padding: 0.5em 1em 0.5em 1em;
+    padding: 0.5em 1em;
     border-radius: 1.8em;
-    font-family: "Albert Sans";
+    font-family: "Albert Sans", Arial, Helvetica, sans-serif;
     font-size: 1.1em;
     border: 5px solid #ffbc2f;
     cursor: pointer;
@@ -443,11 +470,11 @@ img{
 }
 
 .swal2-popup{
-    font-family: "Red Hat Text";
+    font-family: "Red Hat Text", "Trebuchet MS", Helvetica, sans-serif;
 }
 
 .swal2-button{
-    font-family: "Albert Sans";
+    font-family: "Albert Sans", Arial, Helvetica, sans-serif;
 }
 
 @media (max-aspect-ratio:1/1){
@@ -465,7 +492,7 @@ img{
         align-self: center;
         text-decoration: none;
         color: black;
-        font-family: "Palanquin";
+        font-family: "Palanquin", Geneva, Verdana, sans-serif;;
     }
 
     #navbar{
@@ -480,5 +507,25 @@ img{
         font-weight: bold;
         color: black;
         height: fit-content;
+    }
+}
+
+@media (max-aspect-ratio:1/1){
+    .saved{
+        display: none;
+    }
+
+    .details{
+        display: none;
+    }
+
+    .messages{
+        width: 100vw;
+        max-width: 100%;
+        height: 80vh;
+    }
+    
+    .chat{
+        border: none;
     }
 }

@@ -17,7 +17,7 @@
     align-self: center;
     justify-self: center;
     background-color: #ffbc2f;
-    font-family: "Albert Sans";
+    font-family: "Albert Sans", Arial, Helvetica, sans-serif;
     text-transform: uppercase;
     text-decoration: none;
     padding: 0.5em 1em;
@@ -38,7 +38,7 @@
     color: #000;
     text-decoration: none;
     display: inline-block;
-    font-family: "Albert Sans";
+    font-family: "Albert Sans", Arial, Helvetica, sans-serif;
 }
 
 .tertiaryBTN:hover::after, .tertiaryBTN a:hover::after{
@@ -147,7 +147,7 @@
     justify-self: center;
     justify-content: center;
     height: 50%;
-    font-family: "Red Hat Text";
+    font-family: "Red Hat Text", "Trebuchet MS", Helvetica, sans-serif;
 }
 
 .bigtext{
@@ -182,7 +182,7 @@
     color: black;
     cursor: pointer;
     padding: 1em;
-    font-family: "Red Hat Text";
+    font-family: "Red Hat Text", "Trebuchet MS", Helvetica, sans-serif;
     font-size: 1em;
     width: 100%;
     text-align: left;
@@ -219,7 +219,7 @@
     overflow: hidden;
     transition: max-height 0.2s ease-out;
     width: 100%;
-    font-family: "Red Hat Text";
+    font-family: "Red Hat Text", "Trebuchet MS", Helvetica, sans-serif;
     text-align: left;
     border: 1px lightgray;
     border-style: groove;
@@ -242,7 +242,7 @@
     font-size: 1.3em;
     color: #ffbc2f;
     margin: 1.5vw 0 0 0;
-    font-family: "Albert Sans";
+    font-family: "Albert Sans", Arial, Helvetica, sans-serif;
 }
 
 .contact{
@@ -276,13 +276,13 @@
 }
 
 .inputs p:nth-of-type(1){
-    font-family: "Albert Sans";
+    font-family: "Albert Sans", Arial, Helvetica, sans-serif;
     font-size: 1.5em;
     margin-bottom: 0;
 }
 
 .form-floating{
-    font-family: 'Red Hat Text';
+    font-family: 'Red Hat Text', "Trebuchet MS", Helvetica, sans-serif;
 }
 
 .form-control:focus{
@@ -304,7 +304,7 @@
 }
 
 .inputs p:nth-of-type(1){
-    font-family: "Red Hat Text";
+    font-family: "Red Hat Text", "Trebuchet MS", Helvetica, sans-serif;
     font-size: 1.5em;
     font-weight: 600;
 }
@@ -315,7 +315,7 @@
 }
 
 .inputs p{
-    font-family: "Red Hat Text";
+    font-family: "Red Hat Text", "Trebuchet MS", Helvetica, sans-serif;
     align-self: end;
     font-size: 1.2em;
 }
@@ -331,7 +331,7 @@
 }
 
 #remaining-chars{
-    font-family: 'Red Hat Text';
+    font-family: 'Red Hat Text', "Trebuchet MS", Helvetica, sans-serif;
     font-size: 1em;
     font-weight: 400;
     color: #ffbc2f;
@@ -365,7 +365,7 @@
     text-decoration: none;
     color: white;
     display: inline-block;
-    font-family: "Albert Sans";
+    font-family: "Albert Sans", Arial, Helvetica, sans-serif;
     width: fit-content;
     margin-bottom: 1em;
 }
@@ -409,11 +409,11 @@
 
 #coName{
     font-size: 1.7em;
-    font-family: 'Palanquin';
+    font-family: 'Palanquin', Geneva, Verdana, sans-serif;;
 }
 
 #coSlogan{
-    font-family: 'Red Hat Text';
+    font-family: 'Red Hat Text', "Trebuchet MS", Helvetica, sans-serif;
 }
 
 #socialmedia{
@@ -470,7 +470,7 @@
         align-self: center;
         text-decoration: none;
         color: black;
-        font-family: "Palanquin";
+        font-family: "Palanquin", Geneva, Verdana, sans-serif;;
     }
 
     #header{
