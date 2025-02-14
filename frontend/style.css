@@ -415,6 +415,10 @@ p{
     margin-top: -2px;
 }
 
+.footer > div > h5, #trademark{
+    font-family: 'Red Hat Text';
+}
+
 #name, #team, #customerservice, #more{
     padding: 4vh;
 }
