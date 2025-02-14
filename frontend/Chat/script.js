@@ -28,9 +28,9 @@ Backend.get({
     path:"/partners",
     callback:(e)=>{
         console.log(e);
-        if(e.value.partners.length > 0){
-            document.getElementById("placeholder").setAttribute("hidden", "true")
-        }
+        // if(e.value.partners.length > 0){
+        //     document.getElementById("placeholder").setAttribute("hidden", "true")  //XXX
+        // }
         for(var i = 0; i < e.value.partners.length; i++){
             var _div = document.createElement("div");
             _div.className = "savedChat";

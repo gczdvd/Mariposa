@@ -14,9 +14,10 @@ import fileUpload from '/root/Mariposa/backend/node_modules/express-fileupload/l
 import cookieParser from '/root/Mariposa/backend/node_modules/cookie-parser/index.js';
 import bodyParser from '/root/Mariposa/backend/node_modules/body-parser/index.js';
 import md5 from '/root/Mariposa/backend/node_modules/md5/md5.js';
-import crypto from 'crypto';
+import CryptoJS from '/root/Mariposa/backend/node_modules/crypto-js/index.js';
 import cors from '/root/Mariposa/backend/node_modules/cors/lib/index.js'
 import uuid from '/root/Mariposa/backend/node_modules/uuid/dist/esm/v6.js';
+import crypto from 'crypto';
 import fs from 'fs';
 
 import { Sql } from './database.mjs';
@@ -124,29 +125,41 @@ app.post('/login', (req, res) => {
     var password = req.body.password;
     if(!req.session.valid){
         if(email && password){
-            var id = database.auth(email, password);
+            var keys = password.split(',');
+            var nowt = (new Date()).getTime();
+            if(keys[0] > nowt - 20000 && keys[0] < nowt + 20000){
+                var id = database.auth(email, keys[0], keys[1]);
 
-            if(id != null){
-                const sess = sessions.newSession();
-                res.status(200);
-                res.cookie("sessId", sess.getId(), { expires: Session.neverExpire(), httpOnly: true, secure: true });
-                res.send(JSON.stringify({
-                    "action":"redirect",
-                    "value":"/chat",
-                    "message":"Successful login."
-                }));
-                
-                var u = users.getUserById(id);
-                sess.setAttribute("client", u);
+                if(id != null){
+                    const sess = sessions.newSession();
+                    res.status(200);
+                    res.cookie("sessId", sess.getId(), { expires: Session.neverExpire(), httpOnly: true, secure: true });
+                    res.send(JSON.stringify({
+                        "action":"redirect",
+                        "value":"/chat",
+                        "message":"Successful login."
+                    }));
+                    
+                    var u = users.getUserById(id);
+                    sess.setAttribute("client", u);
 
-                sess.setAttribute("access", new Access());
+                    sess.setAttribute("access", new Access());
+                }
+                else{
+                    res.status(401);
+                    res.send(JSON.stringify({
+                        "action":"alert",
+                        "value":"invalid",
+                        "message":"Invalid credentials."
+                    }));
+                }
             }
             else{
                 res.status(401);
                 res.send(JSON.stringify({
                     "action":"alert",
-                    "value":"invalid",
-                    "message":"Invalid credentials."
+                    "value":"timeout",
+                    "message":"Key timeout."
                 }));
             }
         }

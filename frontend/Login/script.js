@@ -13,6 +13,21 @@ if(token){
     });
 }
 
+function getCookie(key){
+    var coos = document.cookie.split(';');
+    for(var i = 0; i < coos.length; i++){
+        var tmp = coos[i].trim().split('=');
+        if(key == tmp[0]){
+            return tmp[1];
+        }
+    };
+    return null;
+}
+
+function setCookie(key, value){
+    document.cookie = key + "=" + value + ";";
+}
+
 function togglePSW() {
     var x = document.getElementById("password");
     if (x.type === "password") {
@@ -51,16 +66,36 @@ function login(){
     emailFeedback.style.visibility = "hidden";
   }
 
-  if(!checkPassword()){
-    allValid = false;
+  if(!automatic){
+    var jelszo = checkPassword();
+    if(!jelszo){
+        allValid = false;
+    }
   }
 
   if(allValid){
+    if(automatic){
+        var precode = getCookie("password");
+    }
+    else{
+        var precode = CryptoJS.SHA256(jelszo).toString();
+    }
+    console.log("precode", precode);
+    if(document.getElementById("rememberme").checked){
+        setCookie("email", email);
+        setCookie("password", precode);
+    }
+    var timekey = String((new Date).getTime());
+    console.log("timekey", timekey);
+    var key = CryptoJS.SHA256(timekey + precode).toString();
+    console.log("key", key);
+    var fullkey = timekey + ',' + key;
+    console.log("fullkey", fullkey);
     Backend.post({
       path:"/login", 
       body:{
           email: email, 
-          password: document.getElementById("password").value
+          password: fullkey
       },
       callback:console.log
   });
@@ -68,33 +103,41 @@ function login(){
 }
 
 function checkPassword(){
-var password = document.getElementById("password").value;
-var lowercase = false;
-var uppercase = false;
+    automatic = false;
+    
+    var password = document.getElementById("password").value;
+    var lowercase = false;
+    var uppercase = false;
 
-for(var i = 0; i < password.length; i++){
-  
-  if(password[i] == password[i].toLowerCase()){
-    lowercase = true;
-  }
-  else if(password[i] == password[i].toUpperCase()){
-    uppercase = true;
-  }
-}
+    for(var i = 0; i < password.length; i++){
+        if(password[i] == password[i].toLowerCase()){
+            lowercase = true;
+        }
+        else if(password[i] == password[i].toUpperCase()){
+            uppercase = true;
+        }
+    }
 
-if(lowercase && uppercase && password.length >= 12){
-  console.log("jojelszo");
-  document.getElementById("pswFeedback").style.visibility = "hidden";
-  return true;
-}
-else{
-  console.log("nemjojelszo");
-  document.getElementById("pswFeedback").style.visibility = "visible";
-  return false;
-}
+    if(lowercase && uppercase && password.length >= 12){
+        console.log("jojelszo");
+        document.getElementById("pswFeedback").style.visibility = "hidden";
+        return password;
+    }
+    else{
+        console.log("nemjojelszo");
+        document.getElementById("pswFeedback").style.visibility = "visible";
+        return false;
+    }
 }
 
 document.getElementById("password").addEventListener("keyup", checkPassword);
+
+var automatic = false;
+if(getCookie("email") && getCookie("password")){
+    automatic = true;
+    document.getElementById("password").value = "************";
+    document.getElementById("email").value = getCookie("email");
+}
 
 function forgotPassword(){
   Swal.fire({

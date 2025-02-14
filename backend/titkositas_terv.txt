@@ -1,0 +1,16 @@
+Regisztráció:
+alma -> sha1(alma) -> srfavr87hzf8r7fh87ah -> adatbázisba
+
+
+
+Bejelentkezés:
+
+alma -> md5(alma) -> 1739441151ebbc3c26a34b609dc46f5c3378f96e08 -> sha(1739441151ebbc3c26a34b609dc46f5c3378f96e08) -> 3cc1b4c9c359c1dcde717b2ac13214534c77be52
+
+1739441151,3cc1b4c9c359c1dcde717b2ac13214534c77be52
+
+if(mostaniunix < 1739441151 + 60 && mostaniunix > 1739441151 - 60){
+	if(sha(1739441151 + (adatbázisból)1739441151ebbc3c26a34b609dc46f5c3378f96e08) == 3cc1b4c9c359c1dcde717b2ac13214534c77be52){
+		Akkorjó a user
+	}
+}

@@ -38,7 +38,7 @@ function checkPassword(){
 
   if(lowercase && uppercase && password.length >= 12){
     document.getElementById("pswFeedback").style.visibility = "hidden";
-    return true;
+    return password;
   }
   else{
     document.getElementById("pswFeedback").style.visibility = "visible";
@@ -66,7 +66,8 @@ function registration(){
       emailFeedback.style.visibility = "hidden";
     }
 
-    if(!checkPassword()){      
+    var jelszo = checkPassword();
+    if(!jelszo){      
       allValid = false;
     }
 
@@ -95,16 +96,17 @@ function registration(){
         showCancelButton: false,
         showConfirmButton: false
       });
-
+        
+      var key = CryptoJS.SHA256(jelszo).toString();
       Backend.post({
         path:"/signup",
         body:{
             email:email,
-            nickname:nickname,
-            password:password
+            nickname:username.value,
+            password:key
         },
         callback:(e)=>{
-          e
+        //   e
         }
       });
     }
