@@ -23,24 +23,19 @@
 
         .header{
             text-decoration: none;
-            color: black;
+            font-family: 'Palanquin', Geneva, Verdana, sans-serif;
+            text-align: end;
         }
 
-        #header{
-            font-family: 'Palanquin';
-            width: 50vw;
-        }
-
-        #header img{
-            height: 5vh;
-            vertical-align: middle;
+        #header:hover{
+            background-color: lightgray;
+            color: orange;
         }
 
         #header p{
-            text-align: center;
             display: inline;
-            vertical-align: middle;
-            text-transform: uppercase;
+            color: #ffbc2f;
+            font-size: 1.2em;
         }
 
         #details{
@@ -48,15 +43,19 @@
             font-family: 'Red Hat Text', Arial, Helvetica, sans-serif;
             background-color: #ffbc2f;
             padding: 2vw;
-            gap: 2em;
         }
 
         #details > div{
             margin: auto;
             text-align: center;
             background-color: white;
+            color: black;
             padding: 2vw;
             width: 40vw;
+        }
+
+        #details #title, #details #text1, #details #text2{
+            margin-bottom: 5vh;
         }
 
         #title{
@@ -84,18 +83,24 @@
             border-bottom-left-radius: 2vw;
         }
 
+        #text3{
+            font-size: 1.1em;
+            border-top-left-radius: 2vw;
+            border-top-right-radius: 2vw;
+            border-bottom-right-radius: 2vw;
+            border-bottom-left-radius: 0;
+        }
+
         #confirm{
             display: grid;
             margin: auto;
-            gap: 3vw;
-            padding: 3vw;
-            text-align: center;
+            gap: 2vw;
+            padding: 2vw;
         }
 
         #confirm p{
+            text-align: center;
             font-weight: 600;
-            width: 60%;
-            margin: auto;
         }
 
         #confirmButton{
@@ -149,22 +154,12 @@
             padding-top: 0.5em;
         }
 
-        #help a{
+        #footer a{
             color: white;
         }
 
-        #help a:hover, #warning a:hover{
+        #footer a:hover{
             color: orange;
-        }
-
-        #warning{
-            text-align: center;
-            color: #ffbc2f;
-            padding-bottom: 2vh;
-        }
-
-        #warning a{
-            color: #ffbc2f;
         }
 
         #trademark{
@@ -178,11 +173,9 @@
 <body>
     <div id="container">
         
-        <a href="/" class="header">
+        <a href="https://mariposachat.hu/" class="header">
             <div id="header">
-                <img src="" alt="">
-                <!-- IDE MAJD A LOGO JÖN -->
-                <p>MARIPOSA</p>
+                <p>Irány a Mariposa &#8680;</p>
             </div>
         </a>
         
@@ -213,13 +206,13 @@
             </div>
 
             <div id="footer">
-                <p id="help">Segítségre van szükséged? Látogasd meg a <a href="#">GYIK</a> oldalunkat, ahol böngészhetsz a gyakran ismételt kérdések között! Ha nem találsz választ a kérdésedre, vedd fel velünk a kapcsolatot!</p>
+                <p id="help">Segítségre van szükséged? Látogasd meg a <a href="https://mariposachat.hu/support">GYIK</a> oldalunkat, ahol böngészhetsz a gyakran ismételt kérdések között! Ha nem találsz választ a kérdésedre, vedd fel velünk a kapcsolatot!</p>
 
                 <p id="trademark">Mariposa - The Social Butterfly © 2025</p>
             </div>
 
             <div id="warning">
-                Ezt az emailt azért kaptad, mert jelentetted egy beszélgetőpartnered. Megértjük, ha esetleg csalódott vagy a jelentés vizsgálatának eredményével. Ez esetben lehetőséged van problémád részletesebb leírására a <a href="#">Segítség</a> oldalon.
+                Ezt az emailt azért kaptad, mert jelentetted egy beszélgetőpartnered. Megértjük, ha esetleg csalódott vagy a jelentés vizsgálatának eredményével. Ez esetben lehetőséged van problémád részletesebb leírására a <a href="https://mariposachat.hu/support">Segítség</a> oldalon.
             </div>
 
         </div>      

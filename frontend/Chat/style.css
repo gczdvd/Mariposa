@@ -158,7 +158,6 @@
     cursor: pointer;
 }
 
-/* Aktív chatnek accent color háttér. */
 
 .savedChat p{
     align-self: center;
@@ -491,7 +490,8 @@ img{
 
 @media (max-aspect-ratio:1/1){
     .header{
-        font-size: 0.8em;
+        font-size: 0.6em;
+        height: fit-content;
     }
 
     #logo{
@@ -500,7 +500,7 @@ img{
     }
     
     #title{
-        font-size: 1em;
+        font-size: 0.5em;
         align-self: center;
         text-decoration: none;
         color: black;
@@ -508,11 +508,11 @@ img{
     }
 
     #navbar{
-        margin: 2vh 0;
+        /* margin: 2vh 0; */
     }
 
     #navigation{
-        gap: 5vw;
+        /* gap: 10px; */
     }
     
     .navigation a{
@@ -523,33 +523,100 @@ img{
 }
 
 @media (max-aspect-ratio:1/1){
+    .wrapper{
+        grid-template-rows: 1fr 1fr 1fr;
+        gap: 0;
+        display: grid;
+        height: 90vh;
+        max-height: 100%;
+        width: 100vw;
+        max-width: 100%;
+    }
+
+    #chatArea{
+        height: 80vh;
+        grid-template-columns: 1fr;
+        /* height: 100vh; */
+        /* max-height: 100%; */
+        /* display: block; */
+    }
+
     .responsive-bar{
         display: grid;
         grid-template-columns: 1fr 1fr;
+        height: fit-content;
+        width: 100vw;
+        max-width: 100%;
+    }
+
+    .responsive-bar #d{
+        justify-self: end;
     }
 
     .responsive-bar img{
         width: 4vw;
     }
 
-    .responsive-bar
+    .responsive-bar #closeDetails, .responsive-bar #closeSaved{
+        display: none;
+    }
+
+    #sc, #d{
+        height: fit-content;
+        width: fit-content;
+    }
 
     .saved{
-        display: none;
+        width: 0;
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        /* overflow-y: scroll; */
+        height: 100vh;
+        background-color: #fff;
     }
 
     .details{
         width: 0;
-        margin-left: 250px;
+        position: absolute;
+        z-index: 1;
+        right: 0;
+        /* overflow-y: scroll; */
+        height: 100vh;
+        max-height: 100%;
+        background-color: #ffbc2f;
+    }
+
+    
+    
+    .details #profilePic{
+        /* width: 0; */
+    }
+
+    #picname{
+        /* font-size: 0.5em; */
     }
 
     .messages{
-        width: 100vw;
-        max-width: 100%;
-        height: 80vh;
+        /* width: 100vw; */
+        /* max-width: 100%; */
+        /* height: 50vh */
     }
     
     .chat{
         border: none;
+        /* height: 80vh; */
+        /* max-height: 100%; */
     }
+
+    .message{
+        width: 100vw;
+        max-width: 100%;
+    }
+
+    .message-bar{
+        margin-left: 3px;
+    }
+
+
 }
