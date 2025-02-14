@@ -334,3 +334,43 @@ document.getElementById("message").addEventListener("keyup", (e)=>{
         send();
     }
 })
+
+function openDetails(){
+  var details =  document.getElementById("details");
+  var closeDetails = document.getElementById("closeDetails");
+  var openDetails = document.getElementById("openDetails");
+
+  details.style.width = 100 + "vw";
+  openDetails.style.display = "none"
+  closeDetails.style.display = "block";
+}
+
+function closeDetails(){
+  var details =  document.getElementById("details");
+  var closeDetails = document.getElementById("closeDetails");
+  var openDetails = document.getElementById("openDetails");
+
+  details.style.width = 0 + "vw";
+  openDetails.style.display = "block"
+  closeDetails.style.display = "none";
+}
+
+function openSaved(){
+  var saved =  document.getElementById("saved");
+  var closeSaved = document.getElementById("closeSaved");
+  var openSaved = document.getElementById("openSaved");
+
+  saved.style.width = 100 + "vw";
+  openSaved.style.display = "none"
+  closeSaved.style.display = "block";
+}
+
+function closeSaved(){
+  var saved =  document.getElementById("saved");
+  var closeSaved = document.getElementById("closeSaved");
+  var openSaved = document.getElementById("openSaved");
+
+  saved.style.width = 0 + "vw";
+  openSaved.style.display = "block"
+  closeSaved.style.display = "none";
+}
