@@ -35,13 +35,13 @@ export class User{
         // this.profile_pic = profile_pic;
     }
 
-    // getNickname(){
-    //     return this.nickname;
-    // }
+    getNickname(){
+        return this.getInfo().nickname;
+    }
 
-    // getEmail(){
-    //     return this.email;
-    // }
+    getEmail(){
+        return this.getInfo().email;
+    }
 
     getId(){
         return this.id;

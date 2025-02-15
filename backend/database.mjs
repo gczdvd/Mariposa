@@ -16,8 +16,8 @@ export class Sql{
     }
 
     //OK
-    auth(email, password){
-        var rows = this.con.query(`CALL authUser(?, ?);`, [email, password]);
+    auth(email, key, wanted){
+        var rows = this.con.query(`CALL authUser(?, ?, ?);`, [email, key, wanted]);
         var id = rows[0][0]?.client_id;
 
         if(id){

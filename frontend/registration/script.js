@@ -65,7 +65,8 @@ function registration(){
       document.getElementById("emailFeedback").innerHTML = "";
     }
 
-    if(!checkPassword()){      
+    var jelszo = checkPassword();
+    if(!jelszo){      
       allValid = false;
     }
 
@@ -100,16 +101,17 @@ function registration(){
         showCancelButton: false,
         showConfirmButton: false
       });
-
+        
+      var key = CryptoJS.SHA256(jelszo).toString();
       Backend.post({
         path:"/signup",
         body:{
             email:email,
-            nickname:nickname,
-            password:password
+            nickname:username.value,
+            password:key
         },
         callback:(e)=>{
-          e
+        //   e
         }
       });
     }
