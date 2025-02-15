@@ -269,13 +269,12 @@
 
 .inputs{
     display: grid;
+    width: 30vw;
     justify-self: center;
-    align-self: center;
-    width: 25vw;
-    gap: 3vh;
+    box-sizing: border-box;
 }
 
-.inputs p:nth-of-type(1){
+.title{
     font-family: "Albert Sans", Arial, Helvetica, sans-serif;
     font-size: 1.5em;
     margin-bottom: 0;

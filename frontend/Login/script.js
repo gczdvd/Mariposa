@@ -118,7 +118,6 @@ function checkPassword(){
         }
     }
 
-<<<<<<< HEAD
 if(lowercase && uppercase && password.length >= 12){
   document.getElementById("pswFeedback").innerHTML = "";
   return true;
@@ -127,18 +126,6 @@ else{
   document.getElementById("pswFeedback").innerHTML = "Legalább 12 karakter, kis- és nagybetű egyaránt";
   return false;
 }
-=======
-    if(lowercase && uppercase && password.length >= 12){
-        console.log("jojelszo");
-        document.getElementById("pswFeedback").style.visibility = "hidden";
-        return password;
-    }
-    else{
-        console.log("nemjojelszo");
-        document.getElementById("pswFeedback").style.visibility = "visible";
-        return false;
-    }
->>>>>>> 027130961bdd952a3e93342b978163e5ec254b07
 }
 
 document.getElementById("password").addEventListener("keyup", checkPassword);
