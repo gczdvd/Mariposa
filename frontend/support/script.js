@@ -82,6 +82,14 @@ function validate(){
   }
 }
 
+function empty(){
+  document.getElementById("email").value = "";
+  document.getElementById("fullname").value = "";
+  document.getElementById("username").value = "";
+  document.getElementById("message").value = "";
+  document.getElementById("remaining-chars").innerHTML = "";
+}
+
 function support(email, name, message){
     Backend.post({
         "path":"/message",
@@ -103,8 +111,12 @@ function supportResponse(e){
       text: "Ügyfélszolgálatunk hamarosan felveszi Veled a kapcsolatot.",
       width: "64em",
       confirmButtonText: "Rendben!", 
-      showCancelButton: "false",
+      showCancelButton: false,
       confirmButtonColor: "#ffbc2f",
+    }).then((result) => {
+      if(result.isConfirmed){
+        empty();
+      }
     })
   }
   else{
@@ -115,7 +127,7 @@ function supportResponse(e){
       text: "Kérjük, próbáld meg később!",
       width: "64em",
       confirmButtonText: "Rendben!", 
-      showCancelButton: "false",
+      showCancelButton: false,
       confirmButtonColor: "#ffbc2f",
     })
   }

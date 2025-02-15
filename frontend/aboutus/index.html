@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/_images/favicon.ico">
     <script src="/frontend/sweetalert2.all.min.js"></script>
     <link rel="stylesheet" href="/frontend/sweetalert2.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Mariposa</title>
 </head>
 <body>
     
@@ -119,20 +120,58 @@
         <div class="us">
 
             <div class="gd">
-                <img src="/_images/img_avatar.png" alt="Gócza Dávid" title="Gócza Dávid">
-                <p>Gócza Dávidnak hívnak. Én vagyok a csapat backendese, vagyis felelős azért, amit senki nem lát, mégis kell a működéshez. Nagy lelkesedéssel vágtam bele a projektbe, sok ötlettel. A Mariposa valószínűleg a 21. századi fiatalok nagy részének egyik problémáját megoldja, ugyanis sokan nem szeretnek személyesen, névvel ismerkedni. Sokkal kényelmesebb előbb beszélgetni, és ha jól érzed magad a partnerrel, a név, arc, minden más csak másodlagos.</p>
+                <img src="/_images/img_avatar.png" alt="Gócza Dávid" title="Gócza Dávid" class="teamPicture">
+                
+                <p>Gócza Dávidnak hívnak. Én vagyok a csapat backendese, vagyis felelős<span id="dots">...</span>
+                <span id="moreText">
+                azért, amit senki nem lát, mégis kell a működéshez. Nagy lelkesedéssel vágtam bele a projektbe, sok ötlettel. A Mariposa valószínűleg a 21. századi fiatalok nagy részének egyik problémáját megoldja, ugyanis sokan nem szeretnek személyesen, névvel ismerkedni. Sokkal kényelmesebb előbb beszélgetni, és ha jól érzed magad a partnerrel, a név, arc, minden más csak másodlagos.
+                </span>
+                
+                <img src="/_images/showMore.png" alt="" class="showMoreBtn" id="showMoreBtn" onclick="myFunction()">
+                </p>
+
+                <!-- <p onclick="myFunction()" id="myBtn">-></p> -->
             </div>
+            
 
             <div class="csx">
-                <p>Csizmadia Xénia vagyok, a Mariposa frontend fejlesztője és designere, és egyben az ötletgazdája is! A Mariposával egy hatalmas álmom valósult meg: elkészítettem életem első igazi projektjét, egy olyan projektet, amivel segíthetek az embereknek. A fejlesztés egész folyamatát a szívem alatt hordtam, és a jövőben is aktív részese leszek a frissítéseknek és finomításoknak.</p>
-                <img src="/_images/img_avatar.png" alt="Csizmadia Xénia Roxána" title="Csizmadia Xénia Roxána">
+                <img src="/_images/img_avatar.png" alt="Csizmadia Xénia Roxána" title="Csizmadia Xénia Roxána" class="teamPicture">
+
+                <p>
+                    Csizmadia Xénia vagyok, a Mariposa frontend fejlesztője és designere, és egyben az ötletgazdája is! A Mariposával egy hatalmas álmom valósult meg: elkészítettem életem első igazi projektjét, egy olyan projektet, amivel segíthetek az embereknek. A fejlesztés egész folyamatát a szívem alatt hordtam, és a jövőben is aktív részese leszek a frissítéseknek és finomításoknak.
+
+                </p>
+                
                 
             </div>
 
             <div class="hk">
-                <img src="/_images/img_avatar.png" alt="Horváth Kamilla Anna" title="Horváth Kamilla Anna">
-                <p>Horváth Kamilla vagyok, a Mariposa szövegírója, társ-designere és PPT felelőse. A szerepem, hogy a projekt üzenetét érthetővé és vonzóvá tegyem, miközben segítem a csapatot az ötletek megvalósításában. A Mariposa egy olyan platform, ahol bárki szabadon beszélgethet másokkal anélkül, hogy nevet vagy képet kellene megosztania. Célunk, hogy megkönnyítsük az ismerkedést, különösen azok számára, akik nehezen nyílnak meg.</p>
+                <img src="/_images/img_avatar.png" alt="Horváth Kamilla Anna" title="Horváth Kamilla Anna" class="teamPicture">
+                <p>Horváth Kamilla vagyok, a Mariposa szövegírója és társ-designere. A szerepem, hogy a projekt üzenetét érthetővé és vonzóvá tegyem, miközben segítem a csapatot az ötletek megvalósításában. A Mariposa egy olyan platform, ahol bárki szabadon beszélgethet másokkal anélkül, hogy nevet vagy képet kellene megosztania. Célunk, hogy megkönnyítsük az ismerkedést, különösen azok számára, akik nehezen nyílnak meg.</p>
             </div>
+
+            <!-- <div class="card gd">
+                <img src="/_images/img_avatar.png" class="card-img-top" alt="">
+                <div class="card-body">
+                  <p class="card-text">Gócza Dávidnak hívnak. Én vagyok a csapat backendese, vagyis felelős azért, amit senki nem lát, mégis kell a működéshez. Nagy lelkesedéssel vágtam bele a projektbe, sok ötlettel. A Mariposa valószínűleg a 21. századi fiatalok nagy részének egyik problémáját megoldja, ugyanis sokan nem szeretnek személyesen, névvel ismerkedni. Sokkal kényelmesebb előbb beszélgetni, és ha jól érzed magad a partnerrel, a név, arc, minden más csak másodlagos.</p>
+                </div>
+            </div>
+
+            <div class="card csx">
+                <img src="/_images/img_avatar.png" class="card-img-top" alt="">
+                <div class="card-body">
+                  <p class="card-text">Csizmadia Xénia vagyok, a Mariposa frontend fejlesztője és designere, és egyben az ötletgazdája is! A Mariposával egy hatalmas álmom valósult meg: elkészítettem életem első igazi projektjét, egy olyan projektet, amivel segíthetek az embereknek. A fejlesztés egész folyamatát a szívem alatt hordtam, és a jövőben is aktív részese leszek a frissítéseknek és finomításoknak.</p>
+                </div>
+            </div>
+
+            <div class="card hk">
+                <img src="/_images/img_avatar.png" class="card-img-top" alt="">
+                <div class="card-body">
+                  <p class="card-text">Horváth Kamilla vagyok, a Mariposa szövegírója és társ-designere. A szerepem, hogy a projekt üzenetét érthetővé és vonzóvá tegyem, miközben segítem a csapatot az ötletek megvalósításában. A Mariposa egy olyan platform, ahol bárki szabadon beszélgethet másokkal anélkül, hogy nevet vagy képet kellene megosztania. Célunk, hogy megkönnyítsük az ismerkedést, különösen azok számára, akik nehezen nyílnak meg.</p>
+                </div>
+            </div> -->
+
+            
         </div>
 
         <div class="contact">
@@ -207,7 +246,7 @@
             <div id="more" class="footerlink">
                 <h5>Több...</h5>
                 <!-- HÁZIREND PDF -->
-                <a href="">
+                <a href="./documents/hazirend.pdf" target="_blank">
                     Házirend
                 </a>
 

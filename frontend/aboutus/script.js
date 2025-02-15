@@ -17,6 +17,20 @@ function charCounter(textarea) {
   }
 }
 
+function myFunction() {
+  var dots = document.getElementById("dots");
+  var moreText = document.getElementById("moreText");
+
+  if (dots.style.display === "none") {
+    dots.style.display = "block";
+    moreText.style.display = "none";
+    
+  } else {
+    dots.style.display = "none";
+    moreText.style.display = "block";
+  }
+}
+
 
 function colorChange(inputField){
   if(inputField.value.length == 0){

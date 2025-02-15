@@ -1,6 +1,6 @@
 describe('support message email fail spec', () => {
     it('should fail, email with no @ or .com at end', () => {
-      cy.visit('https://mariposachat.hu/support')
+      cy.visit('https://mariposachat.hu/aboutus')
   
       cy.get('#email').type('csizmadiaxeniagmail')
       cy.get('#fullname').type('xy')
@@ -16,7 +16,7 @@ describe('support message email fail spec', () => {
 
   describe('support message fullname fail spec', () => {
     it('should fail, fullname is empty', () => {
-      cy.visit('https://mariposachat.hu/support')
+      cy.visit('https://mariposachat.hu/aboutus')
   
       cy.get('#email').type('csizmadiaxenia@gmail.com')
         //   cy.get('#fullname').type('xy')
@@ -32,7 +32,7 @@ describe('support message email fail spec', () => {
   
   describe('support message message fail spec', () => {
     it('should fail, message is empty', () => {
-      cy.visit('https://mariposachat.hu/support')
+      cy.visit('https://mariposachat.hu/aboutus')
   
       cy.get('#email').type('csizmadiaxenia@gmail.com')
       cy.get('#fullname').type('xy')
@@ -48,7 +48,7 @@ describe('support message email fail spec', () => {
 
   describe('support message all fail spec', () => {
     it('should fail, message is empty', () => {
-      cy.visit('https://mariposachat.hu/support')
+      cy.visit('https://mariposachat.hu/aboutus')
   
       cy.get('#email').type('csizmadiaxeniagmail')
         //   cy.get('#name').type('')
@@ -67,7 +67,7 @@ describe('support message email fail spec', () => {
   
   describe('support message spec', () => {
     it('should be able to send', () => {
-      cy.visit('https://mariposachat.hu/support')
+      cy.visit('https://mariposachat.hu/aboutus')
   
       cy.get('#email').type('csizmadiaxenia@gmail.com')
       cy.get('#fullname').type('xy')

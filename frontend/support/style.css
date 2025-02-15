@@ -291,7 +291,7 @@
 
 .form-control{
     color: #ffbc2f;
-    border: #d3d3d3 2px solid !important;
+    border: #d3d3d3 2px solid;
 }
 
 .inputs{
@@ -334,7 +334,7 @@
 
 #emailFeedback, #nameFeedback, #messageFeedback, #usernameFeedback{
     color: red;
-    visibility: hidden;
+    /* visibility: hidden; */
     margin: 0;
     font-weight: 400;
     height: 2em;

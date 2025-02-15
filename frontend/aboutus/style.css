@@ -227,47 +227,93 @@
 }
 
 
-.fade {
-    animation-name: fade;
-    animation-duration: 1.5s;
-}
-
-@keyframes fade {
-    from {opacity: .4}
-    to {opacity: 1}
-}
-
-
 .us{
     display: grid;
-    grid-template-rows: repeat(3, 1fr);
-    width: 70%;
-    justify-self: center;
+    /* grid-template-rows: repeat(3, 1fr); */
+    /* justify-self: center; */
     font-family: "Red Hat Text", "Trebuchet MS", Helvetica, sans-serif;
     font-weight: 400;
     font-size: 1.1em;
-}
-
-.us img{
-    border-radius: 5%;
+    width: 70vw;
+    max-width: 100%;
     justify-self: center;
-    max-width: 50%;
+    /* row-gap: 20vh; */
+    /* column-gap: 5vw; */
 }
 
 .gd, .csx, .hk{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    align-items: center;
-    text-align: center;
-    padding: 0.5em;
-    border-radius: 2em;
-    font-family: "Red Hat Text", "Trebuchet MS", Helvetica, sans-serif;
+    grid-template-rows: 1fr 1fr;
+    box-shadow: 1px 1px 5px lightgray;
+    width: 40vw;
+    /* gap: 20vh; */
+    /* text-align: center; */
+    /* padding: 2em; */
+}
+
+.gd{
+    /* grid-row: 1 / span 2; */
+}
+
+.csx{
+    justify-self: end;
+    grid-row: 2;
+    /* grid-row: 2 / span 3; */
+    /* grid-column: 2; */
+}
+
+.hk{
+    /* grid-row: 3 / span 4; */
+    /* grid-row-start: 3; */
 }
 
 .us p{
-    justify-self: center;
-    width: 30vw;
     margin: 0;
+    position: relative;
+}
+
+#moreText{
+    display: none;
+}
+
+#dots{
+}
+
+.teamPicture{
+    width: 20vw;
+    justify-self: center;
+    grid-row: 1 / span 2;
+}
+
+.showMoreBtn{
+    width: 2vw;
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.showMoreBtn:hover{
+    width: 2.5vw;
+    transition: 1s;
+}
+
+
+.gd, .csx, .hk{
+    /* display: grid; */
+    /* grid-template-columns: 1fr 1fr; */
+    /* align-items: center; */
+    /* text-align: center; */
+    padding: 2em;
+    gap: 1vw;
+    /* border-radius: 2em; */
+    /* font-family: "Red Hat Text", "Trebuchet MS", Helvetica, sans-serif; */
+    /* box-shadow: 1px 1px 5px lightgray; */
+}
+
+.us p{
+    /* justify-self: center;
+    width: 30vw;
+    margin: 0; */
 }
 
 
@@ -571,7 +617,6 @@ label{
     .values{
         grid-template-columns: repeat(2, 1fr);
         gap: 0.5em;
-        
     }
 
     .values > div{
