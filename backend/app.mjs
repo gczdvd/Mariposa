@@ -31,6 +31,8 @@ import { Access } from './access.mjs';
 
 const cryptKey = crypto.randomBytes(32);
 
+var secrets = fs.readFileSync("./secrets.key");
+
 const database = new Sql("127.0.0.1", "root", "MariposaProject2024%", "mariposa");
 const smtp = new Email("127.0.0.1", 25, "noreply@mariposachat.hu");
 const chats = new Chats(database);
