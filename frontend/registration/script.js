@@ -37,11 +37,11 @@ function checkPassword(){
   }
 
   if(lowercase && uppercase && password.length >= 12){
-    document.getElementById("pswFeedback").style.visibility = "hidden";
+    document.getElementById("pswFeedback").innerHTML = "";
     return true;
   }
   else{
-    document.getElementById("pswFeedback").style.visibility = "visible";
+    document.getElementById("pswFeedback").innerHTML = "Legalább 12 karakter, kis- és nagybetű egyaránt";
     return false;
   }
 }
@@ -50,7 +50,7 @@ document.getElementById("password").addEventListener("keyup", checkPassword);
 
 function registration(){
     var email = document.getElementById("email").value;
-    var username = document.getElementById("username");
+    var username = document.getElementById("username").value;
     var checkbox = document.getElementById("checkbox").checked;
     var allValid = true;
 
@@ -58,16 +58,23 @@ function registration(){
     var validEmail = pattern.test(email);
   
     if(!validEmail){
-      emailFeedback.style.visibility = "visible";
-      document.getElementById("emailFeedback").innerHTML = "Helytelen email-cím.";
+      document.getElementById("emailFeedback").innerHTML = "Helytelen email-cím";
       allValid = false;
     }
     else{
-      emailFeedback.style.visibility = "hidden";
+      document.getElementById("emailFeedback").innerHTML = "";
     }
 
     if(!checkPassword()){      
       allValid = false;
+    }
+
+    if(username.length == 0){
+      document.getElementById("usernameFeedback").innerHTML = "Kérjük, adj meg egy felhasználónevet!";
+      allValid = false;
+    }
+    else{
+      document.getElementById("usernameFeedback").innerHTML = "";
     }
 
     if(!checkbox){
@@ -76,17 +83,15 @@ function registration(){
       allValid = false;
     }
     else{
-      checkboxFeedback.style.visibility = "hidden";
+      document.getElementById("checkboxFeedback").innerHTML = "";
     }
 
-    console.log(allValid);
     if(allValid){
       
       Swal.fire({
         icon: "success",
         iconColor: "#ffbc2f",
         title: "Nézd meg az email-fiókod a visszaigazoló emailért!",
-        // text: '<a href="#"></a>',
         html: `
         <button onclick="location.href='https://mail.google.com/mail/u/0/#inbox';" class="primaryBTN" style="margin-top: 1em">Gmail megnyitása</button>
         `,
@@ -116,8 +121,4 @@ function registration(){
 //   var email = document.getElementById("email").value;
 //   var password = document.getElementById("password").value;
 
- 
-
-  
-    
 // }

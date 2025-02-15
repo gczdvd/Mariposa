@@ -281,8 +281,6 @@
 .contact{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    background-color: transparent;
-    height: fit-content;
     margin: 5vh 0;
     width: 80vw;
     justify-self: center;
@@ -302,19 +300,18 @@
 
 .inputs{
     display: grid;
+    width: 30vw;
     justify-self: center;
-    align-self: center;
-    width: 25vw;
-    gap: 3vh;
+    box-sizing: border-box;
 }
 
-.inputs p:nth-of-type(1){
+.title{
     font-family: "Red Hat Text", "Trebuchet MS", Helvetica, sans-serif;
     font-size: 1.5em;
     margin-bottom: 0;
     font-weight: 600;
+    height: fit-content;
 }
-
 
 .form-floating{
     font-family: 'Red Hat Text', "Trebuchet MS", Helvetica, sans-serif;
@@ -334,9 +331,22 @@
     outline: none;
 }
 
-#textarea{
+#message{
     resize: none;
     height: 25vh;
+}
+
+#emailFeedback, #nameFeedback, #messageFeedback, #usernameFeedback{
+    color: red;
+    visibility: hidden;
+    margin: 0;
+    font-weight: 400;
+    height: 2em;
+}
+
+label{
+    font-family: "Red Hat Text", "Trebuchet MS", Helvetica, sans-serif;
+    font-size: 1em;
 }
 
 #remaining-chars{
@@ -617,7 +627,7 @@
         max-width: 100%;
     }
 
-    #textarea{
+    #message{
        height: 25vh;
     }
 

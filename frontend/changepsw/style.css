@@ -106,13 +106,9 @@
 
 #curPassFeedback, #newPassFeedback, #reNewPassFeedback, #bothPassFeedback{
     color: red;
-    visibility: hidden;
+    /* visibility: hidden; */
     font-size: 1em;
     margin: 0;
-}
-
-#bothPassFeedback{
-    margin-top: 1em;
 }
 
 .tertiaryBTN, .tertiaryBTN a, .tertiaryBTN p{

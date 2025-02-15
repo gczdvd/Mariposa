@@ -83,13 +83,11 @@ for(var i = 0; i < password.length; i++){
 }
 
 if(lowercase && uppercase && password.length >= 12){
-  console.log("jojelszo");
-  document.getElementById("pswFeedback").style.visibility = "hidden";
+  document.getElementById("pswFeedback").innerHTML = "";
   return true;
 }
 else{
-  console.log("nemjojelszo");
-  document.getElementById("pswFeedback").style.visibility = "visible";
+  document.getElementById("pswFeedback").innerHTML = "Legalább 12 karakter, kis- és nagybetű egyaránt";
   return false;
 }
 }

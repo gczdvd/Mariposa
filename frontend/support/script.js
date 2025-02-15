@@ -1,8 +1,4 @@
-// Backend.setUrl("127.0.0.1:3000");
-
-// function accordionSwap(){
-  
-// }
+Backend.setUrl("127.0.0.1:3000");
 
 var acc = document.getElementsByClassName("accordion");
 var i;
@@ -18,7 +14,6 @@ for (i = 0; i < acc.length; i++) {
     }
   });
 }
-
 
 function charCounter(textarea) {
 
@@ -37,7 +32,6 @@ function charCounter(textarea) {
   }
 }
 
-
 function colorChange(inputField){
   if(inputField.value.length == 0){
     inputField.style.borderColor = "#d3d3d3";
@@ -47,20 +41,82 @@ function colorChange(inputField){
   }
 }
 
+function validate(){
+  var email = document.getElementById("email").value;
+  var fullname = document.getElementById("fullname").value;
+  var message = document.getElementById("message").value;
+  var allValid = true;
 
-// function support(){
-//     //VIZSGÁLNI, HOGY MINDENJÓ
-//     var email = document.getElementById("support_email").value;
-//     var name = document.getElementById("support_name").value;
-//     var message = document.getElementById("textarea").value;
+  const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  var validEmail = pattern.test(email);
 
-//     Backend.post({
-//         "path":"/message",
-//         "body":{
-//             "email":email,
-//             "name":name,
-//             "text":message
-//         },
-//         "callback":console.log
-//     });
-// }
+  if(!validEmail){
+    document.getElementById("emailFeedback").style.visibility = "visible";
+    document.getElementById("emailFeedback").innerHTML = "Helytelen email-cím.";
+    var allValid = false;
+  }
+  else{
+    document.getElementById("emailFeedback").style.visibility = "hidden";
+  }
+
+  if(fullname.length == 0){
+    document.getElementById("nameFeedback").style.visibility = "visible";
+    document.getElementById("nameFeedback").innerHTML = "Kérjük, adj meg egy nevet!";
+    allValid = false;
+  }
+  else{
+    document.getElementById("nameFeedback").style.visibility = "hidden";
+  }
+
+  if(message.length == 0){
+    document.getElementById("messageFeedback").style.visibility = "visible";
+    document.getElementById("messageFeedback").innerHTML = "Kérjük, adj meg egy üzenetet!";
+    allValid = false;
+  }
+  else{
+    document.getElementById("messageFeedback").style.visibility = "hidden";
+  }
+
+  if(allValid){
+    support(email, fullname, message);
+  }
+}
+
+function support(email, name, message){
+    Backend.post({
+        "path":"/message",
+        "body":{
+            "email":email,
+            "name":name,
+            "text":message
+        },
+        "callback":supportResponse
+    });
+}
+
+function supportResponse(e){
+  if(e.message == "Success"){
+    Swal.fire({
+      icon: "success",
+      iconColor: "#ffbc2f",
+      title: "Üzenet sikeresen elküldve!",
+      text: "Ügyfélszolgálatunk hamarosan felveszi Veled a kapcsolatot.",
+      width: "64em",
+      confirmButtonText: "Rendben!", 
+      showCancelButton: "false",
+      confirmButtonColor: "#ffbc2f",
+    })
+  }
+  else{
+    Swal.fire({
+      icon: "error",
+      iconColor: "#ffbc2f",
+      title: "Az üzenet küldése sikertelen.",
+      text: "Kérjük, próbáld meg később!",
+      width: "64em",
+      confirmButtonText: "Rendben!", 
+      showCancelButton: "false",
+      confirmButtonColor: "#ffbc2f",
+    })
+  }
+}

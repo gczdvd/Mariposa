@@ -184,38 +184,42 @@
   
     <div class="contact">
       <div class="image">
-        <img src="../_images/pillango_es_level.svg" alt="Pillangó és boríték">
+        <img src="../_images/pillango_es_level.svg" alt="Pillangó és boríték" title="Pillangó és boríték">
       </div>
-
       
       <div class="inputs">
-        <p>Kérdésed van? Írj nekünk!</p>
+        <p class="title">Kérdésed van? Írj nekünk!</p>
 
-        <div class="form-floating">
-            <input class="form-control shadow-none" id="email" type="email" spellcheck="false" onchange="colorChange(this)" placeholder="E-mail cím">
-            
-            <label for="email">E-mail cím</label>
-        </div>
+          <div class="form-floating">
+              <input class="form-control shadow-none" id="email" type="email" spellcheck="false" onchange="colorChange(this)" placeholder="E-mail cím">
+              <p id="emailFeedback"></p>
 
-        <div class="form-floating">
-            <input class="form-control shadow-none" id="full_name" type="text" spellcheck="false" onchange="colorChange(this)" placeholder="Teljes név">
-            
-            <label for="name">Teljes név</label>
-        </div>
+              <label for="email">E-mail cím</label>
+          </div>
 
-        <div class="form-floating">
-          <input class="form-control shadow-none" id="username" type="text" spellcheck="false" onchange="colorChange(this)" placeholder="Felhasználónév">
-          
-          <label for="name">Felhasználónév (opcionális)</label>
-        </div>
+          <div class="form-floating">
+              <input class="form-control shadow-none" id="fullname" type="text" spellcheck="false" onchange="colorChange(this)" placeholder="Teljes név">
+              <p id="nameFeedback"></p>
+              
+              <label for="fullname">Teljes név</label>
+          </div>
 
-        <div class="form-floating">
-            <textarea class="form-control shadow-none" id="textarea" rows="5" maxlength="255" onchange="colorChange(this)" oninput="charCounter(this)" placeholder="Üzenet" spellcheck="none"></textarea>
-            <p id="remaining-chars"></p>
-            
-            <label for="textarea">Üzenet</label>
-        </div>
-        <button class="primaryBTN" onclick="support()">KÜLDÉS</button>
+          <div class="form-floating">
+              <input class="form-control shadow-none" id="username" type="text" spellcheck="false" onchange="colorChange(this)" placeholder="Felhasználónév">
+              <p id="usernameFeedback"></p>
+              
+              <label for="username">Felhasználónév (opcionális)</label>
+          </div>
+
+          <div class="form-floating">
+              <textarea class="form-control shadow-none" id="message" rows="5" maxlength="255" onchange="colorChange(this)" oninput="charCounter(this)" placeholder="Üzenet" spellcheck="none"></textarea>
+              <p id="remaining-chars">asd</p>
+              <p id="messageFeedback"></p>
+              
+              <label for="message">Üzenet</label>
+          </div>
+
+        <button class="primaryBTN" onclick="validate()">KÜLDÉS</button>
       </div>
     </div> 
 
