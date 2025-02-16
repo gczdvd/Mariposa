@@ -1,4 +1,16 @@
-Backend.setUrl("127.0.0.1:3000");
+// Backend.setUrl("127.0.0.1:3000");
+
+function showMore(accordion){
+  var panel = accordion.nextElementSibling;
+  if(panel.style.maxHeight){
+    document.getElementById("arrow").innerHTML = "&#8595;";
+    panel.style.maxHeight = null;
+  }
+  else{
+    document.getElementById("arrow").innerHTML = "&#8593;";
+    panel.style.maxHeight = panel.style.maxHeight + "40vh";
+  }
+}
 
 function charCounter(textarea) {
 

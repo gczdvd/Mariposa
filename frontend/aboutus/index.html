@@ -68,13 +68,13 @@
 
         <div class="history">
             <!-- BACKGROUND IMAGE??? -->
-            <p class="valuesPT">A Mariposa születése</p>
+            <p class="title">A Mariposa születése</p>
             <p class="historyP">A Mariposa azzal a céllal jött létre, hogy az emberek érdeklődésük alapján ismerjék meg egymást. Többségünkben ott él a vágy, hogy barátokat szerezzen, de sokszor nem tudunk kitörni a saját komfortzónánkból, vagyis bábunkból, hogy ténylegesen nyissunk mások felé. A Mariposát azért találtuk ki, hogy névtelenül, tehát szabadon, olyanokkal ismerkedhess meg, akik hasonló hobbikat űznek és hasonlóan gondolkodnak, mint Te!</p>
         </div>
 
         <div class="our-values">
             <!-- 1. sor -->
-            <p class="valuesPT">Értékeink</p>
+            <p class="title">Értékeink</p>
 
             <!-- 2. sor -->
             <div class="values">
@@ -118,36 +118,42 @@
         </div>
 
         <div class="us">
+            <p class="title">A Mariposa csapata</p>
 
             <div class="gd">
+                <p>Gócza Dávid</p>
                 <img src="/_images/img_avatar.png" alt="Gócza Dávid" title="Gócza Dávid" class="teamPicture">
-                
-                <p>Gócza Dávidnak hívnak. Én vagyok a csapat backendese, vagyis felelős<span id="dots">...</span>
-                <span id="moreText">
-                azért, amit senki nem lát, mégis kell a működéshez. Nagy lelkesedéssel vágtam bele a projektbe, sok ötlettel. A Mariposa valószínűleg a 21. századi fiatalok nagy részének egyik problémáját megoldja, ugyanis sokan nem szeretnek személyesen, névvel ismerkedni. Sokkal kényelmesebb előbb beszélgetni, és ha jól érzed magad a partnerrel, a név, arc, minden más csak másodlagos.
-                </span>
-                
-                <img src="/_images/showMore.png" alt="" class="showMoreBtn" id="showMoreBtn" onclick="myFunction()">
-                </p>
 
-                <!-- <p onclick="myFunction()" id="myBtn">-></p> -->
+                <p class="role accordion" onclick="showMore(this)">Backend fejlesztő <span id="arrow">&#8595;</span></p>
+                <div class="panel">
+                    <p>
+                        Gócza Dávidnak hívnak. Én vagyok a csapat backendese, vagyis felelős azért, amit senki nem lát, mégis kell a működéshez. Nagy lelkesedéssel vágtam bele a projektbe, sok ötlettel. A Mariposa valószínűleg a 21. századi fiatalok nagy részének egyik problémáját megoldja, ugyanis sokan nem szeretnek személyesen, névvel ismerkedni. Sokkal kényelmesebb előbb beszélgetni, és ha jól érzed magad a partnerrel, a név, arc, minden más csak másodlagos.
+                    </p>
+                </div>
             </div>
             
-
             <div class="csx">
+                <p>Csizmadia Xénia Roxána</p>
                 <img src="/_images/img_avatar.png" alt="Csizmadia Xénia Roxána" title="Csizmadia Xénia Roxána" class="teamPicture">
 
-                <p>
-                    Csizmadia Xénia vagyok, a Mariposa frontend fejlesztője és designere, és egyben az ötletgazdája is! A Mariposával egy hatalmas álmom valósult meg: elkészítettem életem első igazi projektjét, egy olyan projektet, amivel segíthetek az embereknek. A fejlesztés egész folyamatát a szívem alatt hordtam, és a jövőben is aktív részese leszek a frissítéseknek és finomításoknak.
-
-                </p>
-                
-                
+                <p class="role accordion" onclick="showMore(this)">Frontend fejlesztő, designer <span id="arrow">&#8595;</span></p>
+                <div class="panel">
+                    <p>
+                        Csizmadia Xénia vagyok, a Mariposa frontend fejlesztője és designere, és egyben az ötletgazdája is! A Mariposával egy hatalmas álmom valósult meg: elkészítettem életem első igazi projektjét, egy olyan projektet, amivel segíthetek az embereknek. A fejlesztés egész folyamatát a szívem alatt hordtam, és a jövőben is aktív részese leszek a frissítéseknek és finomításoknak.
+                    </p>
+                </div>
             </div>
 
             <div class="hk">
+                <p>Horváth Kamilla Anna</p>
                 <img src="/_images/img_avatar.png" alt="Horváth Kamilla Anna" title="Horváth Kamilla Anna" class="teamPicture">
-                <p>Horváth Kamilla vagyok, a Mariposa szövegírója és társ-designere. A szerepem, hogy a projekt üzenetét érthetővé és vonzóvá tegyem, miközben segítem a csapatot az ötletek megvalósításában. A Mariposa egy olyan platform, ahol bárki szabadon beszélgethet másokkal anélkül, hogy nevet vagy képet kellene megosztania. Célunk, hogy megkönnyítsük az ismerkedést, különösen azok számára, akik nehezen nyílnak meg.</p>
+
+                <p class="role accordion" onclick="showMore(this)">Társdesigner, szövegíró <span id="arrow">&#8595;</span></p>
+                <div class="panel">
+                    <p>
+                        Horváth Kamilla vagyok, a Mariposa szövegírója és társ-designere. A szerepem, hogy a projekt üzenetét érthetővé és vonzóvá tegyem, miközben segítem a csapatot az ötletek megvalósításában. A Mariposa egy olyan platform, ahol bárki szabadon beszélgethet másokkal anélkül, hogy nevet vagy képet kellene megosztania. Célunk, hogy megkönnyítsük az ismerkedést, különösen azok számára, akik nehezen nyílnak meg.
+                    </p>
+                </div>
             </div>
 
             <!-- <div class="card gd">
@@ -180,7 +186,7 @@
             </div>
             
             <div class="inputs">
-              <p class="title">Kérdésed van? Írj nekünk!</p>
+              <p class="contactTitle">Kérdésed van? Írj nekünk!</p>
       
                 <div class="form-floating">
                     <input class="form-control shadow-none" id="email" type="email" spellcheck="false" onchange="colorChange(this)" placeholder="E-mail cím">
@@ -273,6 +279,7 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>
 </html>
