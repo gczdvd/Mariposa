@@ -1,4 +1,4 @@
-Backend.setUrl("127.0.0.1:3000");
+// Backend.setUrl("127.0.0.1:3000");
 
 /* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
 function myFunction() {
@@ -340,6 +340,7 @@ function openDetails(){
   var closeDetails = document.getElementById("closeDetails");
   var openDetails = document.getElementById("openDetails");
 
+  details.style.display = "block";
   details.style.width = 100 + "vw";
   openDetails.style.display = "none"
   closeDetails.style.display = "block";
@@ -350,16 +351,20 @@ function closeDetails(){
   var closeDetails = document.getElementById("closeDetails");
   var openDetails = document.getElementById("openDetails");
 
+  details.style.display = "none";
   details.style.width = 0 + "vw";
   openDetails.style.display = "block"
   closeDetails.style.display = "none";
 }
 
 function openSaved(){
-  var saved =  document.getElementById("saved");
+
+
+  var saved = document.getElementById("saved");
   var closeSaved = document.getElementById("closeSaved");
   var openSaved = document.getElementById("openSaved");
 
+  saved.style.display = "block";
   saved.style.width = 100 + "vw";
   openSaved.style.display = "none"
   closeSaved.style.display = "block";
@@ -370,6 +375,7 @@ function closeSaved(){
   var closeSaved = document.getElementById("closeSaved");
   var openSaved = document.getElementById("openSaved");
 
+  saved.style.display = "none";
   saved.style.width = 0 + "vw";
   openSaved.style.display = "block"
   closeSaved.style.display = "none";
