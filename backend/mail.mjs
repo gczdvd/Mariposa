@@ -82,11 +82,10 @@ export class Email{
             from: `"Mariposa - The Social Butterfly" <${this.sender}>`,
             to: email,
             subject: "Forgot password",
-            html: `
-                <div style="width:100%;text-align:center;">
-                    <h2>Click:</h2>
-                    <h2><a href="http://127.0.0.1:3000/forgotpassword/change?key=${key}">Klikk</a></h2>
-                </div>`
+            html: HTMLFileFormat('emails/forgotpassword/forgotpsw.html', (e)=>{
+                e.getElementById("confirmButton").setAttribute("href", `https://mariposachat.hu/forgotpsw/?key=${key}`);
+                //Nevet ki kell szopni a kisujjamból
+            })
         });
     }
 }

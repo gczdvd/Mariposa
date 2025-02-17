@@ -55,7 +55,7 @@ function validate(){
 
   if(lowercase && uppercase && newPassword1.length >= 12){
     document.getElementById("newPassFeedback").innerHTML = "";
-    return true;
+    return newPassword1;
   }
   else{
     document.getElementById("newPassFeedback").innerHTML = "Legalább 12 karakter, kis- és nagybetű egyaránt";

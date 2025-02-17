@@ -1,5 +1,5 @@
 var rootAddr = "mariposachat.hu/api";
-const debug = false;
+const debug = true;
 class Backend{
     static setUrl(url){
         //rootAddr = url;

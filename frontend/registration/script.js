@@ -38,7 +38,7 @@ function checkPassword(){
 
   if(lowercase && uppercase && password.length >= 12){
     document.getElementById("pswFeedback").innerHTML = "";
-    return true;
+    return password;
   }
   else{
     document.getElementById("pswFeedback").innerHTML = "Legalább 12 karakter, kis- és nagybetű egyaránt";

@@ -120,7 +120,7 @@ function checkPassword(){
 
 if(lowercase && uppercase && password.length >= 12){
   document.getElementById("pswFeedback").innerHTML = "";
-  return true;
+  return password;
 }
 else{
   document.getElementById("pswFeedback").innerHTML = "Legalább 12 karakter, kis- és nagybetű egyaránt";
@@ -153,5 +153,15 @@ function forgotPassword(){
       cancelButtonText: "Bezárás",
       confirmButtonColor: "#ffbc2f",
       iconColor: "#ffbc2f"
-  })
+  }).then((e)=>{
+    if(e.isConfirmed == true){
+        Backend.post({
+            path:"/forgotpassword", 
+            body:{
+                email: e.value
+            },
+            callback:console.log
+        });
+    }
+  });
 }

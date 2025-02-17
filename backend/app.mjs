@@ -268,7 +268,7 @@ app.post('/forgotpassword', (req, res)=>{
 
 app.post('/forgotpassword/change', (req, res)=>{
     if(req.body.key){
-        var id = Generator.decrypt(cryptKey, key)
+        var id = Generator.decrypt(cryptKey, req.body.key)
         var task = tasks.getTaskById(id);
 
         if(task){
@@ -651,6 +651,6 @@ setInterval(()=>{
     // process.stdout.write('\x1Bc');
     console.dir(JSON.parse(JSON.stringify(sessions.sessions, replacer, 4)), { depth: null });
     console.dir(JSON.parse(JSON.stringify(chats.getChats(), replacer, 4)), { depth: null });
-    // console.dir(tasks.getTasks(), {"depth":2});
+    console.dir(tasks.getTasks(), {"depth":2});
     sessions.cleanUp();
 }, 1000)

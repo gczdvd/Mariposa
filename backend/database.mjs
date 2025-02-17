@@ -28,6 +28,17 @@ export class Sql{
         }
     }
 
+    getUserByEmail(email){
+        var rows = this.con.query(`CALL getUserByEmail(?);`, [email]);
+        var data = rows[0][0];
+        if(data){
+            return (new User(data.client_id, db));
+        }
+        else{
+            return null;
+        }
+    }
+
     getUserById(id, db){
         var rows = this.con.query(`CALL getClient(?);`, [id]);
         var data = rows[0][0];
