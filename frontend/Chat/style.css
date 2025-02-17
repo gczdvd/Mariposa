@@ -119,6 +119,7 @@
 #chatArea{
     display: grid;
     grid-template-columns: auto 1fr auto;
+    height: 90dvh;
 }
 
 .saved{
@@ -270,10 +271,7 @@
     overflow-y: scroll;
     display: flex;
     flex-direction: column-reverse;
-    /* height: 80vh; */
     width: 97%;
-    /* justify-self: center; */
-    
 }
 
 /* Internet Explorer 10+ and Firefox */
@@ -298,23 +296,23 @@
 
 .message1, .message2{
     width: fit-content;
+    max-width: 50vw;
     padding: 0.5em;
     border-radius: 1.5em;
-    width: 20vw;
+    word-wrap: break-word;
 }
 
 .message{
     display: grid;
     grid-template-columns: 1fr auto;
     height: fit-content;
-    padding-bottom: 1vh;
     align-self: end;
 }
 
 .message-bar{
     background-color: rgb(226, 226, 226);
     border: none;
-    color: black;
+    color: #000;
     border-radius: 1em;
     font-family: "Red Hat Text", "Trebuchet MS", Helvetica, sans-serif;
     font-size: 1em;
@@ -324,7 +322,6 @@
     padding-left: 0.5em;
     direction: ltr;
     align-content: center;
-    /* width: 100%; */
 
     resize: none;
     user-select: text;
@@ -334,7 +331,22 @@
 }
 
 .message-bar:focus{
-    outline: #ffbc2f;
+    outline: #a9a9a9 1px solid;
+}
+
+.message ::-webkit-scrollbar {
+    /* width: 12px; */
+    /* border-radius: 1em; */
+}
+
+.message ::-webkit-scrollbar-track {
+    /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);  */
+    /* border-radius: 1em; */
+}
+
+.message ::-webkit-scrollbar-thumb {
+    /* border-radius: 1em; */
+    /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);  */
 }
 
 #sendBTN{
@@ -486,7 +498,13 @@ img{
     font-family: "Albert Sans", Arial, Helvetica, sans-serif;
 }
 
+
 @media (max-aspect-ratio:1/1){
+    .wrapper{
+        height: 80vh;
+        height: 80dvh;
+    }
+
     .header{
         font-size: 0.6em;
         height: fit-content;
@@ -505,25 +523,10 @@ img{
         font-family: "Palanquin", Geneva, Verdana, sans-serif;;
     }
 
-    #navbar{
-        /* margin: 2vh 0; */
-    }
-
-    #navigation{
-        /* gap: 10px; */
-    }
-    
     .navigation a{
         font-weight: bold;
         color: black;
         height: fit-content;
-    }
-}
-
-@media (max-aspect-ratio:1/1){
-    .wrapper{
-        height: 80vh;
-        height: 80dvh;
     }
 
     .responsive-bar{
@@ -551,7 +554,7 @@ img{
     }
 
     #chatArea{
-        height: fit-content;
+        /* height: 90dvh; */
     }
 
     #sc, #d{
@@ -601,11 +604,15 @@ img{
     
     .chat{
         display: grid;
-        grid-template-rows: auto auto;
+        grid-template-rows: 1fr 1fr;
         border: none;
         width: 100vw;
         max-width: 100%;
         height: 90dvh;
+    }
+
+    .messages{
+        height: 80dvh;
     }
 
     .message{
