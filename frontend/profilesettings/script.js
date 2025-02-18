@@ -52,6 +52,54 @@ function chosenInterest(interest){
   }
 }
 
+function checkDateValid(ye, me, de, fail, ok){
+    ok(ye);
+    ok(me);
+    ok(de);
+    const twodig = (num)=>{
+        return String(num < 10 ? '0' : '') + String(num);
+    }
+    var molen = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    var year = ye.value;
+    var month = me.value;
+    var day = de.value;
+    if(!Number(year) || year < 1900){
+        fail(ye);
+        return null;
+    }
+    if((year % 4 == 0) && (!(year % 100 == 0) || (year % 400 == 0))){
+        molen[1] = 29;
+    }
+    if(!Number(month) || month > 12 || month < 1){
+        fail(me);
+        return null;
+    }
+    if(!Number(day) || day > molen[month-1] || day < 1){
+        fail(de);
+        return null;
+    }
+    var wrodate = `${year}-${twodig(month)}-${twodig(day)}`;
+    if((new Date()) <= (new Date(wrodate))){
+        fail(ye);
+        fail(me);
+        fail(de);
+        return null;
+    }
+    
+    return wrodate;
+}
+
+function dateWatcher(){
+    document.getElementById("ageDiv").setAttribute("value", checkDateValid(document.getElementById("year"), document.getElementById("month"), document.getElementById("day"),
+        (e)=>{
+            e.style.backgroundColor = "red";
+        },
+        (e)=>{
+            e.style.backgroundColor = "var(--bs-body-bg)";
+        }
+    ));
+}
+
 // ha van kiválasztva érdeklődési kör, a felette lévő cím színe narancssárga legyen
 // ciklussal végigmegyünk az összes details-en - külső ciklus
 // belső ciklus: éppen aktuális details-eken belül lévő összes button-ön végigmegyünk

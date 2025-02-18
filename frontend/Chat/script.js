@@ -35,12 +35,13 @@ Backend.get({
             var _div = document.createElement("div");
             _div.className = "savedChat";
             _div.setAttribute("onclick", `openChat('${e.value.partners[i].chat_id}')`);
-            var _img = document.createElement("img");
-            _img.src = e.value.partners[i].profile_pic;
+            var _imgdiv = document.createElement("div");
+            _imgdiv.classList.add("image");
+            _imgdiv.style.backgroundImage = 'url("' + e.value.partners[i].profile_pic + '")';
             var _p = document.createElement("p");
             _p.innerText = e.value.partners[i].partner_name;
             
-            _div.appendChild(_img);
+            _div.appendChild(_imgdiv);
             _div.appendChild(_p);
             document.getElementById("saved").appendChild(_div);
         }
