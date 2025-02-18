@@ -137,13 +137,13 @@ if(getCookie("email") && getCookie("password")){
     document.getElementById("email").value = getCookie("email");
 }
 
-function forgotPassword(){
+async function forgotPassword(){
   Swal.fire({
       icon: "warning",
       title: "Add meg a Mariposa fiókodhoz tartozó e-mail címet!",
       text: "Az e-mailben szereplő linkkel tudod majd visszaállítani a jelszavad.",
       input: "email",
-      validationMessage: "Helytelen e-mail cím",
+      validationMessage: "Helytelen e-mail cím!",
       width: "64em",
       showCancelButton: "true",
       showConfirmButton: "true",
@@ -152,16 +152,49 @@ function forgotPassword(){
       confirmButtonText: "Küldés",
       cancelButtonText: "Bezárás",
       confirmButtonColor: "#ffbc2f",
-      iconColor: "#ffbc2f"
-  }).then((e)=>{
-    if(e.isConfirmed == true){
-        Backend.post({
-            path:"/forgotpassword", 
-            body:{
-                email: e.value
-            },
-            callback:console.log
-        });
+      iconColor: "#ffbc2f",
+      preConfirm: (pno) => {
+        return axios.post('/some/route', { pno })
+            .then(response => { 
+                // ...
+            })
+            .catch(error => {
+                if (error.response.status === 404) {
+                    MySwal.showValidationMessage(error.response.data.message)                        
+                }                        
+            });
+      } 
+  }).then((swBtn)=>{
+    if(swBtn.isConfirmed == true){
+      
+      Backend.post({
+        path:"/forgotpassword",
+        body:{
+            email: e.value
+        },
+        callback: validateEmail(e)
+      });
     }
   });
+}
+
+function validateEmail(e){
+  if(e.action === "error"){
+    Swal.fire({
+      icon: "error",
+      title: "Add meg a Mariposa fiókodhoz tartozó e-mail címet!",
+      text: "Az e-mailben szereplő linkkel tudod majd visszaállítani a jelszavad.",
+      input: "email",
+      validationMessage: "Helytelen e-mail cím!",
+      width: "64em",
+      showCancelButton: "true",
+      showConfirmButton: "true",
+      reverseButtons: "true",
+      focusConfirm: "false",
+      confirmButtonText: "Küldés",
+      cancelButtonText: "Bezárás",
+      confirmButtonColor: "#ffbc2f",
+      iconColor: "#ffbc2f",
+    })
+  }
 }

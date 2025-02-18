@@ -47,12 +47,6 @@ Backend.get({
     }
 });
 
-// function placeholderAdd(textarea){
-//   if(textarea.value.length == 0){
-//     textarea.innerHTML = "Üzenet...";
-//   }
-// }
-
 function openChat(chatid=null){
     document.getElementsByClassName("messages")[0].innerHTML = "";
     Backend.post({
@@ -74,33 +68,6 @@ function openChat(chatid=null){
             }
         }
     });
-}
-
-function openNav() {
-
-  // document.getElementById("sidenav").style.width = "250px";
-
-  // document.getElementById("navigation").style.width = "26vw";
-
-  // document.getElementById("close").style.display = "block";
-  // document.getElementById("open").style.display = "none";
-
-  // document.getElementById("blurred").style.filter = "blur(2px)";
-}
-
-/* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
-function closeNav() {
-
-  document.getElementById("navigation").style.width = "0px";
-  // document.getElementById("main").style.marginRight = "0";
-  // document.getElementById("header").style.backgroundColor = "transparent";
-  document.getElementById("header").style.height = "fit-content";
-
-  document.getElementById("open").style.display = "block";
-
-  document.getElementById("close").style.display = "none";
-
-  document.getElementById("blurred").style.filter = "blur(0px)";
 }
 
 function savePartner(){
@@ -300,13 +267,6 @@ function receive(e){
     }
 }
 
-// chatArea.addEventListener("click", function () {
-//   document.getElementById("message").focus();
-// }, false);
-// sendBTN.addEventListener("click", function (event) {
-//   event.stopPropagation();
-// }, false);
-
 function focusMessageBar(){
   document.getElementById("message").focus();
 }
@@ -329,11 +289,18 @@ function history_load(){
     }
 }
 
-document.getElementById("message").addEventListener("keyup", (e)=>{
-    if(e.key == "Enter"){
-        send();
-    }
-})
+// chatArea.addEventListener("click", function () {
+//   document.getElementById("message").focus();
+// }, false);
+// sendBTN.addEventListener("click", function (event) {
+//   event.stopPropagation();
+// }, false);
+
+// document.getElementById("message").addEventListener("keyup", (e)=>{
+//     if(e.key == "Enter" && document.getElementById("message").value.length != 0){
+//         send();
+//     }
+// })
 
 function openDetails(){
   var details =  document.getElementById("details");

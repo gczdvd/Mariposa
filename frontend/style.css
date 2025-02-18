@@ -276,8 +276,8 @@ p{
 }
 
 .slides img{
-    width: 20vw;
-    border-radius: 5em;
+    width: 30vw;
+    /* border-radius: 5em; */
     justify-self: center;
     align-self: center;
 }

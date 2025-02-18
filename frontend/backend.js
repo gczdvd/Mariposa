@@ -25,6 +25,21 @@ class Backend{
             }
         });
     }
+    static async asyncGet(params){
+        var a = await fetch("https://" + rootAddr + params.path, {
+            method: "GET",
+            credentials: "include"
+        });
+        var resp = await a.json();
+        if(resp.action == "redirect"){
+            if(debug) alert(JSON.stringify(resp));
+            window.location.href = resp.value;
+            return null;
+        }
+        else{
+            return resp;
+        }
+    }
     static post(params) {
         var req;
         if(params?.body?.constructor?.name == "FormData"){
@@ -59,6 +74,40 @@ class Backend{
                 params?.callback(resp);
             }
         });
+    }
+    static async asyncPost(params){
+        var req;
+        if(params?.body?.constructor?.name == "FormData"){
+            req = {
+                method: "POST",
+                credentials: "include",
+                body: params?.body
+            }
+        }
+        else{
+            req = {
+                method: "POST",
+                credentials: "include",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify(params?.body ?? {})
+            }
+        }
+
+        var a = await fetch("https://" + rootAddr + params.path, req);
+        var resp = await a.json();
+        // alert(JSON.stringify(params));
+        // alert(JSON.stringify(resp));
+        if(resp.action == "redirect"){
+            if(debug) alert(JSON.stringify(resp));
+            window.location.href = resp.value;
+            return null;
+        }
+        else{
+            return resp;
+        }
     }
     static info(){
         var kvp = {};

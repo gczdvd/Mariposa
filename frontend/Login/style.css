@@ -129,7 +129,7 @@
 
 #pswFeedback, #emailFeedback{
     color: red;
-    visibility: hidden;
+    /* visibility: hidden; */
     font-size: 1em;
     margin: 0;
 }
