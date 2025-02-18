@@ -54,6 +54,13 @@ Backend.get({
 // }
 
 function openChat(chatid=null){
+    document.getElementById("success").style.display = "none";
+    if(chatid){ 
+        document.getElementById("waiting").style.display = "none";
+    }
+    else{
+        document.getElementById("waiting").style.display = "block";
+    }
     document.getElementsByClassName("messages")[0].innerHTML = "";
     Backend.post({
         path:"/chat",
@@ -260,6 +267,8 @@ function receive(e){
                 "type":"action",
                 "value":"identity"
             }));
+            document.getElementById("success").style.display = "block";
+            document.getElementById("waiting").style.display = "none";
         }
         if(data.name == "identify"){
             var partneridentify = data.value;
@@ -380,3 +389,14 @@ function closeSaved(){
   openSaved.style.display = "block"
   closeSaved.style.display = "none";
 }
+
+Backend.get({
+    path:"/userinfo",
+    callback:(e)=>{
+        if(e.id != undefined){
+            document.getElementById("optlogin").setAttribute("hidden", "true");
+            document.getElementById("optprofile").removeAttribute("hidden");
+            document.getElementById("optprofile").getElementsByTagName("img")[0].src = e.profile_pic;
+        }
+    }
+});
