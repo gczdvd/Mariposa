@@ -1,5 +1,5 @@
 var rootAddr = "mariposachat.hu/api";
-const debug = true;
+const debug = false;
 class Backend{
     static setUrl(url){
         //rootAddr = url;
@@ -16,7 +16,7 @@ class Backend{
             var resp = await e.json();
             // alert(JSON.stringify(params));
             // alert(JSON.stringify(resp));
-            if(resp.action == "redirect"){
+            if(params.blockRedirect == undefined && resp.action == "redirect"){
                 if(debug) alert(JSON.stringify(resp));
                 window.location.href = resp.value;
             }
@@ -31,7 +31,7 @@ class Backend{
             credentials: "include"
         });
         var resp = await a.json();
-        if(resp.action == "redirect"){
+        if(params.blockRedirect == undefined && resp.action == "redirect"){
             if(debug) alert(JSON.stringify(resp));
             window.location.href = resp.value;
             return null;
@@ -66,7 +66,7 @@ class Backend{
             var resp = await e.json();
             // alert(JSON.stringify(params));
             // alert(JSON.stringify(resp));
-            if(resp.action == "redirect"){
+            if(params.blockRedirect == undefined && resp.action == "redirect"){
                 if(debug) alert(JSON.stringify(resp));
                 window.location.href = resp.value;
             }
@@ -100,7 +100,7 @@ class Backend{
         var resp = await a.json();
         // alert(JSON.stringify(params));
         // alert(JSON.stringify(resp));
-        if(resp.action == "redirect"){
+        if(params.blockRedirect == undefined && resp.action == "redirect"){
             if(debug) alert(JSON.stringify(resp));
             window.location.href = resp.value;
             return null;

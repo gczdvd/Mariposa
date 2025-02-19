@@ -244,7 +244,7 @@ function receive(e){
             document.getElementById("quote").innerText = partneridentify.description;
             document.getElementById("profilePic").src = partneridentify.profile_pic;
             document.getElementById("birthday").innerText = function(e=new Date(partneridentify.birthdate)){
-                return `${e.getUTCFullYear()}. ${(e.getMonth() < 10 ? '0' : '') + e.getMonth()}. ${(e.getDate() < 10 ? '0' : '') + e.getDate()}.`;
+                return `${e.getUTCFullYear()}. ${((e.getMonth()+1) < 10 ? '0' : '') + (e.getMonth()+1)}. ${(e.getDate() < 10 ? '0' : '') + e.getDate()}.`;
             }();
             document.getElementById("save").setAttribute("hidden", "true");
         }

@@ -77,11 +77,15 @@ export class Chat{
         return this.saved;
     }
     sendIdentity(users){
+        this.#sess1?.getAttribute("access").add('storage/profile_pic/' + this.db.getUserDataById(this.cid2).profile_pic);
+        this.#sess2?.getAttribute("access").add('storage/profile_pic/' + this.db.getUserDataById(this.cid1).profile_pic);
+        
         this.#sess1?.getWebsocket()?.send(JSON.stringify({
             "type":"action",
             "name":"identify",
             "value":users.getUserById(this.cid2).getInfo()
         }));
+
         this.#sess2?.getWebsocket()?.send(JSON.stringify({
             "type":"action",
             "name":"identify",

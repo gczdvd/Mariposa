@@ -51,7 +51,7 @@
 
                 <p id="nickname">Példa Név</p>
 
-                <input type="file" id="profilepicup" hidden>
+                <input type="file" id="profilepicup" onchange="picup(this)" hidden>
                 <button class="secondaryBTN" onclick="document.getElementById('profilepicup').click()">Profilkép cseréje</button>
 
 
@@ -66,14 +66,14 @@
             <div class="data">
 
                 <!-- 1 -->
-                <div class="form-floating" id="fullname">
+                <div class="form-floating"><!--id="fullname">-->
                     <input class="form-control shadow-none" id="fullname" type="text" spellcheck="false" onchange="colorChange(this)" placeholder="Teljes név">
                     
                     <label for="name">Teljes név</label>
                 </div>
 
                 <!-- 2 -->
-                <div class="form-floating" id="email">
+                <div class="form-floating"><!--id="email">-->
                     <input class="form-control shadow-none" id="email" type="email" spellcheck="false" onchange="colorChange(this)" placeholder="E-mail cím">
                     
                     <label for="email">E-mail cím</label>
@@ -88,10 +88,10 @@
                 <!-- 4 -->
                 <div class="form-floating" id="genderDiv">
                     <select class="form-select shadow-none" id="gender">
-                      <option value="1" selected>Nem adom meg</option>
-                      <option value="2">Nő</option>
-                      <option value="3">Férfi</option>
-                      <option value="4">Nembináris</option>
+                      <option value="0" selected>Nem adom meg</option>
+                      <option value="1">Nő</option>
+                      <option value="2">Férfi</option>
+                      <option value="3">Nembináris</option>
                     </select>
                     <label for="gender">Nem</label>
 
