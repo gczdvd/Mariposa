@@ -3,11 +3,11 @@
 function showMore(accordion){
   var panel = accordion.nextElementSibling;
   if(panel.style.maxHeight){
-    document.getElementById("arrow").innerHTML = "&#8595;";
+    accordion.getElementsByClassName("arrow")[0].innerHTML = "&#8595;";
     panel.style.maxHeight = null;
   }
   else{
-    document.getElementById("arrow").innerHTML = "&#8593;";
+    accordion.getElementsByClassName("arrow")[0].innerHTML = "&#8593;";
     panel.style.maxHeight = panel.style.maxHeight + "40vh";
   }
 }

@@ -35,12 +35,13 @@ Backend.get({
             var _div = document.createElement("div");
             _div.className = "savedChat";
             _div.setAttribute("onclick", `openChat('${e.value.partners[i].chat_id}')`);
-            var _img = document.createElement("img");
-            _img.src = e.value.partners[i].profile_pic;
+            var _imgdiv = document.createElement("div");
+            _imgdiv.classList.add("image");
+            _imgdiv.style.backgroundImage = 'url("' + e.value.partners[i].profile_pic + '")';
             var _p = document.createElement("p");
             _p.innerText = e.value.partners[i].partner_name;
             
-            _div.appendChild(_img);
+            _div.appendChild(_imgdiv);
             _div.appendChild(_p);
             document.getElementById("saved").appendChild(_div);
         }
@@ -243,7 +244,7 @@ function receive(e){
             document.getElementById("quote").innerText = partneridentify.description;
             document.getElementById("profilePic").src = partneridentify.profile_pic;
             document.getElementById("birthday").innerText = function(e=new Date(partneridentify.birthdate)){
-                return `${e.getUTCFullYear()}. ${(e.getMonth() < 10 ? '0' : '') + e.getMonth()}. ${(e.getDate() < 10 ? '0' : '') + e.getDate()}.`;
+                return `${e.getUTCFullYear()}. ${((e.getMonth()+1) < 10 ? '0' : '') + (e.getMonth()+1)}. ${(e.getDate() < 10 ? '0' : '') + e.getDate()}.`;
             }();
             document.getElementById("save").setAttribute("hidden", "true");
         }

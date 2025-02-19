@@ -38,6 +38,7 @@ function colorChange(textarea){
 
 Backend.get({
     path:"/userinfo",
+    blockRedirect: true,
     callback:(e)=>{
         if(e.id != undefined){
             document.getElementById("optlogin").setAttribute("hidden", "true");
