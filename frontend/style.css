@@ -7,6 +7,11 @@
     border: 0;
 }
 
+.wrapper{
+    width: 100vw;
+    max-width: 100%;
+}
+
 p{
     margin: 0;
 }
@@ -29,20 +34,15 @@ p{
     100% {bottom: 0px; top: 0px;}
 }
 
+.button{
+    grid-column: 1 / span 2;
+}
+
 .primaryBTN{
-    display: grid;
-    width: fit-content;
-    align-self: center;
-    justify-self: center;
     background-color: #ffbc2f;
-    font-family: "Albert Sans";
-    text-transform: uppercase;
     text-decoration: none;
-    padding: 0.7em 1.5em;
     color: white;
-    font-size: 1.5em;
     border: 3px solid transparent;
-    cursor: pointer;
 }
 
 .primaryBTN:hover{
@@ -51,22 +51,21 @@ p{
     border: 3px solid #ffbc2f;
 }
 
-.button{
-    grid-column: 1 / span 2;
+.primaryBTN, .secondaryBTN{
+    display: grid;
+    justify-self: center;
+    font-family: "Albert Sans";
+    padding: 0.7em 1.5em;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    cursor: pointer;
 }
 
 .secondaryBTN{
-    display: grid;
-    justify-self: center;
     background-color: white;
-    font-family: "Albert Sans";
-    text-transform: uppercase;
-    padding: 0.7em 1.5em;
     text-decoration: none;
     color: #ffbc2f;
-    font-size: 1.5em;
     border: 3px solid #ffbc2f;
-    cursor: pointer;
 }
 
 .secondaryBTN:hover{
@@ -80,6 +79,7 @@ p{
     color: black;
     text-decoration: none;
     height: fit-content;
+    width: fit-content;
     font-family: "Albert Sans";
 }
 
@@ -102,33 +102,43 @@ p{
 }
 
 
-#header{
+.header{
     display: grid;
     width: 100vw;
     max-width: 100%;
     grid-template-columns: auto 1fr 1fr;
     background-color: transparent;
-    font-size: 0.7em;
     align-items: center;
     text-transform: uppercase;
+    background-color: #fff;
+    font-size: 0.6em;
 }
 
 #homepage{
-    font-size: 0;
+    text-decoration: none;
+    color: #000;
+    height: fit-content;
+}
+
+#homepage p{
+    margin: 0;
+}
+
+.logo{
+    text-align: center;
+    padding: 1vw;
+    font-family: 'Palanquin', Geneva, Verdana, sans-serif;
+    height: fit-content;
 }
 
 #logo{
     width: 4vw;
-    padding-left: 0.5vw;
-}
-
-#main{
-    display: none;
 }
 
 #navbar{
     display: inline-block;
-    margin: 3vh 0;
+    margin-left: 3vw;
+    width: fit-content;
 }
 
 #navigation{
@@ -136,14 +146,14 @@ p{
     grid-template-columns: repeat(3, 1fr);
     padding: 0;
     margin: 0;
+    justify-items: center;
     width: fit-content;
-    gap: 3vw;
+    gap: 4vw;
 }
 
 #navigation li{
     list-style: none;
     width: fit-content;
-    margin-left: 1vw;
 }
 
 #loginNav{
@@ -171,16 +181,15 @@ p{
     width: 100vw;
     max-width: 100%;
     grid-template-columns: 1fr 1fr;
-    height: 60vh;
     justify-content: center;
     align-content: center;
+    margin: 5vh 0;
 }
 
 .cover img{
     display: block;
     width: 40vw;
     justify-self: center;
-    margin-right: 2vw;
 }
 
 .texts{
@@ -214,7 +223,7 @@ p{
     text-align: center;
     font-family: "Red Hat Text";
     gap: 2vh;
-    margin-bottom: 5vh;
+    margin-bottom: 10vh;
 }
 
 .headline{
@@ -316,6 +325,7 @@ p{
 
 .convince p{
     font-weight: 600;
+    text-align: center;
 }
 
 .convince p, li{
@@ -458,7 +468,7 @@ p{
 
 #coName{
     font-size: 1.7em;
-    font-family: 'Palanquin';
+    font-family: 'Palanquin', Geneva, Verdana, sans-serif;
 }
 
 #coSlogan{
@@ -518,48 +528,39 @@ p{
 
     #logo{
         display: grid;
-        width: 10vw;
+        width: 5vw;
+        margin: auto;
     }
     
-    #title{
-        font-size: 1em;
-        align-self: center;
-        text-decoration: none;
-        color: black;
-        font-family: "Palanquin";
-    }
-
-    #header{
+    .header{
         font-size: 0.5em;
     }
 
     #navbar{
-        margin: 2vh 0;
-    }
-
-    #navigation{
-        gap: 5vw;
+        margin-left: 2vw;
     }
     
     .navigation a{
-        font-size: 1.3em;
         font-weight: bold;
         color: black;
         height: fit-content;
+        /* font-size: 0.5em; */
     }
 
     .cover{
         display: grid;
         grid-template-rows: auto auto;
         grid-template-columns: none;
-        margin-bottom: 10vh;
+        /* margin-bottom: 5vh; */
+        margin: 0;
     }
 
     .cover img{
         grid-row-start: 1;
         width: 100vw;
         max-width: 100%;
-        margin: 10vh 0 5vh 0;
+        width: 70vw;
+        /* margin: 10vh 0 5vh 0; */
     }
 
     .texts{
@@ -620,6 +621,8 @@ p{
     .signup img{
         width: 100vw;
         max-width: 100%;
+        height: 30vw;
+        object-fit: cover;
     }
 
     .convince{

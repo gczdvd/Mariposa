@@ -163,7 +163,7 @@ label{
         grid-template-columns: 1fr;
         grid-template-rows: auto 1fr;
         /* gap: 0px; */
-        height: 90vh;
+        height: 100vh;
     }
 
     .signin{
@@ -180,6 +180,6 @@ label{
     }
 
     .back img{
-        width: 15vw;
+        width: 10vw;
     }
 }

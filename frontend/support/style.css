@@ -510,6 +510,7 @@ label{
         grid-template-rows: auto auto;
         grid-template-columns: none;
         padding: 0;
+        margin-bottom: 3vh;
     }
 
     .cover img{

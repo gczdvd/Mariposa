@@ -335,8 +335,6 @@ function closeDetails(){
 }
 
 function openSaved(){
-
-
   var saved = document.getElementById("saved");
   var closeSaved = document.getElementById("closeSaved");
   var openSaved = document.getElementById("openSaved");
@@ -345,6 +343,7 @@ function openSaved(){
   saved.style.width = 100 + "vw";
   openSaved.style.display = "none"
   closeSaved.style.display = "block";
+  document.getElementById("message").style.display = "none";
 }
 
 function closeSaved(){
@@ -368,3 +367,7 @@ Backend.get({
         }
     }
 });
+
+// function scrollToBottom(){
+//   window.scrollTo(0, document.body.scrollHeight);
+// }

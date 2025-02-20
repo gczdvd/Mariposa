@@ -26,20 +26,15 @@
     100% {bottom: 0px; top: 0px;}
 }
 
+.button{
+    grid-column: 1 / span 2;
+}
+
 .primaryBTN{
-    display: grid;
-    width: fit-content;
-    align-self: center;
-    justify-self: center;
     background-color: #ffbc2f;
-    font-family: "Albert Sans", Arial, Helvetica, sans-serif;
-    text-transform: uppercase;
     text-decoration: none;
-    padding: 1rem 2rem 1rem 2rem;
     color: white;
-    font-size: 1.5em;
     border: 3px solid transparent;
-    cursor: pointer;
 }
 
 .primaryBTN:hover{
@@ -48,38 +43,72 @@
     border: 3px solid #ffbc2f;
 }
 
-.button{
-    grid-column: 1 / span 2;
+.primaryBTN, .secondaryBTN{
+    display: grid;
+    justify-self: center;
+    font-family: "Albert Sans";
+    padding: 0.7em 1.5em;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.secondaryBTN{
+    background-color: white;
+    text-decoration: none;
+    color: #ffbc2f;
+    border: 3px solid #ffbc2f;
+}
+
+.secondaryBTN:hover{
+    background-color: #ffbc2f;
+    color: white;
+    border: 3px solid #ffbc2f;
+}
+
+.wrapper{
+    width: 100vw;
+    max-width: 100%;
 }
 
 
-#header{
+.header{
     display: grid;
     width: 100vw;
     max-width: 100%;
     grid-template-columns: auto 1fr 1fr;
     background-color: transparent;
-    font-size: 1em;
     align-items: center;
     text-transform: uppercase;
+    background-color: #fff;
+    font-size: 0.8em;
 }
 
 #homepage{
-    font-size: 0;
+    text-decoration: none;
+    color: #000;
+    height: fit-content;
+}
+
+#homepage p{
+    margin: 0;
+}
+
+.logo{
+    text-align: center;
+    padding: 1vw;
+    font-family: 'Palanquin';
 }
 
 #logo{
     width: 4vw;
-    padding-left: 0.5vw;
-}
-
-#main{
-    display: none;
 }
 
 #navbar{
     display: inline-block;
-    margin: 3vh 0;
+    margin-left: 3vw;
+    width: fit-content;
+    /* font-size: 2vh; */
 }
 
 #navigation{
@@ -87,14 +116,14 @@
     grid-template-columns: repeat(3, 1fr);
     padding: 0;
     margin: 0;
+    justify-items: center;
     width: fit-content;
-    gap: 3vw;
+    gap: 4vw;
 }
 
 #navigation li{
     list-style: none;
     width: fit-content;
-    margin-left: 1vw;
 }
 
 #loginNav{
@@ -102,7 +131,7 @@
     justify-content: end;
     padding: 0;
     margin: 0;
-    align-content: center;
+    /* align-content: center; */
 }
 
 #loginNav li{
@@ -120,7 +149,8 @@
     color: black;
     text-decoration: none;
     height: fit-content;
-    font-family: "Albert Sans", Arial, Helvetica, sans-serif;
+    width: fit-content;
+    font-family: "Albert Sans";
 }
 
 .tertiaryBTN:hover::after, .tertiaryBTN a:hover::after{
@@ -193,6 +223,7 @@
     font-family: "Red Hat Text", "Trebuchet MS", Helvetica, sans-serif;
     line-height: 1.5em;
     font-size: 1.3em;
+    justify-self: center;
 }
 
 .history img{
@@ -209,16 +240,16 @@
     width: 70vw;
     font-family: "Red Hat Text", "Trebuchet MS", Helvetica, sans-serif;
     justify-self: center;
-    /* background-color: #ffbc2f; */
 }
 
 .title{
     display: block;
-    justify-self: center;
     font-size: 2.5em;
     font-weight: 600;
     font-family: "Red Hat Text", "Trebuchet MS", Helvetica, sans-serif;
     width: fit-content;
+    text-align: center;
+    justify-self: center;
 }
 
 .valuesT{
@@ -239,6 +270,7 @@
     padding: 1em;
     box-shadow: 2px 2px 10px lightgray;
     border-radius: 1em;
+    /* width: 80vw; */
 }
 
 
@@ -253,7 +285,6 @@
     max-width: 100%;
     justify-self: center;
     gap: 1vw;
-    /* height: 100vh; */
 }
 
 .us .title{
@@ -302,7 +333,7 @@
     margin: 0;
     padding: 0;
     width: fit-content;
-    height: 50vh;
+    height: 30vh;
     /* position: relative; */
 }
 
@@ -518,7 +549,7 @@ label{
 @media (max-aspect-ratio:1/1) {
     .cover img{
         grid-row-start: 1;
-        width: 100vw;
+        /* width: 100vw; */
         max-width: 100%;
         margin-bottom: 5vh;
     }
@@ -529,39 +560,30 @@ label{
         font-size: 1em;
     }
 
+    .header{
+        
+    }
+
     #logo{
         display: grid;
-        width: 10vw;
+        width: 5vw;
+        margin: auto;
+    }
+
+    #homepage p{
+        font-size: 0.5em;
     }
     
-    #title{
-        font-size: 1em;
-        align-self: center;
-        text-decoration: none;
-        color: black;
-        font-family: "Palanquin", Geneva, Verdana, sans-serif;;
-    }
-
-    #header{
-        font-size: 0.8em;
-    }
-
     #navbar{
-        margin: 2vh 0;
-    }
-
-    #navigation{
-        gap: 5vw;
+        margin-left: 2vw;
+        /* font-size: 0.8em; */
     }
     
     #navigation a{
         font-weight: bold;
-        color: r;
+        color: black;
         height: fit-content;
-    }
-
-    .navigation{
-        display: none;
+        font-size: 0.8em;
     }
 
     .cover{
@@ -585,6 +607,7 @@ label{
         width: 100vw;
         max-width: 100%;
         gap: 0;
+        text-align: center;
     }
 
     .history img{
@@ -601,16 +624,16 @@ label{
         display: grid;
         width: fit-content;
         justify-self: center;
-        margin: 0 1vw;
     }
 
     .values{
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
         gap: 0.5em;
     }
 
     .values > div{
         padding: 0.5em 1em;
+        width: 90vw;
     }
 
     .values > div > p{
@@ -622,7 +645,6 @@ label{
         display: block;
         width: 90vw;
         max-width: 100%;
-        gap: 2vh;
     }
 
     .gd, .csx, .hk{

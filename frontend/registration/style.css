@@ -69,7 +69,7 @@
 }
 
 
-#logo{
+.back img{
     width: 4vw;
     padding: 0.5vw 0 0 0.5vw;
 }
@@ -78,6 +78,7 @@
     display: grid;
     width: 30vw;
     grid-template-rows: repeat(7, 1fr);
+    height: 90vh;
     justify-self: center;
 }
 
@@ -111,8 +112,8 @@
         font-size: 1em;
     }
 
-    #logo{
-        width: 15vw;
+    .back img{
+        width: 10vw;
     }
 }
 
@@ -141,9 +142,9 @@
     font-size: 1.2em;
 }
 
-#pswFeedback, #emailFeedback, #checkboxFeedback{
+#usernameFeedback, #pswFeedback, #emailFeedback, #checkboxFeedback{
     color: red;
-    visibility: hidden;
+    /* visibility: hidden; */
     font-size: 1em;
     margin: 0;
     font-family: "Red Hat Text", "Trebuchet MS", Helvetica, sans-serif;

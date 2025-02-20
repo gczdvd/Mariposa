@@ -6,7 +6,7 @@
 }
 
 .wrapper{
-    /* width: 100vw; */
+    width: 100vw;
     max-width: 100%;
 }
 
@@ -62,22 +62,32 @@
 }
 
 
-#header{
+.header{
     display: grid;
+    width: 100vw;
+    max-width: 100%;
     grid-template-columns: auto 1fr 1fr;
     background-color: transparent;
-    font-size: 1em;
     align-items: center;
     text-transform: uppercase;
+    background-color: #fff;
 }
 
 #homepage{
-    font-size: 0;
+    text-decoration: none;
+    color: #000;
+    height: fit-content;
+}
+
+.logo{
+    text-align: center;
+    padding: 1vw;
+    font-family: 'Palanquin';
+    height: fit-content;
 }
 
 #logo{
     width: 4vw;
-    padding-left: 0.5vw;
 }
 
 #main{
@@ -86,7 +96,8 @@
 
 #navbar{
     display: inline-block;
-    margin: 3vh 0;
+    margin-left: 3vw;
+    width: fit-content;
 }
 
 #navigation{
@@ -94,6 +105,7 @@
     grid-template-columns: repeat(3, 1fr);
     padding: 0;
     margin: 0;
+    justify-items: center;
     width: fit-content;
     gap: 3vw;
 }
@@ -101,7 +113,6 @@
 #navigation li{
     list-style: none;
     width: fit-content;
-    margin-left: 1vw;
 }
 
 #loginNav{
@@ -124,10 +135,10 @@
 
 .settings{
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: repeat(4, auto);
     max-width: 100%;
-    margin-top: 1vh;
+    margin-top: 5vh;
 }
 
 .profile{
@@ -165,7 +176,7 @@
 
 #nickname{
     justify-self: center;
-    font-family: "Palanquin", Geneva, Verdana, sans-serif;;
+    font-family: "Palanquin", Geneva, Verdana, sans-serif;
     font-size: 2em;
     margin: 0;
 }
@@ -192,7 +203,8 @@
     width: 40vw;
     justify-self: center;
     height: fit-content;
-    margin: 2vh 2vw 0 0;
+    width: 40vw;
+    /* margin: 2vh 2vw 0 0; */
     gap: 3vh;
 }
 
@@ -224,11 +236,7 @@
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
     height: fit-content;
-}
-
-#ageDiv .form-floating{
-    width: 10vw;
-    justify-self: center;
+    /* gap: 0.5vw; */
 }
 
 #ageDiv .show{
@@ -529,20 +537,16 @@ input[type=number] {
     }
 
     #header{
-        font-size: 0.8em;
+        font-size: 0.5em;
     }
 
     #navbar{
-        margin: 2vh 0;
-    }
-
-    #navigation{
-        gap: 5vw;
+        margin-left: 2vw;
     }
     
     #navigation a{
         font-weight: bold;
-        color: r;
+        color: black;
         height: fit-content;
     }
 
