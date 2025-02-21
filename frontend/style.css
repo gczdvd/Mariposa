@@ -133,6 +133,7 @@ p{
 
 #logo{
     width: 4vw;
+    margin: auto;
 }
 
 #navbar{
@@ -529,7 +530,6 @@ p{
     #logo{
         display: grid;
         width: 5vw;
-        margin: auto;
     }
     
     .header{

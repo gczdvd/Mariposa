@@ -371,3 +371,5 @@ Backend.get({
 // function scrollToBottom(){
 //   window.scrollTo(0, document.body.scrollHeight);
 // }
+
+window.onresize = function(){ location.reload(); }
