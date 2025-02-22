@@ -299,12 +299,6 @@ function history_load(){
     }
 }
 
-// chatArea.addEventListener("click", function () {
-//   document.getElementById("message").focus();
-// }, false);
-// sendBTN.addEventListener("click", function (event) {
-//   event.stopPropagation();
-// }, false);
 
 // document.getElementById("message").addEventListener("keyup", (e)=>{
 //     if(e.key == "Enter" && document.getElementById("message").value.length != 0){
@@ -312,50 +306,50 @@ function history_load(){
 //     }
 // })
 
-function openDetails(){
+function toggleDetails(){
   var details =  document.getElementById("details");
   var closeDetails = document.getElementById("closeDetails");
   var openDetails = document.getElementById("openDetails");
 
-  details.style.display = "block";
-  details.style.width = 100 + "vw";
-  openDetails.style.display = "none"
-  closeDetails.style.display = "block";
+  if(details.style.display == "block"){
+    details.style.display = "none";
+    details.style.width = 0 + "vw";
+    openDetails.style.display = "block"
+    closeDetails.style.display = "none";
+    document.getElementById("message").style.display = "grid";
+  }
+  else{
+    details.style.display = "block";
+    details.style.width = 100 + "vw";
+    openDetails.style.display = "none"
+    closeDetails.style.display = "block";
+    document.getElementById("message").style.display = "none";
+  }
+
 }
 
-function closeDetails(){
-  var details =  document.getElementById("details");
-  var closeDetails = document.getElementById("closeDetails");
-  var openDetails = document.getElementById("openDetails");
-
-  details.style.display = "none";
-  details.style.width = 0 + "vw";
-  openDetails.style.display = "block"
-  closeDetails.style.display = "none";
-}
-
-function openSaved(){
+function toggleSaved(){
   var saved = document.getElementById("saved");
   var closeSaved = document.getElementById("closeSaved");
   var openSaved = document.getElementById("openSaved");
 
-  saved.style.display = "block";
-  saved.style.width = 100 + "vw";
-  openSaved.style.display = "none"
-  closeSaved.style.display = "block";
-  document.getElementById("message").style.display = "none";
+  if(saved.style.display == "block"){
+    saved.style.display = "none";
+    saved.style.width = 0 + "vw";
+    openSaved.style.display = "block";
+    closeSaved.style.display = "none";
+    document.getElementById("message").style.display = "grid";
+  }
+  else{
+    console.log("kutya");
+    saved.style.display = "block";
+    saved.style.width = 100 + "vw";
+    openSaved.style.display = "none";
+    closeSaved.style.display = "block";
+    document.getElementById("message").style.display = "none";
+  }
 }
 
-function closeSaved(){
-  var saved =  document.getElementById("saved");
-  var closeSaved = document.getElementById("closeSaved");
-  var openSaved = document.getElementById("openSaved");
-
-  saved.style.display = "none";
-  saved.style.width = 0 + "vw";
-  openSaved.style.display = "block"
-  closeSaved.style.display = "none";
-}
 
 Backend.get({
     path:"/userinfo",

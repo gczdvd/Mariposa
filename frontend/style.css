@@ -106,12 +106,13 @@ p{
     display: grid;
     width: 100vw;
     max-width: 100%;
+    height: fit-content;
     grid-template-columns: auto 1fr 1fr;
     background-color: transparent;
     align-items: center;
     text-transform: uppercase;
     background-color: #fff;
-    font-size: 0.6em;
+    font-size: 10px;
 }
 
 #homepage{
@@ -122,18 +123,19 @@ p{
 
 #homepage p{
     margin: 0;
+    font-size: 15px;
 }
 
 .logo{
     text-align: center;
-    padding: 1vw;
+    padding: 0.5vw;
     font-family: 'Palanquin', Geneva, Verdana, sans-serif;
     height: fit-content;
 }
 
-#logo{
-    width: 4vw;
-    margin: auto;
+#logoImg{
+    width: 50px;
+    /* margin: auto; */
 }
 
 #navbar{
@@ -147,7 +149,7 @@ p{
     grid-template-columns: repeat(3, 1fr);
     padding: 0;
     margin: 0;
-    justify-items: center;
+    /* justify-items: center; */
     width: fit-content;
     gap: 4vw;
 }
@@ -162,7 +164,7 @@ p{
     justify-content: end;
     padding: 0;
     margin: 0;
-    align-content: center;
+    /* align-content: center; */
 }
 
 #loginNav li{
@@ -228,18 +230,18 @@ p{
 }
 
 .headline{
-    font-size: 4em;
+    font-size: 2.5em;
     font-weight: 600;
 }
 
 .subhead{
-    font-size: 2.5em;
+    font-size: 1.5em;
     align-self: center;
 }
 
 .pers{
-    font-size: 1.5em;
-    width: 60vw;
+    font-size: 1em;
+    width: 40vw;
     justify-self: center;
 }
 
@@ -527,24 +529,20 @@ p{
         font-size: 1em;
     }
 
-    #logo{
-        display: grid;
-        width: 5vw;
-    }
-    
     .header{
-        font-size: 0.5em;
+        font-size: 7.5px;
+    }
+
+    #logoImg{
+        width: 40px;
+    }
+
+    #homepage p{
+        font-size: 10px;
     }
 
     #navbar{
         margin-left: 2vw;
-    }
-    
-    .navigation a{
-        font-weight: bold;
-        color: black;
-        height: fit-content;
-        /* font-size: 0.5em; */
     }
 
     .cover{

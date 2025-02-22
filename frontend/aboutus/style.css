@@ -1,11 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@600&family=Noto+Color+Emoji&family=Noto+Sans+Symbols+2&family=Palanquin:wght@700&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap');
 
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
 .emoji{
     font-family: "Noto Color Emoji";
     font-size: 2em;
@@ -66,9 +60,21 @@
     border: 3px solid #ffbc2f;
 }
 
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    border: 0;
+}
+
 .wrapper{
     width: 100vw;
     max-width: 100%;
+}
+
+p{
+    margin: 0;
 }
 
 
@@ -76,12 +82,13 @@
     display: grid;
     width: 100vw;
     max-width: 100%;
+    height: fit-content;
     grid-template-columns: auto 1fr 1fr;
     background-color: transparent;
     align-items: center;
     text-transform: uppercase;
     background-color: #fff;
-    font-size: 0.8em;
+    font-size: 15px;
 }
 
 #homepage{
@@ -96,13 +103,16 @@
 
 .logo{
     text-align: center;
-    padding: 1vw;
-    font-family: 'Palanquin';
+    padding: 0.5vw;
+    font-family: 'Palanquin', Geneva, Verdana, sans-serif;
+    height: fit-content;
 }
 
-#logo{
-    width: 4vw;
+#logoImg{
+    width: 50px;
+    /* margin: auto; */
 }
+
 
 #navbar{
     display: inline-block;
@@ -116,7 +126,7 @@
     grid-template-columns: repeat(3, 1fr);
     padding: 0;
     margin: 0;
-    justify-items: center;
+    /* justify-items: center; */
     width: fit-content;
     gap: 4vw;
 }
@@ -140,6 +150,7 @@
 }
 
 #loginNav img{
+    display: block;
     width: 3.5vw;
     border-radius: 50%;
 }
@@ -188,22 +199,22 @@
     display: grid;
     height: fit-content;
     align-self: center;
-    gap: 5vh;
+    gap: 3vh;
 }
 
 .bigtext{
     justify-self: center;
     align-self: end;
     text-align: center;
-    font-family: "Red Hat Text", "Trebuchet MS", Helvetica, sans-serif;
+    font-family: "Red Hat Text";
     font-weight: 600;
-    font-size: 2em;
+    font-size: 1.5em;
 }
 
 .midtext{
     align-self: center;
     text-align: center;
-    font-family: "Red Hat Text", "Trebuchet MS", Helvetica, sans-serif;
+    font-family: "Red Hat Text";
     font-size: 1.5em;
 }
 
@@ -561,29 +572,19 @@ label{
     }
 
     .header{
-        
+        font-size: 11px;
     }
 
-    #logo{
-        display: grid;
-        width: 5vw;
-        margin: auto;
+    #logoImg{
+        width: 40px;
     }
 
     #homepage p{
-        font-size: 0.5em;
+        font-size: 10px;
     }
-    
+
     #navbar{
         margin-left: 2vw;
-        /* font-size: 0.8em; */
-    }
-    
-    #navigation a{
-        font-weight: bold;
-        color: black;
-        height: fit-content;
-        font-size: 0.8em;
     }
 
     .cover{

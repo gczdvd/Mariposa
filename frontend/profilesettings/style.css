@@ -66,11 +66,13 @@
     display: grid;
     width: 100vw;
     max-width: 100%;
+    height: fit-content;
     grid-template-columns: auto 1fr 1fr;
     background-color: transparent;
     align-items: center;
     text-transform: uppercase;
     background-color: #fff;
+    font-size: 15px;
 }
 
 #homepage{
@@ -79,19 +81,21 @@
     height: fit-content;
 }
 
+#homepage p{
+    margin: 0;
+    font-size: 15px;
+}
+
 .logo{
     text-align: center;
-    padding: 1vw;
-    font-family: 'Palanquin';
+    padding: 0.5vw;
+    font-family: 'Palanquin', Geneva, Verdana, sans-serif;
     height: fit-content;
 }
 
-#logo{
-    width: 4vw;
-}
-
-#main{
-    display: none;
+#logoImg{
+    width: 50px;
+    /* margin: auto; */
 }
 
 #navbar{
@@ -105,9 +109,9 @@
     grid-template-columns: repeat(3, 1fr);
     padding: 0;
     margin: 0;
-    justify-items: center;
+    /* justify-items: center; */
     width: fit-content;
-    gap: 3vw;
+    gap: 4vw;
 }
 
 #navigation li{
@@ -120,7 +124,7 @@
     justify-content: end;
     padding: 0;
     margin: 0;
-    align-content: center;
+    /* align-content: center; */
 }
 
 #loginNav li{
@@ -129,6 +133,7 @@
 }
 
 #loginNav img{
+    display: block;
     width: 3.5vw;
     border-radius: 50%;
 }
@@ -523,31 +528,20 @@ input[type=number] {
         grid-template-rows: auto;
     }
 
-    #logo{
-        display: grid;
-        width: 10vw;
-    }
-    
-    #title{
-        font-size: 1em;
-        align-self: center;
-        text-decoration: none;
-        color: black;
-        font-family: "Palanquin", Geneva, Verdana, sans-serif;;
+    .header{
+        font-size: 11px;
     }
 
-    #header{
-        font-size: 0.5em;
+    #logoImg{
+        width: 40px;
+    }
+
+    #homepage p{
+        font-size: 10px;
     }
 
     #navbar{
         margin-left: 2vw;
-    }
-    
-    #navigation a{
-        font-weight: bold;
-        color: black;
-        height: fit-content;
     }
 
     .settings{

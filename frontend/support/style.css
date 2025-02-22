@@ -61,33 +61,50 @@
 }
 
 .wrapper{
-    display: grid;
-    grid-template-rows: auto 1fr;
-    height: 100vh;
-    max-height: 100%;
+    width: 100vw;
+    max-width: 100%;
 }
 
-#header{
+.header{
     display: grid;
+    width: 100vw;
+    max-width: 100%;
+    height: fit-content;
     grid-template-columns: auto 1fr 1fr;
     background-color: transparent;
-    font-size: 1em;
     align-items: center;
     text-transform: uppercase;
+    background-color: #fff;
+    font-size: 15px;
 }
 
 #homepage{
-    font-size: 0;
+    text-decoration: none;
+    color: #000;
+    height: fit-content;
 }
 
-#logo{
-    width: 4vw;
-    padding-left: 0.5vw;
+#homepage p{
+    margin: 0;
+    font-size: 15px;
+}
+
+.logo{
+    text-align: center;
+    padding: 0.5vw;
+    font-family: 'Palanquin', Geneva, Verdana, sans-serif;
+    height: fit-content;
+}
+
+#logoImg{
+    width: 50px;
+    /* margin: auto; */
 }
 
 #navbar{
     display: inline-block;
-    margin: 3vh 0;
+    margin-left: 3vw;
+    width: fit-content;
 }
 
 #navigation{
@@ -95,14 +112,14 @@
     grid-template-columns: repeat(3, 1fr);
     padding: 0;
     margin: 0;
+    /* justify-items: center; */
     width: fit-content;
-    gap: 3vw;
+    gap: 4vw;
 }
 
 #navigation li{
     list-style: none;
     width: fit-content;
-    margin-left: 1vw;
 }
 
 #loginNav{
@@ -110,7 +127,7 @@
     justify-content: end;
     padding: 0;
     margin: 0;
-    align-content: center;
+    /* align-content: center; */
 }
 
 #loginNav li{
@@ -119,9 +136,11 @@
 }
 
 #loginNav img{
+    display: block;
     width: 3.5vw;
     border-radius: 50%;
 }
+
 
 .cover{
     display: grid;
@@ -146,7 +165,6 @@
     align-self: center;
     justify-self: center;
     justify-content: center;
-    height: 50%;
     font-family: "Red Hat Text", "Trebuchet MS", Helvetica, sans-serif;
 }
 
@@ -475,34 +493,20 @@ label{
 }
 
 @media (max-aspect-ratio:1/1) {
-    #logo{
-        display: grid;
-        width: 10vw;
-    }
-    
-    #title{
-        font-size: 1em;
-        align-self: center;
-        text-decoration: none;
-        color: black;
-        font-family: "Palanquin", Geneva, Verdana, sans-serif;;
+    .header{
+        font-size: 11px;
     }
 
-    #header{
-        font-size: 0.8em;
+    #logoImg{
+        width: 40px;
+    }
+
+    #homepage p{
+        font-size: 10px;
     }
 
     #navbar{
-        margin: 2vh 0;
-    }
-
-    #navigation{
-        gap: 5vw;
-    }
-    
-    #navigation a{
-        font-weight: bold;
-        height: fit-content;
+        margin-left: 2vw;
     }
 
     .cover{
