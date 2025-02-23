@@ -67,6 +67,10 @@ export class Sql{
         this.con.query(`CALL modifyUser(?, ?, ?, ?, ?, ?, ?);`, [id, p?.password ?? "", p?.gender ?? 0, p?.description ?? "", p?.profile_pic ?? "", p?.topics ?? "[]", p?.birthdate ?? "1000-01-01"]);
     }
 
+    deleteUser(id){
+        this.con.query(`CALL deleteUser(?);`, [id]);
+    }
+
     //OK
     signup(nickname, email, password, verify){
         var rows = this.con.query(`CALL signupUser(?, ?, ?, ?);`, [nickname, email, password, verify]);

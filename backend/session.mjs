@@ -46,6 +46,14 @@ export class Sessions{
         }
         return null;
     }
+    getSessionByUserId(id){
+        for(var i = 0; i < this.sessions.length; i++){
+            if(this.sessions[i].getAttribute("client")?.getId() == id){
+                return this.sessions[i];
+            }
+        }
+        return null;
+    }
     cleanUp(){
         for(var i = 0; i < this.sessions.length; i++){
             if(!this.sessions[i].valid()){

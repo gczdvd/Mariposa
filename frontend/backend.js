@@ -1,6 +1,19 @@
 var rootAddr = "mariposachat.hu/api";
-const debug = false;
+const debug = true;
 class Backend{
+    static responsePreprocessor(requestParams, backendResponse){
+        if(requestParams.blockRedirect == undefined && backendResponse.action == "redirect"){
+            if(debug) alert(JSON.stringify(backendResponse));
+            window.location.href = backendResponse.value;
+        }
+        else if(backendResponse.action == "reload"){
+            window.location.reload();
+        }
+        else{
+            return true;
+        }
+        return false;
+    }
     static setUrl(url){
         //rootAddr = url;
     }
@@ -16,29 +29,10 @@ class Backend{
             var resp = await e.json();
             // alert(JSON.stringify(params));
             // alert(JSON.stringify(resp));
-            if(params.blockRedirect == undefined && resp.action == "redirect"){
-                if(debug) alert(JSON.stringify(resp));
-                window.location.href = resp.value;
-            }
-            else{
+            if(Backend.responsePreprocessor(params, resp)){
                 params?.callback(resp);
             }
         });
-    }
-    static async asyncGet(params){
-        var a = await fetch("https://" + rootAddr + params.path, {
-            method: "GET",
-            credentials: "include"
-        });
-        var resp = await a.json();
-        if(params.blockRedirect == undefined && resp.action == "redirect"){
-            if(debug) alert(JSON.stringify(resp));
-            window.location.href = resp.value;
-            return null;
-        }
-        else{
-            return resp;
-        }
     }
     static post(params) {
         var req;
@@ -66,48 +60,11 @@ class Backend{
             var resp = await e.json();
             // alert(JSON.stringify(params));
             // alert(JSON.stringify(resp));
-            if(params.blockRedirect == undefined && resp.action == "redirect"){
-                if(debug) alert(JSON.stringify(resp));
-                window.location.href = resp.value;
-            }
-            else{
+            
+            if(Backend.responsePreprocessor(params, resp)){
                 params?.callback(resp);
             }
         });
-    }
-    static async asyncPost(params){
-        var req;
-        if(params?.body?.constructor?.name == "FormData"){
-            req = {
-                method: "POST",
-                credentials: "include",
-                body: params?.body
-            }
-        }
-        else{
-            req = {
-                method: "POST",
-                credentials: "include",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json"
-                },
-                body: JSON.stringify(params?.body ?? {})
-            }
-        }
-
-        var a = await fetch("https://" + rootAddr + params.path, req);
-        var resp = await a.json();
-        // alert(JSON.stringify(params));
-        // alert(JSON.stringify(resp));
-        if(params.blockRedirect == undefined && resp.action == "redirect"){
-            if(debug) alert(JSON.stringify(resp));
-            window.location.href = resp.value;
-            return null;
-        }
-        else{
-            return resp;
-        }
     }
     static info(){
         var kvp = {};
