@@ -107,7 +107,7 @@ function registration(){
         path:"/signup",
         body:{
             email:email,
-            nickname:username.value,
+            nickname:username,
             password:key
         },
         callback:(e)=>{

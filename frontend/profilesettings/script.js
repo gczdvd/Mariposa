@@ -207,3 +207,61 @@ function saveData(){
     })
   }
 }
+
+function deleteAccount(){
+    fetch("/words/hu.txt").then((e)=>{
+        e.text().then((f)=>{
+            var words = f.split('\r\n');
+            var word = words[Math.floor(Math.random() * words.length)];
+            Swal.fire({
+                title: "Írd vissza",
+                text: word,
+                input: "text",
+                showCancelButton: true
+            }).then((g)=>{
+                if(g.isConfirmed && g.value == word){
+                    console.log("Fiók törlése");
+                    Backend.get({
+                        "path":"/deleteprofile"
+                    })
+                }
+            });
+        });
+    });
+    
+}
+
+fetch("/interests.json").then((e)=>{
+    e.json().then((f)=>{
+        intrestsDiv = document.getElementsByClassName("interests")[0];
+        var intrestGroups = Object.keys(f);
+        for(var i = 0; i < intrestGroups.length; i++){
+            var intrestGroupDiv = document.createElement("div");
+            intrestGroupDiv.classList.add(intrestGroups[i].toLowerCase());
+            intrestGroupDiv.id = intrestGroups[i].toLowerCase();
+
+            var titleP = document.createElement("p");
+            titleP.innerText = f[intrestGroups[i]].name;
+            intrestGroupDiv.appendChild(titleP);
+
+            var subIntrests = Object.keys(f[intrestGroups[i]].data);
+            for(var j = 0; j < subIntrests.length; j++){
+                var intrestButton = document.createElement("button");
+                intrestButton.setAttribute("value", subIntrests[j]);
+                intrestButton.setAttribute("onclick", "chosenInterest(this)");
+                intrestButton.classList.add("notSelected");
+
+                var emojiSpan = document.createElement("span");
+                emojiSpan.classList.add("emoji");
+                emojiSpan.innerHTML = f[intrestGroups[i]].data[subIntrests[j]].emoji;
+
+                intrestButton.appendChild(emojiSpan);
+                intrestButton.innerHTML += (" " + f[intrestGroups[i]].data[subIntrests[j]].name);
+
+                intrestGroupDiv.appendChild(intrestButton);
+            }
+
+            intrestsDiv.appendChild(intrestGroupDiv);
+        }
+    });
+});

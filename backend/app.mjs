@@ -133,6 +133,9 @@ app.post('/login', (req, res) => {
                 var id = database.auth(email, keys[0], keys[1]);
 
                 if(id != null){
+
+                    sessions.removeSession(sessions.getSessionByUserId(id));
+
                     const sess = sessions.newSession();
                     res.status(200);
                     res.cookie("sessId", sess.getId(), { expires: Session.neverExpire(), httpOnly: true, secure: true });
@@ -214,7 +217,7 @@ app.post('/signup', (req, res) => {
             res.status(400);
             res.send(JSON.stringify({
                 "action":"redirect",
-                "value":"/signup",
+                "value":"/registration",
                 "message":"Missing data."
             }));
         }
@@ -414,6 +417,18 @@ app.get('/logout', (req, res) => {
     res.send("You're User!");
 });*/
 
+app.get("/deleteprofile", sessionValidator, (req, res) => {
+    database.deleteUser(req.session.session.getAttribute("client").getId());
+    sessions.removeSession(req.session.session);
+
+    res.status(200);
+    res.send(JSON.stringify({
+        "action":"redirect",
+        "value":"/",
+        "message":"See You! :("
+    }));
+});
+
 app.post("/profilemodify", sessionValidator, (req, res) => {
     database.modifyUser(req.session.session.getAttribute("client").getId(), req.body);
     res.status(200);
@@ -530,6 +545,19 @@ app.get('/partners', sessionValidator, (req, res) => {
     }));
 });
 
+app.get('/chat/reloaded', sessionValidator, (req, res) => {                  //Ezen kérés előtt, de a bejelentkezés után KÖTELEZŐ websocketet nyitni
+    if(req.session.session.getAttribute("chat") instanceof Chat){
+        req.session.session.getAttribute("chat").leftUser(req.session.session);
+    }
+
+    res.status(200);
+    res.send(JSON.stringify({
+        "action":"none",
+        "value":"",
+        "message":"ok"
+    }));
+});
+
 app.post('/chat', sessionValidator, (req, res) => {                  //Ezen kérés előtt, de a bejelentkezés után KÖTELEZŐ websocketet nyitni
     /*if(req.session.session.getAttribute("chat") instanceof Chat){
         res.status(200);
@@ -545,22 +573,43 @@ app.post('/chat', sessionValidator, (req, res) => {                  //Ezen kér
         }
 
         if(req.body?.chatid){
-            var tchat = chats.findChatById(req.body.chatid);
-            if(tchat == null){
-                tchat = chats.newChat(req.session.session, req.body.chatid, true); //NEM HIHETÜN A FRONTENDNEK ID-T TEKINTVE
+            
+            var partners = database.getSavedChatsByUserId(req.session.session.getAttribute("client").getId());
+
+            var hasPartnerWithThisId = false;
+            for(var i = 0; i < partners.length; i++){
+                if(partners[i].chat_id == req.body.chatid){
+                    hasPartnerWithThisId = true;
+                    break;
+                }
+            }
+
+            if(hasPartnerWithThisId){
+                var tchat = chats.findChatById(req.body.chatid);
+                if(tchat == null){
+                    tchat = chats.newChat(req.session.session, req.body.chatid, true);
+                }
+                else{
+                    tchat.setUser(req.session.session);
+                }
+
+                req.session.session.setAttribute("chat", tchat);
+
+                res.status(200);
+                res.send(JSON.stringify({
+                    "action":"none",
+                    "value":"",
+                    "message":"connected"
+                }));
             }
             else{
-                tchat.setUser(req.session.session);
+                res.status(400);
+                res.send(JSON.stringify({
+                    "action":"reload",
+                    "value":"",
+                    "message":"Invalid partner ID"
+                }));
             }
-
-            req.session.session.setAttribute("chat", tchat);
-
-            res.status(200);
-            res.send(JSON.stringify({
-                "action":"none",
-                "value":"",
-                "message":"connected"
-            }));
         }
         else{
             req.session.session.setAttribute("chat", new Want());

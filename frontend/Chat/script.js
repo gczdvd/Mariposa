@@ -48,6 +48,13 @@ Backend.get({
     }
 });
 
+Backend.get({
+    path:"/chat/reloaded",
+    callback:(e)=>{
+        console.log(e);
+    }
+});
+
 function openChat(chatid=null){
     document.getElementById("success").style.display = "none";
     if(chatid){ 
@@ -362,8 +369,8 @@ Backend.get({
     }
 });
 
-// function scrollToBottom(){
-//   window.scrollTo(0, document.body.scrollHeight);
-// }
+function scrollToBottom(){
+  window.scrollTo(0, document.body.scrollHeight);
+}
 
 window.onresize = function(){ location.reload(); }

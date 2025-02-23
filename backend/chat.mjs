@@ -71,6 +71,7 @@ export class Chat{
     }
     setSaved(val=1){
         this.saved = val;
+        this.#wantsave = [val, val];
         return this.db.setChatPersistent(this.id, val);
     }
     getSaved(){
@@ -131,6 +132,7 @@ export class Chat{
         }
     }
     leftUser(sess){
+        sess.setAttribute("chat", null);
         if(this.#sess1?.getAttribute("client").getId() == sess.getAttribute("client").getId()){
             this.#sess1 = null;
         }
