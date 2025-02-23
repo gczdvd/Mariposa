@@ -228,12 +228,12 @@
 
 .form-control:focus, .form-select:focus{
     color: #ffbc2f;
-    border: #ffbc2f 2px solid !important;
+    border: #ffbc2f 2px solid;
 }
 
 .form-control{
     color: #ffbc2f;
-    border: #d3d3d3 2px solid !important;
+    border: #d3d3d3 2px solid;
 }
 
 #ageDiv{

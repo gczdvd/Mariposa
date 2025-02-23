@@ -88,7 +88,14 @@ function save(){
           newpassword: nw1Pass, 
           oldpassword: oldPass
       },
-      callback: response
+      callback: (e) => {
+        if(e.message == "Bad old password."){
+          document.getElementById("curPassFeedback").innerHTML = "Helytelen jelszó";
+        }
+        else{
+          document.getElementById("curPassFeedback").innerHTML = "";
+        }
+      }
     });
   }
 }

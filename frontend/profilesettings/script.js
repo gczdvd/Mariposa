@@ -13,12 +13,16 @@ Backend.get({
 
         if(e.nickname){
             document.getElementById("fullname").value = e.nickname;
+            document.getElementById("fullname").style.borderColor = "#ffbc2f";
+
         }
         if(e.email){
             document.getElementById("email").value = e.email;
+            document.getElementById("email").style.borderColor = "#ffbc2f";
         }
         if(e.gender){
             document.getElementById("gender").value = e.gender;
+            document.getElementById("gender").style.borderColor = "#ffbc2f";
         }
         if(e.profile_pic){
             document.getElementById("profilePicture").src = e.profile_pic;
@@ -28,6 +32,7 @@ Backend.get({
         }
         if(e.description){
             document.getElementById("textarea").value = e.description;
+            document.getElementById("textarea").style.borderColor = "#ffbc2f";
         }
         if(e.birthdate){
             var bd = new Date(e.birthdate);
@@ -121,10 +126,10 @@ function checkDateValid(ye, me, de, fail, ok){
 function dateWatcher(){
     return checkDateValid(document.getElementById("year"), document.getElementById("month"), document.getElementById("day"),
         (e)=>{
-            e.style.backgroundColor = "red";
+            e.style.borderColor = "red";
         },
         (e)=>{
-            e.style.backgroundColor = "var(--bs-body-bg)";
+            e.style.borderColor = "#ffbc2f";
         }
     );
 }
@@ -233,35 +238,35 @@ function deleteAccount(){
 
 fetch("/interests.json").then((e)=>{
     e.json().then((f)=>{
-        intrestsDiv = document.getElementsByClassName("interests")[0];
+        interestsDiv = document.getElementsByClassName("interests")[0];
         var intrestGroups = Object.keys(f);
         for(var i = 0; i < intrestGroups.length; i++){
-            var intrestGroupDiv = document.createElement("div");
-            intrestGroupDiv.classList.add(intrestGroups[i].toLowerCase());
-            intrestGroupDiv.id = intrestGroups[i].toLowerCase();
+            var interestGroupDiv = document.createElement("div");
+            interestGroupDiv.classList.add(intrestGroups[i].toLowerCase());
+            interestGroupDiv.id = intrestGroups[i].toLowerCase();
 
             var titleP = document.createElement("p");
             titleP.innerText = f[intrestGroups[i]].name;
-            intrestGroupDiv.appendChild(titleP);
+            interestGroupDiv.appendChild(titleP);
 
             var subIntrests = Object.keys(f[intrestGroups[i]].data);
             for(var j = 0; j < subIntrests.length; j++){
-                var intrestButton = document.createElement("button");
-                intrestButton.setAttribute("value", subIntrests[j]);
-                intrestButton.setAttribute("onclick", "chosenInterest(this)");
-                intrestButton.classList.add("notSelected");
+                var interestButton = document.createElement("button");
+                interestButton.setAttribute("value", subIntrests[j]);
+                interestButton.setAttribute("onclick", "chosenInterest(this)");
+                interestButton.classList.add("notSelected");
 
                 var emojiSpan = document.createElement("span");
                 emojiSpan.classList.add("emoji");
                 emojiSpan.innerHTML = f[intrestGroups[i]].data[subIntrests[j]].emoji;
 
-                intrestButton.appendChild(emojiSpan);
-                intrestButton.innerHTML += (" " + f[intrestGroups[i]].data[subIntrests[j]].name);
+                interestButton.appendChild(emojiSpan);
+                interestButton.innerHTML += (" " + f[intrestGroups[i]].data[subIntrests[j]].name);
 
-                intrestGroupDiv.appendChild(intrestButton);
+                interestGroupDiv.appendChild(interestButton);
             }
 
-            intrestsDiv.appendChild(intrestGroupDiv);
+            interestsDiv.appendChild(interestGroupDiv);
         }
     });
 });

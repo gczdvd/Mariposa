@@ -69,7 +69,7 @@
 }
 
 .wrapper{
-    width: 100vw;
+    /* width: 100vw; */
     max-width: 100%;
 }
 
@@ -80,7 +80,7 @@ p{
 
 .header{
     display: grid;
-    width: 100vw;
+    /* width: 100vw; */
     max-width: 100%;
     height: fit-content;
     grid-template-columns: auto 1fr 1fr;
@@ -246,12 +246,11 @@ p{
 
 
 .our-values{
-    display: grid;
-    grid-template-rows: auto 1fr;
-    width: 70vw;
     font-family: "Red Hat Text", "Trebuchet MS", Helvetica, sans-serif;
-    justify-self: center;
+    /* justify-self: center; */
+    /* justify-content: center; */
 }
+
 
 .title{
     display: block;
@@ -269,26 +268,24 @@ p{
 }
 
 .values{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    font-size: 1.1em;
-    text-align: center;
-    gap: 1em;
-    margin-bottom: 7vh;
+    /* font-size: 1.1em; */
 }
 
 .values > div{
-    padding: 1em;
-    box-shadow: 2px 2px 10px lightgray;
-    border-radius: 1em;
-    /* width: 80vw; */
+    box-shadow: 1px 1px 5px #dadada;
+    border-radius: 2em;
+    padding: 1vw;
+    margin: 1vh;
+    width: 25vw;
+    font-size: 1.2em;
+    /* justify-self: center; */
 }
 
 
 .us{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, auto);
+    /* display: grid; */
+    /* grid-template-columns: repeat(3, 1fr); */
+    /* grid-template-rows: repeat(2, auto); */
     font-family: "Red Hat Text", "Trebuchet MS", Helvetica, sans-serif;
     font-weight: 400;
     font-size: 1em;
@@ -306,6 +303,27 @@ p{
     border: 1px solid #ffbc2f;
     /* box-shadow: 1px 1px 5px lightgray; */
 }
+
+#gdPic, #hkPic, #csxPic{
+    /* height: 30vh;
+    width: 30vw;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid #ffbc2f; */
+}
+
+/* #hkPic{
+    background-image: url("/_images/kamilla.png");
+}
+
+#gdPic{
+    background-image: url("/_images/david.png");
+}
+
+#csxPic{
+    background-image: url("/_images/xenia.png");
+} */
 
 .teamName{
     font-weight: 600;
@@ -360,7 +378,6 @@ p{
     padding: 0;
     width: fit-content;
     height: 40vh;
-    /* position: relative; */
 }
 
 
@@ -603,13 +620,13 @@ label{
     }
 
     .cover{
-        width: 100vw;
+        /* width: 100vw; */
         max-width: 100%;
         grid-template-columns: none;
     }
 
     .cover img{
-        width: 100vw;
+        /* width: 100vw; */
         max-width: 100%;
         height: auto;
         grid-row-start: 1;
@@ -620,14 +637,14 @@ label{
     }
 
     .history{
-        width: 100vw;
+        /* width: 100vw; */
         max-width: 100%;
         gap: 0;
         text-align: center;
     }
 
     .history img{
-        width: 100vw;
+        /* width: 100vw; */
         max-width: 100%;
     }
 
@@ -636,20 +653,21 @@ label{
         justify-self: center;
     }
 
-    .our-values{
-        display: grid;
+    .values > div{
+        width: 90vw;
+        /* display: grid;
         width: fit-content;
-        justify-self: center;
+        justify-self: center; */
     }
 
     .values{
-        grid-template-columns: 1fr;
-        gap: 0.5em;
+        /* grid-template-columns: 1fr; */
+        /* gap: 0.5em; */
     }
 
     .values > div{
-        padding: 0.5em 1em;
-        width: 90vw;
+        /* padding: 0.5em 1em; */
+        /* width: 90vw; */
     }
 
     .values > div > p{
@@ -661,11 +679,12 @@ label{
         display: block;
         width: 90vw;
         max-width: 100%;
+        
     }
 
     .gd, .csx, .hk{
-        justify-self: center;
-        margin-bottom: 4vh;
+        /* justify-self: center; */
+        /* margin-bottom: 5vh; */
     }
 
     .panel p{

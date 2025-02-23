@@ -222,7 +222,7 @@
 
 .chat{
     display: grid;
-    grid-template-rows: 1fr auto auto;
+    grid-template-rows: 1fr auto;
     width: 100%;
 }
 
@@ -233,18 +233,20 @@
 .chatArea{
     display: grid;
     grid-template-rows: auto 1fr auto;
+    /* height: 100vh; */
     overflow-y: scroll;
 }
 
 #success, #waiting{
     display: grid;
-    border-bottom: 2px solid rgba(200, 200, 200, 0.2);
     border-top: 2px solid rgba(200, 200, 200, 0.2);
+    border-bottom: 2px solid rgba(200, 200, 200, 0.2);
     height: fit-content;
     justify-items: center;
     text-align: center;
     font-family: 'Red Hat Text', "Trebuchet MS", Helvetica, sans-serif;
     user-select: none;
+    padding: 1vh;
 }
 
 #success{
@@ -264,8 +266,8 @@
     width: 6vw;
 }
 
-#successMSG, #waitingMSG{
-    font-size: 1.3em;
+#successMSG, #warningMSG, #waitingMSG{
+    font-size: 1em;
     margin-bottom: 0;
     opacity: 0.5;
 }
@@ -275,6 +277,8 @@
     display: flex;
     flex-direction: column-reverse;
     width: 97%;
+    /* height: 100vh; */
+    justify-self:stretch;
 }
 
 .message1{
@@ -295,11 +299,27 @@
     word-wrap: break-word;
 }
 
-.alert{
+.startChatAlert, .convoEndAlert{
     display: flex;
     width: 90%;
     justify-self: center;
     height: fit-content;
+}
+
+.startChatAlert{
+    /* display: none; */
+}
+
+#startChatAlertLink{
+    text-decoration: underline;
+}
+
+#startChatAlertLink:hover{
+    color: orange;
+    cursor: pointer;
+}
+
+.convoEndAlert{
     display: none;
 }
 
@@ -619,7 +639,7 @@ img{
     }
 
     .chatArea{
-        grid-template-rows: 1fr 1fr auto;
+        grid-template-rows: auto 1fr auto;
     }
 
     .message{
