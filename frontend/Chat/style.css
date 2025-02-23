@@ -16,7 +16,6 @@
     width: 100vw;
     width: 100dvw;
     width: 100%;
-    
 }
 
 .tertiaryBTN, .tertiaryBTN a{
@@ -233,13 +232,14 @@
 
 .chatArea{
     display: grid;
-    grid-template-rows: auto 1fr;
+    grid-template-rows: auto 1fr auto;
     overflow-y: scroll;
 }
 
 #success, #waiting{
     display: grid;
     border-bottom: 2px solid rgba(200, 200, 200, 0.2);
+    border-top: 2px solid rgba(200, 200, 200, 0.2);
     height: fit-content;
     justify-items: center;
     text-align: center;
@@ -252,7 +252,7 @@
 }
 
 #waiting{
-    /* display: none; */
+    display: none;
 }
 
 #waiting img{
@@ -299,8 +299,8 @@
     display: flex;
     width: 90%;
     justify-self: center;
-    /* height: fit-content; */
-    /* display: none; */
+    height: fit-content;
+    display: none;
 }
 
 .alert svg{
@@ -316,6 +316,7 @@
     width: 95%;
     max-width: 100%;
     justify-self: center;
+    background-color: #fff;
 }
 
 .message-bar{
@@ -505,7 +506,7 @@ img{
 @media (max-aspect-ratio:1/1){
     .wrapper{
         grid-template-columns: none;
-        grid-template-rows: auto auto 1fr;
+        /* grid-template-rows: auto auto auto 1fr; */
     }
 
     .header{
@@ -530,19 +531,24 @@ img{
         grid-template-columns: 1fr 1fr;
         height: fit-content;
         z-index: 2;
-        width: 100vw;
+        width: 95vw;
         justify-self: center;
         position: sticky;
         position: -webkit-sticky;
         grid-row-start: 2;
+        padding: 1vh 0;
     }
 
-    .responsive-bar #sc img{
+    .responsive-bar #openSaved{
         width: 5vw;
     }
 
-    .responsive-bar #d img{
-        width: 7vw;
+    .responsive-bar #closeSaved{
+        width: 5vw;
+    }
+
+    .responsive-bar #openDetails{
+        width: 5vw;
     }
 
     .responsive-bar #closeDetails, .responsive-bar #closeSaved{
@@ -565,11 +571,8 @@ img{
         display: none;
         z-index: 1;
         left: 0;
-        /* padding: 10vh 0; */
         position: absolute;
         background-color: #fff;
-        /* align-self: stretch; */
-        /* grid-row-start: 3; */
         height: 100vh;
         height: 100dvh;
     }
@@ -580,6 +583,10 @@ img{
 
     .savedChat img{
         height: 30vh;
+    }
+
+    #closeDetails{
+        width: 4vw;
     }
 
     .image{
@@ -606,18 +613,25 @@ img{
     
     .chat{
         display: grid;
-        width: 100vw;
-        width: 100dvw;
-        max-width: 100%;
+        height: 100vh;
         grid-row-start: 3;
-        grid-template-rows: 1fr auto 1fr;
+        /* grid-template-rows: 1fr 1fr auto; */
     }
 
+    .chatArea{
+        grid-template-rows: 1fr 1fr auto;
+    }
 
     .message{
         position: fixed;
         bottom: 0;
-        width: 90vw;
+        width: 100vw;
         justify-self: center;
+        padding: 1vh 2vh 1vh 3vh;
+    }
+
+    .alert{
+        position: fixed;
+        bottom: 5vh;
     }
 }

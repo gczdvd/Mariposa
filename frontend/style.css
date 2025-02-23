@@ -149,7 +149,7 @@ p{
     grid-template-columns: repeat(3, 1fr);
     padding: 0;
     margin: 0;
-    /* justify-items: center; */
+    justify-items: center;
     width: fit-content;
     gap: 4vw;
 }
@@ -186,7 +186,7 @@ p{
     grid-template-columns: 1fr 1fr;
     justify-content: center;
     align-content: center;
-    margin: 5vh 0;
+    margin: 5vh 0 10vh 0;
 }
 
 .cover img{
@@ -199,7 +199,7 @@ p{
     display: grid;
     height: fit-content;
     align-self: center;
-    gap: 3vh;
+    gap: 5vh;
 }
 
 .bigtext{
@@ -208,7 +208,7 @@ p{
     text-align: center;
     font-family: "Red Hat Text";
     font-weight: 600;
-    font-size: 1.5em;
+    font-size: 2em;
 }
 
 .midtext{
@@ -226,21 +226,16 @@ p{
     text-align: center;
     font-family: "Red Hat Text";
     gap: 2vh;
-    margin-bottom: 10vh;
+    margin-bottom: 5vh;    
 }
 
 .headline{
-    font-size: 2.5em;
+    font-size: 3.5em;
     font-weight: 600;
 }
 
-.subhead{
-    font-size: 1.5em;
-    align-self: center;
-}
-
 .pers{
-    font-size: 1em;
+    font-size: 1.2em;
     width: 40vw;
     justify-self: center;
 }
@@ -268,15 +263,11 @@ p{
 
 
 .aboutus{
-    width: 80vw;
-    justify-self: center;
-    margin-bottom: 5vh;
-}
-
-.slides{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    max-width: 100%;
+    grid-template-rows: auto 1fr;
+    justify-self: center;
+    margin-bottom: 5vh;
 }
 
 .us-text{
@@ -287,11 +278,16 @@ p{
     font-size: 2em;
 }
 
-.slides img{
-    width: 30vw;
-    /* border-radius: 5em; */
+.aboutus img{
+    width: 40vw;
     justify-self: center;
     align-self: center;
+    border-radius: 2vh;
+    margin: auto;
+}
+
+.aboutus button{
+    margin-top: 1vh;
 }
 
 
@@ -343,11 +339,17 @@ p{
     max-width: 100%;
     text-align: center;
     margin-bottom: 5vh;
+    height: fit-content;
+    font-size: 0.9em;
+    justify-self: center;
 }
 
-.donation img{
+
+#donationImg img{
+    display: block;
     width: 30vw;
     justify-self: center;
+    /* padding: 2vh 0; */
 }
 
 .donation-text{
@@ -356,41 +358,47 @@ p{
     align-self: center;
     font-family: "Red Hat Text";
     font-size: 1.5em;
+    margin: 0;
+    
 }
 
+.donation button{
+    margin-top: 1vh;
+}
 
-.newsletter{
+.support{
     display: grid;
-    width: 100vw;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    width: 80vw;
     max-width: 100%;
     align-items: center;
     justify-items: center;
-    height: 50vh;
+    justify-self: center;
+    /* height: 50vh; */
     font-family: "Red Hat Text";
     margin-bottom: 5vh;
+    text-align: center;
 }
 
-.newsText{
+.support img{
+    width: 20vw;
+}
+
+.supportText{
+    display: grid;
+    font-size: 1.5em;
+    gap: 3vh;
+}
+
+.supportText p:nth-of-type(1){
+    font-weight: 600;
     font-size: 1.5em;
 }
 
-.form-floating{
-    font-family: 'Red Hat Text';
-}
-
-.form-control:focus{
-    color: #ffbc2f;
-    border: #ffbc2f 1px solid !important;
-}
-
-.form-control{
-    color: #ffbc2f;
-    width: 30vw;
-}
-
-.emailInput input:focus{
-    outline: none;
-    border-bottom: 3px solid #ffbc2f !important;
+.support button{
+    margin-top: 2vh;
+    grid-column: 1 / span 2;
 }
 
 
@@ -641,6 +649,7 @@ p{
     .donation{
         display: grid;
         grid-template-columns: 1fr 1fr;
+        width: 90vw;
     }
 
     .donation img{
@@ -654,18 +663,18 @@ p{
         font-size: 1em;
     }
 
-    .newsletter{
-        margin-bottom: 1.5vh;
+    .supportText{
+        display: grid;
+        font-size: 1em;
+        width: 45vw;
+        gap: 3vh;
+    }
+    
+    .supportText p:nth-of-type(1){
+        font-weight: 600;
+        font-size: 1.2em;
     }
 
-    .newsText{
-        font-size: 1.5em;
-        text-align: center;
-    }
-
-    .form-control{
-        width: 70vw;
-    }
 
     .footer{
         display: block;

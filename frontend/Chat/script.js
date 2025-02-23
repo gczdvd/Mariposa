@@ -193,7 +193,7 @@ function deletePartner(){
 function send(){
     
   //var text = document.getElementById("message").value;
-  var text = document.getElementById("message");
+  var text = document.getElementById("message-bar");
 
   if(text.value != ""){
     ws.send(JSON.stringify({
@@ -278,7 +278,7 @@ function receive(e){
 }
 
 function focusMessageBar(){
-  document.getElementById("message").focus();
+  document.getElementById("message-bar").focus();
 }
 
 var last_hist = "";

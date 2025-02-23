@@ -126,7 +126,7 @@ p{
     grid-template-columns: repeat(3, 1fr);
     padding: 0;
     margin: 0;
-    /* justify-items: center; */
+    justify-items: center;
     width: fit-content;
     gap: 4vw;
 }
@@ -302,13 +302,22 @@ p{
     grid-column: 1 / span 3;
 }
 
+.us img{
+    border: 1px solid #ffbc2f;
+    /* box-shadow: 1px 1px 5px lightgray; */
+}
+
+.teamName{
+    font-weight: 600;
+    font-size: 1.3em;
+}
+
 .gd, .csx, .hk{
     display: grid;
     grid-row: 2;
     grid-template-columns: 1fr;
-    /* grid-template-rows: repeat(4, fit-content); */
     height: fit-content;
-    border: 1px rgb(243, 243, 243) solid;
+    border: 3px rgb(243, 243, 243) solid;
     padding: 2vw;
     gap: 1vw;
 }
@@ -327,6 +336,12 @@ p{
     color: #ffbc2f;
     cursor: pointer;
     user-select: none;
+    font-size: 1.1em;
+    width: fit-content;
+}
+
+.role:hover{
+    color: darkorange;
 }
 
 .accordion{
@@ -344,7 +359,7 @@ p{
     margin: 0;
     padding: 0;
     width: fit-content;
-    height: 30vh;
+    height: 40vh;
     /* position: relative; */
 }
 
@@ -495,13 +510,13 @@ label{
     font-size: 0;
 }
 
-#name #coffee{
-    width: 2vw;
+#name{
+    display: grid;
+    gap: 2vh;
 }
 
-#name #insta{
-    width: 3.2vw;
-    margin-left: 2vw;
+#name #coffee{
+    width: 2vw;
 }
 
 #coName{
@@ -653,6 +668,9 @@ label{
         margin-bottom: 4vh;
     }
 
+    .panel p{
+        height: 30vh;
+    }
 
     .contact{
         grid-template-columns: none;
