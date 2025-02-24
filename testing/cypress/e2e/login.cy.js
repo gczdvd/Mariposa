@@ -38,7 +38,6 @@ describe('login fail spec', () => {
     cy.get('#emailFeedback').should('be.visible')
     cy.get('#pswFeedback').should('be.visible')
 
-    cy.wait(2000)
   })
 })
 

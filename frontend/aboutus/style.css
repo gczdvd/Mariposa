@@ -247,8 +247,7 @@ p{
 
 .our-values{
     font-family: "Red Hat Text", "Trebuchet MS", Helvetica, sans-serif;
-    /* justify-self: center; */
-    /* justify-content: center; */
+    justify-self: center;
 }
 
 
@@ -262,30 +261,37 @@ p{
     justify-self: center;
 }
 
-.valuesT{
-    font-weight: 700;
-    font-size: 1.5em;
+.our-values{
+    margin-bottom: 7vh;
 }
 
 .values{
-    /* font-size: 1.1em; */
+    justify-content: center;
 }
 
 .values > div{
     box-shadow: 1px 1px 5px #dadada;
     border-radius: 2em;
-    padding: 1vw;
+    padding: 2vw;
     margin: 1vh;
-    width: 25vw;
+    width: fit-content;
     font-size: 1.2em;
-    /* justify-self: center; */
 }
 
 
+.valuesT{
+    font-weight: 700;
+    font-size: 1.5em;
+}
+
+
+.valuesText{
+    width: 20vw;
+    justify-self: center;
+    margin: 0;
+}
+
 .us{
-    /* display: grid; */
-    /* grid-template-columns: repeat(3, 1fr); */
-    /* grid-template-rows: repeat(2, auto); */
     font-family: "Red Hat Text", "Trebuchet MS", Helvetica, sans-serif;
     font-weight: 400;
     font-size: 1em;
@@ -301,29 +307,7 @@ p{
 
 .us img{
     border: 1px solid #ffbc2f;
-    /* box-shadow: 1px 1px 5px lightgray; */
 }
-
-#gdPic, #hkPic, #csxPic{
-    /* height: 30vh;
-    width: 30vw;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    border: 1px solid #ffbc2f; */
-}
-
-/* #hkPic{
-    background-image: url("/_images/kamilla.png");
-}
-
-#gdPic{
-    background-image: url("/_images/david.png");
-}
-
-#csxPic{
-    background-image: url("/_images/xenia.png");
-} */
 
 .teamName{
     font-weight: 600;
@@ -592,7 +576,7 @@ label{
 @media (max-aspect-ratio:1/1) {
     .cover img{
         grid-row-start: 1;
-        /* width: 100vw; */
+        width: 100vw;
         max-width: 100%;
         margin-bottom: 5vh;
     }
@@ -620,14 +604,10 @@ label{
     }
 
     .cover{
-        /* width: 100vw; */
-        max-width: 100%;
         grid-template-columns: none;
     }
 
     .cover img{
-        /* width: 100vw; */
-        max-width: 100%;
         height: auto;
         grid-row-start: 1;
     }
@@ -637,15 +617,8 @@ label{
     }
 
     .history{
-        /* width: 100vw; */
-        max-width: 100%;
         gap: 0;
         text-align: center;
-    }
-
-    .history img{
-        /* width: 100vw; */
-        max-width: 100%;
     }
 
     .historyP{
@@ -655,36 +628,24 @@ label{
 
     .values > div{
         width: 90vw;
-        /* display: grid;
-        width: fit-content;
-        justify-self: center; */
-    }
-
-    .values{
-        /* grid-template-columns: 1fr; */
-        /* gap: 0.5em; */
-    }
-
-    .values > div{
-        /* padding: 0.5em 1em; */
-        /* width: 90vw; */
     }
 
     .values > div > p{
         margin: 0;
     }
 
+    .valuesText{
+        width: fit-content;
+        justify-self: center;
+        margin: 0;
+        padding: 0 0.5vh;
+    }
 
     .us{
         display: block;
         width: 90vw;
         max-width: 100%;
         
-    }
-
-    .gd, .csx, .hk{
-        /* justify-self: center; */
-        /* margin-bottom: 5vh; */
     }
 
     .panel p{

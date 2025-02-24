@@ -64,7 +64,7 @@
 
 .header{
     display: grid;
-    width: 100vw;
+    /* width: 100vw; */
     max-width: 100%;
     height: fit-content;
     grid-template-columns: auto 1fr 1fr;
@@ -587,9 +587,9 @@ input[type=number] {
     }
 
     .interests{
-        /* grid-template-columns: repeat(2, auto);
+        grid-template-columns: repeat(2, auto);
         grid-template-rows: repeat(6, auto);
-        row-gap: 1vh; */
+        /* row-gap: 1vh; */
     }
 
     .interests button{
