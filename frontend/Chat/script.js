@@ -47,6 +47,7 @@ Backend.get({
 
 function openChat(chatid=null){
     document.getElementById("success").style.display = "none";
+    document.getElementById("savedicon").click();
     if(chatid){ 
         document.getElementById("waiting").style.display = "none";
     }
@@ -296,7 +297,6 @@ function history_load(){
     }
 }
 
-
 // document.getElementById("message").addEventListener("keyup", (e)=>{
 //     if(e.key == "Enter" && document.getElementById("message").value.length != 0){
 //         send();
@@ -305,45 +305,69 @@ function history_load(){
 
 function toggleDetails(){
   var details =  document.getElementById("details");
+
+  var saved = document.getElementById("saved");
+  var navigation = document.getElementById("navigation");
+  var closeSaved = document.getElementById("closeSaved");
+  var openSaved = document.getElementById("openSaved");
+
   var closeDetails = document.getElementById("closeDetails");
   var openDetails = document.getElementById("openDetails");
 
-  if(details.style.display == "block"){
-    details.style.display = "none";
-    details.style.width = 0 + "vw";
-    openDetails.style.display = "block"
-    closeDetails.style.display = "none";
-    document.getElementById("message").style.display = "grid";
+  var chat = document.getElementById("chat");
+
+  if(details.style.display == "none" || details.style.display == ""){
+    details.style.display = "block";
+    openDetails.style.display = "none";
+    closeDetails.style.display = "block";
+    
+    chat.style.visibility = "hidden";
+
+    saved.style.display = "none";
+    navigation.style.display = "none";
+    openSaved.style.display = "block";
+    closeSaved.style.display = "none";
   }
   else{
-    details.style.display = "block";
-    details.style.width = 100 + "vw";
-    openDetails.style.display = "none"
-    closeDetails.style.display = "block";
-    document.getElementById("message").style.display = "none";
+    details.style.display = "none";
+    openDetails.style.display = "block";
+    closeDetails.style.display = "none";
+    chat.style.visibility = "visible";
   }
-
 }
 
 function toggleSaved(){
   var saved = document.getElementById("saved");
-  var closeSaved = document.getElementById("closeSaved");
-  var openSaved = document.getElementById("openSaved");
+  var details =  document.getElementById("details");
 
-  if(saved.style.display == "block"){
-    saved.style.display = "none";
-    saved.style.width = 0 + "vw";
-    openSaved.style.display = "block";
-    closeSaved.style.display = "none";
-    document.getElementById("message").style.display = "grid";
+  var savedicon = document.getElementById("savedicon");
+  var chat = document.getElementById("chat");
+  var navigation = document.getElementById("navigation");
+
+  var closeDetails = document.getElementById("closeDetails");
+  var openDetails = document.getElementById("openDetails");
+
+  if(saved.style.display == "none" || saved.style.display == ""){
+    saved.style.display = "block";
+    chat.style.visibility = "hidden";
+    // navigation.style.display = "grid";
+    navigation.style.width = "20vw";
+
+    savedicon.style.transform = "rotateY(-180deg)";
+
+    details.style.display = "none";
+    closeDetails.style.display = "none";
+    openDetails.style.display = "block";
   }
   else{
-    console.log("kutya");
-    saved.style.display = "block";
-    saved.style.width = 100 + "vw";
-    openSaved.style.display = "none";
-    closeSaved.style.display = "block";
-    document.getElementById("message").style.display = "none";
+    saved.style.display = "none";
+    // openSaved.style.display = "block";
+    // closeSaved.style.display = "none";
+    chat.style.visibility = "visible";
+    // navigation.style.display = "none";
+    navigation.style.width = 0;
+
+    savedicon.style.transform = "rotateY(0)";
   }
 }
 

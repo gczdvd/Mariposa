@@ -13,7 +13,29 @@
 </head>
 <body onkeydown="focusMessageBar()" onload="scrollToBottom()">
     <div class="wrapper" id="wrapper">
+
+        <!-- 1 -->
+        <div class="responsive-bar">
+            <div id="sc">
+                <img src="/_images/savedicon.png" alt="Nyit" id="savedicon" onclick="toggleSaved()">
+                <!-- <img src="/_images/close.png" alt="Csuk" id="closeSaved" onclick="toggleSaved()"> -->
+
+                <ul id="navigation">
+                    <li><a href="/" class="tertiaryBTN">Kezdőlap</a></li>
+                    
+                    <li><a href="/aboutus" class="tertiaryBTN">Rólunk</a></li>
+
+                    <li><a href="/support" class="tertiaryBTN">Segítség</a></li>
+                </ul>
+            </div>
+
+            <div id="d">
+                <img src="/_images/menu.png" alt="" id="openDetails" onclick="toggleDetails()">
+                <img src="/_images/multiply2.png" alt="" id="closeDetails" onclick="toggleDetails()">
+            </div>
+        </div>
         
+        <!-- 2 -->
             <div class="header" id="header">
                 <!-- LOGO -->
                 <div class="logo">
@@ -45,84 +67,70 @@
                 </div>
             </div>
 
-            <div class="responsive-bar">
-                <div id="sc">
-                    <img src="/_images/open.png" alt="Nyit" id="openSaved" onclick="toggleSaved()">
+            <!-- 3 -->
+            <!-- MENTETTEK -->
+            <div class="saved" id="saved">
+                <!-- <div class="searchbar">
+                    <input type="search">
+                </div> -->
 
-                    <img src="/_images/close.png" alt="Csuk" id="closeSaved" onclick="toggleSaved()">
+                <div class="startChat" id="startChat" title="Új chat indítása" onclick="openChat()">
+                    <img src="/_images/newchat.png" alt="Új chat">
                 </div>
 
-
-                <div id="d">
-                    <img src="/_images/menu.png" alt="" id="openDetails" onclick="toggleDetails()">
-
-                    <img src="/_images/multiply2.png" alt="" id="closeDetails" onclick="toggleDetails()">
-                </div>
+                <!-- <div id="placeholder">
+                    Ha ez a felület üres, azt jelenti, hogy még nincs egy elmentett chatpartnered sem! Indítsd új chatet, hogy minél előbb találj egy hozzád hasonló embert!
+                </div> -->
+                <!-- <div class="savedChat">
+                    <div class="image">
+                        
+                    </div>
+                    <p>Példa Név</p>
+                </div> -->
             </div>
+        
+            <!-- 4 -->
+            <!-- CHATFELÜLET -->
+            <div class="chat" id="chat">
 
-                <!-- MENTETTEK -->
-                <div class="saved" id="saved">
-                    <!-- <div class="searchbar">
-                        <input type="search">
-                    </div> -->
-    
-                    <div class="startChat" id="startChat" title="Új chat indítása" onclick="openChat()">
-                        <img src="/_images/newchat.png" alt="Új chat">
-                    </div>
-    
-                    <!-- <div id="placeholder">
-                        Ha ez a felület üres, azt jelenti, hogy még nincs egy elmentett chatpartnered sem! Indítsd új chatet, hogy minél előbb találj egy hozzád hasonló embert!
-                    </div> -->
-                    <!-- <div class="savedChat">
-                        <div class="image">
-                            
+                <div class="chatArea">
+                    <div class="condition">
+                        <div id="waiting">
+                            <img src="/_images/loading.gif">
+                            <p id="waitingMSG">Várakozás beszélgetőpartnerre...</p>
                         </div>
-                        <p>Példa Név</p>
-                    </div> -->
+    
+                        <div id="success">
+                            <img src="/_images/tick.png" alt="">
+                            <p id="successMSG">Megtaláltuk a tökéletes beszélgetőpartnert!</p>
+                            <p id="warningMSG">Kérjük, a beszélgetés során tartsd be a Házirendet!</p>
+                        </div>
+                    </div>
+
+                    <div class="messages" onclick="focusMessageBar()" onscroll="history_load()">
+
+                    </div>
+
+                    <div class="alerts">
+                        <div class="alert alert-danger align-items-center convoEndAlert" role="alert">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+                                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                </svg>
+                            <div>
+                                A beszélgetésnek vége.
+                            </div>
+                        </div>
+
+                        <div class="alert alert-warning align-items-center startChatAlert" role="alert">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+                                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                                </svg>
+                            <div>
+                                Ugorj fejest a barátkozásba! <span id="startChatAlertLink" onclick="openChat()">Új chat indítása</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-        
-
-                <!-- CHATFELÜLET -->
-                <div class="chat">
-
-                    <div class="chatArea">
-                        <div class="condition">
-                            <div id="waiting">
-                                <img src="/_images/loading.gif">
-                                <p id="waitingMSG">Várakozás beszélgetőpartnerre...</p>
-                            </div>
-        
-                            <div id="success">
-                                <img src="/_images/tick.png" alt="">
-                                <p id="successMSG">Megtaláltuk a tökéletes beszélgetőpartnert!</p>
-                                <p id="warningMSG">Kérjük, a beszélgetés során tartsd be a Házirendet!</p>
-                            </div>
-                        </div>
-
-                        <div class="messages" onclick="focusMessageBar()" onscroll="history_load()">
-
-                        </div>
-
-                        <div class="alerts">
-                            <div class="alert alert-danger align-items-center convoEndAlert" role="alert">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
-                                    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                                  </svg>
-                                <div>
-                                    A beszélgetésnek vége.
-                                </div>
-                            </div>
-    
-                            <div class="alert alert-warning align-items-center startChatAlert" role="alert">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
-                                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
-                                  </svg>
-                                <div>
-                                    Ugorj fejest a barátkozásba! <span id="startChatAlertLink" onclick="openChat()">Új chat indítása</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="message" id="message">
                         <textarea placeholder="Írd ide az üzenetet..." rows="" id="message-bar" class="message-bar" maxlength="1000" oninput='this.style.height = ""; this.style.height = this.scrollHeight + "px"' value=""></textarea>
@@ -167,21 +175,7 @@
 
                         <p id="interestsP">
                             <span id="interests">
-                                <button>Tánc</button>
-                                <button>awdas</button>
-                                <button>awdas</button>
-                                <button>awdas</button>
-                                <button>awdas</button>
-                                <button>awdas</button>
-                                <button>awdas</button>
-                                <button>awdas</button>
-                                <button>awdas</button>
-                                <button>awdas</button>
-                                <button>awdas</button>
-                                <button>awdas</button>
-                                <button>awdas</button>
-                                <button>awdas</button>
-                                <button>awdas</button>
+                                <!-- <button>Tánc</button> -->
                             </span>
                             </span>
                         </p>
@@ -203,7 +197,7 @@
                     </div>
                 </div>     
     </div>
-    
+    <!-- <a href="https://www.flaticon.com/free-icons/arrow" title="arrow icons">Arrow icons created by deemakdaksina - Flaticon</a> -->
     <script src="script.js"></script>
 </body>
 </html>
