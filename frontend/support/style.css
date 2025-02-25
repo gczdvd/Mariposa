@@ -112,7 +112,7 @@
     grid-template-columns: repeat(3, 1fr);
     padding: 0;
     margin: 0;
-    /* justify-items: center; */
+    justify-items: center;
     width: fit-content;
     gap: 4vw;
 }
@@ -431,13 +431,13 @@ label{
     font-size: 0;
 }
 
-#name #coffee{
-    width: 2vw;
+#name{
+    display: grid;
+    /* gap: 1vh; */
 }
 
-#name #insta{
-    width: 3.2vw;
-    margin-left: 2vw;
+#name #coffee{
+    width: 2vw;
 }
 
 #coName{

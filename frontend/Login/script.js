@@ -59,7 +59,7 @@ function login(){
 
   if(!validEmail){
     emailFeedback.style.visibility = "visible";
-    document.getElementById("emailFeedback").innerHTML = "Helytelen email-cím.";
+    document.getElementById("emailFeedback").innerHTML = "Helytelen email-cím";
     var allValid = false;
   }
   else{
@@ -97,7 +97,14 @@ function login(){
           email: email, 
           password: fullkey
       },
-      callback:console.log
+      callback: (e) => {
+        if(e.value == "invalid"){
+          document.getElementById("emailFeedback").innerHTML = "Nincs ilyen email-címmel a rendszerünkben.";
+        }
+        else{
+          document.getElementById("emailFeedback").innerHTML = "";
+        }
+      }
   });
   }
 }
@@ -182,8 +189,8 @@ function validateEmail(e){
   if(e.action === "error"){
     Swal.fire({
       icon: "error",
-      title: "Add meg a Mariposa fiókodhoz tartozó e-mail címet!",
-      text: "Az e-mailben szereplő linkkel tudod majd visszaállítani a jelszavad.",
+      title: "Add meg a Mariposa fiókodhoz tartozó email-címet!",
+      text: "Az emailben szereplő linkkel tudod majd visszaállítani a jelszavad.",
       input: "email",
       validationMessage: "Helytelen e-mail cím",
       width: "64em",

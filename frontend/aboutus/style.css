@@ -69,7 +69,7 @@
 }
 
 .wrapper{
-    width: 100vw;
+    /* width: 100vw; */
     max-width: 100%;
 }
 
@@ -80,7 +80,7 @@ p{
 
 .header{
     display: grid;
-    width: 100vw;
+    /* width: 100vw; */
     max-width: 100%;
     height: fit-content;
     grid-template-columns: auto 1fr 1fr;
@@ -126,7 +126,7 @@ p{
     grid-template-columns: repeat(3, 1fr);
     padding: 0;
     margin: 0;
-    /* justify-items: center; */
+    justify-items: center;
     width: fit-content;
     gap: 4vw;
 }
@@ -246,12 +246,10 @@ p{
 
 
 .our-values{
-    display: grid;
-    grid-template-rows: auto 1fr;
-    width: 70vw;
     font-family: "Red Hat Text", "Trebuchet MS", Helvetica, sans-serif;
     justify-self: center;
 }
+
 
 .title{
     display: block;
@@ -263,32 +261,37 @@ p{
     justify-self: center;
 }
 
+.our-values{
+    margin-bottom: 7vh;
+}
+
+.values{
+    justify-content: center;
+}
+
+.values > div{
+    box-shadow: 1px 1px 5px #dadada;
+    border-radius: 2em;
+    padding: 2vw;
+    margin: 1vh;
+    width: fit-content;
+    font-size: 1.2em;
+}
+
+
 .valuesT{
     font-weight: 700;
     font-size: 1.5em;
 }
 
-.values{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    font-size: 1.1em;
-    text-align: center;
-    gap: 1em;
-    margin-bottom: 7vh;
-}
 
-.values > div{
-    padding: 1em;
-    box-shadow: 2px 2px 10px lightgray;
-    border-radius: 1em;
-    /* width: 80vw; */
+.valuesText{
+    width: 20vw;
+    justify-self: center;
+    margin: 0;
 }
-
 
 .us{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, auto);
     font-family: "Red Hat Text", "Trebuchet MS", Helvetica, sans-serif;
     font-weight: 400;
     font-size: 1em;
@@ -302,13 +305,21 @@ p{
     grid-column: 1 / span 3;
 }
 
+.us img{
+    border: 1px solid #ffbc2f;
+}
+
+.teamName{
+    font-weight: 600;
+    font-size: 1.3em;
+}
+
 .gd, .csx, .hk{
     display: grid;
     grid-row: 2;
     grid-template-columns: 1fr;
-    /* grid-template-rows: repeat(4, fit-content); */
     height: fit-content;
-    border: 1px rgb(243, 243, 243) solid;
+    border: 3px rgb(243, 243, 243) solid;
     padding: 2vw;
     gap: 1vw;
 }
@@ -327,6 +338,12 @@ p{
     color: #ffbc2f;
     cursor: pointer;
     user-select: none;
+    font-size: 1.1em;
+    width: fit-content;
+}
+
+.role:hover{
+    color: darkorange;
 }
 
 .accordion{
@@ -344,8 +361,7 @@ p{
     margin: 0;
     padding: 0;
     width: fit-content;
-    height: 30vh;
-    /* position: relative; */
+    height: 40vh;
 }
 
 
@@ -495,13 +511,13 @@ label{
     font-size: 0;
 }
 
-#name #coffee{
-    width: 2vw;
+#name{
+    display: grid;
+    gap: 2vh;
 }
 
-#name #insta{
-    width: 3.2vw;
-    margin-left: 2vw;
+#name #coffee{
+    width: 2vw;
 }
 
 #coName{
@@ -560,7 +576,7 @@ label{
 @media (max-aspect-ratio:1/1) {
     .cover img{
         grid-row-start: 1;
-        /* width: 100vw; */
+        width: 100vw;
         max-width: 100%;
         margin-bottom: 5vh;
     }
@@ -588,14 +604,10 @@ label{
     }
 
     .cover{
-        width: 100vw;
-        max-width: 100%;
         grid-template-columns: none;
     }
 
     .cover img{
-        width: 100vw;
-        max-width: 100%;
         height: auto;
         grid-row-start: 1;
     }
@@ -605,15 +617,8 @@ label{
     }
 
     .history{
-        width: 100vw;
-        max-width: 100%;
         gap: 0;
         text-align: center;
-    }
-
-    .history img{
-        width: 100vw;
-        max-width: 100%;
     }
 
     .historyP{
@@ -621,19 +626,7 @@ label{
         justify-self: center;
     }
 
-    .our-values{
-        display: grid;
-        width: fit-content;
-        justify-self: center;
-    }
-
-    .values{
-        grid-template-columns: 1fr;
-        gap: 0.5em;
-    }
-
     .values > div{
-        padding: 0.5em 1em;
         width: 90vw;
     }
 
@@ -641,18 +634,23 @@ label{
         margin: 0;
     }
 
+    .valuesText{
+        width: fit-content;
+        justify-self: center;
+        margin: 0;
+        padding: 0 0.5vh;
+    }
 
     .us{
         display: block;
         width: 90vw;
         max-width: 100%;
+        
     }
 
-    .gd, .csx, .hk{
-        justify-self: center;
-        margin-bottom: 4vh;
+    .panel p{
+        height: 30vh;
     }
-
 
     .contact{
         grid-template-columns: none;

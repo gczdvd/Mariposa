@@ -1,15 +1,5 @@
 // Backend.setUrl("127.0.0.1:3000");
 
-/* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
-function myFunction() {
-    var x = document.getElementById("myLinks");
-    if (x.style.display === "block") {
-      x.style.display = "none";
-    } else {
-      x.style.display = "block";
-    }
-  }
-
 var ws;
 
 function websocket_loop(){
@@ -88,7 +78,7 @@ function openChat(chatid=null){
 function savePartner(){
   Swal.fire({
     icon: "question",
-    title: "Biztosan menteni szeretnéd partnered?",
+    title: "Biztosan menteni szeretnéd a partnered?",
     text: "A mentési szándékról partnered értesítést kap, és elutasíthatja azt!",
     width: "64em",
     showCancelButton: "true",
@@ -133,7 +123,7 @@ function savePartner(){
 function reportPartner(){
   Swal.fire({
     icon: "warning",
-    title: "Biztosan jelenteni szeretnéd partnered?",
+    title: "Biztosan jelenteni szeretnéd a partnered?",
     text: "A jelentés nem vonható vissza. A beszélgetés átvizsgálásához üzeneteid mentésre kerülnek.",
     width: "64em",
     showCancelButton: "true",
@@ -164,7 +154,7 @@ function reportPartner(){
 function deletePartner(){
   Swal.fire({
     icon: "warning",
-    title: "Biztosan törölni szeretnéd partnered?",
+    title: "Biztosan törölni szeretnéd a partnered?",
     width: "64em",
     showCancelButton: "true",
     reverseButtons: "true",
@@ -200,7 +190,7 @@ function deletePartner(){
 function send(){
     
   //var text = document.getElementById("message").value;
-  var text = document.getElementById("message_in");
+  var text = document.getElementById("message-bar");
 
   if(text.value != ""){
     ws.send(JSON.stringify({
@@ -285,7 +275,7 @@ function receive(e){
 }
 
 function focusMessageBar(){
-  document.getElementById("message").focus();
+  document.getElementById("message-bar").focus();
 }
 
 var last_hist = "";

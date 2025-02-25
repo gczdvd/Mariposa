@@ -47,13 +47,10 @@ describe('support message email fail spec', () => {
   })
 
   describe('support message all fail spec', () => {
-    it('should fail, message is empty', () => {
+    it('should fail, wrong email, no name, no message', () => {
       cy.visit('https://mariposachat.hu/aboutus')
   
       cy.get('#email').type('csizmadiaxeniagmail')
-        //   cy.get('#name').type('')
-        //   cy.get('#username').type('')
-        //   cy.get('#message').type('')
   
       cy.get('button[class=primaryBTN]').click()
   
@@ -61,7 +58,6 @@ describe('support message email fail spec', () => {
       cy.get('#nameFeedback').should('contain', 'Kérjük')
       cy.get('#messageFeedback').should('contain', 'Kérjük')
   
-      cy.wait(2000)
     })
   })
   

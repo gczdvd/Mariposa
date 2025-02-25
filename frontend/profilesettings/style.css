@@ -64,7 +64,7 @@
 
 .header{
     display: grid;
-    width: 100vw;
+    /* width: 100vw; */
     max-width: 100%;
     height: fit-content;
     grid-template-columns: auto 1fr 1fr;
@@ -109,7 +109,7 @@
     grid-template-columns: repeat(3, 1fr);
     padding: 0;
     margin: 0;
-    /* justify-items: center; */
+    justify-items: center;
     width: fit-content;
     gap: 4vw;
 }
@@ -228,12 +228,12 @@
 
 .form-control:focus, .form-select:focus{
     color: #ffbc2f;
-    border: #ffbc2f 2px solid !important;
+    border: #ffbc2f 2px solid;
 }
 
 .form-control{
     color: #ffbc2f;
-    border: #d3d3d3 2px solid !important;
+    border: #d3d3d3 2px solid;
 }
 
 #ageDiv{
@@ -451,13 +451,13 @@ input[type=number] {
     font-size: 0;
 }
 
-#name #coffee{
-    width: 2vw;
+#name{
+    display: grid;
+    gap: 2vh;
 }
 
-#name #insta{
-    width: 3.2vw;
-    margin-left: 2vw;
+#name #coffee{
+    width: 2vw;
 }
 
 #coName{
@@ -587,9 +587,9 @@ input[type=number] {
     }
 
     .interests{
-        /* grid-template-columns: repeat(2, auto);
+        grid-template-columns: repeat(2, auto);
         grid-template-rows: repeat(6, auto);
-        row-gap: 1vh; */
+        /* row-gap: 1vh; */
     }
 
     .interests button{
