@@ -244,7 +244,7 @@ app.post('/forgotpassword', (req, res)=>{
             var id = task.getId();
             var key = Generator.encrypt(cryptKey, id);
 
-            smtp.forgotPassword(req.body.email, key);
+            smtp.forgotPassword(req.body.email, key, database);
             res.status(200);
             res.send(JSON.stringify({
                 "action":"redirect",
@@ -472,7 +472,7 @@ app.post('/modifypassword', sessionValidator, (req, res) => {
 app.post("/report", sessionValidator, (req, res) => {   //EZT INKÁBB WSBE
     if(req.session.session.getAttribute("chat") instanceof Chat){
         var me = req.session.session.getAttribute("client").getInfo();
-        smtp.report(JSON.stringify(me), JSON.stringify({"id" : req.session.session.getAttribute("chat").getPartnerByCid(me.id)}), req.session.session.getAttribute("chat").getId(me.id));
+        smtp.report(me, JSON.stringify({"id" : req.session.session.getAttribute("chat").getPartnerByCid(me.id)}), req.session.session.getAttribute("chat").getId(me.id));
         res.status(200);
         res.send(JSON.stringify({
             "action":"none",
