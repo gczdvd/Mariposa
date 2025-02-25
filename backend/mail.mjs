@@ -48,7 +48,15 @@ export class Email{
             from: `"Mariposa - The Social Butterfly" <report@mariposachat.hu>`,
             to: "support@mariposachat.hu",
             subject: "Jelentettek egy felhasználót!",
-            html: '<b>Chat ID:</b> ' + chatid + '<br><br><b style="color:green;">Jelentő:</b><br>' + reporter + '<br><br><b style="color:red;">Jelentett:</b><br>' + reported
+            html: '<b>Chat ID:</b> ' + chatid + '<br><br><b style="color:green;">Jelentő:</b><br>' + JSON.stringify(reporter) + '<br><br><b style="color:red;">Jelentett:</b><br>' + reported
+        });
+        this.transport.sendMail({
+            from: `"Mariposa - The Social Butterfly" <noreply@mariposachat.hu>`,
+            to: reporter.email,
+            subject: "Bejelentésed megkaptuk!",
+            html: HTMLFileFormat('emails/userreport/userreport.html', (e)=>{
+                e.getElementById("username").innerText = reporter.nickname;
+            })
         });
     }
 
@@ -56,7 +64,7 @@ export class Email{
         this.transport.sendMail({
             from: `"Mariposa - The Social Butterfly" <${this.sender}>`,
             to: email,
-            subject: "Verify your account!",
+            subject: "Regisztráció megerősítése",
             html: HTMLFileFormat('emails/welcome/welcome.html', (e)=>{
                 e.getElementById("confirmButton").setAttribute("href", `https://mariposachat.hu/login/?token=${token}`);
             })
@@ -68,23 +76,22 @@ export class Email{
         this.transport.sendMail({
             from: `"Mariposa - The Social Butterfly" <${this.sender}>`,
             to: email,
-            subject: "Successful verified your account!",
-            html: `
-                <div style="width:100%;text-align:center;">
-                    <h2>Dear ${name}!</h2>
-                    <h2>Success</h2>
-                </div>`
+            subject: "Sikeres regisztráció!",
+            html: HTMLFileFormat('emails/confirm/confirm.html', (e)=>{
+                e.getElementById("username").innerText = name;
+            })
         });
     }
 
-    forgotPassword(email, key){
+    forgotPassword(email, key, db){
+        var username = db.getUserByEmail(email).getInfo().nickname;
         this.transport.sendMail({
             from: `"Mariposa - The Social Butterfly" <${this.sender}>`,
             to: email,
-            subject: "Forgot password",
+            subject: "Elfelejtett jelszó visszaállítása",
             html: HTMLFileFormat('emails/forgotpassword/forgotpsw.html', (e)=>{
                 e.getElementById("confirmButton").setAttribute("href", `https://mariposachat.hu/forgotpsw/?key=${key}`);
-                //Nevet ki kell szopni a kisujjamból
+                e.getElementById("username").innerText = username;
             })
         });
     }

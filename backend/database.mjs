@@ -28,7 +28,7 @@ export class Sql{
         }
     }
 
-    getUserByEmail(email){
+    getUserByEmail(email, db){
         var rows = this.con.query(`CALL getUserByEmail(?);`, [email]);
         var data = rows[0][0];
         if(data){
