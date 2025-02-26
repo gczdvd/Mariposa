@@ -47,7 +47,10 @@ Backend.get({
 
 function openChat(chatid=null){
     document.getElementById("success").style.display = "none";
-    document.getElementById("savedicon").click();
+    // document.getElementById("savedicon").click();
+    
+    document.getElementById("startChatAlert").style.display = "none";
+
     if(chatid){ 
         document.getElementById("waiting").style.display = "none";
     }
@@ -189,9 +192,9 @@ function deletePartner(){
 // }
 
 function send(){
-    
   //var text = document.getElementById("message").value;
   var text = document.getElementById("message-bar");
+  text.style.height = "5vh";
 
   if(text.value != ""){
     ws.send(JSON.stringify({
@@ -387,4 +390,4 @@ function scrollToBottom(){
   window.scrollTo(0, document.body.scrollHeight);
 }
 
-window.onresize = function(){ location.reload(); }
+// window.onresize = function(){ location.reload(); }
