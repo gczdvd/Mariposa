@@ -545,7 +545,7 @@ app.get('/partners', sessionValidator, (req, res) => {
     }));
 });
 
-app.get('/chat/reloaded', sessionValidator, (req, res) => {                  //Ezen kérés előtt, de a bejelentkezés után KÖTELEZŐ websocketet nyitni
+app.get('/chat/reloaded', sessionValidator, (req, res) => {
     if(req.session.session.getAttribute("chat") instanceof Chat){
         req.session.session.getAttribute("chat").leftUser(req.session.session);
     }
@@ -636,14 +636,7 @@ app.ws('/live', function(ws, req) {
                         }
                         else if(jmsg.type == "action"){
                             if(jmsg.value == "end"){
-                                sess.getAttribute("chat").setSaved(0);
-                                sess.getWebsocket()?.send(JSON.stringify({
-                                    "status":"end"//Ezeknek még nincs hatásuk froonton
-                                }));
-                                sess.getAttribute("chat").getPartner(sess).getWebsocket()?.send(JSON.stringify({
-                                    "status":"end"
-                                }));
-                                sess.getAttribute("chat").close();
+                                sess.getAttribute("chat").end();
                             }
                             else if(jmsg.value == "save"){
                                 if(!sess.getAttribute("chat").wantToPersistent(sess, users)){

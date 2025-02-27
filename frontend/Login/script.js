@@ -159,7 +159,7 @@ async function forgotPassword(){
       confirmButtonText: "Küldés",
       cancelButtonText: "Bezárás",
       confirmButtonColor: "#ffbc2f",
-      iconColor: "#ffbc2f",
+      iconColor: "#ffbc2f"/*,
       preConfirm: (pno) => {
         return axios.post('/some/route', { pno })
             .then(response => { 
@@ -170,16 +170,16 @@ async function forgotPassword(){
                     MySwal.showValidationMessage(error.response.data.message)                        
                 }                        
             });
-      } 
+      } */
   }).then((swBtn)=>{
     if(swBtn.isConfirmed == true){
-      
+      console.log(swBtn);
       Backend.post({
         path:"/forgotpassword",
         body:{
-            email: e.value
+            email: swBtn.value
         },
-        callback: validateEmail(e)
+        callback: validateEmail(swBtn)
       });
     }
   });
