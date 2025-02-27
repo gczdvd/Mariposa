@@ -20,7 +20,8 @@
 
 .tertiaryBTN, .tertiaryBTN a{
     display: inline-block;
-    color: black;
+    /* color: #000; */
+    color: #fff;
     text-decoration: none;
     height: fit-content;
     font-family: "Albert Sans", Arial, Helvetica, sans-serif;
@@ -31,14 +32,16 @@
 }
 
 .tertiaryBTN:hover, .tertiaryBTN a:hover{
-    color: #ffbc2f;
+    /* color: #ffbc2f; */
+    color: #000;
     transition: 200ms;
 }
 
 .tertiaryBTN::after, .tertiaryBTN a::after{
     display: block;
     content: '';
-    border-bottom: solid 2px #ffbc2f;
+    /* border-bottom: solid 2px #ffbc2f; */
+    border-bottom: solid 2px #000;;
     transform: scaleX(0);
     transition: transform 200ms ease-in-out;
     margin-top: -2px;
@@ -47,20 +50,23 @@
 
 .header{
     display: grid;
-    height: fit-content;
+    height: 10vh;
+    height: 10dvh;
     grid-template-columns: auto 1fr 1fr;
     background-color: transparent;
     align-items: center;
     text-transform: uppercase;
-    background-color: #fff;
+    background-color: #ffbc2f;
     font-size: 15px;
     grid-column: 1 / span 3;
+    /* color: #fff; */
     /* grid-row-start: 1; */
 }
 
 #homepage{
     text-decoration: none;
     color: #000;
+    /* color: #fff; */
     height: fit-content;
 }
 
@@ -74,16 +80,19 @@
     padding: 0.5vw;
     font-family: 'Palanquin', Geneva, Verdana, sans-serif;
     height: fit-content;
+    /* color: #fff; */
 }
 
 #logoImg{
     width: 50px;
+    filter: brightness(0) invert(1);
 }
 
 #navbar{
     display: inline-block;
     margin-left: 3vw;
     width: fit-content;
+    /* color: #fff; */
 }
 
 #navigation{
@@ -94,11 +103,13 @@
     justify-items: center;
     width: fit-content;
     gap: 4vw;
+    /* color: #fff; */
 }
 
 #navigation li{
     list-style: none;
     width: fit-content;
+    color: #fff;
 }
 
 #loginNav{
@@ -106,7 +117,7 @@
     justify-content: end;
     padding: 0;
     margin: 0;
-    /* align-content: center; */
+    /* color: #fff; */
 }
 
 #loginNav li{
@@ -120,14 +131,6 @@
     border-radius: 50%;
 }
 
-
-/* .title{
-    font-size: 1.5em;
-    align-self: center;
-    text-decoration: none;
-    color: white;
-    font-family: "Palanquin", Geneva, Verdana, sans-serif;;
-} */
 
 .responsive-bar{
     display: none;
@@ -224,6 +227,8 @@
     display: grid;
     grid-template-rows: 1fr auto;
     width: 100%;
+    max-height: 90vh;
+    max-height: 90dvh;
 }
 
 .chat p{
@@ -233,6 +238,8 @@
 .chatArea{
     display: grid;
     grid-template-rows: auto 1fr auto;
+    max-height: 90vh;
+    max-height: 90dvh;
     /* height: 100vh; */
     overflow-y: scroll;
 }
@@ -276,9 +283,12 @@
     font-family: 'Red Hat Text', "Trebuchet MS", Helvetica, sans-serif;
     display: flex;
     flex-direction: column-reverse;
-    width: 97%;
+    justify-self: center;
+    width: 100%;
+    /* padding: 0 2vh 2vh 2vh; */
+    /* width: 97%; */
     /* height: 100vh; */
-    justify-self:stretch;
+    /* justify-self: stretch; */
 }
 
 .message1{
@@ -293,7 +303,7 @@
 
 .message1, .message2{
     width: fit-content;
-    max-width: 50vw;
+    max-width: 30vw;
     padding: 0.5em;
     border-radius: 1.5em;
     word-wrap: break-word;
@@ -330,6 +340,7 @@
 
 .message{
     display: grid;
+    /* AMÚGY NONE, HA NINCS KIVÁLASZTVA VAGY INDÍTVA CHAT */
     grid-template-columns: 1fr auto;
     height: fit-content;
     padding-bottom: 1vh;
@@ -346,9 +357,8 @@
     border-radius: 1em;
     font-family: "Red Hat Text", "Trebuchet MS", Helvetica, sans-serif;
     font-size: 1em;
-    /* margin: 0.5em 0 0 0.5em; */
     height: 5vh;
-    min-height: 5vh;
+    min-height: 3vh;
     max-height: 10vh;
     padding-left: 0.5em;
     direction: ltr;
@@ -526,12 +536,51 @@ img{
 @media (max-aspect-ratio:1/1){
     .wrapper{
         grid-template-columns: none;
+        grid-template-rows: none;
+        /* grid-template-rows: 1fr 1fr 1fr 1fr; */
+        /* transition: margin-left .5s; */
+        /* overflow-x: hidden; */
+        /* padding: 20px; */
+        /* grid-template-rows: auto auto ; */
         /* grid-template-rows: auto auto auto 1fr; */
     }
 
     .header{
+        display: none;
         font-size: 11px;
-        grid-row-start: 1;
+        position: relative;
+        z-index: 1;
+        height: 10vh;
+        /* grid-row-start: 1; */
+    }
+
+    .tertiaryBTN, .tertiaryBTN a{
+        display: inline-block;
+        /* color: #000; */
+        color: #000;
+        text-decoration: none;
+        height: fit-content;
+        font-family: "Albert Sans", Arial, Helvetica, sans-serif;
+    }
+    
+    .tertiaryBTN:hover::after, .tertiaryBTN a:hover::after{
+        transform: scaleX(1);
+    }
+    
+    .tertiaryBTN:hover, .tertiaryBTN a:hover{
+        /* color: #ffbc2f; */
+        color: #fff;
+        transition: 200ms;
+    }
+    
+    .tertiaryBTN::after, .tertiaryBTN a::after{
+        display: block;
+        content: '';
+        /* border-bottom: solid 2px #ffbc2f; */
+        border-bottom: solid 2px #fff;
+        transform: scaleX(0);
+        transition: transform 200ms ease-in-out;
+        margin-top: -2px;
     }
 
     #logoImg{
@@ -549,30 +598,29 @@ img{
     .responsive-bar{
         display: grid;
         grid-template-columns: 1fr 1fr;
-        height: fit-content;
+        height: 10vh;
         z-index: 2;
-        width: 95vw;
+        width: 100vw;
         justify-self: center;
         position: sticky;
         position: -webkit-sticky;
-        grid-row-start: 2;
-        padding: 1vh 0;
+        padding: 1vh 2vh;
+        background-color: #ffbc2f;
+        
     }
 
-    .responsive-bar #openSaved{
-        width: 5vw;
-    }
-
-    .responsive-bar #closeSaved{
-        width: 5vw;
+    .responsive-bar #savedicon{
+        width: 7vw;
+        transition: transform 200ms;
     }
 
     .responsive-bar #openDetails{
-        width: 5vw;
+        width: 6vw;
     }
 
-    .responsive-bar #closeDetails, .responsive-bar #closeSaved{
+    .responsive-bar #closeDetails{
         display: none;
+        width: 5vw;
     }
 
     #sc, #d{
@@ -582,19 +630,42 @@ img{
         cursor: pointer;
     }
 
+    #sc{
+        display: grid;
+        grid-template-columns: auto auto;
+    }
+
+    #sc #navigation{
+        display: none;
+        gap: 6vw;
+        margin-left: 5vw;
+        height: fit-content;
+        justify-items: center;
+        align-self: center;
+        width: 0;
+        transition: 0.5s;
+    }
+
+    #sc img:hover, #d img:hover{
+        filter: invert(1);
+    }
+
     #d{
         justify-self: end;
     }
 
     .saved{
-        width: 0;
+        /* overflow-x: hidden;  */
+        transition: display 0.5s;
+        width: 100vw;
         display: none;
         z-index: 1;
-        left: 0;
+        /* left: 0; */
         position: absolute;
         background-color: #fff;
-        height: 100vh;
-        height: 100dvh;
+        top: 10vh;
+        height: 90vh;
+        height: 90dvh;
     }
 
     .savedChat{
@@ -605,27 +676,36 @@ img{
         height: 30vh;
     }
 
-    #closeDetails{
-        width: 4vw;
-    }
-
     .image{
         width: 10vw;
         height: 10vw;
     }
 
     .details{
-        width: 0;
+        /* width: 0vw; */
         display: none;
         z-index: 1;
         right: 0;
-        padding: 10vh 0;
+        top: 10vh;
+        /* padding: 10vh 0; */
         position: absolute;
         background-color: #fff;
-        height: 100vh;
-        height: 100dvh;
+        height: 90vh;
+        height: 90dvh;
+        align-content: center;
         /* grid-row-start: 3; */
     }
+
+    .details .profileImage{
+        height: 10vh;
+        width: 10vh;
+    }
+
+    .details #name{
+        height: fit-content;
+        margin-top: 5px;
+    }
+
 
     #startChat img{
         width: 10vw;
@@ -633,13 +713,13 @@ img{
     
     .chat{
         display: grid;
-        height: 100vh;
+        height: 90vh;
         grid-row-start: 3;
         /* grid-template-rows: 1fr 1fr auto; */
     }
 
     .chatArea{
-        grid-template-rows: auto 1fr auto;
+        grid-template-rows: auto 1fr 10vh;
     }
 
     .message{
