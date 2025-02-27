@@ -132,24 +132,32 @@ export class Chat{
         }
     }
     leftUser(sess){
-        sess.setAttribute("chat", null);
-        if(this.#sess1?.getAttribute("client").getId() == sess.getAttribute("client").getId()){
-            this.#sess1 = null;
+        if(this.getSaved()){
+            sess.setAttribute("chat", null);
+            if(this.#sess1?.getAttribute("client").getId() == sess.getAttribute("client").getId()){
+                this.#sess1 = null;
+            }
+            else if(this.#sess2?.getAttribute("client").getId() == sess.getAttribute("client").getId()){
+                this.#sess2 = null;
+            }
         }
-        else if(this.#sess2?.getAttribute("client").getId() == sess.getAttribute("client").getId()){
-            this.#sess2 = null;
+        else{
+            this.end();
         }
     }
     getId(){
         return this.id;
     }
-    close(){
+    end(){
+        this.setSaved(0);
+        this.#sess1.getWebsocket()?.send(JSON.stringify({
+            "status":"end"
+        }));
+        this.#sess2.getWebsocket()?.send(JSON.stringify({
+            "status":"end"
+        }));
         this.#sess1?.setAttribute("chat", null);
         this.#sess2?.setAttribute("chat", null);
-
-        /*me.getWebsocket().send(JSON.stringify({
-                "status":"end"
-        }));*/
     }
     getMessages(from=null){
         return this.db.getMessages(this.id, from);

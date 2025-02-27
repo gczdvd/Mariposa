@@ -84,14 +84,14 @@ export class Email{
     }
 
     forgotPassword(email, key, db){
-        var username = db.getUserByEmail(email).getInfo().nickname;
+        var username = db.getUserByEmail(email, db).getInfo().nickname;
         this.transport.sendMail({
             from: `"Mariposa - The Social Butterfly" <${this.sender}>`,
             to: email,
             subject: "Elfelejtett jelszó visszaállítása",
             html: HTMLFileFormat('emails/forgotpassword/forgotpsw.html', (e)=>{
                 e.getElementById("confirmButton").setAttribute("href", `https://mariposachat.hu/forgotpsw/?key=${key}`);
-                e.getElementById("username").innerText = username;
+                e.getElementById("username").innerHTML = username;
             })
         });
     }
