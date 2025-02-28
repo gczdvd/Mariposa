@@ -60,9 +60,10 @@
                 <div id="loginNav">
                     <li>
                         <a id="optlogin" href="/login" class="tertiaryBTN">Bejelentkezés &#8680;</a>
-                        <a id="optprofile" hidden href="/profilesettings">
-                            <img src="/_images/missingpicture.svg" alt="A profilképed, ami a profilbeállításokra visz.">
-                        </a>
+
+                        <div id="optprofile" hidden href="/profilesettings" title="Profilbeállítások">
+
+                        </div>
                     </li>
                 </div>
             </div>
@@ -90,7 +91,6 @@
             </div>
         
             <!-- 4 -->
-            <!-- CHATFELÜLET -->
             <div class="chat" id="chat">
 
                 <div class="chatArea" onscroll="history_load()">
@@ -112,7 +112,7 @@
                     </div>
 
                     <div class="alerts">
-                        <div class="alert alert-danger align-items-center convoEndAlert" id="endChatAlert" role="alert">
+                        <div class="alert alert-danger align-items-center convoEndAlert" role="alert">
                             <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
                                 <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
                                 </svg>
@@ -121,7 +121,7 @@
                             </div>
                         </div>
 
-                        <div class="alert alert-warning align-items-center startChatAlert" id="startChatAlert" role="alert">
+                        <div class="alert alert-warning align-items-center startChatAlert" role="alert">
                             <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
                                 <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
                                 </svg>
@@ -130,114 +130,73 @@
                             </div>
                         </div>
                     </div>
+
+                <div class="message" id="message">
+                    <textarea placeholder="Írd ide az üzenetet..." rows="" id="message-bar" class="message-bar" maxlength="1000" oninput='this.style.height = ""; this.style.height = this.scrollHeight + "px"' value=""></textarea>
+                    
+                    <button id="sendBTN" onclick="send()">
+                        <img src="/_images/send.png" alt="Üzenet küldése" title="Üzenet küldése">
+                    </button>
+                </div>
+            </div>
+            </div>
+
+            <div class="details" id="details">
+                <div id="picname">
+                    <!-- <img src="/_images/missingpicture.svg" alt="Profilkép" title="Profilkép" id="profilePic"> -->
+                    <div id="partnerprofilepic" class="profileImage">
+
+                    </div>
+                
+                    <p id="name">Példa Név</p>
+                </div>
+                
+                <div class="data">
+                    <p id="birthdayP" title="Születésnap">
+                        <span class="emoji">🎂</span> 
+                        <span id="birthday">
+                            2005. 05. 30
+                        </span>
+                    </p>
+
+                    <p id="genderP">
+                        <span class="emoji">👥</span> 
+                        <span id="gender">
+                            Nembináris
+                        </span>
+                    </p>
+
+                    <p id="quoteP">
+                        <span id="quote">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi blanditiis deleniti nobis veniam quibusdam, placeat qui libero cupiditate recusandae officiis! Itaque sunt iste excepturi neque qui illo earum quae odit.
+                        </span>
+                        <br>
+                    </p>
+
+                    <p id="interestsP">
+                        <span id="interests">
+                            <button>Tánc</button>
+                        </span>
+                        </span>
+                    </p>
                 </div>
 
-                <!-- CHATFELÜLET -->
-                <div class="chat">
+                <div class="actions">
+                    <!-- MENTÉS A PROFILKÉP MELLÉ??? -->
+                    <p id="save" title="Felhasználó mentése" class="emoji" onclick="savePartner()">
+                        🔖
+                    </p>
 
-                    <div class="chatArea" onscroll="history_load()">
-                        <div class="condition">
-                            <div id="waiting">
-                                <img src="/_images/loading.gif">
-                                <p id="waitingMSG">Várakozás beszélgetőpartnerre...</p>
-                            </div>
-        
-                            <div id="success">
-                                <img src="/_images/tick.png" alt="">
-                                <p id="successMSG">Megtaláltuk a tökéletes beszélgetőpartnert!</p>
-                                <p id="warningMSG">Kérjük, a beszélgetés során tartsd be a Házirendet!</p>
-                            </div>
-                        </div>
+                    <p id="report" title="Felhasználó jelentése" class="emoji" onclick="reportPartner()">
+                        ⚠️
+                    </p>
 
-                        <div class="messages" onclick="focusMessageBar()">
-
-                        </div>
-
-                        <div class="alerts">
-                            <div class="alert alert-danger align-items-center convoEndAlert" role="alert">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
-                                    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                                  </svg>
-                                <div>
-                                    A beszélgetésnek vége.
-                                </div>
-                            </div>
-    
-                            <div class="alert alert-warning align-items-center startChatAlert" role="alert">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
-                                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
-                                  </svg>
-                                <div>
-                                    Ugorj fejest a barátkozásba! <span id="startChatAlertLink" onclick="openChat()">Új chat indítása</span>
-                                </div>
-                            </div>
-                        </div>
-
-                    <div class="message" id="message">
-                        <textarea placeholder="Írd ide az üzenetet..." rows="" id="message-bar" class="message-bar" maxlength="1000" oninput='this.style.height = ""; this.style.height = this.scrollHeight + "px"' onemptied='this.style.height = "px";' value=""></textarea>
-                        
-                        <button id="sendBTN" onclick="send()">
-                            <img src="/_images/send.png" alt="Üzenet küldése" title="Üzenet küldése">
-                        </button>
-                    </div>
+                    <p id="delete" title="Chat törlése" class="emoji" onclick="deletePartner()">
+                        🗑️
+                    </p>
                 </div>
-        
-                <div class="details" id="details">
-                    <div id="picname">
-                        <!-- <img src="/_images/missingpicture.svg" alt="Profilkép" title="Profilkép" id="profilePic"> -->
-                        <div id="partnerprofilepic" class="profileImage">
-
-                        </div>
-                    
-                        <p id="name">Példa Név</p>
-                    </div>
-                    
-                    <div class="data">
-                        <p id="birthdayP" title="Születésnap">
-                            <span class="emoji">🎂</span> 
-                            <span id="birthday">
-                                2005. 05. 30
-                            </span>
-                        </p>
-    
-                        <p id="genderP">
-                            <span class="emoji">👥</span> 
-                            <span id="gender">
-                                Nembináris
-                            </span>
-                        </p>
-    
-                        <p id="quoteP">
-                            <span id="quote">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi blanditiis deleniti nobis veniam quibusdam, placeat qui libero cupiditate recusandae officiis! Itaque sunt iste excepturi neque qui illo earum quae odit.
-                            </span>
-                            <br>
-                        </p>
-
-                        <p id="interestsP">
-                            <span id="interests">
-                                <!-- <button>Tánc</button> -->
-                            </span>
-                            </span>
-                        </p>
-                    </div>
-
-                    <div class="actions">
-                        <!-- MENTÉS A PROFILKÉP MELLÉ??? -->
-                        <p id="save" title="Felhasználó mentése" class="emoji" onclick="savePartner()">
-                            🔖
-                        </p>
-
-                        <p id="report" title="Felhasználó jelentése" class="emoji" onclick="reportPartner()">
-                            ⚠️
-                        </p>
-    
-                        <p id="delete" title="Chat törlése" class="emoji" onclick="deletePartner()">
-                            🗑️
-                        </p>
-                    </div>
-                </div>     
-    </div>
+            </div>
+        </div>
     <!-- <a href="https://www.flaticon.com/free-icons/arrow" title="arrow icons">Arrow icons created by deemakdaksina - Flaticon</a> -->
     <script src="script.js"></script>
 </body>

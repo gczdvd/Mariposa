@@ -316,8 +316,7 @@ function toggleDetails(){
 
   var saved = document.getElementById("saved");
   var navigation = document.getElementById("navigation");
-  var closeSaved = document.getElementById("closeSaved");
-  var openSaved = document.getElementById("openSaved");
+  var savedicon = document.getElementById("savedicon");
 
   var closeDetails = document.getElementById("closeDetails");
   var openDetails = document.getElementById("openDetails");
@@ -333,8 +332,7 @@ function toggleDetails(){
 
     saved.style.display = "none";
     navigation.style.display = "none";
-    openSaved.style.display = "block";
-    closeSaved.style.display = "none";
+    savedicon.style.transform = "rotateY(0)";
   }
   else{
     details.style.display = "none";
@@ -358,8 +356,8 @@ function toggleSaved(){
   if(saved.style.display == "none" || saved.style.display == ""){
     saved.style.display = "block";
     chat.style.visibility = "hidden";
-    // navigation.style.display = "grid";
-    navigation.style.width = "20vw";
+    navigation.style.display = "grid";
+    navigation.style.width = "fit-content";
 
     savedicon.style.transform = "rotateY(-180deg)";
 
@@ -369,10 +367,8 @@ function toggleSaved(){
   }
   else{
     saved.style.display = "none";
-    // openSaved.style.display = "block";
-    // closeSaved.style.display = "none";
     chat.style.visibility = "visible";
-    // navigation.style.display = "none";
+    navigation.style.display = "none";
     navigation.style.width = 0;
 
     savedicon.style.transform = "rotateY(0)";

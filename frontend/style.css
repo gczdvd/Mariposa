@@ -172,10 +172,16 @@ p{
     margin-right: 1vw;
 }
 
-#loginNav img{
-    display: block;
-    width: 3.5vw;
+#optprofile{
+    width: 4vw;
+    height: 4vw;
     border-radius: 50%;
+    background-image: url("/_images/missingpicture.svg");
+    background-position: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: 1px solid lightgray;
+    cursor: pointer;
 }
 
 
@@ -551,6 +557,11 @@ p{
 
     #navbar{
         margin-left: 2vw;
+    }
+
+    #optprofile{
+        width: 7vw;
+        height: 7vw;
     }
 
     .cover{

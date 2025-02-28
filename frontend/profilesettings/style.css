@@ -132,11 +132,18 @@
     margin-right: 1vw;
 }
 
-#loginNav img{
-    display: block;
-    width: 3.5vw;
+#optprofile{
+    width: 4vw;
+    height: 4vw;
     border-radius: 50%;
+    background-image: url("/_images/missingpicture.svg");
+    background-position: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: 1px solid lightgray;
+    cursor: pointer;
 }
+
 
 .settings{
     display: grid;
@@ -453,7 +460,6 @@ input[type=number] {
 
 #name{
     display: grid;
-    gap: 2vh;
 }
 
 #name #coffee{
@@ -542,6 +548,11 @@ input[type=number] {
 
     #navbar{
         margin-left: 2vw;
+    }
+
+    #optprofile{
+        width: 7vw;
+        height: 7vw;
     }
 
     .settings{
@@ -703,10 +714,6 @@ input[type=number] {
 
     #name #coffee{
         width: 5vw;
-    }
-
-    #name #insta{
-        width: 8vw;
     }
 
     #customerservice{
