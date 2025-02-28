@@ -47,6 +47,7 @@ Backend.get({
 
 function openChat(chatid=null){
     document.getElementById("success").style.display = "none";
+    document.getElementById("endChatAlert").style.display = "none";
     // document.getElementById("savedicon").click();
     
     document.getElementById("startChatAlert").style.display = "none";
@@ -238,12 +239,13 @@ function receive(e){
             }));
             document.getElementById("success").style.display = "block";
             document.getElementById("waiting").style.display = "none";
+            document.getElementById("endChatAlert").style.display = "none";
         }
-        if(data.name == "identify"){
+        else if(data.name == "identify"){
             var partneridentify = data.value;
             document.getElementById("name").innerText = partneridentify.nickname;
             document.getElementById("quote").innerText = partneridentify.description;
-            document.getElementById("profilePic").src = partneridentify.profile_pic;
+            document.getElementById("partnerprofilepic").style.backgroundImage = `url('${partneridentify.profile_pic}')`;
             document.getElementById("birthday").innerText = function(e=new Date(partneridentify.birthdate)){
                 return `${e.getUTCFullYear()}. ${((e.getMonth()+1) < 10 ? '0' : '') + (e.getMonth()+1)}. ${(e.getDate() < 10 ? '0' : '') + e.getDate()}.`;
             }();
@@ -275,6 +277,9 @@ function receive(e){
                 // ;
               });
         }
+    }
+    if(data.status == "end"){
+        document.getElementById("endChatAlert").style.display = "block";
     }
 }
 
