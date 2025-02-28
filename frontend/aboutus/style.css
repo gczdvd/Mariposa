@@ -149,10 +149,16 @@ p{
     margin-right: 1vw;
 }
 
-#loginNav img{
-    display: block;
-    width: 3.5vw;
+#optprofile{
+    width: 4vw;
+    height: 4vw;
     border-radius: 50%;
+    background-image: url("/_images/missingpicture.svg");
+    background-position: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: 1px solid lightgray;
+    cursor: pointer;
 }
 
 .tertiaryBTN, .tertiaryBTN a{
@@ -278,12 +284,10 @@ p{
     font-size: 1.2em;
 }
 
-
 .valuesT{
     font-weight: 700;
     font-size: 1.5em;
 }
-
 
 .valuesText{
     width: 20vw;
@@ -291,14 +295,18 @@ p{
     margin: 0;
 }
 
+
 .us{
     font-family: "Red Hat Text", "Trebuchet MS", Helvetica, sans-serif;
     font-weight: 400;
     font-size: 1em;
-    width: 80vw;
+    width: 100vw;
     max-width: 100%;
     justify-self: center;
     gap: 1vw;
+    background-color: #ffbc2f;
+    background-color: #fff5de;
+    padding: 5vh 0;
 }
 
 .us .title{
@@ -307,6 +315,7 @@ p{
 
 .us img{
     border: 1px solid #ffbc2f;
+    border: 2px solid #fbce6f;
 }
 
 .teamName{
@@ -320,8 +329,10 @@ p{
     grid-template-columns: 1fr;
     height: fit-content;
     border: 3px rgb(243, 243, 243) solid;
+    border: 3px #ffe2a4 solid;
     padding: 2vw;
     gap: 1vw;
+    background-color: #fff;
 }
 
 .gd{
@@ -601,6 +612,11 @@ label{
 
     #navbar{
         margin-left: 2vw;
+    }
+
+    #optprofile{
+        width: 7vw;
+        height: 7vw;
     }
 
     .cover{

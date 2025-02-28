@@ -42,9 +42,18 @@
     border: 3px solid #ffbc2f;
 }
 
-.back img{
+
+.back{
     width: 4vw;
-    padding: 0.5vw 0 0 0.5vw;
+    height: 4vw;
+    cursor: pointer;
+    border: 1px solid lightgray;
+    margin: 1vh 0 0 1vh;
+    border-radius: 50%;
+    background-image: url("/_images/missingpicture.svg");
+    background-position: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 
@@ -159,7 +168,8 @@
         width: 70vw;
     }
 
-    .back img{
+    .back{
         width: 10vw;
+        height: 10vw;
     }
 }
