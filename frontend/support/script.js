@@ -135,6 +135,7 @@ function supportResponse(e){
 
 Backend.get({
     path:"/userinfo",
+    blockRedirect: false,
     callback:(e)=>{
         if(e.id != undefined){
             document.getElementById("optlogin").setAttribute("hidden", "true");
