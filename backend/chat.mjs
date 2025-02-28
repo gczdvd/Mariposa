@@ -2,14 +2,22 @@
 
 export class Chats{
     #chats = [];
-    constructor(db){
+    constructor(db, users){
         this.db = db;
+        this.users = users;
+    }
+    cleanUp(){
+        for(var i = 0; i < this.#chats.length; i++){
+            if(this.#chats[i].dead()){
+                this.#chats.splice(i, 1);
+            }
+        }
     }
     getChats(){
         return this.#chats;
     }
     newChat(sess1, sess2, secondchid=false){
-        const ch = new Chat(this.db, sess1, sess2, secondchid);
+        const ch = new Chat(this.db, this.users, sess1, sess2, secondchid);
         var haschat = this.findChatById(ch.getId());
         if(haschat != null){
             return haschat;
@@ -42,7 +50,8 @@ export class Chat{
     #sess2 = null;
     saved = null;
     #wantsave = [false, false];
-    constructor(db, sess1=null, sess2=null, secondchid=false){
+    constructor(db, users, sess1=null, sess2=null, secondchid=false){
+        this.users = users;
         this.db = db;
         this.#sess1 = sess1;
         if(secondchid == false){
@@ -74,24 +83,66 @@ export class Chat{
         this.#wantsave = [val, val];
         return this.db.setChatPersistent(this.id, val);
     }
+    dead(){
+        return (this.#sess1 == null && this.#sess2 == null);
+    }
     getSaved(){
         return this.saved;
     }
-    sendIdentity(users){
-        this.#sess1?.getAttribute("access").add('storage/profile_pic/' + this.db.getUserDataById(this.cid2).profile_pic);
-        this.#sess2?.getAttribute("access").add('storage/profile_pic/' + this.db.getUserDataById(this.cid1).profile_pic);
+    sendIdentity(){
+        var u1dat = this.db.getUserDataById(this.cid1);
+        var u2dat = this.db.getUserDataById(this.cid2);
         
-        this.#sess1?.getWebsocket()?.send(JSON.stringify({
-            "type":"action",
-            "name":"identify",
-            "value":users.getUserById(this.cid2).getInfo()
-        }));
+        u1dat.saved = this.getSaved();
+        u2dat.saved = this.getSaved();
 
-        this.#sess2?.getWebsocket()?.send(JSON.stringify({
-            "type":"action",
-            "name":"identify",
-            "value":users.getUserById(this.cid1).getInfo()
-        }));
+        const genders = ["???", "Nő", "Férfi", "Nembináris"];
+
+        u1dat.gender = genders[u1dat.gender ?? 0];
+        u2dat.gender = genders[u2dat.gender ?? 0];
+
+        if(this.getSaved()){
+            this.#sess1?.getAttribute("access").add('storage/profile_pic/' + u2dat.profile_pic);
+            this.#sess2?.getAttribute("access").add('storage/profile_pic/' + u1dat.profile_pic);
+            
+            u1dat.profile_pic = "/api/storage/profile_pic/" + u1dat.profile_pic;
+            u2dat.profile_pic = "/api/storage/profile_pic/" + u2dat.profile_pic;
+
+            this.#sess1?.getWebsocket()?.send(JSON.stringify({
+                "type":"action",
+                "name":"identify",
+                "value":u2dat
+            }));
+
+            this.#sess2?.getWebsocket()?.send(JSON.stringify({
+                "type":"action",
+                "name":"identify",
+                "value":u1dat
+            }));
+        }
+        else{
+            this.#sess1?.getWebsocket()?.send(JSON.stringify({
+                "type":"action",
+                "name":"identify",
+                "value":{
+                    "saved":u2dat.saved,
+                    "birthdate":u2dat.birthdate,
+                    "gender":u2dat.gender,
+                    "description":u2dat.description
+                }
+            }));
+
+            this.#sess2?.getWebsocket()?.send(JSON.stringify({
+                "type":"action",
+                "name":"identify",
+                "value":{
+                    "saved":u1dat.saved,
+                    "birthdate":u1dat.birthdate,
+                    "gender":u1dat.gender,
+                    "description":u1dat.description
+                }
+            }));
+        }
     }
     wantToPersistent(sess, users){
         if(this.saved != 1){
@@ -150,10 +201,10 @@ export class Chat{
     }
     end(){
         this.setSaved(0);
-        this.#sess1.getWebsocket()?.send(JSON.stringify({
+        this.#sess1?.getWebsocket()?.send(JSON.stringify({
             "status":"end"
         }));
-        this.#sess2.getWebsocket()?.send(JSON.stringify({
+        this.#sess2?.getWebsocket()?.send(JSON.stringify({
             "status":"end"
         }));
         this.#sess1?.setAttribute("chat", null);
@@ -188,7 +239,13 @@ export class Chat{
 }
 
 export class Want{
-    constructor(){}
+    constructor(db, sess){
+        var userid = sess.getAttribute("client").getId();
+        this.partners = db.getSavedChatsByUserId(userid);
+    }
+    getPartners(){
+        return this.partners;
+    }
 }
 
 export class Finder{
@@ -207,9 +264,27 @@ export class Finder{
         var pair = [];
         for(var i = 0; i < sesss.length; i++){
             if(sesss[i].getAttribute("chat") instanceof Want){
-                pair.push(sesss[i]);
+                if(pair.length == 0){
+                    pair.push(sesss[i]);
+                }
+                else if(pair.length == 1){
+                    var first_user_id = pair[0].getAttribute("client").getId();
+                    var second_user_partners = sesss[i].getAttribute("chat").getPartners();
+
+                    var is_partners = false;
+                    for(var j = 0; j < second_user_partners.length; j++){
+                        if(second_user_partners[j].user_id == first_user_id){
+                            is_partners = true;
+                            break;
+                        }
+                    }
+
+                    if(!is_partners){
+                        pair.push(sesss[i]);
+                    }
+                }
                 if(pair.length == 2){
-                    var tmpChat = new Chat(this.db, pair[0], pair[1])
+                    /*var tmpChat = new Chat(this.db, pair[0], pair[1])
                     var nChat = this.chats.findChatById(tmpChat.getId());
                     if(nChat == null){
                         nChat = this.chats.newChat(pair[0], pair[1]);
@@ -217,7 +292,9 @@ export class Finder{
                     else{
                         nChat.setUser(pair[0]);
                         nChat.setUser(pair[1]);
-                    }
+                    }*/
+
+                    var nChat = this.chats.newChat(pair[0], pair[1]);
 
                     pair[0].setAttribute("chat", nChat);
                     pair[1].setAttribute("chat", nChat);

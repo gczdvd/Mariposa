@@ -1,5 +1,5 @@
 var rootAddr = "mariposachat.hu/api";
-const debug = true;
+const debug = false;
 class Backend{
     static responsePreprocessor(requestParams, backendResponse){
         if(requestParams.blockRedirect == undefined && backendResponse.action == "redirect"){

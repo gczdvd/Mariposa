@@ -40,20 +40,18 @@
 
             <div id="loginNav">
                 <li>
-                    <a id="optlogin" href="/login" class="tertiaryBTN">Bejelentkezés &#8680;</a>
-
-                    <div id="optprofile" hidden href="/profilesettings" title="Profilbeállítások">
-
-                    </div>
+                    <p id="optlogin" class="tertiaryBTN" onclick="logout()">Kijelentkezés &#8680;</p>
                 </li>
             </div>
         </div>
 
         <div class="settings">
             <div class="profile">
-                <img src="/_images/img_avatar.png" alt="Profilkép" id="profilePicture" class="profilePicture">
+                <div id="profilePicture" class="profilePicture">
 
-                <p id="nickname">Példa Név</p>
+                </div>
+
+                <p id="nickname"></p>
 
                 <input type="file" id="profilepicup" onchange="picup(this)" hidden>
                 <button class="secondaryBTN" onclick="document.getElementById('profilepicup').click()">Profilkép cseréje</button>
@@ -78,9 +76,9 @@
 
                 <!-- 2 -->
                 <div class="form-floating"><!--id="email">-->
-                    <input class="form-control shadow-none" id="email" type="email" spellcheck="false" onchange="colorChange(this)" placeholder="E-mail cím" disabled>
+                    <input class="form-control shadow-none" id="email" type="email" spellcheck="false" onchange="colorChange(this)" placeholder="Email-cím" disabled>
                     
-                    <label for="email">E-mail cím</label>
+                    <label for="email">Email-cím</label>
                 </div>
 
                 <!-- 3 -->

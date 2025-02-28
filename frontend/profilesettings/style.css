@@ -124,12 +124,17 @@
     justify-content: end;
     padding: 0;
     margin: 0;
-    /* align-content: center; */
+    align-items: center;
 }
 
 #loginNav li{
     list-style: none;
     margin-right: 1vw;
+}
+
+#loginNav p{
+    margin-bottom: 0;
+    cursor: pointer;
 }
 
 #optprofile{
@@ -176,10 +181,16 @@
     grid-column: 1 / span 2;
 }
 
-.profilePicture{
+#profilePicture{
     width: 10vw;
-    justify-self: center;
+    height: 10vw;
     border-radius: 50%;
+    justify-self: center;
+    background-image: url("/_images/missingpicture.svg");
+    background-position: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: 1px solid lightgray;
 }
 
 .profile p{
@@ -563,6 +574,11 @@ input[type=number] {
     .profile{
         width: fit-content;
         justify-self: center;
+    }
+
+    #profilePicture{
+        width: 15vw;
+        height: 15vw;
     }
 
     #textarea{

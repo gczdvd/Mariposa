@@ -35,8 +35,8 @@ var secrets = JSON.parse(fs.readFileSync("./secrets.key"));
 
 const database = new Sql("127.0.0.1", secrets.database.user, secrets.database.pass, "mariposa");
 const smtp = new Email("127.0.0.1", 25, "noreply@mariposachat.hu");
-const chats = new Chats(database);
 const users = new Users(database);
+const chats = new Chats(database, users);
 
 const tasks = new Tasks();
 
@@ -385,17 +385,29 @@ app.get('/logout', (req, res) => {
         if(sessions.removeSession(req.session.session)){
             res.cookie("sessId", "-", { maxAge: 0, httpOnly: true, secure: true });
             res.status(200);
-            res.send(JSON.stringify({"message":"Goodbye!"}));
+            res.send(JSON.stringify({
+                "action":"redirect",
+                "value":"/",
+                "message":"Goodbye!"
+            }));
         }
         else{
             res.status(500);
-            res.send(JSON.stringify({"message":"Unknown error."}));
+            res.send(JSON.stringify({
+                "action":"none",
+                "value":"",
+                "message":"Unknown error."
+            }));
             console.error("Valid user can't do logout.");
         }
     }
     else{
         res.status(200);
-        res.send(JSON.stringify({"message":"You aren't logged in!"}));
+        res.send(JSON.stringify({
+            "action":"none",
+            "value":"",
+            "message":"You aren't logged in!"
+        }));
     }
 });
 
@@ -533,6 +545,7 @@ app.get('/partners', sessionValidator, (req, res) => {
         var path = 'storage/profile_pic/' + v.profile_pic;
         req.session.session.getAttribute("access").add(path);
         a[i].profile_pic = '/api/' + path;
+        a[i].user_id = undefined;
     });
 
     res.status(200);
@@ -548,6 +561,9 @@ app.get('/partners', sessionValidator, (req, res) => {
 app.get('/chat/reloaded', sessionValidator, (req, res) => {
     if(req.session.session.getAttribute("chat") instanceof Chat){
         req.session.session.getAttribute("chat").leftUser(req.session.session);
+    }
+    else if (req.session.session.getAttribute("chat") instanceof Want){
+        req.session.session.setAttribute("chat", undefined);
     }
 
     res.status(200);
@@ -612,7 +628,7 @@ app.post('/chat', sessionValidator, (req, res) => {                  //Ezen kér
             }
         }
         else{
-            req.session.session.setAttribute("chat", new Want());
+            req.session.session.setAttribute("chat", new Want(database, req.session.session));
             res.status(200);
             res.send(JSON.stringify({"message":"Waiting for partner..."}));
         }
@@ -662,15 +678,7 @@ app.ws('/live', function(ws, req) {
                                 }
                             }
                             else if(jmsg.value == "identity"){
-                                if(sess.getAttribute("chat").getSaved()){
-                                    sess.getAttribute("chat").sendIdentity(users);
-                                }
-                                else{
-                                    sess.getWebsocket()?.send(JSON.stringify({
-                                        "type":"info",
-                                        "value":"No permission"
-                                    }));
-                                }
+                                sess.getAttribute("chat").sendIdentity();
                             }
                         }
                     }
@@ -690,9 +698,11 @@ app.listen(3000, () => {
 });
 
 setInterval(()=>{
-    // process.stdout.write('\x1Bc');
+    process.stdout.write('\x1Bc');
     console.dir(JSON.parse(JSON.stringify(sessions.sessions, replacer, 4)), { depth: null });
     console.dir(JSON.parse(JSON.stringify(chats.getChats(), replacer, 4)), { depth: null });
     console.dir(tasks.getTasks(), {"depth":2});
+    
     sessions.cleanUp();
+    chats.cleanUp();
 }, 1000)

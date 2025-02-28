@@ -19,7 +19,7 @@ Backend.get({
         if(e.id != undefined){
             document.getElementById("optlogin").setAttribute("hidden", "true");
             document.getElementById("optprofile").removeAttribute("hidden");
-            document.getElementById("optprofile").getElementsByTagName("img")[0].src = e.profile_pic;
+            document.getElementById("optprofile").style.backgroundImage = `url('${e.profile_pic}')`;
         }
     }
 });

@@ -100,6 +100,14 @@ function save(){
   }
 }
 
+Backend.get({
+  path:"/userinfo",
+  callback:(e)=>{
+      if(e.id != undefined){
+          document.getElementById("optprofile").style.backgroundImage = `url('${e.profile_pic}')`;
+      }
+  }
+});
 
 function response(){
 

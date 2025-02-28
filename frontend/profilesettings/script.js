@@ -5,11 +5,11 @@ Backend.get({
     callback:(e)=>{
         console.log(e);
 
-        if(e.id != undefined){
-            document.getElementById("optlogin").setAttribute("hidden", "true");
-            document.getElementById("optprofile").removeAttribute("hidden");
-            document.getElementById("optprofile").getElementsByTagName("img")[0].src = e.profile_pic;
-        }
+        // if(e.id != undefined){
+        //     document.getElementById("optlogin").setAttribute("hidden", "true");
+        //     document.getElementById("optprofile").removeAttribute("hidden");
+        //     document.getElementById("optprofile").style.backgroundImage = `url('${e.profile_pic}')`;
+        // 
 
         if(e.nickname){
             document.getElementById("fullname").value = e.nickname;
@@ -25,7 +25,7 @@ Backend.get({
             document.getElementById("gender").style.borderColor = "#ffbc2f";
         }
         if(e.profile_pic){
-            document.getElementById("profilePicture").src = e.profile_pic;
+            document.getElementById("profilePicture").style.backgroundImage = `url('${e.profile_pic}')`;
         }
         if(e.nickname){
             document.getElementById("nickname").innerHTML = e.nickname;
@@ -42,6 +42,12 @@ Backend.get({
         }
     }
 });
+
+function logout(){
+    Backend.get({
+        path:"/logout"
+    });
+}
 
 function charCounter(textarea) {
   const remChars = document.getElementById("remaining-chars");
@@ -60,7 +66,7 @@ function charCounter(textarea) {
 function picup(e){
     var fr = new FileReader();
     fr.onload = function () {
-        document.getElementById("profilePicture").src = fr.result;
+        document.getElementById("profilePicture").style.backgroundImage = `url('${fr.result}')`;
     }
     fr.readAsDataURL(e.files[0]);
 }

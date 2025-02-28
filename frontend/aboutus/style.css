@@ -60,6 +60,33 @@
     border: 3px solid #ffbc2f;
 }
 
+.tertiaryBTN, .tertiaryBTN a{
+    display: inline-block;
+    color: black;
+    text-decoration: none;
+    height: fit-content;
+    width: fit-content;
+    font-family: "Albert Sans";
+}
+
+.tertiaryBTN:hover::after, .tertiaryBTN a:hover::after{
+    transform: scaleX(1);
+}
+
+.tertiaryBTN:hover, .tertiaryBTN a:hover{
+    color: #ffbc2f;
+    transition: 200ms;
+}
+
+.tertiaryBTN::after, .tertiaryBTN a::after{
+    display: block;
+    content: '';
+    border-bottom: solid 2px #ffbc2f;
+    transform: scaleX(0);
+    transition: transform 200ms ease-in-out;
+    margin-top: -2px;
+}
+
 
 *{
     padding: 0;
@@ -161,32 +188,6 @@ p{
     cursor: pointer;
 }
 
-.tertiaryBTN, .tertiaryBTN a{
-    display: inline-block;
-    color: black;
-    text-decoration: none;
-    height: fit-content;
-    width: fit-content;
-    font-family: "Albert Sans";
-}
-
-.tertiaryBTN:hover::after, .tertiaryBTN a:hover::after{
-    transform: scaleX(1);
-}
-
-.tertiaryBTN:hover, .tertiaryBTN a:hover{
-    color: #ffbc2f;
-    transition: 200ms;
-}
-
-.tertiaryBTN::after, .tertiaryBTN a::after{
-    display: block;
-    content: '';
-    border-bottom: solid 2px #ffbc2f;
-    transform: scaleX(0);
-    transition: transform 200ms ease-in-out;
-    margin-top: -2px;
-}
 
 .cover{
     display: grid;
@@ -661,7 +662,10 @@ label{
         display: block;
         width: 90vw;
         max-width: 100%;
-        
+    }
+
+    .gd, .csx{
+        margin-bottom: 2vh;
     }
 
     .panel p{

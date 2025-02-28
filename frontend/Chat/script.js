@@ -1,5 +1,7 @@
 // Backend.setUrl("127.0.0.1:3000");
 
+// "Jó napot kívánok! Gócza Dávid vagyok, jövőbeli ingatlanközvetítő, mert én ettől agyvérzést kapok."
+
 var ws;
 
 function websocket_loop(){
@@ -46,17 +48,36 @@ Backend.get({
 });
 
 function openChat(chatid=null){
+    var chat = document.getElementById("chat");
+    var saved = document.getElementById("saved");
+    var savedicon = document.getElementById("savedicon");
+    var chat = document.getElementById("chat");
+    var navigation = document.getElementById("navigation");
+    if(chat.style.visibility == "hidden"){
+      saved.style.display = "none";
+      chat.style.visibility = "visible";
+      navigation.style.display = "none";
+      navigation.style.width = 0;
+
+      savedicon.style.transform = "rotateY(0)";
+    }
+
     document.getElementById("success").style.display = "none";
-    document.getElementById("endChatAlert").style.display = "none";
+    document.getElementById("convoEndAlert").style.display = "none";
     // document.getElementById("savedicon").click();
     
     document.getElementById("startChatAlert").style.display = "none";
+    document.getElementById("message-bar").removeAttribute("disabled");
 
     if(chatid){ 
         document.getElementById("waiting").style.display = "none";
+        document.getElementById("details").classList.remove("detailshidden");
+        document.getElementById("message").style.visibility = "visible";
     }
     else{
         document.getElementById("waiting").style.display = "block";
+        document.getElementById("details").classList.add("detailshidden");
+        document.getElementById("message").style.visibility = "hidden";
     }
     document.getElementsByClassName("messages")[0].innerHTML = "";
     Backend.post({
@@ -179,18 +200,23 @@ function deletePartner(){
   });
 }
 
-
 // ???
-// function checkEnter(){
-//   document.getElementById("message")
-//   .addEventListener("keyup", function(event)
-//   {
-//     event.preventDefault();
-//     if(event.key = "Enter"){
-//       send();
-//     }
-//   });
-// }
+function checkEnter(){
+  document.getElementById("message")
+  .addEventListener("keyup", function(event)
+  {
+    event.preventDefault();
+    if(event.key = "Enter"){
+      send();
+    }
+  });
+}
+
+document.getElementById("message-bar").addEventListener("keyup", (e)=>{
+    if(e.key == "Enter" && document.getElementById("message-bar").value.length != 0){
+        send();
+    }
+})
 
 function send(){
   //var text = document.getElementById("message").value;
@@ -239,17 +265,29 @@ function receive(e){
             }));
             document.getElementById("success").style.display = "block";
             document.getElementById("waiting").style.display = "none";
-            document.getElementById("endChatAlert").style.display = "none";
+            document.getElementById("convoEndAlert").style.display = "none";
+            document.getElementById("message").style.visibility = "visible";
+            document.getElementById("details").classList.remove("detailshidden");
         }
         else if(data.name == "identify"){
+
             var partneridentify = data.value;
-            document.getElementById("name").innerText = partneridentify.nickname;
-            document.getElementById("quote").innerText = partneridentify.description;
-            document.getElementById("partnerprofilepic").style.backgroundImage = `url('${partneridentify.profile_pic}')`;
-            document.getElementById("birthday").innerText = function(e=new Date(partneridentify.birthdate)){
-                return `${e.getUTCFullYear()}. ${((e.getMonth()+1) < 10 ? '0' : '') + (e.getMonth()+1)}. ${(e.getDate() < 10 ? '0' : '') + e.getDate()}.`;
+            if(partneridentify.saved){
+                document.getElementById("name").innerText = partneridentify.nickname;
+                document.getElementById("partnerprofilepic").style.backgroundImage = `url('${partneridentify.profile_pic}')`;
+                document.getElementById("save").setAttribute("hidden", "true");
+            }
+            else{
+                document.getElementById("name").innerText = "Anonim";
+                document.getElementById("partnerprofilepic").style.backgroundImage = `url('/_images/missingpicture.svg')`;
+                document.getElementById("save").removeAttribute("hidden");
+            }
+            document.getElementById("gender").innerText = partneridentify.gender ?? "???";
+            document.getElementById("quote").innerText = partneridentify.description ?? "...";
+            document.getElementById("birthday").innerText = function(bdate=partneridentify.birthdate){
+                var e = new Date(bdate);
+                return bdate ? `${e.getUTCFullYear()}. ${((e.getMonth()+1) < 10 ? '0' : '') + (e.getMonth()+1)}. ${(e.getDate() < 10 ? '0' : '') + e.getDate()}.` : `????. ??. ??.`;
             }();
-            document.getElementById("save").setAttribute("hidden", "true");
         }
         else if(data.name == "requestSave"){
             Swal.fire({
@@ -279,7 +317,9 @@ function receive(e){
         }
     }
     if(data.status == "end"){
-        document.getElementById("endChatAlert").style.display = "block";
+        document.getElementById("convoEndAlert").style.display = "flex";
+        document.getElementById("message-bar").setAttribute("disabled", "true");
+        document.getElementById("message-bar").value = "";
     }
 }
 
@@ -288,28 +328,29 @@ function focusMessageBar(){
 }
 
 var last_hist = "";
+var wait_hist = false;
 function history_load(){
     var dt = document.getElementsByClassName("messages")[0].lastChild.getAttribute("datetime");
     if(dt){
-        var scrlbe = document.getElementsByClassName("messages")[0].scrollHeight - document.getElementsByClassName("messages")[0].offsetHeight;
-        var scrlsp = document.getElementsByClassName("messages")[0].scrollTop;
-        if(scrlbe + scrlsp < 10 && dt != last_hist){
+        var scrlbe = document.getElementsByClassName("chatArea")[0].scrollHeight - document.getElementsByClassName("chatArea")[0].offsetHeight;
+        var scrlsp = document.getElementsByClassName("chatArea")[0].scrollTop;
+        if(scrlbe + scrlsp < 5 && dt != last_hist && !wait_hist){
             last_hist = dt;
-            console.log(dt);
-            ws.send(JSON.stringify({
-                "type":"action",
-                "value":"history",
-                "time":dt
-            }));
+            wait_hist = true;
+            setTimeout(()=>{
+                wait_hist = false;
+                console.log(dt);
+                ws.send(JSON.stringify({
+                    "type":"action",
+                    "value":"history",
+                    "time":dt
+                }));
+            }, 250);
         }
     }
 }
 
-// document.getElementById("message").addEventListener("keyup", (e)=>{
-//     if(e.key == "Enter" && document.getElementById("message").value.length != 0){
-//         send();
-//     }
-// })
+
 
 function toggleDetails(){
   var details =  document.getElementById("details");
@@ -382,7 +423,7 @@ Backend.get({
         if(e.id != undefined){
             document.getElementById("optlogin").setAttribute("hidden", "true");
             document.getElementById("optprofile").removeAttribute("hidden");
-            document.getElementById("optprofile").getElementsByTagName("img")[0].src = e.profile_pic;
+            document.getElementById("optprofile").style.backgroundImage = `url('${e.profile_pic}')`;
         }
     }
 });
