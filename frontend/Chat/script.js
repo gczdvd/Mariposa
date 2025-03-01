@@ -73,6 +73,10 @@ function openChat(chatid=null){
         document.getElementById("waiting").style.display = "none";
         document.getElementById("details").classList.remove("detailshidden");
         document.getElementById("message").style.visibility = "visible";
+            
+        var searchParams = new URLSearchParams(window.location.search);
+        searchParams.set("chatid", chatid);
+        window.location.search = searchParams.toString();
     }
     else{
         document.getElementById("waiting").style.display = "block";
