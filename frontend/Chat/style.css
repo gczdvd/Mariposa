@@ -292,15 +292,9 @@
 
 .messages{
     font-family: 'Red Hat Text', "Trebuchet MS", Helvetica, sans-serif;
-    display: flex;
-    flex-direction: column-reverse;
     justify-self: center;
     width: 97%;
-    
-    /* padding: 0 2vh 2vh 2vh; */
-    /* width: 97%; */
-    /* height: 100vh; */
-    /* justify-self: stretch; */
+    height: 100%;
 }
 
 .message1{
@@ -337,6 +331,10 @@
     cursor: pointer;
 }
 
+#startChatAlert{
+    /* display: none; */
+}
+
 #convoEndAlert{
     display: none;
 }
@@ -347,7 +345,6 @@
 }
 
 .message{
-    /*Énvótam*/
     display: grid;
     visibility: hidden;
     grid-template-columns: 1fr auto;
@@ -657,6 +654,7 @@ img{
         width: fit-content;
         align-self: center;
         cursor: pointer;
+        /* display: grid; */
     }
 
     #sc{

@@ -17,7 +17,7 @@
         <!-- 1 -->
         <div class="responsive-bar">
             <div id="sc">
-                <img src="/_images/savedicon.png" alt="Nyit" id="savedicon" onclick="toggleSaved()">
+                <img src="/_images/savedicon.png" alt="Mentett chatpartnerek megnyitása." id="savedicon" onclick="toggleSaved()" title="Mentett chatpartnerek">
 
                 <ul id="navigation">
                     <li><a href="/" class="tertiaryBTN">Kezdőlap</a></li>
@@ -29,8 +29,8 @@
             </div>
 
             <div id="d">
-                <img src="/_images/menu.png" alt="" id="openDetails" onclick="toggleDetails()">
-                <img src="/_images/multiply2.png" alt="" id="closeDetails" onclick="toggleDetails()">
+                <img src="/_images/menu.png" alt="Chatpartnered adatai." id="openDetails" onclick="toggleDetails()" title="Chatpartner adatai">
+                <img src="/_images/multiply2.png" alt="Chatpartner adatai rész bezárása." id="closeDetails" onclick="toggleDetails()">
             </div>
         </div>
         
@@ -89,23 +89,6 @@
 
                 <div class="chatArea" onscroll="history_load()">
 
-                    <div class="condition">
-                        <div id="waiting">
-                            <img src="/_images/loading.gif">
-                            <p id="waitingMSG">Várakozás beszélgetőpartnerre...</p>
-                        </div>
-    
-                        <div id="success">
-                            <img src="/_images/tick.png" alt="">
-                            <p id="successMSG">Megtaláltuk a tökéletes beszélgetőpartnert!</p>
-                            <p id="warningMSG">Kérjük, a beszélgetés során tartsd be a Házirendet!</p>
-                        </div>
-                    </div>
-
-                    <div class="messages" onclick="focusMessageBar()">
-
-                    </div>
-
                     <div class="alerts">
                         <div class="alert alert-danger align-items-center" role="alert" id="convoEndAlert">
                             <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
@@ -126,6 +109,22 @@
                         </div>
                     </div>
 
+                    <div class="messages" onclick="focusMessageBar()">
+
+                    </div>
+
+                    <div class="condition">
+                        <div id="waiting">
+                            <img src="/_images/loading.gif">
+                            <p id="waitingMSG">Várakozás beszélgetőpartnerre...</p>
+                        </div>
+    
+                        <div id="success">
+                            <img src="/_images/tick.png" alt="">
+                            <p id="successMSG">Megtaláltuk a tökéletes beszélgetőpartnert!</p>
+                            <p id="warningMSG">Kérjük, a beszélgetés során tartsd be a Házirendet!</p>
+                        </div>
+                    </div>
                 
                 </div>
 

@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@600&family=Noto+Color+Emoji&family=Noto+Sans+Symbols+2&family=Palanquin:wght@700&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap');
 
+@font-face {
+    font-family: "Baloo";
+    src: url("Baloo.woff2");
+}
+
 *{
     padding: 0;
     margin: 0;
