@@ -133,7 +133,7 @@
     border-radius: 50%;
     background-image: url("/_images/missingpicture.svg");
     background-position: 100%;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     cursor: pointer;
     background-color: white;
@@ -262,15 +262,17 @@
     justify-items: center;
     height: fit-content;
     width: 100%;
-    border-top: 2px solid rgba(200, 200, 200, 0.2);
-    border-bottom: 2px solid rgba(200, 200, 200, 0.2);
     padding: 1vh 0;
+    /* border-bottom: 2px solid rgba(200, 200, 200, 0.2); */
 }
 
 #success, #waiting{
     display: grid;
     text-align: center;
     font-family: 'Red Hat Text', "Trebuchet MS", Helvetica, sans-serif;
+    width: 100%;
+    /* border-top: 2px solid rgba(200, 200, 200, 0.2); */
+    border-bottom: 2px solid rgba(200, 200, 200, 0.2);
     user-select: none;
 }
 
@@ -298,13 +300,12 @@
 }
 
 .messages{
+    display: flex;
+    flex-direction: column-reverse;
     font-family: 'Red Hat Text', "Trebuchet MS", Helvetica, sans-serif;
     justify-self: center;
     width: 97%;
     box-sizing: border-box;
-    /* height: 100%; */
-    display: flex;
-    flex-direction: column-reverse;
     flex: 2;
 }
 
@@ -745,6 +746,12 @@ img{
         margin-bottom: 3vh;
     }
 
+    #quoteP{
+        width: 80vw;
+    }
+
+    
+
     .details .profileImage{
         width: 15vw;
         height: 15vw;
@@ -760,6 +767,13 @@ img{
     }
 
     #startChatAlert, #convoEndAlert{
+        margin: auto;
+    }
+
+    #successMSG, #warningMSG, #waitingMSG{
+        width: 90vw;
+        justify-self: center;
+        text-align: center;
         margin: auto;
     }
 

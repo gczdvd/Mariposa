@@ -40,12 +40,18 @@ Backend.get({
     }
 });
 
-Backend.get({
+
+function disappear(){
+  Backend.get({
     path:"/chat/reloaded",
     callback:(e)=>{
         console.log(e);
     }
-});
+  });
+}
+
+window.addEventListener("unload", disappear);
+disappear();
 
 function openChat(chatid=null){
     var chat = document.getElementById("chat");

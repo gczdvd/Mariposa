@@ -23,7 +23,8 @@ class Backend{
     static get(params) {
         fetch("https://" + rootAddr + params.path, {
             method: "GET",
-            credentials: "include"
+            credentials: "include",
+            keepalive:true
         })
         .then(async (e)=>{
             var resp = await e.json();
@@ -40,7 +41,8 @@ class Backend{
             req = {
                 method: "POST",
                 credentials: "include",
-                body: params?.body
+                body: params?.body,
+                keepalive:true
             }
         }
         else{
@@ -51,7 +53,8 @@ class Backend{
                     "Content-Type": "application/json",
                     "Accept": "application/json"
                 },
-                body: JSON.stringify(params?.body ?? {})
+                body: JSON.stringify(params?.body ?? {}),
+                keepalive:true
             }
         }
 
