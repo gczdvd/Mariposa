@@ -182,7 +182,7 @@ p{
     border-radius: 50%;
     background-image: url("/_images/missingpicture.svg");
     background-position: 100%;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     border: 1px solid lightgray;
     cursor: pointer;
@@ -597,6 +597,7 @@ label{
         padding: 0.5em 1em;
         justify-self: center;
         font-size: 1em;
+        margin-bottom: 1vh;
     }
 
     .header{
@@ -643,8 +644,14 @@ label{
         justify-self: center;
     }
 
+    .title{
+        font-size: 2em;
+        width: 100%;
+    }
+
     .values > div{
         width: 90vw;
+        
     }
 
     .values > div > p{
@@ -660,7 +667,7 @@ label{
 
     .us{
         display: block;
-        width: 90vw;
+        width: 100vw;
         max-width: 100%;
     }
 
@@ -669,7 +676,7 @@ label{
     }
 
     .panel p{
-        height: 30vh;
+        height: 35vh;
     }
 
     .contact{
@@ -677,12 +684,13 @@ label{
         width: 100vw;
         max-width: 100%;
         justify-self: center;
+        margin: auto;
     }
 
     .contact img{
         width: 40%;
-        justify-self: center;
         max-width: 100%;
+        margin: auto;
     }
 
     .inputTitle{

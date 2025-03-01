@@ -58,12 +58,11 @@ function login(){
   var validEmail = pattern.test(email);
 
   if(!validEmail){
-    emailFeedback.style.visibility = "visible";
     document.getElementById("emailFeedback").innerHTML = "Helytelen email-cím";
     var allValid = false;
   }
   else{
-    emailFeedback.style.visibility = "hidden";
+    document.getElementById("emailFeedback").innerHTML = "";
   }
 
   if(!automatic){
@@ -98,8 +97,9 @@ function login(){
           password: fullkey
       },
       callback: (e) => {
+        console.log("CABL", e);
         if(e.value == "invalid"){
-          document.getElementById("emailFeedback").innerHTML = "Nincs ilyen email-címmel a rendszerünkben.";
+          document.getElementById("emailFeedback").innerHTML = "Nincs ilyen email-cím a rendszerünkben";
         }
         else{
           document.getElementById("emailFeedback").innerHTML = "";

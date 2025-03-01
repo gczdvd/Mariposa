@@ -12,9 +12,9 @@ Backend.get({
         // 
 
         if(e.nickname){
-            document.getElementById("fullname").value = e.nickname;
-            document.getElementById("fullname").style.borderColor = "#ffbc2f";
-
+            document.getElementById("username").value = e.nickname;
+            document.getElementById("username").style.borderColor = "#ffbc2f";
+            document.getElementById("nickname").innerHTML = e.nickname;
         }
         if(e.email){
             document.getElementById("email").value = e.email;
@@ -26,9 +26,6 @@ Backend.get({
         }
         if(e.profile_pic){
             document.getElementById("profilePicture").style.backgroundImage = `url('${e.profile_pic}')`;
-        }
-        if(e.nickname){
-            document.getElementById("nickname").innerHTML = e.nickname;
         }
         if(e.description){
             document.getElementById("textarea").value = e.description;
@@ -196,12 +193,9 @@ function saveData(){
       icon: "success",
       title: "Az adatok sikeresen mentésre kerültek!",
       width: "64em",
-      showCancelButton: "true",
-      showConfirmButton: "false",
-      reverseButtons: "true",
-      focusConfirm: "false",
-      confirmButtonText: "Tovább a chatre",
-      cancelButtonText: "Bezárás",
+      showCancelButton: false,
+      showConfirmButton: true,
+      confirmButtonText: "Rendben!",
       confirmButtonColor: "#ffbc2f",
       iconColor: "#ffbc2f"
     })
@@ -211,7 +205,6 @@ function saveData(){
       icon: "error",
       title: "Az adatok mentése során hibába ütköztünk!",
       width: "64em",
-      // focusConfirm: "false",
       confirmButtonText: "Bezárás",
       confirmButtonColor: "#545454",
       iconColor: "#ffbc2f"

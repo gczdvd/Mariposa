@@ -141,7 +141,7 @@
     border-radius: 50%;
     background-image: url("/_images/missingpicture.svg");
     background-position: 100%;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     border: 1px solid lightgray;
     cursor: pointer;
@@ -549,12 +549,21 @@ label{
     .contact{
         grid-template-columns: none;
         justify-self: center;
+        justify-items: center;
     }
 
     .contact img{
+        display: block;
         width: 40%;
+        margin: auto;
+    }
+
+    .image{
+        display: block;
+        width: 100%;
         justify-self: center;
-        max-width: 100%;
+        justify-items: center;
+        margin: auto;
     }
 
     .inputs{

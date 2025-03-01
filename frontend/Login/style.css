@@ -92,7 +92,7 @@
 }
 
 .image{
-    background-image: url(../_images/logopattern.svg);
+    background-image: url('/_images/logopattern.svg');
     align-content: center;
     grid-row: 1 / span 2;
     grid-column-start: 2;
@@ -129,7 +129,6 @@
 
 #pswFeedback, #emailFeedback{
     color: red;
-    /* visibility: hidden; */
     font-size: 1em;
     margin: 0;
 }

@@ -213,8 +213,13 @@ function checkEnter(){
 }
 
 document.getElementById("message-bar").addEventListener("keyup", (e)=>{
-    if(e.key == "Enter" && document.getElementById("message-bar").value.length != 0){
+    if(e.key == "Enter"){
+      var prepared = document.getElementById("message-bar").value.trim();
+      if(prepared.length != 0){
         send();
+      }
+      document.getElementById("message-bar").value = "";
+      document.getElementById("message-bar").focus();
     }
 })
 
@@ -263,6 +268,7 @@ function receive(e){
                 "type":"action",
                 "value":"identity"
             }));
+            document.getElementById("message-bar").removeAttribute("disabled");
             document.getElementById("success").style.display = "block";
             document.getElementById("waiting").style.display = "none";
             document.getElementById("convoEndAlert").style.display = "none";

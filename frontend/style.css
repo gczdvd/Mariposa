@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@600&family=Noto+Color+Emoji&family=Noto+Sans+Symbols+2&family=Palanquin:wght@700&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap');
 
 @font-face {
-    font-family: "Baloo";
-    src: url("Baloo.woff2");
+    font-family: 'Baloo';
+    src: url('Baloo.woff2');
 }
+
+
 
 *{
     padding: 0;
@@ -183,7 +185,7 @@ p{
     border-radius: 50%;
     background-image: url("/_images/missingpicture.svg");
     background-position: 100%;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     border: 1px solid lightgray;
     cursor: pointer;
@@ -196,6 +198,7 @@ p{
     max-width: 100%;
     grid-template-columns: 1fr 1fr;
     justify-content: center;
+    justify-items: center;
     align-content: center;
     margin: 5vh 0 10vh 0;
 }
@@ -204,6 +207,7 @@ p{
     display: block;
     width: 40vw;
     justify-self: center;
+    font-family: none;
 }
 
 .texts{
@@ -349,10 +353,12 @@ p{
     width: 100vw;
     max-width: 100%;
     text-align: center;
+    
     margin-bottom: 5vh;
     height: fit-content;
     font-size: 0.9em;
     justify-self: center;
+    /* justify-items: center; */
 }
 
 
@@ -400,6 +406,7 @@ p{
     display: grid;
     font-size: 1.5em;
     gap: 3vh;
+    width: 40vw;
 }
 
 .supportText p:nth-of-type(1){
@@ -591,7 +598,7 @@ p{
     }
 
     .headline{
-        font-size: 3em;
+        font-size: 2em;
     }
 
     .subhead{
@@ -624,6 +631,10 @@ p{
         font-size: 3em;
         height: fit-content;
         margin: 0;
+    }
+
+    .aboutus{
+        justify-items: center;
     }
 
     .us-text{
@@ -666,6 +677,8 @@ p{
         display: grid;
         grid-template-columns: 1fr 1fr;
         width: 90vw;
+        margin: auto;
+        justify-items: center;
     }
 
     .donation img{
@@ -677,6 +690,12 @@ p{
 
     .donation-text{
         font-size: 1em;
+    }
+
+    .support{
+        margin: auto;
+        margin-top: 5vh;
+        margin-bottom: 3vh;
     }
 
     .supportText{
