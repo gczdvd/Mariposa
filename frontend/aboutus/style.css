@@ -181,7 +181,7 @@ p{
     height: 4vw;
     border-radius: 50%;
     background-image: url("/_images/missingpicture.svg");
-    background-position: 100%;
+    background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     border: 1px solid lightgray;

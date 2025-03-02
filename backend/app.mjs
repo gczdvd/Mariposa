@@ -198,8 +198,8 @@ app.post('/signup', (req, res) => {
                 smtp.verify(email, md5(email));
                 res.status(200);
                 res.send(JSON.stringify({
-                    "action":"redirect",
-                    "value":"/login",
+                    "action":"none",
+                    "value":"",
                     "message":"You can login, if verified your email."
                 }));
                 
@@ -237,7 +237,7 @@ app.post('/forgotpassword', (req, res)=>{
         var exist = database.existEmail(req.body.email);
 
         if(exist){
-            var task = tasks.newTask(240, {
+            var task = tasks.newTask(600, {
                 "email":req.body.email
             });
 
@@ -247,8 +247,8 @@ app.post('/forgotpassword', (req, res)=>{
             smtp.forgotPassword(req.body.email, key, database);
             res.status(200);
             res.send(JSON.stringify({
-                "action":"redirect",
-                "value":"/",
+                "action":"none",
+                "value":"",
                 "message":"Success"
             }));
         }
@@ -281,8 +281,8 @@ app.post('/forgotpassword/change', (req, res)=>{
                 if(status == "Success"){
                     res.status(200);
                     res.send(JSON.stringify({
-                        "action":"redirect",
-                        "value":"/",
+                        "action":"none",
+                        "value":"",
                         "message":"Success"
                     }));
                 }

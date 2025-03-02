@@ -165,7 +165,6 @@ function saveData(){
     //     newdat.topics.push(sels[i].getAttribute("value"));
     // };
 
-
     Backend.post({
         path:"/profilemodify",
         body:{
@@ -175,8 +174,41 @@ function saveData(){
             description:document.getElementById("textarea").value,
             topics:undefined
         },
-        callback:console.log
+        callback: (e) => {
+            if(e.message == "Successful modified."){
+                Swal.fire({
+                    icon: "success",
+                    title: "Az adatok sikeresen mentésre kerültek!",
+                    width: "64em",
+                    showCancelButton: false,
+                    showConfirmButton: true,
+                    confirmButtonText: "Rendben!",
+                    confirmButtonColor: "#ffbc2f",
+                    iconColor: "#ffbc2f"
+                }).then((result) =>{
+                    if(result.isConfirmed){
+                        // window.location.hash = "#top";
+                        setTimeout(() => {
+                            window.location.href = "#top";
+                        }, 250);
+                        
+                    }
+                });
+            }
+            else{
+                Swal.fire({
+                    icon: "error",
+                    title: "Az adatok mentése során hibába ütköztünk!",
+                    text: "Kérjük, próbáld meg később!",
+                    width: "64em",
+                    confirmButtonText: "Bezárás",
+                    confirmButtonColor: "#545454",
+                    iconColor: "#ffbc2f"
+                });
+            }
+        }
     })
+
   if(document.getElementById("profilepicup").files.length > 0){
         var f = new FormData();
         f.append("file", document.getElementById("profilepicup").files[0]);
@@ -187,29 +219,6 @@ function saveData(){
             callback:console.log
         });
     }
-
-  if(success){
-    Swal.fire({
-      icon: "success",
-      title: "Az adatok sikeresen mentésre kerültek!",
-      width: "64em",
-      showCancelButton: false,
-      showConfirmButton: true,
-      confirmButtonText: "Rendben!",
-      confirmButtonColor: "#ffbc2f",
-      iconColor: "#ffbc2f"
-    })
-  }
-  else{
-    Swal.fire({
-      icon: "error",
-      title: "Az adatok mentése során hibába ütköztünk!",
-      width: "64em",
-      confirmButtonText: "Bezárás",
-      confirmButtonColor: "#545454",
-      iconColor: "#ffbc2f"
-    })
-  }
 }
 
 function deleteAccount(){

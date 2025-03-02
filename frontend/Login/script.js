@@ -6,9 +6,6 @@ if(token){
         path:"/signup/verify?token=" + token,
         callback:(e)=>{
             console.log(e);
-            if(e.action == "alert"){
-                alert(e.value);
-            }
         }
     });
 }
@@ -99,10 +96,10 @@ function login(){
       callback: (e) => {
         console.log("CABL", e);
         if(e.value == "invalid"){
-          document.getElementById("emailFeedback").innerHTML = "Nincs ilyen email-cím a rendszerünkben";
+          document.getElementById("pswFeedback").innerHTML = "Helytelen email-cím vagy jelszó!";
         }
         else{
-          document.getElementById("emailFeedback").innerHTML = "";
+          document.getElementById("pswFeedback").innerHTML = "";
         }
       }
   });
@@ -159,18 +156,7 @@ async function forgotPassword(){
       confirmButtonText: "Küldés",
       cancelButtonText: "Bezárás",
       confirmButtonColor: "#ffbc2f",
-      iconColor: "#ffbc2f"/*,
-      preConfirm: (pno) => {
-        return axios.post('/some/route', { pno })
-            .then(response => { 
-                // ...
-            })
-            .catch(error => {
-                if (error.response.status === 404) {
-                    MySwal.showValidationMessage(error.response.data.message)                        
-                }                        
-            });
-      } */
+      iconColor: "#ffbc2f"
   }).then((swBtn)=>{
     if(swBtn.isConfirmed == true){
       console.log(swBtn);
@@ -179,29 +165,39 @@ async function forgotPassword(){
         body:{
             email: swBtn.value
         },
-        callback: validateEmail(swBtn)
+        callback: console.log
+      });
+      Swal.fire({
+        icon: "warning",
+        title: "Nézd meg az email-fiókod!",
+        html: `
+        <button onclick="location.href='https://mail.google.com/mail/u/0/#inbox';" class="primaryBTN" style="margin-top: 1em">Gmail megnyitása</button>
+        `,
+        width: "64em",
+        showCancelButton: false,
+        showConfirmButton: false
       });
     }
   });
 }
 
-function validateEmail(e){
-  if(e.action === "error"){
-    Swal.fire({
-      icon: "error",
-      title: "Add meg a Mariposa fiókodhoz tartozó email-címet!",
-      text: "Az emailben szereplő linkkel tudod majd visszaállítani a jelszavad.",
-      input: "email",
-      validationMessage: "Helytelen e-mail cím",
-      width: "64em",
-      showCancelButton: "true",
-      showConfirmButton: "true",
-      reverseButtons: "true",
-      focusConfirm: "false",
-      confirmButtonText: "Küldés",
-      cancelButtonText: "Bezárás",
-      confirmButtonColor: "#ffbc2f",
-      iconColor: "#ffbc2f",
-    })
-  }
-}
+// function validateEmail(e){
+//   if(e.action === "error"){
+//     Swal.fire({
+//       icon: "error",
+//       title: "Add meg a Mariposa fiókodhoz tartozó email-címet!",
+//       text: "Az emailben szereplő linkkel tudod majd visszaállítani a jelszavad.",
+//       input: "email",
+//       validationMessage: "Helytelen e-mail cím",
+//       width: "64em",
+//       showCancelButton: "true",
+//       showConfirmButton: "true",
+//       reverseButtons: "true",
+//       focusConfirm: "false",
+//       confirmButtonText: "Küldés",
+//       cancelButtonText: "Bezárás",
+//       confirmButtonColor: "#ffbc2f",
+//       iconColor: "#ffbc2f",
+//     })
+//   }
+// }
