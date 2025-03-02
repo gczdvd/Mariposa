@@ -747,7 +747,8 @@ img{
     }
 
     #quoteP{
-        width: 80vw;
+        max-width: 80vw;
+        border: 1px solid lightgray;
     }
 
     
