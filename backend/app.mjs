@@ -20,6 +20,14 @@ import uuid from '/root/Mariposa/backend/node_modules/uuid/dist/esm/v6.js';
 import crypto from 'crypto';
 import fs from 'fs';
 
+process.on('uncaughtException', function(err) {
+    try {
+        fs.writeFile('errors.log', String(err) + "\n\n");
+    } catch (errr) {
+        console.dir(errr);
+    }
+});
+
 import { Sql } from './database.mjs';
 import { Generator } from './generator.mjs';
 import { Tasks } from './task.mjs';
