@@ -51,7 +51,7 @@ function replacer(key,value)
         return "ws";
     }
     if (key=="profile_pic"){
-        return "base64";
+        return "path";
     }
     return value;
 }
@@ -326,9 +326,10 @@ app.get('/signup/verify', (req, res) => {
     var tmp = database.verifyUser(req.query["token"]);
     
     if(tmp.status == "Success"){
-        var e = users.getUserById(tmp.client_id);
+        var e = database.getUserDataById(tmp.client_id);
         
-        smtp.verifySuccess(e.getEmail(), e.getNickname());
+        smtp.verifySuccess(e.email, e.nickname);
+
         res.status(200);
         res.send(JSON.stringify({
             "action":"alert",
@@ -383,6 +384,10 @@ app.post('/message', (req, res) => {
 app.get('/logout', (req, res) => {
     if(req.session.valid){
         if(sessions.removeSession(req.session.session)){
+            if(req.session.session.getAttribute("chat") instanceof Chat){
+                req.session.session.getAttribute("chat").leftUser(req.session.session);
+            }
+
             res.cookie("sessId", "-", { maxAge: 0, httpOnly: true, secure: true });
             res.status(200);
             res.send(JSON.stringify({
@@ -699,10 +704,23 @@ app.listen(3000, () => {
 
 setInterval(()=>{
     process.stdout.write('\x1Bc');
-    console.dir(JSON.parse(JSON.stringify(sessions.sessions, replacer, 4)), { depth: null });
-    console.dir(JSON.parse(JSON.stringify(chats.getChats(), replacer, 4)), { depth: null });
-    console.dir(tasks.getTasks(), {"depth":2});
+    var sessions_json = JSON.parse(JSON.stringify(sessions.sessions, replacer, 4));
+    console.dir(sessions_json, { depth: null });
+    var chats_json = JSON.parse(JSON.stringify(chats.getChats(), replacer, 4));
+    console.dir(chats_json, { depth: null });
+    var tasks_json = tasks.getTasks();
+    console.dir(tasks_json, {"depth":2});
     
+    try {
+        fs.writeFileSync('out.json', JSON.stringify({
+            "sessions":sessions_json,
+            "chats":chats_json,
+            "tasks":tasks_json
+        }));
+    } catch (err) {
+        console.dir(err);
+    }
+
     sessions.cleanUp();
     chats.cleanUp();
 }, 1000)

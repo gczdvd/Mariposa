@@ -55,7 +55,7 @@ export class Email{
             to: reporter.email,
             subject: "Bejelentésed megkaptuk!",
             html: HTMLFileFormat('emails/userreport/userreport.html', (e)=>{
-                e.getElementById("username").innerText = reporter.nickname;
+                e.getElementById("username").innerHTML = reporter.nickname;
             })
         });
     }
@@ -78,7 +78,7 @@ export class Email{
             to: email,
             subject: "Sikeres regisztráció!",
             html: HTMLFileFormat('emails/confirm/confirm.html', (e)=>{
-                e.getElementById("username").innerText = name;
+                e.getElementById("username").innerHTML = name;
             })
         });
     }

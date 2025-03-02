@@ -183,16 +183,15 @@ export class Chat{
         }
     }
     leftUser(sess){
-        if(this.getSaved()){
-            sess.setAttribute("chat", null);
-            if(this.#sess1?.getAttribute("client").getId() == sess.getAttribute("client").getId()){
-                this.#sess1 = null;
-            }
-            else if(this.#sess2?.getAttribute("client").getId() == sess.getAttribute("client").getId()){
-                this.#sess2 = null;
-            }
+        if(this.#sess1?.getAttribute("client").getId() == sess.getAttribute("client").getId()){
+            this.#sess1 = null;
         }
-        else{
+        else if(this.#sess2?.getAttribute("client").getId() == sess.getAttribute("client").getId()){
+            this.#sess2 = null;
+        }
+        sess.setAttribute("chat", undefined);
+
+        if(!this.getSaved()){
             this.end();
         }
     }
@@ -207,8 +206,11 @@ export class Chat{
         this.#sess2?.getWebsocket()?.send(JSON.stringify({
             "status":"end"
         }));
-        this.#sess1?.setAttribute("chat", null);
-        this.#sess2?.setAttribute("chat", null);
+        this.#sess1?.setAttribute("chat", undefined);
+        this.#sess2?.setAttribute("chat", undefined);
+        this.#sess1 = null;
+        this.#sess2 = null;
+        this.id = -1;
     }
     getMessages(from=null){
         return this.db.getMessages(this.id, from);

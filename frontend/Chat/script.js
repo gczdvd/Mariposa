@@ -16,29 +16,37 @@ function websocket_loop(){
 
 websocket_loop();
 
-Backend.get({
-    path:"/partners",
-    callback:(e)=>{
-        console.log(e);
-        // if(e.value.partners.length > 0){
-        //     document.getElementById("placeholder").setAttribute("hidden", "true")  //XXX
-        // }
-        for(var i = 0; i < e.value.partners.length; i++){
-            var _div = document.createElement("div");
-            _div.className = "savedChat";
-            _div.setAttribute("onclick", `openChat('${e.value.partners[i].chat_id}')`);
-            var _imgdiv = document.createElement("div");
-            _imgdiv.classList.add("image");
-            _imgdiv.style.backgroundImage = 'url("' + e.value.partners[i].profile_pic + '")';
-            var _p = document.createElement("p");
-            _p.innerText = e.value.partners[i].partner_name;
-            
-            _div.appendChild(_imgdiv);
-            _div.appendChild(_p);
-            document.getElementById("saved").appendChild(_div);
+function loadPartners(){
+    Backend.get({
+        path:"/partners",
+        callback:(e)=>{
+            console.log(e);
+            // if(e.value.partners.length > 0){
+            //     document.getElementById("placeholder").setAttribute("hidden", "true")  //XXX
+            // }
+            var tmpSavedChats = document.getElementById("saved").getElementsByClassName("savedChat");
+            while(tmpSavedChats.length > 0){
+                tmpSavedChats[0].remove();
+            }
+            for(var i = 0; i < e.value.partners.length; i++){
+                var _div = document.createElement("div");
+                _div.className = "savedChat";
+                _div.setAttribute("onclick", `openChat('${e.value.partners[i].chat_id}')`);
+                var _imgdiv = document.createElement("div");
+                _imgdiv.classList.add("image");
+                _imgdiv.style.backgroundImage = 'url("' + e.value.partners[i].profile_pic + '")';
+                var _p = document.createElement("p");
+                _p.innerText = e.value.partners[i].partner_name;
+                
+                _div.appendChild(_imgdiv);
+                _div.appendChild(_p);
+                document.getElementById("saved").appendChild(_div);
+            }
         }
-    }
-});
+    });
+}
+
+loadPartners();
 
 
 function disappear(){
@@ -79,6 +87,10 @@ function openChat(chatid=null){
         document.getElementById("waiting").style.display = "none";
         document.getElementById("details").classList.remove("detailshidden");
         document.getElementById("message").style.visibility = "visible";
+        
+        // const url = new URL(location);
+        // url.searchParams.set("chatid", chatid);
+        // history.pushState({}, "", url);
     }
     else{
         document.getElementById("waiting").style.display = "block";
@@ -300,6 +312,10 @@ function receive(e){
                 var e = new Date(bdate);
                 return bdate ? `${e.getUTCFullYear()}. ${((e.getMonth()+1) < 10 ? '0' : '') + (e.getMonth()+1)}. ${(e.getDate() < 10 ? '0' : '') + e.getDate()}.` : `????. ??. ??.`;
             }();
+                
+            setTimeout(()=>{
+                loadPartners();
+            }, 2500);
         }
         else if(data.name == "requestSave"){
             Swal.fire({
@@ -332,6 +348,10 @@ function receive(e){
         document.getElementById("convoEndAlert").style.display = "flex";
         document.getElementById("message-bar").setAttribute("disabled", "true");
         document.getElementById("message-bar").value = "";
+                
+        setTimeout(()=>{
+            loadPartners();
+        }, 2500);
     }
 }
 
