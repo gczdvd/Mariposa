@@ -172,6 +172,7 @@ function saveData(){
             birthdate:dateWatcher(),
             gender:document.getElementById("gender").value,
             description:document.getElementById("textarea").value,
+            nickname:document.getElementById("username").value,
             topics:undefined
         },
         callback: (e) => {
