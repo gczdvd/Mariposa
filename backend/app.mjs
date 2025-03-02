@@ -466,7 +466,7 @@ app.post("/profilemodify", sessionValidator, (req, res) => {
 
 app.post('/modifypassword', sessionValidator, (req, res) => {
     if(req.body.newpassword && req.body.oldpassword){
-        var keys = oldpassword.split(',');
+        var keys = req.body.oldpassword.split(',');
         var nowt = (new Date()).getTime();
 
         if(keys[0] > nowt - 20000 && keys[0] < nowt + 20000){
