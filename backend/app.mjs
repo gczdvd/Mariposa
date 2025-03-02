@@ -475,8 +475,8 @@ app.post('/modifypassword', sessionValidator, (req, res) => {
                 database.modifyUser(id, {password:req.body.newpassword});
                 res.status(200);
                 res.send(JSON.stringify({
-                    "action":"redirect",
-                    "value":"/",
+                    "action":"none",
+                    "value":"",
                     "message":"Successful modified."
                 }));
             }
