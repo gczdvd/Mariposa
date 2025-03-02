@@ -95,9 +95,8 @@
     outline: none;
 }
 
-#newPassFeedback, #reNewPassFeedback{
+#newPassFeedback, #bothPassFeedback{
     color: red;
-    visibility: hidden;
     font-size: 1em;
     margin: 0;
 }

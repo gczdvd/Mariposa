@@ -49,7 +49,7 @@ function validate(){
 
   if(!validEmail){
     document.getElementById("emailFeedback").style.visibility = "visible";
-    document.getElementById("emailFeedback").innerHTML = "Helytelen email-cím.";
+    document.getElementById("emailFeedback").innerHTML = "Kérjük, adj meg egy helyes email-címet!";
     var allValid = false;
   }
   else{

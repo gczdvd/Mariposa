@@ -298,11 +298,13 @@ function receive(e){
             var partneridentify = data.value;
             if(partneridentify.saved){
                 document.getElementById("name").innerText = partneridentify.nickname;
+                //Itt, ha mentett
                 document.getElementById("partnerprofilepic").style.backgroundImage = `url('${partneridentify.profile_pic}')`;
                 document.getElementById("save").setAttribute("hidden", "true");
             }
             else{
                 document.getElementById("name").innerText = "Anonim";
+                //itt, ha nem
                 document.getElementById("partnerprofilepic").style.backgroundImage = `url('/_images/missingpicture.svg')`;
                 document.getElementById("save").removeAttribute("hidden");
             }

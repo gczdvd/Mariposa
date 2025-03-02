@@ -58,7 +58,7 @@ function registration(){
     var validEmail = pattern.test(email);
   
     if(!validEmail){
-      document.getElementById("emailFeedback").innerHTML = "Helytelen email-cím";
+      document.getElementById("emailFeedback").innerHTML = "Kérjük, adj meg egy helyes email-címet!";
       allValid = false;
     }
     else{
