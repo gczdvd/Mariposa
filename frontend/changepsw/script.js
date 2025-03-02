@@ -20,7 +20,7 @@ function togglePSW() {
 }
 
 
-function forgotPassword(){
+async function forgotPassword(){
   Swal.fire({
       icon: "warning",
       title: "Add meg a Mariposa fiókodhoz tartozó e-mail címet!",
@@ -36,7 +36,28 @@ function forgotPassword(){
       cancelButtonText: "Bezárás",
       confirmButtonColor: "#ffbc2f",
       iconColor: "#ffbc2f"
-  })
+  }).then((swBtn)=>{
+    if(swBtn.isConfirmed == true){
+      console.log(swBtn);
+      Backend.post({
+        path:"/forgotpassword",
+        body:{
+            email: swBtn.value
+        },
+        callback: console.log
+      });
+      Swal.fire({
+        icon: "warning",
+        title: "Nézd meg az email-fiókod!",
+        html: `
+        <button onclick="location.href='https://mail.google.com/mail/u/0/#inbox';" class="primaryBTN" style="margin-top: 1em">Gmail megnyitása</button>
+        `,
+        width: "64em",
+        showCancelButton: false,
+        showConfirmButton: false
+      });
+    }
+  });
 }
 
 function validate(){
