@@ -326,9 +326,10 @@ app.get('/signup/verify', (req, res) => {
     var tmp = database.verifyUser(req.query["token"]);
     
     if(tmp.status == "Success"){
-        var e = users.getUserById(tmp.client_id);
+        var e = database.getUserDataById(tmp.client_id);
         
-        smtp.verifySuccess(e.getEmail(), e.getNickname());
+        smtp.verifySuccess(e.email, e.nickname);
+
         res.status(200);
         res.send(JSON.stringify({
             "action":"alert",
@@ -383,6 +384,10 @@ app.post('/message', (req, res) => {
 app.get('/logout', (req, res) => {
     if(req.session.valid){
         if(sessions.removeSession(req.session.session)){
+            if(req.session.session.getAttribute("chat") instanceof Chat){
+                req.session.session.getAttribute("chat").leftUser(req.session.session);
+            }
+
             res.cookie("sessId", "-", { maxAge: 0, httpOnly: true, secure: true });
             res.status(200);
             res.send(JSON.stringify({
