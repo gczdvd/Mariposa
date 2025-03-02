@@ -458,22 +458,33 @@ app.post("/profilemodify", sessionValidator, (req, res) => {
 
 app.post('/modifypassword', sessionValidator, (req, res) => {
     if(req.body.newpassword && req.body.oldpassword){
-        var id = database.auth(req.session.session.getAttribute("client").getEmail(), req.body.oldpassword);
+        var keys = oldpassword.split(',');
+        var nowt = (new Date()).getTime();
 
-        if(id != null){
-            database.modifyUser(id, {password:req.body.newpassword});
-            res.status(200);
-            res.send(JSON.stringify({
-                "action":"redirect",
-                "value":"/",
-                "message":"Successful modified."
-            }));
+        if(keys[0] > nowt - 20000 && keys[0] < nowt + 20000){
+            var id = database.auth(req.session.session.getAttribute("client").getEmail(), keys[0], keys[1]);
+            if(id != null){
+                database.modifyUser(id, {password:req.body.newpassword});
+                res.status(200);
+                res.send(JSON.stringify({
+                    "action":"redirect",
+                    "value":"/",
+                    "message":"Successful modified."
+                }));
+            }
+            else{
+                res.status(400);
+                res.send(JSON.stringify({
+                    "action":"error",
+                    "message":"Bad old password."
+                }));
+            }
         }
         else{
             res.status(400);
             res.send(JSON.stringify({
                 "action":"error",
-                "message":"Bad old password."
+                "message":"Key timeout."
             }));
         }
     }

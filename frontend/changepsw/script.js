@@ -82,11 +82,16 @@ function save(){
   var nw2Pass = document.getElementById("password2");
 
   if(validate() && nw1Pass.value == nw2Pass.value){
+    var precode = CryptoJS.SHA256(oldPass.value).toString();
+    var timekey = String((new Date).getTime());
+    var key = CryptoJS.SHA256(timekey + precode).toString();
+    var fullkey = timekey + ',' + key;
+
     Backend.post({
       path:"/modifypassword", 
       body:{
-          newpassword: nw1Pass, 
-          oldpassword: oldPass
+          newpassword: CryptoJS.SHA256(nw1Pass.value).toString(), 
+          oldpassword: fullkey
       },
       callback: (e) => {
         if(e.message == "Bad old password."){
