@@ -85,8 +85,8 @@ function save(){
     Backend.post({
       path:"/modifypassword", 
       body:{
-          newpassword: nw1Pass, 
-          oldpassword: oldPass
+          newpassword: nw1Pass.value, 
+          oldpassword: oldPass.value
       },
       callback: (e) => {
         if(e.message == "Bad old password."){
