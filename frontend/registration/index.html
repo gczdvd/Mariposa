@@ -8,6 +8,7 @@
     <script src="/sweetalert2.all.min.js"></script>
     <link rel="stylesheet" href="/sweetalert2.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="/core.js"></script>
     <script src="/md5.js"></script>
     <script src="/sha256.js"></script>
@@ -43,12 +44,15 @@
                 <label for="email">Email-cím</label>
             </div>
 
-            <div class="form-floating">
+            <div class="form-floating" id="formPassword">
                 <input class="form-control shadow-none" id="password" type="password" spellcheck="false" onchange="colorChange(this)" placeholder="Jelszó" 
                 data-bs-toggle="tooltip" data-bs-title="Legalább 12 karakter, kis- és nagybetű">
-                <p id="pswFeedback"></p>
-                
+
+                <img src="/_images/view.png" alt="Jelszó láthatóságának változtatása" id="togglePassword" onclick="togglePassword()">
+
                 <label for="password">Jelszó</label>
+
+                <p id="pswFeedback"></p>
             </div>
 
             <div class="TANDC">

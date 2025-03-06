@@ -120,6 +120,21 @@ function save(){
         }
         else{
           document.getElementById("curPassFeedback").innerHTML = "";
+          Swal.fire({
+            icon: "success",
+            title: "Sikeres mentés!",
+            width: "64em",
+            showCancelButton: false,
+            showConfirmButton: true,
+            focusConfirm: false,
+            confirmButtonText: "Rendben!",
+            confirmButtonColor: "#ffbc2f",
+            iconColor: "#ffbc2f"
+          }).then((result)=>{
+            if(result.isConfirmed){
+              window.location.href = "/profilesettings";
+            }
+          });
         }
       }
     });
@@ -134,7 +149,3 @@ Backend.get({
       }
   }
 });
-
-function response(){
-
-}

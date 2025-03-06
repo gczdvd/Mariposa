@@ -117,7 +117,16 @@ function registration(){
     }
 }
 
-
+function togglePassword(){
+  var psw = document.getElementById("password");
+  if (psw.type === "password") {
+    psw.type = "text";
+    document.getElementById("togglePassword").src = "/_images/hide.png";
+  } else {
+    psw.type = "password";
+    document.getElementById("togglePassword").src = "/_images/view.png";
+  }
+}
 
 // function checkValidation(){
 //   var email = document.getElementById("email").value;
