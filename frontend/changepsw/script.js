@@ -7,17 +7,18 @@ function colorChange(textarea){
     }
 }
 
-function togglePSW() {
-  var x = document.getElementById("password");
-  if (x.type === "password") {
-    x.type = "text";
-    document.getElementById("toggleIcon").innerHTML = "👁️";
-    
+function togglePassword(togglePassword){
+  var psw = togglePassword.previousSibling;
+  if (psw.type === "password") {
+    psw.type = "text";
+    togglePassword.src = "/_images/hide.png";
   } else {
-    x.type = "password";
-    document.getElementById("toggleIcon").innerHTML = "🕳️";
+    psw.type = "password";
+    togglePassword.src = "/_images/view.png";
   }
 }
+
+
 
 
 async function forgotPassword(){

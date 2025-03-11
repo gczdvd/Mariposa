@@ -17,7 +17,7 @@
 <body>
 
     <div class="wrapper">
-        <div class="back" id="optprofile" onclick="location.href='/profilesettings';">
+        <div class="back" id="optprofile" onclick="location.href='/profilesettings';" title="Profilbeállítások">
             
         </div>
 
@@ -31,12 +31,16 @@
                 <input class="form-control shadow-none" id="curPassword" type="password" spellcheck="false" onchange="colorChange(this)" placeholder="Jelenlegi jelszó">
                 <p id="curPassFeedback"></p>
 
+                <img src="/_images/view.png" alt="Jelszó láthatóságának változtatása" id="togglePassword" onclick="togglePassword(this)">
+
                 <label for="curPassword">Jelenlegi jelszó</label>
             </div>
 
             <div class="form-floating passwordNew1">
                 <input class="form-control shadow-none" id="password1" type="password" spellcheck="false" onchange="colorChange(this)" placeholder="Új jelszó">
                 <p id="newPassFeedback"></p>
+
+                <img src="/_images/view.png" alt="Jelszó láthatóságának változtatása" id="togglePassword" onclick="togglePassword(this)">
                 
                 <label for="password1">Új jelszó</label>
             </div>
@@ -44,6 +48,8 @@
             <div class="form-floating passwordNew2">
                 <input class="form-control shadow-none" id="password2" type="password" spellcheck="false" onchange="colorChange(this)" placeholder="Új jelszó még egyszer">
                 <!-- <p id="reNewPassFeedback"></p> -->
+
+                <img src="/_images/view.png" alt="Jelszó láthatóságának változtatása" id="togglePassword" onclick="togglePassword(this)">
                 
                 <label for="password2">Új jelszó még egyszer</label>
 
@@ -55,7 +61,6 @@
             </div>
 
             <div class="tertiaryBTN">
-                <!-- SWEETALERTEN INPUTBA BE KELL ÍRNIA AZ EMAIL CÍMÉT, BACKEND ELLENŐRZI, HOGY LÉTEZIK-E, BLABLABLA -->
                 <p onclick="forgotPassword()">Elfelejtettem a jelszavam</p>
             </div>
 

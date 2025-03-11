@@ -37,11 +37,13 @@ function checkPassword(){
   }
 
   if(lowercase && uppercase && password.length >= 12){
-    document.getElementById("pswFeedback").innerHTML = "";
+    // document.getElementById("pswFeedback").innerHTML = "";
+    document.getElementById("password").classList.remove("is-invalid");
     return password;
   }
   else{
-    document.getElementById("pswFeedback").innerHTML = "Legalább 12 karakter, kis- és nagybetű egyaránt";
+    // document.getElementById("pswFeedback").innerHTML = "Legalább 12 karakter, kis- és nagybetű egyaránt";
+    document.getElementById("password").classList.add("is-invalid");
     return false;
   }
 }

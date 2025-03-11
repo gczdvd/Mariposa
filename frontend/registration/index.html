@@ -45,10 +45,16 @@
             </div>
 
             <div class="form-floating" id="formPassword">
-                <input class="form-control shadow-none" id="password" type="password" spellcheck="false" onchange="colorChange(this)" placeholder="Jelszó" 
-                data-bs-toggle="tooltip" data-bs-title="Legalább 12 karakter, kis- és nagybetű">
+                <input class="form-control shadow-none" id="password" type="password" spellcheck="false" onchange="colorChange(this)" placeholder="Jelszó">
 
-                <img src="/_images/view.png" alt="Jelszó láthatóságának változtatása" id="togglePassword" onclick="togglePassword()">
+                <p>
+                    <img src="/_images/view.png" alt="Jelszó láthatóságának változtatása" id="togglePassword" onclick="togglePassword()">
+                    
+                    <!-- Megjelenít -->
+                </p>
+                
+
+
 
                 <label for="password">Jelszó</label>
 
@@ -66,7 +72,7 @@
                 <button class="primaryBTN" onclick="registration()" data-bs-title="asd">Regisztráció</button>
             </div>
 
-            <div>
+            <div class="account">
                 Már van fiókod?
                 <a href="/login" class="tertiaryBTN">Jelentkezz be!</a>
             </div>
@@ -74,10 +80,8 @@
         </div>
     
         <div class="image">
-            <!-- <img src="/_images/tablet_phone.png" alt=""> -->
+            
         </div>
-
-
     </div>
 
     

@@ -25,16 +25,15 @@ function setCookie(key, value){
     document.cookie = key + "=" + value + ";";
 }
 
-function togglePSW() {
-    var x = document.getElementById("password");
-    if (x.type === "password") {
-      x.type = "text";
-      document.getElementById("toggleIcon").innerHTML = "👁️";
-      
-    } else {
-      x.type = "password";
-      document.getElementById("toggleIcon").innerHTML = "🕳️";
-    }
+function togglePassword(){
+  var psw = document.getElementById("password");
+  if (psw.type === "password") {
+    psw.type = "text";
+    document.getElementById("togglePassword").src = "/_images/hide.png";
+  } else {
+    psw.type = "password";
+    document.getElementById("togglePassword").src = "/_images/view.png";
+  }
 }
 
 function colorChange(textarea){

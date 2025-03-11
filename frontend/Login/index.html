@@ -38,9 +38,12 @@
 
             <div class="form-floating">
                 <input class="form-control shadow-none" id="password" type="password" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="Jelszó">
-                <p id="pswFeedback"></p>
+
+                <img src="/_images/view.png" alt="Jelszó láthatóságának változtatása" id="togglePassword" onclick="togglePassword()">
                 
                 <label for="password">Jelszó</label>
+
+                <p id="pswFeedback"></p>
             </div>
 
             <div class="rememberme">

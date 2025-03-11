@@ -50,8 +50,8 @@
     border: 1px solid lightgray;
     margin: 1vh 0 0 1vh;
     border-radius: 50%;
-    background-image: url("/_images/missingpicture.svg");
-    background-position: 100%;
+    background-image: url("/_images/default.png");
+    background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -60,10 +60,10 @@
 .signin{
     display: grid;
     grid-template-rows: repeat(6, 1fr);
-    width: 30vw;
+    /* width: fit-content; */
+    /* min-width: 40vw; */
     height: 90vh;
     justify-self: center;
-    align-self: center;
 }
 
 .signin p{
@@ -72,7 +72,7 @@
 }
 
 .image{
-    background-image: url(../_images/logopattern.svg);
+    background-image: url(/_images/logopattern.svg);
     align-content: center;
     grid-row: 1 / span 2;
     grid-column-start: 2;
@@ -97,6 +97,8 @@
 
 .form-floating{
     font-family: 'Red Hat Text', "Trebuchet MS", Helvetica, sans-serif;
+    min-width: 25vw;
+    display: flex;
 }
 
 .form-control:focus{
@@ -107,6 +109,16 @@
 .form-control{
     color: #ffbc2f;
     border: #d3d3d3 2px solid;
+    position: absolute;
+}
+
+#togglePassword{
+    position: relative;
+    height: 2em;
+    float: right;
+    margin: 1em 1em 0 0;
+    cursor: pointer;
+    opacity: 0.7;
 }
 
 .inputs input:focus{
@@ -127,8 +139,8 @@
     height: fit-content;
     font-family: "Albert Sans", Arial, Helvetica, sans-serif;
     width: fit-content;
-    margin: 0;
     cursor: pointer;
+    align-self: end;
 }
 
 .tertiaryBTN:hover::after, .tertiaryBTN a:hover::after, .tertiaryBTN p:hover::after{
@@ -165,7 +177,7 @@
     .signin{
         display: grid;
         justify-self: center;
-        width: 70vw;
+        /* width: 70vw; */
     }
 
     .back{
