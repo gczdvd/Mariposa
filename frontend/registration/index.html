@@ -31,41 +31,38 @@
             </div>
 
             <div class="form-floating">
-                <input class="form-control shadow-none" id="username" type="text" spellcheck="false" onchange="colorChange(this)" placeholder="Felhasználónév">
-                <p id="usernameFeedback"></p>
+                <input class="form-control shadow-none" id="username" type="text" spellcheck="false" onchange="colorChange(this)" placeholder="Felhasználónév" onfocusout="usernameValid()">
+
+                <!-- <p id="usernameFeedback"></p> -->
 
                 <label for="name">Felhasználónév</label>
             </div>
 
             <div class="form-floating">
-                <input class="form-control shadow-none" id="email" type="email" spellcheck="false" onchange="colorChange(this)" placeholder="Email-cím">
-                <p id="emailFeedback"></p>
+                <input class="form-control shadow-none" id="email" type="email" spellcheck="false" onchange="colorChange(this)" placeholder="Email-cím" onfocusout="emailValid()">
+
+                <!-- <p id="emailFeedback"></p> -->
                 
                 <label for="email">Email-cím</label>
             </div>
 
             <div class="form-floating" id="formPassword">
-                <input class="form-control shadow-none" id="password" type="password" spellcheck="false" onchange="colorChange(this)" placeholder="Jelszó">
+                <input class="form-control shadow-none" id="password" type="password" spellcheck="false" onchange="colorChange(this)" placeholder="Jelszó" onfocusout="passwordValid()" data-bs-toggle="tooltip" data-bs-title="Legalább 12 karakter, kis- és nagy betű egyaránt" data-bs-placement="bottom">
 
                 <p>
                     <img src="/_images/view.png" alt="Jelszó láthatóságának változtatása" id="togglePassword" onclick="togglePassword()">
-                    
-                    <!-- Megjelenít -->
                 </p>
                 
-
-
-
                 <label for="password">Jelszó</label>
 
-                <p id="pswFeedback"></p>
+                <!-- <p id="pswFeedback"></p> -->
             </div>
 
-            <div class="TANDC">
+            <div class="TANDC" id="TANDC">
                 <input type="checkbox" id="checkbox">
                 <label for="checkbox">Elfogadom az <a href="/documents/mariposaaszf.pdf" target="_blank">ÁSZF</a>-be foglaltakat.</label>
 
-                <p id="checkboxFeedback"></p>
+                <!-- <p id="checkboxFeedback"></p> -->
             </div>
 
             <div class="button">
@@ -87,6 +84,7 @@
     
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>
 </html>

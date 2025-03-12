@@ -14,79 +14,111 @@ function togglePSW() {
 
 function colorChange(textarea){  
     if(textarea.value.length == 0){
-      textarea.style.borderColor = "#d3d3d3";
+      // textarea.style.borderColor = "#d3d3d3";
     }
     else{
-      textarea.style.borderColor = "#ffbc2f";
+      // textarea.style.borderColor = "#ffbc2f";
     }
 }  
 
-function checkPassword(){
-  var password = document.getElementById("password").value;
+function passwordValid(){
+  var password = document.getElementById("password");
+  var passwordValue = password.value;
+  // var passwordField = document.getElementById("password");
   var lowercase = false;
   var uppercase = false;
   
-  for(var i = 0; i < password.length; i++){
-    
-    if(password[i] == password[i].toLowerCase()){
+  for(var i = 0; i < passwordValue.length; i++){ 
+    if(passwordValue[i] == passwordValue[i].toLowerCase()){
       lowercase = true;
     }
-    else if(password[i] == password[i].toUpperCase()){
+    else if(passwordValue[i] == passwordValue[i].toUpperCase()){
       uppercase = true;
     }
   }
 
-  if(lowercase && uppercase && password.length >= 12){
+  if(lowercase && uppercase && passwordValue.length >= 12){
     // document.getElementById("pswFeedback").innerHTML = "";
-    document.getElementById("password").classList.remove("is-invalid");
+    password.classList.remove("is-invalid");
+    password.style.borderColor = "#ffbc2f";
     return password;
   }
   else{
     // document.getElementById("pswFeedback").innerHTML = "Legalább 12 karakter, kis- és nagybetű egyaránt";
-    document.getElementById("password").classList.add("is-invalid");
+    password.classList.add("is-invalid");
+    password.style.borderColor = "#dc3545";
+    // document.getElementById("password").style.borderColor = "#d3d3d3";
     return false;
   }
 }
 
-document.getElementById("password").addEventListener("keyup", checkPassword);
+// document.getElementById("password").addEventListener("keyup", checkPassword);
 
-function registration(){
-    var email = document.getElementById("email").value;
-    var username = document.getElementById("username").value;
-    var checkbox = document.getElementById("checkbox").checked;
-    var allValid = true;
+function usernameValid(){
+  var username = document.getElementById("username");
 
-    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    var validEmail = pattern.test(email);
-  
-    if(!validEmail){
-      document.getElementById("emailFeedback").innerHTML = "Kérjük, adj meg egy helyes email-címet!";
+  if(username.value.length == 0){
+    // document.getElementById("usernameFeedback").innerHTML = "Kérjük, adj meg egy felhasználónevet!";
+    username.classList.add("is-invalid");
+    username.style.borderColor = "#dc3545";
+    return false;
+  }
+  else{
+    // document.getElementById("usernameFeedback").innerHTML = "";
+    username.classList.remove("is-invalid");
+    username.style.borderColor = "#ffbc2f";
+    return true;
+  }
+}
+
+function emailValid(){
+  var email = document.getElementById("email");
+  const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  var validEmail = pattern.test(email.value);
+
+  if(!validEmail){
+    // document.getElementById("emailFeedback").innerHTML = "Kérjük, adj meg egy helyes email-címet!";
+    email.classList.add("is-invalid");
+    email.style.borderColor = "#dc3545";
+    return false;
+  }
+  else{
+    // document.getElementById("emailFeedback").innerHTML = "";
+    email.classList.remove("is-invalid");
+    email.style.borderColor = "#ffbc2f";
+    return true;
+  }
+}
+
+function checkboxValid(){
+  var checkbox = document.getElementById("checkbox").checked;
+
+  if(!checkbox){
+    // checkboxFeedback.style.visibility = "visible";
+    // document.getElementById("checkboxFeedback").innerHTML = "El kell fogadnod az ÁSZF-et!";
+    document.getElementById("TANDC").style.color = "#dc3545";
+    return false;
+  }
+  else{
+    // document.getElementById("checkboxFeedback").innerHTML = "";
+    document.getElementById("TANDC").style.color = "#000";
+    return true;
+  }
+}
+
+function registration(){    
+    var allValid;
+
+    var password = passwordValid();
+    var email = emailValid();
+    var username = usernameValid();
+    var checkbox = checkboxValid();
+
+    if(!password || !email || !username || !checkbox){      
       allValid = false;
     }
     else{
-      document.getElementById("emailFeedback").innerHTML = "";
-    }
-
-    var jelszo = checkPassword();
-    if(!jelszo){      
-      allValid = false;
-    }
-
-    if(username.length == 0){
-      document.getElementById("usernameFeedback").innerHTML = "Kérjük, adj meg egy felhasználónevet!";
-      allValid = false;
-    }
-    else{
-      document.getElementById("usernameFeedback").innerHTML = "";
-    }
-
-    if(!checkbox){
-      checkboxFeedback.style.visibility = "visible";
-      document.getElementById("checkboxFeedback").innerHTML = "El kell fogadnod az ÁSZF-et!";
-      allValid = false;
-    }
-    else{
-      document.getElementById("checkboxFeedback").innerHTML = "";
+      allValid = true;
     }
 
     if(allValid){
@@ -113,7 +145,7 @@ function registration(){
             password:key
         },
         callback:(e)=>{
-        //   e
+
         }
       });
     }
@@ -135,3 +167,7 @@ function togglePassword(){
 //   var password = document.getElementById("password").value;
 
 // }
+
+
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
