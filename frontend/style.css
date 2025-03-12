@@ -29,16 +29,14 @@ p{
     user-select: none;
 
     position: relative;
-    animation: floating 3s infinite;
+    animation: floating 1s infinite;
     animation-direction: normal;
 }
 
 @keyframes floating{
-    0%   {bottom: 0px; top: 0px;}
-    25%  {bottom: 2px; top: 0px;}
-    50%  {bottom: 5px; top: 5px;}
-    75%  {bottom: 0px; top: 2px;}
-    100% {bottom: 0px; top: 0px;}
+    0%   {top: 1px;}
+    50%   {top: 10px;}
+    100% {top: 1px;}
 }
 
 .button{
@@ -280,30 +278,43 @@ p{
 .aboutus{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto 1fr;
+    /* grid-template-rows: auto 1fr; */
     justify-self: center;
+    width: 90%;
     margin-bottom: 5vh;
 }
 
+.aboutus img{
+    height: 40vh;
+}
+
+
 .us-text{
-    display: grid;
+    /* display: grid; */
     align-self: center;
     text-align: center;
     font-family: "Red Hat Text";
-    font-size: 2em;
+    
 }
 
-.aboutus img{
+.us-text p{
+    font-size: 1.5em;
+}
+
+.us-text button{
+    margin-top: 1vh;
+}
+
+/* .aboutus img{
     width: 40vw;
     justify-self: center;
     align-self: center;
-    border-radius: 2vh;
     margin: auto;
 }
 
 .aboutus button{
     margin-top: 1vh;
-}
+} */
 
 
 .signup{
@@ -324,12 +335,16 @@ p{
     justify-self: center;
     align-self: center;
     gap: 1vh;
+    text-align: center;
 }
 
 .convince li{
-    text-indent: 2em;
-    list-style-position: inside;
+    /* text-indent: 2em; */
+    /* list-style-position: inside; */
+    list-style: none;
+    /* text-indent: 15%; */
 }
+
 
 .convince ul{
     margin: 1em 0;
@@ -634,16 +649,13 @@ p{
     }
 
     .aboutus{
-        justify-items: center;
+        grid-template-rows: auto auto;
+        /* justify-items: center; */
+        font-size: 0.7em;
     }
 
     .us-text{
         font-size: 1em;
-    }
-
-    .slides img{
-        width: 30vw;
-        border-radius: 3em;
     }
 
     .signup{
