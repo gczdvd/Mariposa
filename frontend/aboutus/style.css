@@ -408,6 +408,7 @@ p{
     width: 30vw;
     justify-self: center;
     box-sizing: border-box;
+    gap: 3vh;
 }
 
 .contactTitle{
@@ -423,12 +424,10 @@ p{
 }
 
 .form-control:focus{
-    color: #ffbc2f;
-    border: #ffbc2f 2px solid !important;
+    border: #999999 2px solid;
 }
 
 .form-control{
-    color: #ffbc2f;
     border: #d3d3d3 2px solid;
 }
 

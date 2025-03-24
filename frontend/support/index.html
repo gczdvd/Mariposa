@@ -193,28 +193,25 @@
         <p class="title">Kérdésed van? Írj nekünk!</p>
 
           <div class="form-floating">
-              <input class="form-control shadow-none" id="email" type="email" spellcheck="false" onchange="colorChange(this)" placeholder="Email-cím">
-              <p id="emailFeedback"></p>
+              <input class="form-control shadow-none" id="email" type="email" spellcheck="false" placeholder="Email-cím" onfocusout="emailValid()">
 
               <label for="email">Email-cím</label>
           </div>
 
           <div class="form-floating">
-              <input class="form-control shadow-none" id="fullname" type="text" spellcheck="false" onchange="colorChange(this)" placeholder="Teljes név">
-              <p id="nameFeedback"></p>
+              <input class="form-control shadow-none" id="fullname" type="text" spellcheck="false" placeholder="Teljes név" onfocusout="fullnameValid()">
               
               <label for="fullname">Teljes név</label>
           </div>
 
           <div class="form-floating">
-              <input class="form-control shadow-none" id="username" type="text" spellcheck="false" onchange="colorChange(this)" placeholder="Felhasználónév">
-              <p id="usernameFeedback"></p>
+              <input class="form-control shadow-none" id="username" type="text" spellcheck="false" placeholder="Felhasználónév">
               
               <label for="username">Felhasználónév (opcionális)</label>
           </div>
 
           <div class="form-floating">
-              <textarea class="form-control shadow-none" id="message" rows="5" maxlength="255" onchange="colorChange(this)" oninput="charCounter(this)" placeholder="Üzenet" spellcheck="none"></textarea>
+              <textarea class="form-control shadow-none" id="message" rows="4" maxlength="500" oninput="charCounter(this)" placeholder="Üzenet" spellcheck="none" onfocusout="messageValid()"></textarea>
               <p id="remaining-chars"></p>
               <p id="messageFeedback"></p>
               

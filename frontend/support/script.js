@@ -32,57 +32,87 @@ function charCounter(textarea) {
   }
 }
 
-function colorChange(inputField){
-  if(inputField.value.length == 0){
-    inputField.style.borderColor = "#d3d3d3";
-  }
-  else{
-    inputField.style.borderColor = "#ffbc2f";
-  }
-}
-
-function validate(){
+function emailValid(){
   var email = document.getElementById("email");
-  var fullname = document.getElementById("fullname").value;
-  var message = document.getElementById("message").value;
-  var allValid = true;
-
   const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   var validEmail = pattern.test(email.value);
 
   if(!validEmail){
-    document.getElementById("emailFeedback").style.visibility = "visible";
-    document.getElementById("emailFeedback").innerHTML = "Kérjük, adj meg egy helyes email-címet!";
-
     email.classList.add("is-invalid");
-
-    var allValid = false;
+    email.style.borderColor = "#dc3545";
+    email.style.color = "#dc3545";
+    return false;
   }
   else{
-    document.getElementById("emailFeedback").style.visibility = "hidden";
     email.classList.remove("is-invalid");
+    email.style.borderColor = "#ffbc2f";
+    email.style.color = "#ffbc2f";
+    return true;
   }
+}
 
-  if(fullname.length == 0){
-    document.getElementById("nameFeedback").style.visibility = "visible";
-    document.getElementById("nameFeedback").innerHTML = "Kérjük, adj meg egy nevet!";
-    allValid = false;
+function fullnameValid(){
+  var fullname = document.getElementById("fullname");
+
+  if(!fullname.value){
+    fullname.classList.add("is-invalid");
+    fullname.style.borderColor = "#dc3545";
+    fullname.style.color = "#dc3545";
+    return false;
   }
   else{
-    document.getElementById("nameFeedback").style.visibility = "hidden";
+    fullname.classList.remove("is-invalid");
+    fullname.style.borderColor = "#ffbc2f";
+    fullname.style.color = "#ffbc2f";
+    return true;
   }
+}
 
-  if(message.length == 0){
-    document.getElementById("messageFeedback").style.visibility = "visible";
-    document.getElementById("messageFeedback").innerHTML = "Kérjük, adj meg egy üzenetet!";
-    allValid = false;
+function messageValid(){
+  var message = document.getElementById("message");
+
+  if(!message.value){
+    message.classList.add("is-invalid");
+    message.style.borderColor = "#dc3545";
+    message.style.color = "#dc3545";
+    return false;
   }
   else{
-    document.getElementById("messageFeedback").style.visibility = "hidden";
+    message.classList.remove("is-invalid");
+    message.style.borderColor = "#ffbc2f";
+    message.style.color = "#ffbc2f";
+    return true;
+  }
+}
+
+function validate(){
+  var email = emailValid();
+  var fullname = fullnameValid();
+  var message = messageValid();
+  var username = document.getElementById("username");
+  var allValid;
+
+  username.style.borderColor = "#ffbc2f";
+  username.style.color = "#ffbc2f";
+
+  if(!email || !fullname || !message){
+    allValid = false;
+    emailValid();
+    fullnameValid();
+    messageValid();
+  }
+  else{
+    allValid = true;
   }
 
   if(allValid){
-    support(email, fullname, message);
+    var emailValue = document.getElementById("email").value;
+    var fullnameValue = document.getElementById("fullname").value;
+    var usernameValue = document.getElementById("username").value;
+    var messageValue = document.getElementById("message").value;
+
+
+    support();
   }
 }
 
@@ -94,11 +124,13 @@ function empty(){
   document.getElementById("remaining-chars").innerHTML = "";
 }
 
-function support(email, name, message){
+// ÁTÍRNI A BACKENDBEN
+
+function support(emailValue, fullnameValue, usernameValue, messageValue){
     Backend.post({
         "path":"/message",
         "body":{
-            "email":email,
+            "email":emailValue,
             "name":name,
             "text":message
         },
@@ -127,7 +159,7 @@ function supportResponse(e){
     Swal.fire({
       icon: "error",
       iconColor: "#ffbc2f",
-      title: "Az üzenet küldése sikertelen.",
+      title: "Az üzenet küldése sikertelen volt.",
       text: "Kérjük, próbáld meg később!",
       width: "64em",
       confirmButtonText: "Rendben!", 

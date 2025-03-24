@@ -29,53 +29,83 @@ function charCounter(textarea) {
   }
 }
 
-function colorChange(inputField){
-  if(inputField.value.length == 0){
-    inputField.style.borderColor = "#d3d3d3";
+
+function emailValid(){
+  var email = document.getElementById("email");
+  const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  var validEmail = pattern.test(email.value);
+
+  if(!validEmail){
+    email.classList.add("is-invalid");
+    email.style.borderColor = "#dc3545";
+    email.style.color = "#dc3545";
+    return false;
   }
   else{
-    inputField.style.borderColor = "#ffbc2f";
+    email.classList.remove("is-invalid");
+    email.style.borderColor = "#ffbc2f";
+    email.style.color = "#ffbc2f";
+    return true;
+  }
+}
+
+function fullnameValid(){
+  var fullname = document.getElementById("fullname");
+
+  if(!fullname.value){
+    fullname.classList.add("is-invalid");
+    fullname.style.borderColor = "#dc3545";
+    fullname.style.color = "#dc3545";
+    return false;
+  }
+  else{
+    fullname.classList.remove("is-invalid");
+    fullname.style.borderColor = "#ffbc2f";
+    fullname.style.color = "#ffbc2f";
+    return true;
+  }
+}
+
+function messageValid(){
+  var message = document.getElementById("message");
+
+  if(!message.value){
+    message.classList.add("is-invalid");
+    message.style.borderColor = "#dc3545";
+    message.style.color = "#dc3545";
+    return false;
+  }
+  else{
+    message.classList.remove("is-invalid");
+    message.style.borderColor = "#ffbc2f";
+    message.style.color = "#ffbc2f";
+    return true;
   }
 }
 
 function validate(){
-  var email = document.getElementById("email").value;
-  var fullname = document.getElementById("fullname").value;
-  var message = document.getElementById("message").value;
-  var allValid = true;
+  var email = emailValid();
+  var fullname = fullnameValid();
+  var message = messageValid();
+  var username = document.getElementById("username");
+  var allValid;
 
-  const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  var validEmail = pattern.test(email);
+  username.style.borderColor = "#ffbc2f";
+  username.style.color = "#ffbc2f";
 
-  if(!validEmail){
-    document.getElementById("emailFeedback").style.visibility = "visible";
-    document.getElementById("emailFeedback").innerHTML = "Kérjük, adj meg egy helyes email-címet!";
-    var allValid = false;
-  }
-  else{
-    document.getElementById("emailFeedback").style.visibility = "hidden";
-  }
-
-  if(fullname.length == 0){
-    document.getElementById("nameFeedback").style.visibility = "visible";
-    document.getElementById("nameFeedback").innerHTML = "Kérjük, adj meg egy nevet!";
+  if(!email || !fullname || !message){
     allValid = false;
+    emailValid();
+    fullnameValid();
+    messageValid();
   }
   else{
-    document.getElementById("nameFeedback").style.visibility = "hidden";
-  }
-
-  if(message.length == 0){
-    document.getElementById("messageFeedback").style.visibility = "visible";
-    document.getElementById("messageFeedback").innerHTML = "Kérjük, adj meg egy üzenetet!";
-    allValid = false;
-  }
-  else{
-    document.getElementById("messageFeedback").style.visibility = "hidden";
+    allValid = true;
   }
 
   if(allValid){
-    support(email, fullname, message);
+    // BEMENETI PARAMÉTEREK
+    support();
   }
 }
 
