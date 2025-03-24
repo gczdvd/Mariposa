@@ -144,13 +144,11 @@
 }
 
 .form-control{
-    color: #ffbc2f;
     border: #d3d3d3 2px solid;
     /* position: absolute; */
 }
 
 .form-control:focus{
-    color: #ffbc2f;
     border: #999999 2px solid;
 }
 

@@ -36,34 +36,49 @@ function togglePassword(){
   }
 }
 
-function colorChange(textarea){
-  if(textarea.value.length == 0){
-    textarea.style.borderColor = "#d3d3d3";
+// function colorChange(textarea){
+//   if(textarea.value.length == 0){
+//     textarea.style.borderColor = "#d3d3d3";
+//   }
+//   else{
+//     textarea.style.borderColor = "#ffbc2f";
+//   }
+// }
+
+function emailValid(){
+  var email = document.getElementById("email");
+  const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  var validEmail = pattern.test(email.value);
+
+  if(!validEmail){
+    email.classList.add("is-invalid");
+    email.style.borderColor = "#dc3545";
+    email.style.color = "#dc3545";
+    return false;
   }
   else{
-    textarea.style.borderColor = "#ffbc2f";
+    email.classList.remove("is-invalid");
+    email.style.borderColor = "#ffbc2f";
+    email.style.color = "#ffbc2f";
+    return true;
   }
 }
 
 function login(){
-  var email = document.getElementById("email").value;
-  var allValid = true;
+  emailValid();
 
-  console.log(email);
-  const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  var validEmail = pattern.test(email);
+  var password = passwordValid();
+  var email = emailValid();
 
-  if(!validEmail){
-    document.getElementById("emailFeedback").innerHTML = "Helytelen email-cím";
-    var allValid = false;
+  if(!email){      
+    allValid = false;
   }
   else{
-    document.getElementById("emailFeedback").innerHTML = "";
+    allValid = true;
   }
 
   if(!automatic){
-    var jelszo = checkPassword();
-    if(!jelszo){
+    if(!password || !email){
         allValid = false;
     }
   }
@@ -105,33 +120,41 @@ function login(){
   }
 }
 
-function checkPassword(){
+function passwordValid(){
     automatic = false;
     
-    var password = document.getElementById("password").value;
+    var password = document.getElementById("password");
+    var passwordValue = password.value;
+    // var passwordField = document.getElementById("password");
     var lowercase = false;
     var uppercase = false;
-
-    for(var i = 0; i < password.length; i++){
-        if(password[i] == password[i].toLowerCase()){
-            lowercase = true;
-        }
-        else if(password[i] == password[i].toUpperCase()){
-            uppercase = true;
-        }
+    
+    for(var i = 0; i < passwordValue.length; i++){ 
+      if(passwordValue[i] == passwordValue[i].toLowerCase()){
+        lowercase = true;
+      }
+      else if(passwordValue[i] == passwordValue[i].toUpperCase()){
+        uppercase = true;
+      }
     }
 
-if(lowercase && uppercase && password.length >= 12){
-  document.getElementById("pswFeedback").innerHTML = "";
-  return password;
-}
-else{
-  document.getElementById("pswFeedback").innerHTML = "Legalább 12 karakter, kis- és nagybetű egyaránt";
-  return false;
-}
+    if(lowercase && uppercase && passwordValue.length >= 12){
+      // document.getElementById("pswFeedback").innerHTML = "";
+      password.classList.remove("is-invalid");
+      password.style.borderColor = "#ffbc2f";
+      password.style.color = "#ffbc2f";
+      return password;
+    }
+    else{
+      password.classList.add("is-invalid");
+      password.style.borderColor = "#dc3545";
+      password.style.color = "#dc3545";
+
+      // document.getElementById("password").style.borderColor = "#d3d3d3";
+      return false;
+    }
 }
 
-document.getElementById("password").addEventListener("keyup", checkPassword);
 
 var automatic = false;
 if(getCookie("email") && getCookie("password")){
@@ -200,3 +223,6 @@ async function forgotPassword(){
 //     })
 //   }
 // }
+
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))

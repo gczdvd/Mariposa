@@ -285,7 +285,7 @@ p{
 }
 
 .aboutus img{
-    height: 40vh;
+    width: 50vw;
 }
 
 
@@ -595,7 +595,6 @@ p{
         display: grid;
         grid-template-rows: auto auto;
         grid-template-columns: none;
-        /* margin-bottom: 5vh; */
         margin: 0;
     }
 
@@ -604,7 +603,6 @@ p{
         width: 100vw;
         max-width: 100%;
         width: 70vw;
-        /* margin: 10vh 0 5vh 0; */
     }
 
     .texts{
@@ -651,6 +649,7 @@ p{
     .aboutus{
         grid-template-rows: auto auto;
         /* justify-items: center; */
+        height: fit-content;
         font-size: 0.7em;
     }
 

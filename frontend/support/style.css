@@ -61,13 +61,13 @@
 }
 
 .wrapper{
-    width: 100vw;
+    /* width: 100vw; */
     max-width: 100%;
 }
 
 .header{
     display: grid;
-    width: 100vw;
+    /* width: 100vw; */
     max-width: 100%;
     height: fit-content;
     grid-template-columns: auto 1fr 1fr;
@@ -150,11 +150,11 @@
 
 .cover{
     display: grid;
-    grid-template-columns: 55vw 40vw;
+    grid-template-columns: 1fr 1fr;
     width: 100%;
     text-align: center;
     align-items: center;
-    padding: 10vh 0;
+    padding: 5vh 0;
 }
 
 .cover img{
@@ -302,6 +302,7 @@
     font-family: "Albert Sans", Arial, Helvetica, sans-serif;
     font-size: 1.5em;
     margin-bottom: 0;
+    margin-top: 0.5em;
 }
 
 .form-floating{
@@ -529,7 +530,7 @@ label{
     }
 
     .cover img{
-        width: 70vw;
+        width: 60vw;
         max-width: 100%;
         grid-row-start: 1;
     }

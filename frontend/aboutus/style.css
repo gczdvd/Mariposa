@@ -328,7 +328,7 @@ p{
     display: grid;
     grid-row: 2;
     grid-template-columns: 1fr;
-    height: fit-content;
+    /* height: fit-content; */
     border: 3px rgb(243, 243, 243) solid;
     border: 3px #ffe2a4 solid;
     padding: 2vw;
@@ -369,11 +369,10 @@ p{
 }
 
 .panel p{
-    display: block;
+    /* display: block; */
     margin: 0;
     padding: 0;
-    width: fit-content;
-    height: 40vh;
+    height: 50vh;
 }
 
 
@@ -675,8 +674,12 @@ label{
         margin-bottom: 2vh;
     }
 
+    .gd, .csx, .hk{
+        padding: 3vw;
+    }
+
     .panel p{
-        height: 35vh;
+        height: fit-content;
     }
 
     .contact{
@@ -685,6 +688,7 @@ label{
         max-width: 100%;
         justify-self: center;
         margin: auto;
+        padding: 2vh 0 0 0;
     }
 
     .contact img{

@@ -1,14 +1,5 @@
 Backend.setUrl("127.0.0.1:3000");
 
-function colorChange(textarea){  
-    if(textarea.value.length == 0){
-      // textarea.style.borderColor = "#d3d3d3";
-    }
-    else{
-      // textarea.style.borderColor = "#ffbc2f";
-    }
-}  
-
 function passwordValid(){
   var password = document.getElementById("password");
   var passwordValue = password.value;
@@ -29,13 +20,13 @@ function passwordValid(){
     // document.getElementById("pswFeedback").innerHTML = "";
     password.classList.remove("is-invalid");
     password.style.borderColor = "#ffbc2f";
+    password.style.color = "#ffbc2f";
     return password;
   }
   else{
-    // document.getElementById("pswFeedback").innerHTML = "Legalább 12 karakter, kis- és nagybetű egyaránt";
     password.classList.add("is-invalid");
     password.style.borderColor = "#dc3545";
-    // document.getElementById("password").style.borderColor = "#d3d3d3";
+    password.style.color = "#dc3545";
     return false;
   }
 }
@@ -49,12 +40,14 @@ function usernameValid(){
     // document.getElementById("usernameFeedback").innerHTML = "Kérjük, adj meg egy felhasználónevet!";
     username.classList.add("is-invalid");
     username.style.borderColor = "#dc3545";
+    username.style.color = "#dc3545";
     return false;
   }
   else{
     // document.getElementById("usernameFeedback").innerHTML = "";
     username.classList.remove("is-invalid");
     username.style.borderColor = "#ffbc2f";
+    username.style.color = "#ffbc2f";
     return true;
   }
 }
@@ -65,15 +58,15 @@ function emailValid(){
   var validEmail = pattern.test(email.value);
 
   if(!validEmail){
-    // document.getElementById("emailFeedback").innerHTML = "Kérjük, adj meg egy helyes email-címet!";
     email.classList.add("is-invalid");
     email.style.borderColor = "#dc3545";
+    email.style.color = "#dc3545";
     return false;
   }
   else{
-    // document.getElementById("emailFeedback").innerHTML = "";
     email.classList.remove("is-invalid");
     email.style.borderColor = "#ffbc2f";
+    email.style.color = "#ffbc2f";
     return true;
   }
 }
@@ -82,13 +75,10 @@ function checkboxValid(){
   var checkbox = document.getElementById("checkbox").checked;
 
   if(!checkbox){
-    // checkboxFeedback.style.visibility = "visible";
-    // document.getElementById("checkboxFeedback").innerHTML = "El kell fogadnod az ÁSZF-et!";
     document.getElementById("TANDC").style.color = "#dc3545";
     return false;
   }
   else{
-    // document.getElementById("checkboxFeedback").innerHTML = "";
     document.getElementById("TANDC").style.color = "#000";
     return true;
   }
@@ -110,7 +100,6 @@ function registration(){
     }
 
     if(allValid){
-      
       Swal.fire({
         icon: "success",
         iconColor: "#ffbc2f",
@@ -133,7 +122,6 @@ function registration(){
             password:key
         },
         callback:(e)=>{
-
         }
       });
     }
@@ -149,13 +137,6 @@ function togglePassword(){
     document.getElementById("togglePassword").src = "/_images/view.png";
   }
 }
-
-// function checkValidation(){
-//   var email = document.getElementById("email").value;
-//   var password = document.getElementById("password").value;
-
-// }
-
 
 const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
 const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))

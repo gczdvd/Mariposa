@@ -42,21 +42,25 @@ function colorChange(inputField){
 }
 
 function validate(){
-  var email = document.getElementById("email").value;
+  var email = document.getElementById("email");
   var fullname = document.getElementById("fullname").value;
   var message = document.getElementById("message").value;
   var allValid = true;
 
   const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  var validEmail = pattern.test(email);
+  var validEmail = pattern.test(email.value);
 
   if(!validEmail){
     document.getElementById("emailFeedback").style.visibility = "visible";
     document.getElementById("emailFeedback").innerHTML = "Kérjük, adj meg egy helyes email-címet!";
+
+    email.classList.add("is-invalid");
+
     var allValid = false;
   }
   else{
     document.getElementById("emailFeedback").style.visibility = "hidden";
+    email.classList.remove("is-invalid");
   }
 
   if(fullname.length == 0){
@@ -144,3 +148,6 @@ Backend.get({
         }
     }
 });
+
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
