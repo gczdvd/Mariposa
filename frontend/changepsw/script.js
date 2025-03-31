@@ -1,26 +1,3 @@
-function colorChange(textarea){
-    if(textarea.value.length == 0){
-      textarea.style.borderColor = "#d3d3d3";
-    }
-    else{
-      textarea.style.borderColor = "#ffbc2f";
-    }
-}
-
-function togglePassword(togglePassword){
-  var psw = togglePassword.previousSibling;
-  if (psw.type === "password") {
-    psw.type = "text";
-    togglePassword.src = "/_images/hide.png";
-  } else {
-    psw.type = "password";
-    togglePassword.src = "/_images/view.png";
-  }
-}
-
-
-
-
 async function forgotPassword(){
   Swal.fire({
       icon: "warning",
@@ -61,37 +38,61 @@ async function forgotPassword(){
   });
 }
 
-function validate(){
-  var newPassword1 = document.getElementById("password1").value;
+
+function passwordValid(password){
+  var passwordValue = password.value;
+  // var passwordField = document.getElementById("password");
   var lowercase = false;
   var uppercase = false;
-
-  for(var i = 0; i < newPassword1.length; i++){
-    if(newPassword1[i] == newPassword1[i].toLowerCase()){
+  
+  for(var i = 0; i < passwordValue.length; i++){ 
+    if(passwordValue[i] == passwordValue[i].toLowerCase()){
       lowercase = true;
     }
-    else if(newPassword1[i] == newPassword1[i].toUpperCase()){
+    else if(passwordValue[i] == passwordValue[i].toUpperCase()){
       uppercase = true;
     }
   }
 
-  if(lowercase && uppercase && newPassword1.length >= 12){
-    document.getElementById("newPassFeedback").innerHTML = "";
-    return newPassword1;
+  if(lowercase && uppercase && passwordValue.length >= 12){
+    password.classList.remove("is-invalid");
+    password.style.borderColor = "#ffbc2f";
+    password.style.color = "#ffbc2f";
+    return password;
   }
   else{
-    document.getElementById("newPassFeedback").innerHTML = "Legalább 12 karakter, kis- és nagybetű egyaránt";
+    password.classList.add("is-invalid");
+    password.style.borderColor = "#dc3545";
+    password.style.color = "#dc3545";
     return false;
   }
 }
-document.getElementById("password1").addEventListener("keyup", validate);
+
+
+function validate(){
+  var newPassword1 = document.getElementById("password1").value;
+  var lowercase = false;
+  var uppercase = false;
+}
 
 
 function same(){
   if(document.getElementById("password1").value == document.getElementById("password2").value){
+    password1.classList.add("is-invalid");
+    password1.borderColor = "#dc3545";
+
+    password2.classList.add("is-invalid");
+    password2.borderColor = "#dc3545";
+
     document.getElementById("bothPassFeedback").innerHTML = "";
   }
   else{
+    password1.classList.remove("is-invalid");
+    password1.borderColor = "#ffbc2f";
+
+    password2.classList.remove("is-invalid");
+    password2.borderColor = "#ffbc2f";
+
     document.getElementById("bothPassFeedback").innerHTML = "A két jelszó nem egyezik";
   }
 }
@@ -141,6 +142,21 @@ function save(){
     });
   }
 }
+
+function togglePassword(togglePassword){
+  var psw = togglePassword.parentElement.previousElementSibling;
+
+  if (psw.type === "password") {
+    psw.type = "text";
+    togglePassword.src = "/_images/hide.png";
+  } else {
+    psw.type = "password";
+    togglePassword.src = "/_images/view.png";
+  }
+}
+
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
 Backend.get({
   path:"/userinfo",
