@@ -48,6 +48,7 @@
     height: fit-content;
     font-family: "Albert Sans", Arial, Helvetica, sans-serif;
     cursor: pointer;
+    margin-bottom: 0;
 }
 
 .tertiaryBTN:hover::after, .tertiaryBTN a:hover::after, .tertiaryBTN p:hover::after{
@@ -89,7 +90,7 @@
     /* width: fit-content; */
     height: 90vh;
     justify-self: center;
-    /* align-self: center; */
+    align-self: center;
 }
 
 .image{
@@ -107,12 +108,14 @@
     font-family: "Red Hat Text", "Trebuchet MS", Helvetica, sans-serif;
     font-weight: 600;
     font-size: 1.5em;
+    align-self: end;
 }
 
 
 .form-floating{
     font-family: 'Red Hat Text', "Trebuchet MS", Helvetica, sans-serif;
     min-width: 25vw;
+    align-self: center;
 }
 
 .form-control{
@@ -127,6 +130,10 @@
 .nickname, .email, .password{
     font-family: "Red Hat Text", "Trebuchet MS", Helvetica, sans-serif;
     font-size: 1.2em;
+}
+
+#pswFeedback{
+    color: red;
 }
 
 #togglePassword{

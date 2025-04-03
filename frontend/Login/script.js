@@ -65,8 +65,6 @@ function emailValid(){
 }
 
 function login(){
-  emailValid();
-
   var password = passwordValid();
   var email = emailValid();
 
@@ -88,7 +86,7 @@ function login(){
         var precode = getCookie("password");
     }
     else{
-        var precode = CryptoJS.SHA256(jelszo).toString();
+        var precode = CryptoJS.SHA256(password).toString();
     }
     console.log("precode", precode);
     if(document.getElementById("rememberme").checked){

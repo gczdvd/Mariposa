@@ -88,8 +88,9 @@
 .signup{
     display: grid;
     /* grid-template-rows: repeat(5, 1fr); */
-    /* height: 90vh; */
+    height: 80vh;
     justify-self: center;
+    align-self: center;
 }
 
 .account{

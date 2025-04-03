@@ -53,7 +53,7 @@ const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]
 const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
 function subm(){
-    var jelszo = validate();
+    var jelszo = passwordValid(document.getElementById("password1"));
     var password1 = document.getElementById("password1").value;
     var password2 = document.getElementById("password1").value;
     var key = (new URLSearchParams(window.location.search)).get("key");
