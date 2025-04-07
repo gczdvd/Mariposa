@@ -41,6 +41,7 @@ function colorChange(inputField){
 function validate(){
   var email = document.getElementById("email").value;
   var fullname = document.getElementById("fullname").value;
+  var username = document.getElementById("username").value;
   var message = document.getElementById("message").value;
   var allValid = true;
 
@@ -75,15 +76,16 @@ function validate(){
   }
 
   if(allValid){
-    support(email, fullname, message);
+    support(email, username, fullname, message);
   }
 }
 
-function support(email, name, message){
+function support(email, username, name, message){
     Backend.post({
         "path":"/message",
         "body":{
             "email":email,
+            "username":username,
             "name":name,
             "text":message
         },

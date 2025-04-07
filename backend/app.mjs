@@ -355,7 +355,7 @@ app.get('/signup/verify', (req, res) => {
 });
 
 app.post('/message', (req, res) => {
-    smtp.support(req.body.email, req.body.name, req.body.text);
+    smtp.support(req.body.email, req.body.username, req.body.name, req.body.text);
     res.status(200);
     res.send(JSON.stringify({
         "action":"none",

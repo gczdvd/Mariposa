@@ -6,7 +6,7 @@ class Backend{
             if(debug) alert(JSON.stringify(backendResponse));
             window.location.href = backendResponse.value;
         }
-        else if(backendResponse.action == "reload"){
+        else if(requestParams.blockReload == undefined && backendResponse.action == "reload"){
             window.location.reload();
         }
         else{
