@@ -30,23 +30,29 @@
             </div>
 
             <div class="form-floating">
-                <input class="form-control shadow-none" id="email" type="email" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="Email-cím">
-                <p id="emailFeedback"></p>
+                <input class="form-control shadow-none" id="email" type="email" spellcheck="false" placeholder="Email-cím" onfocusout="emailValid()">
                 
                 <label for="email">Email-cím</label>
             </div>
 
-            <div class="form-floating">
-                <input class="form-control shadow-none" id="password" type="password" spellcheck="false" onchange="colorChange(this)" onfocusout="colorChange(this)" placeholder="Jelszó">
-                <p id="pswFeedback"></p>
+            <div class="form-floating" id="formPassword">
+                <input class="form-control shadow-none" id="password" type="password" spellcheck="false" placeholder="Jelszó" onkeyup="passwordValid()" data-bs-toggle="tooltip" data-bs-title="Legalább 12 karakter, kis- és nagy betű egyaránt" data-bs-placement="bottom">
+
+                <p>
+                    <img src="/_images/view.png" alt="Jelszó láthatóságának változtatása" id="togglePassword" onclick="togglePassword()">
+                </p>
                 
                 <label for="password">Jelszó</label>
+
+                <p id="pswFeedback"></p>
             </div>
 
             <div class="rememberme">
                 <input type="checkbox" id="rememberme">
                 <label for="rememberme">Maradjak bejelentkezve</label>
             </div>
+
+            
 
             <div class="forgotPSW">
                 <p class="tertiaryBTN" onclick="forgotPassword()">Elfelejtettem a jelszavam</p>
@@ -68,6 +74,8 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>
 </html>

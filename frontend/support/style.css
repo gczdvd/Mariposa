@@ -25,7 +25,6 @@
     font-size: 1.5em;
     border: 3px solid transparent;
     cursor: pointer;
-    margin-top: 1em;
 }
 
 .primaryBTN:hover{
@@ -61,13 +60,13 @@
 }
 
 .wrapper{
-    width: 100vw;
+    /* width: 100vw; */
     max-width: 100%;
 }
 
 .header{
     display: grid;
-    width: 100vw;
+    /* width: 100vw; */
     max-width: 100%;
     height: fit-content;
     grid-template-columns: auto 1fr 1fr;
@@ -150,11 +149,11 @@
 
 .cover{
     display: grid;
-    grid-template-columns: 55vw 40vw;
+    grid-template-columns: 1fr 1fr;
     width: 100%;
     text-align: center;
     align-items: center;
-    padding: 10vh 0;
+    padding: 5vh 0;
 }
 
 .cover img{
@@ -273,7 +272,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     background-color: transparent;
-    height: fit-content;
+    /* height: fit-content; */
     margin: 5vh 0;
     width: 80vw;
     justify-self: center;
@@ -296,33 +295,28 @@
     width: 30vw;
     justify-self: center;
     box-sizing: border-box;
+    gap: 3vh;
 }
 
 .title{
     font-family: "Albert Sans", Arial, Helvetica, sans-serif;
     font-size: 1.5em;
     margin-bottom: 0;
+    margin-top: 0.5em;
 }
 
 .form-floating{
     font-family: 'Red Hat Text', "Trebuchet MS", Helvetica, sans-serif;
-}
-
-.form-control:focus{
-    color: #ffbc2f;
-    border: #ffbc2f 2px solid !important;
+    min-width: 25vw;
 }
 
 .form-control{
-    color: #ffbc2f;
     border: #d3d3d3 2px solid;
+    /* position: absolute; */
 }
 
-.inputs{
-    display: grid;
-    width: 30vw;
-    justify-self: center;
-    box-sizing: border-box;
+.form-control:focus{
+    border: #999999 2px solid;
 }
 
 .title{
@@ -333,35 +327,18 @@
     height: fit-content;
 }
 
-.form-floating{
-    font-family: 'Red Hat Text', "Trebuchet MS", Helvetica, sans-serif;
-}
-
-.form-control:focus{
-    color: #ffbc2f;
-    border: #ffbc2f 2px solid !important;
-}
-
-.form-control{
-    color: #ffbc2f;
-    border: #d3d3d3 2px solid;
-}
-
-.inputs input:focus{
-    outline: none;
-}
 
 #message{
     resize: none;
-    height: 25vh;
+    height: 20vh;
 }
 
 #emailFeedback, #nameFeedback, #messageFeedback, #usernameFeedback{
-    color: red;
+    /* color: red; */
     /* visibility: hidden; */
-    margin: 0;
+    /* margin: 0;
     font-weight: 400;
-    height: 2em;
+    height: 2em; */
 }
 
 label{
@@ -529,7 +506,7 @@ label{
     }
 
     .cover img{
-        width: 70vw;
+        width: 60vw;
         max-width: 100%;
         grid-row-start: 1;
     }

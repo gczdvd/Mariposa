@@ -590,7 +590,7 @@ input[type=number] {
     .data{
         display: grid;
         grid-row-start: 2;
-        width: 90vw;
+        width: 98vw;
         max-width: 100%;
         margin: 0 0;
     }

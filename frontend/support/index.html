@@ -42,7 +42,7 @@
         <li>
           <a id="optlogin" href="/login" class="tertiaryBTN">Bejelentkezés &#8680;</a>
 
-          <div id="optprofile" hidden href="/profilesettings" title="Profilbeállítások">
+          <div id="optprofile" hidden title="Profilbeállítások" onclick="location.href='/profilesettings';">
 
           </div>
         </li>
@@ -76,7 +76,7 @@
 
         <button class="accordion">Kik fejlesztik a Mariposát?</button>
         <div class="panel">
-          <p>A Mariposát egy három fiatalból álló csapat fejleszti, akik odaadással dolgoznak, hogy a Mariposa egy maradandó élmény legyen a felhasználók számára. Bővebb információkért látogasd meg a <a href="/aboutus">Rólunk</a> felületet.</p>
+          <p>A Mariposát egy három fiatalból álló csapat fejleszti, akik odaadással dolgoznak, hogy a Mariposa egy maradandó élmény legyen a felhasználók számára. Bővebb információért látogasd meg a <a href="/aboutus">Rólunk</a> felületet.</p>
         </div>
 
         <button class="accordion">Hogyan működik a Mariposa?</button>
@@ -130,7 +130,7 @@
           <p>A regisztráció során elegendő egy becenév, egy létező email-cím és egy megfelelő jelszó megadása.</p>
         </div>
 
-        <button class="accordion">Más oldalakon több adatot kérnek a regisztráció során. A Mariposán hogyhogy elegendő három dolog?</button>
+        <button class="accordion">Van bármilyen egyéb adat, amit meg kell adnom?</button>
         <div class="panel">
           <p>A regisztrációt úgy alakítottuk ki, hogy minél gördülékenyebb és gyorsabb legyen a hibátlan felhasználói élmény érdekében. Azonban a regisztrációt követően a Profilbeállításokban van lehetőséged további adatok megadására.</p>
         </div>  
@@ -193,28 +193,25 @@
         <p class="title">Kérdésed van? Írj nekünk!</p>
 
           <div class="form-floating">
-              <input class="form-control shadow-none" id="email" type="email" spellcheck="false" onchange="colorChange(this)" placeholder="Email-cím">
-              <p id="emailFeedback"></p>
+              <input class="form-control shadow-none" id="email" type="email" spellcheck="false" placeholder="Email-cím" onfocusout="emailValid()">
 
               <label for="email">Email-cím</label>
           </div>
 
           <div class="form-floating">
-              <input class="form-control shadow-none" id="fullname" type="text" spellcheck="false" onchange="colorChange(this)" placeholder="Teljes név">
-              <p id="nameFeedback"></p>
+              <input class="form-control shadow-none" id="fullname" type="text" spellcheck="false" placeholder="Teljes név" onfocusout="fullnameValid()">
               
               <label for="fullname">Teljes név</label>
           </div>
 
           <div class="form-floating">
-              <input class="form-control shadow-none" id="username" type="text" spellcheck="false" onchange="colorChange(this)" placeholder="Felhasználónév">
-              <p id="usernameFeedback"></p>
+              <input class="form-control shadow-none" id="username" type="text" spellcheck="false" placeholder="Felhasználónév">
               
               <label for="username">Felhasználónév (opcionális)</label>
           </div>
 
           <div class="form-floating">
-              <textarea class="form-control shadow-none" id="message" rows="5" maxlength="255" onchange="colorChange(this)" oninput="charCounter(this)" placeholder="Üzenet" spellcheck="none"></textarea>
+              <textarea class="form-control shadow-none" id="message" rows="4" maxlength="500" oninput="charCounter(this)" placeholder="Üzenet" spellcheck="none" onfocusout="messageValid()"></textarea>
               <p id="remaining-chars"></p>
               <p id="messageFeedback"></p>
               
@@ -234,7 +231,7 @@
           <!-- Social media links -->
           <p id="socialmedia">
               <a href="https://buymeacoffee.com/mariposatsb">
-                  <img src="../_images/bmac.png" alt="buymeacoffee.com/mariposatsb" title="buymeacoffee.com/mariposatsb" id="coffee">
+                  <img src="/_images/bmac.png" alt="buymeacoffee.com/mariposatsb" title="buymeacoffee.com/mariposatsb" id="coffee">
               </a>
           </p>
       </div>
@@ -259,7 +256,7 @@
               Felhasználói Feltételek
           </a>
 
-          <a href="https://forms.gle/Sk2mF3YXycg6LPYJA" target="_blank">
+          <a href="https://forms.gle/qHWUfrQHc5NaRnoQ6" target="_blank">
               Elégedettségi kérdőív
           </a>
 
@@ -277,6 +274,9 @@
       </div>
   </div>
 </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
   <script src="script.js"></script>
 </body>
 </html>

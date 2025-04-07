@@ -228,10 +228,19 @@ function deleteAccount(){
             var words = f.split('\r\n');
             var word = words[Math.floor(Math.random() * words.length)];
             Swal.fire({
-                title: "Írd vissza",
+                title: "A fiók törléséhez írd vissza az alábbi szót:",
+                icon: "warning",
+                width: "64em",
                 text: word,
                 input: "text",
-                showCancelButton: true
+                showCancelButton: true,
+                showCancelButton: "true",
+                showConfirmButton: "true",
+                reverseButtons: "true",
+                confirmButtonColor: "#ffbc2f",
+                confirmButtonText: "Törlés",
+                cancelButtonText: "Mégse",
+                iconColor: "#ffbc2f"
             }).then((g)=>{
                 if(g.isConfirmed && g.value == word){
                     console.log("Fiók törlése");

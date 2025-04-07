@@ -23,21 +23,23 @@
                 Változtasd meg a jelszavad!
             </div>
 
-            <div class="form-floating passwordNew1">
-                <input class="form-control shadow-none" id="password1" type="password" spellcheck="false" onchange="colorChange(this)" placeholder="Új jelszó">
-                <p id="newPassFeedback"></p>
+            <div class="form-floating" id="formPassword">
+                <input class="form-control shadow-none" id="password1" type="password" spellcheck="false" placeholder="Jelszó" onfocusout="passwordValid(this)" data-bs-toggle="tooltip" data-bs-title="Legalább 12 karakter, kis- és nagy betű egyaránt" data-bs-placement="bottom">
+
+                <p><img src="/_images/view.png" alt="Jelszó láthatóságának változtatása" id="togglePassword" onclick="togglePassword(this)"></p>
                 
-                <label for="password1">Új jelszó</label>
+                <label for="password">Új jelszó</label>
             </div>
 
-            <div class="form-floating passwordNew2">
-                <input class="form-control shadow-none" id="password2" type="password" spellcheck="false" onchange="colorChange(this)" placeholder="Új jelszó még egyszer">
-                <!-- <p id="reNewPassFeedback"></p> -->
-                
-                <label for="reNewPassFeedback">Új jelszó még egyszer</label>
+            <div class="form-floating" id="formPassword">
+                <input class="form-control shadow-none" id="password2" type="password" spellcheck="false" placeholder="Jelszó" onfocusout="passwordValid(this)" data-bs-toggle="tooltip" data-bs-title="Legalább 12 karakter, kis- és nagy betű egyaránt" data-bs-placement="bottom">
 
-                <p id="bothPassFeedback"></p>
+                <p><img src="/_images/view.png" alt="Jelszó láthatóságának változtatása" id="togglePassword" onclick="togglePassword(this)"></p>
+                
+                <label for="password">Új jelszó még egyszer</label>
             </div>
+
+            <p id="bothPassFeedback"></p>
 
             <div class="button">
                 <button class="primaryBTN" onclick="subm()">mentés</button>
@@ -50,6 +52,8 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>
 </html>

@@ -1,26 +1,4 @@
-function colorChange(textarea){
-    if(textarea.value.length == 0){
-      textarea.style.borderColor = "#d3d3d3";
-    }
-    else{
-      textarea.style.borderColor = "#ffbc2f";
-    }
-}
-
-function togglePSW() {
-  var x = document.getElementById("password");
-  if (x.type === "password") {
-    x.type = "text";
-    document.getElementById("toggleIcon").innerHTML = "👁️";
-    
-  } else {
-    x.type = "password";
-    document.getElementById("toggleIcon").innerHTML = "🕳️";
-  }
-}
-
-
-function forgotPassword(){
+async function forgotPassword(){
   Swal.fire({
       icon: "warning",
       title: "Add meg a Mariposa fiókodhoz tartozó e-mail címet!",
@@ -36,40 +14,85 @@ function forgotPassword(){
       cancelButtonText: "Bezárás",
       confirmButtonColor: "#ffbc2f",
       iconColor: "#ffbc2f"
-  })
+  }).then((swBtn)=>{
+    if(swBtn.isConfirmed == true){
+      console.log(swBtn);
+      Backend.post({
+        path:"/forgotpassword",
+        body:{
+            email: swBtn.value
+        },
+        callback: console.log
+      });
+      Swal.fire({
+        icon: "warning",
+        title: "Nézd meg az email-fiókod!",
+        html: `
+        <button onclick="location.href='https://mail.google.com/mail/u/0/#inbox';" class="primaryBTN" style="margin-top: 1em">Gmail megnyitása</button>
+        `,
+        width: "64em",
+        showCancelButton: false,
+        showConfirmButton: false
+      });
+    }
+  });
 }
+
+
+function passwordValid(password){
+  var passwordValue = password.value;
+  // var passwordField = document.getElementById("password");
+  var lowercase = false;
+  var uppercase = false;
+  
+  for(var i = 0; i < passwordValue.length; i++){ 
+    if(passwordValue[i] == passwordValue[i].toLowerCase()){
+      lowercase = true;
+    }
+    else if(passwordValue[i] == passwordValue[i].toUpperCase()){
+      uppercase = true;
+    }
+  }
+
+  if(lowercase && uppercase && passwordValue.length >= 12){
+    password.classList.remove("is-invalid");
+    password.style.borderColor = "#ffbc2f";
+    password.style.color = "#ffbc2f";
+    return password;
+  }
+  else{
+    password.classList.add("is-invalid");
+    password.style.borderColor = "#dc3545";
+    password.style.color = "#dc3545";
+    return false;
+  }
+}
+
 
 function validate(){
   var newPassword1 = document.getElementById("password1").value;
   var lowercase = false;
   var uppercase = false;
-
-  for(var i = 0; i < newPassword1.length; i++){
-    if(newPassword1[i] == newPassword1[i].toLowerCase()){
-      lowercase = true;
-    }
-    else if(newPassword1[i] == newPassword1[i].toUpperCase()){
-      uppercase = true;
-    }
-  }
-
-  if(lowercase && uppercase && newPassword1.length >= 12){
-    document.getElementById("newPassFeedback").innerHTML = "";
-    return newPassword1;
-  }
-  else{
-    document.getElementById("newPassFeedback").innerHTML = "Legalább 12 karakter, kis- és nagybetű egyaránt";
-    return false;
-  }
 }
-document.getElementById("password1").addEventListener("keyup", validate);
 
 
 function same(){
   if(document.getElementById("password1").value == document.getElementById("password2").value){
+    password1.classList.add("is-invalid");
+    password1.borderColor = "#dc3545";
+
+    password2.classList.add("is-invalid");
+    password2.borderColor = "#dc3545";
+
     document.getElementById("bothPassFeedback").innerHTML = "";
   }
   else{
+    password1.classList.remove("is-invalid");
+    password1.borderColor = "#ffbc2f";
+
+    password2.classList.remove("is-invalid");
+    password2.borderColor = "#ffbc2f";
+
     document.getElementById("bothPassFeedback").innerHTML = "A két jelszó nem egyezik";
   }
 }
@@ -99,11 +122,41 @@ function save(){
         }
         else{
           document.getElementById("curPassFeedback").innerHTML = "";
+          Swal.fire({
+            icon: "success",
+            title: "Sikeres mentés!",
+            width: "64em",
+            showCancelButton: false,
+            showConfirmButton: true,
+            focusConfirm: false,
+            confirmButtonText: "Rendben!",
+            confirmButtonColor: "#ffbc2f",
+            iconColor: "#ffbc2f"
+          }).then((result)=>{
+            if(result.isConfirmed){
+              window.location.href = "/profilesettings";
+            }
+          });
         }
       }
     });
   }
 }
+
+function togglePassword(togglePassword){
+  var psw = togglePassword.parentElement.previousElementSibling;
+
+  if (psw.type === "password") {
+    psw.type = "text";
+    togglePassword.src = "/_images/hide.png";
+  } else {
+    psw.type = "password";
+    togglePassword.src = "/_images/view.png";
+  }
+}
+
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
 Backend.get({
   path:"/userinfo",
@@ -113,7 +166,3 @@ Backend.get({
       }
   }
 });
-
-function response(){
-
-}
