@@ -57,6 +57,24 @@ function fullnameValid(){
     fullname.style.borderColor = "#dc3545";
     fullname.style.color = "#dc3545";
     return false;
+    inputField.style.borderColor = "#ffbc2f";
+  }
+}
+
+function validate(){
+  var email = document.getElementById("email").value;
+  var fullname = document.getElementById("fullname").value;
+  var username = document.getElementById("username").value;
+  var message = document.getElementById("message").value;
+  var allValid = true;
+
+  const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  var validEmail = pattern.test(email);
+
+  if(!validEmail){
+    document.getElementById("emailFeedback").style.visibility = "visible";
+    document.getElementById("emailFeedback").innerHTML = "Kérjük, adj meg egy helyes email-címet!";
+    var allValid = false;
   }
   else{
     fullname.classList.remove("is-invalid");
@@ -106,14 +124,16 @@ function validate(){
   if(allValid){
     // BEMENETI PARAMÉTEREK
     support();
+    support(email, username, fullname, message);
   }
 }
 
-function support(email, name, message){
+function support(email, username, name, message){
     Backend.post({
         "path":"/message",
         "body":{
             "email":email,
+            "username":username,
             "name":name,
             "text":message
         },

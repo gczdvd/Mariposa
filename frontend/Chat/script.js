@@ -3,7 +3,7 @@
 // "Jó napot kívánok! Gócza Dávid vagyok, jövőbeli ingatlanközvetítő, mert én ettől agyvérzést kapok."
 
 var ws;
-
+var firstconn = true;
 function websocket_loop(){
     ws = new WebSocket("wss://" + Backend.url() + "/ws");
     ws.onmessage = receive;
@@ -11,6 +11,15 @@ function websocket_loop(){
         setTimeout(() => {
             websocket_loop();
         }, 1000);
+    }
+    ws.onopen = () => {
+        if(firstconn){
+            firstconn = false;
+            var params = new URLSearchParams(window.location.search);
+            if(params.has("chatid")){
+                openChat(params.get("chatid"));
+            }
+        }
     }
 }
 
@@ -88,9 +97,9 @@ function openChat(chatid=null){
         document.getElementById("details").classList.remove("detailshidden");
         document.getElementById("message").style.visibility = "visible";
         
-        // const url = new URL(location);
-        // url.searchParams.set("chatid", chatid);
-        // history.pushState({}, "", url);
+        const url = new URL(location);
+        url.searchParams.set("chatid", chatid);
+        history.pushState({}, "", url);
     }
     else{
         document.getElementById("waiting").style.display = "block";
@@ -100,11 +109,15 @@ function openChat(chatid=null){
     document.getElementsByClassName("messages")[0].innerHTML = "";
     Backend.post({
         path:"/chat",
+        blockReload:true,
         body:{
             chatid:chatid
         },
         callback:(e)=>{
             console.log(e);
+            if(e.action == "reload"){
+                window.location.href = window.location.pathname;
+            }
             if(e.message == "connected"){
                 ws.send(JSON.stringify({
                     "type":"action",
