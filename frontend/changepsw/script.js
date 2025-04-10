@@ -58,7 +58,7 @@ function passwordValid(password){
     password.classList.remove("is-invalid");
     password.style.borderColor = "#ffbc2f";
     password.style.color = "#ffbc2f";
-    return password;
+    return passwordValue;
   }
   else{
     password.classList.add("is-invalid");
@@ -68,35 +68,27 @@ function passwordValid(password){
   }
 }
 
-
-function validate(){
-  var newPassword1 = document.getElementById("password1").value;
-  var lowercase = false;
-  var uppercase = false;
-}
-
-
 function same(){
-  if(document.getElementById("password1").value == document.getElementById("password2").value){
-    password1.classList.add("is-invalid");
-    password1.borderColor = "#dc3545";
+  var password1 = document.getElementById("password1");
+  var password2 = document.getElementById("password2");
 
-    password2.classList.add("is-invalid");
-    password2.borderColor = "#dc3545";
+  if(password1.value == password2.value){
+    password2.classList.remove("is-invalid");
+    password2.style.borderColor = "#ffbc2f";
+    password2.style.color = "#ffbc2f";
 
-    document.getElementById("bothPassFeedback").innerHTML = "";
+    document.getElementById("bothPassFeedback").innerHTML = "";    
   }
   else{
-    password1.classList.remove("is-invalid");
-    password1.borderColor = "#ffbc2f";
-
-    password2.classList.remove("is-invalid");
-    password2.borderColor = "#ffbc2f";
+    password2.classList.add("is-invalid");
+    password2.style.borderColor = "#dc3545";
+    password2.style.color = "#dc3545";
 
     document.getElementById("bothPassFeedback").innerHTML = "A két jelszó nem egyezik";
   }
 }
-document.getElementById("password2").addEventListener("keyup", same);
+
+document.getElementById("password2").addEventListener("keydown", same);
 
 
 function save(){
@@ -154,9 +146,6 @@ function togglePassword(togglePassword){
     togglePassword.src = "/_images/view.png";
   }
 }
-
-const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
 Backend.get({
   path:"/userinfo",

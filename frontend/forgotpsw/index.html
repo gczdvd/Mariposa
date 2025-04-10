@@ -24,7 +24,7 @@
             </div>
 
             <div class="form-floating" id="formPassword">
-                <input class="form-control shadow-none" id="password1" type="password" spellcheck="false" placeholder="Jelszó" onfocusout="passwordValid(this)" data-bs-toggle="tooltip" data-bs-title="Legalább 12 karakter, kis- és nagy betű egyaránt" data-bs-placement="bottom">
+                <input class="form-control shadow-none" id="password1" type="password" spellcheck="false" placeholder="Jelszó" onkeydown="passwordValid(this)">
 
                 <p><img src="/_images/view.png" alt="Jelszó láthatóságának változtatása" id="togglePassword" onclick="togglePassword(this)"></p>
                 
@@ -32,7 +32,7 @@
             </div>
 
             <div class="form-floating" id="formPassword">
-                <input class="form-control shadow-none" id="password2" type="password" spellcheck="false" placeholder="Jelszó" onfocusout="passwordValid(this)" data-bs-toggle="tooltip" data-bs-title="Legalább 12 karakter, kis- és nagy betű egyaránt" data-bs-placement="bottom">
+                <input class="form-control shadow-none" id="password2" type="password" spellcheck="false" placeholder="Jelszó" onkeydown="passwordValid(this)" onfocusout="passwordValid(this)">
 
                 <p><img src="/_images/view.png" alt="Jelszó láthatóságának változtatása" id="togglePassword" onclick="togglePassword(this)"></p>
                 
