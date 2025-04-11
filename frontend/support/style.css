@@ -150,7 +150,8 @@
 .cover{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    width: 100%;
+    width: 90%;
+    justify-self: center;
     text-align: center;
     align-items: center;
     padding: 5vh 0;
@@ -182,6 +183,7 @@
     font-size: 1.5em;
     width: 60%;
     justify-self: center;
+    margin: 0;
 }
 
 
@@ -316,7 +318,7 @@
 }
 
 .form-control:focus{
-    border: #999999 2px solid;
+    border: #999999 2px solid !important;
 }
 
 .title{

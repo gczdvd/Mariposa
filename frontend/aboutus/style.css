@@ -308,6 +308,7 @@ p{
     background-color: #ffbc2f;
     background-color: #fff5de;
     padding: 5vh 0;
+    height: fit-content;
 }
 
 .us .title{
@@ -334,6 +335,7 @@ p{
     padding: 2vw;
     gap: 1vw;
     background-color: #fff;
+    height: fit-content;
 }
 
 .gd{
@@ -366,13 +368,13 @@ p{
     overflow: hidden;
     transition: max-height 0.2s ease-out;
     max-height: 0;
+    height: fit-content;
 }
 
 .panel p{
     /* display: block; */
     margin: 0;
     padding: 0;
-    height: 50vh;
 }
 
 

@@ -466,6 +466,7 @@
 
 #birthdayP, #genderP, #quoteP{
     margin: 0;
+    padding: 0.5vh 0;
     justify-self: center;
     align-self: center;
     height: fit-content;
@@ -748,7 +749,9 @@ img{
 
     #quoteP{
         max-width: 80vw;
-        border: 1px solid lightgray;
+        /* border: 1px solid lightgray; */
+        box-shadow: 1px 1px 5px darkgray;
+        padding: 1vh;
     }
 
     

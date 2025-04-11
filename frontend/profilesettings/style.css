@@ -227,7 +227,6 @@
     justify-self: center;
     height: fit-content;
     width: 40vw;
-    /* margin: 2vh 2vw 0 0; */
     gap: 3vh;
 }
 
@@ -257,14 +256,8 @@
 #ageDiv{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
     height: fit-content;
     /* gap: 0.5vw; */
-}
-
-#ageDiv .show{
-    grid-column: 1 / span 2;
-    height: fit-content;
 }
 
 .form-select{
@@ -288,24 +281,11 @@ input[type=number] {
     color: #ffbc2f;
 }
 
-.show input{
-    accent-color: #ffbc2f;
-    vertical-align: middle;
-}
-
-.show label{
-    vertical-align: middle;
-}
-
-#showAge{
-    grid-column: 1 / span 2;
-}
-
 #info{
     display: block;
     justify-self: center;
     opacity: 0.7;
-    margin-bottom: 5vh;
+    margin-bottom: 3vh;
 }
 
 

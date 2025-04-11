@@ -36,6 +36,10 @@ Backend.get({
             document.getElementById("year").value = bd.getUTCFullYear();
             document.getElementById("month").value = (bd.getMonth()+1);
             document.getElementById("day").value = bd.getDate();
+
+            document.getElementById("year").style.borderColor = "#ffbc2f";
+            document.getElementById("month").style.borderColor = "#ffbc2f";
+            document.getElementById("day").style.borderColor = "#ffbc2f";
         }
     }
 });
@@ -129,7 +133,7 @@ function checkDateValid(ye, me, de, fail, ok){
 function dateWatcher(){
     return checkDateValid(document.getElementById("year"), document.getElementById("month"), document.getElementById("day"),
         (e)=>{
-            e.style.borderColor = "red";
+            e.style.borderColor = "#dc3545";
         },
         (e)=>{
             e.style.borderColor = "#ffbc2f";
@@ -137,14 +141,34 @@ function dateWatcher(){
     );
 }
 
-// ha van kiválasztva érdeklődési kör, a felette lévő cím színe narancssárga legyen
-// ciklussal végigmegyünk az összes details-en - külső ciklus
-// belső ciklus: éppen aktuális details-eken belül lévő összes button-ön végigmegyünk
-// valamelyiknek a classa selected-e
-// ha igen: éppen kiválasztott details style color narancs
-// ha nem: éppen kiválasztott details style color fekete
+// body.addEventListener("load", dateColour);
 
-// mentés gomb elküldi az adatokat, visszajön a válasz, ha sikeres, akkor sikeresen mentésre kerültek, ha nem, akkor szerverhiba
+// function dateColour(){
+//     if(document.getElementById("year").value == ""){
+//         document.getElementById("year").style.borderColor = "#ffbc2f";
+//     }
+//     else{
+//         document.getElementById("day").style.borderColor = "#ffbc2f";
+//     }
+
+//     if(document.getElementById("month").value == ""){
+//         document.getElementById("month").style.borderColor = "#ffbc2f";
+//     }
+//     else{
+//         document.getElementById("day").style.borderColor = "#ffbc2f";
+//     }
+
+//     if(document.getElementById("day").value == ""){
+//         document.getElementById("day").style.borderColor = "#ffbc2f";
+//     }
+//     else{
+//         document.getElementById("day").style.borderColor = "#ffbc2f";
+//     }
+// }
+
+// onload eventlistener
+
+
 function saveData(){
   var success = true;
   // var success = true;

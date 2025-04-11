@@ -8,7 +8,7 @@ function showMore(accordion){
   }
   else{
     accordion.getElementsByClassName("arrow")[0].innerHTML = "&#8593;";
-    panel.style.maxHeight = panel.style.maxHeight + "40vh";
+    panel.style.maxHeight = panel.style.maxHeight + "50vh";
   }
 }
 
