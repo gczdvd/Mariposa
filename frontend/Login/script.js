@@ -60,7 +60,7 @@ function emailValid(){
     email.classList.remove("is-invalid");
     email.style.borderColor = "#ffbc2f";
     email.style.color = "#ffbc2f";
-    return true;
+    return email.value;
   }
 }
 
@@ -137,18 +137,19 @@ function passwordValid(){
     }
 
     if(lowercase && uppercase && passwordValue.length >= 12){
-      // document.getElementById("pswFeedback").innerHTML = "";
+      document.getElementById("pswFeedback").innerHTML = "";
       password.classList.remove("is-invalid");
       password.style.borderColor = "#ffbc2f";
       password.style.color = "#ffbc2f";
-      return password;
+
+      return passwordValue;
     }
     else{
+      document.getElementById("pswFeedback").innerHTML = "Legalább 12 karakter, kis- és nagy betű egyaránt";
       password.classList.add("is-invalid");
       password.style.borderColor = "#dc3545";
       password.style.color = "#dc3545";
 
-      // document.getElementById("password").style.borderColor = "#d3d3d3";
       return false;
     }
 }

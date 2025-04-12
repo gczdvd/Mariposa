@@ -110,7 +110,7 @@
 }
 
 #newPassFeedback, #bothPassFeedback{
-    color: red;
+    color: #dc3545;
     font-size: 1em;
     margin: 0;
 }

@@ -16,7 +16,7 @@ function passwordValid(password){
     password.classList.remove("is-invalid");
     password.style.borderColor = "#ffbc2f";
     password.style.color = "#ffbc2f";
-    return password;
+    return passwordValue;
   }
   else{
     password.classList.add("is-invalid");
@@ -49,16 +49,12 @@ function togglePassword(togglePassword){
   }
 }
 
-const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-
 function subm(){
     var jelszo = passwordValid(document.getElementById("password1"));
     var password1 = document.getElementById("password1").value;
     var password2 = document.getElementById("password1").value;
     var key = (new URLSearchParams(window.location.search)).get("key");
-    if(jelszo && password1 == password2 && key){
-      
+    if(jelszo && password1 == password2 && key){   
         
       var passcry = CryptoJS.SHA256(password1).toString();
       Backend.post({

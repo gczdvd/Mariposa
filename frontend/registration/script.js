@@ -17,7 +17,7 @@ function passwordValid(){
   }
 
   if(lowercase && uppercase && passwordValue.length >= 12){
-    // document.getElementById("pswFeedback").innerHTML = "";
+    document.getElementById("pswFeedback").innerHTML = "";
     password.classList.remove("is-invalid");
     password.style.borderColor = "#ffbc2f";
     password.style.color = "#ffbc2f";
@@ -25,6 +25,7 @@ function passwordValid(){
   }
   else{
     password.classList.add("is-invalid");
+    document.getElementById("pswFeedback").innerHTML = "Legalább 12 karakter, kis- és nagy betű egyaránt";
     password.style.borderColor = "#dc3545";
     password.style.color = "#dc3545";
     return false;
@@ -138,5 +139,5 @@ function togglePassword(){
   }
 }
 
-const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+// const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+// const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))

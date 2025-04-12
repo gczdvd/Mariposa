@@ -43,9 +43,13 @@
             </div>
 
             <div class="form-floating" id="formPassword">
-                <input class="form-control shadow-none" id="password" type="password" spellcheck="false" placeholder="Jelszó" onfocusout="passwordValid()" data-bs-toggle="tooltip" data-bs-title="Legalább 12 karakter, kis- és nagy betű egyaránt" data-bs-placement="top">
+                <input class="form-control shadow-none" id="password" type="password" spellcheck="false" placeholder="Jelszó" onkeydown="passwordValid()">
+                <!-- data-bs-toggle="tooltip" data-bs-title="Legalább 12 karakter, kis- és nagy betű egyaránt" data-bs-placement="top" -->
 
-                <p>
+                <p id="passwordActions">
+                    <span id="pswFeedback"></span>
+                    <!-- Legalább 12 karakter, kis- és nagy betű egyaránt -->
+
                     <img src="/_images/view.png" alt="Jelszó láthatóságának változtatása" id="togglePassword" onclick="togglePassword()">
                 </p>
                 

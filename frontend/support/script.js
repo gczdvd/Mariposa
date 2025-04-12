@@ -118,10 +118,19 @@ function validate(){
 
 function empty(){
   document.getElementById("email").value = "";
+  document.getElementById("email").style.borderColor = "#d3d3d3";
+
   document.getElementById("fullname").value = "";
+  document.getElementById("fullname").style.borderColor = "#d3d3d3";
+
   document.getElementById("username").value = "";
+  document.getElementById("username").style.borderColor = "#d3d3d3";
+
   document.getElementById("message").value = "";
+  document.getElementById("message").style.borderColor = "#d3d3d3";
+
   document.getElementById("remaining-chars").innerHTML = "";
+  document.getElementById("remaining-chars").style.borderColor = "#d3d3d3";
 }
 
 // ÁTÍRNI A BACKENDBEN

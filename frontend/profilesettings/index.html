@@ -96,33 +96,23 @@
                       <option value="3">Nembináris</option>
                     </select>
                     <label for="gender">Nem</label>
-
-                    <div class="show">
-                        <input type="checkbox" id="showGender">
-                        <label for="showGender">Jelenjen meg a chatben</label>
-                    </div>
                 </div>
 
                 <!-- 5 -->
                 <div id="ageDiv">
                     <div class="form-floating">
-                        <input class="form-control shadow-none" id="year" type="number" pattern="\d{4}" onchange="colorChange(this); dateWatcher();" placeholder="Születési év" maxlength="4" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                        <input class="form-control shadow-none" id="year" type="number" pattern="\d{4}" onchange="dateWatcher();" placeholder="Születési év" maxlength="4" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                         <label for="year">Születési év</label>
                     </div>
 
                     <div class="form-floating">
-                        <input class="form-control shadow-none" id="month" type="text" pattern="\d*" onchange="colorChange(this); dateWatcher();" placeholder="Születési hónap" maxlength="2">
+                        <input class="form-control shadow-none" id="month" type="text" pattern="\d*" onchange="dateWatcher();" placeholder="Születési hónap" maxlength="2">
                         <label for="month">Születési hónap</label>
                     </div>
 
                     <div class="form-floating">
-                        <input class="form-control shadow-none" id="day" type="text" pattern="\d*" onchange="colorChange(this); dateWatcher();" placeholder="Születési nap" maxlength="2">
+                        <input class="form-control shadow-none" id="day" type="text" pattern="\d*" onchange="dateWatcher();" placeholder="Születési nap" maxlength="2">
                         <label for="day">Születési nap</label>
-                    </div>
-
-                    <div class="show">
-                        <input type="checkbox" id="showAge">
-                        <label for="showAge">Jelenjen meg a chatben</label>
                     </div>
                 </div>
 
@@ -130,14 +120,6 @@
                     <span class="emoji">⚠️</span> Az adatokat az oldal legalján található "Mentés" gombra kattinva tudod elmenteni.
                 </div>
             </div>
-
-            <!-- <div class="search">
-                <p>Böngéssz az érdeklődési körök között!</p>
-
-                <input id="search" type="text" placeholder="Keresés...">
-                
-                <button type="submit" class="emoji">🔍</button>
-            </div> -->
 
             <div class="interests">
                 
