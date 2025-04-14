@@ -620,5 +620,9 @@ label{
         width: fit-content;
         height: fit-content;
         padding: 0;
-    }  
+    }
+
+    #trademark a{
+        display: none;
+    }
 }
