@@ -189,6 +189,10 @@ function saveData(){
     //     newdat.topics.push(sels[i].getAttribute("value"));
     // };
 
+    for(var i = 0; i < ){
+
+    }
+
     Backend.post({
         path:"/profilemodify",
         body:{
