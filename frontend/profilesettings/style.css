@@ -740,4 +740,8 @@ input[type=number] {
         height: fit-content;
         padding: 0;
     }
+
+    #trademark a{
+        display: none;
+    }
 }

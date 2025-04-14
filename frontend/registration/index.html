@@ -43,7 +43,7 @@
             </div>
 
             <div class="form-floating" id="formPassword">
-                <input class="form-control shadow-none" id="password" type="password" spellcheck="false" placeholder="Jelszó" onkeydown="passwordValid()">
+                <input class="form-control shadow-none" id="password" type="password" spellcheck="false" placeholder="Jelszó" onfocusout="passwordValid()" onkeydown="passwordValid()">
                 <!-- data-bs-toggle="tooltip" data-bs-title="Legalább 12 karakter, kis- és nagy betű egyaránt" data-bs-placement="top" -->
 
                 <p id="passwordActions">
@@ -57,8 +57,8 @@
             </div>
 
             <div class="TANDC" id="TANDC">
-                <input type="checkbox" id="checkbox">
-                <label for="checkbox">Elfogadom az <a href="/documents/mariposaaszf.pdf" target="_blank">ÁSZF</a>-be foglaltakat.</label>
+                <input type="checkbox" id="checkbox" onchange="checkboxValid()">
+                <label for="checkbox" id="checkboxLabel">Elfogadom az <a href="/documents/mariposaaszf.pdf" target="_blank">ÁSZF</a>-be foglaltakat.</label>
             </div>
 
             <div class="button">

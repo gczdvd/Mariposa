@@ -1,5 +1,6 @@
 {
     "sport": {
+        "id": "1",
         "name": "Sport",
         "data": {
             "1": {
@@ -37,6 +38,7 @@
         }
     },
     "fashion": {
+        "id":"2",
         "name": "Divat",
         "data": {
             "1": {
@@ -62,6 +64,7 @@
         }
     },
     "science": {
+        "id": "3",
         "name": "Tudomány",
         "data": {
             "1": {
@@ -95,6 +98,7 @@
         }
     },
     "music": {
+        "id": "4",
         "name": "Zene",
         "data": {
             "1": {
@@ -140,6 +144,7 @@
         }
     },
     "social": {
+        "id": "5",
         "name": "Szociális",
         "data": {
             "1": {
@@ -177,6 +182,7 @@
         }
     },
     "filmsTV": {
+        "id":"6",
         "name": "Filmek és TV-műsorok",
         "data": {
             "1": {
@@ -218,6 +224,7 @@
         }
     },
     "vehicles": {
+        "id":"7",
         "name": "Járművek",
         "data": {
             "1": {
@@ -259,6 +266,7 @@
         }
     },
     "literature": {
+        "id": "8",
         "name": "Irodalom",
         "data": {
             "1": {
@@ -300,6 +308,7 @@
         }
     },
     "games": {
+        "id":"9",
         "name": "Játékok",
         "data": {
             "1": {
@@ -341,6 +350,7 @@
         }
     },
     "arts": {
+        "id":"10",
         "name": "Művészet",
         "data": {
             "1": {
@@ -382,6 +392,7 @@
         }
     },
     "nature": {
+        "id":"11",
         "name": "Természet",
         "data": {
             "1": {
@@ -415,6 +426,7 @@
         }
     },
     "kitchen": {
+        "id":"12",
         "name": "Konyha",
         "data": {
             "1": {

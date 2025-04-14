@@ -21,7 +21,7 @@ function passwordValid(){
     password.classList.remove("is-invalid");
     password.style.borderColor = "#ffbc2f";
     password.style.color = "#ffbc2f";
-    return password;
+    return passwordValue;
   }
   else{
     password.classList.add("is-invalid");
@@ -49,7 +49,7 @@ function usernameValid(){
     username.classList.remove("is-invalid");
     username.style.borderColor = "#ffbc2f";
     username.style.color = "#ffbc2f";
-    return true;
+    return username.value;
   }
 }
 
@@ -68,7 +68,7 @@ function emailValid(){
     email.classList.remove("is-invalid");
     email.style.borderColor = "#ffbc2f";
     email.style.color = "#ffbc2f";
-    return true;
+    return email.value;
   }
 }
 
@@ -77,10 +77,13 @@ function checkboxValid(){
 
   if(!checkbox){
     document.getElementById("TANDC").style.color = "#dc3545";
+    document.getElementById("checkboxLabel").style.textDecoration = "underline";
+    document.getElementById("checkboxLabel").style.textUnderlineOffset = "6px";
     return false;
   }
   else{
-    document.getElementById("TANDC").style.color = "#000";
+    document.getElementById("TANDC").style.color = "#ffbc2f";
+    document.getElementById("checkboxLabel").style.textDecoration = "none";
     return true;
   }
 }
@@ -114,7 +117,7 @@ function registration(){
         showConfirmButton: false
       });
         
-      var key = CryptoJS.SHA256(jelszo).toString();
+      var key = CryptoJS.SHA256(password).toString();
       Backend.post({
         path:"/signup",
         body:{
@@ -138,6 +141,3 @@ function togglePassword(){
     document.getElementById("togglePassword").src = "/_images/view.png";
   }
 }
-
-// const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-// const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))

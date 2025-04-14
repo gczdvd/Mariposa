@@ -29,7 +29,7 @@ p{
     user-select: none;
 
     position: relative;
-    animation: floating 1s infinite;
+    animation: floating 2s infinite;
     animation-direction: normal;
 }
 
@@ -537,6 +537,7 @@ p{
     grid-column: 1 / span 4;
     margin: 0;
     padding: 0;
+    height: fit-content;
 }
 
 #trademark p{
@@ -778,6 +779,10 @@ p{
     }
 
     #backtotop{
+        display: none;
+    }
+
+    #trademark a{
         display: none;
     }
 

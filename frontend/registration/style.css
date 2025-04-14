@@ -212,6 +212,10 @@ input:focus{
     accent-color: #ffbc2f;
 }
 
+#checkboxLabel{
+    text-underline-offset: 3px;
+}
+
 label{
     font-family: "Red Hat Text", "Trebuchet MS", Helvetica, sans-serif;
     font-size: 1em;
