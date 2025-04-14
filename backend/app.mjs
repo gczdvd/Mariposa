@@ -202,7 +202,6 @@ app.post('/signup', (req, res) => {
     if(!req.session.valid){
         if(nickname && email && password){
             var s = database.signup(nickname, email, password, md5(email));
-            console.log(s);
             if(s == "Success"){
                 smtp.verify(email, md5(email));
                 res.status(200);
