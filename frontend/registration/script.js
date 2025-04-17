@@ -3,7 +3,6 @@ Backend.setUrl("127.0.0.1:3000");
 function passwordValid(){
   var password = document.getElementById("password");
   var passwordValue = password.value;
-  // var passwordField = document.getElementById("password");
   var lowercase = false;
   var uppercase = false;
   
@@ -32,20 +31,16 @@ function passwordValid(){
   }
 }
 
-// document.getElementById("password").addEventListener("keyup", checkPassword);
-
 function usernameValid(){
   var username = document.getElementById("username");
 
   if(username.value.length == 0){
-    // document.getElementById("usernameFeedback").innerHTML = "Kérjük, adj meg egy felhasználónevet!";
     username.classList.add("is-invalid");
     username.style.borderColor = "#dc3545";
     username.style.color = "#dc3545";
     return false;
   }
   else{
-    // document.getElementById("usernameFeedback").innerHTML = "";
     username.classList.remove("is-invalid");
     username.style.borderColor = "#ffbc2f";
     username.style.color = "#ffbc2f";
@@ -78,7 +73,7 @@ function checkboxValid(){
   if(!checkbox){
     document.getElementById("TANDC").style.color = "#dc3545";
     document.getElementById("checkboxLabel").style.textDecoration = "underline";
-    document.getElementById("checkboxLabel").style.textUnderlineOffset = "6px";
+    document.getElementById("checkboxLabel").style.textUnderlineOffset = "4px";
     return false;
   }
   else{

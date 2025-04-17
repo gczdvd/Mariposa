@@ -1,5 +1,3 @@
-// const textarea = document.getElementById("textarea");
-
 Backend.get({
     path:"/userinfo",
     callback:(e)=>{
@@ -166,11 +164,8 @@ function dateWatcher(){
 //     }
 // }
 
-// onload eventlistener
-
 
 function saveData(){
-  var success = true;
   // var success = true;
 
     // var newdat = {
@@ -188,10 +183,6 @@ function saveData(){
     // for(var i = 0; i < sels.length; i++){
     //     newdat.topics.push(sels[i].getAttribute("value"));
     // };
-
-    for(var i = 0; i < ){
-
-    }
 
     Backend.post({
         path:"/profilemodify",

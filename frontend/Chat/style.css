@@ -50,8 +50,6 @@
 
 .header{
     display: grid;
-    /* height: 10vh; */
-    /* height: 10dvh; */
     min-height: fit-content;
     grid-template-columns: auto 1fr 1fr;
     background-color: transparent;
@@ -60,14 +58,11 @@
     background-color: #ffbc2f;
     font-size: 15px;
     grid-column: 1 / span 3;
-    /* color: #fff; */
-    /* grid-row-start: 1; */
 }
 
 #homepage{
     text-decoration: none;
     color: #000;
-    /* color: #fff; */
     height: fit-content;
 }
 
@@ -130,6 +125,7 @@
 #optprofile{
     width: 4vw;
     height: 4vw;
+    border: 1px solid #dadada;
     border-radius: 50%;
     background-image: url("/_images/missingpicture.svg");
     background-position: center;
@@ -166,6 +162,7 @@
 .image{
     width: 5vw;
     height: 5vw;
+    border: 1px solid #dadada;
     border-radius: 50%;
     background-image: url("/_images/missingpicture.svg");
     background-position: center;
@@ -522,7 +519,8 @@
     grid-template-columns: repeat(2, auto);
     grid-template-rows: 1fr auto;
     justify-content: space-around;
-    padding-bottom: 1vh;
+    /* padding-bottom: 1vh; */
+    align-self: end;
 }
 
 #save{
