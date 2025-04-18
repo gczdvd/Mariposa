@@ -1,47 +1,106 @@
 // const textarea = document.getElementById("textarea");
 
-Backend.get({
-    path:"/userinfo",
-    callback:(e)=>{
-        console.log(e);
+fetch("/interests.json").then((e)=>{
+    e.json().then((f)=>{
+        interestsDiv = document.getElementsByClassName("interests")[0];
+        var intrestGroups = Object.keys(f);
+        for(var i = 0; i < intrestGroups.length; i++){
+            var interestGroupDiv = document.createElement("div");
+            interestGroupDiv.setAttribute("value", f[intrestGroups[i]].id);
+            interestGroupDiv.classList.add(intrestGroups[i].toLowerCase());
+            interestGroupDiv.id = intrestGroups[i].toLowerCase();
 
-        // if(e.id != undefined){
-        //     document.getElementById("optlogin").setAttribute("hidden", "true");
-        //     document.getElementById("optprofile").removeAttribute("hidden");
-        //     document.getElementById("optprofile").style.backgroundImage = `url('${e.profile_pic}')`;
-        // 
+            var titleP = document.createElement("p");
+            titleP.innerText = f[intrestGroups[i]].name;
+            interestGroupDiv.appendChild(titleP);
 
-        if(e.nickname){
-            document.getElementById("username").value = e.nickname;
-            document.getElementById("username").style.borderColor = "#ffbc2f";
-            document.getElementById("nickname").innerHTML = e.nickname;
-        }
-        if(e.email){
-            document.getElementById("email").value = e.email;
-            document.getElementById("email").style.borderColor = "#ffbc2f";
-        }
-        if(e.gender){
-            document.getElementById("gender").value = e.gender;
-            document.getElementById("gender").style.borderColor = "#ffbc2f";
-        }
-        if(e.profile_pic){
-            document.getElementById("profilePicture").style.backgroundImage = `url('${e.profile_pic}')`;
-        }
-        if(e.description){
-            document.getElementById("textarea").value = e.description;
-            document.getElementById("textarea").style.borderColor = "#ffbc2f";
-        }
-        if(e.birthdate){
-            var bd = new Date(e.birthdate);
-            document.getElementById("year").value = bd.getUTCFullYear();
-            document.getElementById("month").value = (bd.getMonth()+1);
-            document.getElementById("day").value = bd.getDate();
+            var subIntrests = Object.keys(f[intrestGroups[i]].data);
+            for(var j = 0; j < subIntrests.length; j++){
+                var interestButton = document.createElement("button");
+                interestButton.setAttribute("value", subIntrests[j]);
+                interestButton.setAttribute("onclick", "chosenInterest(this)");
+                interestButton.classList.add("notSelected");
 
-            document.getElementById("year").style.borderColor = "#ffbc2f";
-            document.getElementById("month").style.borderColor = "#ffbc2f";
-            document.getElementById("day").style.borderColor = "#ffbc2f";
+                var emojiSpan = document.createElement("span");
+                emojiSpan.classList.add("emoji");
+                emojiSpan.innerHTML = f[intrestGroups[i]].data[subIntrests[j]].emoji;
+
+                interestButton.appendChild(emojiSpan);
+                interestButton.innerHTML += (" " + f[intrestGroups[i]].data[subIntrests[j]].name);
+
+                interestGroupDiv.appendChild(interestButton);
+            }
+
+            interestsDiv.appendChild(interestGroupDiv);
         }
-    }
+
+
+
+        Backend.get({
+            path:"/userinfo",
+            callback:(e)=>{
+                console.log(e);
+        
+                // if(e.id != undefined){
+                //     document.getElementById("optlogin").setAttribute("hidden", "true");
+                //     document.getElementById("optprofile").removeAttribute("hidden");
+                //     document.getElementById("optprofile").style.backgroundImage = `url('${e.profile_pic}')`;
+                // 
+        
+                if(e.nickname){
+                    document.getElementById("username").value = e.nickname;
+                    document.getElementById("username").style.borderColor = "#ffbc2f";
+                    document.getElementById("nickname").innerHTML = e.nickname;
+                }
+                if(e.email){
+                    document.getElementById("email").value = e.email;
+                    document.getElementById("email").style.borderColor = "#ffbc2f";
+                }
+                if(e.gender){
+                    document.getElementById("gender").value = e.gender;
+                    document.getElementById("gender").style.borderColor = "#ffbc2f";
+                }
+                if(e.profile_pic){
+                    document.getElementById("profilePicture").style.backgroundImage = `url('${e.profile_pic}')`;
+                }
+                if(e.description){
+                    document.getElementById("textarea").value = e.description;
+                    document.getElementById("textarea").style.borderColor = "#ffbc2f";
+                }
+                if(e.birthdate){
+                    var bd = new Date(e.birthdate);
+                    document.getElementById("year").value = bd.getUTCFullYear();
+                    document.getElementById("month").value = (bd.getMonth()+1);
+                    document.getElementById("day").value = bd.getDate();
+        
+                    document.getElementById("year").style.borderColor = "#ffbc2f";
+                    document.getElementById("month").style.borderColor = "#ffbc2f";
+                    document.getElementById("day").style.borderColor = "#ffbc2f";
+                }
+                if(e.topics){
+                    var topi = document.getElementsByClassName("interests")[0].children;
+                    console.log(e.topics);
+                    for(var i = 0; i < topi.length; i++){
+                        var la = topi[i].getAttribute("value");
+        
+                        for(var j = 0; j < topi[i].children.length; j++){
+                            if(topi[i].children[j].tagName == "BUTTON"){
+                                var mo = topi[i].children[j].getAttribute("value");
+        
+                                console.log((la < 10 ? '0' : '') + la + (mo < 10 ? '0' : '') + mo);
+        
+                                if(e.topics.includes((la < 10 ? '0' : '') + la + (mo < 10 ? '0' : '') + mo)){
+                                    topi[i].children[j].classList.add("selected");
+                                    console.log(i, j);
+                                }
+                            }
+                        }
+        
+                    }
+                }
+            }
+        });
+    });
 });
 
 function logout(){
@@ -189,9 +248,13 @@ function saveData(){
     //     newdat.topics.push(sels[i].getAttribute("value"));
     // };
 
-    // for(var i = 0; i < ){
-
-    // }
+    var crtop = [];
+    var seltopics = document.getElementsByClassName("selected");
+    for(var i = 0; i < seltopics.length; i++){
+        var mo = seltopics[i].getAttribute("value");
+        var la = seltopics[i].parentElement.getAttribute("value");
+        crtop.push((la < 10 ? '0' : '') + la + (mo < 10 ? '0' : '') + mo);
+    }
 
     Backend.post({
         path:"/profilemodify",
@@ -201,7 +264,7 @@ function saveData(){
             gender:document.getElementById("gender").value,
             description:document.getElementById("textarea").value,
             nickname:document.getElementById("username").value,
-            topics:undefined
+            topics:JSON.stringify(crtop)
         },
         callback: (e) => {
             if(e.message == "Successful modified."){
@@ -281,39 +344,3 @@ function deleteAccount(){
     });
     
 }
-
-fetch("/interests.json").then((e)=>{
-    e.json().then((f)=>{
-        interestsDiv = document.getElementsByClassName("interests")[0];
-        var intrestGroups = Object.keys(f);
-        for(var i = 0; i < intrestGroups.length; i++){
-            var interestGroupDiv = document.createElement("div");
-            interestGroupDiv.setAttribute("value", intrestGroups[i].id);
-            interestGroupDiv.classList.add(intrestGroups[i].toLowerCase());
-            interestGroupDiv.id = intrestGroups[i].toLowerCase();
-
-            var titleP = document.createElement("p");
-            titleP.innerText = f[intrestGroups[i]].name;
-            interestGroupDiv.appendChild(titleP);
-
-            var subIntrests = Object.keys(f[intrestGroups[i]].data);
-            for(var j = 0; j < subIntrests.length; j++){
-                var interestButton = document.createElement("button");
-                interestButton.setAttribute("value", subIntrests[j]);
-                interestButton.setAttribute("onclick", "chosenInterest(this)");
-                interestButton.classList.add("notSelected");
-
-                var emojiSpan = document.createElement("span");
-                emojiSpan.classList.add("emoji");
-                emojiSpan.innerHTML = f[intrestGroups[i]].data[subIntrests[j]].emoji;
-
-                interestButton.appendChild(emojiSpan);
-                interestButton.innerHTML += (" " + f[intrestGroups[i]].data[subIntrests[j]].name);
-
-                interestGroupDiv.appendChild(interestButton);
-            }
-
-            interestsDiv.appendChild(interestGroupDiv);
-        }
-    });
-});
