@@ -184,6 +184,10 @@
     margin: 0 0 0 1em;
 }
 
+.active{
+    background-color: #feecc5;
+}
+
 /* .savedChat img{
     width: 4vw;
     margin: 0.5em 0 0.5em 1em;
