@@ -450,7 +450,7 @@
 
 .data{
     display: grid;
-    gap: 1vh;
+    gap: 2vh;
 }
 
 #name{
@@ -462,7 +462,7 @@
 }
 
 #birthdayP, #genderP, #quoteP{
-    margin: 0;
+    margin: 0.5em;
     padding: 0.5vh 0;
     justify-self: center;
     align-self: center;
@@ -503,15 +503,21 @@
 }
 
 
-#interests button{
-    padding: 0.5em 1em;
+#interestsP button{
+    padding: 0.2em 0.8em;
     border-radius: 1.8em;
     font-family: "Albert Sans", Arial, Helvetica, sans-serif;
-    font-size: 1.1em;
-    border: 5px solid #ffbc2f;
+    font-size: 0.8em;
+    border: 3px solid #ffbc2f;
+    background-color: #fff;
     cursor: pointer;
-    margin: 5px;
-    
+    margin: 2px;
+    width: fit-content;
+}
+
+#interestsP .emoji{
+    font-size: 1.5em;
+    vertical-align: center;
 }
 
 .actions{
