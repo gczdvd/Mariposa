@@ -90,6 +90,7 @@ fetch("/interests.json").then((e)=>{
                                 console.log((la < 10 ? '0' : '') + la + (mo < 10 ? '0' : '') + mo);
         
                                 if(e.topics.includes((la < 10 ? '0' : '') + la + (mo < 10 ? '0' : '') + mo)){
+                                    topi[i].children[j].classList.remove("notSelected");
                                     topi[i].children[j].classList.add("selected");
                                     console.log(i, j);
                                 }
