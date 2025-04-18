@@ -65,7 +65,7 @@ function emailValid(){
 }
 
 function login(){
-  var password = passwordValid();
+  
   var email = emailValid();
 
   if(!email){      
@@ -76,6 +76,7 @@ function login(){
   }
 
   if(!automatic){
+    var password = passwordValid();
     if(!password || !email){
         allValid = false;
     }
@@ -86,13 +87,13 @@ function login(){
         var precode = getCookie("password");
     }
     else{
+        if(document.getElementById("rememberme").checked){
+          setCookie("email", email);
+          setCookie("password", precode);
+        }
         var precode = CryptoJS.SHA256(password).toString();
     }
     console.log("precode", precode);
-    if(document.getElementById("rememberme").checked){
-        setCookie("email", email);
-        setCookie("password", precode);
-    }
     var timekey = String((new Date).getTime());
     console.log("timekey", timekey);
     var key = CryptoJS.SHA256(timekey + precode).toString();
@@ -119,9 +120,14 @@ function login(){
 }
 
 function passwordValid(){
+    if(automatic){
+        document.getElementById("password").value = "";
+    }
+
     automatic = false;
-    
+    document.getElementById("togglePassword").style.visibility = "visible";
     var password = document.getElementById("password");
+    
     var passwordValue = password.value;
     // var passwordField = document.getElementById("password");
     var lowercase = false;
@@ -160,6 +166,13 @@ if(getCookie("email") && getCookie("password")){
     automatic = true;
     document.getElementById("password").value = "************";
     document.getElementById("email").value = getCookie("email");
+
+    emailValid(document.getElementById("email"));
+    document.getElementById("password").style.borderColor = "#ffbc2f";
+    document.getElementById("password").style.color = "#ffbc2f";
+
+    document.getElementById("rememberme").checked = true;
+    document.getElementById("togglePassword").style.visibility = "hidden";
 }
 
 async function forgotPassword(){

@@ -225,11 +225,8 @@ function dateWatcher(){
 //     }
 // }
 
-// onload eventlistener
-
 
 function saveData(){
-  var success = true;
   // var success = true;
 
     // var newdat = {

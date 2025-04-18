@@ -36,7 +36,7 @@
             </div>
 
             <div class="form-floating" id="formPassword">
-                <input class="form-control shadow-none" id="password" type="password" spellcheck="false" placeholder="Jelszó" onkeyup="passwordValid()">
+                <input class="form-control shadow-none" id="password" type="password" spellcheck="false" placeholder="Jelszó" oninput="passwordValid()" onkeydown="passwordValid()">
 
                 <p id="passwordActions">
                     <span id="pswFeedback"></span>
