@@ -5,7 +5,7 @@ fetch("/interests.json").then((e)=>{
         interestsDiv = document.getElementsByClassName("interests")[0];
         for(var i = 0; i < f.length; i++){
             var interestGroupDiv = document.createElement("div");
-            interestGroupDiv.setAttribute("value", f[i].id);
+            interestGroupDiv.setAttribute("value", i);
             // interestGroupDiv.classList.add(intrestGroups[i].toLowerCase());
             // interestGroupDiv.id = intrestGroups[i].toLowerCase();
 
