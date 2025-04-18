@@ -348,6 +348,7 @@ function receive(e){
                 interestButton.appendChild(emojiSpan);
                 interestButton.innerHTML += (" " + interests[mb].data[lb].name);
 
+                document.getElementById("interestsP").innerHTML = "";
                 document.getElementById("interestsP").appendChild(interestButton);
             }
                 
