@@ -47,7 +47,8 @@ function loadPartners(){
             for(var i = 0; i < e.value.partners.length; i++){
                 var _div = document.createElement("div");
                 _div.className = "savedChat";
-                _div.setAttribute("onclick", `openChat('${e.value.partners[i].chat_id}')`);
+                _div.setAttribute("chatid", e.value.partners[i].chat_id);
+                _div.setAttribute("onclick", `openChat(this)`);
                 var _imgdiv = document.createElement("div");
                 _imgdiv.classList.add("image");
                 _imgdiv.style.backgroundImage = 'url("' + e.value.partners[i].profile_pic + '")';
@@ -77,7 +78,15 @@ function disappear(){
 window.addEventListener("unload", disappear);
 disappear();
 
-function openChat(chatid=null){
+function openChat(selectedchat=null){
+    var chatid = selectedchat?.getAttribute("chatid");
+
+    var chatek = document.getElementById("saved").children;
+    for(var i = 0; i < chatek.length; i++){
+        chatek[i].classList.remove("active");
+    }
+    selectedchat?.classList.add("active");
+
     var chat = document.getElementById("chat");
     var saved = document.getElementById("saved");
     var savedicon = document.getElementById("savedicon");
