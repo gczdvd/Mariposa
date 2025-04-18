@@ -3,30 +3,28 @@
 fetch("/interests.json").then((e)=>{
     e.json().then((f)=>{
         interestsDiv = document.getElementsByClassName("interests")[0];
-        var intrestGroups = Object.keys(f);
-        for(var i = 0; i < intrestGroups.length; i++){
+        for(var i = 0; i < f.length; i++){
             var interestGroupDiv = document.createElement("div");
-            interestGroupDiv.setAttribute("value", f[intrestGroups[i]].id);
-            interestGroupDiv.classList.add(intrestGroups[i].toLowerCase());
-            interestGroupDiv.id = intrestGroups[i].toLowerCase();
+            interestGroupDiv.setAttribute("value", f[i].id);
+            // interestGroupDiv.classList.add(intrestGroups[i].toLowerCase());
+            // interestGroupDiv.id = intrestGroups[i].toLowerCase();
 
             var titleP = document.createElement("p");
-            titleP.innerText = f[intrestGroups[i]].name;
+            titleP.innerText = f[i].name;
             interestGroupDiv.appendChild(titleP);
 
-            var subIntrests = Object.keys(f[intrestGroups[i]].data);
-            for(var j = 0; j < subIntrests.length; j++){
+            for(var j = 0; j < f[i].data.length; j++){
                 var interestButton = document.createElement("button");
-                interestButton.setAttribute("value", subIntrests[j]);
+                interestButton.setAttribute("value", j);
                 interestButton.setAttribute("onclick", "chosenInterest(this)");
                 interestButton.classList.add("notSelected");
 
                 var emojiSpan = document.createElement("span");
                 emojiSpan.classList.add("emoji");
-                emojiSpan.innerHTML = f[intrestGroups[i]].data[subIntrests[j]].emoji;
+                emojiSpan.innerHTML = f[i].data[j].emoji;
 
                 interestButton.appendChild(emojiSpan);
-                interestButton.innerHTML += (" " + f[intrestGroups[i]].data[subIntrests[j]].name);
+                interestButton.innerHTML += (" " + f[i].data[j].name);
 
                 interestGroupDiv.appendChild(interestButton);
             }

@@ -1,458 +1,446 @@
-{
-    "sport": {
-        "id": "1",
+[
+    {
         "name": "Sport",
-        "data": {
-            "1": {
+        "data": [
+            {
                 "name": "Labdasport",
                 "emoji": "⚽"
             },
-            "2": {
+            {
                 "name": "Atlétika",
                 "emoji": "👟"
             },
-            "3": {
+            {
                 "name": "Golf, krikett",
                 "emoji": "🏌️"
             },
-            "4": {
+            {
                 "name": "Úszás, szörfözés",
                 "emoji": "🥽"
             },
-            "5": {
+            {
                 "name": "Tenisz, tollas",
                 "emoji": "🎾"
             },
-            "6": {
+            {
                 "name": "Lovassport",
                 "emoji": "🏇"
             },
-            "7": {
+            {
                 "name": "Harcművészet",
                 "emoji": "🥋"
             },
-            "8": {
+            {
                 "name": "Téli sportok",
                 "emoji": "🎿"
             }
-        }
+        ]
     },
-    "fashion": {
-        "id":"2",
+    {
         "name": "Divat",
-        "data": {
-            "1": {
+        "data": [
+            {
                 "name": "Sminkelés",
                 "emoji": "💄"
             },
-            "2": {
+            {
                 "name": "Fodrászat",
                 "emoji": "💇‍♀️"
             },
-            "3": {
+            {
                 "name": "Műkörömépítés",
                 "emoji": "💅"
             },
-            "4": {
+            {
                 "name": "Modellkedés",
                 "emoji": "👠"
             },
-            "5": {
+            {
                 "name": "Magazinok",
                 "emoji": "🗞️"
             }
-        }
+        ]
     },
-    "science": {
-        "id": "3",
+    {
         "name": "Tudomány",
-        "data": {
-            "1": {
+        "data": [
+            {
                 "name": "Reál",
                 "emoji": "🧠"
             },
-            "2": {
+            {
                 "name": "Humán",
                 "emoji": "🫀"
             },
-            "3": {
+            {
                 "name": "Pszichológia, szociológia",
                 "emoji": "🌍"
             },
-            "4": {
+            {
                 "name": "Politika",
                 "emoji": "🗳️"
             },
-            "5": {
+            {
                 "name": "Vallás",
                 "emoji": "⛪"
             },
-            "6": {
+            {
                 "name": "Művészettörténet",
                 "emoji": "🖼️"
             },
-            "7": {
+            {
                 "name": "Régészet",
                 "emoji": "🦴"
             }
-        }
+        ]
     },
-    "music": {
-        "id": "4",
+    {
         "name": "Zene",
-        "data": {
-            "1": {
+        "data": [
+            {
                 "name": "Népzene",
                 "emoji": "💃"
             },
-            "2": {
+            {
                 "name": "Alternatív",
                 "emoji": "🎧"
             },
-            "3": {
+            {
                 "name": "Country",
                 "emoji": "🪕"
             },
-            "4": {
+            {
                 "name": "Blues, R&B",
                 "emoji": "🥁"
             },
-            "5": {
+            {
                 "name": "Dzsessz, szving",
                 "emoji": "🎷"
             },
-            "6": {
+            {
                 "name": "Hiphop",
                 "emoji": "🎤"
             },
-            "7": {
+            {
                 "name": "Rock, metál",
                 "emoji": "🎸"
             },
-            "8": {
+            {
                 "name": "Pop",
                 "emoji": "🎵"
             },
-            "9": {
+            {
                 "name": "Techno, house, EDM",
                 "emoji": "🪩"
             },
-            "10": {
+            {
                 "name": "Klasszikus",
                 "emoji": "🎹"
             }
-        }
+        ]
     },
-    "social": {
-        "id": "5",
+    {
         "name": "Szociális",
-        "data": {
-            "1": {
+        "data": [
+            {
                 "name": "Közösségi média",
                 "emoji": "📲"
             },
-            "2": {
+            {
                 "name": "Videós tartalomgyártó",
                 "emoji": "📹"
             },
-            "3": {
+            {
                 "name": "Aktivizmus",
                 "emoji": "🏳️‍🌈"
             },
-            "4": {
+            {
                 "name": "Önkéntesség",
                 "emoji": "🧹"
             },
-            "5": {
+            {
                 "name": "Műgyűjtés",
                 "emoji": "📜"
             },
-            "6": {
+            {
                 "name": "Könyvklub",
                 "emoji": "📚"
             },
-            "7": {
+            {
                 "name": "Zenekar, kórus",
                 "emoji": "🎶"
             },
-            "8": {
+            {
                 "name": "Ünnepek",
                 "emoji": "🎁"
             }
-        }
+        ]
     },
-    "filmsTV": {
-        "id":"6",
+    {
         "name": "Filmek és TV-műsorok",
-        "data": {
-            "1": {
+        "data": [
+            {
                 "name": "Anime",
                 "emoji": "🌸"
             },
-            "2": {
+            {
                 "name": "Bűnügyi",
                 "emoji": "🔍"
             },
-            "3": {
+            {
                 "name": "Thriller, horror",
                 "emoji": "🧟"
             },
-            "4": {
+            {
                 "name": "Romantikus",
                 "emoji": "❤️"
             },
-            "5": {
+            {
                 "name": "Sci-fi",
                 "emoji": "👽"
             },
-            "6": {
+            {
                 "name": "Filmdráma",
                 "emoji": "😭"
             },
-            "7": {
+            {
                 "name": "Valóságshow",
                 "emoji": "🎥"
             },
-            "8": {
+            {
                 "name": "Talk show",
                 "emoji": "🗣️"
             },
-            "9": {
+            {
                 "name": "Vetélkedő",
                 "emoji": "🎯"
             }
-        }
+        ]
     },
-    "vehicles": {
-        "id":"7",
+    {
         "name": "Járművek",
-        "data": {
-            "1": {
+        "data": [
+            {
                 "name": "Szerelés",
                 "emoji": "🛠️"
             },
-            "2": {
+            {
                 "name": "Gyűjtés",
                 "emoji": "🚗"
             },
-            "3": {
+            {
                 "name": "Vonatok, buszok",
                 "emoji": "🚆"
             },
-            "4": {
+            {
                 "name": "Amerikai járművek",
                 "emoji": "&#x1f1fa;&#x1f1f8;"
             },
-            "5": {
+            {
                 "name": "Japán, dél-koreai járművek",
                 "emoji": "&#x1f1ef;&#x1f1f5; &#x1f1f0;&#x1f1f7;"
             },
-            "6": {
+            {
                 "name": "Német járművek",
                 "emoji": "&#x1f1e9;&#x1f1ea;"
             },
-            "7": {
+            {
                 "name": "Olasz járművek",
                 "emoji": "&#x1f1ee;&#x1f1f9;"
             },
-            "8": {
+            {
                 "name": "Angol járművek",
                 "emoji": "&#x1f1ec;&#x1f1e7;"
             },
-            "9": {
+            {
                 "name": "Francia járművek",
                 "emoji": "&#x1f1eb;&#x1f1f7;"
             }
-        }
+        ]
     },
-    "literature": {
-        "id": "8",
+    {
         "name": "Irodalom",
-        "data": {
-            "1": {
+        "data": [
+            {
                 "name": "Olvasás",
                 "emoji": "📖"
             },
-            "2": {
+            {
                 "name": "Írás",
                 "emoji": "📝"
             },
-            "3": {
+            {
                 "name": "Képregény, manga",
                 "emoji": "🍭"
             },
-            "4": {
+            {
                 "name": "Krimi, thriller, horror",
                 "emoji": "☠️"
             },
-            "5": {
+            {
                 "name": "Sci-fi, fantasy",
                 "emoji": "🔮"
             },
-            "6": {
+            {
                 "name": "Romantikus",
                 "emoji": "🩷"
             },
-            "7": {
+            {
                 "name": "Életrajzi, történelmi",
                 "emoji": "⏳"
             },
-            "8": {
+            {
                 "name": "Versek",
                 "emoji": "📃"
             },
-            "9": {
+            {
                 "name": "Színművek",
                 "emoji": "🎭"
             }
-        }
+        ]
     },
-    "games": {
-        "id":"9",
+    {
         "name": "Játékok",
-        "data": {
-            "1": {
+        "data": [
+            {
                 "name": "Telefonos játékok",
                 "emoji": "📱"
             },
-            "2": {
+            {
                 "name": "Társasjátékok",
                 "emoji": "🎲"
             },
-            "3": {
+            {
                 "name": "LEGO, puzzle",
                 "emoji": "🧩"
             },
-            "4": {
+            {
                 "name": "Akciófigurák",
                 "emoji": "🦹‍♂️"
             },
-            "5": {
+            {
                 "name": "Akció, verekedős",
                 "emoji": "🥊"
             },
-            "6": {
+            {
                 "name": "Kaland, horror-túlélő",
                 "emoji": "🩸"
             },
-            "7": {
+            {
                 "name": "Stratégiai, platformer",
                 "emoji": "💡"
             },
-            "8": {
+            {
                 "name": "Sandbox",
                 "emoji": "🏖️"
             },
-            "9": {
+            {
                 "name": "Multiplayer játékok",
                 "emoji": "💻"
             }
-        }
+        ]
     },
-    "arts": {
-        "id":"10",
+    {
         "name": "Művészet",
-        "data": {
-            "1": {
+        "data": [
+            {
                 "name": "Fotóművészet",
                 "emoji": "📸"
             },
-            "2": {
+            {
                 "name": "Festészet",
                 "emoji": "🎨"
             },
-            "3": {
+            {
                 "name": "Szobrászat",
                 "emoji": "🗿"
             },
-            "4": {
+            {
                 "name": "Grafika",
                 "emoji": "✏️"
             },
-            "5": {
+            {
                 "name": "Építészet",
                 "emoji": "🏰"
             },
-            "6": {
+            {
                 "name": "Kézművesség",
                 "emoji": "🧶"
             },
-            "7": {
+            {
                 "name": "Színművészet",
                 "emoji": "🎭"
             },
-            "8": {
+            {
                 "name": "Sandbox",
                 "emoji": "🏖️"
             },
-            "9": {
+            {
                 "name": "Multiplayer játékok",
                 "emoji": "💻"
             }
-        }
+        ]
     },
-    "nature": {
-        "id":"11",
+    {
         "name": "Természet",
-        "data": {
-            "1": {
+        "data": [
+            {
                 "name": "Túrázás",
                 "emoji": "🧗‍♀️"
             },
-            "2": {
+            {
                 "name": "Kerékpározás",
                 "emoji": "🚴"
             },
-            "3": {
+            {
                 "name": "Madarászás",
                 "emoji": "🦅"
             },
-            "4": {
+            {
                 "name": "Gombászás",
                 "emoji": "🍄"
             },
-            "5": {
+            {
                 "name": "Kertészkedés",
                 "emoji": "🌹"
             },
-            "6": {
+            {
                 "name": "Piknik",
                 "emoji": "🧺"
             },
-            "7": {
+            {
                 "name": "Hajózás",
                 "emoji": "⛵️"
             }
-        }
+        ]
     },
-    "kitchen": {
-        "id":"12",
+    {
         "name": "Konyha",
-        "data": {
-            "1": {
+        "data": [
+            {
                 "name": "Mixer",
                 "emoji": "🍸"
             },
-            "2": {
+            {
                 "name": "Barista",
                 "emoji": "☕️"
             },
-            "3": {
+            {
                 "name": "Sütés-főzés",
                 "emoji": "🥧"
             },
-            "4": {
+            {
                 "name": "Molekuláris konyha",
                 "emoji": "🧪"
             },
-            "5": {
+            {
                 "name": "Ázsiai konyha",
                 "emoji": "🥢"
             },
-            "6": {
+            {
                 "name": "Amerikai konyha",
                 "emoji": "🍟"
             }
-        }
+        ]
     }
-}
+]

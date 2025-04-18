@@ -2,6 +2,13 @@
 
 // "Jó napot kívánok! Gócza Dávid vagyok, jövőbeli ingatlanközvetítő, mert én ettől agyvérzést kapok."
 
+var interests = [];
+fetch("/interests.json").then((e)=>{
+    e.json().then((f)=>{
+        interests = f;
+    });
+});
+
 var ws;
 var firstconn = true;
 function websocket_loop(){
@@ -327,6 +334,22 @@ function receive(e){
                 var e = new Date(bdate);
                 return bdate ? `${e.getUTCFullYear()}. ${((e.getMonth()+1) < 10 ? '0' : '') + (e.getMonth()+1)}. ${(e.getDate() < 10 ? '0' : '') + e.getDate()}.` : `????. ??. ??.`;
             }();
+
+            for(var i = 0; i < partneridentify.topics.length; i++){
+                var mb = Number.parseInt(partneridentify.topics[i].slice(0, 2));
+                var lb = Number.parseInt(partneridentify.topics[i].slice(2, 4));
+                
+                var interestButton = document.createElement("button");
+                
+                var emojiSpan = document.createElement("span");
+                emojiSpan.classList.add("emoji");
+                emojiSpan.innerHTML = interests[mb].data[lb].emoji;
+
+                interestButton.appendChild(emojiSpan);
+                interestButton.innerHTML += (" " + interests[mb].data[lb].name);
+
+                document.getElementById("interestsP").appendChild(interestButton);
+            }
                 
             setTimeout(()=>{
                 loadPartners();
