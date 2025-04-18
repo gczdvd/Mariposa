@@ -48,7 +48,7 @@ function loadPartners(){
                 var _div = document.createElement("div");
                 _div.className = "savedChat";
                 _div.setAttribute("chatid", e.value.partners[i].chat_id);
-                _div.setAttribute("onclick", `openChat(this)`);
+                _div.setAttribute("onclick", `openChat('${e.value.partners[i].chat_id}', this)`);
                 var _imgdiv = document.createElement("div");
                 _imgdiv.classList.add("image");
                 _imgdiv.style.backgroundImage = 'url("' + e.value.partners[i].profile_pic + '")';
@@ -78,14 +78,21 @@ function disappear(){
 window.addEventListener("unload", disappear);
 disappear();
 
-function openChat(selectedchat=null){
-    var chatid = selectedchat?.getAttribute("chatid");
-
+var lastChat = null;
+function setSelected(){
     var chatek = document.getElementById("saved").children;
     for(var i = 0; i < chatek.length; i++){
         chatek[i].classList.remove("active");
+        if(chatek[i].getAttribute("chatid") == lastChat){
+            chatek[i].classList.add("active");
+        }
     }
-    selectedchat?.classList.add("active");
+}
+
+function openChat(chatid=null, selectedchat=null){
+    if(chatid == null){
+        chatid = selectedchat?.getAttribute("chatid");
+    }
 
     var chat = document.getElementById("chat");
     var saved = document.getElementById("saved");
@@ -108,7 +115,11 @@ function openChat(selectedchat=null){
     document.getElementById("startChatAlert").style.display = "none";
     document.getElementById("message-bar").removeAttribute("disabled");
 
-    if(chatid){ 
+    if(chatid != null){
+        lastChat = chatid;
+
+        setSelected();
+        
         document.getElementById("waiting").style.display = "none";
         document.getElementById("details").classList.remove("detailshidden");
         document.getElementById("message").style.visibility = "visible";
@@ -118,6 +129,8 @@ function openChat(selectedchat=null){
         history.pushState({}, "", url);
     }
     else{
+        lastChat = null;
+
         document.getElementById("waiting").style.display = "block";
         document.getElementById("details").classList.add("detailshidden");
         document.getElementById("message").style.visibility = "hidden";
