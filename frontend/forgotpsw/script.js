@@ -26,7 +26,7 @@ function passwordValid(password){
   }
 }
 
-document.getElementById("password1").addEventListener("keyup", same());
+document.getElementById("password2").addEventListener("keyup", same());
 
 function same(){
   if(document.getElementById("password1").value == document.getElementById("password2").value){
@@ -50,11 +50,10 @@ function togglePassword(togglePassword){
 }
 
 function subm(){
-    var jelszo = passwordValid(document.getElementById("password1"));
-    var password1 = document.getElementById("password1").value;
-    var password2 = document.getElementById("password1").value;
+    var password1 = passwordValid(document.getElementById("password1"));
+    var password2 = document.getElementById("password2").value;
     var key = (new URLSearchParams(window.location.search)).get("key");
-    if(jelszo && password1 == password2 && key){   
+    if(password1 != false && password1 == password2 && key){   
         
       var passcry = CryptoJS.SHA256(password1).toString();
       Backend.post({
@@ -64,7 +63,6 @@ function subm(){
             password:passcry
         },
         callback:(e)=>{
-            console.log(e);
             if(e.message == "Success"){
               Swal.fire({
                 icon: "success",

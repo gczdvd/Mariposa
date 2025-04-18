@@ -19,7 +19,7 @@
 .button{
     display: grid;
     width: fit-content;
-    align-self: center;
+    align-self: start;
     background-color: #ffbc2f;
     font-family: "Albert Sans", Arial, Helvetica, sans-serif;
     text-transform: uppercase;
@@ -166,7 +166,7 @@
     transition: 200ms;
 }
 
-.tertiaryBTN::after, .tertiaryBTN a::after, .tertiaryBTN p::after{
+.tertiaryBTN a::after, .tertiaryBTN p::after{
     display: block;
     content: '';
     border-bottom: solid 2px #ffbc2f;

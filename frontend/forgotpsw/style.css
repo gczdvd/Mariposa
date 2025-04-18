@@ -54,7 +54,7 @@
 }
 
 .image{
-    background-image: url(../_images/logopattern.svg);
+    background-image: url('/_images/logopattern.svg');
     align-content: center;
     grid-column-start: 2;
 }

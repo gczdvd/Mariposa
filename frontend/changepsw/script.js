@@ -41,7 +41,6 @@ async function forgotPassword(){
 
 function passwordValid(password){
   var passwordValue = password.value;
-  // var passwordField = document.getElementById("password");
   var lowercase = false;
   var uppercase = false;
   
@@ -88,7 +87,7 @@ function same(){
   }
 }
 
-document.getElementById("password2").addEventListener("keydown", same);
+document.getElementById("password2").addEventListener("keyup", same);
 
 
 function save(){
@@ -96,7 +95,7 @@ function save(){
   var nw1Pass = document.getElementById("password1");
   var nw2Pass = document.getElementById("password2");
 
-  if(validate() && nw1Pass.value == nw2Pass.value){
+  if(passwordValid(oldPass) != false && nw1Pass.value == nw2Pass.value){
     var precode = CryptoJS.SHA256(oldPass.value).toString();
     var timekey = String((new Date).getTime());
     var key = CryptoJS.SHA256(timekey + precode).toString();
@@ -110,10 +109,11 @@ function save(){
       },
       callback: (e) => {
         if(e.message == "Bad old password."){
-          document.getElementById("curPassFeedback").innerHTML = "Helytelen jelszó";
+          document.getElementById("curPassword").classList.add("is-invalid");
+          document.getElementById("curPassword").style.borderColor = "#dc3545";
+          document.getElementById("curPassword").style.color = "#dc3545";
         }
         else{
-          document.getElementById("curPassFeedback").innerHTML = "";
           Swal.fire({
             icon: "success",
             title: "Sikeres mentés!",

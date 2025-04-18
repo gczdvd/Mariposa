@@ -7,10 +7,6 @@ function colorChange(textarea){
   }
 }
 
-// belekattintasz, narancssárga
-// beleírsz narancssárga
-// ha van tartalma, és kilépsz, narancssárga
-// ha nincs tartalma, és kilépsz, szürke
 
 Backend.get({
     path:"/userinfo",

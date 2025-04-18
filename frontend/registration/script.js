@@ -103,6 +103,7 @@ function registration(){
         icon: "success",
         iconColor: "#ffbc2f",
         title: "Nézd meg az email-fiókod a visszaigazoló emailért!",
+        text: "Kérjük, ellenőrizd a Spam mappát is!",
         html: `
         <button onclick="location.href='https://mail.google.com/mail/u/0/#inbox';" class="primaryBTN" style="margin-top: 1em">Gmail megnyitása</button>
         `,
