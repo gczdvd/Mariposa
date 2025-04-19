@@ -32,6 +32,23 @@ function charCounter(textarea) {
   }
 }
 
+function usernameValid(){
+  var username = document.getElementById("username");
+
+  if(!username.value){
+    username.classList.add("is-invalid");
+    username.style.borderColor = "#dc3545";
+    username.style.color = "#dc3545";
+    return false;
+  }
+  else{
+    username.classList.remove("is-invalid");
+    username.style.borderColor = "#ffbc2f";
+    username.style.color = "#ffbc2f";
+    return username.value;
+  }
+}
+
 function emailValid(){
   var email = document.getElementById("email");
   const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -47,7 +64,7 @@ function emailValid(){
     email.classList.remove("is-invalid");
     email.style.borderColor = "#ffbc2f";
     email.style.color = "#ffbc2f";
-    return true;
+    return email.value;
   }
 }
 
@@ -64,7 +81,7 @@ function fullnameValid(){
     fullname.classList.remove("is-invalid");
     fullname.style.borderColor = "#ffbc2f";
     fullname.style.color = "#ffbc2f";
-    return true;
+    return fullname.value;
   }
 }
 
@@ -81,7 +98,7 @@ function messageValid(){
     message.classList.remove("is-invalid");
     message.style.borderColor = "#ffbc2f";
     message.style.color = "#ffbc2f";
-    return true;
+    return message.value;
   }
 }
 
@@ -132,8 +149,6 @@ function empty(){
   document.getElementById("remaining-chars").innerHTML = "";
   document.getElementById("remaining-chars").style.borderColor = "#d3d3d3";
 }
-
-// ÁTÍRNI A BACKENDBEN
 
 function support(emailValue, fullnameValue, usernameValue, messageValue){
     Backend.post({

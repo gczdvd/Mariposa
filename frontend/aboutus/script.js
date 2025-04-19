@@ -13,11 +13,8 @@ function showMore(accordion){
 }
 
 function charCounter(textarea) {
-
   const remChars = document.getElementById("remaining-chars");
-
   const maxLength = textarea.getAttribute("maxlength");
-
   const currentLength = textarea.value.length;
 
   if(textarea.value.length == 0){
@@ -45,7 +42,7 @@ function emailValid(){
     email.classList.remove("is-invalid");
     email.style.borderColor = "#ffbc2f";
     email.style.color = "#ffbc2f";
-    return true;
+    return email.value;
   }
 }
 
@@ -57,30 +54,12 @@ function fullnameValid(){
     fullname.style.borderColor = "#dc3545";
     fullname.style.color = "#dc3545";
     return false;
-    inputField.style.borderColor = "#ffbc2f";
-  }
-}
-
-function validate(){
-  var email = document.getElementById("email").value;
-  var fullname = document.getElementById("fullname").value;
-  var username = document.getElementById("username").value;
-  var message = document.getElementById("message").value;
-  var allValid = true;
-
-  const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  var validEmail = pattern.test(email);
-
-  if(!validEmail){
-    document.getElementById("emailFeedback").style.visibility = "visible";
-    document.getElementById("emailFeedback").innerHTML = "Kérjük, adj meg egy helyes email-címet!";
-    var allValid = false;
   }
   else{
-    fullname.classList.remove("is-invalid");
-    fullname.style.borderColor = "#ffbc2f";
-    fullname.style.color = "#ffbc2f";
-    return true;
+    email.classList.remove("is-invalid");
+    email.style.borderColor = "#ffbc2f";
+    email.style.color = "#ffbc2f";
+    return fullname.value;
   }
 }
 
@@ -97,7 +76,7 @@ function messageValid(){
     message.classList.remove("is-invalid");
     message.style.borderColor = "#ffbc2f";
     message.style.color = "#ffbc2f";
-    return true;
+    return message.value;
   }
 }
 
@@ -122,8 +101,6 @@ function validate(){
   }
 
   if(allValid){
-    // BEMENETI PARAMÉTEREK
-    support();
     support(email, username, fullname, message);
   }
 }
