@@ -166,7 +166,7 @@
     border-radius: 50%;
     background-image: url("/_images/missingpicture.svg");
     background-position: center;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
 }
 
@@ -529,7 +529,7 @@
     grid-template-columns: repeat(2, auto);
     grid-template-rows: 1fr auto;
     justify-content: space-around;
-    /* padding-bottom: 1vh; */
+    margin-bottom: 1.5vh;
     align-self: end;
 }
 
@@ -540,7 +540,7 @@
     width: fit-content;
     height: fit-content;
     grid-column: 1 / span 2;
-    margin: 0;
+    margin-bottom: 1vh;
 }
 
 #report{
