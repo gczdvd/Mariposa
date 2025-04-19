@@ -140,8 +140,9 @@ function support(emailValue, fullnameValue, usernameValue, messageValue){
         "path":"/message",
         "body":{
             "email":emailValue,
-            "name":name,
-            "text":message
+            "username":usernameValue,
+            "name":fullnameValue,
+            "text":messageValue
         },
         "callback":supportResponse
     });
