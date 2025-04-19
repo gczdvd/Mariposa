@@ -193,27 +193,26 @@
         <p class="title">Kérdésed van? Írj nekünk!</p>
 
           <div class="form-floating">
-              <input class="form-control shadow-none" id="email" type="email" spellcheck="false" placeholder="Email-cím" onfocusout="emailValid()">
+              <input class="form-control shadow-none" id="email" type="email" spellcheck="false" placeholder="Email-cím" oninput="emailValid()">
 
               <label for="email">Email-cím</label>
           </div>
 
           <div class="form-floating">
-              <input class="form-control shadow-none" id="fullname" type="text" spellcheck="false" placeholder="Teljes név" onfocusout="fullnameValid()">
+              <input class="form-control shadow-none" id="fullname" type="text" spellcheck="false" placeholder="Teljes név" oninput="fullnameValid()">
               
               <label for="fullname">Teljes név</label>
           </div>
 
           <div class="form-floating">
-              <input class="form-control shadow-none" id="username" type="text" spellcheck="false" placeholder="Felhasználónév" onfocusout="usernameValid()">
+              <input class="form-control shadow-none" id="username" type="text" spellcheck="false" placeholder="Felhasználónév" oninput="usernameValid()">
               
               <label for="username">Felhasználónév (opcionális)</label>
           </div>
 
           <div class="form-floating">
-              <textarea class="form-control shadow-none" id="message" rows="4" maxlength="500" oninput="charCounter(this)" placeholder="Üzenet" spellcheck="none" onfocusout="messageValid()"></textarea>
+              <textarea class="form-control shadow-none" id="message" rows="4" maxlength="500" oninput="charCounter(this); messageValid()" placeholder="Üzenet" spellcheck="none"></textarea>
               <p id="remaining-chars"></p>
-              <p id="messageFeedback"></p>
               
               <label for="message">Üzenet</label>
           </div>
@@ -258,10 +257,6 @@
 
           <a href="https://forms.gle/qHWUfrQHc5NaRnoQ6" target="_blank">
               Elégedettségi kérdőív
-          </a>
-
-          <a href="/ppt_docs/dokumentacio.pdf" target="_blank">
-              Dokumentáció
           </a>
       </div>
 

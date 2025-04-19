@@ -16,11 +16,8 @@ for (i = 0; i < acc.length; i++) {
 }
 
 function charCounter(textarea) {
-
   const remChars = document.getElementById("remaining-chars");
-
   const maxLength = textarea.getAttribute("maxlength");
-
   const currentLength = textarea.value.length;
 
   if(textarea.value.length == 0){
@@ -36,14 +33,11 @@ function usernameValid(){
   var username = document.getElementById("username");
 
   if(!username.value){
-    username.style.borderColor = "#dc3545";
-    username.style.color = "#dc3545";
-    return false;
+    username.style.borderColor = "#d3d3d3";
   }
   else{
     username.style.borderColor = "#ffbc2f";
     username.style.color = "#ffbc2f";
-    return username.value;
   }
 }
 
@@ -104,11 +98,7 @@ function validate(){
   var email = emailValid();
   var fullname = fullnameValid();
   var message = messageValid();
-  var username = usernameValid();
   var allValid;
-
-  username.style.borderColor = "#ffbc2f";
-  username.style.color = "#ffbc2f";
 
   if(!email || !fullname || !message){
     allValid = false;
