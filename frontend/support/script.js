@@ -36,13 +36,11 @@ function usernameValid(){
   var username = document.getElementById("username");
 
   if(!username.value){
-    username.classList.add("is-invalid");
     username.style.borderColor = "#dc3545";
     username.style.color = "#dc3545";
     return false;
   }
   else{
-    username.classList.remove("is-invalid");
     username.style.borderColor = "#ffbc2f";
     username.style.color = "#ffbc2f";
     return username.value;
@@ -106,7 +104,7 @@ function validate(){
   var email = emailValid();
   var fullname = fullnameValid();
   var message = messageValid();
-  var username = document.getElementById("username");
+  var username = usernameValid();
   var allValid;
 
   username.style.borderColor = "#ffbc2f";
@@ -127,7 +125,6 @@ function validate(){
     var fullnameValue = document.getElementById("fullname").value;
     var usernameValue = document.getElementById("username").value;
     var messageValue = document.getElementById("message").value;
-
 
     support(emailValue, usernameValue, fullnameValue, messageValue);
   }
