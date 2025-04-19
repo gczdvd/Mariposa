@@ -56,9 +56,9 @@ function fullnameValid(){
     return false;
   }
   else{
-    email.classList.remove("is-invalid");
-    email.style.borderColor = "#ffbc2f";
-    email.style.color = "#ffbc2f";
+    fullname.classList.remove("is-invalid");
+    fullname.style.borderColor = "#ffbc2f";
+    fullname.style.color = "#ffbc2f";
     return fullname.value;
   }
 }
@@ -80,15 +80,41 @@ function messageValid(){
   }
 }
 
+function usernameValid(){
+  var username = document.getElementById("username");
+
+  if(!username.value){
+    username.style.borderColor = "#d3d3d3";
+  }
+  else{
+    username.style.borderColor = "#ffbc2f";
+    username.style.color = "#ffbc2f";
+  }
+}
+
+function empty(){
+  document.getElementById("email").value = "";
+  document.getElementById("email").style.borderColor = "#d3d3d3";
+
+  document.getElementById("fullname").value = "";
+  document.getElementById("fullname").style.borderColor = "#d3d3d3";
+
+  document.getElementById("username").value = "";
+  document.getElementById("username").style.borderColor = "#d3d3d3";
+
+  document.getElementById("message").value = "";
+  document.getElementById("message").style.borderColor = "#d3d3d3";
+
+  document.getElementById("remaining-chars").innerHTML = "";
+  document.getElementById("remaining-chars").style.borderColor = "#d3d3d3";
+}
+
 function validate(){
   var email = emailValid();
   var fullname = fullnameValid();
   var message = messageValid();
-  var username = document.getElementById("username");
+  var username = document.getElementById("username").value;
   var allValid;
-
-  username.style.borderColor = "#ffbc2f";
-  username.style.color = "#ffbc2f";
 
   if(!email || !fullname || !message){
     allValid = false;
@@ -127,8 +153,12 @@ function supportResponse(e){
       text: "Ügyfélszolgálatunk hamarosan felveszi Veled a kapcsolatot.",
       width: "64em",
       confirmButtonText: "Rendben!", 
-      showCancelButton: "false",
+      showCancelButton: false,
       confirmButtonColor: "#ffbc2f",
+    }).then((result) => {
+      if(result.isConfirmed){
+        empty();
+      }
     })
   }
   else{
