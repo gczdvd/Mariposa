@@ -87,11 +87,11 @@ function login(){
         var precode = getCookie("password");
     }
     else{
+        var precode = CryptoJS.SHA256(password).toString();
         if(document.getElementById("rememberme").checked){
           setCookie("email", email);
           setCookie("password", precode);
         }
-        var precode = CryptoJS.SHA256(password).toString();
     }
     console.log("precode", precode);
     var timekey = String((new Date).getTime());
