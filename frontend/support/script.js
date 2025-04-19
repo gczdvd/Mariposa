@@ -129,7 +129,7 @@ function validate(){
     var messageValue = document.getElementById("message").value;
 
 
-    support();
+    support(emailValue, usernameValue, fullnameValue, messageValue);
   }
 }
 
