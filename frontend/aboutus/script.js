@@ -123,7 +123,6 @@ function validate(){
 
   if(allValid){
     // BEMENETI PARAMÉTEREK
-    support();
     support(email, username, fullname, message);
   }
 }
