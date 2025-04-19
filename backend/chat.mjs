@@ -263,55 +263,39 @@ export class Finder{
     }
     check(){
         var sesss = this.sessions.getSessions();
-        var pair = [];
         for(var i = 0; i < sesss.length; i++){
             if(sesss[i].getAttribute("chat") instanceof Want){
-                if(pair.length == 0){
-                    pair.push(sesss[i]);
-                }
-                else if(pair.length == 1){
-                    var first_user_id = pair[0].getAttribute("client").getId();
-                    var second_user_partners = sesss[i].getAttribute("chat").getPartners();
+                for(var j = 0; j < sesss.length; j++){
+                    if(i != j && sesss[j].getAttribute("chat") instanceof Want){
+                        var first_user_id = sesss[i].getAttribute("client").getId();
+                        var second_user_partners = sesss[j].getAttribute("chat").getPartners();
 
-                    var is_partners = false;
-                    for(var j = 0; j < second_user_partners.length; j++){
-                        if(second_user_partners[j].user_id == first_user_id){
-                            is_partners = true;
+                        var is_partners = false;
+                        for(var k = 0; k < second_user_partners.length; k++){
+                            if(second_user_partners[k].user_id == first_user_id){
+                                is_partners = true;
+                                break;
+                            }
+                        }
+
+                        if(!is_partners){
+                            var nChat = this.chats.newChat(sesss[i], sesss[j]);
+
+                            pair[0].setAttribute("chat", nChat);
+                            pair[1].setAttribute("chat", nChat);
+                            pair[0].getWebsocket()?.send(JSON.stringify({
+                                "type":"action",
+                                "name":"havepartner",
+                                "value":null
+                            }));
+                            pair[1].getWebsocket()?.send(JSON.stringify({
+                                "type":"action",
+                                "name":"havepartner",
+                                "value":null
+                            }));
                             break;
                         }
                     }
-
-                    if(!is_partners){
-                        pair.push(sesss[i]);
-                    }
-                }
-                if(pair.length == 2){
-                    /*var tmpChat = new Chat(this.db, pair[0], pair[1])
-                    var nChat = this.chats.findChatById(tmpChat.getId());
-                    if(nChat == null){
-                        nChat = this.chats.newChat(pair[0], pair[1]);
-                    }
-                    else{
-                        nChat.setUser(pair[0]);
-                        nChat.setUser(pair[1]);
-                    }*/
-
-                    var nChat = this.chats.newChat(pair[0], pair[1]);
-
-                    pair[0].setAttribute("chat", nChat);
-                    pair[1].setAttribute("chat", nChat);
-                    pair[0].getWebsocket()?.send(JSON.stringify({
-                        "type":"action",
-                        "name":"havepartner",
-                        "value":null
-                    }));
-                    pair[1].getWebsocket()?.send(JSON.stringify({
-                        "type":"action",
-                        "name":"havepartner",
-                        "value":null
-                    }));
-
-                    break;
                 }
             }
         }
