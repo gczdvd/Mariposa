@@ -128,7 +128,8 @@ export class Chat{
                     "saved":u2dat.saved,
                     "birthdate":u2dat.birthdate,
                     "gender":u2dat.gender,
-                    "description":u2dat.description
+                    "description":u2dat.description,
+                    "topics":u2dat.topics
                 }
             }));
 
@@ -139,7 +140,8 @@ export class Chat{
                     "saved":u1dat.saved,
                     "birthdate":u1dat.birthdate,
                     "gender":u1dat.gender,
-                    "description":u1dat.description
+                    "description":u1dat.description,
+                    "topics":u2dat.topics
                 }
             }));
         }
